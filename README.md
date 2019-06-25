@@ -1,31 +1,29 @@
-# commitd-lib
+# Committed Components
 
-> Committed Library
+> Committed Component Library
 
-[![NPM](https://img.shields.io/npm/v/commitd-lib.svg)](https://www.npmjs.com/package/commitd-lib) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save commitd-lib
+yarn add @committed/components
 ```
 
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import * as React from "react"
 
-import MyComponent from 'commitd-lib'
+import MyComponent from "@committed/components"
 
 class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
+  render() {
+    return <MyComponent />
   }
 }
 ```
 
 ## License
 
-UNLICENSED © [committed](https://github.com/committed)
+© [Committed Software](https://github.com/commitd)

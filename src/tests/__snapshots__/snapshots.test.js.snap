@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box renders 1`] = `
+<div
+  className="sc-bdVaJa izVrEh"
+  color="primary.3"
+>
+  Box
+</div>
+`;

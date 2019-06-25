@@ -1,0 +1,71 @@
+---
+name: Box
+route: /components/box
+menu: Components
+---
+
+import { Box } from "./Box"
+import { Playground, Props } from "docz"
+
+# Box
+
+Use the `Box` component to control width, margin, padding, and color.
+
+50% width
+
+<Playground>
+  <Box width={1 / 2} bg="blue">
+    Box
+  </Box>
+</Playground>
+
+Padding of `theme.space[3]` (16px)
+
+<Playground>
+  <Box p={3} bg="blue">
+    Box
+  </Box>
+</Playground>
+
+Margin of `theme.space[2]` (8px)
+
+<Playground>
+  <Box m={4} bg="blue">
+    Box
+  </Box>
+</Playground>
+
+Color blue from the theme's color palette
+
+<Playground>
+  <Box color="blue">Box</Box>
+</Playground>
+
+Background color green from the theme's color palette
+
+<Playground>
+  <Box bg="green">Box</Box>
+</Playground>
+
+## Responsive Widths
+
+The `width` prop accepts an array value to set different widths at different breakpoints with a mobile-first approach.
+
+<Playground>
+  <Box
+    width={[
+      1, // Sets width 100% at the smallest breakpoint
+      1 / 2, // Sets width 50% at the next breakpoint
+      1 / 4 // Sets width 25% at the next breakpoint
+    ]}
+    bg="gray"
+  >
+    Hello
+  </Box>
+</Playground>
+
+See [styled-system](https://github.com/jxnblk/styled-system) for more documentation.
+
+## Props
+
+<Props of={Box} />
