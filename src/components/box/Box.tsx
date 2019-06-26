@@ -18,8 +18,7 @@ import {
   HeightProps,
   height
 } from "styled-system"
-import theme from "../../theme/theme"
-import { ThemeProps } from "../../theme/theme"
+import { theme, ThemeProps } from "../../theme"
 
 export type BoxProps = SpaceProps &
   WidthProps &

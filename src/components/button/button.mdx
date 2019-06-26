@@ -5,10 +5,8 @@ menu: Components
 ---
 
 import { Button } from "./Button"
-import { PrimaryButton } from "./PrimaryButton"
-import { SecondaryButton } from "./SecondaryButton"
-import { OutlineButton } from "./OutlineButton"
 import { Playground, Props } from "docz"
+import { Cartesian } from "@compositor/kit"
 
 # Button
 
@@ -18,34 +16,73 @@ Buttons make common actions immediately visible and easy to perform with one cli
   <Button>Hello</Button>
 </Playground>
 
+# Variants
+
 <Playground>
-  <div>
-    <Button size="large" mr={2}>
-      Large
-    </Button>
-    <Button size="medium" mr={2}>
-      Medium
-    </Button>
-    <Button size="small">Small</Button>
-  </div>
+  <Cartesian
+    component={Button}
+    m={4}
+    type={["contained"]}
+    variation={[
+      "primary",
+      "supporting",
+      "success",
+      "warning",
+      "error",
+      "neutral"
+    ]}
+    size={["sm", "md", "lg", "xl"]}
+    children="Button"
+  />
 </Playground>
 
-## PrimaryButton
+# Outlined
 
 <Playground>
-  <PrimaryButton>PrimaryButton</PrimaryButton>
+  <Cartesian
+    component={Button}
+    m={4}
+    type={["outlined"]}
+    variation={[
+      "neutral",
+      "primary",
+      "supporting",
+      "success",
+      "warning",
+      "error"
+    ]}
+    size={["sm", "md", "lg", "xl"]}
+    children="Button"
+  />
 </Playground>
 
-## SecondaryButton
+# Disabled
 
 <Playground>
-  <SecondaryButton>SecondaryButton</SecondaryButton>
+  <Cartesian
+    component={Button}
+    m={4}
+    type={["contained", "outlined"]}
+    variation={["primary", "supporting"]}
+    size={["sm", "md", "lg", "xl"]}
+    disabled={true}
+    children="Button"
+  />
 </Playground>
 
-## OutlineButton
+# Stretched
 
 <Playground>
-  <OutlineButton>OutlineButton</OutlineButton>
+  <Cartesian
+    component={Button}
+    mt={4}
+    mb={4}
+    type={["contained", "outlined"]}
+    variation={["primary", "supporting"]}
+    size={["md", "lg"]}
+    stretch={true}
+    children="Button"
+  />
 </Playground>
 
 ## Props

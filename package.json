@@ -35,6 +35,7 @@
     "format": "prettier --write '{src/**/*.ts,*.json}'"
   },
   "dependencies": {
+    "@styled-system/theme-get": "^5.0.12",
     "@types/styled-components": "^4.1.16",
     "@types/styled-system": "^4.2.1",
     "styled-components": "^4.3.1",

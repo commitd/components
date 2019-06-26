@@ -16,7 +16,7 @@ export const breakpoints = [32, 40, 48, 64].map(n => n + "em")
 
 export const mediaQueries = breakpoints.map(createMediaQuery)
 
-const aliases = ["sm", "md", "lg", "xl"]
+export const aliases = ["sm", "md", "lg", "xl"]
 
 addAliases(breakpoints, aliases)
 addAliases(mediaQueries, aliases)
@@ -115,14 +115,26 @@ export const textStyles = {
   }
 }
 
-const colors = {
+const pallettes = {
   ...allColors,
-  primary: allColors.blue,
   neutral: allColors.blueGrey,
+  primary: allColors.blue,
+  supporting: allColors.purple,
   success: allColors.teal,
   warning: allColors.committedYellow,
-  error: allColors.red,
-  supporting: allColors.purple
+  error: allColors.red
+}
+
+const colors = {
+  primary: pallettes.primary[4],
+  bg: pallettes.neutral[0],
+  text: pallettes.neutral[9],
+  lighttext: pallettes.neutral[3],
+  supporting: pallettes.supporting[4],
+  success: pallettes.success[4],
+  warning: pallettes.warning[4],
+  error: pallettes.error[4],
+  pallettes
 }
 
 export { colors }
@@ -168,6 +180,57 @@ const transitionDelays = {
   xLarge: `360ms`
 }
 
+// buttons
+const button = {
+  colors: {
+    primary: { default: pallettes.primary[4], hover: pallettes.primary[2] },
+    supporting: {
+      default: pallettes.supporting[4],
+      hover: pallettes.supporting[2]
+    },
+    success: { default: pallettes.success[4], hover: pallettes.success[2] },
+    warning: { default: pallettes.warning[4], hover: pallettes.warning[2] },
+    error: { default: pallettes.error[4], hover: pallettes.error[2] },
+    neutral: { default: pallettes.neutral[3], hover: pallettes.neutral[2] }
+  },
+  textStyles: {
+    sm: "body0",
+    md: "body1",
+    lg: "display2",
+    xl: "display3"
+  },
+  sizes: {
+    sm: {
+      minWidth: "80px",
+      p: "0"
+    },
+    md: {
+      minWidth: "96px",
+      py: "1",
+      px: "2"
+    },
+    lg: {
+      minWidth: "96px",
+      py: "3",
+      px: "4"
+    },
+    xl: {
+      minWidth: "96px",
+      py: "4",
+      px: "5"
+    }
+  },
+  styles: {
+    contained: {
+      colorAttribute: "bg"
+    },
+    outlined: {
+      colorAttribute: "color",
+      boxShadow: "inset 0 0 0 2px"
+    }
+  }
+}
+
 const theme = {
   breakpoints,
   mediaQueries,
@@ -187,12 +250,15 @@ const theme = {
   maxContainerWidth,
   duration,
   timingFunctions,
-  transitionDelays
+  transitionDelays,
+  button
 }
+
+export type Theme = typeof theme
 
 export type ThemeProps = {
   // Provide a theme to control the styling or use a ThemeProvider
-  theme?: typeof theme
+  theme?: Theme
 }
 
 export default theme

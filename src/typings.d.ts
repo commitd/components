@@ -16,3 +16,8 @@ declare module "*.svg" {
   export default svgUrl
   export { svgComponent as ReactComponent }
 }
+
+// TODO move to supporting folder
+declare module "@styled-system/theme-get" {
+  export function themeGet(keys: string, fallback?: string): any
+}

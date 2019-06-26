@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import { borderRadius, BorderRadiusProps } from "styled-system"
 import { Box, BoxProps } from "../box/Box"
-import theme from "../../theme/theme"
+import { theme } from "../../theme"
 
 export type CardProps = BoxProps &
   BorderRadiusProps & {

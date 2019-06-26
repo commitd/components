@@ -14,7 +14,7 @@ Use the `Box` component to control width, margin, padding, and color.
 50% width
 
 <Playground>
-  <Box width={1 / 2} bg="blue">
+  <Box width={1 / 2} bg="bg">
     Box
   </Box>
 </Playground>
@@ -22,7 +22,7 @@ Use the `Box` component to control width, margin, padding, and color.
 Padding of `theme.space[3]` (16px)
 
 <Playground>
-  <Box p={3} bg="blue">
+  <Box p={3} bg="bg">
     Box
   </Box>
 </Playground>
@@ -30,21 +30,15 @@ Padding of `theme.space[3]` (16px)
 Margin of `theme.space[2]` (8px)
 
 <Playground>
-  <Box m={4} bg="blue">
+  <Box m={4} bg="bg">
     Box
   </Box>
 </Playground>
 
-Color blue from the theme's color palette
+Color primary from the theme's color palette
 
 <Playground>
-  <Box color="blue">Box</Box>
-</Playground>
-
-Background color green from the theme's color palette
-
-<Playground>
-  <Box bg="green">Box</Box>
+  <Box color="primary">Box</Box>
 </Playground>
 
 ## Responsive Widths
@@ -58,7 +52,7 @@ The `width` prop accepts an array value to set different widths at different bre
       1 / 2, // Sets width 50% at the next breakpoint
       1 / 4 // Sets width 25% at the next breakpoint
     ]}
-    bg="gray"
+    bg="bg"
   >
     Hello
   </Box>
