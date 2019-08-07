@@ -4,7 +4,8 @@ route: /components/box
 menu: Components
 ---
 
-import { Box } from "./Box"
+import { DocRemainingBox } from "../../docsProps.tsx"
+import { Box, Spacing } from "./Box"
 import { Playground, Props } from "docz"
 
 # Box
@@ -62,4 +63,11 @@ See [styled-system](https://github.com/jxnblk/styled-system) for more documentat
 
 ## Props
 
-<Props of={Box} />
+The spacing of a `Box` is defined by padding an margin options below. These options are also available on all components, so they can be positioned as required but they are
+not repeated on all components props tables.
+
+<Props of={Spacing} />
+
+Remaining props for box configuration.
+
+<Props of={DocRemainingBox} />

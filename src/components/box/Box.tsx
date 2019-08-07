@@ -20,18 +20,23 @@ import {
 } from "styled-system"
 import { theme, ThemeProps } from "../../theme"
 
-export type BoxProps = SpaceProps &
-  WidthProps &
+export type SpacingProps = SpaceProps & FlexProps
+export type RemainingBoxProps = WidthProps &
   HeightProps &
   ColorProps &
   TextAlignProps &
-  FlexProps &
   OrderProps &
   AlignSelfProps &
   ThemeProps
 
-export const Box: React.FC<BoxProps> = styled.div<BoxProps>`
-   ${space} ${width} ${height} ${color} ${textAlign} ${flex} ${order} ${alignSelf}
+export type BoxProps = SpacingProps & RemainingBoxProps
+
+export const Spacing: React.FC<SpacingProps> = styled.div<SpacingProps>`
+  ${space} ${flex}
+`
+
+export const Box: React.FC<BoxProps> = styled(Spacing)<BoxProps>`
+   ${width} ${height} ${color} ${textAlign} ${order} ${alignSelf}
  `
 
 Box.defaultProps = {

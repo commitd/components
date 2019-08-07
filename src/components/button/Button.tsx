@@ -77,12 +77,12 @@ const InnerButton: React.FC<InnerButtonProps> = styled.button<InnerButtonProps>`
   }
 `
 
-export type ButtonProps = SharedButtonProps & {
-  // Size variations of the button
+export type MainButtonProps = {
+  /** Size variations of the button */
   size: "sm" | "md" | "lg" | "xl"
-  // Button type
+  /** Button type */
   type: "contained" | "outlined"
-  // Button variation
+  /** Button variation */
   variation:
     | "primary"
     | "supporting"
@@ -90,9 +90,12 @@ export type ButtonProps = SharedButtonProps & {
     | "warning"
     | "error"
     | "neutral"
-  // Set true to disable
+  /** Set true to disable */
+  stretch?: boolean
+  /** Set true to disable */
   disabled?: boolean
 }
+export type ButtonProps = SharedButtonProps & MainButtonProps
 
 const ThemeButton: React.FC<ButtonProps & ThemeProps> = props => {
   const { size, type, variation } = props

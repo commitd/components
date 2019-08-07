@@ -12,13 +12,14 @@ import {
   justifyContent
 } from "styled-system"
 
-export type FlexProps = BoxProps &
-  FlexDirectionProps &
+export type MainFlexProps = FlexDirectionProps &
   FlexWrapProps &
   AlignItemsProps &
   JustifyContentProps
 
-export const Flex: React.FC<FlexProps> = styled(Box)`
+export type FlexProps = BoxProps & MainFlexProps
+
+export const Flex = styled(Box)<FlexProps>`
 {
   display: flex
 },
@@ -28,4 +29,4 @@ ${alignItems}
 ${justifyContent}
 `
 
-export default Flex
+export default Flex as React.FC<FlexProps>
