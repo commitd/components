@@ -1,0 +1,163 @@
+---
+name: Typography
+route: /components/typography
+menu: Components
+---
+
+import { DocText } from "../../docsProps"
+import { Typography } from "./Typography"
+import {
+  Text,
+  Span,
+  Paragraph,
+  Heading,
+  Subheading,
+  Caption,
+  Display,
+  Brand,
+  Flex,
+  Box
+} from "../"
+import { Playground, Props } from "docz"
+
+# Headings
+
+Use `Heading` for rendering heading html element e.g. `h1, h2, ...`. Headings should not be used as a substitute for font size changes,
+they should be used in line with [best practice](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements). They have, by default,
+responsive size settings, however the sizes can be set independently using the `fontSize` prop and selecting a responsive list of sizes from theme's
+fontSizes array, `fontSize={[3,4,5]}`.
+
+<Playground>
+  <Heading.h1>Heading 1</Heading.h1>
+  <Heading.h2>Heading 2</Heading.h2>
+  <Heading.h3>Heading 3</Heading.h3>
+  <Heading.h4>Heading 4</Heading.h4>
+  <Heading.h5>Heading 5</Heading.h5>
+  <Heading.h6>Heading 6</Heading.h6>
+</Playground>
+
+## Subheadings
+
+A style is supplied for subheading, the layout is dependent on requirements.
+
+<Playground>
+  <Heading.h1 mb={[0, 1]}>Heading 1</Heading.h1>
+  <Subheading.h1>Subheading 1</Subheading.h1>
+  <Heading.h2 mb={[0, 1]}>Heading 2</Heading.h2>
+  <Subheading.h2>Subheading 2</Subheading.h2>
+  <Heading.h3 mb={[0, 1]}>Heading 3</Heading.h3>
+  <Subheading.h3>Subheading 3</Subheading.h3>
+  <Heading.h4 mb={[0, 1]}>Heading 4</Heading.h4>
+  <Subheading.h4>Subheading 4</Subheading.h4>
+  <Heading.h5 mb={[0, 1]}>Heading 5</Heading.h5>
+  <Subheading.h5>Subheading 5</Subheading.h5>
+  <Heading.h6 mb={[0, 1]}>Heading 6</Heading.h6>
+  <Subheading.h6>Subheading 6</Subheading.h6>
+</Playground>
+
+# Display
+
+Traditional heading elements are designed to work best in the main page content.
+When you need a heading to stand out, consider using a display heading: a larger, slightly more opinionated heading style.
+
+<Playground>
+  <Display.d1>Display 1</Display.d1>
+  <Display.d2>Display 2</Display.d2>
+  <Display.d3>Display 3</Display.d3>
+  <Display.d4>Display 4</Display.d4>
+</Playground>
+
+# Text
+
+Use `Text` for all normal text rendering, use Headings for `h1, etc`.
+Text is a low-level component for setting font-size, typographic styles, margin, and color.
+By default Text is a `div`, the alternative classes `Span` and `Paragraph` can be used for `p` and `spana elements.
+
+<Playground>
+  <Paragraph>Default Text</Paragraph>
+  <Text fontSize={6}>Text 6</Text>
+  <Text fontSize={5}>Text 5</Text>
+  <Text fontSize={4}>Text 4</Text>
+  <Text fontSize={3}>Text 3</Text>
+  <Text fontSize={2}>Text 2</Text>
+  <Text fontSize={1}>Text 1</Text>
+  <Text fontSize={0}>Text 0</Text>
+</Playground>
+
+## Alignment
+
+<Playground>
+  <Text textAlign="left">Left</Text>
+  <Text textAlign="center">Center</Text>
+  <Text textAlign="right">Right</Text>
+</Playground>
+
+## Brand
+
+<Playground>
+  <Brand>committed</Brand>
+  <Brand>committed software</Brand>
+  <Brand>committed research</Brand>
+</Playground>
+
+## Variations
+
+<Playground>
+  <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
+    <Box width={1 / 5} p={3}>
+      <Text>Text</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text light={true}>Light</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text bold={true}>Bold</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text upper={true}>uppercase</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text capital={true}>capitals</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text italic={true}>Italic</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Paragraph>Paragraph</Paragraph>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Span>Span</Span>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text color="primary">Primary</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text color="secondary">Secondary</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text color="lighttext">gray</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text color="brand">Brand</Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Text bold={true} italic={true} capital={true}>
+        italic
+      </Text>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Caption>caption</Caption>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <s>
+        <Text>strikethrough</Text>
+      </s>
+    </Box>
+  </Flex>
+</Playground>
+
+## Props
+
+Main props for `Text`, `Span` and `Paragraph`.
+
+<Props of={DocText} />

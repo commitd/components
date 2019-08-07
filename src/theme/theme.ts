@@ -23,10 +23,34 @@ addAliases(mediaQueries, aliases)
 
 export const space = [0, 4, 8, 16, 32, 64, 128]
 
-export const font = `'Montserrat','Helvetica Neue',Helvetica,Arial,sans-serif`
+export const fonts = {
+  system:
+    '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
+  main: "Lato, Geneva, Tahoma, sans-serif",
+  display:
+    'Arciform, "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
+  brand: "FreeSans",
+  mono: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
+}
 
-export const fontSizes = [12, 14, 16, 20, 24, 32, 40, 56, 72]
+export const font = fonts.main
 
+export const fontSize = "16px"
+export const fontSizes = [
+  "0.296rem",
+  "0.444rem",
+  "0.667rem",
+  "1rem",
+  "1.5rem",
+  "2.25rem",
+  "3.375rem",
+  "5.063rem",
+  "7.594rem",
+  "11.391rem"
+]
+
+export const display = 200
+export const light = 300
 export const medium = 500
 export const bold = 700
 // alias
@@ -34,6 +58,8 @@ export const regular = medium
 
 // styled-system's `fontWeight` function can hook into the `fontWeights` object
 export const fontWeights = {
+  display,
+  light,
   medium,
   bold,
   // alias
@@ -47,72 +73,8 @@ export const lineHeights = {
 
 const letterSpacings = {
   normal: "normal",
-  caps: "0.025em"
-}
-
-export const textStyles = {
-  display8: {
-    fontSize: fontSizes[8] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display7: {
-    fontSize: fontSizes[7] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display6: {
-    fontSize: fontSizes[6] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display5: {
-    fontSize: fontSizes[5] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display4: {
-    fontSize: fontSizes[4] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display3: {
-    fontSize: fontSizes[3] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display2: {
-    fontSize: fontSizes[2] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display1: {
-    fontSize: fontSizes[1] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display
-  },
-  display0: {
-    fontSize: fontSizes[0] + "px",
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.display,
-    letterSpacing: letterSpacings.caps,
-    textTransform: "uppercase"
-  },
-  body2: {
-    fontSize: fontSizes[2] + "px",
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights.standard
-  },
-  body1: {
-    fontSize: fontSizes[1] + "px",
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights.standard
-  },
-  body0: {
-    fontSize: fontSizes[0] + "px",
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights.standard
-  }
+  capital: "normal",
+  upper: "0.025em"
 }
 
 const pallettes = {
@@ -123,6 +85,7 @@ const pallettes = {
   supporting: allColors.purple,
   success: allColors.teal,
   warning: allColors.committedYellow,
+  brand: allColors.committedYellow,
   error: allColors.red
 }
 
@@ -136,10 +99,36 @@ const colors = {
   success: pallettes.success[4],
   warning: pallettes.warning[4],
   error: pallettes.error[4],
+  brand: pallettes.brand[4],
   pallettes
 }
 
 export { colors }
+
+export const textStyles = {
+  heading: {
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.display
+  },
+  display: {
+    fontFamily: fonts.display,
+    fontWeight: fontWeights.display,
+    lineHeight: lineHeights.display,
+    textTransform: "capitalize"
+  },
+  subheading: {
+    fontFamily: fonts.main,
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.display,
+    color: colors.lighttext,
+    textTransform: "uppercase"
+  },
+  caption: {
+    fontFamily: fonts.main,
+    fontWeight: fontWeights.light,
+    lineHeight: lineHeights.standard
+  }
+}
 
 // styled-system's `borderRadius` function can hook into the `radii` object/array
 export const radii = [0, 2, 6]
@@ -238,6 +227,8 @@ const theme = {
   mediaQueries,
   space,
   font,
+  fonts,
+  fontSize,
   fontSizes,
   fontWeights,
   lineHeights,

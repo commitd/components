@@ -1,9 +1,11 @@
 import * as React from "react"
 import styled, { ThemeProvider as StyledThemeProvider } from "styled-components"
 import nextTheme from "./theme"
+import GlobalStyle from "./GlobalStyle"
 export { withTheme } from "styled-components"
 
 export const Base = styled.div`
+  font-size: ${props => props.theme.fontSize};
   font-family: ${props => props.theme.font};
   line-height: ${props => props.theme.lineHeights.standard};
   font-weight: ${props => props.theme.fontWeights.medium};
@@ -28,9 +30,12 @@ export default class ThemeProvider extends React.Component<ThemeProviderProps> {
     }
 
     return (
-      <StyledThemeProvider theme={theme}>
-        <Base {...this.props} />
-      </StyledThemeProvider>
+      <>
+        <GlobalStyle />
+        <StyledThemeProvider theme={theme}>
+          <Base {...this.props} />
+        </StyledThemeProvider>
+      </>
     )
   }
 }

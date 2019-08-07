@@ -17,6 +17,10 @@ declare module "*.svg" {
   export { svgComponent as ReactComponent }
 }
 
+declare module "*.woff"
+declare module "*.woff2"
+declare module "*.ttf"
+declare module "*.eot"
 // TODO move to supporting folder
 declare module "@styled-system/theme-get" {
   export function themeGet(keys: string, fallback?: string): any

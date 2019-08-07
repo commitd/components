@@ -30,7 +30,20 @@ export default {
     postcss({
       modules: true
     }),
-    url(),
+    url({
+      limit: 10 * 1024,
+      include: [
+        "**/*.woff",
+        "**/*.woff2",
+        "**/*.ttf",
+        "**/*.eot",
+        "**/*.svg",
+        "**/*.png",
+        "**/*.jpg",
+        "**/*.gif"
+      ],
+      emitFiles: true
+    }),
     svgr(),
     resolve(),
     typescript({
