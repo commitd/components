@@ -1,6 +1,6 @@
 ---
-name: OButton
-route: /components/obutton
+name: Button
+route: /components/button
 menu: Components
 ---
 
@@ -14,7 +14,20 @@ import { DocButton } from "../../docsProps"
 Buttons make common actions immediately visible and easy to perform with one click or tap. They can be used for any type of action, including navigation.
 
 <Playground>
-  <Button>Hello</Button>
+  <Button margin={4}>Hello</Button>
+</Playground>
+
+# Color and Size
+
+<Playground>
+  <Cartesian
+    component={Button}
+    margin={4}
+    marginTop="4px"
+    color={["primary", "inherit", "default", "secondary"]}
+    size={["small", "medium", "large"]}
+    children="Button"
+  />
 </Playground>
 
 # Variants
@@ -22,37 +35,10 @@ Buttons make common actions immediately visible and easy to perform with one cli
 <Playground>
   <Cartesian
     component={Button}
-    m={4}
-    type={["contained"]}
-    variation={[
-      "primary",
-      "supporting",
-      "success",
-      "warning",
-      "error",
-      "neutral"
-    ]}
-    size={["sm", "md", "lg", "xl"]}
-    children="Button"
-  />
-</Playground>
-
-# Outlined
-
-<Playground>
-  <Cartesian
-    component={Button}
-    m={4}
+    margin={4}
     type={["outlined"]}
-    variation={[
-      "neutral",
-      "primary",
-      "supporting",
-      "success",
-      "warning",
-      "error"
-    ]}
-    size={["sm", "md", "lg", "xl"]}
+    variant={["contained", "outlined", "text"]}
+    size={["small", "medium", "large"]}
     children="Button"
   />
 </Playground>
@@ -62,26 +48,11 @@ Buttons make common actions immediately visible and easy to perform with one cli
 <Playground>
   <Cartesian
     component={Button}
-    m={4}
+    margin={4}
     type={["contained", "outlined"]}
-    variation={["primary", "supporting"]}
-    size={["sm", "md", "lg", "xl"]}
+    variant={["primary", "secondary"]}
+    size={["small", "medium", "large"]}
     disabled={true}
-    children="Button"
-  />
-</Playground>
-
-# Stretched
-
-<Playground>
-  <Cartesian
-    component={Button}
-    mt={4}
-    mb={4}
-    type={["contained", "outlined"]}
-    variation={["primary", "supporting"]}
-    size={["md", "lg"]}
-    stretch={true}
     children="Button"
   />
 </Playground>
@@ -90,4 +61,4 @@ Buttons make common actions immediately visible and easy to perform with one cli
 
 Main props for buttons, excluding normal spacing props, see [Box](/components/box).
 
-<Props of={DocButton} />
+<Props of={Button} />
