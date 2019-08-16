@@ -1,64 +1,80 @@
 import * as React from "react"
-import styled from "styled-components"
+import {
+  compose,
+  spacing,
+  flexbox,
+  SpacingProps,
+  FlexboxProps
+} from "@material-ui/system"
+import { sizing, SizingProps } from "@material-ui/system"
+import { styled } from "@material-ui/styles"
+import MaterialCard, {
+  CardProps as MaterialCardProps
+} from "@material-ui/core/Card"
+import MaterialCardActionArea, {
+  CardActionAreaProps as MaterialCardActionAreaProps
+} from "@material-ui/core/CardActionArea"
+import MaterialCardActions, {
+  CardActionsProps as MaterialCardActionsProps
+} from "@material-ui/core/CardActions"
+import MaterialCardContent, {
+  CardContentProps as MaterialCardContentProps
+} from "@material-ui/core/CardContent"
+import MaterialCardHeader, {
+  CardHeaderProps as MaterialCardHeaderProps
+} from "@material-ui/core/CardHeader"
+import MaterialCardMedia, {
+  CardMediaProps as MaterialCardMediaProps
+} from "@material-ui/core/CardMedia"
+export type CardProps = MaterialCardProps & SpacingProps & FlexboxProps
 
-import { borderRadius, BorderRadiusProps } from "styled-system"
-import { Box, BoxProps } from "../box/Box"
-import { theme, ThemeProps } from "../../theme"
-
-export type CardProps = {
-  /** Theme name for border color */
-  borderColor: string
-  /** One of the fixed border widths */
-  borderWidth: 0 | 1 | 2
-  /** size of the box shadow */
-  boxShadowSize: "sm" | "md" | "lg" | "xl"
-}
-
-export type InternalCardProps = BoxProps &
-  BorderRadiusProps &
-  ThemeProps &
-  CardProps
-
-const boxShadow = (props: InternalCardProps) => {
-  const boxShadows = {
-    sm: {
-      "box-shadow": props.theme!.boxShadows[0]
-    },
-    md: {
-      "box-shadow": props.theme!.boxShadows[1]
-    },
-    lg: {
-      "box-shadow": props.theme!.boxShadows[2]
-    },
-    xl: {
-      "box-shadow": props.theme!.boxShadows[3]
-    }
-  }
-  return boxShadows[props.boxShadowSize]
-}
-
-const boxBorder = (props: InternalCardProps) => ({
-  border:
-    props.borderWidth === 0
-      ? "0"
-      : `${props.borderWidth}px solid ${
-          (props.theme || theme).colors[props.borderColor]
-        }`
-})
-
-export const Card = styled(Box)<InternalCardProps>`
-  ${boxShadow} ${boxBorder} ${borderRadius};,
-`
+export const Card = styled(MaterialCard)(
+  compose(
+    spacing,
+    flexbox
+  )
+)
 
 Card.defaultProps = {
-  theme: theme,
-  boxShadowSize: "md",
-  borderColor: "borderGray",
-  borderRadius: 6,
-  borderWidth: 0,
-  p: 4
+  // CardShadowSize: "md",
+  // borderColor: "borderGray",
+  // borderRadius: 6,
+  // borderWidth: 0,
+  // p: 4
 }
 
 Card.displayName = "Card"
 
 export default Card as React.FC<CardProps>
+
+export type CardHeaderProps = MaterialCardHeaderProps
+export type CardContentProps = MaterialCardContentProps
+export type CardActionAreaProps = MaterialCardActionAreaProps
+export type CardActionsProps = MaterialCardActionsProps
+export type CardMediaProps = MaterialCardMediaProps & SizingProps
+
+export const CardHeader: React.FC<CardHeaderProps> = (
+  props: CardHeaderProps
+) => {
+  if (typeof (props.children && props.children) === "string") {
+    return <MaterialCardHeader {...props} title={props.children} />
+  }
+  return <MaterialCardHeader {...props} />
+}
+CardHeader.displayName = "CardHeader"
+export const CardContent: React.FC<CardContentProps> = (
+  props: CardContentProps
+) => <MaterialCardContent {...props} />
+CardContent.displayName = "CardContent"
+export const CardActionArea: React.FC<CardActionAreaProps> = (
+  props: CardActionAreaProps
+) => <MaterialCardActionArea {...props} />
+CardActionArea.displayName = "CardActionArea"
+export const CardActions: React.FC<CardActionsProps> = (
+  props: CardActionsProps
+) => <MaterialCardActions {...props} />
+CardActions.displayName = "CardActions"
+export const CardMedia = styled(MaterialCardMedia)(sizing) as React.FC<
+  CardMediaProps
+>
+CardMedia.displayName = "CardMedia"

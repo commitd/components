@@ -39,12 +39,12 @@ export default {
     "Components",
     "Status"
   ],
-  // onCreateWebpackChain: config => {
-  //   config.resolve.alias
-  //     .set("@fonts", `${PUBLIC}/fonts`)
-  //     .set("@images", `${PUBLIC}/images`)
-  //   return config
-  // },
+  onCreateWebpackChain: config => {
+    config.resolve.alias
+      .set("@fonts", `${PUBLIC}/fonts`)
+      .set("@images", `${PUBLIC}/images`)
+    return config
+  },
   notUseSpecifiers: true,
   filterComponents: files => files.filter(file => /([^d]\.tsx?)$/.test(file))
   //   modifyBundlerConfig: config => {

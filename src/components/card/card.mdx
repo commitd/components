@@ -4,44 +4,120 @@ route: /components/card
 menu: Components
 ---
 
-import { DocCard } from "../../docsProps.tsx"
-import { Card } from "./Card"
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActionArea,
+  CardActions,
+  CardMedia
+} from "./Card"
+import { Button } from "../"
 import { Playground, Props } from "docz"
+import { Cartesian } from "@compositor/kit"
+import image from "@images/Committed-Colour-512px.png"
 
 # Card
 
 Use `Card` component to group element onto a card.
 
-**Extends: [Box](/Box)**
-
 <Playground>
   <Card>
-    <h1>Simple Card</h1>
+    <CardHeader>Simple Card</CardHeader>
+    <CardContent>The contents of the card</CardContent>
   </Card>
 </Playground>
 
-## Variations
+## Card Variations
 
 <Playground>
-  <Card m={1} boxShadowSize="sm" borderWidth="1" borderRadius={0}>
-    Square with border
+  <Card m={4} square={true}>
+    <CardHeader>Square</CardHeader>
   </Card>
-  <Card
-    m={1}
-    boxShadowSize="0"
-    borderWidth="2"
-    borderRadius={3}
-    borderColor="primary"
-  >
-    Coloured with border
+  <Card m={4}>
+    <CardMedia image={image} title="Committed image">
+      <CardHeader>Media</CardHeader>
+      <CardContent>This is the content</CardContent>
+    </CardMedia>
   </Card>
-  <Card m={1} boxShadowSize="xl">
-    Deep shadow
+  <Card m={4} raised={true}>
+    <CardHeader>Raised</CardHeader>
   </Card>
+</Playground>
+
+## Card Header
+
+<Playground>
+  <Card m={4}>
+    <CardContent>No header</CardContent>
+  </Card>
+  <Card m={4}>
+    <CardHeader>As child</CardHeader>
+    <CardContent>Content</CardContent>
+  </Card>
+  <Card m={4}>
+    <CardHeader title="As title" />
+    <CardContent>Content</CardContent>
+  </Card>
+  <Card m={4}>
+    <CardHeader title="Title" subheader="and subheader" />
+    <CardContent>Content</CardContent>
+  </Card>
+  <Card m={4}>
+    <CardHeader avatar={"A"} title="Avatar" />
+    <CardContent>Content</CardContent>
+  </Card>
+</Playground>
+
+## Card Actions
+
+<Playground>
+  <Card m={4}>
+    <CardHeader>Action Area</CardHeader>
+    <CardContent>An action ares can be at the bottom of the card</CardContent>
+    <CardActionArea>
+      <h1 style={{ textAlign: "center" }}>Action</h1>
+    </CardActionArea>
+  </Card>
+  <Card m={4}>
+    <CardHeader>Actions</CardHeader>
+    <CardContent>Actions can be added to the card</CardContent>
+    <CardActions>
+      <Button color={"default"} variant={"text"}>
+        Cancel
+      </Button>
+      <Button color={"primary"}>Accept</Button>
+    </CardActions>
+  </Card>
+  <Card m={4}>
+    <CardActionArea>
+      <CardMedia height="120px" image={image} title="Committed image" />
+      <CardHeader>Full Card Action</CardHeader>
+      <CardContent>
+        <p>The whole card can be an action area</p>
+      </CardContent>
+    </CardActionArea>
+  </Card>
+</Playground>
+
+## Elevation
+
+<Playground>
+  <Cartesian
+    component={Card}
+    margin={4}
+    elevation={[0, 1, 2, 3, 4, 6]}
+    children={<CardContent>Contents</CardContent>}
+  />
 </Playground>
 
 ## Props
 
 Main props for cards, excluding normal spacing props, see [Box](/components/box).
 
-<Props of={DocCard} />
+<Props of={Card} />
+<Props of={CardHeader} />
+<Props of={CardContent} />
+<Props of={CardActionArea} />
+<Props of={CardActions} />
+<Props of={CardMedia} />
