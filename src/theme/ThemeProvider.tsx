@@ -1,40 +1,43 @@
 import * as React from "react"
-import styled, { ThemeProvider as StyledThemeProvider } from "styled-components"
-import nextTheme from "./theme"
 import GlobalStyle from "./GlobalStyle"
 export { withTheme } from "styled-components"
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
+import { styled, ThemeProvider as MuiThemeProvider } from "@material-ui/styles"
 
-export const Base = styled.div`
-  font-size: ${props => props.theme.fontSize};
-  font-family: ${props => props.theme.font};
-  line-height: ${props => props.theme.lineHeights.standard};
-  font-weight: ${props => props.theme.fontWeights.medium};
+// export const Base = styled((props) => <div {...props}/>)({
+//   fontSize:   (props: ThemeProps) => props.theme.fontSize,
+//   fontFamily: (props: ThemeProps) => props.theme.font,
+//   lineHeight: (props: ThemeProps) => props.theme.lineHeights.standard,
+//   fontWeight: (props: ThemeProps) => props.theme.fontWeights.medium,
+//   * {
+//     box-sizing: border-box;
+//   }
+// `
 
-  * {
-    box-sizing: border-box;
-  }
-`
-
-interface ThemeProviderProps {
-  /** Array of pixel values for custom breakpoint overrides */
-  customBreakpoints?: number[]
-}
-
-export default class ThemeProvider extends React.Component<ThemeProviderProps> {
-  public render() {
-    const { customBreakpoints } = this.props
-    const breakpoints = customBreakpoints || nextTheme.breakpoints
-    const theme = {
-      ...nextTheme,
-      breakpoints
+const muiTheme = responsiveFontSizes(
+  createMuiTheme({
+    spacing: factor => [0, 4, 8, 16, 32, 64, 128][factor],
+    overrides: {
+      // Style sheet name ⚛️
+      MuiButton: {
+        // Name of the rule
+        root: {
+          // Some CSS
+          textTransform: "none"
+        }
+      }
     }
+  })
+)
 
+export default class ThemeProvider extends React.Component {
+  public render() {
     return (
       <>
         <GlobalStyle />
-        <StyledThemeProvider theme={theme}>
-          <Base {...this.props} />
-        </StyledThemeProvider>
+        <MuiThemeProvider theme={muiTheme}>
+          <div {...this.props} />
+        </MuiThemeProvider>
       </>
     )
   }

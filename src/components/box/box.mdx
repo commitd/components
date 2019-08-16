@@ -4,8 +4,7 @@ route: /components/box
 menu: Components
 ---
 
-import { DocRemainingBox } from "../../docsProps.tsx"
-import { Box, Spacing } from "./Box"
+import { Box } from "./Box"
 import { Playground, Props } from "docz"
 
 # Box
@@ -15,7 +14,7 @@ Use the `Box` component to control width, margin, padding, and color.
 50% width
 
 <Playground>
-  <Box width={1 / 2} bg="bg">
+  <Box width={1 / 2} bg="blue">
     Box
   </Box>
 </Playground>
@@ -23,7 +22,7 @@ Use the `Box` component to control width, margin, padding, and color.
 Padding of `theme.space[3]` (16px)
 
 <Playground>
-  <Box p={3} bg="bg">
+  <Box p={3} bg="blue">
     Box
   </Box>
 </Playground>
@@ -31,7 +30,7 @@ Padding of `theme.space[3]` (16px)
 Margin of `theme.space[2]` (8px)
 
 <Playground>
-  <Box m={4} bg="bg">
+  <Box m={4} bg="blue">
     Box
   </Box>
 </Playground>
@@ -53,7 +52,7 @@ The `width` prop accepts an array value to set different widths at different bre
       1 / 2, // Sets width 50% at the next breakpoint
       1 / 4 // Sets width 25% at the next breakpoint
     ]}
-    bg="bg"
+    bg="blue"
   >
     Hello
   </Box>
@@ -66,8 +65,6 @@ See [styled-system](https://github.com/jxnblk/styled-system) for more documentat
 The spacing of a `Box` is defined by padding an margin options below. These options are also available on all components, so they can be positioned as required but they are
 not repeated on all components props tables.
 
-<Props of={Spacing} />
-
 Remaining props for box configuration.
 
-<Props of={DocRemainingBox} />
+<Props of={Box} />
