@@ -1,8 +1,7 @@
 import * as React from "react"
-import GlobalStyle from "./GlobalStyle"
-export { withTheme } from "styled-components"
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
-import { styled, ThemeProvider as MuiThemeProvider } from "@material-ui/styles"
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/styles"
+import CssBaseline from "@material-ui/core/CssBaseline"
 
 // export const Base = styled((props) => <div {...props}/>)({
 //   fontSize:   (props: ThemeProps) => props.theme.fontSize,
@@ -33,12 +32,10 @@ const muiTheme = responsiveFontSizes(
 export default class ThemeProvider extends React.Component {
   public render() {
     return (
-      <>
-        <GlobalStyle />
-        <MuiThemeProvider theme={muiTheme}>
-          <div {...this.props} />
-        </MuiThemeProvider>
-      </>
+      <MuiThemeProvider theme={muiTheme}>
+        <CssBaseline />
+        <div {...this.props} />
+      </MuiThemeProvider>
     )
   }
 }
