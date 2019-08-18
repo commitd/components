@@ -9,18 +9,12 @@ export const Display: {
   d3: React.FC<DisplayProps>
   d4: React.FC<DisplayProps>
 } = {
-  d1: props => (
-    <Typography as="h1" textStyle="display" fontSize={[6, 7, 8]} {...props} />
-  ),
-  d2: props => (
-    <Typography as="h2" textStyle="display" fontSize={[5, 6, 7]} {...props} />
-  ),
-  d3: props => (
-    <Typography as="h3" textStyle="display" fontSize={[4, 5, 6]} {...props} />
-  ),
-  d4: props => (
-    <Typography as="h4" textStyle="display" fontSize={[3, 4, 5]} {...props} />
-  )
+  d1: props => <Typography {...props} component="h1" variant="h1" />,
+  d2: props => <Typography {...props} component="h2" variant="h2" />,
+  d3: props => <Typography {...props} component="h3" variant="h3" />,
+  d4: props => <Typography {...props} component="h4" variant="h4" />
 }
+
+//TODO Add variant font
 
 export default Display

@@ -1,11 +1,13 @@
-import { themeGet } from "@styled-system/theme-get"
 import * as React from "react"
-import styled from "styled-components"
-import { theme, withTheme } from "../../theme"
-import Typography from "./Typography"
-import { TypographyProps } from "./Typography"
+import { styled } from "@material-ui/styles"
+import Typography, { TypographyProps } from "./Typography"
+import { fontSizes } from "../../theme/theme"
 
 export type MainTextProps = {
+  /** Select from a scaled font size, 0 in normal, negative index for smaller, positive for larger */
+  fontSize?: number
+  /** Set the text alignment */
+  align: "left" | "center" | "right"
   /** Set true to set title case */
   capital: boolean
   /** Set true to set all upper */
@@ -19,35 +21,46 @@ export type MainTextProps = {
 }
 export type TextProps = TypographyProps & MainTextProps
 
-const ThemeText = withTheme(styled(Typography)<TextProps & { as?: any }>`
-  font-style: ${props => (props.italic ? "italic" : "normal")};
-  letter-spacing: ${props =>
-    props.upper
-      ? themeGet("letterSpacings.upper")(props)
-      : props.capital
-      ? themeGet("letterSpacings.title")(props)
-      : themeGet("letterSpacings.normal")(props)};
-  text-transform: ${props =>
-    props.upper ? "uppercase" : props.capital ? "capitalize" : "none"};
-  font-weight: ${props =>
-    props.light
-      ? themeGet("fontWeights.light")(props)
-      : props.bold
-      ? themeGet("fontWeights.bold")(props)
-      : themeGet("fontWeights.medium")(props)};
-`)
+const ThemeText = styled(Typography)({
+  fontStyle: props => (props.italic ? "italic" : "normal"),
+  fontSize: props => fontSizes[props.fontSize ? props.fontSize : 0],
+  // letterSpacing: props =>
+  //   props.upper
+  //     ? themeGet("letterSpacings.upper")(props)
+  //     : props.capital
+  //     ? themeGet("letterSpacings.title")(props)
+  //     : themeGet("letterSpacings.normal")(props),
+  textTransform: props =>
+    props.upper ? "uppercase" : props.capital ? "capitalize" : "none",
+  fontWeight: props => (props.light ? 100 : props.bold ? 500 : 300)
+})
 
-ThemeText.defaultProps = {
-  theme: theme
+export const Text: React.FC<TextProps> = props => {
+  let override = props
+  if (props.align) {
+    switch (props.align) {
+      case "left":
+        override = Object.assign({}, props, { alignLeft: true })
+        break
+      case "center":
+        override = Object.assign({}, props, { alignCenter: true })
+        break
+      case "right":
+        override = Object.assign({}, props, { alignRight: true })
+        break
+      default:
+        break
+    }
+  }
+
+  return <ThemeText {...override} />
 }
-
-export const Text: React.FC<TextProps> = props => <ThemeText {...props} />
 Text.displayName = "Text"
 export const Span: React.FC<TextProps> = props => (
-  <ThemeText {...props} as="span" />
+  <ThemeText {...props} component="span" />
 )
 Span.displayName = "Span"
 export const Paragraph: React.FC<TextProps> = props => (
-  <ThemeText {...props} as="p" />
+  <ThemeText {...props} component="p" />
 )
 Paragraph.displayName = "Paragraph"

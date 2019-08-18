@@ -14,11 +14,60 @@ import {
   Subheading,
   Caption,
   Display,
-  Brand,
+  Monospace,
   Flex,
   Box
 } from "../"
 import { Playground, Props } from "docz"
+
+# Typography
+
+The base level type class, `Typography` follows the material API, further extensions cover the standard
+other text formats.
+
+<>
+
+<Typography variant="h2" gutterBottom>
+h2. Heading
+</Typography>
+<Typography variant="h3" gutterBottom>
+h3. Heading
+</Typography>
+<Typography variant="h4" gutterBottom>
+h4. Heading
+</Typography>
+<Typography variant="h5" gutterBottom>
+h5. Heading
+</Typography>
+<Typography variant="h6" gutterBottom>
+h6. Heading
+</Typography>
+<Typography variant="subtitle1" gutterBottom>
+subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+</Typography>
+<Typography variant="subtitle2" gutterBottom>
+subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+</Typography>
+<Typography variant="body1" gutterBottom>
+body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
+dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+</Typography>
+<Typography variant="body2" gutterBottom>
+body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
+dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+</Typography>
+<Typography variant="button" display="block" gutterBottom>
+button text
+</Typography>
+<Typography variant="caption" display="block" gutterBottom>
+caption text
+</Typography>
+<Typography variant="overline" display="block" gutterBottom>
+overline text
+</Typography>
+</>
 
 # Headings
 
@@ -41,18 +90,16 @@ fontSizes array, `fontSize={[3,4,5]}`.
 A style is supplied for subheading, the layout is dependent on requirements.
 
 <Playground>
-  <Heading.h1 mb={[0, 1]}>Heading 1</Heading.h1>
+  <Heading.h1>Heading 1</Heading.h1>
   <Subheading.h1>Subheading 1</Subheading.h1>
-  <Heading.h2 mb={[0, 1]}>Heading 2</Heading.h2>
+  <Heading.h2>Heading 2</Heading.h2>
   <Subheading.h2>Subheading 2</Subheading.h2>
-  <Heading.h3 mb={[0, 1]}>Heading 3</Heading.h3>
+  <Heading.h3>Heading 3</Heading.h3>
   <Subheading.h3>Subheading 3</Subheading.h3>
-  <Heading.h4 mb={[0, 1]}>Heading 4</Heading.h4>
+  <Heading.h4>Heading 4</Heading.h4>
   <Subheading.h4>Subheading 4</Subheading.h4>
-  <Heading.h5 mb={[0, 1]}>Heading 5</Heading.h5>
+  <Heading.h5>Heading 5</Heading.h5>
   <Subheading.h5>Subheading 5</Subheading.h5>
-  <Heading.h6 mb={[0, 1]}>Heading 6</Heading.h6>
-  <Subheading.h6>Subheading 6</Subheading.h6>
 </Playground>
 
 # Display
@@ -82,22 +129,17 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
   <Text fontSize={2}>Text 2</Text>
   <Text fontSize={1}>Text 1</Text>
   <Text fontSize={0}>Text 0</Text>
+  <Text fontSize={-1}>Text -1</Text>
+  <Text fontSize={-2}>Text -2</Text>
+  <Text fontSize={-3}>Text -3</Text>
 </Playground>
 
 ## Alignment
 
 <Playground>
-  <Text textAlign="left">Left</Text>
-  <Text textAlign="center">Center</Text>
-  <Text textAlign="right">Right</Text>
-</Playground>
-
-## Brand
-
-<Playground>
-  <Brand>committed</Brand>
-  <Brand>committed software</Brand>
-  <Brand>committed research</Brand>
+  <Text align="left">Left</Text>
+  <Text align="center">Center</Text>
+  <Text align="right">Right</Text>
 </Playground>
 
 ## Variations
@@ -138,15 +180,15 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
       <Text color="lighttext">gray</Text>
     </Box>
     <Box width={1 / 5} p={3}>
-      <Text color="brand">Brand</Text>
-    </Box>
-    <Box width={1 / 5} p={3}>
       <Text bold={true} italic={true} capital={true}>
         italic
       </Text>
     </Box>
     <Box width={1 / 5} p={3}>
       <Caption>caption</Caption>
+    </Box>
+    <Box width={1 / 5} p={3}>
+      <Monospace>monospace</Monospace>
     </Box>
     <Box width={1 / 5} p={3}>
       <s>

@@ -36,18 +36,18 @@ export const fonts = {
 export const font = fonts.main
 
 export const fontSize = "16px"
-export const fontSizes = [
-  "0.296rem",
-  "0.444rem",
-  "0.667rem",
-  "1rem",
-  "1.5rem",
-  "2.25rem",
-  "3.375rem",
-  "5.063rem",
-  "7.594rem",
-  "11.391rem"
-]
+export const fontSizes = {
+  [-3]: "0.296rem",
+  [-2]: "0.444rem",
+  [-1]: "0.667rem",
+  [0]: "1rem",
+  [1]: "1.5rem",
+  [2]: "2.25rem",
+  [3]: "3.375rem",
+  [4]: "5.063rem",
+  [5]: "7.594rem",
+  [6]: "11.391rem"
+}
 
 export const display = 200
 export const light = 300
