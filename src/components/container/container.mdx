@@ -1,0 +1,23 @@
+---
+name: Container
+route: /components/container
+menu: Components
+---
+
+import { Container } from "./Container"
+import { Button, Text, Flex, Box } from "../../"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { Playground, Props } from "docz"
+
+# Container
+
+<Playground>
+  <CssBaseline />
+  <Container maxWidth="sm">
+    <div style={{ backgroundColor: "#cfe8fc", height: "100px" }} />
+  </Container>
+</Playground>
+
+## Props
+
+<Props of={Container} />
