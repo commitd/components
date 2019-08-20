@@ -11,5 +11,6 @@ export type BoxProps = MaterialBoxProps & {
 export const Box: React.FC<BoxProps> = (props: BoxProps) => (
   <MaterialBox {...props} bgcolor={props.bg ? props.bg : props.bgcolor} />
 )
+Box.displayName = "Box"
 
 export default Box

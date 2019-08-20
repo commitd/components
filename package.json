@@ -38,11 +38,7 @@
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",
-    "@styled-system/theme-get": "^5.0.12",
-    "@types/styled-components": "^4.1.16",
-    "@types/styled-system": "^4.2.1",
-    "styled-components": "^4.3.1",
-    "styled-system": "^5.0.10"
+    "@styled-system/theme-get": "^5.0.12"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
