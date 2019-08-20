@@ -1,0 +1,30 @@
+---
+name: Toolbar
+route: /components/toolbar
+menu: Components
+---
+
+import { Toolbar } from "./Toolbar"
+import { AppBar, Box, Heading, Button } from "../../"
+import { Playground, Props } from "docz"
+
+# Toolbar
+
+This is used primarily within an AppBar to group the elements.
+
+<Playground>
+  <AppBar position="relative">
+    <Toolbar>
+      <Box flexGrow={1}>
+        <Heading.h1>Example</Heading.h1>
+      </Box>
+      <Button color="inherit" variant="text">
+        Login
+      </Button>
+    </Toolbar>
+  </AppBar>
+</Playground>
+
+## Props
+
+<Props of={Toolbar} />

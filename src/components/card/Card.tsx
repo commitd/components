@@ -53,7 +53,7 @@ export type CardActionAreaProps = MaterialCardActionAreaProps
 export type CardActionsProps = MaterialCardActionsProps
 export type CardMediaProps = MaterialCardMediaProps & SizingProps
 
-export const CardHeader: React.FC<CardHeaderProps> = (
+export const CardHeader: React.ComponentType<CardHeaderProps> = (
   props: CardHeaderProps
 ) => {
   if (typeof (props.children && props.children) === "string") {
@@ -62,19 +62,19 @@ export const CardHeader: React.FC<CardHeaderProps> = (
   return <MaterialCardHeader {...props} />
 }
 CardHeader.displayName = "CardHeader"
-export const CardContent: React.FC<CardContentProps> = (
-  props: CardContentProps
-) => <MaterialCardContent {...props} />
+export const CardContent: React.ComponentType<
+  CardContentProps
+> = MaterialCardContent
 CardContent.displayName = "CardContent"
-export const CardActionArea: React.FC<CardActionAreaProps> = (
-  props: CardActionAreaProps
-) => <MaterialCardActionArea {...props} />
+export const CardActionArea: React.ComponentType<
+  CardActionAreaProps
+> = MaterialCardActionArea
 CardActionArea.displayName = "CardActionArea"
-export const CardActions: React.FC<CardActionsProps> = (
-  props: CardActionsProps
-) => <MaterialCardActions {...props} />
+export const CardActions: React.ComponentType<
+  CardActionsProps
+> = MaterialCardActions
 CardActions.displayName = "CardActions"
-export const CardMedia = styled(MaterialCardMedia)(sizing) as React.FC<
-  CardMediaProps
->
+export const CardMedia: React.ComponentType<CardMediaProps> = styled(
+  MaterialCardMedia
+)(sizing)
 CardMedia.displayName = "CardMedia"

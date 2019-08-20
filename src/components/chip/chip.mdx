@@ -1,0 +1,110 @@
+---
+name: Chip
+route: /components/chip
+menu: Components
+---
+
+import { Chip } from "./Chip"
+import { Flex, Avatar } from "../../"
+import image from "@images/Avatar1-YellowTrans-32px.png"
+import { Playground, Props } from "docz"
+import FaceIcon from "@material-ui/icons/Face"
+import DoneIcon from "@material-ui/icons/Done"
+
+# Chip
+
+<Playground>
+  <Flex flexWrap="wrap">
+    <Chip m={1} label="Basic Chip" />
+    <Chip
+      m={1}
+      avatar={<Avatar>MB</Avatar>}
+      label="Clickable Chip"
+      onClick={() => alert("clicked")}
+    />
+    <Chip
+      m={1}
+      avatar={<Avatar alt="Natacha" src={image} />}
+      label="Deletable Chip"
+      onDelete={() => alert("deleted")}
+    />
+    <Chip
+      m={1}
+      avatar={
+        <Avatar>
+          <FaceIcon />
+        </Avatar>
+      }
+      label="Clickable Deletable Chip"
+      onClick={() => alert("clicked")}
+      onDelete={() => alert("deleted")}
+    />
+    <Chip
+      m={1}
+      icon={<FaceIcon />}
+      label="Clickable Deletable Chip"
+      onClick={() => alert("clicked")}
+      onDelete={() => alert("deleted")}
+    />
+    <Chip
+      m={1}
+      label="Custom delete icon Chip"
+      onClick={() => alert("clicked")}
+      onDelete={() => alert("deleted")}
+      deleteIcon={<DoneIcon />}
+    />
+    <Chip
+      m={1}
+      label="Clickable Link Chip"
+      component="a"
+      href="#chip"
+      clickable
+    />
+    <Chip
+      m={1}
+      avatar={<Avatar>MB</Avatar>}
+      label="Primary Clickable Chip"
+      clickable={true}
+      color="primary"
+      onDelete={() => alert("deleted")}
+      deleteIcon={<DoneIcon />}
+    />
+    <Chip
+      m={1}
+      icon={<FaceIcon />}
+      label="Primary Clickable Chip"
+      clickable={true}
+      color="primary"
+      onDelete={() => alert("deleted")}
+      deleteIcon={<DoneIcon />}
+    />
+    <Chip
+      m={1}
+      label="Deletable Primary Chip"
+      onDelete={() => alert("deleted")}
+      color="primary"
+    />
+    <Chip
+      m={1}
+      avatar={
+        <Avatar>
+          <FaceIcon />
+        </Avatar>
+      }
+      label="Deletable Secondary Chip"
+      onDelete={() => alert("deleted")}
+      color="secondary"
+    />
+    <Chip
+      m={1}
+      icon={<FaceIcon />}
+      label="Deletable Secondary Chip"
+      onDelete={() => alert("deleted")}
+      color="secondary"
+    />
+  </Flex>
+</Playground>
+
+## Props
+
+<Props of={Chip} />

@@ -1,0 +1,37 @@
+---
+name: Link
+route: /components/link
+menu: Components
+---
+
+import { Link } from "./Link"
+import { Paragraph } from "../../"
+import { Playground, Props } from "docz"
+
+# Link
+
+<Playground>
+  <Paragraph>
+    <Link href="javascript:;">Link</Link>{" "}
+    <Link href="javascript:;" color="inherit">
+      {'color="inherit"'}
+    </Link>{" "}
+    <Link href="javascript:;" variant="body2">
+      {'variant="body2"'}
+    </Link>{" "}
+    <Link href="http://committed.io" target="_blank" variant="body2">
+      External
+    </Link>
+  </Paragraph>
+</Playground>
+
+## Security
+
+When you use `target="_blank"` with Links, we set `rel="noopener"` when linking to third party content
+this prevents the new page from being able to access the `window.opener` property and ensures it runs in a separate process.
+Without this, the target page can potentially redirect your page to a malicious URL. This can be overridded
+(say for `noreferrer` which additionally removes the the referrer header) by supplying a `rel` prop.
+
+## Props
+
+<Props of={Link} />

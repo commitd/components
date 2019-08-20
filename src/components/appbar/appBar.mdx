@@ -1,0 +1,28 @@
+---
+name: AppBar
+route: /components/appbar
+menu: Components
+---
+
+import { AppBar } from "./AppBar"
+import { Box, Heading, Button, Toolbar } from "../../"
+import { Playground, Props } from "docz"
+
+# AppBar
+
+<Playground>
+  <AppBar position="relative">
+    <Toolbar>
+      <Box flexGrow={1}>
+        <Heading.h1>Example</Heading.h1>
+      </Box>
+      <Button color="inherit" variant="text">
+        Login
+      </Button>
+    </Toolbar>
+  </AppBar>
+</Playground>
+
+## Props
+
+<Props of={AppBar} />

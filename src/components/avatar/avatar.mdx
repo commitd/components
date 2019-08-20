@@ -1,0 +1,61 @@
+---
+name: Avatar
+route: /components/avatar
+menu: Components
+---
+
+import { Avatar } from "./Avatar"
+import { Playground, Props } from "docz"
+import image from "@images/Avatar1-YellowTrans-32px.png"
+import { theme, Flex } from "../../"
+import FolderIcon from "@material-ui/icons/Folder"
+import PageviewIcon from "@material-ui/icons/Pageview"
+import AssignmentIcon from "@material-ui/icons/Assignment"
+
+# Avatar
+
+<Playground>
+  <Flex>
+    <Avatar m={1} alt="John Smith" src={image} />
+    <Avatar m={1} alt="John Smith" src={image} size="60px" />
+  </Flex>
+</Playground>
+
+## Letter based
+
+<Playground>
+  <Flex>
+    <Avatar m={1} bg={theme.colors.primary}>
+      H
+    </Avatar>
+    <Avatar m={1} bg={theme.colors.success}>
+      N
+    </Avatar>
+    <Avatar m={1} bg={theme.colors.warning}>
+      OP
+    </Avatar>
+    <Avatar m={1} bg="primary.main">
+      H
+    </Avatar>
+  </Flex>
+</Playground>
+
+## Icons
+
+<Playground>
+  <Flex>
+    <Avatar m={1}>
+      <FolderIcon />
+    </Avatar>
+    <Avatar m={1} bg="black" color="LightBlue">
+      <PageviewIcon />
+    </Avatar>
+    <Avatar m={1} bg="primary.light" color="LightGrey">
+      <AssignmentIcon />
+    </Avatar>
+  </Flex>
+</Playground>
+
+## Props
+
+<Props of={Avatar} />
