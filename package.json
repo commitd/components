@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.3.2",
+    "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",
     "@styled-system/theme-get": "^5.0.12",
     "@types/styled-components": "^4.1.16",
