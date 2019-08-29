@@ -1,4 +1,5 @@
 import allColors from "./colors"
+import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme"
 
 const createMediaQuery = (n: string) => `@media screen and (min-width:${n})`
 
@@ -77,7 +78,7 @@ const letterSpacings = {
   upper: "0.025em"
 }
 
-const pallettes = {
+export const pallettes = {
   ...allColors,
   neutral: allColors.blueGrey,
   primary: allColors.blue,
@@ -89,21 +90,19 @@ const pallettes = {
   error: allColors.red
 }
 
-const colors = {
-  primary: pallettes.primary[4],
-  bg: pallettes.neutral[0],
-  text: pallettes.neutral[9],
-  lighttext: pallettes.neutral[3],
-  secondary: pallettes.secondary[4],
-  supporting: pallettes.supporting[4],
-  success: pallettes.success[4],
-  warning: pallettes.warning[4],
-  error: pallettes.error[4],
-  brand: pallettes.brand[4],
+export const pallette = {
+  primary: pallettes.primary[400],
+  bg: pallettes.neutral[50],
+  text: pallettes.neutral[900],
+  lighttext: pallettes.neutral[300],
+  secondary: pallettes.secondary[400],
+  supporting: pallettes.supporting[400],
+  success: pallettes.success[400],
+  warning: pallettes.warning[400],
+  error: pallettes.error[400],
+  brand: pallettes.brand[400],
   pallettes
 }
-
-export { colors }
 
 export const textStyles = {
   heading: {
@@ -120,7 +119,7 @@ export const textStyles = {
     fontFamily: fonts.main,
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.display,
-    color: colors.lighttext,
+    color: pallette.lighttext,
     textTransform: "uppercase"
   },
   caption: {
@@ -222,7 +221,7 @@ const button = {
   }
 }
 
-const theme = {
+const oldTheme = {
   breakpoints,
   mediaQueries,
   space,
@@ -236,7 +235,7 @@ const theme = {
   regular,
   bold,
   textStyles,
-  colors,
+  colors: pallette,
   radii,
   radius,
   boxShadows,
@@ -245,6 +244,40 @@ const theme = {
   timingFunctions,
   transitionDelays,
   button
+}
+
+const theme: ThemeOptions & { type: string } = {
+  type: "Committed",
+  props: {
+    MuiTypography: {
+      variantMapping: {
+        h1: "h1",
+        h2: "h2",
+        h3: "h3",
+        h4: "h4",
+        h5: "h5",
+        h6: "h6",
+        subtitle1: "h2",
+        subtitle2: "h3",
+        body1: "p",
+        body2: "span"
+      }
+    }
+  },
+  spacing: (factor: number) => [0, 4, 8, 16, 32, 64, 128][factor],
+  typography: {
+    fontFamily: fonts.system
+  },
+  overrides: {
+    // Style sheet name ⚛️
+    MuiButton: {
+      // Name of the rule
+      root: {
+        // Some CSS
+        textTransform: "none"
+      }
+    }
+  }
 }
 
 export type Theme = typeof theme

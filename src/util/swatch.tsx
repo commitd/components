@@ -1,12 +1,10 @@
 import * as React from "react"
-import { Box, Flex } from "../../src/index"
+import { Box, Flex } from "@components"
 
 export interface SwatchProps {
   color: string
   name: string
 }
-
-
 
 export default class Swatch extends React.Component<SwatchProps> {
   public render() {

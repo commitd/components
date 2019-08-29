@@ -1,13 +1,8 @@
----
-name: Flex
-route: /components/flex
-menu: Components
----
-
 import { DocFlex } from "../../docsProps"
-import { Flex } from "./Flex"
-import { Box, Card } from "../"
-import { Playground, Props } from "docz"
+import { Flex, Box, Card } from "@components"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+
+<Meta title="components|Flex" component={Flex} />
 
 # Flex
 
@@ -15,7 +10,7 @@ Use the `Flex` component to layout the children using [flexbox](https://css-tric
 
 A simple example
 
-<Playground>
+<Preview>
   <p>Defaults to row</p>
   <Flex>
     <Box width={1 / 3} p={3} bg="success">
@@ -40,11 +35,11 @@ A simple example
       Box
     </Box>
   </Flex>
-</Playground>
+</Preview>
 
 Justify content:
 
-<Playground>
+<Preview>
   <p>flex start</p>
   <Flex justifyContent="flex-start">
     <Box width={1 / 5} p={3} bg="success" />
@@ -81,11 +76,11 @@ Justify content:
     <Box width={1 / 3} p={3} bg="warning" />
     <Box width={1 / 5} p={3} bg="error" />
   </Flex>
-</Playground>
+</Preview>
 
 Align Items:
 
-<Playground>
+<Preview>
   <p>flex start</p>
   <Card>
     <Flex
@@ -146,7 +141,7 @@ Align Items:
       <Box style={{ height: "50px" }} width={1 / 5} p={3} bg="error" />
     </Flex>
   </Card>
-</Playground>
+</Preview>
 
 ## Props
 

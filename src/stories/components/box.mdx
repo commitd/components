@@ -1,0 +1,74 @@
+import { Box } from  "@components"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+
+<Meta title="components|Box" component={Box} />
+
+# Box
+
+Use the `Box` component to control width, margin, padding, and color.
+
+50% width
+
+<Preview>
+  <Story name="default">
+    <Box width={1 / 2} bg="primary">
+      Box
+    </Box>
+  </Story>
+</Preview>
+
+Padding of `theme.space[3]` (16px)
+
+<Preview>
+  <Story name="padding">
+    <Box p={3} bg="blue">
+      Box
+    </Box>
+  </Story>
+</Preview>
+
+Margin of `theme.space[2]` (8px)
+
+<Preview>
+  <Story name="margin">
+    <Box m={4} bg="blue">
+      Box
+    </Box>
+  </Story>
+</Preview>
+
+Color primary from the theme's color palette
+
+<Preview>
+  <Box color="primary">Box</Box>
+</Preview>
+
+## Responsive Widths
+
+The `width` prop accepts an array value to set different widths at different breakpoints with a mobile-first approach.
+
+<Preview>
+  <Story name="responsive">
+    <Box
+      width={[
+        1, // Sets width 100% at the smallest breakpoint
+        1 / 2, // Sets width 50% at the next breakpoint
+        1 / 4 // Sets width 25% at the next breakpoint
+      ]}
+      bg="blue"
+    >
+      Hello
+    </Box>
+  </Story>
+</Preview>
+
+See [styled-system](https://github.com/jxnblk/styled-system) for more documentation.
+
+## Props
+
+The spacing of a `Box` is defined by padding an margin options below. These options are also available on all components, so they can be positioned as required but they are
+not repeated on all components props tables.
+
+Remaining props for box configuration.
+
+<Props of={Box} />

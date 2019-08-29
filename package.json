@@ -23,10 +23,10 @@
     }
   },
   "scripts": {
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "build-storybook": "build-storybook",
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
     "test:watch": "react-scripts-ts test --env=jsdom",
-    "start:docs": "docz dev",
-    "build:docs": "docz build",
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
@@ -46,25 +46,40 @@
     "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
     "@compositor/kit": "^1.0.47",
     "@compositor/kit-snapshot": "^1.0.24",
+    "@storybook/addon-a11y": "^5.2.0-beta.40",
+    "@storybook/addon-actions": "^5.2.0-beta.40",
+    "@storybook/addon-docs": "^5.2.0-beta.40",
+    "@storybook/addon-info": "^5.2.0-beta.40",
+    "@storybook/addon-knobs": "^5.2.0-beta.40",
+    "@storybook/addon-links": "^5.2.0-beta.40",
+    "@storybook/addon-storysource": "^5.2.0-beta.40",
+    "@storybook/addons": "^5.2.0-beta.40",
+    "@storybook/react": "^5.2.0-beta.40",
+    "@storybook/source-loader": "^5.2.0-beta.40",
     "@svgr/rollup": "^2.4.1",
     "@types/jest": "^23.1.5",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
+    "@types/storybook__react": "^4.0.2",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.1",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
-    "docz": "^1.2.0",
-    "docz-theme-default": "^1.2.0",
+    "file-loader": "^4.2.0",
     "gh-pages": "^1.2.0",
     "husky": "^2.5.0",
     "jest-styled-components": "^6.3.3",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-docgen-typescript-loader": "^3.1.1",
+    "react-dom": "^16.9.0",
     "react-scripts-ts": "^2.16.0",
     "remark-emoji": "^2.0.2",
     "remark-external-links": "^5.0.0",
@@ -77,12 +92,16 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
-    "typescript": "^3.5.3"
+    "storybook-addon-material-ui": "^0.9.0-alpha.20",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.3"
   },
   "files": [
     "dist"
   ],
   "resolutions": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "styled-components": "4.3.2"
   }
 }

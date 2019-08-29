@@ -25,3 +25,5 @@ declare module "*.eot"
 declare module "@styled-system/theme-get" {
   export function themeGet(keys: string, fallback?: string): any
 }
+
+declare module "@storybook/addon-docs/blocks"

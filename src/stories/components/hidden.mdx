@@ -1,12 +1,7 @@
----
-name: Hidden
-route: /components/hidden
-menu: Components
----
+import { Hidden, Card, Text, Flex, Box } from "@components"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
 
-import { Hidden } from "./Hidden"
-import { Card, Text, Flex, Box } from "../../"
-import { Playground, Props } from "docz"
+<Meta title="components|Hidden" component={Hidden} />
 
 # Hidden
 
@@ -27,7 +22,7 @@ smUp        |   show | hide
 mdDown      |                     hide | show
 ```
 
-<Playground>
+<Preview>
   <Flex alignItems="baseline">
     <Hidden xsUp={true}>
       <Card m={2} p={2}>
@@ -109,7 +104,7 @@ mdDown      |                     hide | show
       </Card>
     </Hidden>
   </Flex>
-</Playground>
+</Preview>
 
 ## Props
 

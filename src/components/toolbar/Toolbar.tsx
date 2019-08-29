@@ -6,7 +6,6 @@ import MaterialToolbar, {
 export type ToolbarProps = MaterialToolbarProps
 
 export const Toolbar: React.ComponentType<ToolbarProps> = MaterialToolbar
-
 Toolbar.displayName = "Toolbar"
 
 export default Toolbar

@@ -7,17 +7,17 @@ export type MainTextProps = {
   /** Select from a scaled font size, 0 in normal, negative index for smaller, positive for larger */
   fontSize?: number
   /** Set the text alignment */
-  align: "left" | "center" | "right"
+  align?: "left" | "center" | "right"
   /** Set true to set title case */
-  capital: boolean
+  capital?: boolean
   /** Set true to set all upper */
-  upper: boolean
+  upper?: boolean
   /** Set true to use bold font */
-  bold: boolean
+  bold?: boolean
   /** Set true to use light font */
-  light: boolean
+  light?: boolean
   /** Set true to use italic font  */
-  italic: boolean
+  italic?: boolean
 }
 export type TextProps = TypographyProps & MainTextProps
 

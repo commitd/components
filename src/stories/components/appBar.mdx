@@ -1,0 +1,23 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import { AppBar, Box, Heading, Button, Toolbar } from "@components"
+
+<Meta title="components|AppBar" component={AppBar} />
+
+# AppBar
+
+<Preview>
+  <Story name="simple">
+    <AppBar position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Example</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+  </Story>
+</Preview>
+
+<Props of={AppBar} />

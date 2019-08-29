@@ -1,0 +1,108 @@
+import { useState } from "react"
+import { action } from "@storybook/addon-actions"
+import { Checkbox, Flex, Text } from  "@components"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+
+<Meta title="components|Checkbox" component={Checkbox} />
+
+# Checkbox
+
+<Preview>
+  <Story name="checked">
+    <Checkbox
+      checked={true}
+      onChange={action("checked")}
+      value="checkedA"
+      inputProps={{
+        "aria-label": "primary checkbox"
+      }}
+    />
+  </Story>
+  <Story name="primary checked">
+    <Checkbox
+      checked={false}
+      value="checkedB"
+      color="primary"
+      inputProps={{
+        "aria-label": "secondary checkbox"
+      }}
+    />
+  </Story>
+  <Story name="uncontrolled checked">
+    <Checkbox
+      value="checkedC"
+      inputProps={{
+        "aria-label": "uncontrolled-checkbox"
+      }}
+    />
+  </Story>
+  <Story name="disabled">
+    <Checkbox
+      disabled={true}
+      value="checkedD"
+      inputProps={{
+        "aria-label": "disabled checkbox"
+      }}
+    />
+  </Story>
+  <Story name="disabled checked">
+    <Checkbox
+      disabled={true}
+      checked={true}
+      value="checkedE"
+      inputProps={{
+        "aria-label": "disabled checked checkbox"
+      }}
+    />
+  </Story>
+  <Story name="indeterminate">
+    <Checkbox
+      value="checkedF"
+      indeterminate={true}
+      inputProps={{
+        "aria-label": "indeterminate checkbox"
+      }}
+    />
+  </Story>
+  <Story name="default">
+    <Checkbox
+      defaultChecked={true}
+      color="default"
+      value="checkedG"
+      inputProps={{
+        "aria-label": "checkbox with default color"
+      }}
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="with state">
+    {React.createElement(() => {
+      const [checked, setChecked] = useState(false)
+      const click = action("clicked")
+      return (
+        <div>
+          <Checkbox
+            checked={checked}
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+            value="with state"
+            inputProps={{
+              "aria-label": "primary checkbox"
+            }}
+          />
+          <Text>{"" + checked}</Text>
+        </div>
+      )
+    })}
+  </Story>
+</Preview>
+
+## With Labels
+
+## Props
+
+<Props of={Checkbox} />

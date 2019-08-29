@@ -1,0 +1,86 @@
+import { Button } from "@components"
+import { Cartesian } from "@compositor/kit"
+import { DocButton } from "../../docsProps"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+
+<Meta title="components|Button" component={Button} />
+
+# Button
+
+Buttons make common actions immediately visible and easy to perform with one click or tap. They can be used for any type of action, including navigation.
+
+<Preview>
+  <Story name="default">
+    <Button margin={2}>Hello</Button>
+  </Story>
+</Preview>
+
+# Color and Size
+
+<Preview>
+  <Story name="primary">
+    <Button margin={2} color="primary">
+      primary
+    </Button>
+  </Story>
+  <Story name="secondary">
+    <Button margin={2} color="secondary">
+      secondary
+    </Button>
+  </Story>
+  <Story name="warning">
+    <Button margin={2} color="warning">
+      warning
+    </Button>
+  </Story>
+  <Story name="error">
+    <Button margin={2} color="error">
+      error
+    </Button>
+  </Story>
+</Preview>
+
+# Variants
+
+<Preview>
+  <Story name="variants">
+    <Cartesian
+      component={Button}
+      margin={2}
+      variant={["contained", "outlined", "text"]}
+      size={["small", "medium", "large"]}
+      children="Button"
+    />
+  </Story>
+</Preview>
+
+# Disabled
+
+<Preview>
+  <Story name="disabled primary">
+    <Button disabled={true} margin={2} color="primary">
+      primary
+    </Button>
+  </Story>
+  <Story name="disabled secondary">
+    <Button disabled={true} margin={2} color="secondary">
+      secondary
+    </Button>
+  </Story>
+  <Story name="disabled warning">
+    <Button disabled={true} margin={2} color="warning">
+      warning
+    </Button>
+  </Story>
+  <Story name="disabled error">
+    <Button disabled={true} margin={2} color="error">
+      error
+    </Button>
+  </Story>
+</Preview>
+
+## Props
+
+Main props for buttons, excluding normal spacing props, see [Box](/components/box).
+
+<Props of={Button} />

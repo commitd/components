@@ -1,0 +1,113 @@
+import { Chip, Flex, Avatar } from  "@components"
+import image from "@images/Avatar1-YellowTrans-32px.png"
+import FaceIcon from "@material-ui/icons/Face"
+import DoneIcon from "@material-ui/icons/Done"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import { action } from "@storybook/addon-actions"
+
+<Meta title="components|Chip" component={Chip} />
+
+# Chip
+
+<Preview>
+  <Story name="default">
+    <Chip label="Basic Chip" />
+  </Story>
+  <Story name="Clickable Chip">
+    <Chip
+      avatar={<Avatar>MB</Avatar>}
+      label="Clickable Chip"
+      onClick={action("clicked")}
+    />
+  </Story>
+  <Story name="Deletable Chip">
+    <Chip
+      avatar={<Avatar alt="Natacha" src={image} />}
+      label="Deletable Chip"
+      onDelete={action("deleted")}
+    />
+  </Story>
+  <Story name="With Icon">
+    <Chip
+      avatar={
+        <Avatar>
+          <FaceIcon />
+        </Avatar>
+      }
+      label="Clickable Deletable Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+    />
+  </Story>
+  <Story name="With Icon and Delete">
+    <Chip
+      icon={<FaceIcon />}
+      label="Clickable Deletable Chip"
+      clickable={true}
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+    />
+  </Story>
+  <Story name="Custom delete icon Chip">
+    <Chip
+      label="Custom delete icon Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      deleteIcon={<DoneIcon />}
+    />
+  </Story>
+  <Story name="Clickable Link Chip">
+    <Chip label="Clickable Link Chip" component="a" href="#chip" clickable />
+  </Story>
+  <Story name="Other">
+    <Chip
+      avatar={<Avatar>MB</Avatar>}
+      label="Primary Clickable Chip"
+      clickable={true}
+      color="primary"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      deleteIcon={<DoneIcon />}
+    />
+  </Story>
+  <Story name="Error">
+    <Chip
+      icon={<FaceIcon />}
+      label="Error Chip"
+      clickable={true}
+      color="error"
+      onDelete={action("deleted")}
+    />
+  </Story>
+  <Story name="Deletable Primary Chip">
+    <Chip
+      label="Deletable Primary Chip"
+      onDelete={action("deleted")}
+      color="primary"
+    />
+  </Story>
+  <Story name="Deletable Secondary Chip">
+    <Chip
+      avatar={
+        <Avatar>
+          <FaceIcon />
+        </Avatar>
+      }
+      label="Deletable Secondary Chip"
+      onDelete={action("deleted")}
+      color="secondary"
+    />
+  </Story>
+  <Story name="Deletable Secondary Chip With Icon">
+    <Chip
+      icon={<FaceIcon />}
+      label="Deletable Secondary Chip"
+      onDelete={action("deleted")}
+      color="secondary"
+    />
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Chip} />

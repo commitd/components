@@ -1,32 +1,23 @@
 import * as React from "react"
-import { Box, Flex } from "../../src/index"
+import { Flex } from "@components"
 import Swatch from "./swatch"
 
 export interface PalletteProps {
   name: string
-  colors: string[]
+  colors: { [key: string]: string }
 }
-
-const weights = [
-  "050",
-  "100",
-  "200",
-  "300",
-  "400",
-  "500",
-  "600",
-  "700",
-  "800",
-  "900"
-]
 
 export default class Pallette extends React.Component<PalletteProps> {
   public render() {
     const { colors, name } = this.props
     return (
       <Flex mb={4} flexWrap="wrap">
-        {colors.map((color, index) => (
-          <Swatch name={weights[index]} color={color} />
+        {Object.keys(colors).map(weight => (
+          <Swatch
+            key={`${name}.${weight}`}
+            name={`${weight}`}
+            color={colors[weight]}
+          />
         ))}
       </Flex>
     )
