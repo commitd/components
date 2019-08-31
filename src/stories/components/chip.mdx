@@ -1,4 +1,4 @@
-import { Chip, Flex, Avatar } from  "@components"
+import { Chip, Flex, Avatar } from "@components"
 import image from "@images/Avatar1-YellowTrans-32px.png"
 import FaceIcon from "@material-ui/icons/Face"
 import DoneIcon from "@material-ui/icons/Done"
@@ -42,7 +42,7 @@ import { action } from "@storybook/addon-actions"
   <Story name="With Icon and Delete">
     <Chip
       icon={<FaceIcon />}
-      label="Clickable Deletable Chip"
+      label="Icon Deletable Chip"
       clickable={true}
       onClick={action("clicked")}
       onDelete={action("deleted")}
@@ -70,15 +70,6 @@ import { action } from "@storybook/addon-actions"
       deleteIcon={<DoneIcon />}
     />
   </Story>
-  <Story name="Error">
-    <Chip
-      icon={<FaceIcon />}
-      label="Error Chip"
-      clickable={true}
-      color="error"
-      onDelete={action("deleted")}
-    />
-  </Story>
   <Story name="Deletable Primary Chip">
     <Chip
       label="Deletable Primary Chip"
@@ -104,6 +95,71 @@ import { action } from "@storybook/addon-actions"
       label="Deletable Secondary Chip"
       onDelete={action("deleted")}
       color="secondary"
+    />
+  </Story>
+</Preview>
+
+# Outlined
+
+There is also an outlined variant
+
+<Preview>
+  <Story name="Outlined default">
+    <Chip
+      variant="outlined"
+      icon={<FaceIcon />}
+      label="Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      color="default"
+    />
+  </Story>
+  <Story name="Outlined primary">
+    <Chip
+      variant="outlined"
+      icon={<FaceIcon />}
+      label="Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      color="primary"
+    />
+  </Story>
+  <Story name="Outlined secondary">
+    <Chip
+      variant="outlined"
+      icon={<FaceIcon />}
+      label="Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      color="secondary"
+    />
+  </Story>
+</Preview>
+
+# Size
+
+There is also a small size
+
+<Preview>
+  <Story name="small default">
+    <Chip
+      size="small"
+      icon={<FaceIcon />}
+      label="Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      color="default"
+    />
+  </Story>
+  <Story name="small outlined">
+    <Chip
+      size="small"
+      variant="outlined"
+      icon={<FaceIcon />}
+      label="Chip"
+      onClick={action("clicked")}
+      onDelete={action("deleted")}
+      color="default"
     />
   </Story>
 </Preview>
