@@ -6,10 +6,29 @@ const PUBLIC = path.resolve(__dirname, "../public")
 const NODE_MODULES = path.resolve(__dirname, "../node_modules")
 
 module.exports = ({ config, _mode }) => {
-  config.module.rules.push({
-    test: /\.(png|svg|jpg|gif)$/,
-    use: ["file-loader"]
+  // svg
+  config.resolve.extensions.push(".svg")
+  config.module.rules = config.module.rules.map(data => {
+    if (/svg\|/.test(String(data.test)))
+      data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/
+
+    return data
   })
+  config.module.rules.push({
+    test: /\.svg$/,
+    use: [
+      {
+        loader: "babel-loader"
+      },
+      {
+        loader: "react-svg-loader",
+        options: {
+          jsx: false
+        }
+      }
+    ]
+  })
+
   config.module.rules.push({
     test: /\.mdx$/,
     use: [
@@ -44,12 +63,12 @@ module.exports = ({ config, _mode }) => {
     exclude: [/node_modules/],
     enforce: "pre"
   })
+
   config.resolve.extensions.push(
     ".ts",
     ".tsx",
     ".mdx",
     ".png",
-    ".svg",
     ".jpg",
     ".gif",
     ".css"
