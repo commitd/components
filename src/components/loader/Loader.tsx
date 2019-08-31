@@ -16,7 +16,7 @@ export interface LoaderProps {
   /**
    *  Change to the style of the loader
    */
-  variant?: "draw" | "spin" | "flip"
+  variant?: "draw" | "spin" | "flip" | "scale"
 }
 
 const selectColor = (theme: Theme) => ({ grey }: LoaderProps): string =>
@@ -60,18 +60,18 @@ export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
     "100%": {
       transform: "perspective(512px) rotateX(0) rotateY(360deg);"
     }
-    // "0%": {
-    //   transform: "perspective(600px) rotateX(0deg) rotateY(0deg)"
-    // },
-    // "50%": {
-    //   transform: "perspective(600px) rotateX(-180deg) rotateY(0deg)"
-    // },
-    // "100%": {
-    //   transform: "perspective(600px) rotateX(-180deg) rotateY(-180deg)"
-    // }
+  },
+  "@keyframes loader-scale": {
+    "0%": {
+      transform: "scale(0.5)"
+    },
+    "100%": {
+      transform: "scale(1)"
+    }
   },
   color: {
     "& .commit": {
+      transformOrigin: "center center",
       stroke: selectColor(theme),
       fill: selectColor(theme),
       strokeDasharray: "2300"
@@ -85,7 +85,6 @@ export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
   },
   spin: {
     "& .commit": {
-      transformOrigin: "center center",
       animation: "$loader-spin 1.5s ease infinite"
     }
   },
@@ -93,6 +92,13 @@ export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
     "& .commit": {
       transformOrigin: "center center",
       animation: "$loader-flip 3s cubic-bezier(.09, .57, .49, .9) infinite"
+    }
+  },
+  scale: {
+    "& .commit": {
+      transformOrigin: "center center",
+      animation:
+        "$loader-scale 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) infinite alternate both;"
     }
   }
 }))
@@ -107,7 +113,8 @@ export const Loader = (props: LoaderProps) => {
         classes.color,
         variant === "draw" && classes.draw,
         variant === "spin" && classes.spin,
-        variant === "flip" && classes.flip
+        variant === "flip" && classes.flip,
+        variant === "scale" && classes.scale
       )}
     />
   )
