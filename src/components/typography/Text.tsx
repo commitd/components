@@ -1,7 +1,7 @@
 import * as React from "react"
 import { styled } from "@material-ui/styles"
 import Typography, { TypographyProps } from "./Typography"
-import { fontSizes } from "../../theme/theme"
+import { fonts } from "../../theme"
 
 export type MainTextProps = {
   /** Select from a scaled font size, 0 in normal, negative index for smaller, positive for larger */
@@ -22,8 +22,9 @@ export type MainTextProps = {
 export type TextProps = TypographyProps & MainTextProps
 
 const ThemeText = styled(Typography)({
+  fontFamily: fonts.families.main,
   fontStyle: props => (props.italic ? "italic" : "normal"),
-  fontSize: props => fontSizes[props.fontSize ? props.fontSize : 0],
+  fontSize: props => fonts.sizes[props.fontSize ? props.fontSize : 0],
   // letterSpacing: props =>
   //   props.upper
   //     ? themeGet("letterSpacings.upper")(props)

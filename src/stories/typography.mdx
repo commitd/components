@@ -1,4 +1,4 @@
-import { DocText } from "../../docsProps"
+import { DocText } from "../docsProps"
 import {
   Typography,
   Text,
@@ -10,11 +10,12 @@ import {
   Display,
   Monospace,
   Flex,
-  Box
+  Box,
+  Brand
 } from "@components"
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
 
-<Meta title="Test|Typography" component={Typography} />
+<Meta title="Design System|Typography" component={Typography} />
 
 # Typography
 
@@ -24,6 +25,9 @@ other text formats.
 <Preview>
   <Story name="typography">
     <Flex flexDirection="column">
+      <Typography variant="h1" gutterBottom>
+        h1. Heading
+      </Typography>
       <Typography variant="h2" gutterBottom>
         h2. Heading
       </Typography>
@@ -133,7 +137,7 @@ When you need a heading to stand out, consider using a display heading: a larger
 
 Use `Text` for all normal text rendering, use Headings for `h1, etc`.
 Text is a low-level component for setting font-size, typographic styles, margin, and color.
-By default Text is a `div`, the alternative classes `Span` and `Paragraph` can be used for `p` and `spana elements.
+By default Text is a `div`, the alternative classes `Span` and `Paragraph` can be used for `p` and `span` elements.
 
 <Preview>
   <Story name="text">
@@ -149,6 +153,25 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
       <Text fontSize={-1}>Text -1</Text>
       <Text fontSize={-2}>Text -2</Text>
       <Text fontSize={-3}>Text -3</Text>
+    </Flex>
+  </Story>
+</Preview>
+
+# Brand
+
+<Preview>
+  <Story name="brand">
+    <Flex flexDirection="column">
+      <Brand fontSize={6}>committed</Brand>
+      <Brand fontSize={5}>committed </Brand>
+      <Brand fontSize={4}>committed </Brand>
+      <Brand fontSize={3}>committed </Brand>
+      <Brand fontSize={2}>committed </Brand>
+      <Brand fontSize={1}>committed </Brand>
+      <Brand fontSize={0}>committed </Brand>
+      <Brand fontSize={-1}>committed</Brand>
+      <Brand fontSize={-2}>committed</Brand>
+      <Brand fontSize={-3}>committed</Brand>
     </Flex>
   </Story>
 </Preview>

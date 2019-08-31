@@ -1,9 +1,11 @@
-import { Box } from  "@components"
+import { Box } from "@components"
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
 
 <Meta title="components|Box" component={Box} />
 
 # Box
+
+Extends [Material UI Box](https://material-ui.com/components/box/).
 
 Use the `Box` component to control width, margin, padding, and color.
 
@@ -11,7 +13,7 @@ Use the `Box` component to control width, margin, padding, and color.
 
 <Preview>
   <Story name="default">
-    <Box width={1 / 2} bg="primary">
+    <Box width={1 / 2} border={1}>
       Box
     </Box>
   </Story>
@@ -21,7 +23,7 @@ Padding of `theme.space[3]` (16px)
 
 <Preview>
   <Story name="padding">
-    <Box p={3} bg="blue">
+    <Box p={3} border={1}>
       Box
     </Box>
   </Story>
@@ -31,7 +33,7 @@ Margin of `theme.space[2]` (8px)
 
 <Preview>
   <Story name="margin">
-    <Box m={4} bg="blue">
+    <Box p={1} m={4} border={1}>
       Box
     </Box>
   </Story>
@@ -40,7 +42,9 @@ Margin of `theme.space[2]` (8px)
 Color primary from the theme's color palette
 
 <Preview>
-  <Box color="primary">Box</Box>
+  <Box p={2} bg="primary.main" color="white">
+    Box
+  </Box>
 </Preview>
 
 ## Responsive Widths
@@ -55,14 +59,14 @@ The `width` prop accepts an array value to set different widths at different bre
         1 / 2, // Sets width 50% at the next breakpoint
         1 / 4 // Sets width 25% at the next breakpoint
       ]}
-      bg="blue"
+      p={2}
+      bg="secondary.main"
+      color="grey.200"
     >
       Hello
     </Box>
   </Story>
 </Preview>
-
-See [styled-system](https://github.com/jxnblk/styled-system) for more documentation.
 
 ## Props
 

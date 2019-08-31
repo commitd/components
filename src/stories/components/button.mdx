@@ -15,66 +15,104 @@ Buttons make common actions immediately visible and easy to perform with one cli
   </Story>
 </Preview>
 
-# Color and Size
+# Contained
+
+This is the default style for the button, and should be used for the primary action.
 
 <Preview>
+  <Story name="default">
+    <Button>Default</Button>
+  </Story>
   <Story name="primary">
-    <Button margin={2} color="primary">
-      primary
-    </Button>
+    <Button color="primary">Primary</Button>
   </Story>
   <Story name="secondary">
-    <Button margin={2} color="secondary">
-      secondary
+    <Button color="secondary">Secondary</Button>
+  </Story>
+</Preview>
+
+# variants
+
+Some button variants are available and should be used for secondary buttons such as "cancel".
+
+## Outlined
+
+Use outlined for lower emphisis actions.
+
+<Preview>
+  <Story name="outlined default">
+    <Button variant="outlined">Default</Button>
+  </Story>
+  <Story name="outlined primary">
+    <Button variant="outlined" color="primary">
+      Primary
     </Button>
   </Story>
-  <Story name="warning">
-    <Button margin={2} color="warning">
-      warning
-    </Button>
-  </Story>
-  <Story name="error">
-    <Button margin={2} color="error">
-      error
+  <Story name="outlined secondary">
+    <Button variant="outlined" color="secondary">
+      Secondary
     </Button>
   </Story>
 </Preview>
 
-# Variants
+## Text
+
+Use the "text" variant for lower emphisis actions or for paring with a main action.
 
 <Preview>
-  <Story name="variants">
-    <Cartesian
-      component={Button}
-      margin={2}
-      variant={["contained", "outlined", "text"]}
-      size={["small", "medium", "large"]}
-      children="Button"
-    />
+  <Story name="text default">
+    <Button variant="text">Default</Button>
+  </Story>
+  <Story name="text primary">
+    <Button variant="text" color="primary">
+      Primary
+    </Button>
+  </Story>
+  <Story name="text secondary">
+    <Button variant="text" color="secondary">
+      Secondary
+    </Button>
+  </Story>
+</Preview>
+
+# Size
+
+<Preview>
+  <Story name="small">
+    <Button size="small" color="primary">
+      Small
+    </Button>
+  </Story>
+  <Story name="medium">
+    <Button size="medium" color="primary">
+      Medium
+    </Button>
+  </Story>
+  <Story name="large">
+    <Button size="large" color="primary">
+      Large
+    </Button>
   </Story>
 </Preview>
 
 # Disabled
 
+Disabled button loose their color, in all styles.
+
 <Preview>
   <Story name="disabled primary">
-    <Button disabled={true} margin={2} color="primary">
-      primary
+    <Button disabled={true} color="primary">
+      Contained
     </Button>
   </Story>
-  <Story name="disabled secondary">
-    <Button disabled={true} margin={2} color="secondary">
-      secondary
+  <Story name="disabled outlined">
+    <Button disabled={true} variant="outlined" color="primary">
+      Outlined
     </Button>
   </Story>
-  <Story name="disabled warning">
-    <Button disabled={true} margin={2} color="warning">
-      warning
-    </Button>
-  </Story>
-  <Story name="disabled error">
-    <Button disabled={true} margin={2} color="error">
-      error
+  <Story name="disabled text">
+    <Button disabled={true} variant="text" color="primary">
+      Text
     </Button>
   </Story>
 </Preview>

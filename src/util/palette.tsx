@@ -2,12 +2,12 @@ import * as React from "react"
 import { Flex } from "@components"
 import Swatch from "./swatch"
 
-export interface PalletteProps {
+export interface PaletteProps {
   name: string
   colors: { [key: string]: string }
 }
 
-export default class Pallette extends React.Component<PalletteProps> {
+export default class Palette extends React.Component<PaletteProps> {
   public render() {
     const { colors, name } = this.props
     return (

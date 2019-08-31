@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
-import { Avatar, pallette, Flex } from "@components"
+import { Avatar, theme, Flex } from "@components"
 import image from "@images/Avatar1-YellowTrans-32px.png"
 import FolderIcon from "@material-ui/icons/Folder"
 import PageviewIcon from "@material-ui/icons/Pageview"
@@ -23,13 +23,13 @@ import AssignmentIcon from "@material-ui/icons/Assignment"
 <Preview>
   <Story name="letter based">
     <Flex>
-      <Avatar m={1} bg={pallette.primary}>
+      <Avatar m={1} bg="palette.primary">
         H
       </Avatar>
-      <Avatar m={1} bg={pallette.success}>
+      <Avatar m={1} bg="palette.success">
         N
       </Avatar>
-      <Avatar m={1} bg={pallette.warning}>
+      <Avatar m={1} bg="palette.warning">
         OP
       </Avatar>
       <Avatar m={1} bg="primary.main">

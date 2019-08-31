@@ -1,4 +1,6 @@
-export { default as theme } from "./theme"
-export { default as colors } from "./colors"
-export * from "./theme"
-export { default as ThemeProvider } from "./ThemeProvider"
+import * as colors from "./colors"
+import * as fonts from "./fonts"
+import * as theme from "./theme"
+export * from "./ThemeProvider"
+
+export { colors, fonts, theme }
