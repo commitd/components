@@ -1,0 +1,69 @@
+import { useState } from "react"
+import { action } from "@storybook/addon-actions"
+import { Radio, RadioGroup, Flex, Text } from "@components"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import Favorite from "@material-ui/icons/Favorite"
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles"
+import FormHelperText from "@material-ui/core/FormHelperText"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import FormControl from "@material-ui/core/FormControl"
+import FormLabel from "@material-ui/core/FormLabel"
+
+<Meta title="components|Radio" component={Radio} />
+
+# Radio
+
+Radios can be used to choose between a set of more than two options.
+Use a checkbox or on/off switch when single select/deselect option,
+use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
+
+Radios should always be used with a `RadioGroup` to handle the state control and layout.
+
+<Preview>
+  <Story name="with state">
+    {React.createElement(() => {
+      const [value, setValue] = React.useState("female")
+      function handleChange(event /*: React.ChangeEvent<HTMLInputElement> */) {
+        setValue(event.target /* as HTMLInputElement*/.value)
+      }
+      return (
+        <div>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Gender</FormLabel>
+            <RadioGroup
+              aria-label="gender"
+              name="gender1"
+              value={value}
+              onChange={handleChange}
+            >
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel
+                value="other"
+                control={<Radio />}
+                label="Other"
+              />
+              <FormControlLabel
+                value="disabled"
+                disabled
+                control={<Radio />}
+                label="(Disabled option)"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+      )
+    })}
+  </Story>
+</Preview>
+
+## With Labels
+
+## Props
+
+<Props of={Radio} />
