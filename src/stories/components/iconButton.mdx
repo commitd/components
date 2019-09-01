@@ -1,0 +1,56 @@
+import { IconButton } from "@components"
+import DeleteIcon from "@material-ui/icons/Delete"
+import AlarmIcon from "@material-ui/icons/Alarm"
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart"
+import { action } from "@storybook/addon-actions"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+
+<Meta title="components|IconButton" component={IconButton} />
+
+# IconButton
+
+Icon buttons can be used for common and obvious actions, where the semantics can not be misunderstood.
+Or in compact forms of drawers or toolbars.
+
+Icons are also appropriate for toggle buttons that allow a single choice to be selected or deselected,
+such as adding or removing a star to an item.
+
+<Preview>
+  <Story name="default">
+    <IconButton onClick={action("delete")} aria-label="delete">
+      <DeleteIcon />
+    </IconButton>
+  </Story>
+  <Story name="disabled">
+    <IconButton
+      onClick={action("delete")}
+      aria-label="delete"
+      disabled
+      color="primary"
+    >
+      <DeleteIcon />
+    </IconButton>
+  </Story>
+  <Story name="primary">
+    <IconButton
+      onClick={action("click")}
+      color="secondary"
+      aria-label="add an alarm"
+    >
+      <AlarmIcon />
+    </IconButton>
+  </Story>
+  <Story name="secondary">
+    <IconButton
+      onClick={action("click")}
+      color="primary"
+      aria-label="add to shopping cart"
+    >
+      <AddShoppingCartIcon />
+    </IconButton>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={IconButton} />
