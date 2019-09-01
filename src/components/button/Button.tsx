@@ -6,10 +6,10 @@ import {
   SpacingProps,
   FlexboxProps
 } from "@material-ui/system"
+import { styled } from "@material-ui/styles"
 import MaterialButton, {
   ButtonProps as MaterialButtonProps
 } from "@material-ui/core/Button"
-import { styled } from "@material-ui/styles"
 
 export type ButtonProps = MaterialButtonProps & SpacingProps & FlexboxProps
 
