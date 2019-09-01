@@ -1,11 +1,16 @@
 import { useState } from "react"
 import { action } from "@storybook/addon-actions"
-import { Checkbox, Flex, Text } from  "@components"
+import { Checkbox, Flex, Text } from "@components"
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import Favorite from "@material-ui/icons/Favorite"
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
 
 <Meta title="components|Checkbox" component={Checkbox} />
 
 # Checkbox
+
+Checkboxes can be used as toggle actions or as part of input forms.
+Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
 
 <Preview>
   <Story name="checked">
@@ -73,6 +78,9 @@ import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
         "aria-label": "checkbox with default color"
       }}
     />
+  </Story>
+  <Story name="custom icon">
+    <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
   </Story>
 </Preview>
 
