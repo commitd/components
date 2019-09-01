@@ -1,0 +1,113 @@
+import { Switch } from "@components"
+import { action } from "@storybook/addon-actions"
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+
+<Meta title="components|Switch" component={Switch} />
+
+# Switch
+
+```js
+// TODO remove material components
+```
+
+To toggle states
+
+<Preview>
+  <Story name="default">
+    <Switch
+      defaultChecked
+      value="checkedF"
+      color="default"
+      inputProps={{ "aria-label": "checkbox with default color" }}
+    />
+  </Story>
+  <Story name="primary">
+    <Switch
+      onChange={action("checkedB")}
+      value="checkedB"
+      color="primary"
+      inputProps={{ "aria-label": "primary checkbox" }}
+    />
+  </Story>
+  <Story name="secondary">
+    <Switch
+      onChange={action("checkedA")}
+      value="checkedA"
+      inputProps={{ "aria-label": "secondary checkbox" }}
+    />
+  </Story>
+  <Story name="controlled">
+    <Switch value="true" />
+  </Story>
+  <Story name="disabled">
+    <Switch
+      disabled={true}
+      value="checkedD"
+      inputProps={{ "aria-label": "disabled checkbox" }}
+    />
+  </Story>
+  <Story name="checked">
+    <Switch disabled={true} checked={true} />
+  </Story>
+</Preview>
+
+## Labels
+
+<Preview>
+  <Story name="labels">
+    {React.createElement(() => {
+      const [state, setState] = React.useState({
+        checkedA: true,
+        checkedB: true
+      })
+      const handleChange = name => event => {
+        setState({ ...state, [name]: event.target.checked })
+      }
+      return (
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedA}
+                onChange={handleChange("checkedA")}
+                value="checkedA"
+              />
+            }
+            label="Secondary"
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedB}
+                onChange={handleChange("checkedB")}
+                value="checkedB"
+                color="primary"
+              />
+            }
+            label="Primary"
+          />
+          <FormControlLabel
+            control={<Switch value="checkedC" />}
+            label="Uncontrolled"
+          />
+          <FormControlLabel
+            disabled
+            control={<Switch value="checkedD" />}
+            label="Disabled"
+          />
+          <FormControlLabel
+            disabled
+            control={<Switch checked value="checkedE" />}
+            label="Disabled"
+          />
+        </FormGroup>
+      )
+    })}
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Switch} />
