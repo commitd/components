@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Typography, TypographyProps } from "./Typography"
+import * as React from 'react'
+import { Typography, TypographyProps } from './Typography'
 
 export type CaptionProps = TypographyProps
 

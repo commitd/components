@@ -14,7 +14,8 @@
     "npm": ">=5"
   },
   "prettier": {
-    "semi": false
+    "semi": false,
+    "singleQuote": true
   },
   "husky": {
     "hooks": {

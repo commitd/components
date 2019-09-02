@@ -1,8 +1,8 @@
-import * as allColors from "./colors"
-import * as fonts from "./fonts"
-import { ThemeOptions } from "@material-ui/core/styles/createMuiTheme"
+import * as allColors from './colors'
+import * as fonts from './fonts'
+import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 
-declare module "@material-ui/core/styles/createPalette" {
+declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
     success: PaletteColorOptions
     warning: PaletteColorOptions
@@ -16,7 +16,7 @@ declare module "@material-ui/core/styles/createPalette" {
   }
 }
 
-declare module "@material-ui/core/styles/createMuiTheme" {
+declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
     status: {
       danger: string
@@ -58,11 +58,11 @@ export const palette = {
 
 export const light: ThemeOptions = {
   palette: {
-    type: "light",
+    type: 'light',
     primary: { main: palettes.primary[400] },
     background: {
       default: palettes.neutral[50],
-      paper: "white"
+      paper: 'white'
     },
     secondary: { main: palettes.secondary[400] },
     success: { main: palettes.success[400] },
@@ -89,16 +89,16 @@ export const light: ThemeOptions = {
   props: {
     MuiTypography: {
       variantMapping: {
-        h1: "h1",
-        h2: "h2",
-        h3: "h3",
-        h4: "h4",
-        h5: "h5",
-        h6: "h6",
-        subtitle1: "h2",
-        subtitle2: "h3",
-        body1: "p",
-        body2: "span"
+        h1: 'h1',
+        h2: 'h2',
+        h3: 'h3',
+        h4: 'h4',
+        h5: 'h5',
+        h6: 'h6',
+        subtitle1: 'h2',
+        subtitle2: 'h3',
+        body1: 'p',
+        body2: 'span'
       }
     }
   },
@@ -117,25 +117,25 @@ export const light: ThemeOptions = {
   },
   overrides: {
     MuiCssBaseline: {
-      "@global": {
-        "@font-face": fonts.faces,
+      '@global': {
+        '@font-face': fonts.faces,
         /* Disable auto-enlargement of small text in Safari */
-        textSizeAdjust: "100%",
+        textSizeAdjust: '100%',
         /* Enable kerning and optional ligatures */
-        textRendering: "optimizeLegibility",
+        textRendering: 'optimizeLegibility',
         /**
          * Form elements render using OS defaults,
          * so font-family inheritance must be specifically declared
          */
-        "button, input, optgroup, select, textarea": {
-          fontFamily: "inherit",
-          fontSize: "inherit"
+        'button, input, optgroup, select, textarea': {
+          fontFamily: 'inherit',
+          fontSize: 'inherit'
         }
       }
     },
     MuiButton: {
       root: {
-        textTransform: "none"
+        textTransform: 'none'
       }
     }
   }

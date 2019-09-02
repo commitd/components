@@ -1,13 +1,13 @@
-import * as React from "react"
-import { styled } from "@material-ui/styles"
-import Typography, { TypographyProps } from "./Typography"
-import { fonts } from "../../theme"
+import * as React from 'react'
+import { styled } from '@material-ui/styles'
+import Typography, { TypographyProps } from './Typography'
+import { fonts } from '../../theme'
 
 export type MainTextProps = {
   /** Select from a scaled font size, 0 in normal, negative index for smaller, positive for larger */
   fontSize?: number
   /** Set the text alignment */
-  align?: "left" | "center" | "right"
+  align?: 'left' | 'center' | 'right'
   /** Set true to set title case */
   capital?: boolean
   /** Set true to set all upper */
@@ -23,7 +23,7 @@ export type TextProps = TypographyProps & MainTextProps
 
 const ThemeText = styled(Typography)({
   fontFamily: fonts.families.main,
-  fontStyle: props => (props.italic ? "italic" : "normal"),
+  fontStyle: props => (props.italic ? 'italic' : 'normal'),
   fontSize: props => fonts.sizes[props.fontSize ? props.fontSize : 0],
   // letterSpacing: props =>
   //   props.upper
@@ -32,7 +32,7 @@ const ThemeText = styled(Typography)({
   //     ? themeGet("letterSpacings.title")(props)
   //     : themeGet("letterSpacings.normal")(props),
   textTransform: props =>
-    props.upper ? "uppercase" : props.capital ? "capitalize" : "none",
+    props.upper ? 'uppercase' : props.capital ? 'capitalize' : 'none',
   fontWeight: props => (props.light ? 100 : props.bold ? 500 : 300)
 })
 
@@ -40,13 +40,13 @@ export const Text: React.FC<TextProps> = props => {
   let override = props
   if (props.align) {
     switch (props.align) {
-      case "left":
+      case 'left':
         override = Object.assign({}, props, { alignLeft: true })
         break
-      case "center":
+      case 'center':
         override = Object.assign({}, props, { alignCenter: true })
         break
-      case "right":
+      case 'right':
         override = Object.assign({}, props, { alignRight: true })
         break
       default:
@@ -56,12 +56,12 @@ export const Text: React.FC<TextProps> = props => {
 
   return <ThemeText {...override} />
 }
-Text.displayName = "Text"
+Text.displayName = 'Text'
 export const Span: React.FC<TextProps> = props => (
   <ThemeText {...props} component="span" />
 )
-Span.displayName = "Span"
+Span.displayName = 'Span'
 export const Paragraph: React.FC<TextProps> = props => (
   <ThemeText {...props} component="p" />
 )
-Paragraph.displayName = "Paragraph"
+Paragraph.displayName = 'Paragraph'

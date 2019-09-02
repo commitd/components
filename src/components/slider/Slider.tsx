@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   compose,
   spacing,
@@ -7,18 +7,18 @@ import {
   SpacingProps,
   FlexboxProps,
   SizingProps
-} from "@material-ui/system"
+} from '@material-ui/system'
 import MaterialSlider, {
   SliderProps as MaterialSliderProps
-} from "@material-ui/core/Slider"
-import { styled } from "@material-ui/styles"
+} from '@material-ui/core/Slider'
+import { styled } from '@material-ui/styles'
 
 export type SliderProps = MaterialSliderProps &
   SpacingProps &
   FlexboxProps &
   SizingProps
 
-export const Container = styled("div")(
+export const Container = styled('div')(
   compose(
     spacing,
     flexbox,

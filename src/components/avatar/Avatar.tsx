@@ -1,8 +1,8 @@
-import * as React from "react"
+import * as React from 'react'
 import MaterialAvatar, {
   AvatarProps as MaterialAvatarProps
-} from "@material-ui/core/Avatar"
-import { styled } from "@material-ui/styles"
+} from '@material-ui/core/Avatar'
+import { styled } from '@material-ui/styles'
 import {
   style,
   compose,
@@ -10,32 +10,32 @@ import {
   flexbox,
   SpacingProps,
   FlexboxProps
-} from "@material-ui/system"
+} from '@material-ui/system'
 
 function transform(value: number) {
-  return value <= 1 ? "".concat(String(value * 100), "%") : value
+  return value <= 1 ? ''.concat(String(value * 100), '%') : value
 }
 
 export const textColor = style({
-  prop: "color",
-  themeKey: "palette"
+  prop: 'color',
+  themeKey: 'palette'
 })
 
 export const bgcolor = style({
-  prop: "bg",
-  cssProperty: "backgroundColor",
-  themeKey: "palette"
+  prop: 'bg',
+  cssProperty: 'backgroundColor',
+  themeKey: 'palette'
 })
 
 export const width = style({
-  prop: "size",
-  cssProperty: "width",
+  prop: 'size',
+  cssProperty: 'width',
   transform
 })
 
 export const height = style({
-  prop: "size",
-  cssProperty: "height",
+  prop: 'size',
+  cssProperty: 'height',
   transform
 })
 
@@ -56,6 +56,6 @@ export const Avatar = styled(MaterialAvatar)(
     height
   )
 )
-Avatar.displayName = "Avatar"
+Avatar.displayName = 'Avatar'
 
 export default Avatar as React.FC<AvatarProps>

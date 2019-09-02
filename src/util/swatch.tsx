@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Box, Flex } from "@components"
+import * as React from 'react'
+import { Box, Flex } from '@components'
 
 export interface SwatchProps {
   color: string

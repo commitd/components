@@ -1,28 +1,28 @@
-import * as React from "react"
-import { Typography, TypographyProps } from "./Typography"
-import { withStyles } from "@material-ui/styles"
-import { grey } from "@material-ui/core/colors"
+import * as React from 'react'
+import { Typography, TypographyProps } from './Typography'
+import { withStyles } from '@material-ui/styles'
+import { grey } from '@material-ui/core/colors'
 
 // Work out correct way to use theme sizes
 const styles = {
   h1: {
-    fontSize: "50px",
+    fontSize: '50px',
     color: grey[500]
   },
   h2: {
-    fontSize: "40px",
+    fontSize: '40px',
     color: grey[500]
   },
   h3: {
-    fontSize: "30px",
+    fontSize: '30px',
     color: grey[500]
   },
   h4: {
-    fontSize: "20px",
+    fontSize: '20px',
     color: grey[500]
   },
   h5: {
-    fontSize: "10px",
+    fontSize: '10px',
     color: grey[500]
   }
 }

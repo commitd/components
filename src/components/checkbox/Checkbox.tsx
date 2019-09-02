@@ -1,7 +1,7 @@
-import * as React from "react"
+import * as React from 'react'
 import MaterialCheckbox, {
   CheckboxProps as MaterialCheckboxProps
-} from "@material-ui/core/Checkbox"
+} from '@material-ui/core/Checkbox'
 
 export type CheckboxProps = MaterialCheckboxProps
 

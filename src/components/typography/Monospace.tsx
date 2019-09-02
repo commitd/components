@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Typography, TypographyProps } from "./Typography"
-import { styled } from "@material-ui/styles"
-import { fonts } from "../../theme"
-import { Theme } from "@material-ui/core/styles/createMuiTheme"
+import * as React from 'react'
+import { Typography, TypographyProps } from './Typography'
+import { styled } from '@material-ui/styles'
+import { fonts } from '../../theme'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 
 export type MonospaceProps = TypographyProps
 

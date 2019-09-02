@@ -1,6 +1,6 @@
-import * as React from "react"
-import { Flex } from "@components"
-import Swatch from "./swatch"
+import * as React from 'react'
+import { Flex } from '@components'
+import Swatch from './swatch'
 
 export interface PaletteProps {
   name: string

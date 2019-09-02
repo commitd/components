@@ -1,7 +1,7 @@
-import * as React from "react"
+import * as React from 'react'
 import MaterialDrawer, {
   DrawerProps as MaterialDrawerProps
-} from "@material-ui/core/Drawer"
+} from '@material-ui/core/Drawer'
 
 export type DrawerProps = MaterialDrawerProps
 

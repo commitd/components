@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Typography, TypographyProps } from "./Typography"
-import { styled } from "@material-ui/styles"
-import { fonts, colors } from "../../theme"
+import * as React from 'react'
+import { Typography, TypographyProps } from './Typography'
+import { styled } from '@material-ui/styles'
+import { fonts, colors } from '../../theme'
 
 export type BrandProps = TypographyProps & { fontSize: number }
 

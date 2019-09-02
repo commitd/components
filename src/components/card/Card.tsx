@@ -1,31 +1,31 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   compose,
   spacing,
   flexbox,
   SpacingProps,
   FlexboxProps
-} from "@material-ui/system"
-import { sizing, SizingProps } from "@material-ui/system"
-import { styled } from "@material-ui/styles"
+} from '@material-ui/system'
+import { sizing, SizingProps } from '@material-ui/system'
+import { styled } from '@material-ui/styles'
 import MaterialCard, {
   CardProps as MaterialCardProps
-} from "@material-ui/core/Card"
+} from '@material-ui/core/Card'
 import MaterialCardActionArea, {
   CardActionAreaProps as MaterialCardActionAreaProps
-} from "@material-ui/core/CardActionArea"
+} from '@material-ui/core/CardActionArea'
 import MaterialCardActions, {
   CardActionsProps as MaterialCardActionsProps
-} from "@material-ui/core/CardActions"
+} from '@material-ui/core/CardActions'
 import MaterialCardContent, {
   CardContentProps as MaterialCardContentProps
-} from "@material-ui/core/CardContent"
+} from '@material-ui/core/CardContent'
 import MaterialCardHeader, {
   CardHeaderProps as MaterialCardHeaderProps
-} from "@material-ui/core/CardHeader"
+} from '@material-ui/core/CardHeader'
 import MaterialCardMedia, {
   CardMediaProps as MaterialCardMediaProps
-} from "@material-ui/core/CardMedia"
+} from '@material-ui/core/CardMedia'
 export type CardProps = MaterialCardProps & SpacingProps & FlexboxProps
 
 export const Card = styled(MaterialCard)(
@@ -43,7 +43,7 @@ Card.defaultProps = {
   // p: 4
 }
 
-Card.displayName = "Card"
+Card.displayName = 'Card'
 
 export default Card as React.FC<CardProps>
 
@@ -56,25 +56,25 @@ export type CardMediaProps = MaterialCardMediaProps & SizingProps
 export const CardHeader: React.ComponentType<CardHeaderProps> = (
   props: CardHeaderProps
 ) => {
-  if (typeof (props.children && props.children) === "string") {
+  if (typeof (props.children && props.children) === 'string') {
     return <MaterialCardHeader {...props} title={props.children} />
   }
   return <MaterialCardHeader {...props} />
 }
-CardHeader.displayName = "CardHeader"
+CardHeader.displayName = 'CardHeader'
 export const CardContent: React.ComponentType<
   CardContentProps
 > = MaterialCardContent
-CardContent.displayName = "CardContent"
+CardContent.displayName = 'CardContent'
 export const CardActionArea: React.ComponentType<
   CardActionAreaProps
 > = MaterialCardActionArea
-CardActionArea.displayName = "CardActionArea"
+CardActionArea.displayName = 'CardActionArea'
 export const CardActions: React.ComponentType<
   CardActionsProps
 > = MaterialCardActions
-CardActions.displayName = "CardActions"
+CardActions.displayName = 'CardActions'
 export const CardMedia: React.ComponentType<CardMediaProps> = styled(
   MaterialCardMedia
 )(sizing)
-CardMedia.displayName = "CardMedia"
+CardMedia.displayName = 'CardMedia'

@@ -1,11 +1,11 @@
-import * as React from "react"
+import * as React from 'react'
 import MaterialToolbar, {
   ToolbarProps as MaterialToolbarProps
-} from "@material-ui/core/Toolbar"
+} from '@material-ui/core/Toolbar'
 
 export type ToolbarProps = MaterialToolbarProps
 
 export const Toolbar: React.ComponentType<ToolbarProps> = MaterialToolbar
-Toolbar.displayName = "Toolbar"
+Toolbar.displayName = 'Toolbar'
 
 export default Toolbar

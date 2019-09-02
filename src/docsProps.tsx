@@ -1,9 +1,9 @@
-import { MainButtonProps } from "./components/button/Button"
-import styled from "styled-components"
-import { RemainingBoxProps } from "./components/box/Box"
-import { CardProps } from "./components/card/Card"
-import { MainFlexProps } from "./components/flex/Flex"
-import { MainTextProps } from "./components/typography/Text"
+import { MainButtonProps } from './components/button/Button'
+import styled from 'styled-components'
+import { RemainingBoxProps } from './components/box/Box'
+import { CardProps } from './components/card/Card'
+import { MainFlexProps } from './components/flex/Flex'
+import { MainTextProps } from './components/typography/Text'
 
 export const DocRemainingBox: React.FC<RemainingBoxProps> = (
   props: RemainingBoxProps
