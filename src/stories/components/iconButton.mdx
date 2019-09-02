@@ -1,9 +1,9 @@
-import { IconButton } from "@components"
-import DeleteIcon from "@material-ui/icons/Delete"
-import AlarmIcon from "@material-ui/icons/Alarm"
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart"
-import { action } from "@storybook/addon-actions"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import { IconButton } from '../../'
+import DeleteIcon from '@material-ui/icons/Delete'
+import AlarmIcon from '@material-ui/icons/Alarm'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|IconButton" component={IconButton} />
 
@@ -21,13 +21,13 @@ such as adding or removing a star to an item.
 
 <Preview>
   <Story name="default">
-    <IconButton onClick={action("delete")} aria-label="delete">
+    <IconButton onClick={action('delete')} aria-label="delete">
       <DeleteIcon />
     </IconButton>
   </Story>
   <Story name="disabled">
     <IconButton
-      onClick={action("delete")}
+      onClick={action('delete')}
       aria-label="delete"
       disabled
       color="primary"
@@ -37,7 +37,7 @@ such as adding or removing a star to an item.
   </Story>
   <Story name="primary">
     <IconButton
-      onClick={action("click")}
+      onClick={action('click')}
       color="secondary"
       aria-label="add an alarm"
     >
@@ -46,7 +46,7 @@ such as adding or removing a star to an item.
   </Story>
   <Story name="secondary">
     <IconButton
-      onClick={action("click")}
+      onClick={action('click')}
       color="primary"
       aria-label="add to shopping cart"
     >

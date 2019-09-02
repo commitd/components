@@ -1,6 +1,6 @@
-import ArciformWolff2 from '@fonts/ArciformFF/arciform.woff2'
-import FreeSansWolff from '@fonts/FreeSans/FreeSansBold.ttf'
-import LatoTtf from '@fonts/Lato/Lato-Regular.ttf'
+import ArciformWolff2 from '../../public/fonts/ArciformFF/arciform.woff2'
+import FreeSansWolff from '../../public/fonts/FreeSans/FreeSansBold.ttf'
+import LatoTtf from '../../public/fonts/Lato/Lato-Regular.ttf'
 import { FontFace } from 'csstype'
 
 export type Font = 'arciform' | 'freesans' | 'lato'

@@ -1,6 +1,5 @@
-import { DocFlex } from "../../docsProps"
-import { Flex, Box, Card } from "@components"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import { Flex, Box, Card } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Flex" component={Flex} />
 
@@ -27,7 +26,7 @@ A simple example
   </Story>
   <p>Set to column</p>
   <Story name="column">
-    <Flex flexDirection={"column"}>
+    <Flex flexDirection={'column'}>
       <Box width={1 / 3} p={3} bg="success.main">
         Box
       </Box>
@@ -116,7 +115,7 @@ A simple example
   <Story name="align flex start">
     <Card>
       <Flex
-        style={{ height: "100px" }}
+        style={{ height: '100px' }}
         justifyContent="center"
         alignItems="flex-start"
       >
@@ -133,7 +132,7 @@ A simple example
   <Story name="align flex end">
     <Card>
       <Flex
-        style={{ height: "100px" }}
+        style={{ height: '100px' }}
         justifyContent="center"
         alignItems="flex-end"
       >
@@ -150,7 +149,7 @@ A simple example
   <Story name="align center">
     <Card>
       <Flex
-        style={{ height: "100px" }}
+        style={{ height: '100px' }}
         justifyContent="center"
         alignItems="center"
       >
@@ -167,7 +166,7 @@ A simple example
   <Story name="align stretch">
     <Card>
       <Flex
-        style={{ height: "100px" }}
+        style={{ height: '100px' }}
         justifyContent="center"
         alignItems="stretch"
       >
@@ -184,13 +183,13 @@ A simple example
   <Story name="align baseline">
     <Card>
       <Flex
-        style={{ height: "100px" }}
+        style={{ height: '100px' }}
         justifyContent="center"
         alignItems="baseline"
       >
-        <Box style={{ height: "75px" }} width={1 / 5} p={3} bg="success.main" />
-        <Box style={{ height: "25px" }} width={1 / 3} p={3} bg="warning.main" />
-        <Box style={{ height: "50px" }} width={1 / 5} p={3} bg="error.main" />
+        <Box style={{ height: '75px' }} width={1 / 5} p={3} bg="success.main" />
+        <Box style={{ height: '25px' }} width={1 / 3} p={3} bg="warning.main" />
+        <Box style={{ height: '50px' }} width={1 / 5} p={3} bg="error.main" />
       </Flex>
     </Card>
   </Story>
@@ -200,7 +199,9 @@ A simple example
 
 Main props for `Flex`, excluding normal spacing props, see [Box](/components/box).
 
-<Props of={DocFlex} />
+```js
+// TODO separte props
+```
 
 ## Full props
 

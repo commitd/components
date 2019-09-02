@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/addon-docs/blocks"
+import { Meta } from '@storybook/addon-docs/blocks'
 
 <Meta title="Design System|Design Principles" />
 
@@ -28,13 +28,13 @@ In the following demo, we change the background color (red, blue & green) based 
 const styles = theme => ({
   root: {
     padding: theme.spacing(1),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       backgroundColor: theme.palette.secondary.main
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up('md')]: {
       backgroundColor: theme.palette.primary.main
     },
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up('lg')]: {
       backgroundColor: green[500]
     }
   }

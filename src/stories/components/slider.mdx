@@ -1,6 +1,6 @@
-import { Slider, Typography, Box } from "@components"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
-import { action } from "@storybook/addon-actions"
+import { Slider, Typography, Box } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
 
 <Meta title="components|Slider" component={Slider} />
 
@@ -14,19 +14,19 @@ Allows for selection from a (numeric) range of values.
       const marks = [
         {
           value: 0,
-          label: "0°C"
+          label: '0°C'
         },
         {
           value: 20,
-          label: "20°C"
+          label: '20°C'
         },
         {
           value: 37,
-          label: "37°C"
+          label: '37°C'
         },
         {
           value: 100,
-          label: "100°C"
+          label: '100°C'
         }
       ]
       function valuetext(value) {
@@ -108,7 +108,7 @@ Allows for selection from a (numeric) range of values.
   <Story name="disabled">
     <Slider
       value={30}
-      onChange={action("changed")}
+      onChange={action('changed')}
       disabled={true}
       aria-labelledby="disabled-slider"
     />
@@ -119,7 +119,7 @@ Allows for selection from a (numeric) range of values.
 
 <Preview>
   <Story name="continuous">
-    <Slider onChange={action("changed")} aria-labelledby="continuous-slider" />
+    <Slider onChange={action('changed')} aria-labelledby="continuous-slider" />
   </Story>
 </Preview>
 
@@ -129,7 +129,7 @@ Allows for selection from a (numeric) range of values.
   <Story name="range">
     <Slider
       defaultValue={[20, 37]}
-      onChange={action("changed")}
+      onChange={action('changed')}
       valueLabelDisplay="auto"
       aria-labelledby="range-slider"
     />
@@ -143,7 +143,7 @@ Allows for selection from a (numeric) range of values.
     <Slider
       height={300}
       orientation="vertical"
-      onChange={action("changed")}
+      onChange={action('changed')}
       defaultValue={30}
       aria-labelledby="vertical-slider"
     />

@@ -1,8 +1,8 @@
-import { Switch } from "@components"
-import { action } from "@storybook/addon-actions"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
-import FormGroup from "@material-ui/core/FormGroup"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
+import { Switch } from '../../'
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 <Meta title="components|Switch" component={Switch} />
 
@@ -20,22 +20,22 @@ To toggle states
       defaultChecked
       value="checkedF"
       color="default"
-      inputProps={{ "aria-label": "checkbox with default color" }}
+      inputProps={{ 'aria-label': 'checkbox with default color' }}
     />
   </Story>
   <Story name="primary">
     <Switch
-      onChange={action("checkedB")}
+      onChange={action('checkedB')}
       value="checkedB"
       color="primary"
-      inputProps={{ "aria-label": "primary checkbox" }}
+      inputProps={{ 'aria-label': 'primary checkbox' }}
     />
   </Story>
   <Story name="secondary">
     <Switch
-      onChange={action("checkedA")}
+      onChange={action('checkedA')}
       value="checkedA"
-      inputProps={{ "aria-label": "secondary checkbox" }}
+      inputProps={{ 'aria-label': 'secondary checkbox' }}
     />
   </Story>
   <Story name="controlled">
@@ -45,7 +45,7 @@ To toggle states
     <Switch
       disabled={true}
       value="checkedD"
-      inputProps={{ "aria-label": "disabled checkbox" }}
+      inputProps={{ 'aria-label': 'disabled checkbox' }}
     />
   </Story>
   <Story name="checked">
@@ -71,7 +71,7 @@ To toggle states
             control={
               <Switch
                 checked={state.checkedA}
-                onChange={handleChange("checkedA")}
+                onChange={handleChange('checkedA')}
                 value="checkedA"
               />
             }
@@ -81,7 +81,7 @@ To toggle states
             control={
               <Switch
                 checked={state.checkedB}
-                onChange={handleChange("checkedB")}
+                onChange={handleChange('checkedB')}
                 value="checkedB"
                 color="primary"
               />

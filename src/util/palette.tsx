@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Flex } from '@components'
+import { Flex } from '../'
 import Swatch from './swatch'
 
 export interface PaletteProps {

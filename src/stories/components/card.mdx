@@ -6,11 +6,11 @@ import {
   CardActions,
   CardMedia,
   Button
-} from "@components"
-import { Cartesian } from "@compositor/kit"
-import bgImage from "@images/Committed-Colour-512px.png"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
-import { action } from "@storybook/addon-actions"
+} from '../../'
+import { Cartesian } from '@compositor/kit'
+import bgImage from '../../../public/images/Committed-Colour-512px.png'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
 
 <Meta title="components|Card" component={Card} />
 
@@ -78,7 +78,7 @@ Use `Card` component to group element onto a card.
   </Story>
   <Story name="header with avatar">
     <Card m={4} width={[1, 1 / 2]}>
-      <CardHeader avatar={"A"} title="Avatar" />
+      <CardHeader avatar={'A'} title="Avatar" />
       <CardContent>Content</CardContent>
     </Card>
   </Story>
@@ -91,8 +91,8 @@ Use `Card` component to group element onto a card.
     <Card m={4} width={[1, null, 1 / 3]}>
       <CardHeader>Action Area</CardHeader>
       <CardContent>An action ares can be at the bottom of the card</CardContent>
-      <CardActionArea onClick={action("action")}>
-        <h1 style={{ textAlign: "center" }}>Action</h1>
+      <CardActionArea onClick={action('action')}>
+        <h1 style={{ textAlign: 'center' }}>Action</h1>
       </CardActionArea>
     </Card>
   </Story>
@@ -101,10 +101,10 @@ Use `Card` component to group element onto a card.
       <CardHeader>Actions</CardHeader>
       <CardContent>Actions can be added to the card</CardContent>
       <CardActions>
-        <Button color={"default"} variant={"text"} onClick={action("cancel")}>
+        <Button color={'default'} variant={'text'} onClick={action('cancel')}>
           Cancel
         </Button>
-        <Button color={"primary"} onClick={action("accept")}>
+        <Button color={'primary'} onClick={action('accept')}>
           Accept
         </Button>
       </CardActions>
@@ -112,7 +112,7 @@ Use `Card` component to group element onto a card.
   </Story>
   <Story name="action full">
     <Card m={4} width={[1, null, 1 / 3]}>
-      <CardActionArea onClick={action("full")}>
+      <CardActionArea onClick={action('full')}>
         <CardMedia height="120px" image={bgImage} title="Committed image" />
         <CardHeader>Full Card Action</CardHeader>
         <CardContent>

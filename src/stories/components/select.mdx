@@ -1,19 +1,19 @@
-import { useState } from "react"
-import { action } from "@storybook/addon-actions"
-import { Select, SelectGroup, Flex, Box } from "@components"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
-import Favorite from "@material-ui/icons/Favorite"
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles"
-import FormHelperText from "@material-ui/core/FormHelperText"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import FormControl from "@material-ui/core/FormControl"
-import FormLabel from "@material-ui/core/FormLabel"
-import Input from "@material-ui/core/Input"
-import OutlinedInput from "@material-ui/core/OutlinedInput"
-import FilledInput from "@material-ui/core/FilledInput"
-import InputLabel from "@material-ui/core/InputLabel"
-import MenuItem from "@material-ui/core/MenuItem"
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { Select, SelectGroup, Flex, Box } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import Favorite from '@material-ui/icons/Favorite'
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
+import Input from '@material-ui/core/Input'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import FilledInput from '@material-ui/core/FilledInput'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
 
 <Meta title="components|Select" component={Select} />
 
@@ -34,8 +34,8 @@ but example below show raw use.
     <FormControl m={2} width={200}>
       <InputLabel htmlFor="age-simple">Age</InputLabel>
       <Select
-        onChange={action("change")}
-        inputProps={{ name: "age", id: "age-simple" }}
+        onChange={action('change')}
+        inputProps={{ name: 'age', id: 'age-simple' }}
       >
         <MenuItem value={10}>Ten</MenuItem>
         <MenuItem value={20}>Twenty</MenuItem>
@@ -47,7 +47,7 @@ but example below show raw use.
     <FormControl m={2}>
       <InputLabel htmlFor="age-helper">Age</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<Input name="age" id="age-helper" />}
       >
         <MenuItem value="">
@@ -62,7 +62,7 @@ but example below show raw use.
   </Story>
   <Story name="without label">
     <FormControl m={2}>
-      <Select onChange={action("change")} displayEmpty name="age">
+      <Select onChange={action('change')} displayEmpty name="age">
         <MenuItem value="">
           <em>None</em>
         </MenuItem>
@@ -79,7 +79,7 @@ but example below show raw use.
         Age
       </InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<Input name="age" id="age-label-placeholder" />}
         displayEmpty
         name="age"
@@ -98,7 +98,7 @@ but example below show raw use.
     <FormControl m={2} disabled>
       <InputLabel htmlFor="name-disabled">Name</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<Input name="name" id="name-disabled" />}
       >
         <MenuItem value="">
@@ -115,7 +115,7 @@ but example below show raw use.
     <FormControl m={2} error>
       <InputLabel htmlFor="name-error">Name</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         name="name"
         renderValue={value => `⚠️ - ${value}`}
         input={<Input id="name-error" />}
@@ -134,7 +134,7 @@ but example below show raw use.
     <FormControl m={2}>
       <InputLabel htmlFor="name-readonly">Name</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<Input name="name" id="name-readonly" readOnly />}
       >
         <MenuItem value="">
@@ -151,7 +151,7 @@ but example below show raw use.
     <FormControl m={2}>
       <InputLabel htmlFor="age-auto-width">Age</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<Input name="age" id="age-auto-width" />}
         autoWidth
       >
@@ -167,7 +167,7 @@ but example below show raw use.
   </Story>
   <Story name="display empty">
     <FormControl m={2}>
-      <Select onChange={action("change")} name="age" displayEmpty>
+      <Select onChange={action('change')} name="age" displayEmpty>
         <MenuItem value="" disabled>
           Placeholder
         </MenuItem>
@@ -182,10 +182,10 @@ but example below show raw use.
     <FormControl m={2} required>
       <InputLabel htmlFor="age-required">Age</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         name="age"
         inputProps={{
-          id: "age-required"
+          id: 'age-required'
         }}
       >
         <MenuItem value="">
@@ -202,7 +202,7 @@ but example below show raw use.
     <FormControl m={2} variant="outlined">
       <InputLabel htmlFor="outlined-age-simple">Age</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<OutlinedInput name="age" id="outlined-age-simple" />}
       >
         <MenuItem value="">
@@ -218,7 +218,7 @@ but example below show raw use.
     <FormControl m={2} variant="filled">
       <InputLabel htmlFor="filled-age-simple">Age</InputLabel>
       <Select
-        onChange={action("change")}
+        onChange={action('change')}
         input={<FilledInput name="age" id="filled-age-simple" />}
       >
         <MenuItem value="">
@@ -238,8 +238,8 @@ but example below show raw use.
   <Story name="with state">
     {React.createElement(() => {
       const [values, setValues] = React.useState({
-        age: "",
-        name: "hai"
+        age: '',
+        name: 'hai'
       })
       const inputLabel = React.useRef(null)
       const [labelWidth, setLabelWidth] = React.useState(0)
@@ -257,7 +257,7 @@ but example below show raw use.
               <Select
                 value={values.age}
                 onChange={handleChange}
-                inputProps={{ name: "age", id: "age-simple" }}
+                inputProps={{ name: 'age', id: 'age-simple' }}
               >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
@@ -406,7 +406,7 @@ but example below show raw use.
                 onChange={handleChange}
                 name="age"
                 inputProps={{
-                  id: "age-required"
+                  id: 'age-required'
                 }}
               >
                 <MenuItem value="">

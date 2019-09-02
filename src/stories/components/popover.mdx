@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { Popover, Text, Button } from  "@components"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import { useState } from 'react'
+import { Popover, Text, Button } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Popover" component={Popover} />
 
@@ -17,7 +17,7 @@ import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
         setAnchorEl(null)
       }
       const open = Boolean(anchorEl)
-      const id = open ? "simple-popover" : undefined
+      const id = open ? 'simple-popover' : undefined
       return (
         <div>
           <Button
@@ -33,12 +33,12 @@ import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
             anchorEl={anchorEl}
             onClose={handleClose}
             anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center"
+              vertical: 'bottom',
+              horizontal: 'center'
             }}
             transformOrigin={{
-              vertical: "top",
-              horizontal: "center"
+              vertical: 'top',
+              horizontal: 'center'
             }}
           >
             <Text>The content of the Popover.</Text>

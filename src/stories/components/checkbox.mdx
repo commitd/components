@@ -1,9 +1,9 @@
-import { useState } from "react"
-import { action } from "@storybook/addon-actions"
-import { Checkbox, Flex, Text } from "@components"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
-import Favorite from "@material-ui/icons/Favorite"
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { Checkbox, Flex, Text } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import Favorite from '@material-ui/icons/Favorite'
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 
 <Meta title="components|Checkbox" component={Checkbox} />
 
@@ -20,10 +20,10 @@ Use when single select/deselect option, use radio when one option of more then t
   <Story name="checked">
     <Checkbox
       checked={true}
-      onChange={action("checked")}
+      onChange={action('checked')}
       value="checkedA"
       inputProps={{
-        "aria-label": "primary checkbox"
+        'aria-label': 'primary checkbox'
       }}
     />
   </Story>
@@ -33,7 +33,7 @@ Use when single select/deselect option, use radio when one option of more then t
       value="checkedB"
       color="primary"
       inputProps={{
-        "aria-label": "secondary checkbox"
+        'aria-label': 'secondary checkbox'
       }}
     />
   </Story>
@@ -41,7 +41,7 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       value="checkedC"
       inputProps={{
-        "aria-label": "uncontrolled-checkbox"
+        'aria-label': 'uncontrolled-checkbox'
       }}
     />
   </Story>
@@ -50,7 +50,7 @@ Use when single select/deselect option, use radio when one option of more then t
       disabled={true}
       value="checkedD"
       inputProps={{
-        "aria-label": "disabled checkbox"
+        'aria-label': 'disabled checkbox'
       }}
     />
   </Story>
@@ -60,7 +60,7 @@ Use when single select/deselect option, use radio when one option of more then t
       checked={true}
       value="checkedE"
       inputProps={{
-        "aria-label": "disabled checked checkbox"
+        'aria-label': 'disabled checked checkbox'
       }}
     />
   </Story>
@@ -69,7 +69,7 @@ Use when single select/deselect option, use radio when one option of more then t
       value="checkedF"
       indeterminate={true}
       inputProps={{
-        "aria-label": "indeterminate checkbox"
+        'aria-label': 'indeterminate checkbox'
       }}
     />
   </Story>
@@ -79,7 +79,7 @@ Use when single select/deselect option, use radio when one option of more then t
       color="default"
       value="checkedG"
       inputProps={{
-        "aria-label": "checkbox with default color"
+        'aria-label': 'checkbox with default color'
       }}
     />
   </Story>
@@ -92,7 +92,7 @@ Use when single select/deselect option, use radio when one option of more then t
   <Story name="with state">
     {React.createElement(() => {
       const [checked, setChecked] = useState(false)
-      const click = action("clicked")
+      const click = action('clicked')
       return (
         <div>
           <Checkbox
@@ -103,10 +103,10 @@ Use when single select/deselect option, use radio when one option of more then t
             }}
             value="with state"
             inputProps={{
-              "aria-label": "primary checkbox"
+              'aria-label': 'primary checkbox'
             }}
           />
-          <Text>{"" + checked}</Text>
+          <Text>{'' + checked}</Text>
         </div>
       )
     })}

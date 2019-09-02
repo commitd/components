@@ -1,5 +1,5 @@
-import { Link, Paragraph } from "@components"
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
+import { Link, Paragraph } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Link" component={Link} />
 
@@ -8,13 +8,13 @@ import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks"
 <Preview>
   <Story name="default">
     <Paragraph>
-      <Link href="javascript:;">Link</Link>{" "}
+      <Link href="javascript:;">Link</Link>{' '}
       <Link href="javascript:;" color="inherit">
         {'color="inherit"'}
-      </Link>{" "}
+      </Link>{' '}
       <Link href="javascript:;" variant="body2">
         {'variant="body2"'}
-      </Link>{" "}
+      </Link>{' '}
       <Link href="http://committed.io" target="_blank" variant="body2">
         External
       </Link>

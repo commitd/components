@@ -14,6 +14,6 @@ export const AppBar = styled(MaterialAppBar)(({ theme }: { theme: Theme }) => ({
     fontWeight: theme.typography.fontWeightMedium
   }
 }))
-AppBar.displayName = 'AppBarr'
+AppBar.displayName = 'AppBar'
 
 export default AppBar as React.FC<AppBarProps>
