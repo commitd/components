@@ -1,4 +1,4 @@
-import allColors from "./colors"
+import allColors from './colors'
 
 const createMediaQuery = (n: string) => `@media screen and (min-width:${n})`
 
@@ -12,11 +12,11 @@ const addAliases = (arr: any[], aliases: string[]) =>
     })
   )
 
-export const breakpoints = [32, 40, 48, 64].map(n => n + "em")
+export const breakpoints = [32, 40, 48, 64].map(n => n + 'em')
 
 export const mediaQueries = breakpoints.map(createMediaQuery)
 
-export const aliases = ["sm", "md", "lg", "xl"]
+export const aliases = ['sm', 'md', 'lg', 'xl']
 
 addAliases(breakpoints, aliases)
 addAliases(mediaQueries, aliases)
@@ -26,27 +26,27 @@ export const space = [0, 4, 8, 16, 32, 64, 128]
 export const fonts = {
   system:
     '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
-  main: "Lato, Geneva, Tahoma, sans-serif",
+  main: 'Lato, Geneva, Tahoma, sans-serif',
   display:
     'Arciform, "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
-  brand: "FreeSans",
+  brand: 'FreeSans',
   mono: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
 }
 
 export const font = fonts.main
 
-export const fontSize = "16px"
+export const fontSize = '16px'
 export const fontSizes = [
-  "0.296rem",
-  "0.444rem",
-  "0.667rem",
-  "1rem",
-  "1.5rem",
-  "2.25rem",
-  "3.375rem",
-  "5.063rem",
-  "7.594rem",
-  "11.391rem"
+  '0.296rem',
+  '0.444rem',
+  '0.667rem',
+  '1rem',
+  '1.5rem',
+  '2.25rem',
+  '3.375rem',
+  '5.063rem',
+  '7.594rem',
+  '11.391rem'
 ]
 
 export const display = 200
@@ -72,9 +72,9 @@ export const lineHeights = {
 }
 
 const letterSpacings = {
-  normal: "normal",
-  capital: "normal",
-  upper: "0.025em"
+  normal: 'normal',
+  capital: 'normal',
+  upper: '0.025em'
 }
 
 const pallettes = {
@@ -114,14 +114,14 @@ export const textStyles = {
     fontFamily: fonts.display,
     fontWeight: fontWeights.display,
     lineHeight: lineHeights.display,
-    textTransform: "capitalize"
+    textTransform: 'capitalize'
   },
   subheading: {
     fontFamily: fonts.main,
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.display,
     color: colors.lighttext,
-    textTransform: "uppercase"
+    textTransform: 'uppercase'
   },
   caption: {
     fontFamily: fonts.main,
@@ -132,9 +132,9 @@ export const textStyles = {
 
 // styled-system's `borderRadius` function can hook into the `radii` object/array
 export const radii = [0, 2, 6]
-export const radius = "2px"
+export const radius = '2px'
 
-export const maxContainerWidth = "1280px"
+export const maxContainerWidth = '1280px'
 
 // boxShadows
 export const boxShadows = [
@@ -153,9 +153,9 @@ export const duration = {
 }
 
 // animation easing curves
-const easeInOut = "cubic-bezier(0.5, 0, 0.25, 1)"
-const easeOut = "cubic-bezier(0, 0, 0.25, 1)"
-const easeIn = "cubic-bezier(0.5, 0, 1, 1)"
+const easeInOut = 'cubic-bezier(0.5, 0, 0.25, 1)'
+const easeOut = 'cubic-bezier(0, 0, 0.25, 1)'
+const easeIn = 'cubic-bezier(0.5, 0, 1, 1)'
 
 const timingFunctions = {
   easeInOut,
@@ -185,39 +185,39 @@ const button = {
     neutral: { default: pallettes.neutral[3], hover: pallettes.neutral[2] }
   },
   textStyles: {
-    sm: "body0",
-    md: "body1",
-    lg: "display2",
-    xl: "display3"
+    sm: 'body0',
+    md: 'body1',
+    lg: 'display2',
+    xl: 'display3'
   },
   sizes: {
     sm: {
-      minWidth: "80px",
-      p: "0"
+      minWidth: '80px',
+      p: '0'
     },
     md: {
-      minWidth: "96px",
-      py: "1",
-      px: "2"
+      minWidth: '96px',
+      py: '1',
+      px: '2'
     },
     lg: {
-      minWidth: "96px",
-      py: "3",
-      px: "4"
+      minWidth: '96px',
+      py: '3',
+      px: '4'
     },
     xl: {
-      minWidth: "96px",
-      py: "4",
-      px: "5"
+      minWidth: '96px',
+      py: '4',
+      px: '5'
     }
   },
   styles: {
     contained: {
-      colorAttribute: "bg"
+      colorAttribute: 'bg'
     },
     outlined: {
-      colorAttribute: "color",
-      boxShadow: "inset 0 0 0 2px"
+      colorAttribute: 'color',
+      boxShadow: 'inset 0 0 0 2px'
     }
   }
 }
