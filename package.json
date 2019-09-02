@@ -19,7 +19,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged --pattern './**/*.*(ts|tsx|json)'",
-      "pre-push": "yarn build && yarn test"
+      "pre-push": "yarn build"
     }
   },
   "scripts": {
