@@ -1,0 +1,464 @@
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { Select, SelectGroup, Flex, Box } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import Favorite from '@material-ui/icons/Favorite'
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
+import Input from '@material-ui/core/Input'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import FilledInput from '@material-ui/core/FilledInput'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+
+<Meta title="components|Select" component={Select} />
+
+# Select
+
+Selects can be used to choose from a list of more than two options.
+
+With forms, generally it is easier to use a (`TextField`)[component|Text Field]
+but example below show raw use.
+
+```js
+// TODO wix Widths
+// TODO remove material components
+```
+
+<Preview>
+  <Story name="default">
+    <FormControl m={2} width={200}>
+      <InputLabel htmlFor="age-simple">Age</InputLabel>
+      <Select
+        onChange={action('change')}
+        inputProps={{ name: 'age', id: 'age-simple' }}
+      >
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+    </FormControl>
+  </Story>
+  <Story name="with helper">
+    <FormControl m={2}>
+      <InputLabel htmlFor="age-helper">Age</InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<Input name="age" id="age-helper" />}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>Some important helper text</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="without label">
+    <FormControl m={2}>
+      <Select onChange={action('change')} displayEmpty name="age">
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>Without label</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="label+placeholder">
+    <FormControl m={2}>
+      <InputLabel shrink htmlFor="age-label-placeholder">
+        Age
+      </InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<Input name="age" id="age-label-placeholder" />}
+        displayEmpty
+        name="age"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>Label + placeholder</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="disabled">
+    <FormControl m={2} disabled>
+      <InputLabel htmlFor="name-disabled">Name</InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<Input name="name" id="name-disabled" />}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value="hai">Hai</MenuItem>
+        <MenuItem value="olivier">Olivier</MenuItem>
+        <MenuItem value="kevin">Kevin</MenuItem>
+      </Select>
+      <FormHelperText>Disabled</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="error">
+    <FormControl m={2} error>
+      <InputLabel htmlFor="name-error">Name</InputLabel>
+      <Select
+        onChange={action('change')}
+        name="name"
+        renderValue={value => `⚠️ - ${value}`}
+        input={<Input id="name-error" />}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value="hai">Hai</MenuItem>
+        <MenuItem value="olivier">Olivier</MenuItem>
+        <MenuItem value="kevin">Kevin</MenuItem>
+      </Select>
+      <FormHelperText>Error</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="read-only">
+    <FormControl m={2}>
+      <InputLabel htmlFor="name-readonly">Name</InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<Input name="name" id="name-readonly" readOnly />}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value="hai">Hai</MenuItem>
+        <MenuItem value="olivier">Olivier</MenuItem>
+        <MenuItem value="kevin">Kevin</MenuItem>
+      </Select>
+      <FormHelperText>Read only</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="auto width">
+    <FormControl m={2}>
+      <InputLabel htmlFor="age-auto-width">Age</InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<Input name="age" id="age-auto-width" />}
+        autoWidth
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>Auto width</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="display empty">
+    <FormControl m={2}>
+      <Select onChange={action('change')} name="age" displayEmpty>
+        <MenuItem value="" disabled>
+          Placeholder
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>Placeholder</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="required">
+    <FormControl m={2} required>
+      <InputLabel htmlFor="age-required">Age</InputLabel>
+      <Select
+        onChange={action('change')}
+        name="age"
+        inputProps={{
+          id: 'age-required'
+        }}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+      <FormHelperText>Required</FormHelperText>
+    </FormControl>
+  </Story>
+  <Story name="outlined">
+    <FormControl m={2} variant="outlined">
+      <InputLabel htmlFor="outlined-age-simple">Age</InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<OutlinedInput name="age" id="outlined-age-simple" />}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+    </FormControl>
+  </Story>
+  <Story name="filled">
+    <FormControl m={2} variant="filled">
+      <InputLabel htmlFor="filled-age-simple">Age</InputLabel>
+      <Select
+        onChange={action('change')}
+        input={<FilledInput name="age" id="filled-age-simple" />}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+    </FormControl>
+  </Story>
+</Preview>
+
+## With state
+
+<Preview>
+  <Story name="with state">
+    {React.createElement(() => {
+      const [values, setValues] = React.useState({
+        age: '',
+        name: 'hai'
+      })
+      const inputLabel = React.useRef(null)
+      const [labelWidth, setLabelWidth] = React.useState(0)
+      function handleChange(event) {
+        setValues(oldValues => ({
+          ...oldValues,
+          [event.target.name]: event.target.value
+        }))
+      }
+      return (
+        <form autoComplete="off">
+          <Flex flexDirection="column" justifyContent="space-around">
+            <FormControl m={2}>
+              <InputLabel htmlFor="age-simple">Age</InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                inputProps={{ name: 'age', id: 'age-simple' }}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl m={2}>
+              <InputLabel htmlFor="age-helper">Age</InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                input={<Input name="age" id="age-helper" />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+              <FormHelperText>Some important helper text</FormHelperText>
+            </FormControl>
+            <FormControl m={2}>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                displayEmpty
+                name="age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+              <FormHelperText>Without label</FormHelperText>
+            </FormControl>
+            <FormControl m={2}>
+              <InputLabel shrink htmlFor="age-label-placeholder">
+                Age
+              </InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                input={<Input name="age" id="age-label-placeholder" />}
+                displayEmpty
+                name="age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+              <FormHelperText>Label + placeholder</FormHelperText>
+            </FormControl>
+            <FormControl m={2} disabled>
+              <InputLabel htmlFor="name-disabled">Name</InputLabel>
+              <Select
+                value={values.name}
+                onChange={handleChange}
+                input={<Input name="name" id="name-disabled" />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="hai">Hai</MenuItem>
+                <MenuItem value="olivier">Olivier</MenuItem>
+                <MenuItem value="kevin">Kevin</MenuItem>
+              </Select>
+              <FormHelperText>Disabled</FormHelperText>
+            </FormControl>
+            <FormControl m={2} error>
+              <InputLabel htmlFor="name-error">Name</InputLabel>
+              <Select
+                value={values.name}
+                onChange={handleChange}
+                name="name"
+                renderValue={value => `⚠️ - ${value}`}
+                input={<Input id="name-error" />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="hai">Hai</MenuItem>
+                <MenuItem value="olivier">Olivier</MenuItem>
+                <MenuItem value="kevin">Kevin</MenuItem>
+              </Select>
+              <FormHelperText>Error</FormHelperText>
+            </FormControl>
+            <FormControl m={2}>
+              <InputLabel htmlFor="name-readonly">Name</InputLabel>
+              <Select
+                value={values.name}
+                onChange={handleChange}
+                input={<Input name="name" id="name-readonly" readOnly />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="hai">Hai</MenuItem>
+                <MenuItem value="olivier">Olivier</MenuItem>
+                <MenuItem value="kevin">Kevin</MenuItem>
+              </Select>
+              <FormHelperText>Read only</FormHelperText>
+            </FormControl>
+            <FormControl m={2}>
+              <InputLabel htmlFor="age-auto-width">Age</InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                input={<Input name="age" id="age-auto-width" />}
+                autoWidth
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+              <FormHelperText>Auto width</FormHelperText>
+            </FormControl>
+            <FormControl m={2}>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                name="age"
+                displayEmpty
+              >
+                <MenuItem value="" disabled>
+                  Placeholder
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+              <FormHelperText>Placeholder</FormHelperText>
+            </FormControl>
+            <FormControl m={2} required>
+              <InputLabel htmlFor="age-required">Age</InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                name="age"
+                inputProps={{
+                  id: 'age-required'
+                }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+              <FormHelperText>Required</FormHelperText>
+            </FormControl>
+            <FormControl m={2} variant="outlined">
+              <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
+                Age
+              </InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                input={<OutlinedInput name="age" id="outlined-age-simple" />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl m={2} variant="filled">
+              <InputLabel htmlFor="filled-age-simple">Age</InputLabel>
+              <Select
+                value={values.age}
+                onChange={handleChange}
+                input={<FilledInput name="age" id="filled-age-simple" />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+          </Flex>
+        </form>
+      )
+    })}
+  </Story>
+</Preview>
+
+## With Labels
+
+## Props
+
+<Props of={Select} />

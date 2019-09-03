@@ -1,0 +1,66 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Avatar, theme, Flex } from '../../'
+import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
+import FolderIcon from '@material-ui/icons/Folder'
+import PageviewIcon from '@material-ui/icons/Pageview'
+import AssignmentIcon from '@material-ui/icons/Assignment'
+
+<Meta title="components|Avatar" component={Avatar} />
+
+```js
+// TODO remove material components
+```
+
+# Avatar
+
+<Preview>
+  <Story name="simple">
+    <Flex>
+      <Avatar m={1} alt="John Smith" src={image} />
+      <Avatar m={1} alt="John Smith" src={image} size="60px" />
+    </Flex>
+  </Story>
+</Preview>
+
+## Letter based
+
+<Preview>
+  <Story name="letter based">
+    <Flex>
+      <Avatar m={1} bg="palette.primary">
+        H
+      </Avatar>
+      <Avatar m={1} bg="palette.success">
+        N
+      </Avatar>
+      <Avatar m={1} bg="palette.warning">
+        OP
+      </Avatar>
+      <Avatar m={1} bg="primary.main">
+        H
+      </Avatar>
+    </Flex>
+  </Story>
+</Preview>
+
+## Icons
+
+<Preview>
+  <Story name="icons">
+    <Flex>
+      <Avatar m={1}>
+        <FolderIcon />
+      </Avatar>
+      <Avatar m={1} bg="black" color="LightBlue">
+        <PageviewIcon />
+      </Avatar>
+      <Avatar m={1} bg="primary.light" color="LightGrey">
+        <AssignmentIcon />
+      </Avatar>
+    </Flex>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Avatar} />

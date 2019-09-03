@@ -8,6 +8,9 @@ node_modules
 build
 dist
 .rpt2_cache
+lib
+lib-esm
+_bundles
 
 # misc
 .DS_Store

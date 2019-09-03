@@ -1,50 +1,25 @@
-import * as React from "react"
-import styled from "styled-components"
+import * as React from 'react'
 import {
-  color,
-  ColorProps,
-  fontSize,
-  FontSizeProps,
-  lineHeight,
-  LineHeightProps,
-  space,
-  SpaceProps,
-  textAlign,
-  TextAlignProps,
-  textStyle,
-  TextStyleProps,
-  fontFamily,
-  FontFamilyProps
-} from "styled-system"
-import { theme, ThemeProps, withTheme } from "../../theme"
+  compose,
+  spacing,
+  flexbox,
+  SpacingProps,
+  FlexboxProps
+} from '@material-ui/system'
+import { styled } from '@material-ui/styles'
+import MaterialTypography, {
+  TypographyProps as MaterialTypographyProps
+} from '@material-ui/core/Typography'
 
-export type TypographyProps = ThemeProps &
-  TextAlignProps &
-  SpaceProps &
-  ColorProps
+export type TypographyProps = MaterialTypographyProps &
+  SpacingProps &
+  FlexboxProps
 
-export type InnerTypographyProps = TypographyProps &
-  FontFamilyProps &
-  TextStyleProps &
-  FontSizeProps &
-  LineHeightProps & { as?: any }
-
-export const InnerTypography = styled.div<InnerTypographyProps>`
-  ${fontFamily}
-  ${textStyle}
-  ${fontSize}
-  ${textAlign}
-  ${lineHeight}
-  ${space}
-  ${color}
-  `
-
-export const Typography: React.FC<InnerTypographyProps> = withTheme(
-  InnerTypography
+export const Typography = styled(MaterialTypography)(
+  compose(
+    spacing,
+    flexbox
+  )
 )
 
-Typography.defaultProps = {
-  theme: theme
-}
-
-export default Typography
+export default Typography as React.FC<TypographyProps>

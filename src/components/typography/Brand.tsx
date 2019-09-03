@@ -1,26 +1,16 @@
-import * as React from "react"
-import styled from "styled-components"
-import { theme, withTheme } from "../../theme"
-import Typography from "./Typography"
-import { TypographyProps } from "./Typography"
+import * as React from 'react'
+import { Typography, TypographyProps } from './Typography'
+import { styled } from '@material-ui/styles'
+import { fonts, colors } from '../../theme'
 
-export type BrandProps = TypographyProps
+export type BrandProps = TypographyProps & { fontSize: number }
 
-export const Brand: React.FC<BrandProps> = withTheme(styled(Typography)<
-  BrandProps & { as?: any }
->`
-  font-family: "FreeSans";
-  font-style: normal;
-  text-transform: lowercase;
-  font-weight: 500;
-  font-size: 50px;
-  color: #454545;
-`)
-
-Brand.defaultProps = {
-  theme: theme
-}
-
-Brand.displayName = "Brand"
+export const Brand = styled((props: BrandProps) => (
+  <Typography {...props} variant="body1" component="pre" />
+))(({ fontSize, color }: BrandProps) => ({
+  fontFamily: fonts.families.brand,
+  fontSize: fonts.sizes[fontSize ? fontSize : 0],
+  color: color ? undefined : colors.committedGrey[700]
+}))
 
 export default Brand

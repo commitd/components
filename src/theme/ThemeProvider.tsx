@@ -1,41 +1,14 @@
-import * as React from "react"
-import styled, { ThemeProvider as StyledThemeProvider } from "styled-components"
-import nextTheme from "./theme"
-import GlobalStyle from "./GlobalStyle"
-export { withTheme } from "styled-components"
+import * as React from 'react'
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import * as theme from './theme'
 
-export const Base = styled.div`
-  font-size: ${props => props.theme.fontSize};
-  font-family: ${props => props.theme.font};
-  line-height: ${props => props.theme.lineHeights.standard};
-  font-weight: ${props => props.theme.fontWeights.medium};
+const muiTheme = responsiveFontSizes(createMuiTheme(theme.light))
 
-  * {
-    box-sizing: border-box;
-  }
-`
-
-interface ThemeProviderProps {
-  /** Array of pixel values for custom breakpoint overrides */
-  customBreakpoints?: number[]
-}
-
-export default class ThemeProvider extends React.Component<ThemeProviderProps> {
-  public render() {
-    const { customBreakpoints } = this.props
-    const breakpoints = customBreakpoints || nextTheme.breakpoints
-    const theme = {
-      ...nextTheme,
-      breakpoints
-    }
-
-    return (
-      <>
-        <GlobalStyle />
-        <StyledThemeProvider theme={theme}>
-          <Base {...this.props} />
-        </StyledThemeProvider>
-      </>
-    )
-  }
-}
+export const ThemeProvider = (props: any) => (
+  <MuiThemeProvider theme={muiTheme}>
+    <CssBaseline />
+    <div {...props} />
+  </MuiThemeProvider>
+)

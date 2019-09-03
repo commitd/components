@@ -1,0 +1,123 @@
+import { Button } from '../../'
+import { Cartesian } from '@compositor/kit'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+
+<Meta title="components|Button" component={Button} />
+
+# Button
+
+Buttons make common actions immediately visible and easy to perform with one click or tap. They can be used for any type of action, including navigation.
+
+<Preview>
+  <Story name="default">
+    <Button margin={2}>Hello</Button>
+  </Story>
+</Preview>
+
+# Contained
+
+This is the default style for the button, and should be used for the primary action.
+
+<Preview>
+  <Story name="default">
+    <Button>Default</Button>
+  </Story>
+  <Story name="primary">
+    <Button color="primary">Primary</Button>
+  </Story>
+  <Story name="secondary">
+    <Button color="secondary">Secondary</Button>
+  </Story>
+</Preview>
+
+# variants
+
+Some button variants are available and should be used for secondary buttons such as "cancel".
+
+## Outlined
+
+Use outlined for lower emphisis actions.
+
+<Preview>
+  <Story name="outlined default">
+    <Button variant="outlined">Default</Button>
+  </Story>
+  <Story name="outlined primary">
+    <Button variant="outlined" color="primary">
+      Primary
+    </Button>
+  </Story>
+  <Story name="outlined secondary">
+    <Button variant="outlined" color="secondary">
+      Secondary
+    </Button>
+  </Story>
+</Preview>
+
+## Text
+
+Use the "text" variant for lower emphisis actions or for paring with a main action.
+
+<Preview>
+  <Story name="text default">
+    <Button variant="text">Default</Button>
+  </Story>
+  <Story name="text primary">
+    <Button variant="text" color="primary">
+      Primary
+    </Button>
+  </Story>
+  <Story name="text secondary">
+    <Button variant="text" color="secondary">
+      Secondary
+    </Button>
+  </Story>
+</Preview>
+
+# Size
+
+<Preview>
+  <Story name="small">
+    <Button size="small" color="primary">
+      Small
+    </Button>
+  </Story>
+  <Story name="medium">
+    <Button size="medium" color="primary">
+      Medium
+    </Button>
+  </Story>
+  <Story name="large">
+    <Button size="large" color="primary">
+      Large
+    </Button>
+  </Story>
+</Preview>
+
+# Disabled
+
+Disabled button loose their color, in all styles.
+
+<Preview>
+  <Story name="disabled primary">
+    <Button disabled={true} color="primary">
+      Contained
+    </Button>
+  </Story>
+  <Story name="disabled outlined">
+    <Button disabled={true} variant="outlined" color="primary">
+      Outlined
+    </Button>
+  </Story>
+  <Story name="disabled text">
+    <Button disabled={true} variant="text" color="primary">
+      Text
+    </Button>
+  </Story>
+</Preview>
+
+## Props
+
+Main props for buttons, excluding normal spacing props, see [Box](/components/box).
+
+<Props of={Button} />

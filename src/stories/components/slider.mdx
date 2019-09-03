@@ -1,0 +1,151 @@
+import { Slider, Typography, Box } from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
+
+<Meta title="components|Slider" component={Slider} />
+
+# Slider
+
+Allows for selection from a (numeric) range of values.
+
+<Preview>
+  <Story name="examples">
+    {React.createElement(() => {
+      const marks = [
+        {
+          value: 0,
+          label: '0°C'
+        },
+        {
+          value: 20,
+          label: '20°C'
+        },
+        {
+          value: 37,
+          label: '37°C'
+        },
+        {
+          value: 100,
+          label: '100°C'
+        }
+      ]
+      function valuetext(value) {
+        return `${value}°C`
+      }
+      function valueLabelFormat(value) {
+        return marks.findIndex(mark => mark.value === value) + 1
+      }
+      return (
+        <div>
+          <Typography id="discrete-slider">Temperature</Typography>
+          <Slider
+            defaultValue={30}
+            getAriaValueText={valuetext}
+            aria-labelledby="discrete-slider"
+            valueLabelDisplay="auto"
+            step={10}
+            marks
+            min={10}
+            max={110}
+          /> <Typography mt={4} id="discrete-slider-small-steps">
+            Small steps
+          </Typography>
+          <Slider
+            defaultValue={0.00000005}
+            getAriaValueText={valuetext}
+            aria-labelledby="discrete-slider-small-steps"
+            step={0.00000001}
+            marks
+            min={-0.00000005}
+            max={0.0000001}
+            valueLabelDisplay="auto"
+          />
+          <Typography mt={4} id="discrete-slider-custom">
+            Custom marks
+          </Typography>
+          <Slider
+            defaultValue={20}
+            getAriaValueText={valuetext}
+            aria-labelledby="discrete-slider-custom"
+            step={10}
+            valueLabelDisplay="auto"
+            marks={marks}
+          />
+          <Typography mt={4} id="discrete-slider-restrict">
+            Restricted values
+          </Typography>
+          <Slider
+            defaultValue={20}
+            valueLabelFormat={valueLabelFormat}
+            getAriaValueText={valuetext}
+            aria-labelledby="discrete-slider-restrict"
+            step={null}
+            valueLabelDisplay="auto"
+            marks={marks}
+          />
+          <Typography mt={4} id="discrete-slider-always">
+            Always visible
+          </Typography>
+          <Slider
+            defaultValue={80}
+            getAriaValueText={valuetext}
+            aria-labelledby="discrete-slider-always"
+            step={10}
+            marks={marks}
+            valueLabelDisplay="on"
+          />
+        </div>
+      )
+    })}
+  </Story>
+</Preview>
+
+# Variants
+
+## Disabled
+
+<Preview>
+  <Story name="disabled">
+    <Slider
+      value={30}
+      onChange={action('changed')}
+      disabled={true}
+      aria-labelledby="disabled-slider"
+    />
+  </Story>
+</Preview>
+
+## Continuous
+
+<Preview>
+  <Story name="continuous">
+    <Slider onChange={action('changed')} aria-labelledby="continuous-slider" />
+  </Story>
+</Preview>
+
+## Range
+
+<Preview>
+  <Story name="range">
+    <Slider
+      defaultValue={[20, 37]}
+      onChange={action('changed')}
+      valueLabelDisplay="auto"
+      aria-labelledby="range-slider"
+    />
+  </Story>
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story name="vertical">
+    <Slider
+      height={300}
+      orientation="vertical"
+      onChange={action('changed')}
+      defaultValue={30}
+      aria-labelledby="vertical-slider"
+    />
+  </Story>
+</Preview>

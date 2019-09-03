@@ -1,32 +1,12 @@
-import * as React from "react"
-import { BoxProps, Box } from "../box/Box"
-import styled from "styled-components"
-import {
-  FlexDirectionProps,
-  FlexWrapProps,
-  AlignItemsProps,
-  JustifyContentProps,
-  flexWrap,
-  flexDirection,
-  alignItems,
-  justifyContent
-} from "styled-system"
+import * as React from 'react'
+import { BoxProps, Box } from '../box/Box'
+import { styled } from '@material-ui/styles'
 
-export type MainFlexProps = FlexDirectionProps &
-  FlexWrapProps &
-  AlignItemsProps &
-  JustifyContentProps
+export type FlexProps = Omit<BoxProps, 'display'>
 
-export type FlexProps = BoxProps & MainFlexProps
+export const Flex: React.ComponentType<FlexProps> = styled(Box)({
+  display: 'flex'
+})
+Flex.displayName = 'Flex'
 
-export const Flex = styled(Box)<FlexProps>`
-{
-  display: flex
-},
-${flexWrap}
-${flexDirection}
-${alignItems}
-${justifyContent}
-`
-
-export default Flex as React.FC<FlexProps>
+export default Flex

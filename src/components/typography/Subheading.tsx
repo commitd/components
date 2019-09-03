@@ -1,54 +1,82 @@
-import * as React from "react"
-import { Typography, TypographyProps } from "./Typography"
+import * as React from 'react'
+import { Typography, TypographyProps } from './Typography'
+import { withStyles } from '@material-ui/styles'
+import { grey } from '@material-ui/core/colors'
+
+// Work out correct way to use theme sizes
+const styles = {
+  h1: {
+    fontSize: '50px',
+    color: grey[500]
+  },
+  h2: {
+    fontSize: '40px',
+    color: grey[500]
+  },
+  h3: {
+    fontSize: '30px',
+    color: grey[500]
+  },
+  h4: {
+    fontSize: '20px',
+    color: grey[500]
+  },
+  h5: {
+    fontSize: '10px',
+    color: grey[500]
+  }
+}
 
 export type SubheadingProps = TypographyProps
+type StyledSubheadingProps = SubheadingProps & { classes: any }
 
 export const Subheading: {
-  h1: React.FC<SubheadingProps>
-  h2: React.FC<SubheadingProps>
-  h3: React.FC<SubheadingProps>
-  h4: React.FC<SubheadingProps>
-  h5: React.FC<SubheadingProps>
-  h6: React.FC<SubheadingProps>
+  h1: React.ComponentType<SubheadingProps>
+  h2: React.ComponentType<SubheadingProps>
+  h3: React.ComponentType<SubheadingProps>
+  h4: React.ComponentType<SubheadingProps>
+  h5: React.ComponentType<SubheadingProps>
 } = {
-  h1: props => (
+  h1: withStyles(styles)((props: StyledSubheadingProps) => (
     <Typography
-      as="span"
-      textStyle="subheading"
-      fontSize={[4, 5, 6]}
       {...props}
+      className={props.classes.h1}
+      variant="subtitle1"
+      component="h2"
     />
-  ),
-  h2: props => (
+  )),
+  h2: withStyles(styles)((props: StyledSubheadingProps) => (
     <Typography
-      as="span"
-      textStyle="subheading"
-      fontSize={[3, 4, 5]}
       {...props}
+      className={props.classes.h2}
+      variant="subtitle1"
+      component="h3"
     />
-  ),
-  h3: props => (
+  )),
+  h3: withStyles(styles)((props: StyledSubheadingProps) => (
     <Typography
-      as="span"
-      textStyle="subheading"
-      fontSize={[3, 3, 4]}
       {...props}
+      className={props.classes.h3}
+      variant="subtitle1"
+      component="h4"
     />
-  ),
-  h4: props => (
+  )),
+  h4: withStyles(styles)((props: StyledSubheadingProps) => (
     <Typography
-      as="span"
-      textStyle="subheading"
-      fontSize={[3, 3, 3]}
       {...props}
+      className={props.classes.h4}
+      variant="subtitle1"
+      component="h5"
     />
-  ),
-  h5: props => (
-    <Typography as="span" textStyle="subheading" fontSize={[2, 3]} {...props} />
-  ),
-  h6: props => (
-    <Typography as="span" textStyle="subheading" fontSize={[2]} {...props} />
-  )
+  )),
+  h5: withStyles(styles)((props: StyledSubheadingProps) => (
+    <Typography
+      {...props}
+      className={props.classes.h5}
+      variant="subtitle1"
+      component="h6"
+    />
+  ))
 }
 
 export default Subheading
