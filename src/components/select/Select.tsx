@@ -10,7 +10,7 @@ import MaterialSelect, {
   SelectProps as MaterialSelectProps
 } from '@material-ui/core/Select'
 import { styled } from '@material-ui/styles'
-import { OutlinedInput } from '../'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
 
 export type BaseSelectProps = MaterialSelectProps & {
   /**
