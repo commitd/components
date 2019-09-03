@@ -31,3 +31,24 @@ export { Typography } from './typography/Typography'
 export { Toolbar } from './toolbar/Toolbar'
 export { Text, Span, Paragraph } from './typography/Text'
 export { Subheading } from './typography/Subheading'
+
+// Direct from material_link
+import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormLabel from '@material-ui/core/FormLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+
+export {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  FormGroup,
+  FormHelperText,
+  Input,
+  InputLabel,
+  OutlinedInput
+}
