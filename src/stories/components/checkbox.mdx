@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import { Checkbox, Flex, Text } from '../../'
+import { Checkbox, Flex, Text, Icons } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import Favorite from '@material-ui/icons/Favorite'
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 
 <Meta title="components|Checkbox" component={Checkbox} />
 
@@ -84,7 +82,10 @@ Use when single select/deselect option, use radio when one option of more then t
     />
   </Story>
   <Story name="custom icon">
-    <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+    <Checkbox
+      icon={<Icons.FavoriteBorder />}
+      checkedIcon={<Icons.Favorite />}
+    />
   </Story>
 </Preview>
 

@@ -1,13 +1,18 @@
-import { Icon } from '../../'
+import { Icon, Icons } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Icon" component={Icon} />
 
 # Icon
 
-<Playground>
-  <Icon>Icon</Icon>
-</Playground>
+<Preview>
+  <Story name="icons">
+    {React.createElement(() => {
+      const icons = Object.keys(Icons)
+      return <div>{icons.map(key => React.createElement(Icons[key]))}</div>
+    })}
+  </Story>
+</Preview>
 
 ## Props
 

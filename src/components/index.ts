@@ -52,3 +52,5 @@ export {
   InputLabel,
   OutlinedInput
 }
+
+export { Icons } from './icon'

@@ -1,15 +1,8 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { Avatar, theme, Flex } from '../../'
+import { Avatar, theme, Flex, Icons } from '../../'
 import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
-import FolderIcon from '@material-ui/icons/Folder'
-import PageviewIcon from '@material-ui/icons/Pageview'
-import AssignmentIcon from '@material-ui/icons/Assignment'
 
 <Meta title="components|Avatar" component={Avatar} />
-
-```js
-// TODO remove material components
-```
 
 # Avatar
 
@@ -49,13 +42,13 @@ import AssignmentIcon from '@material-ui/icons/Assignment'
   <Story name="icons">
     <Flex>
       <Avatar m={1}>
-        <FolderIcon />
+        <Icons.Folder />
       </Avatar>
       <Avatar m={1} bg="black" color="LightBlue">
-        <PageviewIcon />
+        <Icons.Pageview />
       </Avatar>
       <Avatar m={1} bg="primary.light" color="LightGrey">
-        <AssignmentIcon />
+        <Icons.Assignment />
       </Avatar>
     </Flex>
   </Story>

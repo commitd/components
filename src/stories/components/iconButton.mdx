@@ -1,7 +1,4 @@
-import { IconButton } from '../../'
-import DeleteIcon from '@material-ui/icons/Delete'
-import AlarmIcon from '@material-ui/icons/Alarm'
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import { IconButton, Icons } from '../../'
 import { action } from '@storybook/addon-actions'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
@@ -22,7 +19,7 @@ such as adding or removing a star to an item.
 <Preview>
   <Story name="default">
     <IconButton onClick={action('delete')} aria-label="delete">
-      <DeleteIcon />
+      <Icons.Delete />
     </IconButton>
   </Story>
   <Story name="disabled">
@@ -32,7 +29,7 @@ such as adding or removing a star to an item.
       disabled
       color="primary"
     >
-      <DeleteIcon />
+      <Icons.Delete />
     </IconButton>
   </Story>
   <Story name="primary">
@@ -41,7 +38,7 @@ such as adding or removing a star to an item.
       color="secondary"
       aria-label="add an alarm"
     >
-      <AlarmIcon />
+      <Icons.Alarm />
     </IconButton>
   </Story>
   <Story name="secondary">
@@ -50,7 +47,7 @@ such as adding or removing a star to an item.
       color="primary"
       aria-label="add to shopping cart"
     >
-      <AddShoppingCartIcon />
+      <Icons.AddShoppingCart />
     </IconButton>
   </Story>
 </Preview>

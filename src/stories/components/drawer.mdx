@@ -1,7 +1,3 @@
-import MailIcon from '@material-ui/icons/Mail'
-import MenuIcon from '@material-ui/icons/Menu'
-import InboxIcon from '@material-ui/icons/Inbox'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import {
   List,
   ListItem,
@@ -18,7 +14,8 @@ import {
   Hidden,
   Text,
   Toolbar,
-  Paragraph
+  Paragraph,
+  Icons,
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import {
@@ -76,7 +73,7 @@ import {
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <Icons.Inbox /> : <Icons.Mail />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -87,7 +84,7 @@ import {
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <Icons.Inbox /> : <Icons.Mail />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -97,7 +94,6 @@ import {
       )
       return (
         <Flex ml={240} width={{ sm: `calc(100% - 240px)` }}>
-          <CssBaseline />
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
               <IconButton
@@ -107,7 +103,7 @@ import {
                 onClick={handleDrawerToggle}
                 className={classes.menuButton}
               >
-                <MenuIcon />
+                <Icons.Menu />
               </IconButton>
               <Typography variant="h6" noWrap>
                 Responsive drawer

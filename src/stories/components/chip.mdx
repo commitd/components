@@ -1,15 +1,9 @@
-import { Chip, Flex, Avatar } from '../../'
+import { Chip, Flex, Avatar, Icons } from '../../'
 import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
-import FaceIcon from '@material-ui/icons/Face'
-import DoneIcon from '@material-ui/icons/Done'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
 
 <Meta title="components|Chip" component={Chip} />
-
-```js
-// TODO remove material components
-```
 
 # Chip
 
@@ -35,7 +29,7 @@ import { action } from '@storybook/addon-actions'
     <Chip
       avatar={
         <Avatar>
-          <FaceIcon />
+          <Icons.Face />
         </Avatar>
       }
       label="Clickable Deletable Chip"
@@ -45,7 +39,7 @@ import { action } from '@storybook/addon-actions'
   </Story>
   <Story name="With Icon and Delete">
     <Chip
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Icon Deletable Chip"
       clickable={true}
       onClick={action('clicked')}
@@ -57,7 +51,7 @@ import { action } from '@storybook/addon-actions'
       label="Custom delete icon Chip"
       onClick={action('clicked')}
       onDelete={action('deleted')}
-      deleteIcon={<DoneIcon />}
+      deleteIcon={<Icons.Done />}
     />
   </Story>
   <Story name="Clickable Link Chip">
@@ -71,7 +65,7 @@ import { action } from '@storybook/addon-actions'
       color="primary"
       onClick={action('clicked')}
       onDelete={action('deleted')}
-      deleteIcon={<DoneIcon />}
+      deleteIcon={<Icons.Done />}
     />
   </Story>
   <Story name="Deletable Primary Chip">
@@ -85,7 +79,7 @@ import { action } from '@storybook/addon-actions'
     <Chip
       avatar={
         <Avatar>
-          <FaceIcon />
+          <Icons.Face />
         </Avatar>
       }
       label="Deletable Secondary Chip"
@@ -95,7 +89,7 @@ import { action } from '@storybook/addon-actions'
   </Story>
   <Story name="Deletable Secondary Chip With Icon">
     <Chip
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Deletable Secondary Chip"
       onDelete={action('deleted')}
       color="secondary"
@@ -111,7 +105,7 @@ There is also an outlined variant
   <Story name="Outlined default">
     <Chip
       variant="outlined"
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Chip"
       onClick={action('clicked')}
       onDelete={action('deleted')}
@@ -121,7 +115,7 @@ There is also an outlined variant
   <Story name="Outlined primary">
     <Chip
       variant="outlined"
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Chip"
       onClick={action('clicked')}
       onDelete={action('deleted')}
@@ -131,7 +125,7 @@ There is also an outlined variant
   <Story name="Outlined secondary">
     <Chip
       variant="outlined"
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Chip"
       onClick={action('clicked')}
       onDelete={action('deleted')}
@@ -148,7 +142,7 @@ There is also a small size
   <Story name="small default">
     <Chip
       size="small"
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Chip"
       onClick={action('clicked')}
       onDelete={action('deleted')}
@@ -159,7 +153,7 @@ There is also a small size
     <Chip
       size="small"
       variant="outlined"
-      icon={<FaceIcon />}
+      icon={<Icons.Face />}
       label="Chip"
       onClick={action('clicked')}
       onDelete={action('deleted')}
