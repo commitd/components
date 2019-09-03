@@ -13,6 +13,8 @@ export { Divider } from './divider/Divider'
 export { Display } from './typography/Display'
 export { Drawer } from './drawer/Drawer'
 export { Flex } from './flex/Flex'
+export { Form } from './form/Form'
+export { FormControl } from './form/FormControl'
 export { Heading } from './typography/Heading'
 export { Hidden } from './hidden/Hidden'
 export { Icon } from './icon/Icon'
@@ -30,11 +32,11 @@ export { Switch } from './switch/Switch'
 export { Table } from './table/Table'
 export { Typography } from './typography/Typography'
 export { Toolbar } from './toolbar/Toolbar'
+export { TextField } from './textfield/TextField'
 export { Text, Span, Paragraph } from './typography/Text'
 export { Subheading } from './typography/Subheading'
 
 // Direct from material_link
-import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormGroup from '@material-ui/core/FormGroup'
@@ -42,6 +44,17 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
+import Collapse from '@material-ui/core/Collapse'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListSubheader from '@material-ui/core/ListSubheader'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableFooter from '@material-ui/core/TableFooter'
@@ -51,14 +64,24 @@ import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 
 export {
-  FormControl,
   FormControlLabel,
   FormLabel,
   FormGroup,
   FormHelperText,
   Input,
   InputLabel,
-  OutlinedInput
+  OutlinedInput,
+  Menu,
+  MenuItem,
+  MenuList,
+  Collapse,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  ListSubheader,
   TableBody,
   TableCell,
   TableFooter,
