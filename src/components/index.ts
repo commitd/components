@@ -27,6 +27,7 @@ export { RadioGroup } from './radio/RadioGroup'
 export { Select } from './select/Select'
 export { Slider } from './slider/Slider'
 export { Switch } from './switch/Switch'
+export { Table } from './table/Table'
 export { Typography } from './typography/Typography'
 export { Toolbar } from './toolbar/Toolbar'
 export { Text, Span, Paragraph } from './typography/Text'
@@ -41,6 +42,13 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableFooter from '@material-ui/core/TableFooter'
+import TableHead from '@material-ui/core/TableHead'
+import TablePagination from '@material-ui/core/TablePagination'
+import TableRow from '@material-ui/core/TableRow'
+import TableSortLabel from '@material-ui/core/TableSortLabel'
 
 export {
   FormControl,
@@ -51,6 +59,13 @@ export {
   Input,
   InputLabel,
   OutlinedInput
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel
 }
 
 export { Icons } from './icon'
