@@ -28,7 +28,7 @@ export const withWrapper = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
   overrides?: Partial<P>
 ) =>
-  class WithWraper extends React.Component<P & WithWrapperProps> {
+  class WithWrapper extends React.Component<P & WithWrapperProps> {
     displayName = `WithWrapper(${getDisplayName(WrappedComponent)})`
 
     render() {
