@@ -11,7 +11,7 @@ dist
 lib
 lib-esm
 _bundles
-
+docs
 # misc
 .DS_Store
 .env
