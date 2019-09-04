@@ -1,10 +1,7 @@
-name: Builld
+name: Build
 
 on:
   pull_request:
-    branches:
-      - master
-  push:
     branches:
       - master
 
