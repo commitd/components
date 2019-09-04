@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-yarn add @committed/components
+yarn add @commitd/components
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ yarn add @committed/components
 ```tsx
 import * as React from 'react'
 
-import MyComponent from '@committed/components'
+import MyComponent from '@commitd/components'
 
 class Example extends React.Component {
   render() {
