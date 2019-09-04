@@ -1,21 +1,20 @@
-name: CI
+name: Builld
 
-on:   
+on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - uses: Borales/actions-yarn@master
-        run: install
-      - uses: Borales/actions-yarn@master
-        run: build
+      - run: yarn install
+      - run: yarn build
