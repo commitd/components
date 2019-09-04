@@ -17,8 +17,8 @@ export { Form } from './form/Form'
 export { FormControl } from './form/FormControl'
 export { Heading } from './typography/Heading'
 export { Hidden } from './hidden/Hidden'
-export { Icon } from './icon/Icon'
 export { IconButton } from './iconbutton/IconButton'
+export { Icons } from './icons/Icons'
 export { Link } from './link/Link'
 export { Loader } from './loader/Loader'
 export { Logo } from './logo/Logo'
@@ -90,5 +90,3 @@ export {
   TableRow,
   TableSortLabel
 }
-
-export { Icons } from './icon'
