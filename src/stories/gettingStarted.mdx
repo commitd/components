@@ -4,10 +4,11 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Getting Started
 
+Ensure you have setup access to the github @commitd packages, by following these [instructions](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry).
 Install the design system in your application
 
 ```sh
-yarn add @committed/components
+yarn add @commitd/components
 ```
 
 ## ThemeProvider
@@ -32,17 +33,6 @@ class App extends React.Component {
 }
 ```
 
-## Montserrat font
-
-To use the Montserrat font-family in you project, be sure to include a link in your document `<head>`.
-
-```html
-<link
-  href="https://fonts.googleapis.com/css?family=Montserrat:400,600"
-  rel="stylesheet"
-/>
-```
-
 ## Primitive UI Components
 
 Import and use the design system UI components in your application.
@@ -56,4 +46,18 @@ const SomeView = props => (
     <Text color="blue">Hello</Text>
   </Box>
 )
+```
+
+## Material-UI
+
+The system is implemented using [@material-ui](https://material-ui.com), but does not support all components from it.
+Any unsupported components can be used directly from material-ui and it will still receive the Committed theming.
+The components are documented here but further detail may be required form material-ui.
+
+## Icons
+
+We currently use the Sharp icons from @material-ui/icons exposed on the `Icons` component. In order to use this you must add the peer dependency:
+
+```sh
+yarn add @material-ui/icons
 ```
