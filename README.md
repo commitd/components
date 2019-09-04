@@ -2,7 +2,7 @@
 
 > Committed Component Library
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+For documentation see https://committed.software/components
 
 ## Install
 
@@ -26,7 +26,11 @@ class Example extends React.Component {
 
 ## Development
 
-The main build is currently performed using Rollup and `yarn build`.
+The main build is currently performed using Rollup:
+
+```bash
+yarn build
+```
 
 However, to experiment we currently have a webpack and straight typescript builds, `yarn webpack` and `yarn tsc` respectively.
 We expect to down-select later to have a single build system.
@@ -37,11 +41,9 @@ We use storybook to develop and document the components, this is run in developm
 yarn storybook
 ```
 
-and to create a production version
+## CI
 
-```bash
-yarn build-storybook
-```
+Pull requests go through CI checks using GitHub actions. Merged pull requests to master update the deployed documentation and can update the package in the GitHub registry if the version number is updated.
 
 ## License
 
