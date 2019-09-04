@@ -19,7 +19,7 @@ var config = {
     path: PATHS.bundles,
     filename: '[name].js',
     libraryTarget: 'umd',
-    library: '@committed/components',
+    library: '@committd/components',
     umdNamedDefine: true
   },
   // Add resolve for `tsx` and `ts` files, otherwise Webpack would
