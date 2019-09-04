@@ -35,7 +35,8 @@
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "format": "prettier --write '{src/**/*.ts,*.json}'",
+    "format": "prettier --write '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
+    "format-check": "prettier --check '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
     "tsc": "tsc -m commonjs && tsc -m es6 --outDir lib-esm",
     "webpack": "webpack --mode=production",
     "deploy-storybook": "storybook-to-ghpages"
