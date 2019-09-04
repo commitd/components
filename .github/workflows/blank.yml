@@ -16,6 +16,6 @@ jobs:
         with:
           node-version: 12
       - uses: Borales/actions-yarn@master
-        with: install
+        run: install
       - uses: Borales/actions-yarn@master
-        with: build
+        run: build
