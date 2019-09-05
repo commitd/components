@@ -24,7 +24,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged --pattern './**/*.*(ts|tsx|json)'",
-      "pre-push": "yarn build"
+      "pre-push": "yarn build && yarn test"
     }
   },
   "scripts": {
