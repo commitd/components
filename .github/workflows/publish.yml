@@ -16,9 +16,9 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: yarn install
       - run: yarn build
-      - run: yarn deploy-storybook --ci --host-token-env-variable=$GITHUB_TOKEN
+      - run: yarn deploy-storybook --ci
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}:x-oauth-basic
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

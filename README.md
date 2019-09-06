@@ -1,6 +1,7 @@
 # Committed Components
 
-> Committed Component Library
+![](https://github.com/commitd/components/workflows/Build/badge.svg)
+![](https://github.com/commitd/components/workflows/Publish/badge.svg)
 
 For documentation see https://committed.software/components
 
