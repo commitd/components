@@ -1,7 +1,7 @@
 # Committed Components
 
-![](https://github.com/commitd/components/workflows/Build/badge.svg)
-![](https://github.com/commitd/components/workflows/Publish/badge.svg)
+[![Build](https://github.com/commitd/components/workflows/Build/badge.svg)](https://github.com/commitd/components/actions)
+[![Publish](https://github.com/commitd/components/workflows/Publish/badge.svg)](https://github.com/commitd/components/actions)
 
 For documentation see https://committed.software/components
 
