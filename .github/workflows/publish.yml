@@ -17,9 +17,10 @@ jobs:
           scope: '@commitd'
       - run: yarn install
       - run: yarn build
-      - run: yarn deploy-storybook --ci
-        env:
-          GH_TOKEN: $GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: yarn deploy-storybook --ci
+        env:
+          GH_TOKEN: $GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}
+
