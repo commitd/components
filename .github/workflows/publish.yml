@@ -17,7 +17,7 @@ jobs:
           scope: '@commitd'
       - run: yarn install
       - run: yarn build
-      - run: yarn publish
+      - run: yarn publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: yarn deploy-storybook --ci
