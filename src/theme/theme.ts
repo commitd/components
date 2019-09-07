@@ -143,6 +143,11 @@ export const light: ThemeOptions = {
         backgroundColor: allColors.committedYellow[400],
         height: '4px'
       }
+    },
+    MuiDialog: {
+      paper: {
+        borderTop: `4px solid ${allColors.committedYellow[400]}`
+      }
     }
   }
 }
