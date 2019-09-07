@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { styled } from '@material-ui/styles'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { Theme } from '../../theme'
 import MaterialTable, {
   TableProps as MaterialTableProps
 } from '@material-ui/core/Table'

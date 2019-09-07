@@ -1,0 +1,93 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
+import {
+  Tabs,
+  Tab,
+  TabPanel,
+  IconButton,
+  Button,
+  Icons,
+  Box,
+  AppBar
+} from '../../'
+
+<Meta title="components|Tabs" component={Tabs} />
+
+# Tabs
+
+Tabs can be used for navigation between different components at the same level of heirarchy.
+
+<Preview>
+  <Story name="appbar">
+    {React.createElement(() => {
+      const [value, setValue] = React.useState(0)
+      function a11yProps(index) {
+        return {
+          id: `simple-tab-${index}`,
+          'aria-controls': `simple-tabpanel-${index}`
+        }
+      }
+      const clicked = action('clicked')
+      function handleChange(event, newValue) {
+        setValue(newValue)
+        clicked(newValue)
+      }
+      return (
+        <Box>
+          <AppBar position="static">
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="simple tabs example"
+            >
+              <Tab label="Item One" {...a11yProps(0)} />
+              <Tab label="Item Two" {...a11yProps(1)} />
+              <Tab label="Item Three" {...a11yProps(2)} />
+            </Tabs>
+          </AppBar>
+          <TabPanel p={3} selected={value} index={0}>
+            Item One
+          </TabPanel>
+          <TabPanel p={3} selected={value} index={1}>
+            Item Two
+          </TabPanel>
+          <TabPanel p={3} selected={value} index={2}>
+            Item Three
+          </TabPanel>
+        </Box>
+      )
+    })}
+  </Story>
+</Preview>
+
+## Simple
+
+<Preview>
+  <Story name="paper">
+    {React.createElement(() => {
+      const [value, setValue] = React.useState(0)
+      const clicked = action('clicked')
+      function handleChange(event, newValue) {
+        setValue(newValue)
+        clicked(newValue)
+      }
+      return (
+        <Box>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="Item One" />
+            <Tab label="Item Two" />
+            <Tab label="Item Three" />
+          </Tabs>
+        </Box>
+      )
+    })}
+  </Story>
+</Preview>
+
+<Props of={Tabs} />

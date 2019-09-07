@@ -137,6 +137,12 @@ export const light: ThemeOptions = {
       root: {
         textTransform: 'none'
       }
+    },
+    MuiTabs: {
+      indicator: {
+        backgroundColor: allColors.committedYellow[400],
+        height: '4px'
+      }
     }
   }
 }

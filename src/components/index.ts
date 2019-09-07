@@ -30,6 +30,7 @@ export { Select } from './select/Select'
 export { Slider } from './slider/Slider'
 export { Switch } from './switch/Switch'
 export { Table } from './table/Table'
+export { TabPanel } from './tabs/TabPanel'
 export { Tooltip } from './tooltip/Tooltip'
 export { Typography } from './typography/Typography'
 export { TextField } from './textfield/TextField'
@@ -55,6 +56,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
+import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableFooter from '@material-ui/core/TableFooter'
@@ -83,6 +86,8 @@ export {
   ListItemSecondaryAction,
   ListItemText,
   ListSubheader,
+  Tab,
+  Tabs,
   TableBody,
   TableCell,
   TableFooter,
