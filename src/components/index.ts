@@ -31,7 +31,6 @@ export { Slider } from './slider/Slider'
 export { Switch } from './switch/Switch'
 export { Table } from './table/Table'
 export { Typography } from './typography/Typography'
-export { Toolbar } from './toolbar/Toolbar'
 export { TextField } from './textfield/TextField'
 export { Text, Span, Paragraph } from './typography/Text'
 export { Subheading } from './typography/Subheading'
@@ -62,6 +61,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TablePagination from '@material-ui/core/TablePagination'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
+import Toolbar from '@material-ui/core/Toolbar'
 
 export {
   FormControlLabel,
@@ -88,5 +88,6 @@ export {
   TableHead,
   TablePagination,
   TableRow,
-  TableSortLabel
+  TableSortLabel,
+  Toolbar
 }
