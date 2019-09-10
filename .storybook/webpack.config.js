@@ -73,7 +73,8 @@ module.exports = ({ config, _mode }) => {
   )
   config.resolve.alias = {
     react: path.resolve(NODE_MODULES, 'react'),
-    'react-dom': path.resolve(NODE_MODULES, 'react-dom')
+    'react-dom': path.resolve(NODE_MODULES, 'react-dom'),
+    '@material-ui/styles': path.resolve(NODE_MODULES, '@material-ui/styles')
   }
   return config
 }
