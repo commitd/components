@@ -15,7 +15,9 @@ export type TypographyProps = MaterialTypographyProps &
   SpacingProps &
   FlexboxProps
 
-export const Typography = styled(MaterialTypography)(
+export const Typography = styled<React.ComponentType<TypographyProps>>(
+  MaterialTypography
+)(
   compose(
     spacing,
     flexbox

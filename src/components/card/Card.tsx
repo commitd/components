@@ -3,8 +3,10 @@ import {
   compose,
   spacing,
   flexbox,
+  palette,
   SpacingProps,
-  FlexboxProps
+  FlexboxProps,
+  PaletteProps
 } from '@material-ui/system'
 import { sizing, SizingProps } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
@@ -47,19 +49,22 @@ Card.displayName = 'Card'
 
 export default Card as React.FC<CardProps>
 
-export type CardHeaderProps = MaterialCardHeaderProps
+export type CardHeaderProps = MaterialCardHeaderProps & PaletteProps
 export type CardContentProps = MaterialCardContentProps
 export type CardActionAreaProps = MaterialCardActionAreaProps
 export type CardActionsProps = MaterialCardActionsProps
 export type CardMediaProps = MaterialCardMediaProps & SizingProps
 
-export const CardHeader: React.ComponentType<CardHeaderProps> = (
-  props: CardHeaderProps
-) => {
-  if (typeof (props.children && props.children) === 'string') {
-    return <MaterialCardHeader {...props} title={props.children} />
+export const StyledCardHeader = styled(MaterialCardHeader)(palette)
+
+export const CardHeader: React.ComponentType<CardHeaderProps> = ({
+  children,
+  ...others
+}: CardHeaderProps) => {
+  if (typeof (children && children) === 'string') {
+    return <StyledCardHeader {...others} title={children} />
   }
-  return <MaterialCardHeader {...props} />
+  return <StyledCardHeader {...others}>{children}</StyledCardHeader>
 }
 CardHeader.displayName = 'CardHeader'
 export const CardContent: React.ComponentType<

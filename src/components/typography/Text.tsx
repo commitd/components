@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
-import Typography, { TypographyProps } from './Typography'
+import { Typography, TypographyProps } from './Typography'
 import { fonts } from '../../theme'
 
 export type MainTextProps = {
@@ -21,7 +21,18 @@ export type MainTextProps = {
 }
 export type TextProps = TypographyProps & MainTextProps
 
-const ThemeText = styled(Typography)({
+const ThemeText = styled(
+  ({
+    italic,
+    fontSize,
+    upper,
+    light,
+    capital,
+    bold,
+    align,
+    ...others
+  }: TextProps) => <Typography {...others} />
+)({
   fontFamily: fonts.families.main,
   fontStyle: props => (props.italic ? 'italic' : 'normal'),
   fontSize: props => fonts.sizes[props.fontSize ? props.fontSize : 0],

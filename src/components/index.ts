@@ -37,6 +37,9 @@ export { TextField } from './textfield/TextField'
 export { Text, Span, Paragraph } from './typography/Text'
 export { Subheading } from './typography/Subheading'
 
+import { FlexProps } from './flex/Flex'
+export type FlexProps = FlexProps
+
 // Direct from material_link
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'

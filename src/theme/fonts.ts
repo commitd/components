@@ -39,7 +39,6 @@ export const faces: FontFace[] = [arciform, freesans, lato]
 export const size = '16px'
 
 export const sizes = {
-  [-3]: '0.296rem',
   [-2]: '0.444rem',
   [-1]: '0.667rem',
   [0]: '1rem',

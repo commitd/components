@@ -75,7 +75,7 @@ const useStylesArrow = makeStyles((theme: Theme) =>
   })
 )
 
-export function Tooltip(props: TooltipProps) {
+export const Tooltip = React.forwardRef((props: TooltipProps, ref) => {
   const { arrow, ...classes } = useStylesArrow()
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement | null>(null)
 
@@ -101,6 +101,6 @@ export function Tooltip(props: TooltipProps) {
       }
     />
   )
-}
+})
 
 export default Tooltip
