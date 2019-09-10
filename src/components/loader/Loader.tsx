@@ -20,7 +20,7 @@ export interface LoaderProps {
 }
 
 const selectColor = (theme: Theme) => ({ grey }: LoaderProps): string =>
-  grey ? theme.palette.grey[200] : theme.palette.brand.main
+  grey ? theme.palette.grey[200] : theme.palette.primary.main
 
 export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
   '@keyframes loader-stroke': {

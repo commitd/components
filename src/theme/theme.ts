@@ -6,13 +6,13 @@ declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
     success: PaletteColorOptions
     warning: PaletteColorOptions
-    brand: PaletteColorOptions
+    info: PaletteColorOptions
   }
 
   interface Palette {
     success: PaletteColor
     warning: PaletteColor
-    brand: PaletteColor
+    info: PaletteColor
   }
 }
 
@@ -32,49 +32,59 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 
 export const palettes = {
   ...allColors,
-  neutral: allColors.blueGrey,
-  primary: allColors.blue,
-  secondary: allColors.purple,
-  supporting: allColors.purple,
-  success: allColors.teal,
-  warning: allColors.committedYellow,
   brand: allColors.committedYellow,
-  error: allColors.red
+  primary: allColors.committedYellow,
+  secondary: allColors.committedGrey,
+  success: allColors.teal,
+  warning: allColors.orange,
+  error: allColors.red,
+  info: allColors.lightBlue,
+  neutral: allColors.committedGrey
 }
 
 export const palette = {
-  primary: palettes.primary[400],
-  bg: palettes.neutral[50],
-  text: palettes.neutral[900],
-  lighttext: palettes.neutral[300],
-  secondary: palettes.secondary[400],
-  supporting: palettes.supporting[400],
-  success: palettes.success[400],
-  warning: palettes.warning[400],
-  error: palettes.error[400],
-  brand: palettes.brand[400],
-  palettes
+  text: palettes.neutral[900]
 }
 
 export const light: ThemeOptions = {
   palette: {
     type: 'light',
-    primary: { main: palettes.primary[400] },
+    primary: palettes.primary,
+    secondary: {
+      light: palettes.secondary[300],
+      main: palettes.secondary[500],
+      dark: palettes.secondary[700]
+    },
+    error: palettes.error,
+    success: {
+      light: palettes.success[300],
+      main: palettes.success[500],
+      dark: palettes.success[700],
+      contrastText: palette.text
+    },
+    warning: {
+      light: palettes.warning[200],
+      main: palettes.warning[400],
+      dark: palettes.warning[600],
+      contrastText: palette.text
+    },
+    info: {
+      light: palettes.info[300],
+      main: palettes.info[500],
+      dark: palettes.info[700],
+      contrastText: palette.text
+    },
     background: {
       default: palettes.neutral[50],
       paper: 'white'
     },
-    secondary: { main: palettes.secondary[400] },
-    success: { main: palettes.success[400] },
-    warning: { main: palettes.warning[400] },
-    error: { main: palettes.error[400] },
-    brand: { main: palettes.brand[400] },
-    // text: {
-    //   primary: string;
-    //   secondary: string;
-    //   disabled: string;
-    //   hint: string;
-    // }
+    text: {
+      primary: palettes.neutral[800],
+      secondary: palettes.neutral[700],
+      disabled: palettes.neutral[500],
+      hint: palettes.neutral[500]
+    },
+    grey: palettes.blueGrey
     // action: {
     //   active: string;
     //   hover: string;
@@ -83,7 +93,6 @@ export const light: ThemeOptions = {
     //   disabled: string;
     //   disabledBackground: string;
     // }
-    grey: palettes.blueGrey
     //divider?:
   },
   props: {
@@ -140,13 +149,13 @@ export const light: ThemeOptions = {
     },
     MuiTabs: {
       indicator: {
-        backgroundColor: allColors.committedYellow[400],
+        backgroundColor: allColors.committedYellow[500],
         height: '4px'
       }
     },
     MuiDialog: {
       paper: {
-        borderTop: `4px solid ${allColors.committedYellow[400]}`
+        borderTop: `4px solid ${allColors.committedYellow[500]}`
       }
     }
   }

@@ -9,6 +9,10 @@ export interface Color {
   '700': string
   '800': string
   '900': string
+  A100?: string
+  A200?: string
+  A400?: string
+  A700?: string
 }
 
 export const red: Color = {
@@ -21,7 +25,11 @@ export const red: Color = {
   '600': '#A61B1B',
   '700': '#911111',
   '800': '#780A0A',
-  '900': '#610404'
+  '900': '#610404',
+  A100: '#ffc3c3',
+  A200: '#ff9090',
+  A400: '#ff5d5d',
+  A700: '#ff4444'
 }
 export const redVivid: Color = {
   '50': '#FFE3E3',
@@ -33,7 +41,11 @@ export const redVivid: Color = {
   '600': '#CF1124',
   '700': '#AB091E',
   '800': '#8A041A',
-  '900': '#610316'
+  '900': '#610316',
+  A100: '#fffbfb',
+  A200: '#ffc8c9',
+  A400: '#ff9597',
+  A700: '#ff7b7f'
 }
 export const orange: Color = {
   '50': '#FFEFE6',
@@ -45,7 +57,11 @@ export const orange: Color = {
   '600': '#AB4E19',
   '700': '#8C3D10',
   '800': '#77340D',
-  '900': '#572508'
+  '900': '#572508',
+  A100: '#ffdbd2',
+  A200: '#ffb29f',
+  A400: '#ff896c',
+  A700: '#ff7452'
 }
 export const orangeVivid: Color = {
   '50': '#FFE8D9',
@@ -57,7 +73,11 @@ export const orangeVivid: Color = {
   '600': '#DE3A11',
   '700': '#C52707',
   '800': '#AD1D07',
-  '900': '#841003'
+  '900': '#841003',
+  A100: '#ffffff',
+  A200: '#ffe5e2',
+  A400: '#ffb8af',
+  A700: '#ffa196'
 }
 export const yellow: Color = {
   '50': '#FFFAEB',
@@ -69,19 +89,27 @@ export const yellow: Color = {
   '600': '#C99A2E',
   '700': '#A27C1A',
   '800': '#7C5E10',
-  '900': '#513C06'
+  '900': '#513C06',
+  A100: '#ffffff',
+  A200: '#fff2df',
+  A400: '#ffddac',
+  A700: '#ffd392'
 }
 export const committedYellow: Color = {
-  '50': '#FFF0C6',
-  '100': '#FFE394',
-  '200': '#FFD563',
-  '300': '#FFC831',
-  '400': '#FFBB00',
-  '500': '#D99F00',
-  '600': '#B28300',
-  '700': '#8C6600',
-  '800': '#654A00',
-  '900': '#3F2E00'
+  '50': '#fff7e0',
+  '100': '#ffebb3',
+  '200': '#ffdd80',
+  '300': '#ffcf4d',
+  '400': '#ffc526',
+  '500': '#ffbb00',
+  '600': '#ffb500',
+  '700': '#ffac00',
+  '800': '#ffa400',
+  '900': '#ff9600',
+  A100: '#ffffff',
+  A200: '#fff9f2',
+  A400: '#ffe2bf',
+  A700: '#ffd6a6'
 }
 export const yellowVivid: Color = {
   '50': '#FFFBEA',
@@ -93,7 +121,11 @@ export const yellowVivid: Color = {
   '600': '#DE911D',
   '700': '#CB6E17',
   '800': '#B44D12',
-  '900': '#8D2B0B'
+  '900': '#8D2B0B',
+  A100: '#ffffff',
+  A200: '#fff0de',
+  A400: '#ffd9ab',
+  A700: '#ffce91'
 }
 export const limeGreen: Color = {
   '50': '#F2FDE0',
@@ -105,7 +137,11 @@ export const limeGreen: Color = {
   '600': '#63921A',
   '700': '#507712',
   '800': '#42600C',
-  '900': '#2B4005'
+  '900': '#2B4005',
+  A100: '#d9ffb8',
+  A200: '#beff85',
+  A400: '#a2ff52',
+  A700: '#95ff38'
 }
 export const limeGreenVivid: Color = {
   '50': '#F8FFED',
@@ -117,7 +153,11 @@ export const limeGreenVivid: Color = {
   '600': '#5CB70B',
   '700': '#399709',
   '800': '#2E7B06',
-  '900': '#1E5303'
+  '900': '#1E5303',
+  A100: '#eaffe3',
+  A200: '#c4ffb0',
+  A400: '#9eff7d',
+  A700: '#8bff64'
 }
 export const green: Color = {
   '50': '#E3F9E5',
@@ -129,7 +169,11 @@ export const green: Color = {
   '600': '#2F8132',
   '700': '#207227',
   '800': '#0E5814',
-  '900': '#05400A'
+  '900': '#05400A',
+  A100: '#9fffa2',
+  A200: '#6cff70',
+  A400: '#39ff3f',
+  A700: '#1fff26'
 }
 export const greenVivid: Color = {
   '50': '#E3F9E5',
@@ -141,7 +185,11 @@ export const greenVivid: Color = {
   '600': '#0F8613',
   '700': '#0E7817',
   '800': '#07600E',
-  '900': '#014807'
+  '900': '#014807',
+  A100: '#9bff9c',
+  A200: '#68ff6a',
+  A400: '#35ff37',
+  A700: '#1bff1e'
 }
 export const teal: Color = {
   '50': '#EFFCF6',
@@ -153,7 +201,11 @@ export const teal: Color = {
   '600': '#199473',
   '700': '#147D64',
   '800': '#0C6B58',
-  '900': '#014D40'
+  '900': '#014D40',
+  A100: '#b2ffde',
+  A200: '#7fffc8',
+  A400: '#4cffb2',
+  A700: '#32ffa7'
 }
 export const tealVivid: Color = {
   '50': '#F0FCF9',
@@ -165,7 +217,11 @@ export const tealVivid: Color = {
   '600': '#079A82',
   '700': '#048271',
   '800': '#016457',
-  '900': '#004440'
+  '900': '#004440',
+  A100: '#beffea',
+  A200: '#8bffd9',
+  A400: '#58ffc8',
+  A700: '#3fffbf'
 }
 export const cyan: Color = {
   '50': '#E0FCFF',
@@ -177,7 +233,11 @@ export const cyan: Color = {
   '600': '#14919B',
   '700': '#0E7C86',
   '800': '#0A6C74',
-  '900': '#044E54'
+  '900': '#044E54',
+  A100: '#c8f8ff',
+  A200: '#95f2ff',
+  A400: '#62ecff',
+  A700: '#48e9ff'
 }
 export const cyanVivid: Color = {
   '50': '#E1FCF8',
@@ -189,7 +249,11 @@ export const cyanVivid: Color = {
   '600': '#0FB5BA',
   '700': '#099AA4',
   '800': '#07818F',
-  '900': '#05606E'
+  '900': '#05606E',
+  A100: '#e5ffff',
+  A200: '#b2ffff',
+  A400: '#7fffff',
+  A700: '#65ffff'
 }
 export const lightBlue: Color = {
   '50': '#EBF8FF',
@@ -201,7 +265,11 @@ export const lightBlue: Color = {
   '600': '#2D83AE',
   '700': '#1D6F98',
   '800': '#166086',
-  '900': '#0B4F71'
+  '900': '#0B4F71',
+  A100: '#d3ebff',
+  A200: '#a0d4ff',
+  A400: '#6dbcff',
+  A700: '#53b1ff'
 }
 export const lightBlueVivid: Color = {
   '50': '#E3F8FF',
@@ -213,7 +281,11 @@ export const lightBlueVivid: Color = {
   '600': '#1992D4',
   '700': '#127FBF',
   '800': '#0B69A3',
-  '900': '#035388'
+  '900': '#035388',
+  A100: '#ffffff',
+  A200: '#daeeff',
+  A400: '#a7d6ff',
+  A700: '#8ecaff'
 }
 export const blue: Color = {
   '50': '#DCEEFB',
@@ -225,7 +297,11 @@ export const blue: Color = {
   '600': '#186FAF',
   '700': '#0F609B',
   '800': '#0A558C',
-  '900': '#003E6B'
+  '900': '#003E6B',
+  A100: '#cee2ff',
+  A200: '#9bc4ff',
+  A400: '#68a7ff',
+  A700: '#4e98ff'
 }
 export const blueVivid: Color = {
   '50': '#E6F6FF',
@@ -237,7 +313,11 @@ export const blueVivid: Color = {
   '600': '#0552B5',
   '700': '#03449E',
   '800': '#01337D',
-  '900': '#002159'
+  '900': '#002159',
+  A100: '#dfe6ff',
+  A200: '#acc0ff',
+  A400: '#7999ff',
+  A700: '#5f85ff'
 }
 export const indigo: Color = {
   '50': '#E0E8F9',
@@ -249,7 +329,11 @@ export const indigo: Color = {
   '600': '#4055A8',
   '700': '#35469C',
   '800': '#2D3A8C',
-  '900': '#19216C'
+  '900': '#19216C',
+  A100: '#cdd4ff',
+  A200: '#9aa9ff',
+  A400: '#677eff',
+  A700: '#4d68ff'
 }
 export const indigoVivid: Color = {
   '50': '#D9E8FF',
@@ -261,7 +345,11 @@ export const indigoVivid: Color = {
   '600': '#1D3DBF',
   '700': '#132DAD',
   '800': '#0B1D96',
-  '900': '#061178'
+  '900': '#061178',
+  A100: '#dadfff',
+  A200: '#a7b3ff',
+  A400: '#7487ff',
+  A700: '#5b71ff'
 }
 export const purple: Color = {
   '50': '#EAE2F8',
@@ -273,7 +361,11 @@ export const purple: Color = {
   '600': '#51279B',
   '700': '#421987',
   '800': '#34126F',
-  '900': '#240754'
+  '900': '#240754',
+  A100: '#cdbcff',
+  A200: '#a789ff',
+  A400: '#8156ff',
+  A700: '#6d3cff'
 }
 export const purpleVivid: Color = {
   '50': '#F2EBFE',
@@ -285,7 +377,11 @@ export const purpleVivid: Color = {
   '600': '#7A0ECC',
   '700': '#690CB0',
   '800': '#580A94',
-  '900': '#44056E'
+  '900': '#44056E',
+  A100: '#f8f5ff',
+  A200: '#d8c2ff',
+  A400: '#b78fff',
+  A700: '#a675ff'
 }
 export const magenta: Color = {
   '50': '#F5E1F7',
@@ -297,7 +393,11 @@ export const magenta: Color = {
   '600': '#90279C',
   '700': '#7C1A87',
   '800': '#671270',
-  '900': '#4E0754'
+  '900': '#4E0754',
+  A100: '#f5bcff',
+  A200: '#ee89ff',
+  A400: '#e656ff',
+  A700: '#e33cff'
 }
 export const magentaVivid: Color = {
   '50': '#FDEBFF',
@@ -309,7 +409,11 @@ export const magentaVivid: Color = {
   '600': '#CB10B8',
   '700': '#B30BA3',
   '800': '#960888',
-  '900': '#6E0560'
+  '900': '#6E0560',
+  A100: '#fff5fe',
+  A200: '#ffc2f6',
+  A400: '#ff8fef',
+  A700: '#ff75ec'
 }
 export const pink: Color = {
   '50': '#FFE0F0',
@@ -321,7 +425,11 @@ export const pink: Color = {
   '600': '#AD2167',
   '700': '#9B1B5A',
   '800': '#781244',
-  '900': '#5C0B33'
+  '900': '#5C0B33',
+  A100: '#ffd2e1',
+  A200: '#ff9fc0',
+  A400: '#ff6c9e',
+  A700: '#ff528e'
 }
 export const pinkVivid: Color = {
   '50': '#FFE3EC',
@@ -333,7 +441,11 @@ export const pinkVivid: Color = {
   '600': '#BC0A6F',
   '700': '#A30664',
   '800': '#870557',
-  '900': '#620042'
+  '900': '#620042',
+  A100: '#ffecf2',
+  A200: '#ffb9cf',
+  A400: '#ff86ad',
+  A700: '#ff6c9c'
 }
 export const blueGrey: Color = {
   '50': '#F0F4F8',
@@ -384,14 +496,14 @@ export const warmGrey: Color = {
   '900': '#27241D'
 }
 export const committedGrey: Color = {
-  '50': '#DDDDDD',
-  '100': '#C7C7C7',
-  '200': '#B2B2B2',
-  '300': '#9C9C9C',
-  '400': '#868686',
-  '500': '#707070',
-  '600': '#5B5B5B',
-  '700': '#454545',
-  '800': '#333333',
-  '900': '#222222'
+  '50': '#e9e9e9',
+  '100': '#c7c7c7',
+  '200': '#a2a2a2',
+  '300': '#7d7d7d',
+  '400': '#616161',
+  '500': '#454545',
+  '600': '#3e3e3e',
+  '700': '#363636',
+  '800': '#2e2e2e',
+  '900': '#1f1f1f'
 }

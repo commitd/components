@@ -1,23 +1,24 @@
 import * as React from 'react'
-import { Box, Flex } from '../'
+import { Box, Flex, Text } from '../'
+import { copyToClipboard } from './copy'
 
 export interface SwatchProps {
+  width?: number
   color: string
   name: string
 }
 
-export default class Swatch extends React.Component<SwatchProps> {
-  public render() {
-    const { color, name } = this.props
-    return (
-      <Box p={1} width={1 / 5}>
-        <Box height="100px" bg={color} />
-        <Flex>
-          <Box>{name}</Box>
-          <Box flex="1" />
-          <Box>{color}</Box>
-        </Flex>
+export const Swatch = ({ color, name, width = 1 / 5 }: SwatchProps) => (
+  <Box p={1} width={width}>
+    <Box height="100px" bg={color} onClick={() => copyToClipboard(color)} />
+    <Flex>
+      <Box>
+        <Text>{name}</Text>
       </Box>
-    )
-  }
-}
+      <Box flex="1" />
+      <Box>
+        <Text>{color}</Text>
+      </Box>
+    </Flex>
+  </Box>
+)

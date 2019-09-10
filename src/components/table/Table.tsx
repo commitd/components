@@ -13,7 +13,7 @@ export const Table = styled(MaterialTable)(({ theme }: { theme: Theme }) => ({
       fontWeight: 'bold',
       color: theme.palette.text.primary
     },
-    borderBottom: `2px solid ${theme.palette.brand.main}`
+    borderBottom: `2px solid ${theme.palette.primary.main}`
   },
   '& tr:nth-child(even)': {
     backgroundColor: theme.palette.grey[100]
