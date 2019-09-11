@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import MaterialTooltip, {
   TooltipProps as MaterialTooltipProps
 } from '@material-ui/core/Tooltip'
@@ -75,7 +75,7 @@ const useStylesArrow = makeStyles((theme: Theme) =>
   })
 )
 
-export const Tooltip = React.forwardRef((props: TooltipProps, ref) => {
+export const Tooltip = (props: TooltipProps) => {
   const { arrow, ...classes } = useStylesArrow()
   const [arrowRef, setArrowRef] = React.useState<HTMLSpanElement | null>(null)
 
@@ -101,6 +101,6 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref) => {
       }
     />
   )
-})
+}
 
 export default Tooltip
