@@ -123,7 +123,7 @@ import { FormControlLabelProps as MaterialFormControlLabelProps } from '@materia
 import { FormLabelProps as MaterialFormLabelProps } from '@material-ui/core/FormLabel'
 import { FormGroupProps as MaterialFormGroupProps } from '@material-ui/core/FormGroup'
 import { FormHelperTextProps as MaterialFormHelperTextProps } from '@material-ui/core/FormHelperText'
-import { Grow as MaterialGrowProps } from '@material-ui/core/Grow'
+import { GrowProps as MaterialGrowProps } from '@material-ui/core/Grow'
 import { InputProps as MaterialInputProps } from '@material-ui/core/Input'
 import { InputLabelProps as MaterialInputLabelProps } from '@material-ui/core/InputLabel'
 import { ListProps as MaterialListProps } from '@material-ui/core/List'
