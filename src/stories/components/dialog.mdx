@@ -1,0 +1,76 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button
+} from '../../'
+import MaterialDialog from '@material-ui/core/Dialog'
+import MaterialDialogTitle from '@material-ui/core/DialogTitle'
+import MaterialDialogContent from '@material-ui/core/DialogContent'
+import MaterialDialogContentText from '@material-ui/core/DialogContentText'
+import MaterialDialogActions from '@material-ui/core/DialogActions'
+
+<Meta title="components|Dialog" component={Dialog} />
+
+# Dialog
+
+Tooltips display extra information when users hover over, focus on, or tap an element.
+
+When activated, Tooltips display a text label identifying an element, such as a description of its function.
+
+<Preview>
+  <Story name="simple">
+    {React.createElement(() => {
+      const [open, setOpen] = React.useState(false)
+      function handleClickOpen() {
+        setOpen(true)
+      }
+      function handleClose() {
+        setOpen(false)
+      }
+      return (
+        <div>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Open alert dialog
+          </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {'Use Committed Components?'}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Let Committed components style your app.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button variant="text" onClick={handleClose}>
+                Disagree
+              </Button>
+              <Button onClick={handleClose} color="primary" autoFocus>
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      )
+    })}
+  </Story>
+</Preview>
+
+## Props
+
+### Dialog
+
+ <Props of={ MaterialDialog } />
+ <Props of={ MaterialDialogTitle } />
+ <Props of={ MaterialDialogContent } />
+ <Props of={ MaterialDialogContentText } />
+ <Props of={ MaterialDialogActions } />

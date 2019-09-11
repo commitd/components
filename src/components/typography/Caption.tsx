@@ -3,8 +3,8 @@ import { Typography, TypographyProps } from './Typography'
 
 export type CaptionProps = TypographyProps
 
-export const Caption = (props: CaptionProps) => (
-  <Typography {...props} variant="caption" />
+export const Caption = ({ variant, ...others }: CaptionProps) => (
+  <Typography {...others} variant="caption" />
 )
 
 export default Caption

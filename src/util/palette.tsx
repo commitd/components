@@ -1,25 +1,27 @@
 import * as React from 'react'
-import { Flex } from '../'
-import Swatch from './swatch'
+import { withTheme } from '@material-ui/styles'
+import { Color } from './colors'
+import { Flex, Box, Theme, Heading } from '../'
 
 export interface PaletteProps {
   name: string
-  colors: { [key: string]: string }
+  theme: Theme
 }
 
-export default class Palette extends React.Component<PaletteProps> {
-  public render() {
-    const { colors, name } = this.props
-    return (
-      <Flex mb={4} flexWrap="wrap">
-        {Object.keys(colors).map(weight => (
-          <Swatch
-            key={`${name}.${weight}`}
-            name={`${weight}`}
-            color={colors[weight]}
-          />
-        ))}
-      </Flex>
-    )
-  }
-}
+export const Palette = withTheme(({ name, theme }: PaletteProps) => (
+  <Box p={1} width={1 / 3}>
+    <Color
+      alignItems="center"
+      justifyContent="center"
+      height="75px"
+      color={theme.palette[name].main}
+      style={{ color: theme.palette[name].contrastText }}
+    >
+      <Heading.h5>{name}</Heading.h5>
+    </Color>
+    <Flex>
+      <Color placement="bottom" color={theme.palette[name].light} />
+      <Color placement="bottom" color={theme.palette[name].dark} />
+    </Flex>
+  </Box>
+))

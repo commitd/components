@@ -1,175 +1,66 @@
 import { Meta } from '@storybook/addon-docs/blocks'
-import Palette from '../util/palette'
-import Swatch from '../util/swatch'
-import { theme, colors, Flex } from '../'
+import { Palette, Swatch, Colors, Surfaces } from '../util'
+import { ThemeProvider, theme, colors, Flex } from '../'
 
 <Meta title="Design System|Colour" />
 
-# Palette
+## Main Light
 
-<Flex mb={4} flexWrap="wrap">
-  <Swatch name="primary" color={theme.palette.primary} />
-  <Swatch name="supporting" color={theme.palette.supporting} />
-  <Swatch name="success" color={theme.palette.success} />
-  <Swatch name="warning" color={theme.palette.warning} />
-  <Swatch name="error" color={theme.palette.error} />
-  <Swatch name="bg" color={theme.palette.bg} />
-  <Swatch name="text" color={theme.palette.text} />
-  <Swatch name="lighttext" color={theme.palette.lighttext} />
-</Flex>
+<ThemeProvider>
+  <Flex flexWrap="wrap">
+    <Palette key="primary" name="primary" />
+    <Palette key="secondary" name="secondary" />
+    <Palette key="error" name="error" />
+    <Palette key="warning" name="warning" />
+    <Palette key="success" name="success" />
+    <Palette key="info" name="info" />
+  </Flex>
+  <Surfaces />
+</ThemeProvider>
 
 ## Palettes
 
-### Primary
+Click to copy color to clipboard.
 
-<Palette name="primary" colors={theme.palettes.primary} />
-
-### Supporting
-
-<Palette name="supporting" colors={theme.palettes.supporting} />
-
-### Neutrals
-
-<Palette name="neutrals" colors={theme.palettes.neutral} />
-
-### Success
-
-<Palette name="secondary" colors={theme.palettes.success} />
-
-### Warning
-
-<Palette name="warning" colors={theme.palettes.warning} />
-
-### Error
-
-<Palette name="error" colors={theme.palettes.error} />
+<Colors name="primary" colors={theme.palettes.primary} />
+<Colors name="secondary" colors={theme.palettes.success} />
+<Colors name="error" colors={theme.palettes.error} />
+<Colors name="warning" colors={theme.palettes.warning} />
+<Colors name="success" colors={theme.palettes.success} />
+<Colors name="info" colors={theme.palettes.info} />
+<Colors name="neutrals" colors={theme.palettes.neutral} />
 
 ## Colours
 
-### red
-
-<Palette name="red" colors={colors.red} />
-
-### redVivid
-
-<Palette name="redVivid" colors={colors.redVivid} />
-
-### orange
-
-<Palette name="orange" colors={colors.orange} />
-
-### orangeVivid
-
-<Palette name="orangeVivid" colors={colors.orangeVivid} />
-
-### yellow
-
-<Palette name="yellow" colors={colors.yellow} />
-
-### committedYellow
-
-<Palette name="committedYellow" colors={colors.committedYellow} />
-
-### yellowVivid
-
-<Palette name="yellowVivid" colors={colors.yellowVivid} />
-
-### limeGreen
-
-<Palette name="limeGreen" colors={colors.limeGreen} />
-
-### limeGreenVivid
-
-<Palette name="limeGreenVivid" colors={colors.limeGreenVivid} />
-
-### green
-
-<Palette name="green" colors={colors.green} />
-
-### greenVivid
-
-<Palette name="greenVivid" colors={colors.greenVivid} />
-
-### teal
-
-<Palette name="teal" colors={colors.teal} />
-
-### tealVivid
-
-<Palette name="tealVivid" colors={colors.tealVivid} />
-
-### cyan
-
-<Palette name="cyan" colors={colors.cyan} />
-
-### cyanVivid
-
-<Palette name="cyanVivid" colors={colors.cyanVivid} />
-
-### lightBlue
-
-<Palette name="lightBlue" colors={colors.lightBlue} />
-
-### lightBlueVivid
-
-<Palette name="lightBlueVivid" colors={colors.lightBlueVivid} />
-
-### blue
-
-<Palette name="blue" colors={colors.blue} />
-
-### blueVivid
-
-<Palette name="blueVivid" colors={colors.blueVivid} />
-
-### indigo
-
-<Palette name="indigo" colors={colors.indigo} />
-
-### indigoVivid
-
-<Palette name="indigoVivid" colors={colors.indigoVivid} />
-
-### purple
-
-<Palette name="purple" colors={colors.purple} />
-
-### purpleVivid
-
-<Palette name="purpleVivid" colors={colors.purpleVivid} />
-
-### magenta
-
-<Palette name="magenta" colors={colors.magenta} />
-
-### magentaVivid
-
-<Palette name="magentaVivid" colors={colors.magentaVivid} />
-
-### pink
-
-<Palette name="pink" colors={colors.pink} />
-
-### pinkVivid
-
-<Palette name="pinkVivid" colors={colors.pinkVivid} />
-
-### blueGrey
-
-<Palette name="blueGrey" colors={colors.blueGrey} />
-
-### coolGrey
-
-<Palette name="coolGrey" colors={colors.coolGrey} />
-
-### grey
-
-<Palette name="grey" colors={colors.grey} />
-
-### warmGrey
-
-<Palette name="warmGrey" colors={colors.warmGrey} />
-
-### committedGrey
-
-<Palette name="committedGrey" colors={colors.committedGrey} />
+<Colors name="red" colors={colors.red} />
+<Colors name="redVivid" colors={colors.redVivid} />
+<Colors name="orange" colors={colors.orange} />
+<Colors name="orangeVivid" colors={colors.orangeVivid} />
+<Colors name="yellow" colors={colors.yellow} />
+<Colors name="committedYellow" colors={colors.committedYellow} />
+<Colors name="yellowVivid" colors={colors.yellowVivid} />
+<Colors name="limeGreen" colors={colors.limeGreen} />
+<Colors name="limeGreenVivid" colors={colors.limeGreenVivid} />
+<Colors name="green" colors={colors.green} />
+<Colors name="greenVivid" colors={colors.greenVivid} />
+<Colors name="teal" colors={colors.teal} />
+<Colors name="tealVivid" colors={colors.tealVivid} />
+<Colors name="cyan" colors={colors.cyan} />
+<Colors name="cyanVivid" colors={colors.cyanVivid} />
+<Colors name="lightBlue" colors={colors.lightBlue} />
+<Colors name="lightBlueVivid" colors={colors.lightBlueVivid} />
+<Colors name="blue" colors={colors.blue} />
+<Colors name="blueVivid" colors={colors.blueVivid} />
+<Colors name="indigo" colors={colors.indigo} />
+<Colors name="indigoVivid" colors={colors.indigoVivid} />
+<Colors name="purple" colors={colors.purple} />
+<Colors name="purpleVivid" colors={colors.purpleVivid} />
+<Colors name="magenta" colors={colors.magenta} />
+<Colors name="magentaVivid" colors={colors.magentaVivid} />
+<Colors name="pink" colors={colors.pink} />
+<Colors name="pinkVivid" colors={colors.pinkVivid} />
+<Colors name="blueGrey" colors={colors.blueGrey} />
+<Colors name="coolGrey" colors={colors.coolGrey} />
+<Colors name="grey" colors={colors.grey} />
+<Colors name="warmGrey" colors={colors.warmGrey} />
+<Colors name="committedGrey" colors={colors.committedGrey} />

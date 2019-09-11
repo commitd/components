@@ -12,9 +12,10 @@ import {
   Box,
   Icons,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  ListItemSecondaryAction
 } from '../../'
-import { Meta, Story, Preview, Prop } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|List" component={List} />
 
@@ -60,12 +61,7 @@ Use when single select/deselect option, use radio when one option of more then t
     <Flex justifyContent="center" bg="background.default">
       <Box minWidth={500} m={3} bg="background.paper">
         <List>
-          <ListItem
-            role={undefined}
-            dense
-            button
-            onClick={action('clicked item')}
-          >
+          <ListItem role={undefined} button onClick={action('clicked item')}>
             <ListItemIcon>
               <Checkbox
                 edge="start"
@@ -81,6 +77,24 @@ Use when single select/deselect option, use radio when one option of more then t
                 <Icons.Comment />
               </IconButton>
             </ListItemSecondaryAction>
+          </ListItem>
+        </List>
+      </Box>
+    </Flex>
+  </Story>
+</Preview>
+
+## To Fix
+
+Secondary text is not being displayed properly
+
+<Preview>
+  <Story name="with secondary">
+    <Flex justifyContent="center" bg="background.default">
+      <Box minWidth={500} m={3} bg="background.paper">
+        <List>
+          <ListItem>
+            <ListItemText primary="Item" secondary="secondary" />
           </ListItem>
         </List>
       </Box>

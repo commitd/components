@@ -6,6 +6,8 @@ import * as theme from './theme'
 
 const muiTheme = responsiveFontSizes(createMuiTheme(theme.light))
 
+export type Theme = typeof muiTheme
+
 export const ThemeProvider = (props: any) => (
   <MuiThemeProvider theme={muiTheme}>
     <CssBaseline />

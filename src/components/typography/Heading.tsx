@@ -11,12 +11,12 @@ export const Heading: {
   h5: React.FC<HeadingProps>
   h6: React.FC<HeadingProps>
 } = {
-  h1: props => <Typography {...props} variant="h1" />,
-  h2: props => <Typography {...props} variant="h2" />,
-  h3: props => <Typography {...props} variant="h3" />,
-  h4: props => <Typography {...props} variant="h4" />,
-  h5: props => <Typography {...props} variant="h5" />,
-  h6: props => <Typography {...props} variant="h6" />
+  h1: ({ variant, ...others }) => <Typography {...others} variant="h1" />,
+  h2: ({ variant, ...others }) => <Typography {...others} variant="h2" />,
+  h3: ({ variant, ...others }) => <Typography {...others} variant="h3" />,
+  h4: ({ variant, ...others }) => <Typography {...others} variant="h4" />,
+  h5: ({ variant, ...others }) => <Typography {...others} variant="h5" />,
+  h6: ({ variant, ...others }) => <Typography {...others} variant="h6" />
 }
 
 export default Heading

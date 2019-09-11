@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { styled } from '@material-ui/styles'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { Theme } from '../../theme'
 import MaterialTable, {
   TableProps as MaterialTableProps
 } from '@material-ui/core/Table'
@@ -13,7 +13,7 @@ export const Table = styled(MaterialTable)(({ theme }: { theme: Theme }) => ({
       fontWeight: 'bold',
       color: theme.palette.text.primary
     },
-    borderBottom: `2px solid ${theme.palette.brand.main}`
+    borderBottom: `2px solid ${theme.palette.primary.main}`
   },
   '& tr:nth-child(even)': {
     backgroundColor: theme.palette.grey[100]

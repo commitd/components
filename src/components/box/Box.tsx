@@ -8,8 +8,17 @@ export type BoxProps = MaterialBoxProps & {
   bg?: string
 }
 
-export const Box: React.FC<BoxProps> = (props: BoxProps) => (
-  <MaterialBox {...props} bgcolor={props.bg ? props.bg : props.bgcolor} />
+export type BoxRef = HTMLDivElement
+
+export const Box: React.FC<BoxProps> = React.forwardRef<BoxRef, BoxProps>(
+  (props, ref) => (
+    // @ts-ignore due to ref forward
+    <MaterialBox
+      {...props}
+      bgcolor={props.bg ? props.bg : props.bgcolor}
+      ref={ref}
+    />
+  )
 )
 Box.displayName = 'Box'
 
