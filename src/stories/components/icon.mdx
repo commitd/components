@@ -1,4 +1,4 @@
-import { Icons } from '../../'
+import { Icons, Tooltip } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Icons" component={Icons} />
@@ -9,7 +9,13 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
   <Story name="icons">
     {React.createElement(() => {
       const icons = Object.keys(Icons)
-      return <div>{icons.map(key => React.createElement(Icons[key]))}</div>
+      return (
+        <div>
+          {icons.map(key => (
+            <Tooltip title={key}>{React.createElement(Icons[key])}</Tooltip>
+          ))}
+        </div>
+      )
     })}
   </Story>
 </Preview>
