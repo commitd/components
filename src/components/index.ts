@@ -29,7 +29,6 @@ export { RadioGroup } from './radio/RadioGroup'
 export { Select } from './select/Select'
 export { Slider } from './slider/Slider'
 export { Switch } from './switch/Switch'
-export { Table } from './table/Table'
 export { TabPanel } from './tabs/TabPanel'
 export { Tooltip } from './tooltip/Tooltip'
 export { Typography } from './typography/Typography'
@@ -66,6 +65,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Tab from '@material-ui/core/Tab'
+import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableFooter from '@material-ui/core/TableFooter'
@@ -102,6 +102,7 @@ export {
   MenuList,
   OutlinedInput,
   Tab,
+  Table,
   TableBody,
   TableCell,
   TableFooter,
@@ -138,6 +139,7 @@ import { MenuItemProps as MaterialMenuItemProps } from '@material-ui/core/MenuIt
 import { MenuListProps as MaterialMenuListProps } from '@material-ui/core/MenuList'
 import { OutlinedInputProps as MaterialOutlinedInputProps } from '@material-ui/core/OutlinedInput'
 import { TabProps as MaterialTabProps } from '@material-ui/core/Tab'
+import { TableProps as MaterialTableProps } from '@material-ui/core/Table'
 import { TableBodyProps as MaterialTableBodyProps } from '@material-ui/core/TableBody'
 import { TableCellProps as MaterialTableCellProps } from '@material-ui/core/TableCell'
 import { TableFooterProps as MaterialTableFooterProps } from '@material-ui/core/TableFooter'
@@ -173,6 +175,7 @@ export type MenuItemProps = MaterialMenuItemProps
 export type MenuListProps = MaterialMenuListProps
 export type OutlinedInputProps = MaterialOutlinedInputProps
 export type TabProps = MaterialTabProps
+export type TableProps = MaterialTableProps
 export type TableBodyProps = MaterialTableBodyProps
 export type TableCellProps = MaterialTableCellProps
 export type TableFooterProps = MaterialTableFooterProps

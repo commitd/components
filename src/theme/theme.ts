@@ -385,9 +385,41 @@ export const light: ThemeOptions = {
         }
       }
     },
+    MuiTableHead: {
+      root: {
+        '& th': {
+          fontWeight: 'bold',
+          color: text.primary
+        },
+        borderBottom: `2px solid ${palettes.brand[500]}`
+      }
+    },
+    MuiTableBody: {
+      root: {
+        '& tr:nth-child(even)': {
+          backgroundColor: palettes.neutral[100]
+        },
+        borderColor: palettes.neutral[100]
+      }
+    },
+    MuiTableCell: {
+      body: {
+        borderBottomColor: palettes.neutral[100]
+      }
+    },
+    MuiTableFooter: {
+      root: {
+        '& th,td': {
+          fontWeight: 'bold',
+          color: text.primary
+        },
+        borderTop: `2px solid ${palettes.brand[500]}`,
+        borderBottom: `2px solid ${palettes.brand[500]}`
+      }
+    },
     MuiTabs: {
       indicator: {
-        backgroundColor: allColors.committedYellow[500],
+        backgroundColor: palettes.brand[500],
         height: '4px'
       }
     }

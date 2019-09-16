@@ -4,6 +4,7 @@ import {
   TableBoby,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
   TableRow
 } from '../../'
@@ -52,6 +53,47 @@ import {
         </Table>
       )
     })}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="footer">
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Item</TableCell>
+          <TableCell align="right">Cost</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow key="1">
+          <TableCell component="th" scope="row">
+            Item 1
+          </TableCell>
+          <TableCell align="right">100</TableCell>
+        </TableRow>
+        <TableRow key="2">
+          <TableCell component="th" scope="row">
+            Item 2
+          </TableCell>
+          <TableCell align="right">100</TableCell>
+        </TableRow>
+        <TableRow key="3">
+          <TableCell component="th" scope="row">
+            Item 3
+          </TableCell>
+          <TableCell align="right">100</TableCell>
+        </TableRow>
+      </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell component="th" scope="row">
+            Total
+          </TableCell>
+          <TableCell align="right">300</TableCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
   </Story>
 </Preview>
 
