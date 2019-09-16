@@ -7,10 +7,6 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 # Checkbox
 
-```js
-// TODO remove material components
-```
-
 Checkboxes can be used as toggle actions or as part of input forms.
 Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
 
@@ -22,23 +18,21 @@ Use when single select/deselect option, use radio when one option of more then t
       onChange={action('checked')}
       value="checkedA"
       inputProps={{
-        'aria-label': 'primary checkbox'
+        'aria-label': 'checkbox'
       }}
     />
   </Story>
   <Story name="primary checked">
     <Checkbox
       checked={false}
-      value="checkedB"
       color="primary"
       inputProps={{
-        'aria-label': 'secondary checkbox'
+        'aria-label': 'primary checkbox'
       }}
     />
   </Story>
   <Story name="uncontrolled checked">
     <Checkbox
-      value="checkedC"
       inputProps={{
         'aria-label': 'uncontrolled-checkbox'
       }}
@@ -47,7 +41,6 @@ Use when single select/deselect option, use radio when one option of more then t
   <Story name="disabled">
     <Checkbox
       disabled={true}
-      value="checkedD"
       inputProps={{
         'aria-label': 'disabled checkbox'
       }}
@@ -57,7 +50,6 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       disabled={true}
       checked={true}
-      value="checkedE"
       inputProps={{
         'aria-label': 'disabled checked checkbox'
       }}
@@ -65,7 +57,6 @@ Use when single select/deselect option, use radio when one option of more then t
   </Story>
   <Story name="indeterminate">
     <Checkbox
-      value="checkedF"
       indeterminate={true}
       inputProps={{
         'aria-label': 'indeterminate checkbox'
@@ -76,7 +67,6 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       defaultChecked={true}
       color="default"
-      value="checkedG"
       inputProps={{
         'aria-label': 'checkbox with default color'
       }}
@@ -100,6 +90,7 @@ Use when single select/deselect option, use radio when one option of more then t
         <Flex>
           <Checkbox
             checked={checked}
+            color="default"
             onChange={event => {
               click(event.target.checked)
               setChecked(event.target.checked)

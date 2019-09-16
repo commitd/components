@@ -1,10 +1,6 @@
 import * as allColors from './colors'
 import * as fonts from './fonts'
-import {
-  fade,
-  lighten,
-  darken
-} from '@material-ui/core/styles/colorManipulator'
+import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 
 declare module '@material-ui/core/styles/createPalette' {
@@ -247,15 +243,15 @@ export const light: ThemeOptions = {
     },
     MuiCheckbox: {
       root: {
-        color: text.primary
+        color: palettes.neutral[500]
         // '&$checked': {
         //   color: palettes.primary[500]
         // }
       },
       colorPrimary: {
+        color: palettes.primary[500],
         '&$checked': {
           color: palettes.primary[500],
-          zIndex: 1,
           '&:hover': {
             backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
           }
@@ -268,10 +264,9 @@ export const light: ThemeOptions = {
         }
       },
       colorSecondary: {
-        color: palettes.secondary[700],
-        zIndex: 1,
+        color: palettes.secondary[300],
         '&$checked': {
-          color: palettes.secondary[500],
+          color: palettes.secondary[300],
           '&:hover': {
             backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
           }
@@ -280,7 +275,7 @@ export const light: ThemeOptions = {
           color: palettes.primary[500]
         },
         '&$disabled': {
-          color: `${palettes.secondary[700]}66`
+          color: `${palettes.secondary[300]}66`
         }
       }
     },
