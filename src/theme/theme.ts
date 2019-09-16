@@ -281,6 +281,47 @@ export const light: ThemeOptions = {
         }
       }
     },
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': fonts.faces,
+        /* Disable auto-enlargement of small text in Safari */
+        textSizeAdjust: '100%',
+        /* Enable kerning and optional ligatures */
+        textRendering: 'optimizeLegibility',
+        /**
+         * Form elements render using OS defaults,
+         * so font-family inheritance must be specifically declared
+         */
+        'button, input, optgroup, select, textarea': {
+          fontFamily: 'inherit',
+          fontSize: 'inherit'
+        }
+      }
+    },
+    MuiDialog: {
+      paper: {
+        borderTop: `4px solid ${allColors.committedYellow[500]}`
+      }
+    },
+    MuiIconButton: {
+      colorPrimary: {
+        '&:hover': {
+          backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        }
+      },
+      colorSecondary: {
+        color: palettes.brand[800],
+        '&:hover': {
+          backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        }
+      }
+    },
     MuiRadio: {
       root: {
         color: palettes.neutral[500],
@@ -331,44 +372,16 @@ export const light: ThemeOptions = {
         }
       }
     },
-    MuiCssBaseline: {
-      '@global': {
-        '@font-face': fonts.faces,
-        /* Disable auto-enlargement of small text in Safari */
-        textSizeAdjust: '100%',
-        /* Enable kerning and optional ligatures */
-        textRendering: 'optimizeLegibility',
-        /**
-         * Form elements render using OS defaults,
-         * so font-family inheritance must be specifically declared
-         */
-        'button, input, optgroup, select, textarea': {
-          fontFamily: 'inherit',
-          fontSize: 'inherit'
-        }
-      }
-    },
-    MuiDialog: {
-      paper: {
-        borderTop: `4px solid ${allColors.committedYellow[500]}`
-      }
-    },
-    MuiIconButton: {
-      colorPrimary: {
-        '&:hover': {
-          backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.brand[500]
+    MuiSwitch: {
+      root: {
+        color: palettes.neutral[500],
+        '&$disabled': {
+          color: addTransparency(palettes.neutral[500])
         }
       },
-      colorSecondary: {
-        color: palettes.brand[800],
-        '&:hover': {
-          backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.primary[500]
+      colorPrimary: {
+        '&$checked + $track': {
+          backgroundColor: palettes.brand[500]
         }
       }
     },
