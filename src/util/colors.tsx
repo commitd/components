@@ -5,6 +5,7 @@ import { Flex, Box, Text, Tooltip, FlexProps } from '..'
 export interface ColorsProps {
   name: string
   colors: { [key: string]: string }
+  accent?: boolean
 }
 
 export type ColorProps = FlexProps & {
@@ -33,13 +34,15 @@ export const Color = ({
   </Tooltip>
 )
 
-export const Colors = ({ colors, name }: ColorsProps) => (
+export const Colors = ({ colors, name, accent = false }: ColorsProps) => (
   <Flex mb={1}>
     <Box width={150}>
       <Text>{name}</Text>
     </Box>
-    {Object.keys(colors).map(weight => (
-      <Color color={colors[weight]} />
-    ))}
+    {Object.keys(colors)
+      .filter(weight => (accent ? true : !weight.startsWith('A')))
+      .map(weight => (
+        <Color color={colors[weight]} />
+      ))}
   </Flex>
 )
