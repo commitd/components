@@ -11,15 +11,10 @@ import {
   FormLabel
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 
 <Meta title="components|Radio" component={Radio} />
 
 # Radio
-
-```js
-// TODO remove material components
-```
 
 Radios can be used to choose between a set of more than two options.
 Use a checkbox or on/off switch when single select/deselect option,
@@ -28,7 +23,7 @@ use radio when one option of more then two choices; [further info](https://www.n
 Radios should always be used with a `RadioGroup` to handle the state control and layout.
 
 <Preview>
-  <Story name="with state">
+  <Story name="example">
     {React.createElement(() => {
       const [value, setValue] = React.useState('female')
       function handleChange(event /*: React.ChangeEvent<HTMLInputElement> */) {
@@ -46,19 +41,67 @@ Radios should always be used with a `RadioGroup` to handle the state control and
             >
               <FormControlLabel
                 value="female"
-                control={<Radio />}
+                color="primary"
+                control={<Radio color="primary" />}
                 label="Female"
               />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel
+                value="male"
+                control={<Radio color="primary" />}
+                label="Male"
+              />
               <FormControlLabel
                 value="other"
-                control={<Radio />}
+                control={<Radio color="primary" />}
                 label="Other"
               />
               <FormControlLabel
                 value="disabled"
                 disabled
-                control={<Radio />}
+                control={<Radio color="primary" />}
+                label="(Disabled option)"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+      )
+    })}
+  </Story>
+</Preview>
+
+## Variants
+
+<Preview>
+  <Story name="variants">
+    {React.createElement(() => {
+      const [value, setValue] = React.useState('1')
+      function handleChange(event /*: React.ChangeEvent<HTMLInputElement> */) {
+        setValue(event.target /* as HTMLInputElement*/.value)
+      }
+      return (
+        <div>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Variants</FormLabel>
+            <RadioGroup name="radio" value={value} onChange={handleChange}>
+              <FormControlLabel
+                value="primary"
+                control={<Radio color="primary" />}
+                label="primary"
+              />
+              <FormControlLabel
+                value="secondary"
+                control={<Radio color="secondary" />}
+                label="secondary"
+              />
+              <FormControlLabel
+                value="default"
+                control={<Radio color="default" />}
+                label="default"
+              />
+              <FormControlLabel
+                value={value}
+                disabled
+                control={<Radio color={value} />}
                 label="(Disabled option)"
               />
             </RadioGroup>

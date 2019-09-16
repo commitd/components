@@ -32,6 +32,8 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   }
 }
 
+const addTransparency = (color: string) => `${color}88`
+
 export const palettes = {
   ...allColors,
   brand: allColors.committedYellow,
@@ -157,8 +159,8 @@ export const light: ThemeOptions = {
           backgroundColor: lighten(palettes.primary[300], action.hoverOpacity)
         },
         '&$disabled': {
-          color: `${text.primary}88`,
-          backgroundColor: `${palettes.neutral[300]}88`
+          color: addTransparency(text.primary),
+          backgroundColor: addTransparency(palettes.neutral[300])
         }
       },
       containedPrimary: {
@@ -166,19 +168,19 @@ export const light: ThemeOptions = {
           backgroundColor: lighten(palettes.primary[500], action.hoverOpacity)
         },
         '&$disabled': {
-          backgroundColor: `${palettes.primary[500]}88`,
-          color: `${palettes.secondary[500]}88`
+          backgroundColor: addTransparency(palettes.primary[500]),
+          color: addTransparency(palettes.secondary[500])
         }
       },
       containedSecondary: {
         '&$disabled': {
-          backgroundColor: `${palettes.secondary[200]}88`,
-          color: `${palettes.primary[500]}88`
+          backgroundColor: addTransparency(palettes.secondary[200]),
+          color: addTransparency(palettes.primary[500])
         }
       },
       text: {
         '&$disabled': {
-          color: `${text.primary}88`
+          color: addTransparency(text.primary)
         }
       },
       textPrimary: {
@@ -190,7 +192,7 @@ export const light: ThemeOptions = {
           color: palettes.brand[500]
         },
         '&$disabled': {
-          color: `${palettes.primary[500]}88`
+          color: addTransparency(palettes.primary[500])
         }
       },
       textSecondary: {
@@ -202,13 +204,13 @@ export const light: ThemeOptions = {
           color: palettes.primary[500]
         },
         '&$disabled': {
-          color: `${palettes.brand[500]}88`
+          color: addTransparency(palettes.brand[500])
         }
       },
       outlined: {
         '&$disabled': {
-          borderColor: `${palettes.neutral[500]}88`,
-          color: `${palettes.neutral[200]}88`
+          borderColor: addTransparency(palettes.neutral[500]),
+          color: addTransparency(palettes.neutral[200])
         }
       },
       outlinedPrimary: {
@@ -220,9 +222,9 @@ export const light: ThemeOptions = {
           color: palettes.brand[500]
         },
         '&$disabled': {
-          backgroundColor: `${palettes.brand[100]}88`,
-          borderColor: `${palettes.primary[500]}88`,
-          color: `${palettes.primary[500]}88`
+          backgroundColor: addTransparency(palettes.brand[100]),
+          borderColor: addTransparency(palettes.primary[500]),
+          color: addTransparency(palettes.primary[500])
         }
       },
       outlinedSecondary: {
@@ -234,19 +236,19 @@ export const light: ThemeOptions = {
           color: palettes.primary[500]
         },
         '&$disabled': {
-          backgroundColor: `${palettes.primary[400]}88`,
-          borderColor: `${palettes.secondary[300]}88`,
-          color: `${palettes.secondary[300]}88`
+          backgroundColor: addTransparency(palettes.primary[400]),
+          borderColor: addTransparency(palettes.secondary[300]),
+          color: addTransparency(palettes.secondary[300])
         }
       },
       disabled: {}
     },
     MuiCheckbox: {
       root: {
-        color: palettes.neutral[500]
-        // '&$checked': {
-        //   color: palettes.primary[500]
-        // }
+        color: palettes.neutral[500],
+        '&$disabled': {
+          color: addTransparency(palettes.neutral[500])
+        }
       },
       colorPrimary: {
         color: palettes.primary[500],
@@ -260,7 +262,7 @@ export const light: ThemeOptions = {
           color: palettes.brand[500]
         },
         '&$disabled': {
-          color: `${palettes.primary[500]}66`
+          color: addTransparency(palettes.primary[500])
         }
       },
       colorSecondary: {
@@ -275,7 +277,57 @@ export const light: ThemeOptions = {
           color: palettes.primary[500]
         },
         '&$disabled': {
-          color: `${palettes.secondary[300]}66`
+          color: addTransparency(palettes.secondary[300])
+        }
+      }
+    },
+    MuiRadio: {
+      root: {
+        color: palettes.neutral[500],
+        '&$disabled': {
+          color: addTransparency(palettes.neutral[500])
+        }
+      },
+      colorPrimary: {
+        color: palettes.primary[500],
+        '&$checked': {
+          color: palettes.primary[500],
+          '&:hover': {
+            backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+          }
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '& svg:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.primary[500]),
+          '& svg:nth-of-type(2)': {
+            color: addTransparency(palettes.brand[500])
+          }
+        }
+      },
+      colorSecondary: {
+        color: palettes.secondary[300],
+        '&$checked': {
+          color: palettes.secondary[300],
+          '&:hover': {
+            backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+          }
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '& svg:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.secondary[300]),
+          '& svg:nth-of-type(2)': {
+            color: addTransparency(palettes.primary[500])
+          }
         }
       }
     },
