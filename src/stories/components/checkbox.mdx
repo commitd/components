@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import { Checkbox, Flex, Text, Icons } from '../../'
+import { Checkbox, Flex, Text, Icons, colors } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Checkbox" component={Checkbox} />
@@ -77,6 +77,12 @@ Use when single select/deselect option, use radio when one option of more then t
       style={{ color: 'red' }}
       icon={<Icons.FavoriteBorder />}
       checkedIcon={<Icons.Favorite />}
+    />
+  </Story>
+  <Story name="custom colors">
+    <Checkbox
+      icon={<Icons.BookmarkBorder style={{ color: colors.grey[600] }} />}
+      checkedIcon={<Icons.Bookmark style={{ color: colors.lightBlue[400] }} />}
     />
   </Story>
 </Preview>

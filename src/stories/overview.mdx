@@ -603,12 +603,18 @@ import {
           </CardHeader>
           <CardActions>
             <Checkbox
-              icon={<Icons.FavoriteBorder />}
-              checkedIcon={<Icons.Favorite />}
+              icon={
+                <Icons.FavoriteBorder style={{ color: colors.grey[600] }} />
+              }
+              checkedIcon={<Icons.Favorite style={{ color: 'red' }} />}
             />
             <Checkbox
-              icon={<Icons.BookmarkBorder />}
-              checkedIcon={<Icons.Bookmark />}
+              icon={
+                <Icons.BookmarkBorder style={{ color: colors.grey[600] }} />
+              }
+              checkedIcon={
+                <Icons.Bookmark style={{ color: colors.lightBlue[400] }} />
+              }
             />
             <IconButton>
               <Icons.Share />
