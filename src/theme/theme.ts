@@ -1,11 +1,13 @@
 import * as allColors from './colors'
 import * as fonts from './fonts'
+import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
     success: PaletteColorOptions
     warning: PaletteColorOptions
+    brand: PaletteColorOptions
     info: PaletteColorOptions
   }
 
@@ -30,31 +32,66 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   }
 }
 
+const addTransparency = (color: string) => `${color}88`
+
 export const palettes = {
   ...allColors,
   brand: allColors.committedYellow,
-  primary: allColors.committedYellow,
-  secondary: allColors.committedGrey,
+  primary: allColors.committedGrey,
+  secondary: allColors.committedYellow,
   success: allColors.teal,
   warning: allColors.orange,
   error: allColors.red,
-  info: allColors.lightBlue,
-  neutral: allColors.committedGrey
+  info: allColors.lightBlueVivid,
+  neutral: allColors.grey
 }
 
 export const palette = {
   text: palettes.neutral[900]
 }
 
+const text = {
+  primary: palettes.neutral[800],
+  secondary: palettes.neutral[700],
+  disabled: palettes.neutral[500],
+  hint: palettes.neutral[500]
+}
+
+const action = {
+  active: 'rgba(0, 0, 0, 0.54)',
+  hover: 'rgba(0, 0, 0, 0.08)',
+  hoverOpacity: 0.08,
+  selected: 'rgba(0, 0, 0, 0.14)',
+  disabled: 'rgba(0, 0, 0, 0.26)',
+  disabledBackground: 'rgba(0, 0, 0, 0.12)'
+}
+
 export const light: ThemeOptions = {
   palette: {
     type: 'light',
-    primary: palettes.primary,
-    secondary: {
-      light: palettes.secondary[300],
-      main: palettes.secondary[500],
-      dark: palettes.secondary[700]
+    brand: {
+      light: palettes.brand[300],
+      main: palettes.brand[500],
+      dark: palettes.brand[700],
+      contrastText: palette.text
     },
+    primary: {
+      light: palettes.primary[400],
+      main: palettes.primary[600],
+      dark: palettes.primary[800],
+      contrastText: palettes.brand[500]
+    },
+    secondary: {
+      light: palettes.brand[50],
+      main: palettes.brand[200],
+      dark: palettes.brand[400],
+      contrastText: palettes.primary[500]
+    },
+    // secondary: {
+    //   light: palettes.secondary[300],
+    //   main: palettes.secondary[500],
+    //   dark: palettes.secondary[700]
+    // },
     error: palettes.error,
     success: {
       light: palettes.success[300],
@@ -69,31 +106,19 @@ export const light: ThemeOptions = {
       contrastText: palette.text
     },
     info: {
-      light: palettes.info[300],
-      main: palettes.info[500],
-      dark: palettes.info[700],
+      light: palettes.info[100],
+      main: palettes.info[300],
+      dark: palettes.info[500],
       contrastText: palette.text
     },
     background: {
       default: palettes.neutral[50],
       paper: 'white'
     },
-    text: {
-      primary: palettes.neutral[800],
-      secondary: palettes.neutral[700],
-      disabled: palettes.neutral[500],
-      hint: palettes.neutral[500]
-    },
-    grey: palettes.blueGrey
-    // action: {
-    //   active: string;
-    //   hover: string;
-    //   hoverOpacity: number;
-    //   selected: string;
-    //   disabled: string;
-    //   disabledBackground: string;
-    // }
-    //divider?:
+    text,
+    grey: palettes.neutral,
+    action,
+    divider: palettes.brand[700]
   },
   props: {
     MuiTypography: {
@@ -125,6 +150,137 @@ export const light: ThemeOptions = {
     borderRadius: 2
   },
   overrides: {
+    MuiButton: {
+      root: {
+        textTransform: 'none'
+      },
+      contained: {
+        '&:hover': {
+          backgroundColor: lighten(palettes.primary[300], action.hoverOpacity)
+        },
+        '&$disabled': {
+          color: addTransparency(text.primary),
+          backgroundColor: addTransparency(palettes.neutral[300])
+        }
+      },
+      containedPrimary: {
+        '&:hover': {
+          backgroundColor: lighten(palettes.primary[500], action.hoverOpacity)
+        },
+        '&$disabled': {
+          backgroundColor: addTransparency(palettes.primary[500]),
+          color: addTransparency(palettes.secondary[500])
+        }
+      },
+      containedSecondary: {
+        '&$disabled': {
+          backgroundColor: addTransparency(palettes.secondary[200]),
+          color: addTransparency(palettes.primary[500])
+        }
+      },
+      text: {
+        '&$disabled': {
+          color: addTransparency(text.primary)
+        }
+      },
+      textPrimary: {
+        color: palettes.primary[500],
+        '&:hover': {
+          backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.primary[500])
+        }
+      },
+      textSecondary: {
+        color: palettes.brand[800],
+        '&:hover': {
+          backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.brand[500])
+        }
+      },
+      outlined: {
+        '&$disabled': {
+          borderColor: addTransparency(palettes.neutral[500]),
+          color: addTransparency(palettes.neutral[200])
+        }
+      },
+      outlinedPrimary: {
+        backgroundColor: palettes.brand[100],
+        '&:hover': {
+          backgroundColor: palettes.brand[200]
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '&$disabled': {
+          backgroundColor: addTransparency(palettes.brand[100]),
+          borderColor: addTransparency(palettes.primary[500]),
+          color: addTransparency(palettes.primary[500])
+        }
+      },
+      outlinedSecondary: {
+        backgroundColor: palettes.primary[400],
+        '&:hover': {
+          backgroundColor: lighten(palettes.primary[400], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '&$disabled': {
+          backgroundColor: addTransparency(palettes.primary[400]),
+          borderColor: addTransparency(palettes.secondary[300]),
+          color: addTransparency(palettes.secondary[300])
+        }
+      },
+      disabled: {}
+    },
+    MuiCheckbox: {
+      root: {
+        color: palettes.neutral[500],
+        '&$disabled': {
+          color: addTransparency(palettes.neutral[500])
+        }
+      },
+      colorPrimary: {
+        color: palettes.primary[500],
+        '&$checked': {
+          color: palettes.primary[500],
+          '&:hover': {
+            backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+          }
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.primary[500])
+        }
+      },
+      colorSecondary: {
+        color: palettes.secondary[300],
+        '&$checked': {
+          color: palettes.secondary[300],
+          '&:hover': {
+            backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+          }
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.secondary[300])
+        }
+      }
+    },
     MuiCssBaseline: {
       '@global': {
         '@font-face': fonts.faces,
@@ -142,20 +298,129 @@ export const light: ThemeOptions = {
         }
       }
     },
-    MuiButton: {
+    MuiDialog: {
+      paper: {
+        borderTop: `4px solid ${allColors.committedYellow[500]}`
+      }
+    },
+    MuiIconButton: {
+      colorPrimary: {
+        '&:hover': {
+          backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        }
+      },
+      colorSecondary: {
+        color: palettes.brand[800],
+        '&:hover': {
+          backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        }
+      }
+    },
+    MuiRadio: {
       root: {
-        textTransform: 'none'
+        color: palettes.neutral[500],
+        '&$disabled': {
+          color: addTransparency(palettes.neutral[500])
+        }
+      },
+      colorPrimary: {
+        color: palettes.primary[500],
+        '&$checked': {
+          color: palettes.primary[500],
+          '&:hover': {
+            backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+          }
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '& svg:nth-of-type(2)': {
+          color: palettes.brand[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.primary[500]),
+          '& svg:nth-of-type(2)': {
+            color: addTransparency(palettes.brand[500])
+          }
+        }
+      },
+      colorSecondary: {
+        color: palettes.secondary[300],
+        '&$checked': {
+          color: palettes.secondary[300],
+          '&:hover': {
+            backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+          }
+        },
+        '& span:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '& svg:nth-of-type(2)': {
+          color: palettes.primary[500]
+        },
+        '&$disabled': {
+          color: addTransparency(palettes.secondary[300]),
+          '& svg:nth-of-type(2)': {
+            color: addTransparency(palettes.primary[500])
+          }
+        }
+      }
+    },
+    MuiSwitch: {
+      root: {
+        color: palettes.neutral[500],
+        '&$disabled': {
+          color: addTransparency(palettes.neutral[500])
+        }
+      },
+      colorPrimary: {
+        '&$checked + $track': {
+          backgroundColor: palettes.brand[500]
+        }
+      }
+    },
+    MuiTableHead: {
+      root: {
+        '& th': {
+          fontWeight: 'bold',
+          color: text.primary
+        },
+        borderBottom: `2px solid ${palettes.brand[500]}`
+      }
+    },
+    MuiTableBody: {
+      root: {
+        '& tr:nth-child(even)': {
+          backgroundColor: palettes.neutral[100]
+        },
+        borderColor: palettes.neutral[100]
+      }
+    },
+    MuiTableCell: {
+      body: {
+        borderBottomColor: palettes.neutral[100]
+      }
+    },
+    MuiTableFooter: {
+      root: {
+        '& th,td': {
+          fontWeight: 'bold',
+          color: text.primary
+        },
+        borderTop: `2px solid ${palettes.brand[500]}`,
+        borderBottom: `2px solid ${palettes.brand[500]}`
       }
     },
     MuiTabs: {
       indicator: {
-        backgroundColor: allColors.committedYellow[500],
+        backgroundColor: palettes.brand[500],
         height: '4px'
-      }
-    },
-    MuiDialog: {
-      paper: {
-        borderTop: `4px solid ${allColors.committedYellow[500]}`
       }
     }
   }

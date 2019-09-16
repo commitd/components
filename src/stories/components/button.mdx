@@ -1,4 +1,4 @@
-import { Button } from '../../'
+import { Button, Box } from '../../'
 import { Cartesian } from '@compositor/kit'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
@@ -96,23 +96,98 @@ Use the "text" variant for lower emphisis actions or for paring with a main acti
 
 # Disabled
 
-Disabled button loose their color, in all styles.
+Disabled buttons add transparency.
 
 <Preview>
+  <Story name="disabled default">
+    <Box>
+      <Button m={1} disabled={false} color="default">
+        Default
+      </Button>
+      <Button m={1} disabled={true} color="default">
+        Default
+      </Button>
+    </Box>
+  </Story>
   <Story name="disabled primary">
-    <Button disabled={true} color="primary">
-      Contained
-    </Button>
+    <Box>
+      <Button m={1} disabled={false} color="primary">
+        Primary
+      </Button>
+      <Button m={1} disabled={true} color="primary">
+        Primary
+      </Button>
+    </Box>
   </Story>
-  <Story name="disabled outlined">
-    <Button disabled={true} variant="outlined" color="primary">
-      Outlined
-    </Button>
+  <Story name="disabled secondary">
+    <Box>
+      <Button m={1} disabled={false} color="secondary">
+        Secondary
+      </Button>
+      <Button m={1} disabled={true} color="secondary">
+        Secondary
+      </Button>
+    </Box>
   </Story>
-  <Story name="disabled text">
-    <Button disabled={true} variant="text" color="primary">
-      Text
-    </Button>
+  <Story name="disabled default outlined">
+    <Box>
+      <Button m={1} disabled={false} variant="outlined" color="default">
+        Default
+      </Button>
+      <Button m={1} disabled={true} variant="outlined" color="default">
+        Default
+      </Button>
+    </Box>
+  </Story>
+  <Story name="disabled primary outlined">
+    <Box>
+      <Button m={1} disabled={false} variant="outlined" color="primary">
+        Primary
+      </Button>
+      <Button m={1} disabled={true} variant="outlined" color="primary">
+        Primary
+      </Button>
+    </Box>
+  </Story>
+  <Story name="disabled secondary outlined">
+    <Box>
+      <Button m={1} disabled={false} variant="outlined" color="secondary">
+        Secondary
+      </Button>
+      <Button m={1} disabled={true} variant="outlined" color="secondary">
+        Secondary
+      </Button>
+    </Box>
+  </Story>
+  <Story name="disabled default text">
+    <Box>
+      <Button m={1} disabled={false} variant="text" color="default">
+        Default
+      </Button>
+      <Button m={1} disabled={true} variant="text" color="default">
+        Default
+      </Button>
+    </Box>
+  </Story>
+  <Story name="disabled primary text">
+    <Box>
+      <Button m={1} disabled={false} variant="text" color="primary">
+        Primary
+      </Button>
+      <Button m={1} disabled={true} variant="text" color="primary">
+        Primary
+      </Button>
+    </Box>
+  </Story>
+  <Story name="disabled secondary text">
+    <Box>
+      <Button m={1} disabled={false} variant="text" color="secondary">
+        Secondary
+      </Button>
+      <Button m={1} disabled={true} variant="text" color="secondary">
+        Secondary
+      </Button>
+    </Box>
   </Story>
 </Preview>
 

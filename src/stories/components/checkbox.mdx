@@ -1,15 +1,11 @@
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import { Checkbox, Flex, Text, Icons } from '../../'
+import { Checkbox, Flex, Text, Icons, colors } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Meta title="components|Checkbox" component={Checkbox} />
 
 # Checkbox
-
-```js
-// TODO remove material components
-```
 
 Checkboxes can be used as toggle actions or as part of input forms.
 Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
@@ -18,26 +14,25 @@ Use when single select/deselect option, use radio when one option of more then t
   <Story name="checked">
     <Checkbox
       checked={true}
+      color="default"
       onChange={action('checked')}
       value="checkedA"
       inputProps={{
-        'aria-label': 'primary checkbox'
+        'aria-label': 'checkbox'
       }}
     />
   </Story>
   <Story name="primary checked">
     <Checkbox
       checked={false}
-      value="checkedB"
       color="primary"
       inputProps={{
-        'aria-label': 'secondary checkbox'
+        'aria-label': 'primary checkbox'
       }}
     />
   </Story>
   <Story name="uncontrolled checked">
     <Checkbox
-      value="checkedC"
       inputProps={{
         'aria-label': 'uncontrolled-checkbox'
       }}
@@ -46,7 +41,6 @@ Use when single select/deselect option, use radio when one option of more then t
   <Story name="disabled">
     <Checkbox
       disabled={true}
-      value="checkedD"
       inputProps={{
         'aria-label': 'disabled checkbox'
       }}
@@ -56,7 +50,6 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       disabled={true}
       checked={true}
-      value="checkedE"
       inputProps={{
         'aria-label': 'disabled checked checkbox'
       }}
@@ -64,7 +57,6 @@ Use when single select/deselect option, use radio when one option of more then t
   </Story>
   <Story name="indeterminate">
     <Checkbox
-      value="checkedF"
       indeterminate={true}
       inputProps={{
         'aria-label': 'indeterminate checkbox'
@@ -75,7 +67,6 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       defaultChecked={true}
       color="default"
-      value="checkedG"
       inputProps={{
         'aria-label': 'checkbox with default color'
       }}
@@ -83,8 +74,15 @@ Use when single select/deselect option, use radio when one option of more then t
   </Story>
   <Story name="custom icon">
     <Checkbox
+      style={{ color: 'red' }}
       icon={<Icons.FavoriteBorder />}
       checkedIcon={<Icons.Favorite />}
+    />
+  </Story>
+  <Story name="custom colors">
+    <Checkbox
+      icon={<Icons.BookmarkBorder style={{ color: colors.grey[600] }} />}
+      checkedIcon={<Icons.Bookmark style={{ color: colors.lightBlue[400] }} />}
     />
   </Story>
 </Preview>
@@ -95,20 +93,58 @@ Use when single select/deselect option, use radio when one option of more then t
       const [checked, setChecked] = useState(false)
       const click = action('clicked')
       return (
-        <div>
+        <Flex>
           <Checkbox
             checked={checked}
+            color="default"
             onChange={event => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
-            value="with state"
-            inputProps={{
-              'aria-label': 'primary checkbox'
+          />
+          <Checkbox
+            checked={checked}
+            color="primary"
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
             }}
           />
-          <Text>{'' + checked}</Text>
-        </div>
+          <Checkbox
+            checked={checked}
+            color="secondary"
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+          />
+          <Checkbox
+            checked={checked}
+            disabled
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+          />
+          <Checkbox
+            checked={checked}
+            color="primary"
+            disabled
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+          />
+          <Checkbox
+            checked={checked}
+            color="secondary"
+            disabled
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+          />
+        </Flex>
       )
     })}
   </Story>

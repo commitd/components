@@ -422,28 +422,57 @@ import {
           )
         })}
       </Flex>
-      <Flex
-        flexGrow={1}
-        p={3}
-        pt={4}
-        m={1}
-        justifyContent="space-evenly"
-        border="1px solid black"
-        bg="background.defaul"
-      >
-        <Flex flexDirection="column" justifyContent="center">
-          <Checkbox defaultChecked color="primary" />
-          <Checkbox color="secondary" />
-        </Flex>
-        <Flex flexDirection="column" justifyContent="center">
-          <Radio defaultChecked color="primary" />
-          <Radio defaultChecked={false} color="secondary" />
-        </Flex>
-        <Flex flexDirection="column" justifyContent="center">
-          <Switch defaultChecked color="primary" />
-          <Switch color="secondary" />
-        </Flex>
-      </Flex>
+      {React.createElement(() => {
+        const [checked, setChecked] = React.useState(true)
+        return (
+          <Flex
+            flexGrow={1}
+            p={3}
+            pt={4}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+            bg="background.defaul"
+          >
+            <Flex flexDirection="column" justifyContent="center">
+              <Checkbox
+                checked={checked}
+                onChange={event => setChecked(event.target.checked)}
+                color="primary"
+              />
+              <Checkbox
+                checked={!checked}
+                onChange={event => setChecked(!event.target.checked)}
+                color="secondary"
+              />
+            </Flex>
+            <Flex flexDirection="column" justifyContent="center">
+              <Radio
+                checked={checked}
+                onChange={event => setChecked(event.target.checked)}
+                color="primary"
+              />
+              <Radio
+                checked={!checked}
+                onChange={event => setChecked(!event.target.checked)}
+                color="secondary"
+              />
+            </Flex>
+            <Flex flexDirection="column" justifyContent="center">
+              <Switch
+                checked={checked}
+                onChange={event => setChecked(event.target.checked)}
+                color="primary"
+              />
+              <Switch
+                checked={!checked}
+                onChange={event => setChecked(!event.target.checked)}
+                color="secondary"
+              />
+            </Flex>
+          </Flex>
+        )
+      })}
       <Flex
         flexGrow={1}
         flexDirection="column"
@@ -574,12 +603,18 @@ import {
           </CardHeader>
           <CardActions>
             <Checkbox
-              icon={<Icons.FavoriteBorder />}
-              checkedIcon={<Icons.Favorite />}
+              icon={
+                <Icons.FavoriteBorder style={{ color: colors.grey[600] }} />
+              }
+              checkedIcon={<Icons.Favorite style={{ color: 'red' }} />}
             />
             <Checkbox
-              icon={<Icons.BookmarkBorder />}
-              checkedIcon={<Icons.Bookmark />}
+              icon={
+                <Icons.BookmarkBorder style={{ color: colors.grey[600] }} />
+              }
+              checkedIcon={
+                <Icons.Bookmark style={{ color: colors.lightBlue[400] }} />
+              }
             />
             <IconButton>
               <Icons.Share />
