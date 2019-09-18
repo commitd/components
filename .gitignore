@@ -12,7 +12,9 @@ lib
 lib-esm
 _bundles
 docs
+
 # misc
+.cache
 .DS_Store
 .env
 .env.local

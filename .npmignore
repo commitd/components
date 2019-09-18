@@ -3,6 +3,7 @@
 **/webpack.config.js
 node_modules
 src
+example
 lib
 lib-esm
 _bundles

@@ -21,17 +21,10 @@ export type MainTextProps = {
 }
 export type TextProps = TypographyProps & MainTextProps
 
-const ThemeText = styled(
-  ({
-    italic,
-    fontSize,
-    upper,
-    light,
-    capital,
-    bold,
-    align,
-    ...others
-  }: TextProps) => <Typography {...others} />
+export const Text = styled(
+  ({ italic, fontSize, upper, light, capital, bold, ...others }: TextProps) => (
+    <Typography {...others} />
+  )
 )({
   fontFamily: fonts.families.main,
   fontStyle: props => (props.italic ? 'italic' : 'normal'),
@@ -47,32 +40,12 @@ const ThemeText = styled(
   fontWeight: props => (props.light ? 100 : props.bold ? 500 : 300)
 })
 
-export const Text: React.FC<TextProps> = props => {
-  let override = props
-  if (props.align) {
-    switch (props.align) {
-      case 'left':
-        override = Object.assign({}, props, { alignLeft: true })
-        break
-      case 'center':
-        override = Object.assign({}, props, { alignCenter: true })
-        break
-      case 'right':
-        override = Object.assign({}, props, { alignRight: true })
-        break
-      default:
-        break
-    }
-  }
-
-  return <ThemeText {...override} />
-}
 Text.displayName = 'Text'
 export const Span: React.FC<TextProps> = props => (
-  <ThemeText {...props} component="span" />
+  <Text {...props} component="span" />
 )
 Span.displayName = 'Span'
 export const Paragraph: React.FC<TextProps> = props => (
-  <ThemeText {...props} component="p" />
+  <Text {...props} component="p" />
 )
 Paragraph.displayName = 'Paragraph'
