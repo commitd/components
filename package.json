@@ -1,6 +1,6 @@
 {
   "name": "@commitd/components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Committed Component Library",
   "author": "Committed",
   "license": "UNLICENSED",
@@ -46,8 +46,8 @@
   },
   "peerDependencies": {
     "@material-ui/core": "^4.3.2",
-    "@material-ui/styles": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
+    "@material-ui/styles": "^4.3.2",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
