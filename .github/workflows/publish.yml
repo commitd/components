@@ -20,7 +20,8 @@ jobs:
       - run: yarn deploy-storybook --ci
         env:
           GH_TOKEN: $GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+# Paused until fix available
+#      - run: yarn publish
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           
