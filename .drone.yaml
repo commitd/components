@@ -1,0 +1,60 @@
+---
+kind: pipeline
+type: docker
+name: components
+
+steps:
+  - name: build
+    image: node:latest
+    environment:
+      NPM_CONFIG_USERCONFIG: /config/.npmrc
+    volumes:
+      - name: config
+        host:
+          path: /config
+      - name: drone_npm_cache
+        host:
+          path: /npm
+    commands:
+      - yarn install
+      - yarn build
+
+  - name: code-analysis
+    image: committed/drone-sonarqube-node
+    environment:
+      SONAR_HOST:
+        from_secret: sonar_host
+      SONAR_TOKEN:
+        from_secret: sonar_token
+
+  - name: publish
+    image: node:latest
+    environment:
+      NPM_CONFIG_USERCONFIG: /config/.npmrc
+      GITHUB_TOKEN:
+        from_secret: github_token
+    volumes:
+      - name: config
+        host:
+          path: /config
+      - name: drone_npm_cache
+        host:
+          path: /npm
+    commands:
+      - yarn publish
+      - yarn deploy-storybook --ci
+    when:
+      ref:
+        - refs/tags/v*
+
+  - name: slack
+    image: plugins/slack
+    webhook: <slack_webhook>
+    channel: mgmt-monitor
+    settings:
+      webhook:
+        from_secret: slack_webhook
+    when:
+      status:
+        - success
+        - failure
