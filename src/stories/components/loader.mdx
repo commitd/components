@@ -7,7 +7,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 <Preview>
   <Story name="default">
-    <Loader />
+    <Loader color="secondary.dark" />
   </Story>
 </Preview>
 
@@ -15,15 +15,15 @@ The size can be controlled with the `size` prop.
 
 <Preview>
   <Story name="small">
-    <Loader size={100} />
+    <Loader color="secondary.dark" size={100} />
   </Story>
 </Preview>
 
-Set `grey={true}`for a greyscale version.
+Omit the `color` to get the default greyscale version.
 
 <Preview>
   <Story name="grey">
-    <Loader grey={true} size={200} />
+    <Loader size={200} />
   </Story>
 </Preview>
 
@@ -35,10 +35,10 @@ There are some animation variants.
 
 <Preview>
   <Story name="spin">
-    <Loader variant={'spin'} grey={false} size={200} />
+    <Loader variant={'spin'} color="secondary.main" size={200} />
   </Story>
   <Story name="spin grey">
-    <Loader variant={'spin'} grey={true} size={200} />
+    <Loader variant={'spin'} size={200} />
   </Story>
 </Preview>
 
@@ -46,10 +46,10 @@ There are some animation variants.
 
 <Preview>
   <Story name="draw">
-    <Loader variant={'draw'} grey={false} size={200} />
+    <Loader variant={'draw'} color="primary.light" size={200} />
   </Story>
   <Story name="draw grey">
-    <Loader variant={'draw'} grey={true} size={200} />
+    <Loader variant={'draw'} size={200} />
   </Story>
 </Preview>
 
@@ -57,10 +57,10 @@ There are some animation variants.
 
 <Preview>
   <Story name="flip">
-    <Loader variant={'flip'} grey={false} size={200} />
+    <Loader variant={'flip'} color="primary.light" size={200} />
   </Story>
   <Story name="flip grey">
-    <Loader variant={'flip'} grey={true} size={200} />
+    <Loader variant={'flip'} size={200} />
   </Story>
 </Preview>
 
@@ -68,10 +68,10 @@ There are some animation variants.
 
 <Preview>
   <Story name="scale">
-    <Loader variant={'scale'} grey={false} size={200} />
+    <Loader variant={'scale'} color="secondary.light" size={200} />
   </Story>
   <Story name="scale grey">
-    <Loader variant={'scale'} grey={true} size={200} />
+    <Loader variant={'scale'} size={200} />
   </Story>
 </Preview>
 

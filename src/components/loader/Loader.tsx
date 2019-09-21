@@ -1,26 +1,35 @@
 import React from 'react'
 import { Logo } from '../logo/Logo'
 import { makeStyles } from '@material-ui/styles'
-import { Theme } from '@material-ui/core/styles'
+import { Theme } from '../../theme'
 import clsx from 'clsx'
+import { style } from '@material-ui/system'
+
+const styleColor = style({
+  prop: 'color',
+  themeKey: 'palette'
+})
+
+const selectColor = (theme: Theme) => ({ color = 'grey.100' }: LoaderProps) =>
+  styleColor({ theme, color }).color
 
 export interface LoaderProps {
   /**
-   *  adjust the size in px of the loader
+   *  adjust the size in px of the loader (or use a fraction of 1 for percentage)
    */
-  size?: number
+  size?: number | number[]
   /**
-   *  Change to the grey version
+   *  Theme based color from the palette, defaults to
    */
-  grey?: boolean
+  color?: string
   /**
    *  Change to the style of the loader
    */
   variant?: 'draw' | 'spin' | 'flip' | 'scale'
 }
 
-const selectColor = (theme: Theme) => ({ grey }: LoaderProps): string =>
-  grey ? theme.palette.grey[200] : theme.palette.primary.main
+// const selectColor = (theme: Theme) => ({ grey }: LoaderProps): string =>
+//   grey ? theme.palette.grey[200] : theme.palette.primary.main
 
 export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
   '@keyframes loader-stroke': {

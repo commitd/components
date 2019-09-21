@@ -2,17 +2,13 @@ import * as React from 'react'
 import MaterialLink, {
   LinkProps as MaterialLinkProps
 } from '@material-ui/core/Link'
+import { withNoOpener } from '../internal'
 
-export type LinkProps = MaterialLinkProps
+export interface LinkProps extends MaterialLinkProps {}
 
-export const Link: React.FC<LinkProps> = (props: LinkProps) => {
-  const { href, target } = props
-  if (target === '_blank' && href && href.indexOf(':') > -1) {
-    return <MaterialLink rel="noopener" {...props} />
-  } else {
-    return <MaterialLink {...props} />
-  }
-}
+export const Link: React.ComponentType<LinkProps> = withNoOpener<LinkProps>(
+  MaterialLink
+)
 Link.displayName = 'Link'
 
 export default Link

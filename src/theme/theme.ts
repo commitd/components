@@ -118,7 +118,7 @@ export const light: ThemeOptions = {
     text,
     grey: palettes.neutral,
     action,
-    divider: palettes.brand[700]
+    divider: "rgba(0, 0, 0, 0.12)"
   },
   props: {
     MuiTypography: {

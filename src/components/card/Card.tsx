@@ -1,14 +1,11 @@
 import * as React from 'react'
+import { palette, PaletteProps } from '@material-ui/system'
 import {
-  compose,
-  spacing,
-  flexbox,
-  palette,
-  SpacingProps,
-  FlexboxProps,
-  PaletteProps
-} from '@material-ui/system'
-import { sizing, SizingProps } from '@material-ui/system'
+  withPositioning,
+  PositioningProps,
+  withSizing,
+  SizingProps
+} from '../internal'
 import { styled } from '@material-ui/styles'
 import MaterialCard, {
   CardProps as MaterialCardProps
@@ -28,26 +25,15 @@ import MaterialCardHeader, {
 import MaterialCardMedia, {
   CardMediaProps as MaterialCardMediaProps
 } from '@material-ui/core/CardMedia'
-export type CardProps = MaterialCardProps & SpacingProps & FlexboxProps
 
-export const Card = styled(MaterialCard)(
-  compose(
-    spacing,
-    flexbox
-  )
-)
+export type CardProps = MaterialCardProps & PositioningProps
 
-Card.defaultProps = {
-  // CardShadowSize: "md",
-  // borderColor: "borderGray",
-  // borderRadius: 6,
-  // borderWidth: 0,
-  // p: 4
-}
-
+export const Card = withPositioning(MaterialCard)
 Card.displayName = 'Card'
 
 export default Card as React.FC<CardProps>
+
+// Card supplementary components
 
 export type CardHeaderProps = MaterialCardHeaderProps & PaletteProps
 export type CardContentProps = MaterialCardContentProps
@@ -79,7 +65,7 @@ export const CardActions: React.ComponentType<
   CardActionsProps
 > = MaterialCardActions
 CardActions.displayName = 'CardActions'
-export const CardMedia: React.ComponentType<CardMediaProps> = styled(
+export const CardMedia: React.ComponentType<CardMediaProps> = withSizing(
   MaterialCardMedia
-)(sizing)
+)
 CardMedia.displayName = 'CardMedia'

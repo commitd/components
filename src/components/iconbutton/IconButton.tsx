@@ -10,16 +10,21 @@ import MaterialIconButton, {
   IconButtonProps as MaterialIconButtonProps
 } from '@material-ui/core/IconButton'
 import { styled } from '@material-ui/styles'
+import { withNoOpener, AProps } from '../internal'
 
-export type IconButtonProps = MaterialIconButtonProps &
-  SpacingProps &
-  FlexboxProps
+export interface IconButtonProps
+  extends MaterialIconButtonProps,
+    SpacingProps,
+    FlexboxProps,
+    AProps {}
 
-export const IconButton = styled(MaterialIconButton)(
+export const IconButton: React.ComponentType<IconButtonProps> = styled(
+  withNoOpener(MaterialIconButton)
+)(
   compose(
     spacing,
     flexbox
   )
 )
 
-export default IconButton as React.FC<IconButtonProps>
+export default IconButton

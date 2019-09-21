@@ -1,5 +1,7 @@
-import SvgIcon from '@material-ui/core/SvgIcon'
+import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 import * as MaterialIcons from '@material-ui/icons'
+
+export interface IconProps extends SvgIconProps {}
 
 type SvgIconComponent = typeof SvgIcon
 
