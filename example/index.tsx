@@ -13,6 +13,10 @@ const Header = () => (
       <C.Box flexGrow={1}>
         <C.Heading.h1>Example</C.Heading.h1>
       </C.Box>
+      <C.IconButton
+        href="https://github.com/commitd/components"
+        target="_blank"
+      />
       <C.Button color="inherit" variant="text">
         Login
       </C.Button>
@@ -52,6 +56,9 @@ const Content = () => (
         <Post name={name} index={index} />
       ))}
     </C.Flex>
+    <C.Box mb={5}>
+      <C.Loader size={128} />
+    </C.Box>
   </C.Container>
 )
 

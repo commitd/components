@@ -11,10 +11,7 @@ import {
   SpacingProps,
   FlexboxProps
 } from '@material-ui/system'
-
-function transform(value: number) {
-  return value <= 1 ? ''.concat(String(value * 100), '%') : value
-}
+import { fractionToPercent } from '../../util'
 
 export const textColor = style({
   prop: 'color',
@@ -30,20 +27,30 @@ export const bgcolor = style({
 export const width = style({
   prop: 'size',
   cssProperty: 'width',
-  transform
+  transform: fractionToPercent
 })
 
 export const height = style({
   prop: 'size',
   cssProperty: 'height',
-  transform
+  transform: fractionToPercent
 })
 
 export type AvatarProps = MaterialAvatarProps &
   SpacingProps &
   FlexboxProps & {
-    /* the background color */
-    bg: string
+    /**
+     * The background color
+     */
+    bg?: string
+    /**
+     * The color of the icon or text
+     */
+    color?: string
+    /**
+     * The size (width and height) of the avatar, e.g. (24px)
+     */
+    size?: string
   }
 
 export const Avatar = styled(MaterialAvatar)(
