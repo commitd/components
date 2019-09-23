@@ -50,9 +50,8 @@ steps:
 
   - name: slack
     image: plugins/slack
-    webhook: <slack_webhook>
-    channel: mgmt-monitor
     settings:
+      channel: mgmt-monitor
       webhook:
         from_secret: slack_webhook
     when:
