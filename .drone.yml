@@ -16,6 +16,7 @@ steps:
         host:
           path: /npm
     commands:
+      - cat /config/.npmrc
       - yarn install
       - yarn build
 
@@ -30,9 +31,9 @@ steps:
   - name: publish
     image: node:latest
     environment:
-      NPM_CONFIG_USERCONFIG: /config/.npmrc
       GITHUB_TOKEN:
         from_secret: github_token
+      NPM_CONFIG_USERCONFIG: /config/.npmrc
     volumes:
       - name: config
         host:
