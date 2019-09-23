@@ -10,11 +10,9 @@ steps:
       NPM_CONFIG_USERCONFIG: /config/.npmrc
     volumes:
       - name: config
-        host:
-          path: /config
-      - name: drone_npm_cache
-        host:
-          path: /npm
+        path: /config
+      - name: cache
+        path: /npm
     commands:
       - cat /config/.npmrc
       - yarn install
@@ -36,11 +34,9 @@ steps:
       NPM_CONFIG_USERCONFIG: /config/.npmrc
     volumes:
       - name: config
-        host:
-          path: /config
-      - name: drone_npm_cache
-        host:
-          path: /npm
+        path: /config
+      - name: cache
+        path: /npm
     commands:
       - yarn publish
       - yarn deploy-storybook --ci
@@ -51,11 +47,19 @@ steps:
   - name: slack
     image: plugins/slack
     webhook: <slack_webhook>
-    channel: mgmt-monitor
     settings:
+      channel: group-ci
       webhook:
         from_secret: slack_webhook
     when:
       status:
         - success
         - failure
+
+volumes:
+  - name: config
+    host:
+      path: /config
+  - name: cache
+    host:
+      path: /cache/npm
