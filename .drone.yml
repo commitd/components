@@ -40,11 +40,12 @@ steps:
   - name: code-analysis
     image: committed/drone-sonarqube-node
     detach: true
-    environment:
-      SONAR_HOST:
+    settings:
+      host:
         from_secret: sonar_host
-      SONAR_TOKEN:
+      token:
         from_secret: sonar_token
+      exclusions: **/node_modules/**/*,**/dist/**/*.js
 
   - name: slack
     image: plugins/slack
