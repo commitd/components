@@ -7,6 +7,8 @@ steps:
   - name: build
     image: node:latest
     environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
       NPM_CONFIG_USERCONFIG: /config/.npmrc
     volumes:
       - name: config
