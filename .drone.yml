@@ -16,7 +16,8 @@ steps:
       - name: cache
         path: /npm
     commands:
-      - cat /config/.npmrc
+      - yarn config list
+      - yarn cache dir
       - yarn install
       - yarn build
 
