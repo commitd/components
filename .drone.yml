@@ -9,43 +9,42 @@ steps:
     environment:
       GITHUB_TOKEN:
         from_secret: github_token
-      NPM_CONFIG_USERCONFIG: /config/.npmrc
     volumes:
       - name: config
         path: /config
       - name: cache
         path: /npm
     commands:
-      - yarn config list
-      - yarn cache dir
+      - /config/setup.sh
       - yarn install
       - yarn build
-
-  - name: code-analysis
-    image: committed/drone-sonarqube-node
-    environment:
-      SONAR_HOST:
-        from_secret: sonar_host
-      SONAR_TOKEN:
-        from_secret: sonar_token
 
   - name: publish
     image: node:latest
     environment:
       GITHUB_TOKEN:
         from_secret: github_token
-      NPM_CONFIG_USERCONFIG: /config/.npmrc
     volumes:
       - name: config
         path: /config
       - name: cache
         path: /npm
     commands:
+      - /config/setup.sh
       - yarn publish
       - yarn deploy-storybook --ci
     when:
       ref:
         - refs/tags/v*
+
+  - name: code-analysis
+    image: committed/drone-sonarqube-node
+    detach: true
+    environment:
+      SONAR_HOST:
+        from_secret: sonar_host
+      SONAR_TOKEN:
+        from_secret: sonar_token
 
   - name: slack
     image: plugins/slack
