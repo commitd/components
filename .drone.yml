@@ -50,7 +50,6 @@ steps:
 
   - name: slack
     image: plugins/slack
-    webhook: <slack_webhook>
     settings:
       channel: group-ci
       webhook:
