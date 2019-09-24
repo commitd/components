@@ -15,7 +15,7 @@ steps:
       - name: cache
         path: /npm
     commands:
-      - /config/setup.sh
+      - source /config/env
       - yarn config list
       - yarn install
       - yarn build
@@ -31,7 +31,7 @@ steps:
       - name: cache
         path: /npm
     commands:
-      - /config/setup.sh
+      - source /config/env
       - yarn publish
       - yarn deploy-storybook --ci
     when:
