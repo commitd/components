@@ -45,7 +45,7 @@ steps:
         from_secret: sonar_host
       token:
         from_secret: sonar_token
-      exclusions: **/node_modules/**/*,**/dist/**/*.js
+      exclusions: '**/node_modules/**/*,**/dist/**/*.js'
 
   - name: slack
     image: plugins/slack
