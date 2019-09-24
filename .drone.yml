@@ -63,7 +63,7 @@ steps:
 volumes:
   - name: config
     host:
-      path: /config
+      path: ~/config
   - name: cache
     host:
-      path: /cache/npm
+      path: ~/cache/npm
