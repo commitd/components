@@ -41,9 +41,9 @@ steps:
     image: committed/drone-sonarqube-node
     detach: true
     settings:
-      host:
+      sonar_host:
         from_secret: sonar_host
-      token:
+      sonar_token:
         from_secret: sonar_token
       exclusions: '**/node_modules/**/*,**/dist/**/*.js'
 
