@@ -16,6 +16,7 @@ steps:
         path: /npm
     commands:
       - /config/setup.sh
+      - yarn config list
       - yarn install
       - yarn build
 
