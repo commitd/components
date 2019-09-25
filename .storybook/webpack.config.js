@@ -14,17 +14,7 @@ module.exports = ({ config, _mode }) => {
   })
   config.module.rules.push({
     test: /\.svg$/,
-    use: [
-      {
-        loader: 'babel-loader'
-      },
-      {
-        loader: 'react-svg-loader',
-        options: {
-          jsx: false
-        }
-      }
-    ]
+    use: ['@svgr/webpack', 'url-loader']
   })
 
   config.module.rules.push({

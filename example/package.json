@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "clean": "shx rm -rf dist",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
@@ -19,6 +20,7 @@
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
     "parcel": "^1.12.3",
+    "shx": "^0.3.2",
     "typescript": "^3.4.5"
   }
 }

@@ -28,9 +28,7 @@ export interface LoaderProps {
   variant?: 'draw' | 'spin' | 'flip' | 'scale'
 }
 
-// const selectColor = (theme: Theme) => ({ grey }: LoaderProps): string =>
-//   grey ? theme.palette.grey[200] : theme.palette.primary.main
-
+// NB we have both .commit and ,commit_svg__commit due to different behavior in webpack and rollup
 export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
   '@keyframes loader-stroke': {
     '0%': {
@@ -79,7 +77,7 @@ export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
     }
   },
   color: {
-    '& .commit': {
+    '& .commit, .commit_svg__commit': {
       transformOrigin: 'center center',
       stroke: selectColor(theme),
       fill: selectColor(theme),
@@ -87,24 +85,24 @@ export const useStyles = makeStyles<Theme, LoaderProps>(theme => ({
     }
   },
   draw: {
-    '& .commit': {
+    '& .commit, .commit_svg__commit': {
       animation:
         '$loader-stroke 3s cubic-bezier(.24,0,.37,1) alternate infinite, $loader-fill 3s cubic-bezier(1, 0, .5, 0) alternate infinite'
     }
   },
   spin: {
-    '& .commit': {
+    '& .commit, .commit_svg__commit': {
       animation: '$loader-spin 1.5s ease infinite'
     }
   },
   flip: {
-    '& .commit': {
+    '& .commit, .commit_svg__commit': {
       transformOrigin: 'center center',
       animation: '$loader-flip 3s cubic-bezier(.09, .57, .49, .9) infinite'
     }
   },
   scale: {
-    '& .commit': {
+    '& .commit, .commit_svg__commit': {
       transformOrigin: 'center center',
       animation:
         '$loader-scale 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) infinite alternate both;'
