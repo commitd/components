@@ -10,12 +10,10 @@ steps:
       GITHUB_TOKEN:
         from_secret: github_token
     volumes:
-      - name: config
-        path: /config
-      - name: cache
-        path: /npm
+      - name: drone
+        path: /drone
     commands:
-      - /config/setup.sh
+      - . /drone/config/env
       - yarn install
       - yarn build
 
@@ -25,12 +23,10 @@ steps:
       GITHUB_TOKEN:
         from_secret: github_token
     volumes:
-      - name: config
-        path: /config
-      - name: cache
-        path: /npm
+      - name: drone
+        path: /drone
     commands:
-      - /config/setup.sh
+      - . /drone/config/env
       - yarn publish
       - yarn deploy-storybook --ci
     when:
@@ -40,16 +36,16 @@ steps:
   - name: code-analysis
     image: committed/drone-sonarqube-node
     detach: true
-    settings:
-      sonar_host:
+    environment:
+      SONAR_HOST:
         from_secret: sonar_host
-      sonar_token:
+      SONAR_TOKEN:
         from_secret: sonar_token
+    settings:
       exclusions: '**/node_modules/**/*,**/dist/**/*.js'
 
   - name: slack
     image: plugins/slack
-    webhook: <slack_webhook>
     settings:
       channel: group-ci
       webhook:
@@ -60,9 +56,6 @@ steps:
         - failure
 
 volumes:
-  - name: config
+  - name: drone
     host:
-      path: /config
-  - name: cache
-    host:
-      path: /cache/npm
+      path: /drone
