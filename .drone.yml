@@ -10,13 +10,10 @@ steps:
       GITHUB_TOKEN:
         from_secret: github_token
     volumes:
-      - name: config
-        path: /config
-      - name: cache
-        path: /npm
+      - name: drone
+        path: /drone
     commands:
-      - source /config/env
-      - yarn config list
+      - . /drone/config/env
       - yarn install
       - yarn build
 
@@ -26,12 +23,10 @@ steps:
       GITHUB_TOKEN:
         from_secret: github_token
     volumes:
-      - name: config
-        path: /config
-      - name: cache
-        path: /npm
+      - name: drone
+        path: /drone
     commands:
-      - source /config/env
+      - . /drone/config/env
       - yarn publish
       - yarn deploy-storybook --ci
     when:
@@ -61,9 +56,6 @@ steps:
         - failure
 
 volumes:
-  - name: config
+  - name: drone
     host:
-      path: ~/config
-  - name: cache
-    host:
-      path: ~/cache/npm
+      path: /drone
