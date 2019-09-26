@@ -7,7 +7,7 @@ import { style } from '@material-ui/system'
 
 export type DividerProps = MaterialDividerProps & {
   /* the color of the divider from the theme's palette */
-  color: string
+  color?: string
 }
 
 export const color = style({
