@@ -15,25 +15,22 @@ yarn add @commitd/components
 ```tsx
 import * as React from 'react'
 
-import MyComponent from '@commitd/components'
+import { CommitdComponent } from '@commitd/components'
 
 class Example extends React.Component {
   render() {
-    return <MyComponent />
+    return <CommitdComponent />
   }
 }
 ```
 
 ## Development
 
-The main build is currently performed using Rollup:
+The main build is performed using Rollup:
 
 ```bash
 yarn build
 ```
-
-However, to experiment we currently have a webpack and straight typescript builds, `yarn webpack` and `yarn tsc` respectively.
-We expect to down-select later to have a single build system.
 
 We use storybook to develop and document the components, this is run in development using
 
@@ -43,7 +40,7 @@ yarn storybook
 
 ## CI
 
-Pull requests go through CI checks using GitHub actions. Merged pull requests to master update the deployed documentation and can update the package in the GitHub registry if the version number is updated.
+Pull requests go through CI checks using Drone. Merged pull requests to master update the deployed documentation and can update the package in the GitHub registry if the version number is updated.
 
 ## License
 
