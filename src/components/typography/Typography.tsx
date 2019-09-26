@@ -23,5 +23,3 @@ export const Typography = styled<React.ComponentType<TypographyProps>>(
     flexbox
   )
 )
-
-export default Typography as React.FC<TypographyProps>

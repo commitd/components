@@ -15,6 +15,3 @@ export const AppBar = styled<React.ComponentType<AppBarProps>>(MaterialAppBar)(
     }
   })
 )
-AppBar.displayName = 'AppBar'
-
-export default AppBar

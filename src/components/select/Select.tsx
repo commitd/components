@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
@@ -27,11 +27,9 @@ const BaseSelect = ({
   ...other
 }: BaseSelectProps) => <MaterialSelect input={input} {...other} />
 
-export const Select = styled(BaseSelect)(
+export const Select = styled<React.ComponentType<SelectProps>>(BaseSelect)(
   compose(
     spacing,
     flexbox
   )
 )
-
-export default Select as React.FC<SelectProps>

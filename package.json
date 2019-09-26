@@ -1,6 +1,6 @@
 {
   "name": "@commitd/components",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Committed Component Library",
   "author": "Committed",
   "license": "UNLICENSED",
@@ -28,7 +28,7 @@
     }
   },
   "scripts": {
-    "clean": "shx rm -rf dist _bundles lib lib-esm",
+    "clean": "shx rm -rf dist",
     "storybook": "start-storybook -p 6006 -c .storybook",
     "build-storybook": "build-storybook",
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
@@ -37,8 +37,6 @@
     "start": "rollup -c -w",
     "format": "prettier --write '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
     "format-check": "prettier --check '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
-    "tsc": "tsc -m commonjs && tsc -m es6 --outDir lib-esm",
-    "webpack": "webpack --mode=production",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
@@ -68,6 +66,7 @@
     "@storybook/source-loader": "^5.2.0",
     "@storybook/storybook-deployer": "^2.8.1",
     "@svgr/rollup": "^2.4.1",
+    "@svgr/webpack": "^4.3.3",
     "@types/jest": "^23.1.5",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
@@ -87,7 +86,6 @@
     "react-docgen-typescript-loader": "^3.1.1",
     "react-dom": "^16.9.0",
     "react-scripts-ts": "^2.16.0",
-    "react-svg-loader": "^3.0.3",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.3",

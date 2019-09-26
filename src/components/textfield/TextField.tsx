@@ -10,12 +10,9 @@ export type TextFieldProps = Omit<
 > &
   WithWrapperProps
 
-export const TextField: React.ComponentType<TextFieldProps> = withWrapper(
-  MaterialTextField,
-  {
-    fullWidth: true,
-    variant: 'outlined'
-  }
-)
-
-export default TextField
+export const TextField: React.ComponentType<TextFieldProps> = withWrapper<
+  MaterialTextFieldProps
+>(MaterialTextField, {
+  fullWidth: true,
+  variant: 'outlined'
+})

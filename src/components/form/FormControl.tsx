@@ -18,7 +18,9 @@ export type FormControlProps = MaterialFormControlProps &
   FlexboxProps &
   SizingProps
 
-export const FormControl = styled(MaterialFormControl)(
+export const FormControl = styled<
+  React.ComponentType<MaterialFormControlProps>
+>(MaterialFormControl)(
   compose(
     spacing,
     flexbox,
@@ -29,5 +31,3 @@ export const FormControl = styled(MaterialFormControl)(
 FormControl.defaultProps = {
   variant: 'outlined'
 }
-
-export default FormControl as React.FC<FormControlProps>

@@ -36,9 +36,6 @@ export const Logo = styled(LogoSvg)(
     })
   )
 )
-Logo.displayName = 'Logo'
 Logo.defaultProps = {
   size: 256
 }
-
-export default Logo

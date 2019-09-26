@@ -12,7 +12,7 @@ interface RelProps {
 
 export const withNoOpener = <P extends AProps>(
   WrappedComponent: React.ComponentType<P>
-) =>
+): React.ComponentType<P> =>
   class WithNoOpener extends React.Component<P> {
     displayName = `WithWrapper(${getDisplayName(WrappedComponent)})`
 

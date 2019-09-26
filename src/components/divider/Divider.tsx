@@ -19,7 +19,3 @@ export const color = style({
 export const Divider = styled<React.ComponentType<DividerProps>>(
   MaterialDivider
 )(color)
-
-Divider.displayName = 'Divider'
-
-export default Divider

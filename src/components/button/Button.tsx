@@ -12,5 +12,3 @@ export const Button: React.ComponentType<ButtonProps> = withPositioning(
 Button.defaultProps = {
   variant: 'contained'
 }
-
-export default Button

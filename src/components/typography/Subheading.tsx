@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Typography, TypographyProps } from './Typography'
 
 export type SubheadingProps = TypographyProps
@@ -26,5 +26,3 @@ export const Subheading: {
     <Typography {...others} variant="subtitle1" component="h6" />
   )
 }
-
-export default Subheading

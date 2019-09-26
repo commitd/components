@@ -13,11 +13,9 @@ import {
 
 export type ChipProps = MaterialChipProps & SpacingProps & FlexboxProps
 
-export const Chip = styled(MaterialChip)(
+export const Chip = styled<React.ComponentType<ChipProps>>(MaterialChip)(
   compose(
     spacing,
     flexbox
   )
 )
-
-export default Chip as React.FC<ChipProps>

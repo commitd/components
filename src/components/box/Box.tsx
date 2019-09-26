@@ -20,6 +20,3 @@ export const Box: React.FC<BoxProps> = React.forwardRef<BoxRef, BoxProps>(
     />
   )
 )
-Box.displayName = 'Box'
-
-export default Box

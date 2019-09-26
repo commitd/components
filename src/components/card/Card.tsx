@@ -28,10 +28,7 @@ import MaterialCardMedia, {
 
 export type CardProps = MaterialCardProps & PositioningProps
 
-export const Card = withPositioning(MaterialCard)
-Card.displayName = 'Card'
-
-export default Card as React.FC<CardProps>
+export const Card = withPositioning<CardProps>(MaterialCard)
 
 // Card supplementary components
 
@@ -52,20 +49,15 @@ export const CardHeader: React.ComponentType<CardHeaderProps> = ({
   }
   return <StyledCardHeader {...others}>{children}</StyledCardHeader>
 }
-CardHeader.displayName = 'CardHeader'
 export const CardContent: React.ComponentType<
   CardContentProps
 > = MaterialCardContent
-CardContent.displayName = 'CardContent'
 export const CardActionArea: React.ComponentType<
   CardActionAreaProps
 > = MaterialCardActionArea
-CardActionArea.displayName = 'CardActionArea'
 export const CardActions: React.ComponentType<
   CardActionsProps
 > = MaterialCardActions
-CardActions.displayName = 'CardActions'
 export const CardMedia: React.ComponentType<CardMediaProps> = withSizing(
   MaterialCardMedia
 )
-CardMedia.displayName = 'CardMedia'

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Typography, TypographyProps } from './Typography'
 import { styled } from '@material-ui/styles'
 import { fonts, Theme } from '../../theme'
@@ -18,5 +18,3 @@ export const Monospace = styled<React.ComponentType<MonospaceProps>>(
   lineHeight: theme.typography.body1.fontSize,
   whiteSpace: wrap ? 'pre-wrap' : 'pre'
 }))
-
-export default Monospace
