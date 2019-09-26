@@ -1,47 +1,135 @@
-export { AppBar, AppBarProps } from './appbar/AppBar'
-export { Avatar, AvatarProps } from './avatar/Avatar'
-export { Badge, BadgeProps } from './badge/Badge'
-export { Box, BoxProps } from './box/Box'
-export { Button, ButtonProps } from './button/Button'
-export { Brand, BrandProps } from './typography/Brand'
-export * from './card/Card'
-export { Caption, CaptionProps } from './typography/Caption'
-export { Checkbox, CheckboxProps } from './checkbox/Checkbox'
-export { Chip, ChipProps } from './chip/Chip'
-export { Container, ContainerProps } from './container/Container'
-export { Divider, DividerProps } from './divider/Divider'
-export { Display, DisplayProps } from './typography/Display'
-export { Drawer, DrawerProps } from './drawer/Drawer'
-export { Flex, FlexProps } from './flex/Flex'
-export { Form, FormProps } from './form/Form'
-export { FormControl, FormControlProps } from './form/FormControl'
-export { Heading, HeadingProps } from './typography/Heading'
-export { Hidden, HiddenProps } from './hidden/Hidden'
-export { IconButton, IconButtonProps } from './iconbutton/IconButton'
-export { Icons, IconProps } from './icons/Icons'
-export { Link, LinkProps } from './link/Link'
-export { Loader, LoaderProps } from './loader/Loader'
-export { Logo, LogoProps } from './logo/Logo'
-export { Monospace, MonospaceProps } from './typography/Monospace'
-export { Popover, PopoverProps } from './popover/Popover'
-export { Radio, RadioProps } from './radio/Radio'
-export { RadioGroup, RadioGroupProps } from './radio/RadioGroup'
-export { Select, SelectProps } from './select/Select'
-export { Slider, SliderProps } from './slider/Slider'
-export { Switch, SwitchProps } from './switch/Switch'
-export { TabPanel, TabPanelProps } from './tabs/TabPanel'
-export { Tooltip, TooltipProps } from './tooltip/Tooltip'
-export { Typography, TypographyProps } from './typography/Typography'
-export { TextField, TextFieldProps } from './textfield/TextField'
-export {
-  Text,
-  TextProps,
-  Span,
-  SpanProps,
-  Paragraph,
-  ParagraphProps
-} from './typography/Text'
-export { Subheading, SubheadingProps } from './typography/Subheading'
+export { AppBar } from './appbar/AppBar'
+import { AppBarProps } from './appbar/AppBar'
+export type AppBarProps = AppBarProps
+export { Avatar } from './avatar/Avatar'
+import { AvatarProps } from './avatar/Avatar'
+export type AvatarProps = AvatarProps
+export { Badge } from './badge/Badge'
+import { BadgeProps } from './badge/Badge'
+export type BadgeProps = BadgeProps
+export { Box } from './box/Box'
+import { BoxProps } from './box/Box'
+export type BoxProps = BoxProps
+export { Button } from './button/Button'
+import { ButtonProps } from './button/Button'
+export type ButtonProps = ButtonProps
+export { Brand } from './typography/Brand'
+import { BrandProps } from './typography/Brand'
+export type BrandProps = BrandProps
+export { Card } from './card/Card'
+import { CardProps } from './card/Card'
+export type CardProps = CardProps
+export { CardActionArea } from './card/Card'
+import { CardActionAreaProps } from './card/Card'
+export type CardActionAreaProps = CardActionAreaProps
+export { CardActions } from './card/Card'
+import { CardActionsProps } from './card/Card'
+export type CardActionsProps = CardActionsProps
+export { CardContent } from './card/Card'
+import { CardContentProps } from './card/Card'
+export type CardContentProps = CardContentProps
+export { CardHeader } from './card/Card'
+import { CardHeaderProps } from './card/Card'
+export type CardHeaderProps = CardHeaderProps
+export { CardMedia } from './card/Card'
+import { CardMediaProps } from './card/Card'
+export type CardMediaProps = CardMediaProps
+export { Caption } from './typography/Caption'
+import { CaptionProps } from './typography/Caption'
+export type CaptionProps = CaptionProps
+export { Checkbox } from './checkbox/Checkbox'
+import { CheckboxProps } from './checkbox/Checkbox'
+export type CheckboxProps = CheckboxProps
+export { Chip } from './chip/Chip'
+import { ChipProps } from './chip/Chip'
+export type ChipProps = ChipProps
+export { Container } from './container/Container'
+import { ContainerProps } from './container/Container'
+export type ContainerProps = ContainerProps
+export { Divider } from './divider/Divider'
+import { DividerProps } from './divider/Divider'
+export type DividerProps = DividerProps
+export { Display } from './typography/Display'
+import { DisplayProps } from './typography/Display'
+export type DisplayProps = DisplayProps
+export { Drawer } from './drawer/Drawer'
+import { DrawerProps } from './drawer/Drawer'
+export type DrawerProps = DrawerProps
+export { Flex } from './flex/Flex'
+import { FlexProps } from './flex/Flex'
+export type FlexProps = FlexProps
+export { Form } from './form/Form'
+import { FormProps } from './form/Form'
+export type FormProps = FormProps
+export { FormControl } from './form/FormControl'
+import { FormControlProps } from './form/FormControl'
+export type FormControlProps = FormControlProps
+export { Heading } from './typography/Heading'
+import { HeadingProps } from './typography/Heading'
+export type HeadingProps = HeadingProps
+export { Hidden } from './hidden/Hidden'
+import { HiddenProps } from './hidden/Hidden'
+export type HiddenProps = HiddenProps
+export { IconButton } from './iconbutton/IconButton'
+import { IconButtonProps } from './iconbutton/IconButton'
+export type IconButtonProps = IconButtonProps
+export { Icons } from './icons/Icons'
+import { IconProps } from './icons/Icons'
+export type IconProps = IconProps
+export { Link } from './link/Link'
+import { LinkProps } from './link/Link'
+export type LinkProps = LinkProps
+export { Loader } from './loader/Loader'
+import { LoaderProps } from './loader/Loader'
+export type LoaderProps = LoaderProps
+export { Logo } from './logo/Logo'
+import { LogoProps } from './logo/Logo'
+export type LogoProps = LogoProps
+export { Monospace } from './typography/Monospace'
+import { MonospaceProps } from './typography/Monospace'
+export type MonospaceProps = MonospaceProps
+export { Paragraph } from './typography/Text'
+import { ParagraphProps } from './typography/Text'
+export type ParagraphProps = ParagraphProps
+export { Popover } from './popover/Popover'
+import { PopoverProps } from './popover/Popover'
+export type PopoverProps = PopoverProps
+export { Radio } from './radio/Radio'
+import { RadioProps } from './radio/Radio'
+export type RadioProps = RadioProps
+export { RadioGroup } from './radio/RadioGroup'
+import { RadioGroupProps } from './radio/RadioGroup'
+export type RadioGroupProps = RadioGroupProps
+export { Select } from './select/Select'
+import { SelectProps } from './select/Select'
+export type SelectProps = SelectProps
+export { Slider } from './slider/Slider'
+import { SliderProps } from './slider/Slider'
+export type SliderProps = SliderProps
+export { Span } from './typography/Text'
+import { SpanProps } from './typography/Text'
+export type SpanProps = SpanProps
+export { Subheading } from './typography/Subheading'
+import { SubheadingProps } from './typography/Subheading'
+export type SubheadingProps = SubheadingProps
+export { Switch } from './switch/Switch'
+import { SwitchProps } from './switch/Switch'
+export type SwitchProps = SwitchProps
+export { TabPanel } from './tabs/TabPanel'
+import { TabPanelProps } from './tabs/TabPanel'
+export type TabPanelProps = TabPanelProps
+export { TextField } from './textfield/TextField'
+import { TextFieldProps } from './textfield/TextField'
+export type TextFieldProps = TextFieldProps
+export { Text } from './typography/Text'
+import { TextProps } from './typography/Text'
+export type TextProps = TextProps
+export { Tooltip } from './tooltip/Tooltip'
+import { TooltipProps } from './tooltip/Tooltip'
+export type TooltipProps = TooltipProps
+export { Typography } from './typography/Typography'
+import { TypographyProps } from './typography/Typography'
+export type TypographyProps = TypographyProps
 
 // Direct from material_link
 import Collapse from '@material-ui/core/Collapse'
@@ -120,41 +208,75 @@ export {
   Toolbar
 }
 
-export { CollapseProps } from '@material-ui/core/Collapse'
-export { DialogProps } from '@material-ui/core/Dialog'
-export { DialogActionsProps } from '@material-ui/core/DialogActions'
-export { DialogContentProps } from '@material-ui/core/DialogContent'
-export { DialogContentTextProps } from '@material-ui/core/DialogContentText'
-export { DialogTitleProps } from '@material-ui/core/DialogTitle'
-export { FormControlLabelProps } from '@material-ui/core/FormControlLabel'
-export { FormLabelProps } from '@material-ui/core/FormLabel'
-export { FormGroupProps } from '@material-ui/core/FormGroup'
-export { FormHelperTextProps } from '@material-ui/core/FormHelperText'
-export { GrowProps } from '@material-ui/core/Grow'
-export { InputProps } from '@material-ui/core/Input'
-export { InputAdornmentProps } from '@material-ui/core/InputAdornment'
-export { InputLabelProps } from '@material-ui/core/InputLabel'
-export { ListProps } from '@material-ui/core/List'
-export { ListItemProps } from '@material-ui/core/ListItem'
-export { ListItemAvatarProps } from '@material-ui/core/ListItemAvatar'
-export { ListItemIconProps } from '@material-ui/core/ListItemIcon'
-export {
-  ListItemSecondaryActionProps
-} from '@material-ui/core/ListItemSecondaryAction'
-export { ListItemTextProps } from '@material-ui/core/ListItemText'
-export { ListSubheaderProps } from '@material-ui/core/ListSubheader'
-export { MenuProps } from '@material-ui/core/Menu'
-export { MenuItemProps } from '@material-ui/core/MenuItem'
-export { MenuListProps } from '@material-ui/core/MenuList'
-export { OutlinedInputProps } from '@material-ui/core/OutlinedInput'
-export { TabProps } from '@material-ui/core/Tab'
-export { TableProps } from '@material-ui/core/Table'
-export { TableBodyProps } from '@material-ui/core/TableBody'
-export { TableCellProps } from '@material-ui/core/TableCell'
-export { TableFooterProps } from '@material-ui/core/TableFooter'
-export { TableHeadProps } from '@material-ui/core/TableHead'
-export { TablePaginationProps } from '@material-ui/core/TablePagination'
-export { TableRowProps } from '@material-ui/core/TableRow'
-export { TableSortLabelProps } from '@material-ui/core/TableSortLabel'
-export { TabsProps } from '@material-ui/core/Tabs'
-export { ToolbarProps } from '@material-ui/core/Toolbar'
+import { CollapseProps } from '@material-ui/core/Collapse'
+export type CollapseProps = CollapseProps
+import { DialogProps } from '@material-ui/core/Dialog'
+export type DialogProps = DialogProps
+import { DialogActionsProps } from '@material-ui/core/DialogActions'
+export type DialogActionsProps = DialogActionsProps
+import { DialogContentProps } from '@material-ui/core/DialogContent'
+export type DialogContentProps = DialogContentProps
+import { DialogContentTextProps } from '@material-ui/core/DialogContentText'
+export type DialogContentTextProps = DialogContentTextProps
+import { DialogTitleProps } from '@material-ui/core/DialogTitle'
+export type DialogTitleProps = DialogTitleProps
+import { FormControlLabelProps } from '@material-ui/core/FormControlLabel'
+export type FormControlLabelProps = FormControlLabelProps
+import { FormLabelProps } from '@material-ui/core/FormLabel'
+export type FormLabelProps = FormLabelProps
+import { FormGroupProps } from '@material-ui/core/FormGroup'
+export type FormGroupProps = FormGroupProps
+import { FormHelperTextProps } from '@material-ui/core/FormHelperText'
+export type FormHelperTextProps = FormHelperTextProps
+import { GrowProps } from '@material-ui/core/Grow'
+export type GrowProps = GrowProps
+import { InputProps } from '@material-ui/core/Input'
+export type InputProps = InputProps
+import { InputAdornmentProps } from '@material-ui/core/InputAdornment'
+export type InputAdornmentProps = InputAdornmentProps
+import { InputLabelProps } from '@material-ui/core/InputLabel'
+export type InputLabelProps = InputLabelProps
+import { ListProps } from '@material-ui/core/List'
+export type ListProps = ListProps
+import { ListItemProps } from '@material-ui/core/ListItem'
+export type ListItemProps = ListItemProps
+import { ListItemAvatarProps } from '@material-ui/core/ListItemAvatar'
+export type ListItemAvatarProps = ListItemAvatarProps
+import { ListItemIconProps } from '@material-ui/core/ListItemIcon'
+export type ListItemIconProps = ListItemIconProps
+import { ListItemSecondaryActionProps } from '@material-ui/core/ListItemSecondaryAction'
+export type ListItemSecondaryActionProps = ListItemSecondaryActionProps
+import { ListItemTextProps } from '@material-ui/core/ListItemText'
+export type ListItemTextProps = ListItemTextProps
+import { ListSubheaderProps } from '@material-ui/core/ListSubheader'
+export type ListSubheaderProps = ListSubheaderProps
+import { MenuProps } from '@material-ui/core/Menu'
+export type MenuProps = MenuProps
+import { MenuItemProps } from '@material-ui/core/MenuItem'
+export type MenuItemProps = MenuItemProps
+import { MenuListProps } from '@material-ui/core/MenuList'
+export type MenuListProps = MenuListProps
+import { OutlinedInputProps } from '@material-ui/core/OutlinedInput'
+export type OutlinedInputProps = OutlinedInputProps
+import { TabProps } from '@material-ui/core/Tab'
+export type TabProps = TabProps
+import { TableProps } from '@material-ui/core/Table'
+export type TableProps = TableProps
+import { TableBodyProps } from '@material-ui/core/TableBody'
+export type TableBodyProps = TableBodyProps
+import { TableCellProps } from '@material-ui/core/TableCell'
+export type TableCellProps = TableCellProps
+import { TableFooterProps } from '@material-ui/core/TableFooter'
+export type TableFooterProps = TableFooterProps
+import { TableHeadProps } from '@material-ui/core/TableHead'
+export type TableHeadProps = TableHeadProps
+import { TablePaginationProps } from '@material-ui/core/TablePagination'
+export type TablePaginationProps = TablePaginationProps
+import { TableRowProps } from '@material-ui/core/TableRow'
+export type TableRowProps = TableRowProps
+import { TableSortLabelProps } from '@material-ui/core/TableSortLabel'
+export type TableSortLabelProps = TableSortLabelProps
+import { TabsProps } from '@material-ui/core/Tabs'
+export type TabsProps = TabsProps
+import { ToolbarProps } from '@material-ui/core/Toolbar'
+export type ToolbarProps = ToolbarProps
