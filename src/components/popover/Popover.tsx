@@ -6,6 +6,3 @@ import MaterialPopover, {
 export type PopoverProps = MaterialPopoverProps
 
 export const Popover: React.ComponentType<PopoverProps> = MaterialPopover
-Popover.displayName = 'Popover'
-
-export default Popover

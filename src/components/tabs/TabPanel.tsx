@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Box, BoxProps } from '../box/Box'
 
 export type TabPanelProps = {
@@ -32,6 +32,3 @@ export const TabPanel = ({
     {children}
   </Box>
 )
-
-TabPanel.displayName = 'TabPanel'
-export default TabPanel

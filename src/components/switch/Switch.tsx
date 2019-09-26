@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
@@ -13,11 +13,11 @@ import MaterialSwitch, {
 
 export type SwitchProps = MaterialSwitchProps & SpacingProps & FlexboxProps
 
-export const Switch = styled(MaterialSwitch)(
+export const Switch = styled<React.ComponentType<MaterialSwitchProps>>(
+  MaterialSwitch
+)(
   compose(
     spacing,
     flexbox
   )
 )
-
-export default Switch as React.FC<SwitchProps>

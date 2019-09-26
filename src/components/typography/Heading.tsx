@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Typography, TypographyProps } from './Typography'
 
 export type HeadingProps = TypographyProps
@@ -18,5 +18,3 @@ export const Heading: {
   h5: ({ variant, ...others }) => <Typography {...others} variant="h5" />,
   h6: ({ variant, ...others }) => <Typography {...others} variant="h6" />
 }
-
-export default Heading

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
@@ -15,11 +15,11 @@ export type RadioGroupProps = MaterialRadioGroupProps &
   SpacingProps &
   FlexboxProps
 
-export const RadioGroup = styled(MaterialRadioGroup)(
+export const RadioGroup = styled<React.ComponentType<MaterialRadioGroupProps>>(
+  MaterialRadioGroup
+)(
   compose(
     spacing,
     flexbox
   )
 )
-
-export default RadioGroup as React.FC<RadioGroupProps>

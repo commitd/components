@@ -53,7 +53,7 @@ export type AvatarProps = MaterialAvatarProps &
     size?: string
   }
 
-export const Avatar = styled(MaterialAvatar)(
+export const Avatar = styled<React.ComponentType<AvatarProps>>(MaterialAvatar)(
   compose(
     spacing,
     flexbox,
@@ -63,6 +63,3 @@ export const Avatar = styled(MaterialAvatar)(
     height
   )
 )
-Avatar.displayName = 'Avatar'
-
-export default Avatar as React.FC<AvatarProps>

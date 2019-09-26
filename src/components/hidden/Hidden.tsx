@@ -6,6 +6,3 @@ import MaterialHidden, {
 export type HiddenProps = MaterialHiddenProps
 
 export const Hidden: React.ComponentType<HiddenProps> = MaterialHidden
-Hidden.displayName = 'Hidden'
-
-export default Hidden as React.FC<HiddenProps>

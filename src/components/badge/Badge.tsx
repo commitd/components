@@ -6,6 +6,3 @@ import MaterialBadge, {
 export type BadgeProps = MaterialBadgeProps
 
 export const Badge: React.FC<BadgeProps> = MaterialBadge
-Badge.displayName = 'Badge'
-
-export default Badge as React.FC<BadgeProps>

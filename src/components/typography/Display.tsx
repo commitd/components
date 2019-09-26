@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
 import { fonts } from '../../theme'
 import { Typography, TypographyProps } from './Typography'
@@ -32,5 +32,3 @@ export const Display: {
     fontFamily: fonts.families.display
   })
 }
-
-export default Display
