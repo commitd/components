@@ -1,7 +1,6 @@
 # Committed Components
 
-[![Build](https://github.com/commitd/components/workflows/Build/badge.svg)](https://github.com/commitd/components/actions)
-[![Publish](https://github.com/commitd/components/workflows/Publish/badge.svg)](https://github.com/commitd/components/actions)
+[![Build Status](https://drone.committed.software/api/badges/commitd/components/status.svg)](https://drone.committed.software/commitd/components)
 
 For documentation see https://committed.software/components
 
