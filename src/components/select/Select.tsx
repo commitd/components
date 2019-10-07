@@ -16,18 +16,20 @@ export type BaseSelectProps = MaterialSelectProps & {
   /**
    * The width of the label.
    */
-  labelWidth: number
+  labelWidth?: number
 }
 
 export type SelectProps = BaseSelectProps & SpacingProps & FlexboxProps
 
 const BaseSelect = ({
-  labelWidth,
+  labelWidth = 0,
   input = <OutlinedInput labelWidth={labelWidth} />,
   ...other
 }: BaseSelectProps) => <MaterialSelect input={input} {...other} />
 
-export const Select = styled<React.ComponentType<SelectProps>>(BaseSelect)(
+export const Select: React.ComponentType<SelectProps> = styled<
+  React.ComponentType<SelectProps>
+>(BaseSelect)(
   compose(
     spacing,
     flexbox

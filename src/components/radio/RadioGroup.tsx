@@ -15,9 +15,9 @@ export type RadioGroupProps = MaterialRadioGroupProps &
   SpacingProps &
   FlexboxProps
 
-export const RadioGroup = styled<React.ComponentType<MaterialRadioGroupProps>>(
-  MaterialRadioGroup
-)(
+export const RadioGroup: React.ComponentType<RadioGroupProps> = styled<
+  React.ComponentType<MaterialRadioGroupProps>
+>(MaterialRadioGroup)(
   compose(
     spacing,
     flexbox

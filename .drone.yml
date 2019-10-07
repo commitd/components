@@ -4,29 +4,23 @@ type: docker
 name: components
 
 steps:
+  - name: npm_auth
+    image: robertstettner/drone-npm-auth
+    environment:
+    settings:
+      registry: npm.pkg.github.com
+      token:
+        from_secret: github_token
+
   - name: build
     image: node:latest
-    environment:
-      GITHUB_TOKEN:
-        from_secret: github_token
-    volumes:
-      - name: drone
-        path: /drone
     commands:
-      - . /drone/config/env
       - yarn install
       - yarn build
 
   - name: publish
     image: node:latest
-    environment:
-      GITHUB_TOKEN:
-        from_secret: github_token
-    volumes:
-      - name: drone
-        path: /drone
     commands:
-      - . /drone/config/env
       - yarn publish
       - yarn deploy-storybook --ci
     when:
@@ -43,6 +37,9 @@ steps:
         from_secret: sonar_token
     settings:
       exclusions: '**/node_modules/**/*,**/dist/**/*.js'
+    when:
+      branch:
+        - master
 
   - name: slack
     image: plugins/slack
@@ -50,12 +47,9 @@ steps:
       channel: group-ci
       webhook:
         from_secret: slack_webhook
+      template:
+        from_secret: slack_template
     when:
       status:
         - success
         - failure
-
-volumes:
-  - name: drone
-    host:
-      path: /drone

@@ -18,7 +18,7 @@ export interface IconButtonProps
     FlexboxProps,
     AProps {}
 
-export const IconButton = styled<React.ComponentType<IconButtonProps>>(
+export const IconButton: React.ComponentType<IconButtonProps> = styled(
   withNoOpener(MaterialIconButton)
 )(
   compose(
