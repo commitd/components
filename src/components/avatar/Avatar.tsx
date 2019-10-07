@@ -53,7 +53,9 @@ export type AvatarProps = MaterialAvatarProps &
     size?: string
   }
 
-export const Avatar = styled<React.ComponentType<AvatarProps>>(MaterialAvatar)(
+export const Avatar = styled<React.ComponentType<MaterialAvatarProps>>(
+  MaterialAvatar
+)(
   compose(
     spacing,
     flexbox,
