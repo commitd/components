@@ -3,7 +3,6 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as C from '../dist'
 import logo from './images/Committed - Yellow Trans-128px.png'
-import { Display } from '../dist'
 
 const footerHeight = '200px'
 
@@ -13,12 +12,9 @@ const Header = () => (
       <C.Box flexGrow={1}>
         <C.Heading.h1>Example</C.Heading.h1>
       </C.Box>
-      <C.IconButton
-        href="https://github.com/commitd/components"
-        target="_blank"
-      />
+      <C.Avatar src="https://i.pravatar.cc/40" />
       <C.Button color="inherit" variant="text">
-        Login
+        Logout
       </C.Button>
     </C.Toolbar>
   </C.AppBar>
@@ -44,6 +40,7 @@ const Content = () => (
       We believe we can all move forward faster by being open. Learn more about
       our contributions.
     </C.Text>
+    <C.Divider my={3} />
     <C.Flex justifyContent="center" alignContent="center" flexWrap="wrap">
       {[
         'Speedy Spotless',

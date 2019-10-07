@@ -15,7 +15,7 @@ export type FormProps = React.FormHTMLAttributes<HTMLFormElement> &
   FlexboxProps &
   SizingProps
 
-export const Form = styled('form')(
+export const Form: React.ComponentType<FormProps> = styled('form')(
   compose(
     spacing,
     flexbox,

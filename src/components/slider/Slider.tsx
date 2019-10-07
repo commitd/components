@@ -1,3 +1,4 @@
+import React from 'react'
 import { withWrapper, WithWrapperProps } from '../internal'
 import MaterialSlider, {
   SliderProps as MaterialSliderProps
@@ -5,5 +6,6 @@ import MaterialSlider, {
 
 export type SliderProps = MaterialSliderProps & WithWrapperProps
 
-export const Slider = withWrapper(MaterialSlider)
-export default Slider
+export const Slider: React.ComponentType<SliderProps> = withWrapper(
+  MaterialSlider
+)

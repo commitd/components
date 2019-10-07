@@ -3,6 +3,7 @@ import { ReactComponent as LogoSvg } from './commit.svg'
 import { styled } from '@material-ui/styles'
 import { style, compose } from '@material-ui/system'
 import { fractionToPercent } from '../../util'
+import { Theme } from '../../theme'
 
 export interface LogoProps extends React.HTMLAttributes<SVGElement> {
   /**
@@ -14,19 +15,21 @@ export interface LogoProps extends React.HTMLAttributes<SVGElement> {
   size?: number | number[]
 }
 
-export const width = style({
+const width = style<'size', Theme>({
   prop: 'size',
   cssProperty: 'width',
   transform: fractionToPercent
 })
 
-export const height = style({
+const height = style<'size', Theme>({
   prop: 'size',
   cssProperty: 'height',
   transform: fractionToPercent
 })
 
-export const Logo = styled(LogoSvg)(
+export const Logo: React.ComponentType<LogoProps> = styled<
+  React.ComponentType<LogoProps>
+>(LogoSvg)(
   compose(
     width,
     height,

@@ -7,11 +7,11 @@ export type MonospaceProps = TypographyProps & {
   wrap?: boolean
 }
 
-export const Monospace = styled<React.ComponentType<MonospaceProps>>(
-  ({ variant, component, wrap, ...other }) => (
-    <Typography {...other} variant="body1" component="pre" />
-  )
-)(({ theme, wrap }: { theme: Theme; wrap?: boolean }) => ({
+export const Monospace: React.ComponentType<MonospaceProps> = styled<
+  React.ComponentType<MonospaceProps>
+>(({ variant, component, wrap, ...other }) => (
+  <Typography {...other} variant="body1" component="pre" />
+))(({ theme, wrap }: { theme: Theme; wrap?: boolean }) => ({
   fontFamily: fonts.families.mono,
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.body1.fontSize,

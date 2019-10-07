@@ -13,7 +13,7 @@ import MaterialSwitch, {
 
 export type SwitchProps = MaterialSwitchProps & SpacingProps & FlexboxProps
 
-export const Switch = styled<React.ComponentType<MaterialSwitchProps>>(
+export const Switch: React.ComponentType<MaterialSwitchProps> = styled(
   MaterialSwitch
 )(
   compose(

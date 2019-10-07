@@ -1,3 +1,4 @@
+import React from 'react'
 import { withWrapper, WithWrapperProps } from '../internal'
 
 import MaterialTextField, {

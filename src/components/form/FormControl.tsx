@@ -18,9 +18,9 @@ export type FormControlProps = MaterialFormControlProps &
   FlexboxProps &
   SizingProps
 
-export const FormControl = styled<
-  React.ComponentType<MaterialFormControlProps>
->(MaterialFormControl)(
+export const FormControl: React.ComponentType<
+  MaterialFormControlProps
+> = styled(MaterialFormControl)(
   compose(
     spacing,
     flexbox,

@@ -23,11 +23,11 @@ export type TextProps = TypographyProps & MainTextProps
 export type SpanProps = Omit<TextProps, 'component'>
 export type ParagraphProps = Omit<TextProps, 'component'>
 
-export const Text = styled<React.ComponentType<TextProps>>(
-  ({ italic, fontSize, upper, light, capital, bold, ...others }: TextProps) => (
-    <Typography {...others} />
-  )
-)({
+export const Text: React.ComponentType<TextProps> = styled<
+  React.ComponentType<TextProps>
+>(({ italic, fontSize, upper, light, capital, bold, ...others }: TextProps) => (
+  <Typography {...others} />
+))({
   fontFamily: fonts.families.main,
   fontStyle: props => (props.italic ? 'italic' : 'normal'),
   fontSize: props => fonts.sizes[props.fontSize ? props.fontSize : 0],

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import MaterialAvatar, {
   AvatarProps as MaterialAvatarProps
 } from '@material-ui/core/Avatar'
@@ -12,25 +12,26 @@ import {
   FlexboxProps
 } from '@material-ui/system'
 import { fractionToPercent } from '../../util'
+import { Theme } from '../../theme'
 
-export const textColor = style({
+const textColor = style<'color', Theme>({
   prop: 'color',
   themeKey: 'palette'
 })
 
-export const bgcolor = style({
-  prop: 'bg',
+const bgcolor = style<'bgcolor', Theme>({
+  prop: 'bgcolor',
   cssProperty: 'backgroundColor',
   themeKey: 'palette'
 })
 
-export const width = style({
+const width = style<'size', Theme>({
   prop: 'size',
   cssProperty: 'width',
   transform: fractionToPercent
 })
 
-export const height = style({
+const height = style<'size', Theme>({
   prop: 'size',
   cssProperty: 'height',
   transform: fractionToPercent
@@ -42,7 +43,7 @@ export type AvatarProps = MaterialAvatarProps &
     /**
      * The background color
      */
-    bg?: string
+    bgcolor?: string
     /**
      * The color of the icon or text
      */
@@ -50,12 +51,12 @@ export type AvatarProps = MaterialAvatarProps &
     /**
      * The size (width and height) of the avatar, e.g. (24px)
      */
-    size?: string
+    size?: string | number
   }
 
-export const Avatar = styled<React.ComponentType<MaterialAvatarProps>>(
-  MaterialAvatar
-)(
+export const Avatar: React.ComponentType<AvatarProps> = styled<
+  React.ComponentType<AvatarProps>
+>(MaterialAvatar)(
   compose(
     spacing,
     flexbox,
