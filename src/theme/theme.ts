@@ -34,6 +34,15 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 
 const addTransparency = (color: string) => `${color}88`
 
+const spacing = (factor: number) => {
+  if (factor < 0 || factor > 6) {
+    throw new Error(
+      `Spacing ${factor} invalid, must be between 0 and 6 inclusive`
+    )
+  }
+  return [0, 4, 8, 16, 32, 64, 128][factor]
+}
+
 export const palettes = {
   ...allColors,
   brand: allColors.committedYellow,
@@ -118,7 +127,7 @@ export const light: ThemeOptions = {
     text,
     grey: palettes.neutral,
     action,
-    divider: "rgba(0, 0, 0, 0.12)"
+    divider: 'rgba(0, 0, 0, 0.12)'
   },
   props: {
     MuiTypography: {
@@ -136,7 +145,7 @@ export const light: ThemeOptions = {
       }
     }
   },
-  spacing: (factor: number) => [0, 4, 8, 16, 32, 64, 128][factor],
+  spacing: spacing,
   typography: {
     fontFamily: fonts.families.system,
     htmlFontSize: 16,
