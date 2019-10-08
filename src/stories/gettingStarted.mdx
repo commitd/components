@@ -5,10 +5,10 @@ import { Meta } from '@storybook/addon-docs/blocks'
 # Getting Started
 
 Ensure you have setup access to the github @commitd packages, by following these [instructions](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry).
-Install the design system in your application
+Install the design system and dependencies in your application
 
 ```sh
-yarn add @commitd/components
+yarn add @commitd/components @material-ui/core @material-ui/icons
 ```
 
 ## ThemeProvider
@@ -19,14 +19,14 @@ This should only be included once in your application.
 
 ```jsx
 import React from 'react'
-import { ThemeProvider } from '@committed/components'
-import SomeView from './SomeView'
+import { ThemeProvider } from '@commitd/components'
+import AppRoot from './AppRoot'
 
 class App extends React.Component {
   render() {
     return (
       <ThemeProvider>
-        <Heading.h1>Hello</Heading.h1>
+        <AppRoot />
       </ThemeProvider>
     )
   }
@@ -39,24 +39,18 @@ Import and use the design system UI components in your application.
 
 ```jsx
 import React from 'react'
-import { Box, Text } from '@committed/components'
+import { Box, Text } from '@commitd/components'
 
-const SomeView = props => (
+const AppRoot = props => (
   <Box p={3}>
     <Text color="blue">Hello</Text>
   </Box>
 )
 ```
 
-## Material-UI
-
-The system is implemented using [@material-ui](https://material-ui.com), but does not support all components from it.
-Any unsupported components can be used directly from material-ui and it will still receive the Committed theming.
-The components are documented here but further detail may be required form material-ui.
-
 ## Icons
 
-We currently use the Sharp icons from @material-ui/icons exposed on the `Icons` component. In order to use this you must add the peer dependency:
+We currently use the Sharp icons from `@material-ui/icons` exposed on the `Icons` component. In order to use this you must add the peer dependency:
 
 ```sh
 yarn add @material-ui/icons

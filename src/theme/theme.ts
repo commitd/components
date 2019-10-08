@@ -34,7 +34,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 
 const addTransparency = (color: string) => `${color}88`
 
-const spacing = (factor: number) => {
+export const spacing = (factor: number) => {
   if (factor < 0 || factor > 6) {
     throw new Error(
       `Spacing ${factor} invalid, must be between 0 and 6 inclusive`
