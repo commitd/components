@@ -50,7 +50,7 @@ const Content = () => (
         'Rejux',
         'Baleen'
       ].map((name, index) => (
-        <Post name={name} index={index} />
+        <Post key={name} name={name} index={index} />
       ))}
     </C.Flex>
     <C.Box mb={5}>
