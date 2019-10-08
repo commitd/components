@@ -1,5 +1,6 @@
 # Committed Components
 
+[![Committed Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcommitted.software%2Fbadge)](https://committed/software)
 [![Build Status](https://drone.committed.software/api/badges/commitd/components/status.svg)](https://drone.committed.software/commitd/components)
 
 For documentation see https://committed.software/components
