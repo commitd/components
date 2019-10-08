@@ -42,7 +42,7 @@ export const Colors = ({ colors, name, accent = false }: ColorsProps) => (
     {Object.keys(colors)
       .filter(weight => (accent ? true : !weight.startsWith('A')))
       .map(weight => (
-        <Color color={colors[weight]} />
+        <Color key={`${name}-${weight}`} color={colors[weight]} />
       ))}
   </Flex>
 )
