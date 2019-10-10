@@ -32,4 +32,4 @@ addParameters({
   }
 })
 
-configure(require.context('../src/stories', true, /\.(tsx|mdx)$/), module)
+configure(require.context('../src', true, /\.stories\.(tsx|mdx)$/), module)
