@@ -54,7 +54,7 @@ steps:
       status:
         - failure
 
-  - name: slack
+  - name: announce
     image: plugins/slack
     settings:
       channel: group-dev
