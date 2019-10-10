@@ -1,147 +1,75 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
 import { Background } from '../util'
 import commmitImage from '../../public/images/Avatar1-YellowTrans-32px.png'
-import {
-  ThemeProvider,
-  theme,
-  colors,
-  AppBar,
-  Avatar,
-  Badge,
-  Box,
-  Button,
-  Brand,
-  Card,
-  CardHeader,
-  CardContent,
-  CardActionsArea,
-  CardActions,
-  CardMedia,
-  Caption,
-  Checkbox,
-  Chip,
-  Container,
-  Divider,
-  Display,
-  Drawer,
-  Flex,
-  Form,
-  FormControl,
-  Heading,
-  Hidden,
-  IconButton,
-  Icons,
-  Link,
-  Loader,
-  Logo,
-  Monospace,
-  Popover,
-  Radio,
-  RadioGroup,
-  Select,
-  Slider,
-  Switch,
-  Table,
-  TabPanel,
-  Tooltip,
-  Typography,
-  TextField,
-  Text,
-  Span,
-  Paragraph,
-  Subheading,
-  FormControlLabel,
-  FormLabel,
-  FormGroup,
-  FormHelperText,
-  Input,
-  InputLabel,
-  OutlinedInput,
-  Menu,
-  MenuItem,
-  MenuList,
-  Collapse,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-  ListSubheader,
-  Tab,
-  Tabs,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TableSortLabel,
-  Toolbar
-} from '../'
+import * as C from '../'
 
 <Meta title="Design System|Overview" />
 
 <Story name="overview">
-  <ThemeProvider style={{ width: '100%', height: '100%', border: '1px' }}>
+  <C.ThemeProvider style={{ width: '100%', height: '100%', border: '1px' }}>
     <Background width="1VH">
-      <Flex flexWrap="wrap">
-        <Flex
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-button--default-story">
+          Buttons
+        </C.Link>
+      </C.Caption>
+      <C.Column flexWrap="wrap">
+        <C.Flex
           flexGrow={1}
           p={3}
           m={1}
           justifyContent="space-evenly"
           border="1px solid black"
         >
-          <Flex flexDirection="column">
-            <Button m={3}>Default</Button>
-            <Button m={3} color="primary">
+          <C.Column>
+            <C.Button m={3}>Default</C.Button>
+            <C.Button m={3} color="primary">
               Primary
-            </Button>
-            <Button m={3} color="secondary">
+            </C.Button>
+            <C.Button m={3} color="secondary">
               Secondary
-            </Button>
-          </Flex>
-          <Flex flexDirection="column">
-            <Button m={3} variant="outlined">
+            </C.Button>
+          </C.Column>
+          <C.Column>
+            <C.Button m={3} variant="outlined">
               Default
-            </Button>
-            <Button m={3} variant="outlined" color="primary">
+            </C.Button>
+            <C.Button m={3} variant="outlined" color="primary">
               Primary
-            </Button>
-            <Button m={3} variant="outlined" color="secondary">
+            </C.Button>
+            <C.Button m={3} variant="outlined" color="secondary">
               Secondary
-            </Button>
-          </Flex>
-          <Flex flexDirection="column">
-            <Button m={3} variant="text">
+            </C.Button>
+          </C.Column>
+          <C.Column>
+            <C.Button m={3} variant="text">
               Default
-            </Button>
-            <Button m={3} variant="text" color="primary">
+            </C.Button>
+            <C.Button m={3} variant="text" color="primary">
               Primary
-            </Button>
-            <Button m={3} variant="text" color="secondary">
+            </C.Button>
+            <C.Button m={3} variant="text" color="secondary">
               Secondary
-            </Button>
-          </Flex>
-          <Flex flexDirection="column">
-            <Button disabled={true} m={3}>
+            </C.Button>
+          </C.Column>
+          <C.Column>
+            <C.Button disabled={true} m={3}>
               Default
-            </Button>
-            <Button disabled={true} m={3} color="primary">
+            </C.Button>
+            <C.Button disabled={true} m={3} color="primary">
               Primary
-            </Button>
-            <Button disabled={true} m={3} color="secondary">
+            </C.Button>
+            <C.Button disabled={true} m={3} color="secondary">
               Secondary
-            </Button>
-          </Flex>
-        </Flex>
-        <Flex
+            </C.Button>
+          </C.Column>
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/?path=/docs/components-iconbutton--default-story">
+            Icon Buttons
+          </C.Link>
+        </C.Caption>
+        <C.Flex
           flexGrow={1}
           p={3}
           m={1}
@@ -149,20 +77,25 @@ import {
           border="1px solid black"
           bg="background.default"
         >
-          <IconButton aria-label="delete">
-            <Icons.Delete />
-          </IconButton>
-          <IconButton aria-label="delete" disabled color="primary">
-            <Icons.Delete />
-          </IconButton>
-          <IconButton color="secondary" aria-label="add an alarm">
-            <Icons.Alarm />
-          </IconButton>
-          <IconButton color="primary" aria-label="add to shopping cart">
-            <Icons.AddShoppingCart />
-          </IconButton>
-        </Flex>
-        <Flex
+          <C.IconButton aria-label="delete">
+            <C.Icons.Delete />
+          </C.IconButton>
+          <C.IconButton aria-label="delete" disabled color="primary">
+            <C.Icons.Delete />
+          </C.IconButton>
+          <C.IconButton color="secondary" aria-label="add an alarm">
+            <C.Icons.Alarm />
+          </C.IconButton>
+          <C.IconButton color="primary" aria-label="add to shopping cart">
+            <C.Icons.AddShoppingCart />
+          </C.IconButton>
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/?path=/docs/components-badge--default-story">
+            Badges
+          </C.Link>
+        </C.Caption>
+        <C.Flex
           flexGrow={1}
           p={3}
           pt={4}
@@ -171,29 +104,34 @@ import {
           border="1px solid black"
           bg="background.default"
         >
-          <Badge badgeContent={'default'}>
-            <IconButton>
-              <Icons.Mail />
-            </IconButton>
-          </Badge>
-          <Badge color="primary" badgeContent={4}>
-            <IconButton>
-              <Icons.Mail />
-            </IconButton>
-          </Badge>
-          <Badge color="secondary" badgeContent={87}>
-            <IconButton>
-              <Icons.Mail />
-            </IconButton>
-          </Badge>
-          <Badge color="error" badgeContent={1000}>
-            <IconButton>
-              <Icons.Mail />
-            </IconButton>
-          </Badge>
-        </Flex>
-      </Flex>
-      <Flex
+          <C.Badge badgeContent={'default'}>
+            <C.IconButton>
+              <C.Icons.Mail />
+            </C.IconButton>
+          </C.Badge>
+          <C.Badge color="primary" badgeContent={4}>
+            <C.IconButton>
+              <C.Icons.Mail />
+            </C.IconButton>
+          </C.Badge>
+          <C.Badge color="secondary" badgeContent={87}>
+            <C.IconButton>
+              <C.Icons.Mail />
+            </C.IconButton>
+          </C.Badge>
+          <C.Badge color="error" badgeContent={1000}>
+            <C.IconButton>
+              <C.Icons.Mail />
+            </C.IconButton>
+          </C.Badge>
+        </C.Flex>
+      </C.Column>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-avatar--default-story">
+          Avatars
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         p={3}
         pt={4}
@@ -202,23 +140,28 @@ import {
         border="1px solid black"
         bg="background.defaul"
       >
-        <Avatar m={1} bg="primary.main" color="primary.contrastText">
+        <C.Avatar m={1} bg="primary.main" color="primary.contrastText">
           CF
-        </Avatar>
-        <Avatar m={1} bg="secondary.main" color="secondary.contrastText">
+        </C.Avatar>
+        <C.Avatar m={1} bg="secondary.main" color="secondary.contrastText">
           SH
-        </Avatar>
-        <Avatar m={1}>
-          <Icons.Folder />
-        </Avatar>
-        <Avatar m={1} bg="black" color="white">
-          <Icons.Pageview />
-        </Avatar>
-        <Avatar m={1} bg="primary.light" color="text.primary">
-          <Icons.Assignment />
-        </Avatar>
-      </Flex>
-      <Flex
+        </C.Avatar>
+        <C.Avatar m={1}>
+          <C.Icons.Folder />
+        </C.Avatar>
+        <C.Avatar m={1} bg="black" color="white">
+          <C.Icons.Pageview />
+        </C.Avatar>
+        <C.Avatar m={1} bg="primary.light" color="text.primary">
+          <C.Icons.Assignment />
+        </C.Avatar>
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-chip--default-story">
+          Chips
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         p={3}
         m={1}
@@ -226,28 +169,33 @@ import {
         border="1px solid black"
         bg="background.defaul"
       >
-        <Chip
-          avatar={<Avatar src={commmitImage} />}
+        <C.Chip
+          avatar={<C.Avatar src={commmitImage} />}
           label="Chip"
           onDelete={() => {}}
         />
-        <Chip label="Chip" />
-        <Chip
-          icon={<Icons.Face />}
+        <C.Chip label="Chip" />
+        <C.Chip
+          icon={<C.Icons.Face />}
           label="Chip"
           onClick={() => {}}
           onDelete={() => {}}
           color="primary"
         />
-        <Chip
+        <C.Chip
           variant="outlined"
-          icon={<Icons.AccountCircle />}
+          icon={<C.Icons.AccountCircle />}
           label="Chip"
           onClick={() => {}}
           color="secondary"
         />
-      </Flex>
-      <Flex
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-textfield--simple">
+          Text Fields
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         p={3}
         pt={4}
@@ -284,9 +232,9 @@ import {
           const handleChange = name => event =>
             setValues({ ...values, [name]: event.target.value })
           return (
-            <Form noValidate autoComplete="off">
-              <Flex flexWrap="wrap" alignContent="space-between">
-                <TextField
+            <C.Form noValidate autoComplete="off">
+              <C.Flex flexWrap="wrap" alignContent="space-between">
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-name"
@@ -294,14 +242,14 @@ import {
                   value={values.name}
                   onChange={handleChange('name')}
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-uncontrolled"
                   label="Uncontrolled"
                   defaultValue="foo"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   required
@@ -309,7 +257,7 @@ import {
                   label="Required"
                   defaultValue="Hello World"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   error
@@ -317,7 +265,7 @@ import {
                   label="Error"
                   defaultValue="Hello World"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   disabled
@@ -325,7 +273,7 @@ import {
                   label="Disabled"
                   defaultValue="Hello World"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-password-input"
@@ -333,7 +281,7 @@ import {
                   type="password"
                   autoComplete="current-password"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-multiline-flexible"
@@ -343,7 +291,7 @@ import {
                   value={values.multiline}
                   onChange={handleChange('multiline')}
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-multiline-static"
@@ -352,7 +300,7 @@ import {
                   rows="4"
                   defaultValue="Default Value"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-read-only-input"
@@ -362,7 +310,7 @@ import {
                     readOnly: true
                   }}
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-helperText"
@@ -370,7 +318,7 @@ import {
                   defaultValue="Default Value"
                   helperText="Some important text"
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-number"
@@ -382,7 +330,7 @@ import {
                     shrink: true
                   }}
                 />
-                <TextField
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-select-currency"
@@ -393,12 +341,12 @@ import {
                   helperText="Please select your currency"
                 >
                   {currencies.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
+                    <C.MenuItem key={option.value} value={option.value}>
                       {option.label}
-                    </MenuItem>
+                    </C.MenuItem>
                   ))}
-                </TextField>
-                <TextField
+                </C.TextField>
+                <C.TextField
                   flexGrow={1}
                   m={3}
                   id="standard-select-currency-native"
@@ -416,16 +364,24 @@ import {
                       {option.label}
                     </option>
                   ))}
-                </TextField>
-              </Flex>
-            </Form>
+                </C.TextField>
+              </C.Flex>
+            </C.Form>
           )
         })}
-      </Flex>
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-checkbox--default-story">
+          Checkbox
+        </C.Link>
+        , <C.Link href="/?path=/docs/components-radio--default-story">
+          Radio
+        </C.Link> and <C.Link href="/?path=/docs/components-switch--default-story">Switch</C.Link>
+      </C.Caption>
       {React.createElement(() => {
         const [checked, setChecked] = React.useState(true)
         return (
-          <Flex
+          <C.Flex
             flexGrow={1}
             p={3}
             pt={4}
@@ -434,46 +390,51 @@ import {
             border="1px solid black"
             bg="background.defaul"
           >
-            <Flex flexDirection="column" justifyContent="center">
-              <Checkbox
+            <C.Column justifyContent="center">
+              <C.Checkbox
                 checked={checked}
                 onChange={event => setChecked(event.target.checked)}
                 color="primary"
               />
-              <Checkbox
+              <C.Checkbox
                 checked={!checked}
                 onChange={event => setChecked(!event.target.checked)}
                 color="secondary"
               />
-            </Flex>
-            <Flex flexDirection="column" justifyContent="center">
-              <Radio
+            </C.Column>
+            <C.Column justifyContent="center">
+              <C.Radio
                 checked={checked}
                 onChange={event => setChecked(event.target.checked)}
                 color="primary"
               />
-              <Radio
+              <C.Radio
                 checked={!checked}
                 onChange={event => setChecked(!event.target.checked)}
                 color="secondary"
               />
-            </Flex>
-            <Flex flexDirection="column" justifyContent="center">
-              <Switch
+            </C.Column>
+            <C.Column justifyContent="center">
+              <C.Switch
                 checked={checked}
                 onChange={event => setChecked(event.target.checked)}
                 color="primary"
               />
-              <Switch
+              <C.Switch
                 checked={!checked}
                 onChange={event => setChecked(!event.target.checked)}
                 color="secondary"
               />
-            </Flex>
-          </Flex>
+            </C.Column>
+          </C.Flex>
         )
       })}
-      <Flex
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-slider--default-story">
+          Slider
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         flexDirection="column"
         p={3}
@@ -482,17 +443,22 @@ import {
         border="1px solid black"
         bg="background.defaul"
       >
-        <Slider m={3} flexGrow={1} aria-labelledby="continuous-slider" />
-        <Slider
+        <C.Slider m={3} flexGrow={1} aria-labelledby="continuous-slider" />
+        <C.Slider
           m={3}
           flexGrow={1}
           defaultValue={80}
           step={10}
           valueLabelDisplay="on"
         />
-        <Slider m={3} flexGrow={1} value={30} disabled={true} />
-      </Flex>
-      <Flex
+        <C.Slider m={3} flexGrow={1} value={30} disabled={true} />
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-list--default-story">
+          Lists
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         flexDirection="column"
         p={3}
@@ -501,33 +467,33 @@ import {
         border="1px solid black"
         bg="background.defaul"
       >
-        <Box minWidth={500} m={3} bg="background.paper">
-          <List component="nav" aria-label="main mailbox folders">
-            <ListItem button>
-              <ListItemIcon>
-                <Icons.Inbox />
-              </ListItemIcon>
-              <ListItemText primary="Inbox" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <Icons.Drafts />
-              </ListItemIcon>
-              <ListItemText primary="Drafts" />
-            </ListItem>
-          </List>
+        <C.Box minWidth={500} m={3} bg="background.paper">
+          <C.List component="nav" aria-label="main mailbox folders">
+            <C.ListItem button>
+              <C.ListItemIcon>
+                <C.Icons.Inbox />
+              </C.ListItemIcon>
+              <C.ListItemText primary="Inbox" />
+            </C.ListItem>
+            <C.ListItem button>
+              <C.ListItemIcon>
+                <C.Icons.Drafts />
+              </C.ListItemIcon>
+              <C.ListItemText primary="Drafts" />
+            </C.ListItem>
+          </C.List>
           <Divider />
-          <List component="nav" aria-label="secondary mailbox folders">
-            <ListItem button>
-              <ListItemText primary="Trash" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Spam" />
-            </ListItem>
-          </List>
-        </Box>
-      </Flex>
-      <Flex
+          <C.List component="nav" aria-label="secondary mailbox folders">
+            <C.ListItem button>
+              <C.ListItemText primary="Trash" />
+            </C.ListItem>
+            <C.ListItem button>
+              <C.ListItemText primary="Spam" />
+            </C.ListItem>
+          </C.List>
+        </C.Box>
+      </C.Flex>
+      <C.Flex
         flexGrow={1}
         flexDirection="column"
         p={3}
@@ -536,13 +502,13 @@ import {
         border="1px solid black"
         bg="background.defaul"
       >
-        <Box minWidth={500} m={3} bg="background.paper">
-          <List>
+        <C.Box minWidth={500} m={3} bg="background.paper">
+          <C.List>
             {['18 June 2014', '20 July 2015', '3 January 2018'].map(
               (item, index) => (
-                <ListItem key={index} role={undefined} dense button>
-                  <ListItemIcon>
-                    <Checkbox
+                <C.ListItem key={index} role={undefined} dense button>
+                  <C.ListItemIcon>
+                    <C.Checkbox
                       edge="start"
                       tabIndex={-1}
                       disableRipple
@@ -550,24 +516,29 @@ import {
                         'aria-labelledby': 1
                       }}
                     />
-                  </ListItemIcon>
-                  <ListItemText
+                  </C.ListItemIcon>
+                  <C.ListItemText
                     id={index}
                     primary={`Line item ${index + 1}`}
                     secondary={item}
                   />
-                  <ListItemSecondaryAction>
-                    <IconButton edge="end">
-                      <Icons.Comment />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
+                  <C.ListItemSecondaryAction>
+                    <C.IconButton edge="end">
+                      <C.Icons.Comment />
+                    </C.IconButton>
+                  </C.ListItemSecondaryAction>
+                </C.ListItem>
               )
             )}
-          </List>
-        </Box>
-      </Flex>
-      <Flex
+          </C.List>
+        </C.Box>
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-card--default-story">
+          Cards
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         flexWrap="wrap"
         p={3}
@@ -576,85 +547,90 @@ import {
         border="1px solid black"
         bg="background.defaul"
       >
-        <Card m={3} width={1 / 2}>
-          <Box height={100} bgcolor="primary.main" />
-          <CardHeader bgcolor="primary.main" color="primary.contrastText">
+        <C.Card m={3} width={1 / 2}>
+          <C.Box height={100} bgcolor="primary.main" />
+          <C.CardHeader bgcolor="primary.main" color="primary.contrastText">
             Committed Card
-          </CardHeader>
-          <CardContent>
+          </C.CardHeader>
+          <C.CardContent>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Id nibh
             tortor id aliquet lectus. Feugiat nibh sed pulvinar proin gravida
             hendrerit lectus. Facilisis magna etiam tempor orci eu lobortis
             elementum.
-          </CardContent>
-          <CardActions>
-            <Button color="primary" variant="text">
+          </C.CardContent>
+          <C.CardActions>
+            <C.Button color="primary" variant="text">
               Yes
-            </Button>
-            <Button color="primary" variant="text">
+            </C.Button>
+            <C.Button color="primary" variant="text">
               No
-            </Button>
-          </CardActions>
-        </Card>
-        <Card m={3} width={1 / 2}>
-          <CardHeader bgcolor="secondary.main" color="secondary.contrastText">
+            </C.Button>
+          </C.CardActions>
+        </C.Card>
+        <C.Card m={3} width={1 / 2}>
+          <C.CardHeader bgcolor="secondary.main" color="secondary.contrastText">
             Card
-          </CardHeader>
-          <CardActions>
-            <Checkbox
+          </C.CardHeader>
+          <C.CardActions>
+            <C.Checkbox
               icon={
-                <Icons.FavoriteBorder style={{ color: colors.grey[600] }} />
+                <C.Icons.FavoriteBorder style={{ color: C.colors.grey[600] }} />
               }
-              checkedIcon={<Icons.Favorite style={{ color: 'red' }} />}
+              checkedIcon={<C.Icons.Favorite style={{ color: 'red' }} />}
             />
-            <Checkbox
+            <C.Checkbox
               icon={
-                <Icons.BookmarkBorder style={{ color: colors.grey[600] }} />
+                <C.Icons.BookmarkBorder style={{ color: C.colors.grey[600] }} />
               }
               checkedIcon={
-                <Icons.Bookmark style={{ color: colors.lightBlue[400] }} />
+                <C.Icons.Bookmark style={{ color: C.colors.lightBlue[400] }} />
               }
             />
-            <IconButton>
-              <Icons.Share />
-            </IconButton>
-          </CardActions>
-        </Card>
-        <Card>
-          <Flex>
-            <CardContent>
-              <Heading.h5 mb={1}>Title</Heading.h5>
-              <Subheading.h5
+            <C.IconButton>
+              <C.Icons.Share />
+            </C.IconButton>
+          </C.CardActions>
+        </C.Card>
+        <C.Card>
+          <C.Flex>
+            <C.CardContent>
+              <C.Heading.h5 mb={1}>Title</C.Heading.h5>
+              <C.Subheading.h5
                 mt={0}
                 mb={2}
                 variant="subtitle1"
                 color="textSecondary"
               >
                 Subtitle
-              </Subheading.h5>
-              <Flex alignItems="center" p={3}>
-                <IconButton size="small">
-                  <Icons.SkipPrevious fontSize="small" />
-                </IconButton>
-                <IconButton>
-                  <Icons.PlayArrow fontSize="large" />
-                </IconButton>
-                <IconButton size="small">
-                  <Icons.SkipNext fontSize="small" />
-                </IconButton>
-              </Flex>
-            </CardContent>
-            <CardMedia
+              </C.Subheading.h5>
+              <C.Flex alignItems="center" p={3}>
+                <C.IconButton size="small">
+                  <C.Icons.SkipPrevious fontSize="small" />
+                </C.IconButton>
+                <C.IconButton>
+                  <C.Icons.PlayArrow fontSize="large" />
+                </C.IconButton>
+                <C.IconButton size="small">
+                  <C.Icons.SkipNext fontSize="small" />
+                </C.IconButton>
+              </C.Flex>
+            </C.CardContent>
+            <C.CardMedia
               width="200px"
               height="200px"
               image="https://picsum.photos/id/645/200/200"
               title="Picsum"
             />
-          </Flex>
-        </Card>
-      </Flex>
-      <Flex
+          </C.Flex>
+        </C.Card>
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-table--default-story">
+          Tables
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         flexDirection="column"
         p={3}
@@ -663,18 +639,18 @@ import {
         border="1px solid black"
         bg="background.default"
       >
-        <Box m={2} p={3} bg="background.paper">
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell align="right">Calories</TableCell>
-                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                <TableCell align="right">Protein&nbsp;(g)</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
+        <C.Box m={2} p={3} bg="background.paper">
+          <C.Table>
+            <C.TableHead>
+              <C.TableRow>
+                <C.TableCell>Dessert (100g serving)</C.TableCell>
+                <C.TableCell align="right">Calories</C.TableCell>
+                <C.TableCell align="right">Fat&nbsp;(g)</C.TableCell>
+                <C.TableCell align="right">Carbs&nbsp;(g)</C.TableCell>
+                <C.TableCell align="right">Protein&nbsp;(g)</C.TableCell>
+              </C.TableRow>
+            </C.TableHead>
+            <C.TableBody>
               {[
                 ['Frozen yoghurt', 159, 6.0, 24, 4.0],
                 ['Ice cream sandwich', 237, 9.0, 37, 4.3],
@@ -682,21 +658,24 @@ import {
                 ['Cupcake', 305, 3.7, 67, 4.3],
                 ['Gingerbread', 356, 16.0, 49, 3]
               ].map(row => (
-                <TableRow key={row[0]}>
-                  <TableCell component="th" scope="row">
+                <C.TableRow key={row[0]}>
+                  <C.TableCell component="th" scope="row">
                     {row[0]}
-                  </TableCell>
-                  <TableCell align="right">{row[1]}</TableCell>
-                  <TableCell align="right">{row[2]}</TableCell>
-                  <TableCell align="right">{row[3]}</TableCell>
-                  <TableCell align="right">{row[4]}</TableCell>
-                </TableRow>
+                  </C.TableCell>
+                  <C.TableCell align="right">{row[1]}</C.TableCell>
+                  <C.TableCell align="right">{row[2]}</C.TableCell>
+                  <C.TableCell align="right">{row[3]}</C.TableCell>
+                  <C.TableCell align="right">{row[4]}</C.TableCell>
+                </C.TableRow>
               ))}
-            </TableBody>
-          </Table>
-        </Box>
-      </Flex>
-      <Flex
+            </C.TableBody>
+          </C.Table>
+        </C.Box>
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/components-tabs--appbar">Tabs</C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         flexDirection="column"
         p={3}
@@ -711,32 +690,37 @@ import {
             setValue(newValue)
           }
           return (
-            <Box>
-              <AppBar position="static">
-                <Tabs
+            <C.Box>
+              <C.AppBar position="static">
+                <C.Tabs
                   value={value}
                   onChange={handleChange}
                   aria-label="simple tabs example"
                 >
-                  <Tab label="Item One" />
-                  <Tab label="Item Two" />
-                  <Tab label="Item Three" />
-                </Tabs>
-              </AppBar>
-              <TabPanel p={3} selected={value} index={0}>
+                  <C.Tab label="Item One" />
+                  <C.Tab label="Item Two" />
+                  <C.Tab label="Item Three" />
+                </C.Tabs>
+              </C.AppBar>
+              <C.TabPanel p={3} selected={value} index={0}>
                 Item One
-              </TabPanel>
-              <TabPanel p={3} selected={value} index={1}>
+              </C.TabPanel>
+              <C.TabPanel p={3} selected={value} index={1}>
                 Item Two
-              </TabPanel>
-              <TabPanel p={3} selected={value} index={2}>
+              </C.TabPanel>
+              <C.TabPanel p={3} selected={value} index={2}>
                 Item Three
-              </TabPanel>
-            </Box>
+              </C.TabPanel>
+            </C.Box>
           )
         })}
-      </Flex>
-      <Flex
+      </C.Flex>
+      <C.Caption>
+        <C.Link href="/?path=/docs/design-system-typography--typography">
+          Typography
+        </C.Link>
+      </C.Caption>
+      <C.Flex
         flexGrow={1}
         p={3}
         pt={4}
@@ -744,42 +728,42 @@ import {
         border="1px solid black"
         bg="background.default"
       >
-        <Box width={1 / 2}>
-          <Typography>System Typography</Typography>
-          <Heading.h2 gutterBottom>h2. Heading</Heading.h2>
-          <Heading.h3 gutterBottom>h3. Heading</Heading.h3>
-          <Heading.h4 gutterBottom>h4. Heading</Heading.h4>
-          <Subheading.h3 gutterBottom>
+        <C.Box width={1 / 2}>
+          <C.Typography>System Typography</C.Typography>
+          <C.Heading.h2 gutterBottom>h2. Heading</C.Heading.h2>
+          <C.Heading.h3 gutterBottom>h3. Heading</C.Heading.h3>
+          <C.Heading.h4 gutterBottom>h4. Heading</C.Heading.h4>
+          <C.Subheading.h3 gutterBottom>
             subheading. Lorem ipsum dolor sit amet, consectetur adipisicing
             elit. Quos blanditiis tenetur
-          </Subheading.h3>
-          <Typography variant="body1" gutterBottom>
+          </C.Subheading.h3>
+          <C.Typography variant="body1" gutterBottom>
             body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
             consectetur.
-          </Typography>
-          <Typography variant="body2" gutterBottom>
+          </C.Typography>
+          <C.Typography variant="body2" gutterBottom>
             body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
             consectetur.
-          </Typography>
-        </Box>
-        <Box width={1 / 2}>
-          <Text>Disply Typography</Text>
-          <Display.d1 gutterBottom>d1. Heading</Display.d1>
-          <Display.d2 gutterBottom>d2. Heading</Display.d2>
-          <Text gutterBottom>
+          </C.Typography>
+        </C.Box>
+        <C.Box width={1 / 2}>
+          <C.Text>Disply Typography</C.Text>
+          <C.Display.d1 gutterBottom>d1. Heading</C.Display.d1>
+          <C.Display.d2 gutterBottom>d2. Heading</C.Display.d2>
+          <C.Text gutterBottom>
             Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
             blanditiis tenetur unde suscipit, quam beatae rerum inventore
             consectetur.
-          </Text>
-          <Monospace wrap>
+          </C.Text>
+          <C.Monospace wrap>
             Monospace. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
             consectetur.
-          </Monospace>
-        </Box>
-      </Flex>
+          </C.Monospace>
+        </C.Box>
+      </C.Flex>
     </Background>
-  </ThemeProvider>
+  </C.ThemeProvider>
 </Story>
