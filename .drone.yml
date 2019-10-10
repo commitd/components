@@ -29,7 +29,6 @@ steps:
 
   - name: code-analysis
     image: committed/drone-sonarqube-node
-    detach: true
     environment:
       SONAR_HOST:
         from_secret: sonar_host
