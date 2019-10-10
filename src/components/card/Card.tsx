@@ -44,7 +44,7 @@ export const CardHeader: React.ComponentType<CardHeaderProps> = ({
   children,
   ...others
 }: CardHeaderProps) => {
-  if (typeof (children && children) === 'string') {
+  if (typeof children === 'string') {
     return <StyledCardHeader {...others} title={children} />
   }
   return <StyledCardHeader {...others}>{children}</StyledCardHeader>
