@@ -20,7 +20,7 @@ In this library, we only aim to support simple components (or [atoms](http://ato
 Higher level reusable components are in separate, themed libraries. Import those as required.
 
 Generally, a component should be self contained and should not require styling beyond what is provided via props.
-No assumptions are made about the placement of the component but we provide [placement props][placement] to simplify
+No assumptions are made about the placement of the component but we provide [positioning props][positioning] to simplify
 the location of the components.
 
 ## Spacing
@@ -28,7 +28,7 @@ the location of the components.
 We have a fixed list of spacings that double with each step. Using fixed spacing will give a better uniform
 feeling to the design. If a space is too small, go up a step, too large go down, try to avoid custom spacings.
 
-The [placement props][placement] that deal with spacing (e.g. margin and padding) take a number from 0 to 6 to select the correct
+The [positioning props][positioning] that deal with spacing (e.g. margin and padding) take a number from 0 to 6 to select the correct
 spacing, 0 being no space and 6 is 128px.
 
 <Flex flexDirection="column">
@@ -99,7 +99,7 @@ spacing, 0 being no space and 6 is 128px.
 
 ## Sizing
 
-The [placement props][placement] that deal with sizing (e.g. width and height) take a `number`. Numbers greater than `1` are treated as a pixel value for example `100 => "100px"`,
+The [placement props][positioning] that deal with sizing (e.g. width and height) take a `number`. Numbers greater than `1` are treated as a pixel value for example `100 => "100px"`,
 and numbers less than or equal to `1` are transformed into a percentage for example `1/2 => "50%"`.
 
 <Box p={3} width={100} bgcolor={colors.red[500]} color="white">
@@ -170,4 +170,4 @@ const styles = theme => ({
 })
 ```
 
-[placement]: /todo
+[positioning]: /?path=/docs/design-system-positioning--page
