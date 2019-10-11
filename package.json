@@ -83,7 +83,7 @@
     "pretty-quick": "^1.11.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-docgen-typescript-loader": "^3.1.1",
+    "react-docgen-typescript-loader": "^3.3.0",
     "react-dom": "^16.9.0",
     "react-scripts-ts": "^2.16.0",
     "rollup": "^0.62.0",
