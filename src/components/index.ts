@@ -43,6 +43,9 @@ export type CheckboxProps = CheckboxProps
 export { Chip } from './chip/Chip'
 import { ChipProps } from './chip/Chip'
 export type ChipProps = ChipProps
+export { Column } from './flex/Flex'
+import { ColumnProps } from './flex/Flex'
+export type ColumnProps = ColumnProps
 export { Container } from './container/Container'
 import { ContainerProps } from './container/Container'
 export type ContainerProps = ContainerProps
@@ -100,6 +103,9 @@ export type RadioProps = RadioProps
 export { RadioGroup } from './radio/RadioGroup'
 import { RadioGroupProps } from './radio/RadioGroup'
 export type RadioGroupProps = RadioGroupProps
+export { Row } from './flex/Flex'
+import { RowProps } from './flex/Flex'
+export type RowProps = RowProps
 export { Select } from './select/Select'
 import { SelectProps } from './select/Select'
 export type SelectProps = SelectProps

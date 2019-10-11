@@ -6,6 +6,9 @@ import { ThemeProvider, theme, colors, Flex } from '../'
 
 ## Main Light
 
+The main light theme colours. They can be refered to in palette based props using the key with main, light or dark. e.g. `primary.main`, `secondary.dark`.
+We use the brand colour for accents and highlights, not as the primary colour.
+
 <ThemeProvider>
   <Flex flexWrap="wrap">
     <Palette key="brand" name="brand" width={1} />
@@ -21,6 +24,8 @@ import { ThemeProvider, theme, colors, Flex } from '../'
 
 ## Palettes
 
+Full palletes back the main colours and are keyed with `50, 100, 200, 300, 400, 500, 600, 700, 800, 900`.
+
 Click to copy color to clipboard.
 
 <Colors name="brand" colors={theme.palettes.brand} />
@@ -33,6 +38,9 @@ Click to copy color to clipboard.
 <Colors name="neutrals" colors={theme.palettes.neutral} />
 
 ## Colours
+
+Don't refer to hex values in your code, like `#FFBB00` but instead use the theme colours above or you can also import
+`colors` directly and select from a wider set for, say charts and graphs that require more colours.
 
 <Colors name="red" colors={colors.red} />
 <Colors name="redVivid" colors={colors.redVivid} />

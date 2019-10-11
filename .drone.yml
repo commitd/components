@@ -6,7 +6,6 @@ name: components
 steps:
   - name: npm_auth
     image: robertstettner/drone-npm-auth
-    environment:
     settings:
       registry: npm.pkg.github.com
       token:
@@ -29,7 +28,6 @@ steps:
 
   - name: code-analysis
     image: committed/drone-sonarqube-node
-    detach: true
     environment:
       SONAR_HOST:
         from_secret: sonar_host
@@ -40,6 +38,9 @@ steps:
     when:
       branch:
         - master
+      event:
+        exclude:
+          - pull_request
 
   - name: slack
     image: plugins/slack
@@ -51,5 +52,18 @@ steps:
         from_secret: slack_template
     when:
       status:
-        - success
         - failure
+
+  - name: announce
+    image: plugins/slack
+    settings:
+      channel: group-dev
+      webhook:
+        from_secret: slack_webhook
+      template: >
+        :tada: New version ${DRONE_TAG} of `@commitd/components` available
+    when:
+      ref:
+        - refs/tags/v*
+      status:
+        - success
