@@ -28,7 +28,17 @@ addParameters({
   docsContainer: DocsContainer,
   docs: DocsPage,
   options: {
-    theme: storybookTheme
+    theme: storybookTheme,
+    storySort: (a, b) => {
+      if (a[1].kind === b[1].kind) {
+        return 0
+      }
+      if (a[1].parameters && a[1].parameters.order) {
+        return a[1].parameters.order - b[1].parameters.order
+      } else {
+        return a[1].id.localeCompare(b[1].id, { numeric: true })
+      }
+    }
   }
 })
 
