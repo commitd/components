@@ -1,4 +1,4 @@
-import { ComponentType, FC, AriaAttributes, DOMAttributes } from 'react'
+import { ComponentType, FC } from 'react'
 import { styled } from '@material-ui/styles'
 import { fonts, Theme } from '../../theme'
 import MaterialAppBar, {
@@ -18,9 +18,6 @@ export const AppBar: ComponentType<AppBarProps> = styled(MaterialAppBar)(
 
 // For documentation only
 export type BaseAppBarProps = Pick<AppBarProps, 'position' | 'color'>
-export type RestAppBarProps = Omit<
-  AppBarProps,
-  keyof (BaseAppBarProps & AriaAttributes & DOMAttributes<'div'>)
->
+export type RestAppBarProps = Omit<AppBarProps, keyof BaseAppBarProps>
 export const BaseAppBarDocs: FC<BaseAppBarProps> = () => null
 export const RestAppBarDocs: FC<RestAppBarProps> = () => null
