@@ -1,9 +1,12 @@
 import { Badge, Button, Text, Flex, Box, Heading } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { BaseBadgeDocs, RestBadgeDocs } from './Badge'
 
 <Meta title="components|Badge" component={Badge} />
 
 # Badge
+
+Extends [Material UI Badge](https://material-ui.com/components/app-bar/).
 
 <Preview>
   <Story name="default">
@@ -30,4 +33,14 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 ## Props
 
-<Props of={Badge} />
+# Props
+
+Supports standard html aria and event props for a `div`.
+
+## Main props
+
+<Props of={BaseBadgeDocs} />
+
+## Other props
+
+<Props of={RestBadgeDocs} />
