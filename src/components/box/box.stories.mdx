@@ -1,5 +1,6 @@
 import { Box } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { BaseBoxDocs, RestBoxDocs } from './Box'
 
 <Meta title="components|Box" component={Box} />
 
@@ -43,7 +44,7 @@ Color primary from the theme's color palette
 
 <Preview>
   <Story name="primary">
-    <Box p={2} bg="primary.main" color="white">
+    <Box p={2} bgcolor="primary.main" color="white">
       Box
     </Box>
   </Story>
@@ -62,8 +63,8 @@ The `width` prop accepts an array value to set different widths at different bre
         1 / 4 // Sets width 25% at the next breakpoint
       ]}
       p={2}
-      bg="secondary.main"
-      color="grey.200"
+      bgcolor="secondary.main"
+      color="grey.600"
     >
       Hello
     </Box>
@@ -72,9 +73,12 @@ The `width` prop accepts an array value to set different widths at different bre
 
 ## Props
 
-The spacing of a `Box` is defined by padding an margin options below. These options are also available on all components, so they can be positioned as required but they are
-not repeated on all components props tables.
+Supports all [Positioning props](/?path=/docs/design-system-positioning--page).
 
-Remaining props for box configuration.
+## Main props
 
-<Props of={Box} />
+<Props of={BaseBoxDocs} />
+
+## Other props
+
+<Props of={RestBoxDocs} />

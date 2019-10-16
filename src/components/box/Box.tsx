@@ -1,20 +1,21 @@
-import * as React from 'react'
-import MaterialBox, {
-  BoxProps as MaterialBoxProps
-} from '@material-ui/core/Box'
+import { FC } from 'react'
+import Box, { BoxProps } from '@material-ui/core/Box'
+export type BoxProps = BoxProps
+export { Box }
 
-export type BoxRef = HTMLDivElement
-
-export type BoxProps = MaterialBoxProps & {
-  /** The background colour */
-  bg?: string
-}
-
-export const Box = React.forwardRef<BoxRef, BoxProps>((props, ref) => (
-  // @ts-ignore due to ref forward
-  <MaterialBox
-    {...props}
-    bgcolor={props.bg ? props.bg : props.bgcolor}
-    ref={ref}
-  />
-))
+// For documentation only
+import {
+  BordersProps,
+  PaletteProps,
+  PositionsProps,
+  ShadowsProps,
+  TypographyProps
+} from '@material-ui/system'
+export type BaseBoxProps = BordersProps &
+  PaletteProps &
+  PositionsProps &
+  ShadowsProps &
+  TypographyProps
+export type RestBoxProps = Omit<BoxProps, keyof BaseBoxProps>
+export const BaseBoxDocs: FC<BaseBoxProps> = () => null
+export const RestBoxDocs: FC<RestBoxProps> = () => null
