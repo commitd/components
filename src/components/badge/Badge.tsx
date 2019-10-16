@@ -1,8 +1,48 @@
-import * as React from 'react'
-import MaterialBadge, {
-  BadgeProps as MaterialBadgeProps
-} from '@material-ui/core/Badge'
+import { FC, HTMLAttributes } from 'react'
+import Badge, { BadgeProps } from '@material-ui/core/Badge'
+export type BadgeProps = BadgeProps
+export { Badge }
 
-export type BadgeProps = MaterialBadgeProps
+// For documentation only
+export type BaseBadgeProps = Omit<
+  BadgeProps,
+  keyof Omit<HTMLAttributes<HTMLDivElement>, 'color'>
+> & {
+  /**
+   * @default { vertical: 'top', horizontal: 'right' }
+   */
+  anchorOrigin?: {
+    vertical: 'top' | 'bottom'
+    horizontal: 'left' | 'right'
+  }
+  /**
+   * @default rectangle
+   */
+  overlap?: 'rectangle' | 'circle'
+  /**
+   * @default default
+   */
+  color?: 'primary' | 'secondary' | 'default' | 'error'
+  /**
+   * @default span
+   */
+  component?: React.ElementType<React.HTMLAttributes<HTMLDivElement>>
+  /**
+   * @default false
+   */
+  invisible?: boolean
+  /**
+   * @default 99
+   */
+  max?: number
+  /**
+   * @default false
+   */
+  showZero?: boolean
+  /**
+   * @default standard
+   */
+  variant?: 'standard' | 'dot'
+}
 
-export const Badge: React.FC<BadgeProps> = MaterialBadge
+export const BaseBadgeDocs: FC<BaseBadgeProps> = () => null

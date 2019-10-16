@@ -1,11 +1,24 @@
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import { Checkbox, Flex, Text, Icons, colors } from '../../'
+import {
+  Checkbox,
+  Flex,
+  Text,
+  Icons,
+  colors,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  FormGroup
+} from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { CheckboxDocs } from './Checkbox'
 
 <Meta title="components|Checkbox" component={Checkbox} />
 
 # Checkbox
+
+Extends [Material UI Checkbox](https://material-ui.com/components/checkboxes/).
 
 Checkboxes can be used as toggle actions or as part of input forms.
 Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
@@ -152,6 +165,52 @@ Use when single select/deselect option, use radio when one option of more then t
 
 ## With Labels
 
-## Props
+To add labels to checkboxes, say in forms, you should use a FormControlLabel
 
-<Props of={Checkbox} />
+<Preview>
+  <Story name="labels">
+    <FormControl component="fieldset">
+      <FormLabel component="legend">labelPlacement</FormLabel>
+      <FormGroup
+        aria-label="position"
+        name="position"
+        value={value}
+        onChange={handleChange}
+        row
+      >
+        <FormControlLabel
+          value="top"
+          control={<Checkbox color="primary" />}
+          label="Top"
+          labelPlacement="top"
+        />
+        <FormControlLabel
+          value="start"
+          control={<Checkbox color="primary" />}
+          label="Start"
+          labelPlacement="start"
+        />
+        <FormControlLabel
+          value="bottom"
+          control={<Checkbox color="primary" />}
+          label="Bottom"
+          labelPlacement="bottom"
+        />
+        <FormControlLabel
+          value="end"
+          control={<Checkbox color="primary" />}
+          label="End"
+          labelPlacement="end"
+        />
+      </FormGroup>
+    </FormControl>
+  </Story>
+</Preview>
+
+# Props
+
+Supports standard html aria and event props `div` props, [Spacing and Flexbox props](/?path=/docs/design-system-positioning--page).
+
+## Main props
+
+<Props of={CheckboxDocs} />

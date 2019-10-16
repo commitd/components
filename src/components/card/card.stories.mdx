@@ -11,10 +11,20 @@ import { Cartesian } from '@compositor/kit'
 import bgImage from '../../../public/images/Committed-Colour-512px.png'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
+import {
+  CardDocs,
+  CardHeaderDocs,
+  CardContentDocs,
+  CardActionAreaDocs,
+  CardActionsDocs,
+  CardMediaDocs
+} from './Card'
 
 <Meta title="components|Card" component={Card} />
 
 # Card
+
+Extends [Material UI Card](https://material-ui.com/components/cards/). We also extends the supporting Card components.
 
 Use `Card` component to group element onto a card.
 
@@ -136,11 +146,29 @@ Use `Card` component to group element onto a card.
 
 ## Props
 
+Card supports [Display, Spacing and Flexbox props](/?path=/docs/design-system-positioning--page) and CardMedia supports `SizingProps`.
 Main props for cards, excluding normal spacing props, see [Box](/components/box).
 
-<Props of={Card} />
-<Props of={CardHeader} />
-<Props of={CardContent} />
-<Props of={CardActionArea} />
-<Props of={CardActions} />
-<Props of={CardMedia} />
+## Card Props
+
+<Props of={CardDocs} />
+
+## CardHeader Props
+
+<Props of={CardHeaderDocs} />
+
+## CardContent Props
+
+<Props of={CardContentDocs} />
+
+## CardActionArea Props
+
+<Props of={CardActionAreaDocs} />
+
+## CardActions Props
+
+<Props of={CardActionsDocs} />
+
+## CardMedia Props
+
+<Props of={CardMediaDocs} />

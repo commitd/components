@@ -13,59 +13,62 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  IconButton
-} from '../../'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import {
+  IconButton,
+  Button,
   makeStyles,
   useTheme,
   Theme,
   createStyles
-} from '@material-ui/core/styles'
+} from '../../'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { DrawerDocs } from './Drawer'
 
 <Meta title="components|Drawer" component={Drawer} />
 
-```js
-// TODO remove material components
-```
-
 # Drawer
+
+Extends [Material UI Drawer](https://material-ui.com/components/drawers/)
+
+Drawers provide an extra surface that can be anchored to the left or right of the screen and hidden when not needed.
+They can be used for navigation or for tools and settings. See [Navigation drawer](https://material.io/components/navigation-drawer/)
+and [side sheet](https://material.io/components/sheets-side/)
 
 <Preview>
   <Story name="opening">
     {React.createElement(() => {
-      const useStyles = makeStyles(theme =>
-        createStyles({
-          root: {
-            display: 'flex'
-          },
-          drawer: {
-            [theme.breakpoints.up('sm')]: {
-              width: 240,
-              flexShrink: 0
-            }
-          },
-          menuButton: {
-            marginRight: theme.spacing(2),
-            [theme.breakpoints.up('sm')]: {
-              display: 'none'
-            }
-          },
-          toolbar: theme.mixins.toolbar,
-          drawerPaper: {
-            width: 240
-          }
-        })
-      )
-      const classes = useStyles()
       const theme = useTheme()
-      const [mobileOpen, setMobileOpen] = React.useState(false)
-      function handleDrawerToggle() {
-        setMobileOpen(!mobileOpen)
+      const [open, setOpen] = React.useState(false)
+      const toggleDrawer = value => event => {
+        if (
+          event.type === 'keydown' &&
+          (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return
+        }
+        setOpen(value)
+      }
+      // ts version
+      // const toggleDrawer = (value: boolean) => (
+      //   event: React.KeyboardEvent | React.MouseEvent,
+      // ) => {
+      //   if (
+      //     event.type === 'keydown' &&
+      //     ((event as React.KeyboardEvent).key === 'Tab' ||
+      //     (event as React.KeyboardEvent).key === 'Shift')
+      //   ) {
+      //      return;
+      //   }
+      //   setOpen(value);
+      // }
+      //
+      function handleDrawerToggle(value) {
+        if (value !== open) {
+          setOpen(!open)
+        }
       }
       const drawer = (
-        <div>
-          <div className={classes.toolbar} />
+        <div onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+          <div />
           <Divider />
           <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -91,87 +94,25 @@ import {
         </div>
       )
       return (
-        <Flex ml={240} width={{ sm: `calc(100% - 240px)` }}>
-          <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                className={classes.menuButton}
-              >
-                <Icons.Menu />
-              </IconButton>
-              <Typography variant="h6" noWrap>
-                Responsive drawer
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <nav className={classes.drawer} aria-label="mailbox folders">
-            <Hidden smUp implementation="css">
-              <Drawer
-                //container={container}
-                variant="temporary"
-                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                classes={{
-                  paper: classes.drawerPaper
-                }}
-                ModalProps={{
-                  keepMounted: true // Better open performance on mobile.
-                }}
-              >
-                {drawer}
-              </Drawer>
-            </Hidden>
-            <Hidden xsDown implementation="css">
-              <Drawer
-                classes={{
-                  paper: classes.drawerPaper
-                }}
-                variant="permanent"
-                open
-              >
-                {drawer}
-              </Drawer>
-            </Hidden>
-          </nav>
-          <Box component="main" flexGrow={1} p={3}>
-            <div className={classes.toolbar} />
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
-              Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus. Convallis convallis tellus id
-              interdum velit laoreet id donec ultrices. Odio morbi quis commodo
-              odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum
-              est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-              Metus vulputate eu scelerisque felis imperdiet proin fermentum
-              leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt
-              lobortis feugiat vivamus at augue. At augue eget arcu dictum
-              varius duis at consectetur lorem. Velit sed ullamcorper morbi
-              tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-            </Paragraph>
-            <Paragraph>
-              Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-              ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-              elementum integer enim neque volutpat ac tincidunt. Ornare
-              suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
-              volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
-              Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
-              ornare massa eget egestas purus viverra accumsan in. In hendrerit
-              gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
-              aliquam sem et tortor. Habitant morbi tristique senectus et.
-              Adipiscing elit duis tristique sollicitudin nibh sit. Ornare
-              aenean euismod elementum nisi quis eleifend. Commodo viverra
-              maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-              aliquam ultrices sagittis orci a.
-            </Paragraph>
-          </Box>
-        </Flex>
+        <div>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleDrawerToggle}
+          >
+            Open drawer
+          </Button>
+          <Drawer
+            variant="temporary"
+            ModalProps={{
+              keepMounted: true // Better open performance on mobile.
+            }}
+            open={open}
+            onClose={toggleDrawer(false)}
+          >
+            {drawer}
+          </Drawer>
+        </div>
       )
     })}
   </Story>
@@ -181,4 +122,6 @@ The implementation can be swapped with js to avoid SEO duplication of links.
 
 ## Props
 
-<Props of={Drawer} />
+Supports standard div aria and event props.
+
+<Props of={DrawerDocs} />

@@ -1,21 +1,33 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { Avatar, theme, Flex, Icons } from '../../'
 import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
+import { BaseAvatarDocs, RestAvatarDocs } from './Avatar'
 
 <Meta title="components|Avatar" component={Avatar} />
 
 # Avatar
 
+Extends [Material UI Avatar](https://material-ui.com/components/avatars/).
+
+The Avatar should be used for profile images. If an image is not available intials can be used.
+
 <Preview>
   <Story name="simple">
     <Flex>
-      <Avatar m={1} alt="John Smith" src={image} />
-      <Avatar m={1} alt="John Smith" src={image} size="60px" />
+      <Avatar m={1} alt="John Smith" src="https://i.pravatar.cc/40" />
+      <Avatar
+        m={1}
+        alt="John Smith"
+        src="https://i.pravatar.cc/60"
+        size="60px"
+      />
     </Flex>
   </Story>
 </Preview>
 
 ## Letter based
+
+To just use initials:
 
 <Preview>
   <Story name="letter based">
@@ -38,6 +50,8 @@ import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
 
 ## Icons
 
+In addition, icons are supported and can be used for intro banners.
+
 <Preview>
   <Story name="icons">
     <Flex>
@@ -54,6 +68,14 @@ import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
   </Story>
 </Preview>
 
-## Props
+# Props
 
-<Props of={Avatar} />
+Supports standard html aria and event props `div` props, [Spacing and Flexbox props](/?path=/docs/design-system-positioning--page).
+
+## Main props
+
+<Props of={BaseAvatarDocs} />
+
+## Other props
+
+<Props of={RestAvatarDocs} />

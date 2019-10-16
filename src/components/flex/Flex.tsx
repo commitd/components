@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { FC } from 'react'
 import { BoxProps, Box } from '../box/Box'
 
 export type FlexProps = Omit<BoxProps, 'display'>
@@ -22,3 +22,18 @@ export const Column = React.forwardRef<FlexRef, ColumnProps>(
     <Box ref={ref} {...props} display="flex" flexDirection="column" />
   )
 )
+
+// For documentation only
+import {
+  BordersProps,
+  PaletteProps,
+  PositionsProps,
+  ShadowsProps,
+  TypographyProps
+} from '@material-ui/system'
+export type FlexDocsProps = BordersProps &
+  PaletteProps &
+  PositionsProps &
+  ShadowsProps &
+  TypographyProps
+export const FlexDocs: FC<FlexDocsProps> = () => null

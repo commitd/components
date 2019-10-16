@@ -1,9 +1,12 @@
 import { Badge, Button, Text, Flex, Box, Heading } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { BaseBadgeDocs, RestBadgeDocs } from './Badge'
 
 <Meta title="components|Badge" component={Badge} />
 
 # Badge
+
+Extends [Material UI Badge](https://material-ui.com/components/badges/).
 
 <Preview>
   <Story name="default">
@@ -18,16 +21,44 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
   </Story>
   <Story name="secondary">
     <Badge color="secondary" badgeContent={100}>
-      <Button variant="contained">Button</Button>
+      <Button>Button</Button>
     </Badge>
   </Story>
   <Story name="error">
     <Badge color="error" badgeContent={1000}>
-      <Button variant="contained">Error</Button>
+      <Button>Error</Button>
+    </Badge>
+  </Story>
+</Preview>
+
+## Variants
+
+A dot variant can be used for small indicators
+
+<Preview>
+  <Story name="dot-primary">
+    <Badge variant="dot" color="primary" badgeContent={4}>
+      <Button>Button</Button>
+    </Badge>
+  </Story>
+  <Story name="dot-secondary">
+    <Badge variant="dot" color="secondary" badgeContent={100}>
+      <Button>Button</Button>
+    </Badge>
+  </Story>
+  <Story name="dot-error">
+    <Badge variant="dot" color="error" badgeContent={1000}>
+      <Button>Error</Button>
     </Badge>
   </Story>
 </Preview>
 
 ## Props
 
-<Props of={Badge} />
+# Props
+
+Supports standard html aria and event props for a `div`.
+
+## Main props
+
+<Props of={BaseBadgeDocs} />

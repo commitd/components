@@ -1,10 +1,13 @@
 import { Button, Box } from '../../'
 import { Cartesian } from '@compositor/kit'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { BaseButtonDocs, RestButtonDocs } from './Button'
 
 <Meta title="components|Button" component={Button} />
 
 # Button
+
+Extends [Material UI Button](https://material-ui.com/components/buttons/).
 
 Buttons make common actions immediately visible and easy to perform with one click or tap. They can be used for any type of action, including navigation.
 
@@ -193,6 +196,12 @@ Disabled buttons add transparency.
 
 ## Props
 
-Main props for buttons, excluding normal spacing props, see [Box](/components/box).
+Supports [Display, Spacing and Flexbox props](/?path=/docs/design-system-positioning--page).
 
-<Props of={Button} />
+## Main props
+
+<Props of={BaseButtonDocs} />
+
+## Other props
+
+<Props of={RestButtonDocs} />

@@ -22,88 +22,97 @@ smUp        |   show | hide
 mdDown      |                     hide | show
 ```
 
+The following example exercices all the props of hidden.
+It really only makes sence to use one props at a time. Remamber the ones you can see are the ones that are not hidden.
+
 <Preview>
-  <Flex alignItems="baseline">
-    <Hidden xsUp={true}>
-      <Card m={2} p={2}>
-        xsUp
-      </Card>
-    </Hidden>
-    <Hidden smUp={true}>
-      <Card m={2} p={2}>
-        smUp
-      </Card>
-    </Hidden>
-    <Hidden mdUp={true}>
-      <Card m={2} p={2}>
-        mdUp
-      </Card>
-    </Hidden>
-    <Hidden lgUp={true}>
-      <Card m={2} p={2}>
-        lgUp
-      </Card>
-    </Hidden>
-    <Hidden xlUp={true}>
-      <Card m={2} p={2}>
-        xlUp
-      </Card>
-    </Hidden>
-  </Flex>
-  <Flex alignItems="baseline">
-    <Hidden xsDown={true}>
-      <Card m={2} p={2}>
-        xsDown
-      </Card>
-    </Hidden>
-    <Hidden smDown={true}>
-      <Card m={2} p={2}>
-        smDown
-      </Card>
-    </Hidden>
-    <Hidden mdDown={true}>
-      <Card m={2} p={2}>
-        mdDown
-      </Card>
-    </Hidden>
-    <Hidden lgDown={true}>
-      <Card m={2} p={2}>
-        lgDown
-      </Card>
-    </Hidden>
-    <Hidden xlDown={true}>
-      <Card m={2} p={2}>
-        xlDown
-      </Card>
-    </Hidden>
-  </Flex>
-  <Flex alignItems="baseline">
-    <Hidden only="xs">
-      <Card m={2} p={2}>
-        xs
-      </Card>
-    </Hidden>
-    <Hidden only="sm">
-      <Card m={2} p={2}>
-        sm
-      </Card>
-    </Hidden>
-    <Hidden only="md">
-      <Card m={2} p={2}>
-        md
-      </Card>
-    </Hidden>
-    <Hidden only="lg">
-      <Card m={2} p={2}>
-        lg
-      </Card>
-    </Hidden>
-    <Hidden only="xl">
-      <Card m={2} p={2}>
-        xl
-      </Card>
-    </Hidden>
-  </Flex>
+  <Story name="up">
+    <Flex alignItems="baseline">
+      <Hidden xsUp={true}>
+        <Card m={2} p={2}>
+          xsUp
+        </Card>
+      </Hidden>
+      <Hidden smUp={true}>
+        <Card m={2} p={2}>
+          smUp
+        </Card>
+      </Hidden>
+      <Hidden mdUp={true}>
+        <Card m={2} p={2}>
+          mdUp
+        </Card>
+      </Hidden>
+      <Hidden lgUp={true}>
+        <Card m={2} p={2}>
+          lgUp
+        </Card>
+      </Hidden>
+      <Hidden xlUp={true}>
+        <Card m={2} p={2}>
+          xlUp
+        </Card>
+      </Hidden>
+    </Flex>
+  </Story>
+  <Story name="down">
+    <Flex alignItems="baseline">
+      <Hidden xsDown={true}>
+        <Card m={2} p={2}>
+          xsDown
+        </Card>
+      </Hidden>
+      <Hidden smDown={true}>
+        <Card m={2} p={2}>
+          smDown
+        </Card>
+      </Hidden>
+      <Hidden mdDown={true}>
+        <Card m={2} p={2}>
+          mdDown
+        </Card>
+      </Hidden>
+      <Hidden lgDown={true}>
+        <Card m={2} p={2}>
+          lgDown
+        </Card>
+      </Hidden>
+      <Hidden xlDown={true}>
+        <Card m={2} p={2}>
+          xlDown
+        </Card>
+      </Hidden>
+    </Flex>
+  </Story>
+  <Story name="only">
+    <Flex alignItems="baseline">
+      <Hidden only="xs">
+        <Card m={2} p={2}>
+          xs
+        </Card>
+      </Hidden>
+      <Hidden only="sm">
+        <Card m={2} p={2}>
+          sm
+        </Card>
+      </Hidden>
+      <Hidden only="md">
+        <Card m={2} p={2}>
+          md
+        </Card>
+      </Hidden>
+      <Hidden only="lg">
+        <Card m={2} p={2}>
+          lg
+        </Card>
+      </Hidden>
+      <Hidden only="xl">
+        <Card m={2} p={2}>
+          xl
+        </Card>
+      </Hidden>
+    </Flex>
+  </Story>
 </Preview>
 
 ## Props

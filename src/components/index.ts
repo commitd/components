@@ -49,6 +49,23 @@ export type ColumnProps = ColumnProps
 export { Container } from './container/Container'
 import { ContainerProps } from './container/Container'
 export type ContainerProps = ContainerProps
+
+export { Dialog } from './dialog/Dialog'
+import { DialogProps } from './dialog/Dialog'
+export type DialogProps = DialogProps
+export { DialogActions } from './dialog/Dialog'
+import { DialogActionsProps } from './dialog/Dialog'
+export type DialogActionsProps = DialogActionsProps
+export { DialogContent } from './dialog/Dialog'
+import { DialogContentProps } from './dialog/Dialog'
+export type DialogContentProps = DialogContentProps
+export { DialogContentText } from './dialog/Dialog'
+import { DialogContentTextProps } from './dialog/Dialog'
+export type DialogContentTextProps = DialogContentTextProps
+export { DialogTitle } from './dialog/Dialog'
+import { DialogTitleProps } from './dialog/Dialog'
+export type DialogTitleProps = DialogTitleProps
+
 export { Divider } from './divider/Divider'
 import { DividerProps } from './divider/Divider'
 export type DividerProps = DividerProps
@@ -64,8 +81,8 @@ export type FlexProps = FlexProps
 export { Form } from './form/Form'
 import { FormProps } from './form/Form'
 export type FormProps = FormProps
-export { FormControl } from './form/FormControl'
-import { FormControlProps } from './form/FormControl'
+export { FormControl } from './formcontrol/FormControl'
+import { FormControlProps } from './formcontrol/FormControl'
 export type FormControlProps = FormControlProps
 export { Heading } from './typography/Heading'
 import { HeadingProps } from './typography/Heading'
@@ -139,11 +156,6 @@ export type TypographyProps = TypographyProps
 
 // Direct from material_link
 import Collapse from '@material-ui/core/Collapse'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormGroup from '@material-ui/core/FormGroup'
@@ -177,11 +189,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 
 export {
   Collapse,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormControlLabel,
   FormLabel,
   FormGroup,
@@ -216,16 +223,6 @@ export {
 
 import { CollapseProps } from '@material-ui/core/Collapse'
 export type CollapseProps = CollapseProps
-import { DialogProps } from '@material-ui/core/Dialog'
-export type DialogProps = DialogProps
-import { DialogActionsProps } from '@material-ui/core/DialogActions'
-export type DialogActionsProps = DialogActionsProps
-import { DialogContentProps } from '@material-ui/core/DialogContent'
-export type DialogContentProps = DialogContentProps
-import { DialogContentTextProps } from '@material-ui/core/DialogContentText'
-export type DialogContentTextProps = DialogContentTextProps
-import { DialogTitleProps } from '@material-ui/core/DialogTitle'
-export type DialogTitleProps = DialogTitleProps
 import { FormControlLabelProps } from '@material-ui/core/FormControlLabel'
 export type FormControlLabelProps = FormControlLabelProps
 import { FormLabelProps } from '@material-ui/core/FormLabel'

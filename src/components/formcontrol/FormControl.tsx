@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { ComponentType, FC, HTMLAttributes } from 'react'
 import {
   compose,
   spacing,
@@ -18,9 +18,9 @@ export type FormControlProps = MaterialFormControlProps &
   FlexboxProps &
   SizingProps
 
-export const FormControl: React.ComponentType<
-  MaterialFormControlProps
-> = styled(MaterialFormControl)(
+export const FormControl: ComponentType<MaterialFormControlProps> = styled(
+  MaterialFormControl
+)(
   compose(
     spacing,
     flexbox,
@@ -31,3 +31,14 @@ export const FormControl: React.ComponentType<
 FormControl.defaultProps = {
   variant: 'outlined'
 }
+
+// For documentation only
+export type FormControlDocsProps = Omit<
+  FormControlProps,
+  keyof (HTMLAttributes<HTMLDivElement> &
+    SpacingProps &
+    FlexboxProps &
+    SizingProps)
+>
+
+export const FormControlDocs: FC<FormControlDocsProps> = () => null

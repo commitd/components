@@ -3,7 +3,7 @@ import { Background } from '../util'
 import commmitImage from '../../public/images/Avatar1-YellowTrans-32px.png'
 import * as C from '../'
 
-<Meta title="Design System|Overview" />
+<Meta title="Design System|Overview" parameters={{ order: 7 }} />
 
 <Story name="overview">
   <C.ThemeProvider style={{ width: '100%', height: '100%', border: '1px' }}>
@@ -75,7 +75,7 @@ import * as C from '../'
           m={1}
           justifyContent="space-evenly"
           border="1px solid black"
-          bg="background.default"
+          bgcolor="background.default"
         >
           <C.IconButton aria-label="delete">
             <C.Icons.Delete />
@@ -102,7 +102,7 @@ import * as C from '../'
           m={1}
           justifyContent="space-evenly"
           border="1px solid black"
-          bg="background.default"
+          bgcolor="background.default"
         >
           <C.Badge badgeContent={'default'}>
             <C.IconButton>
@@ -138,21 +138,21 @@ import * as C from '../'
         m={1}
         justifyContent="space-evenly"
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
-        <C.Avatar m={1} bg="primary.main" color="primary.contrastText">
+        <C.Avatar m={1} bgcolor="primary.main" color="primary.contrastText">
           CF
         </C.Avatar>
-        <C.Avatar m={1} bg="secondary.main" color="secondary.contrastText">
+        <C.Avatar m={1} bgcolor="secondary.main" color="secondary.contrastText">
           SH
         </C.Avatar>
         <C.Avatar m={1}>
           <C.Icons.Folder />
         </C.Avatar>
-        <C.Avatar m={1} bg="black" color="white">
+        <C.Avatar m={1} bgcolor="black" color="white">
           <C.Icons.Pageview />
         </C.Avatar>
-        <C.Avatar m={1} bg="primary.light" color="text.primary">
+        <C.Avatar m={1} bgcolor="primary.light" color="text.primary">
           <C.Icons.Assignment />
         </C.Avatar>
       </C.Flex>
@@ -167,7 +167,7 @@ import * as C from '../'
         m={1}
         justifyContent="space-evenly"
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
         <C.Chip
           avatar={<C.Avatar src={commmitImage} />}
@@ -202,7 +202,7 @@ import * as C from '../'
         m={1}
         justifyContent="space-evenly"
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
         {React.createElement(() => {
           const currencies = [
@@ -388,7 +388,7 @@ import * as C from '../'
             m={1}
             justifyContent="space-evenly"
             border="1px solid black"
-            bg="background.defaul"
+            bgcolor="background.defaul"
           >
             <C.Column justifyContent="center">
               <C.Checkbox
@@ -441,7 +441,7 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
         <C.Slider m={3} flexGrow={1} aria-labelledby="continuous-slider" />
         <C.Slider
@@ -465,9 +465,9 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
-        <C.Box minWidth={500} m={3} bg="background.paper">
+        <C.Box minWidth={500} m={3} bgcolor="background.paper">
           <C.List component="nav" aria-label="main mailbox folders">
             <C.ListItem button>
               <C.ListItemIcon>
@@ -500,9 +500,9 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
-        <C.Box minWidth={500} m={3} bg="background.paper">
+        <C.Box minWidth={500} m={3} bgcolor="background.paper">
           <C.List>
             {['18 June 2014', '20 July 2015', '3 January 2018'].map(
               (item, index) => (
@@ -545,7 +545,7 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.defaul"
+        bgcolor="background.defaul"
       >
         <C.Card m={3} width={1 / 2}>
           <C.Box height={100} bgcolor="primary.main" />
@@ -637,9 +637,9 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.default"
+        bgcolor="background.default"
       >
-        <C.Box m={2} p={3} bg="background.paper">
+        <C.Box m={2} p={3} bgcolor="background.paper">
           <C.Table>
             <C.TableHead>
               <C.TableRow>
@@ -682,7 +682,7 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.default"
+        bgcolor="background.default"
       >
         {React.createElement(() => {
           const [value, setValue] = React.useState(0)
@@ -726,7 +726,7 @@ import * as C from '../'
         pt={4}
         m={1}
         border="1px solid black"
-        bg="background.default"
+        bgcolor="background.default"
       >
         <C.Box width={1 / 2}>
           <C.Typography>System Typography</C.Typography>

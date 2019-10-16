@@ -1,11 +1,11 @@
-import * as React from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import MaterialCheckbox, {
   CheckboxProps as MaterialCheckboxProps
 } from '@material-ui/core/Checkbox'
 import { Box } from '../box/Box'
 export type CheckboxProps = MaterialCheckboxProps
 
-export const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
+export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
   if (!props.icon && !props.checkedIcon) {
     let color = 'transparent'
     if (
@@ -41,3 +41,10 @@ export const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
     )
   }
 }
+
+// For documentation only
+export type CheckboxDocsProps = Omit<
+  CheckboxProps,
+  keyof HTMLAttributes<HTMLElement>
+>
+export const CheckboxDocs: FC<CheckboxDocsProps> = () => null

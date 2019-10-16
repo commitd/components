@@ -19,7 +19,7 @@ export const Surfaces = withTheme(({ theme }: ThemedProps) => (
     m={1}
     mt={3}
     p={3}
-    bg={theme.palette.background.default}
+    bgcolor={theme.palette.background.default}
     flexDirection="column"
     alignItems="center"
     justifyContent="center"
@@ -31,7 +31,7 @@ export const Surfaces = withTheme(({ theme }: ThemedProps) => (
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      bg={theme.palette.background.paper}
+      bgcolor={theme.palette.background.paper}
       onClick={() => copyToClipboard(theme.palette.background.paper)}
     >
       <Heading.h5>Paper</Heading.h5>

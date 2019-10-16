@@ -2,6 +2,7 @@
 
 [![Committed Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcommitted.software%2Fbadge)](https://committed/software)
 [![Build Status](https://drone.committed.software/api/badges/commitd/components/status.svg)](https://drone.committed.software/commitd/components)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://committed.software/components)
 
 For documentation see https://committed.software/components
 
