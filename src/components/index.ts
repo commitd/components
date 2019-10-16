@@ -81,8 +81,8 @@ export type FlexProps = FlexProps
 export { Form } from './form/Form'
 import { FormProps } from './form/Form'
 export type FormProps = FormProps
-export { FormControl } from './form/FormControl'
-import { FormControlProps } from './form/FormControl'
+export { FormControl } from './formcontrol/FormControl'
+import { FormControlProps } from './formcontrol/FormControl'
 export type FormControlProps = FormControlProps
 export { Heading } from './typography/Heading'
 import { HeadingProps } from './typography/Heading'

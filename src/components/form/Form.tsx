@@ -1,24 +1,15 @@
-import React from 'react'
+import { ComponentType, FormHTMLAttributes } from 'react'
 import {
-  compose,
-  spacing,
-  flexbox,
-  sizing,
-  SpacingProps,
-  FlexboxProps,
+  withPositioning,
+  PositioningProps,
+  withSizing,
   SizingProps
-} from '@material-ui/system'
-import { styled } from '@material-ui/styles'
+} from '../internal'
 
-export type FormProps = React.FormHTMLAttributes<HTMLFormElement> &
-  SpacingProps &
-  FlexboxProps &
+export type FormProps = FormHTMLAttributes<HTMLFormElement> &
+  PositioningProps &
   SizingProps
 
-export const Form: React.ComponentType<FormProps> = styled('form')(
-  compose(
-    spacing,
-    flexbox,
-    sizing
-  )
+export const Form: ComponentType<FormProps> = withSizing(
+  withPositioning<FormProps>('form')
 )
