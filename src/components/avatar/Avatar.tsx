@@ -1,4 +1,4 @@
-import React, { FC, ComponentType, AriaAttributes, DOMAttributes } from 'react'
+import React, { FC, ComponentType, HTMLAttributes } from 'react'
 import MaterialAvatar, {
   AvatarProps as MaterialAvatarProps
 } from '@material-ui/core/Avatar'
@@ -78,8 +78,7 @@ export type RestAvatarProps = Omit<
   keyof (BaseAvatarProps &
     SpacingProps &
     FlexboxProps &
-    AriaAttributes &
-    DOMAttributes<'div'>)
+    HTMLAttributes<HTMLDivElement>)
 >
 export const BaseAvatarDocs: FC<BaseAvatarProps> = () => null
 export const RestAvatarDocs: FC<RestAvatarProps> = () => null

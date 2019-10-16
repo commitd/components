@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import { FC, Ref } from 'react'
 import Box, { BoxProps } from '@material-ui/core/Box'
-export type BoxProps = BoxProps
+export type BoxProps = BoxProps & { ref?: Ref<HTMLDivElement> }
 export { Box }
 
 // For documentation only

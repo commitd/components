@@ -44,6 +44,5 @@ export type BaseBadgeProps = Omit<
    */
   variant?: 'standard' | 'dot'
 }
-export type RestBadgeProps = Omit<BadgeProps, keyof BaseBadgeProps>
+
 export const BaseBadgeDocs: FC<BaseBadgeProps> = () => null
-export const RestBadgeDocs: FC<RestBadgeProps> = () => null
