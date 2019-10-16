@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, ComponentType, HTMLAttributes } from 'react'
 import MaterialDivider, {
   DividerProps as MaterialDividerProps
 } from '@material-ui/core/Divider'
@@ -8,7 +8,9 @@ import { Theme } from '../../theme'
 
 export type DividerProps = MaterialDividerProps &
   SpacingProps & {
-    /* the color of the divider from the theme's palette */
+    /**
+     * The color of the divider from the theme's palette
+     */
     color?: string
   }
 
@@ -18,11 +20,17 @@ const color = style<'color', Theme>({
   themeKey: 'palette'
 })
 
-export const Divider: React.ComponentType<DividerProps> = styled<
-  React.ComponentType<DividerProps>
->(MaterialDivider)(
+export const Divider: ComponentType<DividerProps> = styled(MaterialDivider)(
   compose(
     color,
     spacing
   )
 )
+
+// For documentation only
+export type DividerDocsProps = Omit<
+  DividerProps,
+  keyof (SpacingProps & Omit<HTMLAttributes<HTMLDivElement>, 'color'>)
+>
+
+export const DividerDocs: FC<DividerDocsProps> = () => null

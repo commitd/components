@@ -312,6 +312,12 @@ export const light: ThemeOptions = {
         borderTop: `4px solid ${allColors.committedYellow[500]}`
       }
     },
+    MuiDivider: {
+      vertical: {
+        // 100% is the default, this doesn't seem to work so set to auto
+        height: 'auto'
+      }
+    },
     MuiIconButton: {
       colorPrimary: {
         '&:hover': {

@@ -7,13 +7,19 @@ import {
   Box,
   Text,
   Heading,
+  Icons,
   Paragraph
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { DividerDocs } from './Divider'
 
 <Meta title="components|Divider" component={Divider} />
 
 # Divider
+
+Extends [Material UI Divider](https://material-ui.com/components/dividers/).
+
+Use a divider to separate different groups of content.
 
 <Preview>
   <Story name="default">
@@ -62,6 +68,8 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 ## Variants
 
+There are different size variants to achieve different effects.
+
 <Preview>
   <Story name="variants">
     <Flex flexDirection="column">
@@ -69,21 +77,55 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
       <Divider />
       <Text>Lighter</Text>
       <Divider light={true} />
-      <Text>Inset</Text>
-      <Divider variant="inset" />
-      <Text>Middle</Text>
-      <Divider variant="middle" />
-      <Text>Full width (default)</Text>
-      <Divider variant="fullWidth" />
+      <Text>Inset - primary</Text>
+      <Divider variant="inset" color="primary.main" />
+      <Text>Middle - secondary</Text>
+      <Divider variant="middle" color="secondary.main" />
+      <Text>Full width - warning</Text>
+      <Divider variant="fullWidth" color="warning.main" />
       <Text>End</Text>
+    </Flex>
+  </Story>
+</Preview>
+
+## Vertical
+
+Dividers can also be used vertically for separation in toolbars.
+
+<Preview>
+  <Story name="vertical">
+    <Flex
+      width="fit-content"
+      border="1px solid lightgrey"
+      borderRadius="shape.borderRadius"
+      color="text.secondary"
+      bgcolor="background.paper"
+    >
+      <Flex m={2}>
+        <Icons.FormatAlignLeft />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatAlignCenter />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatAlignRight />
+      </Flex>
+      <Divider mx={1} orientation="vertical" />
+      <Flex m={2}>
+        <Icons.FormatBold />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatItalic />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatUnderlined />
+      </Flex>
     </Flex>
   </Story>
 </Preview>
 
 ## Props
 
-<Props of={Divider} include={['absolute', 'variant', 'light']} />
+Supports [Spacing props](/?path=/docs/design-system-positioning--page).
 
-## Remaining Props
-
-<Props of={Divider} exclude={['absolute', 'variant', 'light']} />
+<Props of={DividerDocs} />
