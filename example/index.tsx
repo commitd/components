@@ -22,7 +22,7 @@ const Header = () => (
 
 const Post = ({ name, index }: { name: string; index: number }) => (
   <C.Card m={5} p={0}>
-    <C.Flex flexDirection="column" bg="primary.main" color="secondary.main">
+    <C.Flex flexDirection="column" bgcolor"primary.main" color="secondary.main">
       <img src={`https://picsum.photos/300/200?random=${index}`} />
       <C.CardActionArea>
         <C.Box mt={0} p={2} pb={3}>
@@ -109,7 +109,7 @@ const Footer = () => (
 const App = () => (
   <C.ThemeProvider>
     <C.Box position="relative" minHeight="100vh">
-      <C.Box pb={footerHeight} bg="background.default">
+      <C.Box pb={footerHeight} bgcolor"background.default">
         <Header />
         <Content />
       </C.Box>

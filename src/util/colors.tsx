@@ -25,7 +25,7 @@ export const Color = ({
       flexGrow={1}
       key={color}
       height={height}
-      bg={color}
+      bgcolor={color}
       onClick={() => copyToClipboard(color)}
       {...others}
     >

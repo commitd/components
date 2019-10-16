@@ -10,7 +10,11 @@ export interface SwatchProps {
 
 export const Swatch = ({ color, name, width = 1 / 5 }: SwatchProps) => (
   <Box p={1} width={width}>
-    <Box height="100px" bg={color} onClick={() => copyToClipboard(color)} />
+    <Box
+      height="100px"
+      bgcolor={color}
+      onClick={() => copyToClipboard(color)}
+    />
     <Flex>
       <Box>
         <Text>{name}</Text>
