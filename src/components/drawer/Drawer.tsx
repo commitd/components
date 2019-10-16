@@ -1,10 +1,13 @@
-import * as React from 'react'
-import MaterialDrawer, {
-  DrawerProps as MaterialDrawerProps
-} from '@material-ui/core/Drawer'
+import { FC, HTMLAttributes } from 'react'
+import Drawer, { DrawerProps } from '@material-ui/core/Drawer'
 
-export type DrawerProps = MaterialDrawerProps
+export type DrawerProps = DrawerProps
+export { Drawer }
 
-export const Drawer: React.FC<DrawerProps> = (props: DrawerProps) => (
-  <MaterialDrawer {...props} />
-)
+// For documentation only
+export type DrawerDocsProps = Omit<
+  DrawerProps,
+  keyof HTMLAttributes<HTMLDivElement>
+>
+
+export const DrawerDocs: FC<DrawerDocsProps> = () => null
