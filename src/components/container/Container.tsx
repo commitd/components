@@ -1,9 +1,12 @@
-import * as React from 'react'
-import MaterialContainer, {
-  ContainerProps as MaterialContainerProps
-} from '@material-ui/core/Container'
+import { FC, HTMLAttributes } from 'react'
+import Container, { ContainerProps } from '@material-ui/core/Container'
 
-export type ContainerProps = MaterialContainerProps
+export type ContainerProps = ContainerProps
+export { Container }
 
-export const Container: React.ComponentType<ContainerProps> = MaterialContainer
-Container.displayName = 'Container'
+// For documentation only
+export type ContainerDocsProps = Omit<
+  ContainerProps,
+  keyof HTMLAttributes<HTMLDivElement>
+>
+export const ContainerDocs: FC<ContainerDocsProps> = () => null
