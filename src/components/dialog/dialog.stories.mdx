@@ -7,15 +7,19 @@ import {
   DialogActions,
   Button
 } from '../../'
-import MaterialDialog from '@material-ui/core/Dialog'
-import MaterialDialogTitle from '@material-ui/core/DialogTitle'
-import MaterialDialogContent from '@material-ui/core/DialogContent'
-import MaterialDialogContentText from '@material-ui/core/DialogContentText'
-import MaterialDialogActions from '@material-ui/core/DialogActions'
+import {
+  DialogDocs,
+  DialogTitleDocs,
+  DialogContentDocs,
+  DialogContentTextDocs,
+  DialogActionsDocs
+} from './Dialog'
 
 <Meta title="components|Dialog" component={Dialog} />
 
 # Dialog
+
+Extends [Material UI Dialog](https://material-ui.com/components/dialogs/).
 
 Tooltips display extra information when users hover over, focus on, or tap an element.
 
@@ -67,10 +71,22 @@ When activated, Tooltips display a text label identifying an element, such as a 
 
 ## Props
 
-### Dialog
+## Dialog
 
- <Props of={ MaterialDialog } />
- <Props of={ MaterialDialogTitle } />
- <Props of={ MaterialDialogContent } />
- <Props of={ MaterialDialogContentText } />
- <Props of={ MaterialDialogActions } />
+<Props of={DialogDocs} />
+
+## DialogTitle
+
+<Props of={DialogTitleDocs} />
+
+## DialogContent
+
+<Props of={DialogContentDocs} />
+
+## DialogContentText
+
+<Props of={DialogContentTextDocs} />
+
+## DialogActions
+
+<Props of={DialogActionsDocs} />
