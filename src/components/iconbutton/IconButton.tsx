@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { FC, ComponentType, HTMLAttributes } from 'react'
 import {
   compose,
   spacing,
@@ -18,7 +18,7 @@ export interface IconButtonProps
     FlexboxProps,
     AProps {}
 
-export const IconButton: React.ComponentType<IconButtonProps> = styled(
+export const IconButton: ComponentType<IconButtonProps> = styled(
   withNoOpener(MaterialIconButton)
 )(
   compose(
@@ -26,3 +26,13 @@ export const IconButton: React.ComponentType<IconButtonProps> = styled(
     flexbox
   )
 )
+
+// For documentation only
+export type IconButtonDocsProps = Omit<
+  IconButtonProps,
+  keyof (SpacingProps &
+    FlexboxProps &
+    Omit<HTMLAttributes<HTMLDivElement>, 'color'>)
+>
+
+export const IconButtonDocs: FC<IconButtonDocsProps> = () => null

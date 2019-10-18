@@ -1,14 +1,13 @@
 import { IconButton, Icons } from '../../'
 import { action } from '@storybook/addon-actions'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { IconButtonDocs } from './IconButton'
 
 <Meta title="components|IconButton" component={IconButton} />
 
 # IconButton
 
-```js
-// TODO remove material components
-```
+Extends [Material UI IconButton](https://material-ui.com/api/icon-button/)
 
 Icon buttons can be used for common and obvious actions, where the semantics can not be misunderstood.
 Or in compact forms of drawers or toolbars.
@@ -54,4 +53,6 @@ such as adding or removing a star to an item.
 
 ## Props
 
-<Props of={IconButton} />
+Supports aria and html props aswell as [Spacing and Flexbox props](/?path=/docs/design-system-positioning--page).
+
+<Props of={IconButtonDocs} />
