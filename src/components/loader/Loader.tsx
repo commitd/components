@@ -15,15 +15,18 @@ const selectColor = (theme: Theme) => ({ color = 'grey.100' }: LoaderProps) =>
 
 export interface LoaderProps {
   /**
-   *  adjust the size in px of the loader (or use a fraction of 1 for percentage)
+   *  Adjust the size in px of the loader (or use a fraction of 1 for percentage)
+   *  @default 256
    */
   size?: number | number[]
   /**
    *  Theme based color from the palette, defaults to
+   *  @default grey.100
    */
   color?: string
   /**
    *  Change to the style of the loader
+   *  @default draw
    */
   variant?: 'draw' | 'spin' | 'flip' | 'scale'
 }
