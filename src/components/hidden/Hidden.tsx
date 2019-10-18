@@ -1,8 +1,8 @@
-import * as React from 'react'
-import MaterialHidden, {
-  HiddenProps as MaterialHiddenProps
-} from '@material-ui/core/Hidden'
+import { FC } from 'react'
+import Hidden, { HiddenProps } from '@material-ui/core/Hidden'
 
-export type HiddenProps = MaterialHiddenProps
+export type HiddenProps = HiddenProps
+export { Hidden }
 
-export const Hidden: React.ComponentType<HiddenProps> = MaterialHidden
+// For documentation only
+export const HiddenDocs: FC<HiddenProps> = () => null
