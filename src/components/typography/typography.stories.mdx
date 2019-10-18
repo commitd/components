@@ -13,6 +13,7 @@ import {
   Brand
 } from '../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { TypographyDocs } from './Typography'
 
 <Meta
   title="Design System|Typography"
@@ -165,12 +166,12 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
   <Story name="brand">
     <Flex flexDirection="column">
       <Brand fontSize={6}>committed</Brand>
-      <Brand fontSize={5}>committed </Brand>
-      <Brand fontSize={4}>committed </Brand>
-      <Brand fontSize={3}>committed </Brand>
-      <Brand fontSize={2}>committed </Brand>
-      <Brand fontSize={1}>committed </Brand>
-      <Brand fontSize={0}>committed </Brand>
+      <Brand fontSize={5}>committed</Brand>
+      <Brand fontSize={4}>committed</Brand>
+      <Brand fontSize={3}>committed</Brand>
+      <Brand fontSize={2}>committed</Brand>
+      <Brand fontSize={1}>committed</Brand>
+      <Brand fontSize={0}>committed</Brand>
       <Brand fontSize={-1}>committed</Brand>
       <Brand fontSize={-2}>committed</Brand>
     </Flex>
@@ -191,6 +192,9 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
 
 ## Variations
 
+If you do not use a `variant` prop then there are other props that can be used to customize the apperance.
+Examples are shown below.
+
 <Preview>
   <Story name="variations">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
@@ -198,19 +202,19 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
         <Text>Text</Text>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text light={true}>Light</Text>
+        <Typography light={true}>Light</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text bold={true}>Bold</Text>
+        <Typography bold={true}>Bold</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text upper={true}>uppercase</Text>
+        <Typography upper={true}>uppercase</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text capital={true}>capitals</Text>
+        <Typography capital={true}>capitals</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text italic={true}>Italic</Text>
+        <Typography italic={true}>Italic</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Paragraph>Paragraph</Paragraph>
@@ -219,18 +223,18 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
         <Span>Span</Span>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text color="primary">Primary</Text>
+        <Typography color="primary">Primary</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text color="secondary">Secondary</Text>
+        <Typography color="secondary">Secondary</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text color="lighttext">gray</Text>
+        <Typography color="lighttext">gray</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Text bold={true} italic={true} capital={true}>
+        <Typography bold={true} italic={true} capital={true}>
           italic
-        </Text>
+        </Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Caption>caption</Caption>
@@ -240,7 +244,7 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
       </Box>
       <Box width={1 / 5} p={3}>
         <s>
-          <Text>strikethrough</Text>
+          <Typography>strikethrough</Typography>
         </s>
       </Box>
     </Flex>
@@ -249,6 +253,6 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
 
 ## Props
 
-Main props for `Text`, `Span` and `Paragraph`.
+Main props for `Typography`, `Text`, `Span` and `Paragraph`.
 
-<Props of={Text} />
+<Props of={TypographyDocs} />
