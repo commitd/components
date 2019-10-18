@@ -6,12 +6,29 @@ import { Box } from '../box/Box'
 export type CheckboxProps = MaterialCheckboxProps
 
 export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
+  const { checked: checkedProp, defaultChecked, onChange } = props
+  const { current: isControlled } = React.useRef(checkedProp != null)
+  const [checkedState, setCheckedState] = React.useState(
+    Boolean(defaultChecked)
+  )
+
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    if (!isControlled) {
+      setCheckedState(checked)
+    }
+
+    if (onChange) {
+      onChange(event, checked)
+    }
+  }
+
+  const checked = isControlled ? checkedProp : checkedState
   if (!props.icon && !props.checkedIcon) {
     let color = 'transparent'
-    if (
-      ((props.value && props.value !== 'false') || props.checked) &&
-      !props.disabled
-    ) {
+    if (checked && !props.disabled) {
       if (props.color === 'primary') {
         color = 'secondary.dark'
       }
@@ -19,13 +36,27 @@ export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
         color = 'primary.main'
       }
     }
+    let paddingLeft = '14px'
+    let paddingRight = '14px'
+    if (props.edge === 'start') {
+      paddingLeft = '0'
+    } else if (props.edge === 'end') {
+      paddingRight = '0'
+    }
+
     return (
       <Box position="relative">
-        <MaterialCheckbox {...props} style={{ zIndex: 110, ...props.style }} />
+        <MaterialCheckbox
+          {...props}
+          style={{ zIndex: 110, ...props.style }}
+          onChange={handleInputChange}
+        />
         <Box
           width="100%"
           height="100%"
-          padding="14px"
+          paddingY="14px"
+          paddingLeft={paddingLeft}
+          paddingRight={paddingRight}
           bgcolor={color}
           position="absolute"
           zIndex={100}
