@@ -1,23 +1,18 @@
-import React from 'react'
-import {
-  compose,
-  spacing,
-  flexbox,
-  SpacingProps,
-  FlexboxProps
-} from '@material-ui/system'
-import { styled } from '@material-ui/styles'
+import { FC, ComponentType, HTMLAttributes } from 'react'
 import MaterialSwitch, {
   SwitchProps as MaterialSwitchProps
 } from '@material-ui/core/Switch'
+import { withPositioning, PositioningProps } from '../internal'
 
-export type SwitchProps = MaterialSwitchProps & SpacingProps & FlexboxProps
+export type SwitchProps = MaterialSwitchProps & PositioningProps
 
-export const Switch: React.ComponentType<MaterialSwitchProps> = styled(
+export const Switch: ComponentType<SwitchProps> = withPositioning(
   MaterialSwitch
-)(
-  compose(
-    spacing,
-    flexbox
-  )
 )
+
+// For documentation only
+export type SwitchDocsProps = Omit<
+  MaterialSwitchProps,
+  keyof Omit<HTMLAttributes<HTMLButtonElement>, 'color' | 'onChange' | 'id'>
+>
+export const SwitchDocs: FC<SwitchDocsProps> = () => null
