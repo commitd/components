@@ -10,16 +10,22 @@ import {
   Box,
   AppBar
 } from '../../'
+import { TabDocs } from './Tab'
+import { TabsDocs } from './Tabs'
+import { TabPanelDocs } from './TabPanel'
 
 <Meta title="components|Tabs" component={Tabs} />
 
 # Tabs
 
+Extends [Material UI Tab](https://material-ui.com/components/tabs/)
+
 Tabs can be used for navigation between different components at the same level of heirarchy.
+In addition to the `Tab` extenaion we add a `TabPanel` component for convenience, it's use is shown below.
 
 <Preview>
   <Story name="appbar">
-    {React.createElement(() => {
+    {() => {
       const [value, setValue] = React.useState(0)
       function a11yProps(index) {
         return {
@@ -56,7 +62,7 @@ Tabs can be used for navigation between different components at the same level o
           </TabPanel>
         </Box>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
@@ -64,7 +70,7 @@ Tabs can be used for navigation between different components at the same level o
 
 <Preview>
   <Story name="paper">
-    {React.createElement(() => {
+    {() => {
       const [value, setValue] = React.useState(0)
       const clicked = action('clicked')
       function handleChange(event, newValue) {
@@ -73,21 +79,29 @@ Tabs can be used for navigation between different components at the same level o
       }
       return (
         <Box>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
+          <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Item One" />
             <Tab label="Item Two" />
             <Tab label="Item Three" />
           </Tabs>
         </Box>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
-<Props of={Tabs} />
+# Props
+
+## Tabs
+
+<Props of={TabsDocs} />
+
+## Tab
+
+<Props of={TabDocs} />
+
+## TabPanel
+
+Supports all [Box](/?path=/docs/components-box--default-story) and [Positioning props](/?path=/docs/design-system-positioning--page)
+
+<Props of={TabPanelDocs} />
