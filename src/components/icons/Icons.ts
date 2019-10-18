@@ -1,3 +1,4 @@
+import { FC, SVGProps } from 'react'
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 import * as MaterialIcons from '@material-ui/icons'
 
@@ -14,3 +15,14 @@ export const Icons: { [key: string]: SvgIconComponent } = icons.reduce(
   },
   {}
 )
+
+// For documentation only
+export type IconsDocsProps = Omit<
+  IconProps,
+  keyof Omit<
+    SVGProps<SVGSVGElement>,
+    'color' | 'htmlColor' | 'shapeRendering' | 'titleAccess' | 'viewBox'
+  >
+>
+
+export const IconsDocs: FC<IconsDocsProps> = () => null
