@@ -1,10 +1,16 @@
 import { useState } from 'react'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { Box, From, TextField, Flex, MenuItem } from '../../'
+import { TextFieldDocs } from './TextField'
 
 <Meta title="components|TextField" component={TextField} />
 
 # TextField
+
+Extends [Material UI TextField](https://material-ui.com/components/text-fields/)
+
+TextFields should be used for data entry. By default we used the outlined variant,
+but others can be used if necessary.
 
 <Preview>
   <Story name="simple">
@@ -191,4 +197,6 @@ import { Box, From, TextField, Flex, MenuItem } from '../../'
 
 ## Props
 
-<Props of={TextField} />
+Support standard html span props and all [Positioning Props](/?path=/docs/design-system-positioning--page).
+
+<Props of={TextFieldDocs} />
