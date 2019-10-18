@@ -27,7 +27,7 @@ Extends [Material UI Table](https://material-ui.com/components/tables/)
 
 <Preview>
   <Story name="default">
-    {React.createElement(() => {
+    {() => {
       function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein }
       }
@@ -64,7 +64,7 @@ Extends [Material UI Table](https://material-ui.com/components/tables/)
           </TableBody>
         </Table>
       )
-    })}
+    }}
   </Story>
 </Preview>
 

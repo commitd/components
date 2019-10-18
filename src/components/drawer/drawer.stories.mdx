@@ -34,8 +34,8 @@ They can be used for navigation or for tools and settings. See [Navigation drawe
 and [side sheet](https://material.io/components/sheets-side/)
 
 <Preview>
-  <Story name="opening">
-    {React.createElement(() => {
+  <Story name="default">
+    {() => {
       const theme = useTheme()
       const [open, setOpen] = React.useState(false)
       const toggleDrawer = value => event => {
@@ -114,7 +114,7 @@ and [side sheet](https://material.io/components/sheets-side/)
           </Drawer>
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 

@@ -12,7 +12,7 @@ Extends [Material UI Table](https://material-ui.com/components/menus/)
 
 <Preview>
   <Story name="default">
-    {React.createElement(() => {
+    {() => {
       const [anchorEl, setAnchorEl] = React.useState(null)
       const click = action('clicked')
       function handleClick(event) {
@@ -45,7 +45,7 @@ Extends [Material UI Table](https://material-ui.com/components/menus/)
           </Menu>
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 

@@ -13,8 +13,8 @@ TextFields should be used for data entry. By default we used the outlined varian
 but others can be used if necessary.
 
 <Preview>
-  <Story name="simple">
-    {React.createElement(() => {
+  <Story name="default">
+    {() => {
       const currencies = [
         {
           value: 'USD',
@@ -191,7 +191,7 @@ but others can be used if necessary.
           </Flex>
         </Form>
       )
-    })}
+    }}
   </Story>
 </Preview>
 

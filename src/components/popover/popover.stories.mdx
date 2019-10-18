@@ -13,7 +13,7 @@ Popovers can be used to display content ontop of another component.
 
 <Preview>
   <Story name="default">
-    {React.createElement(() => {
+    {() => {
       const [anchorEl, setAnchorEl] = useState(null)
       function handleClick(event) {
         setAnchorEl(event.currentTarget)
@@ -50,7 +50,7 @@ Popovers can be used to display content ontop of another component.
           </Popover>
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 

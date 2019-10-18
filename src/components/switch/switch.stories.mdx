@@ -52,7 +52,7 @@ To toggle states
 
 <Preview>
   <Story name="labels">
-    {React.createElement(() => {
+    {() => {
       const [checked, setChecked] = React.useState(true)
       const handleChange = event => setChecked(!checked)
       return (
@@ -128,7 +128,7 @@ To toggle states
           </FormGroup>
         </Form>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
