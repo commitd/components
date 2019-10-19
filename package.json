@@ -76,6 +76,8 @@
     "babel-plugin-styled-components": "^1.10.1",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
+    "danger": "^9.2.2",
+    "danger-plugin-spellcheck": "^1.5.0",
     "file-loader": "^4.2.0",
     "gh-pages": "^1.2.0",
     "husky": "^2.5.0",

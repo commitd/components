@@ -17,6 +17,17 @@ steps:
       - yarn install
       - yarn build
 
+  - name: danger
+    image: node:latest
+    environment:
+      DANGER_GITHUB_API_TOKEN:
+        from_secret: github_token
+    commands:
+      - yarn danger ci
+    when:
+      event:
+        - pull_request
+
   - name: publish
     image: node:latest
     commands:
