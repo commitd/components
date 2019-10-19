@@ -49,7 +49,6 @@ export type ColumnProps = ColumnProps
 export { Container } from './container/Container'
 import { ContainerProps } from './container/Container'
 export type ContainerProps = ContainerProps
-
 export { Dialog } from './dialog/Dialog'
 import { DialogProps } from './dialog/Dialog'
 export type DialogProps = DialogProps
@@ -65,7 +64,6 @@ export type DialogContentTextProps = DialogContentTextProps
 export { DialogTitle } from './dialog/Dialog'
 import { DialogTitleProps } from './dialog/Dialog'
 export type DialogTitleProps = DialogTitleProps
-
 export { Divider } from './divider/Divider'
 import { DividerProps } from './divider/Divider'
 export type DividerProps = DividerProps
@@ -99,17 +97,47 @@ export type IconProps = IconProps
 export { Link } from './link/Link'
 import { LinkProps } from './link/Link'
 export type LinkProps = LinkProps
+export { List } from './list/List'
+import { ListProps } from './list/List'
+export type ListProps = ListProps
+export { ListItem } from './list/List'
+import { ListItemProps } from './list/List'
+export type ListItemProps = ListItemProps
+export { ListItemAvatar } from './list/List'
+import { ListItemAvatarProps } from './list/List'
+export type ListItemAvatarProps = ListItemAvatarProps
+export { ListItemIcon } from './list/List'
+import { ListItemIconProps } from './list/List'
+export type ListItemIconProps = ListItemIconProps
+export { ListItemSecondaryAction } from './list/List'
+import { ListItemSecondaryActionProps } from './list/List'
+export type ListItemSecondaryActionProps = ListItemSecondaryActionProps
+export { ListItemText } from './list/List'
+import { ListItemTextProps } from './list/List'
+export type ListItemTextProps = ListItemTextProps
+export { ListSubheader } from './list/List'
+import { ListSubheaderProps } from './list/List'
+export type ListSubheaderProps = ListSubheaderProps
 export { Loader } from './loader/Loader'
 import { LoaderProps } from './loader/Loader'
 export type LoaderProps = LoaderProps
 export { Logo } from './logo/Logo'
 import { LogoProps } from './logo/Logo'
 export type LogoProps = LogoProps
+export { Menu } from './menu/Menu'
+import { MenuProps } from './menu/Menu'
+export type MenuProps = MenuProps
+export { MenuItem } from './menu/Menu'
+import { MenuItemProps } from './menu/Menu'
+export type MenuItemProps = MenuItemProps
+export { MenuList } from './menu/Menu'
+import { MenuListProps } from './menu/Menu'
+export type MenuListProps = MenuListProps
 export { Monospace } from './typography/Monospace'
 import { MonospaceProps } from './typography/Monospace'
 export type MonospaceProps = MonospaceProps
-export { Paragraph } from './typography/Text'
-import { ParagraphProps } from './typography/Text'
+export { Paragraph } from './typography/Typography'
+import { ParagraphProps } from './typography/Typography'
 export type ParagraphProps = ParagraphProps
 export { Popover } from './popover/Popover'
 import { PopoverProps } from './popover/Popover'
@@ -129,8 +157,8 @@ export type SelectProps = SelectProps
 export { Slider } from './slider/Slider'
 import { SliderProps } from './slider/Slider'
 export type SliderProps = SliderProps
-export { Span } from './typography/Text'
-import { SpanProps } from './typography/Text'
+export { Span } from './typography/Typography'
+import { SpanProps } from './typography/Typography'
 export type SpanProps = SpanProps
 export { Subheading } from './typography/Subheading'
 import { SubheadingProps } from './typography/Subheading'
@@ -138,9 +166,39 @@ export type SubheadingProps = SubheadingProps
 export { Switch } from './switch/Switch'
 import { SwitchProps } from './switch/Switch'
 export type SwitchProps = SwitchProps
+export { Tab } from './tabs/Tab'
+import { TabProps } from './tabs/Tab'
+export type TabProps = TabProps
+export { Tabs } from './tabs/Tabs'
+import { TabsProps } from './tabs/Tabs'
+export type TabsProps = TabsProps
 export { TabPanel } from './tabs/TabPanel'
 import { TabPanelProps } from './tabs/TabPanel'
 export type TabPanelProps = TabPanelProps
+export { Table } from './table/Table'
+import { TableProps } from './table/Table'
+export type TableProps = TableProps
+export { TableBody } from './table/Table'
+import { TableBodyProps } from './table/Table'
+export type TableBodyProps = TableBodyProps
+export { TableCell } from './table/Table'
+import { TableCellProps } from './table/Table'
+export type TableCellProps = TableCellProps
+export { TableFooter } from './table/Table'
+import { TableFooterProps } from './table/Table'
+export type TableFooterProps = TableFooterProps
+export { TableHead } from './table/Table'
+import { TableHeadProps } from './table/Table'
+export type TableHeadProps = TableHeadProps
+export { TablePagination } from './table/Table'
+import { TablePaginationProps } from './table/Table'
+export type TablePaginationProps = TablePaginationProps
+export { TableRow } from './table/Table'
+import { TableRowProps } from './table/Table'
+export type TableRowProps = TableRowProps
+export { TableSortLabel } from './table/Table'
+import { TableSortLabelProps } from './table/Table'
+export type TableSortLabelProps = TableSortLabelProps
 export { TextField } from './textfield/TextField'
 import { TextFieldProps } from './textfield/TextField'
 export type TextFieldProps = TextFieldProps
@@ -164,27 +222,7 @@ import Grow from '@material-ui/core/Grow'
 import Input from '@material-ui/core/Input'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import InputLabel from '@material-ui/core/InputLabel'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import MenuList from '@material-ui/core/MenuList'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
-import Tab from '@material-ui/core/Tab'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableFooter from '@material-ui/core/TableFooter'
-import TableHead from '@material-ui/core/TableHead'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
-import TableSortLabel from '@material-ui/core/TableSortLabel'
-import Tabs from '@material-ui/core/Tabs'
 import Toolbar from '@material-ui/core/Toolbar'
 
 export {
@@ -197,27 +235,7 @@ export {
   Input,
   InputAdornment,
   InputLabel,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-  ListSubheader,
-  Menu,
-  MenuItem,
-  MenuList,
   OutlinedInput,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TableSortLabel,
-  Tabs,
   Toolbar
 }
 
@@ -239,47 +257,7 @@ import { InputAdornmentProps } from '@material-ui/core/InputAdornment'
 export type InputAdornmentProps = InputAdornmentProps
 import { InputLabelProps } from '@material-ui/core/InputLabel'
 export type InputLabelProps = InputLabelProps
-import { ListProps } from '@material-ui/core/List'
-export type ListProps = ListProps
-import { ListItemProps } from '@material-ui/core/ListItem'
-export type ListItemProps = ListItemProps
-import { ListItemAvatarProps } from '@material-ui/core/ListItemAvatar'
-export type ListItemAvatarProps = ListItemAvatarProps
-import { ListItemIconProps } from '@material-ui/core/ListItemIcon'
-export type ListItemIconProps = ListItemIconProps
-import { ListItemSecondaryActionProps } from '@material-ui/core/ListItemSecondaryAction'
-export type ListItemSecondaryActionProps = ListItemSecondaryActionProps
-import { ListItemTextProps } from '@material-ui/core/ListItemText'
-export type ListItemTextProps = ListItemTextProps
-import { ListSubheaderProps } from '@material-ui/core/ListSubheader'
-export type ListSubheaderProps = ListSubheaderProps
-import { MenuProps } from '@material-ui/core/Menu'
-export type MenuProps = MenuProps
-import { MenuItemProps } from '@material-ui/core/MenuItem'
-export type MenuItemProps = MenuItemProps
-import { MenuListProps } from '@material-ui/core/MenuList'
-export type MenuListProps = MenuListProps
 import { OutlinedInputProps } from '@material-ui/core/OutlinedInput'
 export type OutlinedInputProps = OutlinedInputProps
-import { TabProps } from '@material-ui/core/Tab'
-export type TabProps = TabProps
-import { TableProps } from '@material-ui/core/Table'
-export type TableProps = TableProps
-import { TableBodyProps } from '@material-ui/core/TableBody'
-export type TableBodyProps = TableBodyProps
-import { TableCellProps } from '@material-ui/core/TableCell'
-export type TableCellProps = TableCellProps
-import { TableFooterProps } from '@material-ui/core/TableFooter'
-export type TableFooterProps = TableFooterProps
-import { TableHeadProps } from '@material-ui/core/TableHead'
-export type TableHeadProps = TableHeadProps
-import { TablePaginationProps } from '@material-ui/core/TablePagination'
-export type TablePaginationProps = TablePaginationProps
-import { TableRowProps } from '@material-ui/core/TableRow'
-export type TableRowProps = TableRowProps
-import { TableSortLabelProps } from '@material-ui/core/TableSortLabel'
-export type TableSortLabelProps = TableSortLabelProps
-import { TabsProps } from '@material-ui/core/Tabs'
-export type TabsProps = TabsProps
 import { ToolbarProps } from '@material-ui/core/Toolbar'
 export type ToolbarProps = ToolbarProps

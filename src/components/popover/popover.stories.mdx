@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import { Popover, Text, Button } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { PopoverDocs } from './Popover'
 
 <Meta title="components|Popover" component={Popover} />
 
 # Popover
 
+Extends [Material UI Popover](https://material-ui.com/components/popover/)
+
+Popovers can be used to display content ontop of another component.
+
 <Preview>
   <Story name="default">
-    {React.createElement(() => {
+    {() => {
       const [anchorEl, setAnchorEl] = useState(null)
       function handleClick(event) {
         setAnchorEl(event.currentTarget)
@@ -45,7 +50,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
           </Popover>
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
@@ -92,4 +97,4 @@ export default function SimplePopover() {
 
 ## Props
 
-<Props of={Popover} />
+<Props of={PopoverDocs} />

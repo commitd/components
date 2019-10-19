@@ -1,11 +1,11 @@
-import React from 'react'
+import { ComponentType, FC } from 'react'
 import { ReactComponent as LogoSvg } from './commit.svg'
 import { styled } from '@material-ui/styles'
 import { style, compose } from '@material-ui/system'
 import { fractionToPercent } from '../../util'
 import { Theme } from '../../theme'
 
-export interface LogoProps extends React.HTMLAttributes<SVGElement> {
+export interface BaseLogoProps {
   /**
    * Adjust the size in px of the loader, or % if <= 1.
    * Supply an array for responsive adjustment.
@@ -14,6 +14,8 @@ export interface LogoProps extends React.HTMLAttributes<SVGElement> {
    */
   size?: number | number[]
 }
+
+export type LogoProps = BaseLogoProps & React.HTMLAttributes<SVGElement>
 
 const width = style<'size', Theme>({
   prop: 'size',
@@ -27,9 +29,9 @@ const height = style<'size', Theme>({
   transform: fractionToPercent
 })
 
-export const Logo: React.ComponentType<LogoProps> = styled<
-  React.ComponentType<LogoProps>
->(LogoSvg)(
+export const Logo: ComponentType<LogoProps> = styled<ComponentType<LogoProps>>(
+  LogoSvg
+)(
   compose(
     width,
     height,
@@ -42,3 +44,6 @@ export const Logo: React.ComponentType<LogoProps> = styled<
 Logo.defaultProps = {
   size: 256
 }
+
+// For documentation only
+export const LogoDocs: FC<BaseLogoProps> = () => null

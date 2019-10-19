@@ -1,37 +1,11 @@
-import React from 'react'
-import {
-  compose,
-  spacing,
-  flexbox,
-  SpacingProps,
-  FlexboxProps
-} from '@material-ui/system'
-import MaterialSelect, {
-  SelectProps as MaterialSelectProps
-} from '@material-ui/core/Select'
-import { styled } from '@material-ui/styles'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
+import { FC, HTMLAttributes } from 'react'
+import Select, { SelectProps } from '@material-ui/core/Select'
+export type SelectProps = SelectProps
+export { Select }
 
-export type BaseSelectProps = MaterialSelectProps & {
-  /**
-   * The width of the label.
-   */
-  labelWidth?: number
-}
-
-export type SelectProps = BaseSelectProps & SpacingProps & FlexboxProps
-
-const BaseSelect = ({
-  labelWidth = 0,
-  input = <OutlinedInput labelWidth={labelWidth} />,
-  ...other
-}: BaseSelectProps) => <MaterialSelect input={input} {...other} />
-
-export const Select: React.ComponentType<SelectProps> = styled<
-  React.ComponentType<SelectProps>
->(BaseSelect)(
-  compose(
-    spacing,
-    flexbox
-  )
-)
+// For documentation only
+export type SelectDocsProps = Omit<
+  SelectProps,
+  keyof Omit<HTMLAttributes<HTMLButtonElement>, 'color' | 'onChange' | 'id'>
+>
+export const SelectDocs: FC<SelectDocsProps> = () => null

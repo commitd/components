@@ -1,6 +1,7 @@
 import { Switch, Form, FormGroup, FormControlLabel, FormLabel } from '../../'
 import { action } from '@storybook/addon-actions'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { SwitchDocs } from './Switch'
 
 <Meta title="components|Switch" component={Switch} />
 
@@ -51,7 +52,7 @@ To toggle states
 
 <Preview>
   <Story name="labels">
-    {React.createElement(() => {
+    {() => {
       const [checked, setChecked] = React.useState(true)
       const handleChange = event => setChecked(!checked)
       return (
@@ -127,10 +128,12 @@ To toggle states
           </FormGroup>
         </Form>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
 ## Props
 
-<Props of={Switch} />
+Supports [Display, Spacing and Flexbox props](/?path=/docs/design-system-positioning--page).
+
+<Props of={SwitchDocs} />

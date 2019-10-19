@@ -7,7 +7,7 @@ export type BrandProps = TypographyProps & { fontSize: number }
 
 export const Brand: React.ComponentType<BrandProps> = styled(
   ({ variant, component, ...others }: BrandProps) => (
-    <Typography {...others} variant="body1" component="pre" />
+    <Typography {...others} variant="body1" />
   )
 )(({ fontSize, color }: BrandProps) => ({
   fontFamily: fonts.families.brand,

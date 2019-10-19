@@ -1,13 +1,24 @@
-import { Hidden, Card, Text, Flex, Box } from '../../'
+import { Hidden, Card, Text, Flex, Box, Loader } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { HiddenDocs } from './Hidden'
 
 <Meta title="components|Hidden" component={Hidden} />
 
 # Hidden
 
+Extends [Material UI Hidden](https://material-ui.com/components/hidden/)
+
 Quickly and responsively toggle the visibility value of components and more with our hidden utilities.
 
 All elements are visible unless they are explicitly hidden. This component can be used to hide any content
+
+<Preview>
+  <Story name="default">
+    <Hidden mdUp={true}>
+      <Loader />
+    </Hidden>
+  </Story>
+</Preview>
 
 ## How it works
 
@@ -117,4 +128,4 @@ It really only makes sence to use one props at a time. Remamber the ones you can
 
 ## Props
 
-<Props of={Hidden} />
+<Props of={HiddenDocs} />

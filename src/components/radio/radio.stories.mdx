@@ -11,10 +11,14 @@ import {
   FormLabel
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { RadioDocs } from './Radio'
+import { RadioGroupDocs } from './RadioGroup'
 
 <Meta title="components|Radio" component={Radio} />
 
 # Radio
+
+Extends [Material UI Radio](https://material-ui.com/components/radio-buttons/)
 
 Radios can be used to choose between a set of more than two options.
 Use a checkbox or on/off switch when single select/deselect option,
@@ -24,7 +28,7 @@ Radios should always be used with a `RadioGroup` to handle the state control and
 
 <Preview>
   <Story name="default">
-    {React.createElement(() => {
+    {() => {
       const [value, setValue] = React.useState('female')
       function handleChange(event /*: React.ChangeEvent<HTMLInputElement> */) {
         setValue(event.target /* as HTMLInputElement*/.value)
@@ -65,7 +69,7 @@ Radios should always be used with a `RadioGroup` to handle the state control and
           </FormControl>
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
@@ -112,8 +116,14 @@ Radios should always be used with a `RadioGroup` to handle the state control and
   </Story>
 </Preview>
 
-## With Labels
-
 ## Props
 
-<Props of={Radio} />
+Support standard html button props.
+
+<Props of={RadioDocs} />
+
+## RadioGroup
+
+Supports Spacing and Flexbox [positioning props](/?path=/docs/design-system-positioning--page)
+
+<Props of={RadioGroupDocs} />

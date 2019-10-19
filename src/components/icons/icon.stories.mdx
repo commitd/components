@@ -1,20 +1,35 @@
-import { Icons, Tooltip } from '../../'
+import { Icons, Flex } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { IconsDocs } from './Icons'
+import { Copy } from '../../util/copy'
 
 <Meta title="components|Icons" component={Icons} />
 
 # Icon
+
+Extends [Material-UI Icons](https://material-ui.com/components/icons/).
+
+<Preview>
+  <Story name="default">
+    <Icons.Mood />
+  </Story>
+</Preview>
+
+We use the Sharp set of icons from Material (but drop the sharp from the name title).
+Click to copy the name. Then use `<Icons.Name />`
 
 <Preview>
   <Story name="icons">
     {React.createElement(() => {
       const icons = Object.keys(Icons)
       return (
-        <div>
+        <Flex flexWrap="wrap">
           {icons.map(key => (
-            <Tooltip title={key}>{React.createElement(Icons[key])}</Tooltip>
+            <Copy m={1} key={key} title={key}>
+              {React.createElement(Icons[key])}
+            </Copy>
           ))}
-        </div>
+        </Flex>
       )
     })}
   </Story>
@@ -22,4 +37,6 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 
 ## Props
 
-<Props of={Icons.Delete} />
+Supports standard `svg` props.
+
+<Props of={IconsDocs} />

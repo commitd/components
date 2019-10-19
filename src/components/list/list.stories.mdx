@@ -16,12 +16,23 @@ import {
   ListItemSecondaryAction
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import {
+  ListDocs,
+  ListItemDocs,
+  ListItemAvatarDocs,
+  ListItemIconDocs,
+  ListItemSecondaryActionDocs,
+  ListItemTextDocs,
+  ListSubheaderDocs
+} from './List'
 
 <Meta title="components|List" component={List} />
 
 # List
 
-Listes can be used as toggle actions or as part of input forms.
+Extends [Material-UI List](https://material-ui.com/components/lists/) and associated sub-components.
+
+Lists can be used as toggle actions or as part of input forms.
 Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
 
 <Preview>
@@ -65,6 +76,7 @@ Use when single select/deselect option, use radio when one option of more then t
             <ListItemIcon>
               <Checkbox
                 edge="start"
+                color="primary"
                 tabIndex={-1}
                 disableRipple
                 inputProps={{ 'aria-labelledby': 1 }}
@@ -106,4 +118,30 @@ Secondary text is not being displayed properly
 
 ## Props
 
-<Props of={List} />
+## List
+
+<Props of={ListDocs} />
+
+## ListItem
+
+<Props of={ListItemDocs} />
+
+## ListItemAvatar
+
+<Props of={ListItemAvatarDocs} />
+
+## ListItemIcon
+
+<Props of={ListItemIconDocs} />
+
+## ListItemSecondaryAction
+
+<Props of={ListItemSecondaryActionDocs} />
+
+## ListItemText
+
+<Props of={ListItemTextDocs} />
+
+## ListSubheader
+
+<Props of={ListSubheaderDocs} />

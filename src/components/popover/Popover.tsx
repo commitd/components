@@ -1,8 +1,12 @@
-import * as React from 'react'
-import MaterialPopover, {
-  PopoverProps as MaterialPopoverProps
-} from '@material-ui/core/Popover'
+import { FC, HTMLAttributes } from 'react'
+import Popover, { PopoverProps } from '@material-ui/core/Popover'
 
-export type PopoverProps = MaterialPopoverProps
+export type PopoverProps = PopoverProps
+export { Popover }
 
-export const Popover: React.ComponentType<PopoverProps> = MaterialPopover
+// For documentation only
+export type PopoverDocsProps = Omit<
+  PopoverProps,
+  keyof HTMLAttributes<HTMLDivElement>
+>
+export const PopoverDocs: FC<PopoverDocsProps> = () => null

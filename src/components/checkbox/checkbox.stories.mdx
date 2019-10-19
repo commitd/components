@@ -24,6 +24,9 @@ Checkboxes can be used as toggle actions or as part of input forms.
 Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
 
 <Preview>
+  <Story name="default">
+    <Checkbox color="default" onChange={action('checked')} />
+  </Story>
   <Story name="checked">
     <Checkbox
       checked={true}
@@ -171,13 +174,7 @@ To add labels to checkboxes, say in forms, you should use a FormControlLabel
   <Story name="labels">
     <FormControl component="fieldset">
       <FormLabel component="legend">labelPlacement</FormLabel>
-      <FormGroup
-        aria-label="position"
-        name="position"
-        value={value}
-        onChange={handleChange}
-        row
-      >
+      <FormGroup aria-label="position" name="position" row>
         <FormControlLabel
           value="top"
           control={<Checkbox color="primary" />}
@@ -204,6 +201,51 @@ To add labels to checkboxes, say in forms, you should use a FormControlLabel
         />
       </FormGroup>
     </FormControl>
+  </Story>
+</Preview>
+
+## Start and End
+
+In some usecases it's better to make flush with the start of the end of the box.
+
+<Preview>
+  <Story name="start">
+    {React.createElement(() => {
+      const [checked, setChecked] = useState(false)
+      const click = action('clicked')
+      return (
+        <Flex>
+          <Checkbox
+            checked={checked}
+            color="primary"
+            edge="start"
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+          />
+        </Flex>
+      )
+    })}
+  </Story>
+  <Story name="end">
+    {React.createElement(() => {
+      const [checked, setChecked] = useState(false)
+      const click = action('clicked')
+      return (
+        <Flex>
+          <Checkbox
+            checked={checked}
+            color="primary"
+            edge="end"
+            onChange={event => {
+              click(event.target.checked)
+              setChecked(event.target.checked)
+            }}
+          />
+        </Flex>
+      )
+    })}
   </Story>
 </Preview>
 

@@ -13,37 +13,51 @@ import {
   Input,
   OutlinedInput,
   InputLabel,
-  MenuItem
+  MenuItem,
+  makeStyles,
+  Theme,
+  createStyles
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { SelectDocs } from './Select'
 
 <Meta title="components|Select" component={Select} />
 
 # Select
 
+Extends [Material UI Select](https://material-ui.com/components/selects)
+
 Selects can be used to choose from a list of more than two options.
 
-With forms, generally it is easier to use a [TextField](/?path=/docs/components-text-field--default)
-but examples below show raw use.
-
-```js
-// TODO remove material components
-```
+With forms, generally it is easier to use a [`TextField`](/?path=/docs/components-text-field--default)
+but examples below show raw use. The `TextField` will correctly handle the setting of the label width
+for you. The first example shows how this is done, the others just ignore it.
 
 <Preview>
   <Story name="default">
-    <FormControl m={2} minWidth={300}>
-      <InputLabel htmlFor="age-simple">Age</InputLabel>
-      <Select
-        onChange={action('change')}
-        inputProps={{ name: 'age', id: 'age-simple' }}
-      >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-      </Select>
-    </FormControl>
+    {() => {
+      const inputLabel = React.useRef(null)
+      const [labelWidth, setLabelWidth] = React.useState(0)
+      React.useEffect(() => {
+        setLabelWidth(inputLabel.current.offsetWidth)
+      }, [])
+      return (
+        <FormControl m={2} minWidth={300}>
+          <InputLabel ref={inputLabel} htmlFor="age-simple">
+            Age
+          </InputLabel>
+          <Select
+            labelWidth={labelWidth}
+            onChange={action('change')}
+            inputProps={{ name: 'age', id: 'age-simple' }}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+      )
+    }}
   </Story>
   <Story name="with helper">
     <FormControl m={2} minWidth={300}>
@@ -239,8 +253,11 @@ but examples below show raw use.
         <Form autoComplete="off">
           <Flex flexDirection="column">
             <FormControl m={2} mt={3} minWidth={300}>
-              <InputLabel htmlFor="age-simple">Age</InputLabel>
+              <InputLabel ref={inputLabel} htmlFor="age-simple">
+                Age
+              </InputLabel>
               <Select
+                labelWidth={labelWidth}
                 value={values.age}
                 onChange={handleChange}
                 inputProps={{ name: 'age', id: 'age-simple' }}
@@ -406,7 +423,7 @@ but examples below show raw use.
               </Select>
               <FormHelperText>Required</FormHelperText>
             </FormControl>
-            <FormControl m={2} mt={4} minWidth={300} variant="outlined">
+            <FormControl m={2} mt={4} minWidth={300}>
               <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
                 Age
               </InputLabel>
@@ -430,8 +447,6 @@ but examples below show raw use.
   </Story>
 </Preview>
 
-## With Labels
-
 ## Props
 
-<Props of={Select} />
+<Props of={SelectDocs} />

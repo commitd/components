@@ -1,6 +1,6 @@
 import React from 'react'
-import { copyToClipboard } from './copy'
-import { Flex, Box, Text, Tooltip, FlexProps } from '..'
+import { Copy } from './copy'
+import { Flex, Box, Text, FlexProps } from '..'
 
 export interface ColorsProps {
   name: string
@@ -19,20 +19,22 @@ export const Color = ({
   placement = 'top',
   children,
   ...others
-}: ColorProps) => (
-  <Tooltip key={`${name}`} title={color} placement={placement}>
-    <Flex
+}: ColorProps) => {
+  return (
+    <Copy
+      title={color}
+      placement={placement}
+      display="flex"
       flexGrow={1}
       key={color}
       height={height}
       bgcolor={color}
-      onClick={() => copyToClipboard(color)}
       {...others}
     >
       {children}
-    </Flex>
-  </Tooltip>
-)
+    </Copy>
+  )
+}
 
 export const Colors = ({ colors, name, accent = false }: ColorsProps) => (
   <Flex mb={1}>

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Box, BoxProps } from '../box/Box'
 
-export type TabPanelProps = {
+export type BaseTabPanelProps = {
   /**
    * Content of the tab panel
    */
@@ -14,7 +14,9 @@ export type TabPanelProps = {
    * The currently selected index
    */
   selected: any
-} & BoxProps
+}
+
+export type TabPanelProps = BaseTabPanelProps & BoxProps
 
 export const TabPanel = ({
   children,
@@ -32,3 +34,6 @@ export const TabPanel = ({
     {children}
   </Box>
 )
+
+// For documentation only
+export const TabPanelDocs: FC<BaseTabPanelProps> = () => null

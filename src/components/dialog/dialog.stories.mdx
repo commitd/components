@@ -26,8 +26,8 @@ Tooltips display extra information when users hover over, focus on, or tap an el
 When activated, Tooltips display a text label identifying an element, such as a description of its function.
 
 <Preview>
-  <Story name="simple">
-    {React.createElement(() => {
+  <Story name="default">
+    {() => {
       const [open, setOpen] = React.useState(false)
       function handleClickOpen() {
         setOpen(true)
@@ -65,7 +65,7 @@ When activated, Tooltips display a text label identifying an element, such as a 
           </Dialog>
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 

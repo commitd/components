@@ -1,16 +1,19 @@
 import { Slider, Typography, Box } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
+import { SliderDocs } from './Slider'
 
 <Meta title="components|Slider" component={Slider} />
 
 # Slider
 
+Extends [Material UI Slider](https://material-ui.com/components/slider/)
+
 Allows for selection from a (numeric) range of values.
 
 <Preview>
   <Story name="default">
-    {React.createElement(() => {
+    {() => {
       const marks = [
         {
           value: 0,
@@ -96,7 +99,7 @@ Allows for selection from a (numeric) range of values.
           />
         </div>
       )
-    })}
+    }}
   </Story>
 </Preview>
 
@@ -149,3 +152,9 @@ Allows for selection from a (numeric) range of values.
     />
   </Story>
 </Preview>
+
+## Props
+
+Support standard html span props and all [Positioning Props](/?path=/docs/design-system-positioning--page).
+
+<Props of={SliderDocs} />
