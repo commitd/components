@@ -24,7 +24,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged --pattern './**/*.*(ts|tsx|json)'",
-      "pre-push": "yarn build"
+      "pre-push": "yarn build; yarn danger:local"
     }
   },
   "scripts": {
@@ -37,7 +37,8 @@
     "start": "rollup -c -w",
     "format": "prettier --write '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
     "format-check": "prettier --check '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "danger:local": "danger local --dangerfile dangerfile.lite.ts"
   },
   "dependencies": {
     "clsx": "^1.0.4"
