@@ -10,7 +10,7 @@ import MaterialIconButton, {
   IconButtonProps as MaterialIconButtonProps
 } from '@material-ui/core/IconButton'
 import { styled } from '@material-ui/styles'
-import { withNoOpener, AProps } from '../internal'
+import { withNoOpener, AProps } from '../../internal'
 
 export interface IconButtonProps
   extends MaterialIconButtonProps,

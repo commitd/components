@@ -5,7 +5,7 @@ import {
   PositioningProps,
   withSizing,
   SizingProps
-} from '../internal'
+} from '../../internal'
 import { styled } from '@material-ui/styles'
 import MaterialCard, {
   CardProps as MaterialCardProps

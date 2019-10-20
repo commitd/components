@@ -1,5 +1,5 @@
 import { FC, ComponentType, HTMLAttributes } from 'react'
-import { withWrapper, WithWrapperProps } from '../internal'
+import { withWrapper, WithWrapperProps } from '../../internal'
 import MaterialTextField, {
   TextFieldProps as MaterialTextFieldProps
 } from '@material-ui/core/TextField'

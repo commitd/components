@@ -2,7 +2,7 @@ import { FC, AnchorHTMLAttributes } from 'react'
 import MaterialLink, {
   LinkProps as MaterialLinkProps
 } from '@material-ui/core/Link'
-import { withNoOpener } from '../internal'
+import { withNoOpener } from '../../internal'
 
 export interface LinkProps extends MaterialLinkProps {}
 

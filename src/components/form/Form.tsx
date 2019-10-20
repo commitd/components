@@ -4,7 +4,7 @@ import {
   PositioningProps,
   withSizing,
   SizingProps
-} from '../internal'
+} from '../../internal'
 
 export type FormProps = FormHTMLAttributes<HTMLFormElement> &
   PositioningProps &

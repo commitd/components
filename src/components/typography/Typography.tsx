@@ -3,7 +3,7 @@ import { styled } from '@material-ui/styles'
 import MaterialTypography, {
   TypographyProps as MaterialTypographyProps
 } from '@material-ui/core/Typography'
-import { withPositioning, PositioningProps } from '../internal'
+import { withPositioning, PositioningProps } from '../../internal'
 import { fonts } from '../../theme'
 
 type BaseTypographyProps = MaterialTypographyProps & PositioningProps

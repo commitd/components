@@ -2,7 +2,7 @@ import { FC, ComponentType } from 'react'
 import MaterialButton, {
   ButtonProps as MaterialButtonProps
 } from '@material-ui/core/Button'
-import { withNoOpener, withPositioning, PositioningProps } from '../internal'
+import { withNoOpener, withPositioning, PositioningProps } from '../../internal'
 
 export type ButtonProps = MaterialButtonProps & PositioningProps
 
