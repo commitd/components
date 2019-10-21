@@ -1,8 +1,11 @@
 import 'react-app-polyfill/ie11'
+import './main.css'
+import 'typeface-lato'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as C from '../dist'
 import logo from './images/Committed - Yellow Trans-128px.png'
+
 
 const footerHeight = '200px'
 
@@ -22,11 +25,15 @@ const Header = () => (
 
 const Post = ({ name, index }: { name: string; index: number }) => (
   <C.Card m={5} p={0}>
-    <C.Flex flexDirection="column" bgcolor"primary.main" color="secondary.main">
+    <C.Flex
+      flexDirection="column"
+      bgcolor="primary.main"
+      color="secondary.main"
+    >
       <img src={`https://picsum.photos/300/200?random=${index}`} />
       <C.CardActionArea>
         <C.Box mt={0} p={2} pb={3}>
-          <C.Text upper>{name}</C.Text>
+          <C.Text bold upper>{name}</C.Text>
         </C.Box>
       </C.CardActionArea>
     </C.Flex>
@@ -107,9 +114,9 @@ const Footer = () => (
 )
 
 const App = () => (
-  <C.ThemeProvider>
+  <C.ThemeProvider fonts={{text: 'Lato', display: 'Arciform'}}>
     <C.Box position="relative" minHeight="100vh">
-      <C.Box pb={footerHeight} bgcolor"background.default">
+      <C.Box pb={footerHeight} bgcolor="background.default">
         <Header />
         <Content />
       </C.Box>

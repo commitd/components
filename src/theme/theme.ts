@@ -20,14 +20,20 @@ declare module '@material-ui/core/styles/createPalette' {
 
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
-    status: {
-      danger: string
+    fonts: {
+      default: string
+      text: string
+      display: string
+      mono: string
     }
   }
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
-    status?: {
-      danger?: string
+    fonts?: {
+      default?: string
+      text?: string
+      display?: string
+      mono?: string
     }
   }
 }
@@ -76,6 +82,12 @@ const action = {
 }
 
 export const light: ThemeOptions = {
+  fonts: {
+    default: fonts.families.system,
+    text: fonts.families.main,
+    display: fonts.families.display,
+    mono: fonts.families.mono
+  },
   palette: {
     type: 'light',
     brand: {
@@ -147,7 +159,6 @@ export const light: ThemeOptions = {
   },
   spacing: spacing,
   typography: {
-    fontFamily: fonts.families.system,
     htmlFontSize: 16,
     fontSize: 16,
     fontWeightLight: 300,
@@ -292,7 +303,6 @@ export const light: ThemeOptions = {
     },
     MuiCssBaseline: {
       '@global': {
-        '@font-face': fonts.faces,
         /* Disable auto-enlargement of small text in Safari */
         textSizeAdjust: '100%',
         /* Enable kerning and optional ligatures */

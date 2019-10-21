@@ -13,9 +13,6 @@ export type BoxProps = BoxProps
 export { Button } from './button/Button'
 import { ButtonProps } from './button/Button'
 export type ButtonProps = ButtonProps
-export { Brand } from './typography/Brand'
-import { BrandProps } from './typography/Brand'
-export type BrandProps = BrandProps
 export { Card } from './card/Card'
 import { CardProps } from './card/Card'
 export type CardProps = CardProps
