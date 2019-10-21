@@ -1,5 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react'
-import { withWrapper, WithWrapperProps } from '../internal'
+import { withWrapper, WithWrapperProps } from '../../internal'
 import MaterialSlider, {
   SliderProps as MaterialSliderProps
 } from '@material-ui/core/Slider'
