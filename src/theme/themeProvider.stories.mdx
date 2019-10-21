@@ -1,0 +1,52 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import {
+  ThemeProvider,
+  Box,
+  Heading,
+  Text,
+  Typography,
+  Display,
+  Monospace
+} from '../../'
+import { ThemeProviderDocs } from './ThemeProviderDocs'
+
+<Meta title="components|ThemeProvider" component={ThemeProvider} />
+
+# ThemeProvider
+
+Extends [Material UI ThemeProvider](https://material-ui.com/styles/api/#themeprovider)
+
+A `ThemeProvider` should wrap the output component of your app. should be used for data entry. By default we used the outlined variant,
+but others can be used if necessary.
+
+```jsx
+<ThemeProvider>
+  <AppRoot />
+</ThemeProvider>
+```
+
+Custom font stacks can be provided for different typography components. You may need to separately load your font, using imports, links or css; see [example](https://github.com/commitd/components/tree/master/example).
+We reccommend using [typefaces](https://github.com/KyleAMathews/typefaces)
+
+<Preview>
+  <Story name="default">
+    <ThemeProvider
+      fonts={{
+        main: '"Helvetica Neue"',
+        text: '"Times New Roman"',
+        display: 'Arial, sans-serif',
+        mono: 'monospace'
+      }}
+    >
+      <Heading.h2>Heading</Heading.h2>
+      <Typography>Typography</Typography>
+      <Display.d1>Display</Display.d1>
+      <Text>Text</Text>
+      <Monospace>Monospace</Monospace>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={ThemeProviderDocs} />

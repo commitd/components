@@ -9,12 +9,14 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "react-app-polyfill": "^1.0.0"
+    "react-app-polyfill": "^1.0.0",
+    "typeface-lato": "^0.0.75"
   },
   "alias": {
     "react": "../node_modules/react",
     "react-dom": "../node_modules/react-dom/profiling",
-    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
+    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling",
+    "@material-ui": "../node_modules/@material-ui"
   },
   "devDependencies": {
     "@types/react": "^16.8.15",

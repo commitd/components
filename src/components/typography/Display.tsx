@@ -1,9 +1,14 @@
 import React from 'react'
 import { styled } from '@material-ui/styles'
-import { fonts } from '../../theme'
+import { Theme } from '../../theme'
 import { Typography, TypographyProps } from './Typography'
 
 export type DisplayProps = TypographyProps
+
+const displayFont = ({ theme }: { theme: Theme }) => ({
+    fontFamily: theme.fonts.display
+  }
+)
 
 export const Display: {
   d1: React.ComponentType<DisplayProps>
@@ -13,22 +18,14 @@ export const Display: {
 } = {
   d1: styled(({ variant, component, ...others }: DisplayProps) => (
     <Typography {...others} component="h1" variant="h1" />
-  ))({
-    fontFamily: fonts.families.display
-  }),
+  ))(displayFont),
   d2: styled(({ variant, component, ...others }: DisplayProps) => (
     <Typography {...others} component="h2" variant="h2" />
-  ))({
-    fontFamily: fonts.families.display
-  }),
+  ))(displayFont),
   d3: styled(({ variant, component, ...others }: DisplayProps) => (
     <Typography {...others} component="h3" variant="h3" />
-  ))({
-    fontFamily: fonts.families.display
-  }),
+  ))(displayFont),
   d4: styled(({ variant, component, ...others }: DisplayProps) => (
     <Typography {...others} component="h4" variant="h4" />
-  ))({
-    fontFamily: fonts.families.display
-  })
+  ))(displayFont)
 }

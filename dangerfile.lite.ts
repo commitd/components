@@ -1,4 +1,8 @@
-import { danger, warn, fail } from 'danger'
+//import { danger, warn, fail } from 'danger'
+import { DangerDSLType } from 'danger'
+declare var danger: DangerDSLType
+declare function warn(params: string): void
+
 import { includes } from 'lodash'
 import * as fs from 'fs'
 import * as path from 'path'

@@ -1,41 +1,3 @@
-import ArciformWolff2 from '../../public/fonts/ArciformFF/arciform.woff2'
-import FreeSansWolff from '../../public/fonts/FreeSans/FreeSansBold.ttf'
-import LatoTtf from '../../public/fonts/Lato/Lato-Regular.ttf'
-import { FontFace } from 'csstype'
-
-export type Font = 'arciform' | 'freesans' | 'lato'
-
-const arciform = {
-  fontFamily: 'Arciform',
-  fontWeight: 400,
-  src: `
-    local('Arciform'),
-    local('Arciform-Regular'),
-    url(${ArciformWolff2}) format('woff2')
-  `
-}
-
-const freesans = {
-  fontFamily: 'FreeSansBold',
-  fontWeight: 'bold',
-  src: `
-      local('FreeSansBold'),
-      url(${FreeSansWolff}) format('truetype')
-      `
-}
-
-const lato = {
-  fontFamily: 'Lato',
-  fontWeight: 'normal',
-  src: `
-        local('Lato'),
-        local('Lato-Regular'),
-        url(${LatoTtf}) format('truetype')
-      `
-}
-
-export const faces: FontFace[] = [arciform, freesans, lato]
-
 export const size = '16px'
 
 export const sizes = {
@@ -53,9 +15,10 @@ export const sizes = {
 export const families = {
   system:
     '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
-  main: 'Lato, Geneva, Tahoma, sans-serif',
+  main: 'Geneva, Tahoma, sans-serif',
   display:
-    'Arciform, "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
+    '"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
   brand: 'FreeSansBold',
-  mono: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
+  mono:  '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace'
+
 }

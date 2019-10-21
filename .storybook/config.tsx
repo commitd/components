@@ -2,7 +2,7 @@ import React from 'react'
 import { configure } from '@storybook/react'
 import { addParameters, addDecorator } from '@storybook/react'
 import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks'
-import { ThemeProvider } from '../src'
+import { ThemeProvider, fonts } from '../src'
 import { withA11y } from '@storybook/addon-a11y'
 import { create } from '@storybook/theming'
 
@@ -13,8 +13,8 @@ const storybookTheme = create({
   colorSecondary: '#4098D7',
 
   // Typography
-  fontBase: 'Lato, Geneva, Tahoma, sans-serif',
-  fontCode: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+  fontBase: fonts.families.system,
+  fontCode: fonts.families.mono,
 
   brandTitle: 'Committed Components',
   brandUrl: '/',
@@ -29,6 +29,7 @@ addParameters({
   docs: DocsPage,
   options: {
     theme: storybookTheme,
+    showPanel: false,
     storySort: (a, b) => {
       if (a[1].kind === b[1].kind) {
         return 0

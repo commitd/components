@@ -9,8 +9,7 @@ import {
   Display,
   Monospace,
   Flex,
-  Box,
-  Brand
+  Box
 } from '../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { TypographyDocs } from './Typography'
@@ -25,8 +24,9 @@ import { TypographyDocs } from './Typography'
 
 Extends [Material UI Typography](https://material-ui.com/components/typography/)
 
-The base level type class, `Typography` follows the material API using the system fonts, further extensions cover the standard
-other text formats. By default Typography is a `div`, the alternative classes `Span` and `Paragraph` can be used for `p` and `span` elements.
+`Typography` follows the material API using the system fonts, further extensions allows font styles to be applied.
+By default Typography is a `div`, the alternative classes can be provided using the `component` prop. Also see
+Shorthands below.
 
 <Preview>
   <Story name="typography">
@@ -69,14 +69,11 @@ other text formats. By default Typography is a `div`, the alternative classes `S
         consectetur, neque doloribus, cupiditate numquam dignissimos laborum
         fugiat deleniti? Eum quasi quidem quibusdam.
       </Typography>
-      <Typography variant="button" display="block" gutterBottom>
-        button text
+      <Typography variant="overline" display="block" gutterBottom>
+        overline text
       </Typography>
       <Typography variant="caption" display="block" gutterBottom>
         caption text
-      </Typography>
-      <Typography variant="overline" display="block" gutterBottom>
-        overline text
       </Typography>
     </Flex>
   </Story>
@@ -123,67 +120,37 @@ A style is supplied for subheading, the layout is dependent on requirements.
   </Story>
 </Preview>
 
-# Display
+## Styling
 
-Traditional heading elements are designed to work best in the main page content.
-When you need a heading to stand out, consider using a display heading: a larger, slightly more opinionated heading style.
+As an alternative to the default styles there are a number of props to support custom size and styles.
+These are ignored if the `variant` is supplied.
+
+### Size
+
+A sizing scale is provided to customise the size:
 
 <Preview>
-  <Story name="display">
+  <Story name="size">
     <Flex flexDirection="column">
-      <Display.d1>Display 1</Display.d1>
-      <Display.d2>Display 2</Display.d2>
-      <Display.d3>Display 3</Display.d3>
-      <Display.d4>Display 4</Display.d4>
+      <Typography fontSize={-2}>Size -2</Typography>
+      <Typography fontSize={-1}>Size -1</Typography>
+      <Typography fontSize={0}>Size 0 (Default)</Typography>
+      <Typography fontSize={1}>Size 1</Typography>
+      <Typography fontSize={2}>Size 2</Typography>
+      <Typography fontSize={3}>Size 3</Typography>
+      <Typography fontSize={4}>Size 4</Typography>
+      <Typography fontSize={5}>Size 5</Typography>
+      <Typography fontSize={6}>Size 6</Typography>
     </Flex>
   </Story>
 </Preview>
 
-# Text
+### Alignment
 
-Use `Text` for all normal text rendering, use Headings for `h1, etc`.
-Text is a low-level component for setting font-size, typographic styles, margin, and color.
-By default Text is a `div`, the alternative classes `Span` and `Paragraph` can be used for `p` and `span` elements.
+The `align` prop can be used to set the text alignment.
 
 <Preview>
-  <Story name="text">
-    <Flex flexDirection="column">
-      <Paragraph>Default Text</Paragraph>
-      <Text fontSize={6}>Text 6</Text>
-      <Text fontSize={5}>Text 5</Text>
-      <Text fontSize={4}>Text 4</Text>
-      <Text fontSize={3}>Text 3</Text>
-      <Text fontSize={2}>Text 2</Text>
-      <Text fontSize={1}>Text 1</Text>
-      <Text fontSize={0}>Text 0</Text>
-      <Text fontSize={-1}>Text -1</Text>
-      <Text fontSize={-2}>Text -2</Text>
-    </Flex>
-  </Story>
-</Preview>
-
-# Brand
-
-<Preview>
-  <Story name="brand">
-    <Flex flexDirection="column">
-      <Brand fontSize={6}>committed</Brand>
-      <Brand fontSize={5}>committed</Brand>
-      <Brand fontSize={4}>committed</Brand>
-      <Brand fontSize={3}>committed</Brand>
-      <Brand fontSize={2}>committed</Brand>
-      <Brand fontSize={1}>committed</Brand>
-      <Brand fontSize={0}>committed</Brand>
-      <Brand fontSize={-1}>committed</Brand>
-      <Brand fontSize={-2}>committed</Brand>
-    </Flex>
-  </Story>
-</Preview>
-
-## Alignment
-
-<Preview>
-  <Story name="alignmant">
+  <Story name="alignment">
     <Flex flexDirection="column">
       <Text align="left">Left</Text>
       <Text align="center">Center</Text>
@@ -192,7 +159,7 @@ By default Text is a `div`, the alternative classes `Span` and `Paragraph` can b
   </Story>
 </Preview>
 
-## Variations
+### Variations
 
 If you do not use a `variant` prop then there are other props that can be used to customize the apperance.
 Examples are shown below.
@@ -200,9 +167,6 @@ Examples are shown below.
 <Preview>
   <Story name="variations">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
-      <Box width={1 / 5} p={3}>
-        <Text>Text</Text>
-      </Box>
       <Box width={1 / 5} p={3}>
         <Typography light={true}>Light</Typography>
       </Box>
@@ -219,12 +183,6 @@ Examples are shown below.
         <Typography italic={true}>Italic</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Paragraph>Paragraph</Paragraph>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Span>Span</Span>
-      </Box>
-      <Box width={1 / 5} p={3}>
         <Typography color="primary">Primary</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
@@ -239,14 +197,98 @@ Examples are shown below.
         </Typography>
       </Box>
       <Box width={1 / 5} p={3}>
+        <s>
+          <Typography>strikethrough</Typography>
+        </s>
+      </Box>
+    </Flex>
+  </Story>
+</Preview>
+
+### Shorthand
+
+Components are provided for `Span` (`span`) and `Paragraph` (`p`) elements. Also `Caption` and `Monospace` components.
+
+<Preview>
+  <Story name="shorthand">
+    <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
+      <Box width={1 / 5} p={3}>
+        <Text>Text</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Paragraph>Paragraph</Paragraph>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Span>Span</Span>
+      </Box>
+      <Box width={1 / 5} p={3}>
         <Caption>caption</Caption>
       </Box>
       <Box width={1 / 5} p={3}>
         <Monospace>monospace</Monospace>
       </Box>
+    </Flex>
+  </Story>
+</Preview>
+
+## Alternatives
+
+Two alternative typography components are provided to support the use of different fonts for headings `Display` and normal text `Text`.
+The font stack for these can be customized in the `ThemeProvider`. These are intended for use on pages where a simgle font is not sufficient
+or engaging enough. Say a help page.
+
+### Display
+
+Traditional heading elements are designed to work best in the main page content.
+When you need a heading to stand out, consider using a display heading: a larger, slightly more opinionated heading style.
+
+<Preview>
+  <Story name="display">
+    <Flex flexDirection="column">
+      <Display.d1>Display 1</Display.d1>
+      <Display.d2>Display 2</Display.d2>
+      <Display.d3>Display 3</Display.d3>
+      <Display.d4>Display 4</Display.d4>
+    </Flex>
+  </Story>
+</Preview>
+
+### Text
+
+To use alternative font style in only is certain places `Text` can be used and the font stack supplied in the [ThemeProvider]().
+
+<Preview>
+  <Story name="text">
+    <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
+      <Box width={1 / 5} p={3}>
+        <Text>Text</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text light={true}>Light</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text bold={true}>Bold</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text upper={true}>uppercase</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text capital={true}>capitals</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text italic={true}>Italic</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text color="lighttext">gray</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text bold={true} italic={true} capital={true}>
+          italic
+        </Text>
+      </Box>
       <Box width={1 / 5} p={3}>
         <s>
-          <Typography>strikethrough</Typography>
+          <Text>strikethrough</Text>
         </s>
       </Box>
     </Flex>
