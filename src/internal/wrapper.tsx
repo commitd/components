@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import {
   compose,
   display,
@@ -12,7 +12,7 @@ import {
 } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
 import { getDisplayName } from './util'
-import { omit, keep } from '../../util'
+import { omit, keep } from '../util'
 
 export type WithWrapperProps = SpacingProps &
   FlexboxProps &
