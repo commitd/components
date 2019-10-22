@@ -39,7 +39,7 @@
     "format-check": "prettier --check '{**/*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local --dangerfile dangerfile.lite.ts",
-    "danger:pr": "DANGER_GITHUB_API_TOKEN=$GITHUB_TOKEN yarn danger pr https://github.com/commitd/components/pull/$1"
+    "danger:pr": "cross-env DANGER_GITHUB_API_TOKEN=${GITHUB_TOKEN} danger pr https://github.com/commitd/components/pull/${PR}"
   },
   "dependencies": {
     "clsx": "^1.0.4"
