@@ -357,6 +357,7 @@ interface DocFlexboxProps {
     | 'right'
     | 'stretch'
 }
+
 interface DocSizingProps {
   /**
    * The `width` prop sets an element's width.
@@ -440,6 +441,37 @@ interface DocSizingProps {
     | 'min-content'
 }
 
+interface DocGridcontainerProps {
+  gridTemplateColumns?: string
+  gridTemplateRows?: string
+  gridTemplateAreas?: string
+  gridTemplate?: string
+  gridColumnGap?: string
+  gridRowGap?: string
+  justifyItems?: string
+  alignItems?: string
+  placeItems?: string
+  justifyContent?: string
+  alignContent?: string
+  placeContent?: string
+  gridAutoColumns?: string
+  gridAutoRows?: string
+  gridAutoFlow?: string
+}
+
+interface DocGriditemProps {
+  gridColumnStart?: string
+  gridColumnEnd?: string
+  gridRowStart?: string
+  gridRowEnd?: string
+  gridColumn?: string
+  gridRow?: string
+  gridArea?: string
+  justifySelf?: string
+  alignSelf?: string
+  placeSelf?: string
+}
+
 // We add back the original props, incase there are any changes that are not documented.
 export const Display: FC<
   DocDisplayProps & Omit<DisplayProps, keyof DocDisplayProps>
@@ -453,3 +485,5 @@ export const Flexbox: FC<
 export const Sizing: FC<
   DocSizingProps & Omit<SizingProps, keyof DocSizingProps>
 > = () => null
+export const Gridcontainer: FC<DocGridcontainerProps> = () => null
+export const Griditem: FC<DocGriditemProps> = () => null
