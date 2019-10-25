@@ -1,6 +1,8 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { Grid, Box, Card, colors } from '../../'
+import { GridBox } from '../../util/GridBox'
 import { GridDocs } from './Grid'
+import { Gridcontainer } from '../../util/docsutil'
 
 <Meta title="components|Grid" component={Grid} />
 
@@ -10,19 +12,24 @@ Does not extend Material-UI Grid, this implementation is based on CSS Grid.
 
 Grid supports the layout of components in 2 dimensions. Where possible prefer [`Flex`](http://localhost:6006/?path=/docs/components-flex--default) for one dimensional layouts.
 
+We use a styled `Box` in the example to remove not-relevant props.
+
 <Preview>
   <Story name="default">
-    <Grid gridTemplateColumns="40px 50px auto 50px 40px" gridTemplateRows="25% 50px">
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
-      <Box border="1px solid grey" />
+    <Grid
+      gridTemplateColumns="40px 50px auto 50px 40px"
+      gridTemplateRows="25% 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
@@ -33,25 +40,22 @@ Defines a grid template by referencing the names of the grid areas which are spe
 Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.
 
 Values:
+
 - grid-area-name - the name of a grid area specified with grid-area
 - . - a period signifies an empty grid cell
 - none - no grid areas are defined
 
 <Preview>
   <Story name="areas">
-    <Grid gridTemplateColumns="100px 100px 100px 100px" gridTemplateRows="50px 100px 50px" gridTemplateAreas={`'header header header header' 'sidebar . main main' 'footer footer footer footer'`}>
-      <Box gridArea="header" p={3} bgcolor="success.main">
-        Header
-      </Box>
-      <Box gridArea="sidebar" p={3} bgcolor="warning.light">
-        Sidebar
-      </Box>
-      <Box gridArea="main" p={3} bgcolor="warning.dark">
-        Main
-      </Box>
-      <Box gridArea="footer" p={3} bgcolor="error.main">
-        Footer
-      </Box>
+    <Grid
+      gridTemplateColumns="100px 100px 100px 100px"
+      gridTemplateRows="50px 100px 50px"
+      gridTemplateAreas={`'header header header header' 'sidebar . main main' 'footer footer footer footer'`}
+    >
+      <GridBox gridArea="header">Header</GridBox>
+      <GridBox gridArea="sidebar">Sidebar</GridBox>
+      <GridBox gridArea="main">Main</GridBox>
+      <GridBox gridArea="footer">Footer</GridBox>
     </Grid>
   </Story>
 </Preview>
@@ -61,19 +65,13 @@ For clarity, we reccommend using the mroe verbose versions except for simple lay
 
 <Preview>
   <Story name="areas-shorthand">
-    <Grid gridTemplate={`'header header header header' 50px 'sidebar . main main' 100px 'footer footer footer footer' 50px / 100px 100px 100px 100px`}>
-      <Box gridArea="header" p={3} bgcolor="success.main">
-        Header
-      </Box>
-      <Box gridArea="sidebar" p={3} bgcolor="warning.light">
-        Sidebar
-      </Box>
-      <Box gridArea="main" p={3} bgcolor="warning.dark">
-        Main
-      </Box>
-      <Box gridArea="footer" p={3} bgcolor="error.main">
-        Footer
-      </Box>
+    <Grid
+      gridTemplate={`'header header header header' 50px 'sidebar . main main' 100px 'footer footer footer footer' 50px / 100px 100px 100px 100px`}
+    >
+      <GridBox gridArea="header">Header</GridBox>
+      <GridBox gridArea="sidebar">Sidebar</GridBox>
+      <GridBox gridArea="main">Main</GridBox>
+      <GridBox gridArea="footer">Footer</GridBox>
     </Grid>
   </Story>
 </Preview>
@@ -82,21 +80,37 @@ For clarity, we reccommend using the mroe verbose versions except for simple lay
 
 Specifies the size of the grid lines.
 You can think of it like setting the width of the gutters between the columns/rows.
-We use the spacing in the theme. `gridGap` only supports the case where both the row
+We use the spacing in the theme. `gap` only supports the case where both the row
 and column spacing is the same.
 
 <Preview>
   <Story name="gaps">
-    <Grid gridColumnGap={2} gridRowGap={3} gridTemplateColumns="100px 100px 100px" gridTemplateRows="100px 100px 100px">
-       <Box border="1px solid grey" bgcolor={colors.blue[50]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[100]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[500]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[600]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[700]} />
-       <Box border="1px solid grey" bgcolor={colors.blue[800]} />
+    <Grid
+      rowGap={3}
+      columnGap={2}
+      gridTemplateColumns="100px 100px 100px"
+      gridTemplateRows="100px 100px 100px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="gap-same">
+    <Grid gap={2} gridTemplateColumns="100px 100px" gridAutoRows="100px">
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
@@ -115,39 +129,58 @@ Values:
 
 <Preview>
   <Story name="justify-items-start">
-    <Grid justifyItems="start" border="1px solid grey" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+    <Grid
+      justifyItems="start"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
   <Story name="justify-items-end">
-    <Grid justifyItems="end" border="1px solid grey" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+    <Grid
+      justifyItems="end"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
-    <Story name="justify-items-center">
-    <Grid justifyItems="center"border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="justify-items-center">
+    <Grid
+      justifyItems="center"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
   <Story name="justify-items-stretch">
-    <Grid justifyItems="stretch" border="1px solid grey" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+    <Grid
+      justifyItems="stretch"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
-
 
 ## Align Items
 
@@ -163,48 +196,68 @@ Values:
 
 <Preview>
   <Story name="align-items-start">
-    <Grid alignItems="start" border="1px solid grey" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+    <Grid
+      alignItems="start"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
   <Story name="align-items-end">
-    <Grid alignItems="end" border="1px solid grey" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+    <Grid
+      alignItems="end"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
-    <Story name="align-items-center">
-    <Grid alignItems="center" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-items-center">
+    <Grid
+      alignItems="center"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
   <Story name="align-items-stretch">
-    <Grid alignItems="stretch" border="1px solid grey" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+    <Grid
+      alignItems="stretch"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
-
 ## Place Items
 
 `place-items` sets both the align-items and justify-items properties in a single declaration.
+It does not support breakpoit changing.
 
 Values:
 
-- `align-items> / justify-items` - The first value sets align-items, the second value justify-items. If the second value is omitted, the first value is assigned to both properties.
-All major browsers except Edge support the place-items shorthand property.
+- `align-items / justify-items` - The first value sets align-items, the second value justify-items. If the second value is omitted, the first value is assigned to both properties.
+  All major browsers except Edge support the place-items shorthand property.
 
 ## Justify Content
 
@@ -225,104 +278,133 @@ Values:
 
 <Preview>
   Start
-  <Story name="justify-content-start" >
+  <Story name="justify-content-start">
     <Card>
-    <Grid justifyContent="start" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+      <Grid
+        justifyContent="start"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
 </Preview>
-
 
 <Preview>
   End
-  <Story name="justify-content-end" >
+  <Story name="justify-content-end">
     <Card>
-    <Grid justifyContent="end" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+      <Grid
+        justifyContent="end"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
 </Preview>
-
 
 <Preview>
   Center
-  <Story name="justify-content-center" >
-   <Card>
-    <Grid justifyContent="center" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+  <Story name="justify-content-center">
+    <Card>
+      <Grid
+        justifyContent="center"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
-  </Preview>
-
+</Preview>
 
 <Preview>
   Stretch
-  <Story name="justify-content-stretch" >
+  <Story name="justify-content-stretch">
     <Card>
-    <Grid justifyContent="stretch" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+      <Grid
+        justifyContent="stretch"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
-  </Preview>
-
+</Preview>
 
 <Preview>
   Space Around
-  <Story name="justify-content-space-around" >
+  <Story name="justify-content-space-around">
     <Card>
-    <Grid justifyContent="space-around" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+      <Grid
+        justifyContent="space-around"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
 </Preview>
-
 
 <Preview>
   Space Between
-  <Story name="justify-content-space-between" >
-<Card>
-    <Grid justifyContent="space-between" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+  <Story name="justify-content-space-between">
+    <Card>
+      <Grid
+        justifyContent="space-between"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
 </Preview>
 
-
 <Preview>
   Space Evenly
-  <Story name="justify-content-space-evenly" >
-   <Card>
-    <Grid justifyContent="space-evenly" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-       <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
-    </Grid>
+  <Story name="justify-content-space-evenly">
+    <Card>
+      <Grid
+        justifyContent="space-evenly"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
     </Card>
   </Story>
 </Preview>
@@ -343,84 +425,126 @@ Values:
 
 <Preview>
   Start
-  <Story name="align-content-start" >
-    <Grid minHeight="150px" lignContent="start" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-start">
+    <Grid
+      minHeight="150px"
+      alignContent="start"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
 <Preview>
   End
-  <Story name="align-content-end" >
-    <Grid minHeight="150px" alignContent="end" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-end">
+    <Grid
+      minHeight="150px"
+      alignContent="end"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
 <Preview>
   Center
-  <Story name="align-content-center" >
-    <Grid minHeight="150px" alignContent="center" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-center">
+    <Grid
+      minHeight="150px"
+      alignContent="center"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
 <Preview>
   Stretch
-  <Story name="align-content-stretch" >
-    <Grid minHeight="150px" alignContent="stretch" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-stretch">
+    <Grid
+      minHeight="150px"
+      alignContent="stretch"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
 <Preview>
   Space Around
-  <Story name="align-content-space-around" >
-    <Grid minHeight="150px" alignContent="space-around" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-space-around">
+    <Grid
+      minHeight="150px"
+      alignContent="space-around"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
 <Preview>
   Space Between
-  <Story name="align-content-space-between" >
-    <Grid minHeight="150px" alignContent="space-between" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-space-between">
+    <Grid
+      minHeight="150px"
+      alignContent="space-between"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
 
 <Preview>
   Space Evenly
-  <Story name="align-content-space-evenly" >
-    <Grid minHeight="150px" alignContent="space-evenly" border="1px solid grey"  gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="align-content-space-evenly">
+    <Grid
+      minHeight="150px"
+      alignContent="space-evenly"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
     </Grid>
   </Story>
 </Preview>
@@ -428,12 +552,18 @@ Values:
 ## Place Content
 
 `place-content` sets both the align-content and justify-content properties in a single declaration.
+It does not support breakpoit changing.
+All major browsers except Edge support the place-content shorthand property.
 
 Values:
 
-- `align-content / justify-content` - The first value sets align-content, the second value justify-content. If the second value is omitted, the first value is assigned to both properties.
-All major browsers except Edge support the place-content shorthand property.
-
+- `start` - aligns the grid to be flush with the start edge of the grid container
+- `end` - aligns the grid to be flush with the end edge of the grid container
+- `center` - aligns the grid in the center of the grid container
+- `stretch` - resizes the grid items to allow the grid to fill the full height of the grid container
+- `space-around` - places an even amount of space between each grid item, with half-sized spaces on the far ends
+- `space-between` - places an even amount of space between each grid item, with no space at the far ends
+- `space-evenly` - places an even amount of space between each grid item, including the far ends
 
 ## Flow
 
@@ -449,21 +579,29 @@ Values:
 
 <Preview>
   Row
-  <Story name="grid-auto-flow-row" >
-    <Grid  gridAutoFlow="row" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} >1</Box>
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} >2</Box>
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} >3</Box>
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} >4</Box>
+  <Story name="grid-auto-flow-row">
+    <Grid
+      gridAutoFlow="row"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox>2</GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
     </Grid>
   </Story>
   Column
-  <Story name="grid-auto-flow-columnrow" >
-    <Grid gridAutoFlow="column" gridTemplateColumns="50px 50px" gridTemplateRows="50px 50px">
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[200]} >1</Box>
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[300]} >2</Box>
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[400]} >3</Box>
-      <Box minWidth="25px" minHeight="25px" border="1px solid grey" bgcolor={colors.blue[500]} >4</Box>
+  <Story name="grid-auto-flow-columnrow">
+    <Grid
+      gridAutoFlow="column"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox>2</GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
     </Grid>
   </Story>
 </Preview>
@@ -485,13 +623,23 @@ Values:
 - `auto` - indicates auto-placement, an automatic span, or a default span of one
 
 <Preview>
-  <Story name="coverage" >
-    <Grid gridTemplateColumns="50px 50px 50px 50px" gridTemplateRows="50px 50px 50px 50px">
-      <Box  border="1px solid grey" bgcolor={colors.blue[200]} >1</Box>
-      <Box  gridColumnStart="3" gridColumnEnd="5" gridRowStart="1" gridRowEnd="3" border="1px solid grey" bgcolor={colors.blue[300]} >2</Box>
-      <Box  border="1px solid grey" bgcolor={colors.blue[400]} >3</Box>
-      <Box  border="1px solid grey" bgcolor={colors.blue[500]} >4</Box>
-      <Box  border="1px solid grey" bgcolor={colors.blue[600]} >5</Box>
+  <Story name="coverage">
+    <Grid
+      gridTemplateColumns="50px 50px 50px 50px"
+      gridTemplateRows="50px 50px 50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox
+        gridColumnStart="3"
+        gridColumnEnd="5"
+        gridRowStart="1"
+        gridRowEnd="3"
+      >
+        2
+      </GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
+      <GridBox>5</GridBox>
     </Grid>
   </Story>
 </Preview>
@@ -509,9 +657,9 @@ Values:
 
 If no end line value is declared, the item will span 1 track by default.
 
-## Item Area
+## Item Grid Area
 
-Gives an item a name so that it can be referenced by a template created with the `grid-template-areas` property.
+`gridArea` Gives an item a name so that it can be referenced by a template created with the `grid-template-areas` property.
 Alternatively, this property can be used as an even shorter shorthand for `grid-row-start + grid-column-start + grid-row-end + grid-column-end`.
 
 Values:
@@ -519,7 +667,20 @@ Values:
 `name` - a name of your choosing
 `row-start / column-start / row-end / column-end` - can be numbers or named lines
 
-See Above for example.
+<Preview>
+  <Story name="itemArea">
+    <Grid
+      gridTemplateColumns="50px 50px 50px 50px"
+      gridTemplateRows="50px 50px 50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox gridArea="1 / 3 / 3 / 5">2</GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
+      <GridBox>5</GridBox>
+    </Grid>
+  </Story>
+</Preview>
 
 ## Justify Self
 
@@ -548,7 +709,6 @@ Values:
 - `center` - aligns the grid item in the center of the cell
 - `stretch` - fills the whole height of the cell (this is the default)
 
-
 ## Place Self
 
 `place-self` sets both the align-self and justify-self properties in a single declaration.
@@ -556,20 +716,31 @@ Values:
 Values:
 
 - `auto` - The “default” alignment for the layout mode.
-- `align-self / justify-self` - The first value sets align-self, the second value justify-self. If the second value is omitted, the first value is assigned to both properties.
+- `start` - aligns the grid item to be flush with the start edge of the cell
+- `end` - aligns the grid item to be flush with the end edge of the cell
+- `center` - aligns the grid item in the center of the cell
+- `stretch` - fills the whole height of the cell (this is the default)
 
 <Preview>
-  <Story name="place-self" >
-    <Grid border="1px solid grey"  gridTemplateColumns="100px 100px" gridTemplateRows="100px 100px">
-      <Box placeSelf="center" width="25px" height="25px" border="1px solid grey" bgcolor={colors.blue[200]} />
-      <Box alignSelf="start" justifySelf="end" width="25px" height="25px" border="1px solid grey" bgcolor={colors.blue[300]} />
-      <Box justifySelf="start" alignSelf="end"  width="25px" height="25px" border="1px solid grey" bgcolor={colors.blue[400]} />
-      <Box placeSelf="stretch" border="1px solid grey" bgcolor={colors.blue[500]} />
+  <Story name="place-self">
+    <Grid
+      border="1px solid grey"
+      gridTemplateColumns="100px 100px"
+      gridTemplateRows="100px 100px"
+    >
+      <GridBox placeSelf="center" />
+      <GridBox alignSelf="start" justifySelf="end" />
+      <GridBox justifySelf="start" alignSelf="end" />
+      <GridBox placeSelf="stretch" />
     </Grid>
   </Story>
 </Preview>
 
 # Props
+
+The following shows main Grid props but type are simplified for display.
+
+<Props of={Gridcontainer} />
 
 Supports all usual div aria and html props and [Positioning props](/?path=/docs/design-system-positioning--page) for Spacing, Sizing and Flexbox.
 

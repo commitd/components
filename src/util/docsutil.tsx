@@ -441,35 +441,231 @@ interface DocSizingProps {
     | 'min-content'
 }
 
+export type ItemsPosition =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'stretch'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly'
+
 interface DocGridcontainerProps {
+  /**
+   * The `gridTemplateColumns` prop defines the line names and track sizing functions of the grid columns.
+   * Some values have special meanings: `auto`, `max-content, `min-content`, `none`.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-template-columns
+   * @default none
+   */
   gridTemplateColumns?: string
+  /**
+   * The `gridTemplateRows` prop defines the line names and track sizing functions of the grid rows.
+   * Some values have special meanings: `auto`, `max-content, `min-content`, `none`.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-template-rows
+   * @default none
+   */
   gridTemplateRows?: string
+  /**
+   * The `gridTemplateAreas` prop specifies named grid areas.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-template-areas
+   * @default none
+   */
   gridTemplateAreas?: string
+  /**
+   * The `gridTemplate` prop is a shorthand property for defining grid columns, rows, and areas.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-template
+   */
   gridTemplate?: string
-  gridColumnGap?: string
-  gridRowGap?: string
-  justifyItems?: string
-  alignItems?: string
+  /**
+   * The `columnGap` prop sets the size of the gap (gutter) between an element's columns.
+   *
+   * Uses the theme spacing to set the px value.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/column-gap
+   * @default normal
+   */
+  columnGap?: number
+  /**
+   * The `rowGap` prop sets the size of the gap (gutter) between an element's grid rows.
+   *
+   * Uses the theme spacing to set the px value.
+   * @see https://developer.mozilla.org/docs/Web/CSS/row-gap
+   * @default normal
+   */
+  rowGap?: number
+  /**
+   * The `gap` prop sets the gaps (gutters) between both the rows and columns.
+   * Note different to the css behavior, to specifying both use the separate props.
+   * Uses the theme spacing to set the px value.
+   *
+   */
+  gap?: number
+  /**
+   * The `justifyItems` prop defines the default `justifySelf` for all items of the box,
+   * giving them all a default way of justifying each box along the appropriate axis.
+   *
+   * "baseline" | "left" | "legacy" | "normal" | "right" | "stretch"
+   * @see https://developer.mozilla.org/docs/Web/CSS/justify-items
+   * @default legacy
+   */
+  justifyItems?: 'start' | 'end' | 'center' | 'stretch'
+  /**
+   * The `alignItems` prop sets the `alignSelf` value on all direct children as a group.
+   * The `alignSelf` property sets the alignment of an item within its containing block.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/align-items
+   * @default normal
+   */
+  alignItems?: 'start' | 'end' | 'center' | 'stretch'
+  /**
+   * The `placeItems` shorthand property sets the `alignItems` and `justifyItems` properties, respectively.
+   * If the second value is not set, the first value is also used for it.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/place-items
+   */
   placeItems?: string
-  justifyContent?: string
-  alignContent?: string
-  placeContent?: string
+  /**
+   * The `justifyContent` prop defines how the browser distributes space between and around
+   * content items along the main-axis of a flex container, and the inline axis of a grid container.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/justify-content
+   * @default normal
+   */
+  justifyContent?: ItemsPosition
+  /**
+   * The `alignContent` prop sets how the browser distributes space between and around content items along
+   *  the main-axis of a grid container.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/align-content
+   * @default normal
+   */
+  alignContent?: ItemsPosition
+  /**
+   * The `placeContent` prop is a shorthand for `alignContent` and `justifyContent`.
+   * It can be used in any layout method which utilizes both of these alignment values.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/place-content
+   * @default normal
+   */
+  placeContent?: ItemsPosition | ItemsPosition[]
+  /**
+   * The `gridAutoColumns` prop specifies the size of an implicitly-created grid column track.
+   * Special values "auto" | "max-content" | "min-content"
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-auto-columns
+   * @default auto
+   */
   gridAutoColumns?: string
+  /**
+   * The `gridAutoFlow` prop controls how the auto-placement algorithm works, specifying exactly
+   * how auto-placed items get flowed into the grid.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-auto-flow
+   * @default row
+   */
+  gridAutoFlow?: 'column' | 'dense' | 'row'
+  /**
+   * The `gridAutoRows` prop specifies the size of an implicitly-created grid row track.
+   * Special values "auto" | "max-content" | "min-content"
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-auto-rows
+   * @default auto
+   */
   gridAutoRows?: string
-  gridAutoFlow?: string
 }
 
+export type ItemPosition = 'start' | 'end' | 'center' | 'stretch'
+
 interface DocGriditemProps {
-  gridColumnStart?: string
+  /**
+   * The `gridColumnEnd` prop specifies a grid item’s end position within the grid column by
+   * contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying
+   * the block-end edge of its grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-column-end
+   * @default auto
+   */
   gridColumnEnd?: string
-  gridRowStart?: string
+  /**
+   * The `gridColumnStart` prop specifies a grid item’s start position within the grid column by
+   * contributing a line, a span, or nothing (automatic) to its grid placement. This start position
+   * defines the block-start edge of the grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-column-start
+   * @default auto
+   */
+  gridColumnStart?: string
+  /**
+   * The `gridRowEnd` prop specifies a grid item’s end position within the grid row by contributing
+   * a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-end
+   * edge of its grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-row-end
+   * @default auto
+   */
   gridRowEnd?: string
+  /**
+   * The `gridRowStart` prop specifies a grid item’s start position within the grid row by
+   * contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying
+   * the inline-start edge of its grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-row-start
+   * @default auto
+   */
+  gridRowStart?: string
+  /**
+   * The `gridColumn` prop is a shorthand property for `gridColumnStart` and `gridColumnEnd`
+   * specifying a grid item's size and location within the grid column by contributing a line,
+   * a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start
+   * and inline-end edge of its grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-column
+   */
   gridColumn?: string
+  /**
+   * The `gridRow` prop is a shorthand property for `gridRowStart` and `gridRowEnd` specifying a
+   * grid item’s size and location within the grid row by contributing a line, a span, or nothing
+   * (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of
+   * its grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-row
+   */
   gridRow?: string
+  /**
+   * The `gridArea` prop is a shorthand property for `gridRowStart`, `gridColumnStart`, `gridRowEnd` and `gridColumnEnd`,
+   *  specifying a grid item’s size and location within the grid row by contributing a line, a span,
+   * or nothing (automatic) to its grid placement, thereby specifying the edges of its grid area.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/grid-area
+   */
   gridArea?: string
-  justifySelf?: string
-  alignSelf?: string
-  placeSelf?: string
+  /**
+   * The `justifySelf` prop set the way a box is justified inside its alignment container along the
+   * appropriate axis.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/justify-self
+   * @default auto
+   */
+  justifySelf?: ItemPosition
+  /**
+   * The `alignSelf` CSS property aligns flex items of the current flex line overriding the `align-items` value. If any of the item's cross-axis margin is set to `auto`, then `align-self` is ignored. In Grid layout `align-self` aligns the item inside the grid area.
+   *
+   * @default auto
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/align-self
+   */
+  alignSelf?: ItemPosition
+  /**
+   * The `placeSelf` prop is a shorthand property sets both the `alignSelf` and `justifySelf` properties.
+   * The first value is the `alignSelf` property value, the second the `justifySelf` one.
+   * If the second value is not present, the first value is also used for it.
+   *
+   * @see https://developer.mozilla.org/docs/Web/CSS/place-self
+   */
+  placeSelf?: ItemPosition | ItemPosition[]
 }
 
 // We add back the original props, incase there are any changes that are not documented.

@@ -1,5 +1,7 @@
 import { style, compose, PropsFor, StyleFunction } from '@material-ui/system'
-type SimpleStyleFunction<PropKey extends keyof any> = StyleFunction<Partial<Record<PropKey, any>>>;
+type SimpleStyleFunction<PropKey extends keyof any> = StyleFunction<
+  Partial<Record<PropKey, any>>
+>
 
 export const gridColumnStart = style({
   prop: 'gridColumnStart'
@@ -42,16 +44,16 @@ export const placeSelf = style({
 })
 
 export const griditem: SimpleStyleFunction<
-| 'gridColumnStart'
-| 'gridColumnEnd'
-| 'gridRowStart'
-| 'gridRowEnd'
-| 'gridColumn'
-| 'gridRow'
-| 'gridArea'
-| 'justifySelf'
-| 'alignSelf'
-| 'placeSelf'
+  | 'gridColumnStart'
+  | 'gridColumnEnd'
+  | 'gridRowStart'
+  | 'gridRowEnd'
+  | 'gridColumn'
+  | 'gridRow'
+  | 'gridArea'
+  | 'justifySelf'
+  | 'alignSelf'
+  | 'placeSelf'
 > = compose(
   gridColumnStart,
   gridColumnEnd,
@@ -65,5 +67,4 @@ export const griditem: SimpleStyleFunction<
   placeSelf
 )
 
-export type GriditemProps = PropsFor<typeof griditem>;
-
+export type GriditemProps = PropsFor<typeof griditem>

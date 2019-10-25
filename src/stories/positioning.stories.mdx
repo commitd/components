@@ -1,6 +1,6 @@
 import { Meta, Props, Preview } from '@storybook/addon-docs/blocks'
 import { Box, Flex, colors } from '../'
-import { Spacing, Display, Flexbox, Sizing } from '../util/docsutil'
+import { Spacing, Display, Flexbox, Sizing, Griditem } from '../util/docsutil'
 
 <Meta title="Design System|Positioning" parameters={{ order: 5 }} />
 
@@ -92,7 +92,7 @@ The Flexbox props allow the declaration of CSS controlling layout according to t
 
 <Props of={Flexbox} />
 
-For example of use see the [Flex page](/?path=/docs/components-flex--row).
+For example of use see the [Flex page](/?path=/docs/components-flex--default-story).
 
 ## Spacing Props
 
@@ -155,3 +155,11 @@ Where the 2 center boxes have sizing:
 <Box width={300} height={100} />
 <Box width={1 / 2} height={50} />
 ```
+
+## Griditem Props
+
+The Grid item props allow the declaration of CSS controlling layout according to the grid [specification](https://www.w3.org/TR/css-grid-1/).
+
+<Props of={Griditem} />
+
+For example of use see the [Grid page](/?path=/docs/components-grid--default-story).

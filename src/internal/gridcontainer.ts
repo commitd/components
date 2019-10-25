@@ -1,5 +1,7 @@
 import { style, compose, PropsFor, StyleFunction } from '@material-ui/system'
-type SimpleStyleFunction<PropKey extends keyof any> = StyleFunction<Partial<Record<PropKey, any>>>;
+type SimpleStyleFunction<PropKey extends keyof any> = StyleFunction<
+  Partial<Record<PropKey, any>>
+>
 
 export const gridTemplateColumns = style({
   prop: 'gridTemplateColumns'
@@ -17,19 +19,25 @@ export const gridTemplate = style({
   prop: 'gridTemplate'
 })
 
-export const gridColumnGap = style({
-  prop: 'gridColumnGap',
-  themeKey: 'spacing'
+export const columnGap = style({
+  prop: 'columnGap',
+  themeKey: 'spacing',
+  // although grid-column-gap is deprecated in favor of column-gap seems to error in react
+  cssProperty: 'grid-column-gap'
 })
 
-export const gridRowGap = style({
-  prop: 'gridRowGap',
-  themeKey: 'spacing'
+export const rowGap = style({
+  prop: 'rowGap',
+  themeKey: 'spacing',
+  // although grid-row-gap is deprecated in favor of row-gap seems to error in react
+  cssProperty: 'grid-row-gap'
 })
 
-export const gridGap = style({
-  prop: 'gridGap',
-  themeKey: 'spacing'
+export const gap = style({
+  prop: 'gap',
+  themeKey: 'spacing',
+  // although grid-gap is deprecated in favor of gap seems to error in react
+  cssProperty: 'grid-gap'
 })
 
 export const justifyItems = style({
@@ -69,29 +77,30 @@ export const gridAutoFlow = style({
 })
 
 export const gridcontainer: SimpleStyleFunction<
-| 'gridTemplateColumns'
-| 'gridTemplateRows'
-| 'gridTemplateAreas'
-| 'gridTemplate'
-| 'gridColumnGap'
-| 'gridRowGap'
-| 'justifyItems'
-| 'alignItems'
-| 'placeItems'
-| 'justifyContent'
-| 'alignContent'
-| 'placeContent'
-| 'gridAutoColumns'
-| 'gridAutoRows'
-| 'gridAutoFlow'
+  | 'gridTemplateColumns'
+  | 'gridTemplateRows'
+  | 'gridTemplateAreas'
+  | 'gridTemplate'
+  | 'columnGap'
+  | 'rowGap'
+  | 'gap'
+  | 'justifyItems'
+  | 'alignItems'
+  | 'placeItems'
+  | 'justifyContent'
+  | 'alignContent'
+  | 'placeContent'
+  | 'gridAutoColumns'
+  | 'gridAutoRows'
+  | 'gridAutoFlow'
 > = compose(
   gridTemplateColumns,
   gridTemplateRows,
   gridTemplateAreas,
   gridTemplate,
-  gridColumnGap,
-  gridRowGap,
-  gridGap,
+  columnGap,
+  rowGap,
+  gap,
   justifyItems,
   alignItems,
   placeItems,
@@ -103,4 +112,4 @@ export const gridcontainer: SimpleStyleFunction<
   gridAutoFlow
 )
 
-export type GridcontinerProps = PropsFor<typeof gridcontainer>;
+export type GridcontinerProps = PropsFor<typeof gridcontainer>
