@@ -79,6 +79,9 @@ export type FormProps = FormProps
 export { FormControl } from './formcontrol/FormControl'
 import { FormControlProps } from './formcontrol/FormControl'
 export type FormControlProps = FormControlProps
+export { Grid } from './grid/Grid'
+import { GridProps } from './grid/Grid'
+export type GridProps = GridProps
 export { Heading } from './typography/Heading'
 import { HeadingProps } from './typography/Heading'
 export type HeadingProps = HeadingProps

@@ -28,49 +28,53 @@ Full palletes back the main colours and are keyed with `50, 100, 200, 300, 400, 
 
 Click to copy color to clipboard.
 
-<Colors name="brand" colors={theme.palettes.brand} />
-<Colors name="primary" colors={theme.palettes.primary} />
-<Colors name="secondary" colors={theme.palettes.secondary} />
-<Colors name="error" colors={theme.palettes.error} />
-<Colors name="warning" colors={theme.palettes.warning} />
-<Colors name="success" colors={theme.palettes.success} />
-<Colors name="info" colors={theme.palettes.info} />
-<Colors name="neutrals" colors={theme.palettes.neutral} />
+<ThemeProvider>
+  <Colors name="brand" colors={theme.palettes.brand} />
+  <Colors name="primary" colors={theme.palettes.primary} />
+  <Colors name="secondary" colors={theme.palettes.secondary} />
+  <Colors name="error" colors={theme.palettes.error} />
+  <Colors name="warning" colors={theme.palettes.warning} />
+  <Colors name="success" colors={theme.palettes.success} />
+  <Colors name="info" colors={theme.palettes.info} />
+  <Colors name="neutrals" colors={theme.palettes.neutral} />
+</ThemeProvider>
 
 ## Colours
 
 Don't refer to hex values in your code, like `#FFBB00` but instead use the theme colours above or you can also import
 `colors` directly and select from a wider set for, say charts and graphs that require more colours.
 
-<Colors name="red" colors={colors.red} />
-<Colors name="redVivid" colors={colors.redVivid} />
-<Colors name="orange" colors={colors.orange} />
-<Colors name="orangeVivid" colors={colors.orangeVivid} />
-<Colors name="yellow" colors={colors.yellow} />
-<Colors name="committedYellow" colors={colors.committedYellow} />
-<Colors name="yellowVivid" colors={colors.yellowVivid} />
-<Colors name="limeGreen" colors={colors.limeGreen} />
-<Colors name="limeGreenVivid" colors={colors.limeGreenVivid} />
-<Colors name="green" colors={colors.green} />
-<Colors name="greenVivid" colors={colors.greenVivid} />
-<Colors name="teal" colors={colors.teal} />
-<Colors name="tealVivid" colors={colors.tealVivid} />
-<Colors name="cyan" colors={colors.cyan} />
-<Colors name="cyanVivid" colors={colors.cyanVivid} />
-<Colors name="lightBlue" colors={colors.lightBlue} />
-<Colors name="lightBlueVivid" colors={colors.lightBlueVivid} />
-<Colors name="blue" colors={colors.blue} />
-<Colors name="blueVivid" colors={colors.blueVivid} />
-<Colors name="indigo" colors={colors.indigo} />
-<Colors name="indigoVivid" colors={colors.indigoVivid} />
-<Colors name="purple" colors={colors.purple} />
-<Colors name="purpleVivid" colors={colors.purpleVivid} />
-<Colors name="magenta" colors={colors.magenta} />
-<Colors name="magentaVivid" colors={colors.magentaVivid} />
-<Colors name="pink" colors={colors.pink} />
-<Colors name="pinkVivid" colors={colors.pinkVivid} />
-<Colors name="blueGrey" colors={colors.blueGrey} />
-<Colors name="coolGrey" colors={colors.coolGrey} />
-<Colors name="grey" colors={colors.grey} />
-<Colors name="warmGrey" colors={colors.warmGrey} />
-<Colors name="committedGrey" colors={colors.committedGrey} />
+<ThemeProvider>
+  <Colors name="red" colors={colors.red} />
+  <Colors name="redVivid" colors={colors.redVivid} />
+  <Colors name="orange" colors={colors.orange} />
+  <Colors name="orangeVivid" colors={colors.orangeVivid} />
+  <Colors name="yellow" colors={colors.yellow} />
+  <Colors name="committedYellow" colors={colors.committedYellow} />
+  <Colors name="yellowVivid" colors={colors.yellowVivid} />
+  <Colors name="limeGreen" colors={colors.limeGreen} />
+  <Colors name="limeGreenVivid" colors={colors.limeGreenVivid} />
+  <Colors name="green" colors={colors.green} />
+  <Colors name="greenVivid" colors={colors.greenVivid} />
+  <Colors name="teal" colors={colors.teal} />
+  <Colors name="tealVivid" colors={colors.tealVivid} />
+  <Colors name="cyan" colors={colors.cyan} />
+  <Colors name="cyanVivid" colors={colors.cyanVivid} />
+  <Colors name="lightBlue" colors={colors.lightBlue} />
+  <Colors name="lightBlueVivid" colors={colors.lightBlueVivid} />
+  <Colors name="blue" colors={colors.blue} />
+  <Colors name="blueVivid" colors={colors.blueVivid} />
+  <Colors name="indigo" colors={colors.indigo} />
+  <Colors name="indigoVivid" colors={colors.indigoVivid} />
+  <Colors name="purple" colors={colors.purple} />
+  <Colors name="purpleVivid" colors={colors.purpleVivid} />
+  <Colors name="magenta" colors={colors.magenta} />
+  <Colors name="magentaVivid" colors={colors.magentaVivid} />
+  <Colors name="pink" colors={colors.pink} />
+  <Colors name="pinkVivid" colors={colors.pinkVivid} />
+  <Colors name="blueGrey" colors={colors.blueGrey} />
+  <Colors name="coolGrey" colors={colors.coolGrey} />
+  <Colors name="grey" colors={colors.grey} />
+  <Colors name="warmGrey" colors={colors.warmGrey} />
+  <Colors name="committedGrey" colors={colors.committedGrey} />
+</ThemeProvider>

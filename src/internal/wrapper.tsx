@@ -12,12 +12,14 @@ import {
 } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
 import { getDisplayName } from './util'
+import { griditem, GriditemProps } from './griditem'
 import { omit, keep } from '../util'
 
 export type WithWrapperProps = SpacingProps &
   FlexboxProps &
   SizingProps &
-  DisplayProps
+  DisplayProps &
+  GriditemProps
 
 const keys = [
   'm',
@@ -74,7 +76,15 @@ const keys = [
   'overflow',
   'textOverflow',
   'visibility',
-  'whiteSpace'
+  'whiteSpace',
+  'gridColumnStart',
+  'gridColumnEnd',
+  'gridRowStart',
+  'gridRowEnd',
+  'gridColumn',
+  'gridRow',
+  'gridArea',
+  'placeSelf'
 ]
 
 const Wrapper = styled('div')(
@@ -82,7 +92,8 @@ const Wrapper = styled('div')(
     display,
     spacing,
     flexbox,
-    sizing
+    sizing,
+    griditem
   )
 )
 
