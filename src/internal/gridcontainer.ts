@@ -23,21 +23,21 @@ export const columnGap = style({
   prop: 'columnGap',
   themeKey: 'spacing',
   // although grid-column-gap is deprecated in favor of column-gap seems to error in react
-  cssProperty: 'grid-column-gap'
+  cssProperty: 'gridColumnGap'
 })
 
 export const rowGap = style({
   prop: 'rowGap',
   themeKey: 'spacing',
   // although grid-row-gap is deprecated in favor of row-gap seems to error in react
-  cssProperty: 'grid-row-gap'
+  cssProperty: 'gridRowGap'
 })
 
 export const gap = style({
   prop: 'gap',
   themeKey: 'spacing',
   // although grid-gap is deprecated in favor of gap seems to error in react
-  cssProperty: 'grid-gap'
+  cssProperty: 'gridGap'
 })
 
 export const justifyItems = style({
