@@ -46,4 +46,4 @@ Pull requests go through CI checks using Drone. Merged pull requests to master u
 
 ## License
 
-© [Committed Software](https://github.com/commitd)
+[MIT](/LICENSE) - © Committed Software 2019 https://committed.io

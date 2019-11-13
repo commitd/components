@@ -3,7 +3,7 @@
   "version": "0.0.19",
   "description": "Committed Component Library",
   "author": "Committed",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false,
   "repository": "git://github.com/commitd/components.git",
   "main": "dist/index.js",
