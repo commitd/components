@@ -108,11 +108,6 @@ export const light: ThemeOptions = {
       dark: palettes.brand[400],
       contrastText: palettes.primary[500]
     },
-    // secondary: {
-    //   light: palettes.secondary[300],
-    //   main: palettes.secondary[500],
-    //   dark: palettes.secondary[700]
-    // },
     error: palettes.error,
     success: {
       light: palettes.success[300],
@@ -164,7 +159,25 @@ export const light: ThemeOptions = {
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
-    fontWeightBold: 700
+    fontWeightBold: 700,
+    h1: {
+      fontSize: fonts.sizes[5]
+    },
+    h2: {
+      fontSize: fonts.sizes[4]
+    },
+    h3: {
+      fontSize: fonts.sizes[3]
+    },
+    h4: {
+      fontSize: fonts.sizes[2]
+    },
+    h5: {
+      fontSize: fonts.sizes[1]
+    },
+    h6: {
+      fontSize: fonts.sizes[0]
+    }
   },
   shape: {
     borderRadius: 2
