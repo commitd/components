@@ -1,4 +1,4 @@
-import { Link, Paragraph } from '../../'
+import { Link, Paragraph, Typography } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { LinkDocs } from './Link'
 
@@ -15,12 +15,12 @@ A Link is an anchor element with extra styleing options.
     <Paragraph>
       <Link href="javascript:;">Link</Link>{' '}
       <Link href="javascript:;" color="inherit">
-        {'color="inherit"'}
+        color="inherit"
       </Link>{' '}
-      <Link href="javascript:;" variant="body2">
-        {'variant="body2"'}
+      <Link href="javascript:;">
+        <Typography variant="body2">variant="body2"</Typography>
       </Link>{' '}
-      <Link href="http://committed.io" target="_blank" variant="body2">
+      <Link href="http://committed.io" target="_blank">
         External
       </Link>
     </Paragraph>
@@ -33,6 +33,39 @@ When you use `target="_blank"` with Links, we set `rel="noopener"` when linking 
 this prevents the new page from being able to access the `window.opener` property and ensures it runs in a separate process.
 Without this, the target page can potentially redirect your page to a malicious URL. This can be overridded
 (say for `noreferrer` which additionally removes the the referrer header) by supplying a `rel` prop.
+
+## Variants
+
+### Clear
+
+For when a link need to be applied to a separately styled element
+
+<Preview>
+  <Story name="clear">
+    <Paragraph>
+      <Link variant="clear" href="javascript:;">
+        Link
+      </Link>
+    </Paragraph>
+  </Story>
+</Preview>
+
+### Styled
+
+For when a link need to be applied to a separately styled element
+
+<Preview>
+  <Story name="styled">
+    <Paragraph>
+      <Link variant="styled" href="#link">
+        Internal
+      </Link>{' '}
+      <Link variant="styled" href="http://committed.io">
+        External
+      </Link>
+    </Paragraph>
+  </Story>
+</Preview>
 
 ## Props
 
