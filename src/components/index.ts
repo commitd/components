@@ -40,6 +40,7 @@ export type CheckboxProps = CheckboxProps
 export { Chip } from './chip/Chip'
 import { ChipProps } from './chip/Chip'
 export type ChipProps = ChipProps
+export { CodeStyle } from './codestyle/CodeStyle'
 export { Column } from './flex/Flex'
 import { ColumnProps } from './flex/Flex'
 export type ColumnProps = ColumnProps
