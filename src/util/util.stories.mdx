@@ -1,0 +1,31 @@
+import { copyToClipboard } from '../'
+import { Button } from '../components'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+
+<Meta title="Design System|Utils" parameters={{ order: 8 }} />
+
+# Utilities
+
+We collect some utilites, none components, that may be useful.
+
+## Copy to clipboard
+
+A utility function to support copy to clipboard functionality, as used in [colors](/?path=/docs/design-system-colour--page) and [icons](/?path=/docs/components-icons--default-story).
+
+<Preview>
+  <Story name="copy">
+    <Button
+      color="primary"
+      onClick={() => {
+        copyToClipboard('Copied')
+      }}
+    >
+      Copy
+    </Button>
+  </Story>
+</Preview>
+
+## mdx
+
+The `mdx` object has a `components` object for use in [MDX](https://mdxjs.com/) rendering. We also export all components
+in the `shortcode` variable to support quick access in MDX.
