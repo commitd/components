@@ -57,34 +57,20 @@ export type Components = {
 }
 
 export const components: Components = {
-  h1: Display.d1,
-  h2: Display.d2,
-  h3: Display.d3,
-  h4: Display.d4,
-  h5: Display.d5,
-  h6: Display.d6,
+  h1: props => <Display.d1 mb={[2, 3]} mt={[3, 4]} {...props} />,
+  h2: props => <Display.d2 mb={[2, 3]} mt={[2, 3]} {...props} />,
+  h3: props => <Display.d3 mb={[1, 2]} mt={[2, 3]} {...props} />,
+  h4: props => <Display.d4 mb={[1, 2]} mt={[2, 2]} {...props} />,
+  h5: props => <Display.d5 mb={1} mt={1} {...props} />,
+  h6: props => <Display.d6 mb={1} mt={1} {...props} />,
   thematicBreak: Divider,
   hr: Divider,
-  p: ({ children }) => <Text component="p">{children}</Text>,
-  em: ({ children }) => (
-    <Text component="p" italic>
-      {children}
-    </Text>
-  ),
-  strong: ({ children }) => (
-    <Text component="p" bold>
-      {children}
-    </Text>
-  ),
-  delete: ({ children }) => (
-    <s>
-      <Text component="p">{children}</Text>
-    </s>
-  ),
+  p: props => <Text {...props} />,
+  em: props => <Text {...props} italic />,
+  strong: props => <Text {...props} bold />,
+  delete: props => <Text {...props} strike />,
   a: ({ children, href, ...props }) => (
-    <Link variant="styled" href={href} {...props}>
-      {children}
-    </Link>
+    <Link variant="styled" href={href} {...props} />
   ),
   blockquote: props => (
     <Box
