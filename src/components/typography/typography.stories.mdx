@@ -9,6 +9,7 @@ import {
   Display,
   Monospace,
   Flex,
+  Column,
   Box
 } from '../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
@@ -30,7 +31,7 @@ Shorthands below.
 
 <Preview>
   <Story name="typography">
-    <Flex flexDirection="column">
+    <Column>
       <Typography variant="h1" gutterBottom>
         h1. Heading
       </Typography>
@@ -75,7 +76,7 @@ Shorthands below.
       <Typography variant="caption" display="block" gutterBottom>
         caption text
       </Typography>
-    </Flex>
+    </Column>
   </Story>
 </Preview>
 
@@ -88,14 +89,14 @@ fontSizes array, `fontSize={[3,4,5]}`.
 
 <Preview>
   <Story name="heading">
-    <Flex flexDirection="column">
+    <Column>
       <Heading.h1>Heading 1</Heading.h1>
       <Heading.h2>Heading 2</Heading.h2>
       <Heading.h3>Heading 3</Heading.h3>
       <Heading.h4>Heading 4</Heading.h4>
       <Heading.h5>Heading 5</Heading.h5>
       <Heading.h6>Heading 6</Heading.h6>
-    </Flex>
+    </Column>
   </Story>
 </Preview>
 
@@ -105,7 +106,7 @@ A style is supplied for subheading, the layout is dependent on requirements.
 
 <Preview>
   <Story name="subheading">
-    <Flex flexDirection="column">
+    <Column>
       <Heading.h1>Heading 1</Heading.h1>
       <Subheading.h1>Subheading 1</Subheading.h1>
       <Heading.h2>Heading 2</Heading.h2>
@@ -116,7 +117,7 @@ A style is supplied for subheading, the layout is dependent on requirements.
       <Subheading.h4>Subheading 4</Subheading.h4>
       <Heading.h5>Heading 5</Heading.h5>
       <Subheading.h5>Subheading 5</Subheading.h5>
-    </Flex>
+    </Column>
   </Story>
 </Preview>
 
@@ -131,7 +132,7 @@ A sizing scale is provided to customise the size:
 
 <Preview>
   <Story name="size">
-    <Flex flexDirection="column">
+    <Column>
       <Typography fontSize={-2}>Size -2</Typography>
       <Typography fontSize={-1}>Size -1</Typography>
       <Typography fontSize={0}>Size 0 (Default)</Typography>
@@ -141,7 +142,7 @@ A sizing scale is provided to customise the size:
       <Typography fontSize={4}>Size 4</Typography>
       <Typography fontSize={5}>Size 5</Typography>
       <Typography fontSize={6}>Size 6</Typography>
-    </Flex>
+    </Column>
   </Story>
 </Preview>
 
@@ -151,11 +152,11 @@ The `align` prop can be used to set the text alignment.
 
 <Preview>
   <Story name="alignment">
-    <Flex flexDirection="column">
+    <Column>
       <Text align="left">Left</Text>
       <Text align="center">Center</Text>
       <Text align="right">Right</Text>
-    </Flex>
+    </Column>
   </Story>
 </Preview>
 
@@ -168,19 +169,19 @@ Examples are shown below.
   <Story name="variations">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
-        <Typography light={true}>Light</Typography>
+        <Typography light>Light</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Typography bold={true}>Bold</Typography>
+        <Typography bold>Bold</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Typography upper={true}>uppercase</Typography>
+        <Typography upper>uppercase</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Typography capital={true}>capitals</Typography>
+        <Typography capital>capitals</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Typography italic={true}>Italic</Typography>
+        <Typography italic>Italic</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Typography color="primary">Primary</Typography>
@@ -189,17 +190,56 @@ Examples are shown below.
         <Typography color="secondary">Secondary</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Typography color="lighttext">gray</Typography>
+        <Typography color="textPrimary">textPrimary</Typography>
       </Box>
       <Box width={1 / 5} p={3}>
-        <Typography bold={true} italic={true} capital={true}>
-          italic
+        <Typography strike>strikethrough</Typography>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Typography strike bold italic capital>
+          multiple
         </Typography>
       </Box>
+    </Flex>
+  </Story>
+</Preview>
+
+To use alternative font style in only is certain places `Text` can be used and the font stack supplied in the [ThemeProvider](/components/?path=/docs/components-themeprovider--default-story).
+
+<Preview>
+  <Story name="text">
+    <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
-        <s>
-          <Typography>strikethrough</Typography>
-        </s>
+        <Text light>Light</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text bold>Bold</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text upper>uppercase</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text capital>capitals</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text italic>Italic</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text color="primary">Primary</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text color="secondary">Secondary</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text color="textSecondary">textSecondary</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text strike>strikethrough</Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text strike bold italic capital>
+          multiple
+        </Text>
       </Box>
     </Flex>
   </Story>
@@ -244,56 +284,14 @@ When you need a heading to stand out, consider using a display heading: a larger
 
 <Preview>
   <Story name="display">
-    <Flex flexDirection="column">
+    <Column>
       <Display.d1>Display 1</Display.d1>
       <Display.d2>Display 2</Display.d2>
       <Display.d3>Display 3</Display.d3>
       <Display.d4>Display 4</Display.d4>
       <Display.d5>Display 5</Display.d5>
       <Display.d6>Display 6</Display.d6>
-    </Flex>
-  </Story>
-</Preview>
-
-### Text
-
-To use alternative font style in only is certain places `Text` can be used and the font stack supplied in the [ThemeProvider]().
-
-<Preview>
-  <Story name="text">
-    <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
-      <Box width={1 / 5} p={3}>
-        <Text>Text</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text light>Light</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text bold>Bold</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text upper>uppercase</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text capital>capitals</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text italic>Italic</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text color="lighttext">gray</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Text bold italic capital>
-          italic
-        </Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <s>
-          <Text>strikethrough</Text>
-        </s>
-      </Box>
-    </Flex>
+    </Column>
   </Story>
 </Preview>
 

@@ -2,6 +2,7 @@ import * as allColors from './colors'
 import * as fonts from './fonts'
 import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
+import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
@@ -21,19 +22,19 @@ declare module '@material-ui/core/styles/createPalette' {
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
     fonts: {
-      default: string
-      text: string
-      display: string
-      mono: string
+      default: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      text: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      display: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      mono: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
     }
   }
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
     fonts?: {
-      default?: string
-      text?: string
-      display?: string
-      mono?: string
+      default?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      text?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      mono?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
     }
   }
 }

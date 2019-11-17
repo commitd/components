@@ -1,14 +1,6 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import {
-  ThemeProvider,
-  Box,
-  Heading,
-  Text,
-  Typography,
-  Display,
-  Monospace
-} from '../../'
-import { ThemeProviderDocs } from './ThemeProviderDocs'
+import { Box, Heading, Text, Typography, Display, Monospace } from '../'
+import { ThemeProvider, ThemeProviderDocs } from './ThemeProviderDocs'
 
 <Meta title="components|ThemeProvider" component={ThemeProvider} />
 
@@ -32,10 +24,10 @@ We reccommend using [typefaces](https://github.com/KyleAMathews/typefaces)
   <Story name="default">
     <ThemeProvider
       fonts={{
-        main: '"Helvetica Neue"',
-        text: '"Times New Roman"',
-        display: 'Arial, sans-serif',
-        mono: 'monospace'
+        main: { fontFamily: '"Helvetica Neue"' },
+        text: { fontFamily: '"Times New Roman"' },
+        display: { fontFamily: 'Arial, sans-serif', fontWeight: 700 },
+        mono: { fontFamily: 'monospace', fontWeight: 100 }
       }}
     >
       <Heading.h2>Heading</Heading.h2>

@@ -5,9 +5,7 @@ import { Typography, TypographyProps } from './Typography'
 
 export type DisplayProps = TypographyProps
 
-const displayFont = ({ theme }: { theme: Theme }) => ({
-  fontFamily: theme.fonts.display
-})
+const displayFont = ({ theme }: { theme: Theme }) => theme.fonts.display
 
 export const Display: {
   d1: React.ComponentType<DisplayProps>

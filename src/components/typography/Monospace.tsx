@@ -11,10 +11,15 @@ export const Monospace: React.ComponentType<MonospaceProps> = styled<
   React.ComponentType<MonospaceProps>
 >(({ variant, component, wrap, ...other }) => (
   <Typography {...other} variant="body1" component="pre" />
-))(({ theme, wrap }: { theme: Theme; wrap?: boolean }) => ({
-  fontFamily: theme.fonts.mono,
-  fontWeight: theme.typography.fontWeightMedium,
-  fontSize: theme.typography.body1.fontSize,
-  lineHeight: theme.typography.body1.fontSize,
-  whiteSpace: wrap ? 'pre-wrap' : 'pre'
-}))
+))(({ theme, wrap }: { theme: Theme; wrap?: boolean }) => {
+  return Object.assign(
+    {
+      fontWeight: theme.typography.fontWeightMedium,
+      fontSize: theme.typography.body1.fontSize,
+      lineHeight: theme.typography.body1.fontSize,
+      whiteSpace: wrap ? 'pre-wrap' : 'pre',
+      textTransform: 'uppercase'
+    },
+    theme.fonts.mono
+  )
+})

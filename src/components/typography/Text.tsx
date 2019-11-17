@@ -5,8 +5,6 @@ import { Theme } from '../../theme'
 
 export type TextProps = TypographyProps
 
-const textFont = ({ theme }: { theme: Theme }) => ({
-  fontFamily: theme.fonts.text
-})
+const textFont = ({ theme }: { theme: Theme }) => theme.fonts.text
 
 export const Text: ComponentType<TextProps> = styled(Typography)(textFont)

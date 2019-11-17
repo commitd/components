@@ -9,7 +9,7 @@ export const CodeStyle: FC = styled('div')(({ theme }: { theme: Theme }) => ({
   '& code[class*="language-"], & pre[class*="language-"]': {
     color: defaultText,
     background: 'none',
-    fontFamily: fonts.families.mono,
+    fontFamily: fonts.families.mono.fontFamily,
     textAlign: 'left',
     whiteSpace: 'pre',
     wordSpacing: 'normal',

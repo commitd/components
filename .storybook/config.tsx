@@ -13,8 +13,8 @@ const storybookTheme = create({
   colorSecondary: '#4098D7',
 
   // Typography
-  fontBase: fonts.families.system,
-  fontCode: fonts.families.mono,
+  fontBase: fonts.families.system.fontFamily,
+  fontCode: fonts.families.mono.fontFamily,
 
   brandTitle: 'Committed Components',
   brandUrl: '/',
