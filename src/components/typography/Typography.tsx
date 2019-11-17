@@ -26,6 +26,8 @@ export type ExtraTypographyProps = {
   light?: boolean
   /** Set true to use italic font  */
   italic?: boolean
+  /** Set to true to add strikethrough */
+  strike?: boolean
 }
 
 export type TypographyProps = BaseTypographyProps & ExtraTypographyProps
@@ -50,12 +52,22 @@ export const StyledTypography: ComponentType<TypographyProps> = styled(
   fontWeight: props => (props.light ? 100 : props.bold ? 500 : 300)
 })
 
-export const Typography: FC<TypographyProps> = (props: TypographyProps) => {
-  if (props.variant) {
-    return <BaseTypography {...props} />
-  } else {
-    return <StyledTypography {...props} />
-  }
+const Strike: FC<{ strike: boolean }> = ({ strike, children }) =>
+  strike ? <s>{children}</s> : <>{children}</>
+
+export const Typography: FC<TypographyProps> = ({
+  strike = false,
+  ...props
+}: TypographyProps) => {
+  return (
+    <Strike strike={strike}>
+      {props.variant ? (
+        <BaseTypography {...props} />
+      ) : (
+        <StyledTypography {...props} />
+      )}
+    </Strike>
+  )
 }
 
 export const Span: FC<SpanProps> = props => (
