@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import deepmerge from 'deepmerge'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
+import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import * as themes from './theme'
 import { families } from './fonts'
@@ -21,10 +22,10 @@ export interface ThemeProviderProps {
    *
    */
   fonts?: {
-    main?: object
-    text?: string
-    display?: string
-    mono?: string
+    main?: [P in keyof BaseCSSProperties]: BaseCSSProperties[P]
+    text?: [P in keyof BaseCSSProperties]: BaseCSSProperties[P]
+    display?: [P in keyof BaseCSSProperties]: BaseCSSProperties[P]
+    mono?: [P in keyof BaseCSSProperties]: BaseCSSProperties[P]
   }
   children?: React.ReactNode
 }
