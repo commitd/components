@@ -49,7 +49,7 @@ export const StyledTypography: ComponentType<TypographyProps> = styled(
   fontSize: props => fonts.sizes[props.fontSize ? props.fontSize : 0],
   textTransform: props =>
     props.upper ? 'uppercase' : props.capital ? 'capitalize' : 'none',
-  fontWeight: props => (props.light ? 100 : props.bold ? 500 : 300)
+  fontWeight: props => (props.light ? 200 : props.bold ? 700 : 400)
 })
 
 const Strike: FC<{ strike: boolean }> = ({ strike, children }) =>

@@ -22,19 +22,23 @@ declare module '@material-ui/core/styles/createPalette' {
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
     fonts: {
-      default: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      typography: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      heading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      subheading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
       text: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
       display: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      mono: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      monospace: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
     }
   }
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
     fonts?: {
-      default?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      typography?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      heading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      subheading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
       text?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
       display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      mono?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+      monospace?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
     }
   }
 }
@@ -83,12 +87,7 @@ const action = {
 }
 
 export const light: ThemeOptions = {
-  fonts: {
-    default: fonts.families.system,
-    text: fonts.families.main,
-    display: fonts.families.display,
-    mono: fonts.families.mono
-  },
+  fonts: fonts.defaultFonts,
   palette: {
     type: 'light',
     brand: {
@@ -137,22 +136,6 @@ export const light: ThemeOptions = {
     action,
     divider: 'rgba(0, 0, 0, 0.12)'
   },
-  props: {
-    MuiTypography: {
-      variantMapping: {
-        h1: 'h1',
-        h2: 'h2',
-        h3: 'h3',
-        h4: 'h4',
-        h5: 'h5',
-        h6: 'h6',
-        subtitle1: 'h2',
-        subtitle2: 'h3',
-        body1: 'p',
-        body2: 'span'
-      }
-    }
-  },
   spacing: spacing,
   typography: {
     htmlFontSize: 16,
@@ -178,6 +161,27 @@ export const light: ThemeOptions = {
     },
     h6: {
       fontSize: fonts.sizes[0]
+    },
+    subtitle1: {
+      fontSize: fonts.sizes[0]
+    },
+    subtitle2: {
+      fontSize: fonts.sizes[-1]
+    },
+    body1: {
+      fontSize: fonts.sizes[0]
+    },
+    body2: {
+      fontSize: fonts.sizes[1]
+    },
+    button: {
+      fontSize: fonts.sizes[0]
+    },
+    caption: {
+      fontSize: fonts.sizes[-1]
+    },
+    overline: {
+      fontSize: fonts.sizes[-1]
     }
   },
   shape: {

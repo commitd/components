@@ -17,9 +17,8 @@ export const Monospace: React.ComponentType<MonospaceProps> = styled<
       fontWeight: theme.typography.fontWeightMedium,
       fontSize: theme.typography.body1.fontSize,
       lineHeight: theme.typography.body1.fontSize,
-      whiteSpace: wrap ? 'pre-wrap' : 'pre',
-      textTransform: 'uppercase'
+      whiteSpace: wrap ? 'pre-wrap' : 'pre'
     },
-    theme.fonts.mono
+    theme.fonts.monospace
   )
 })

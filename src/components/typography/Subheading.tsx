@@ -1,7 +1,11 @@
 import React from 'react'
+import { styled } from '@material-ui/styles'
+import { Theme, fonts } from '../../theme'
 import { Typography, TypographyProps } from './Typography'
 
 export type SubheadingProps = TypographyProps
+
+const font = ({ theme }: { theme: Theme }) => theme.fonts.subheading
 
 export const Subheading: {
   h1: React.ComponentType<SubheadingProps>
@@ -10,19 +14,19 @@ export const Subheading: {
   h4: React.ComponentType<SubheadingProps>
   h5: React.ComponentType<SubheadingProps>
 } = {
-  h1: ({ variant, component, ...others }: SubheadingProps) => (
-    <Typography {...others} variant="subtitle1" component="h2" />
-  ),
-  h2: ({ variant, component, ...others }: SubheadingProps) => (
-    <Typography {...others} variant="subtitle1" component="h3" />
-  ),
-  h3: ({ variant, component, ...others }: SubheadingProps) => (
-    <Typography {...others} variant="subtitle1" component="h4" />
-  ),
-  h4: ({ variant, component, ...others }: SubheadingProps) => (
-    <Typography {...others} variant="subtitle1" component="h5" />
-  ),
-  h5: ({ variant, component, ...others }: SubheadingProps) => (
-    <Typography {...others} variant="subtitle1" component="h6" />
-  )
+  h1: styled(({ variant, component, ...others }: SubheadingProps) => (
+    <Typography {...others} variant="subtitle1" />
+  ))(font),
+  h2: styled(({ variant, component, ...others }: SubheadingProps) => (
+    <Typography {...others} variant="subtitle1" />
+  ))(font),
+  h3: styled(({ variant, component, ...others }: SubheadingProps) => (
+    <Typography {...others} variant="subtitle1" />
+  ))(Object.assign({ fontSize: fonts.sizes[-1] }, font)),
+  h4: styled(({ variant, component, ...others }: SubheadingProps) => (
+    <Typography {...others} variant="subtitle1" />
+  ))(Object.assign({ fontSize: fonts.sizes[-1] }, font)),
+  h5: styled(({ variant, component, ...others }: SubheadingProps) => (
+    <Typography {...others} variant="subtitle1" />
+  ))(Object.assign({ fontSize: fonts.sizes[-1] }, font))
 }

@@ -116,7 +116,12 @@ const Footer = () => (
 )
 
 const App = () => (
-  <C.ThemeProvider fonts={{ text: 'Lato', display: 'Arciform' }}>
+  <C.ThemeProvider
+    fonts={{
+      typography: { fontFamily: 'Lato' },
+      display: { fontFamily: 'Arciform' }
+    }}
+  >
     <C.Box position="relative" minHeight="100vh">
       <C.Box pb={footerHeight} bgcolor="background.default">
         <Header />

@@ -12,17 +12,18 @@ export const sizes = {
   [6]: '2.9856rem'
 }
 
-export const families = {
-  system: {
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"'
-  },
-  main: { fontFamily: 'Geneva, Tahoma, sans-serif' },
+const systemFont =
+  '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"'
+
+export const defaultFonts = {
+  typography: { fontFamily: systemFont },
+  heading: { fontFamily: systemFont },
+  subheading: { fontFamily: systemFont },
+  text: { fontFamily: systemFont },
   display: {
     fontFamily: '"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif'
   },
-  brand: { fontFamily: 'FreeSansBold' },
-  mono: {
+  monospace: {
     fontFamily:
       '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace'
   }
