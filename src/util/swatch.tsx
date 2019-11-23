@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Flex, Text } from '../'
+import { Box, Flex, Text } from '../components'
 import { copyToClipboard } from './copy'
 
 export interface SwatchProps {

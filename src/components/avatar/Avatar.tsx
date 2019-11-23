@@ -11,7 +11,7 @@ import {
   SpacingProps,
   FlexboxProps
 } from '@material-ui/system'
-import { fractionToPercent } from '../../util'
+import { fractionToPercent } from '../../util/transform'
 import { Theme } from '../../theme'
 
 const textColor = style<'color', Theme>({

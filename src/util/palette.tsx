@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { withTheme } from '@material-ui/styles'
 import { Color } from './colors'
-import { Flex, Box, Theme, Heading } from '../'
+import { Flex, Box, Heading } from '../components'
+import { Theme } from '../theme'
 
 export interface PaletteProps {
   name: string

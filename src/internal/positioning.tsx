@@ -9,7 +9,7 @@ import {
   SpacingProps
 } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
-import { griditem, GriditemProps } from './'
+import { griditem, GriditemProps } from './griditem'
 
 export type PositioningProps = SpacingProps &
   FlexboxProps &

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Tooltip, BoxProps } from '..'
+import { Box, Tooltip, BoxProps } from '../components'
 
 export const copyToClipboard = (text: string) => {
   console.log('Copied to clipboard:', text)

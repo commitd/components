@@ -1,6 +1,6 @@
 import React from 'react'
 import { Copy } from './copy'
-import { Flex, Box, Text, FlexProps } from '..'
+import { Flex, Box, Text, FlexProps } from '../components'
 
 export interface ColorsProps {
   name: string

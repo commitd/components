@@ -13,7 +13,7 @@ import {
 import { styled } from '@material-ui/styles'
 import { getDisplayName } from './util'
 import { griditem, GriditemProps } from './griditem'
-import { omit, keep } from '../util'
+import { omit, keep } from '../util/transform'
 
 export type WithWrapperProps = SpacingProps &
   FlexboxProps &

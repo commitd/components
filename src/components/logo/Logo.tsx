@@ -2,7 +2,7 @@ import { ComponentType, FC } from 'react'
 import { ReactComponent as LogoSvg } from './commit.svg'
 import { styled } from '@material-ui/styles'
 import { style, compose } from '@material-ui/system'
-import { fractionToPercent } from '../../util'
+import { fractionToPercent } from '../../util/transform'
 import { Theme } from '../../theme'
 
 export interface BaseLogoProps {

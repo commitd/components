@@ -1,7 +1,8 @@
 import React from 'react'
 import { copyToClipboard } from './copy'
 import { withTheme, styled } from '@material-ui/styles'
-import { Flex, Text, Theme, Heading } from '..'
+import { Flex, Text, Heading } from '../components'
+import { Theme } from '../theme'
 
 export interface ThemedProps {
   theme: Theme
