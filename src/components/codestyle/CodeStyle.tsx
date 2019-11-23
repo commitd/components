@@ -10,6 +10,7 @@ export const CodeStyle: FC = styled('div')(({ theme }: { theme: Theme }) => ({
     color: defaultText,
     background: 'none',
     fontFamily: theme.fonts.monospace.fontFamily,
+    fontSize: theme.typography.body1.fontSize,
     textAlign: 'left',
     whiteSpace: 'pre',
     wordSpacing: 'normal',
