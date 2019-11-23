@@ -99,5 +99,5 @@ export const components: Components = {
 }
 
 // export shortcodes for convenience
-import * as shortcodes from '../components'
-export { shortcodes }
+import * as allComponents from '../components'
+export const shortcodes = allComponents
