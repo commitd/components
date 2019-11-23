@@ -13,6 +13,8 @@ import {
 } from '../components/table/Table'
 import { theme } from '../theme'
 
+// https://mdxjs.com/getting-started#table-of-components
+
 const StripedTable = styled(Table)({
   '& tr:nth-child(even)': {
     backgroundColor: theme.palettes.neutral[100]
@@ -88,6 +90,11 @@ export const components: Components = {
   ),
   th: ({ align, ...props }: any) => (
     <TableCell align={align ? align : 'left'} {...props} />
+  ),
+  li: props => (
+    <li>
+      <Text {...props} />
+    </li>
   )
 }
 
