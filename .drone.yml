@@ -33,7 +33,7 @@ steps:
       GH_TOKEN:
         from_secret: github_token
     commands:
-      - yarn publish
+      - npm publish --access public
       - yarn deploy-storybook --ci
     when:
       ref:
