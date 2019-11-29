@@ -9,7 +9,7 @@ For documentation see https://committed.software/components
 ## Install
 
 ```bash
-yarn add @commitd/components
+yarn add @committed/components
 ```
 
 ## Usage
@@ -17,11 +17,11 @@ yarn add @commitd/components
 ```tsx
 import * as React from 'react'
 
-import { CommitdComponent } from '@commitd/components'
+import { Component } from '@committed/components'
 
 class Example extends React.Component {
   render() {
-    return <CommitdComponent />
+    return <Component />
   }
 }
 ```

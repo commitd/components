@@ -4,11 +4,10 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Getting Started
 
-Ensure you have setup access to the github @commitd packages, by following these [instructions](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry).
 Install the design system and dependencies in your application
 
 ```sh
-yarn add @commitd/components @material-ui/core @material-ui/icons
+yarn add @committed/components @material-ui/core @material-ui/icons
 ```
 
 ## ThemeProvider
@@ -19,7 +18,7 @@ This should only be included once in your application.
 
 ```jsx
 import React from 'react'
-import { ThemeProvider } from '@commitd/components'
+import { ThemeProvider } from '@committed/components'
 import AppRoot from './AppRoot'
 
 class App extends React.Component {
@@ -39,7 +38,7 @@ Import and use the design system UI components in your application.
 
 ```jsx
 import React from 'react'
-import { Box, Text } from '@commitd/components'
+import { Box, Text } from '@committed/components'
 
 const AppRoot = props => (
   <Box p={3}>
