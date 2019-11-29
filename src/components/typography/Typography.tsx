@@ -4,7 +4,7 @@ import MaterialTypography, {
   TypographyProps as MaterialTypographyProps
 } from '@material-ui/core/Typography'
 import { withPositioning, PositioningProps } from '../../internal'
-import { fonts } from '../../theme'
+import { fonts, Theme, theme } from '../../theme'
 
 type BaseTypographyProps = MaterialTypographyProps & PositioningProps
 const BaseTypography: ComponentType<BaseTypographyProps> = withPositioning(
@@ -30,27 +30,41 @@ export type ExtraTypographyProps = {
   strike?: boolean
 }
 
-export type TypographyProps = BaseTypographyProps & ExtraTypographyProps
+export type InternalTypographyProps = {
+  /** Select the font to use from the theme */
+  font?: theme.FontType
+}
+
+export type TypographyProps = BaseTypographyProps &
+  ExtraTypographyProps &
+  InternalTypographyProps
 export type SpanProps = Omit<TypographyProps, 'component'>
 export type ParagraphProps = Omit<TypographyProps, 'component'>
 
+export type Ref = HTMLElement
+
 export const StyledTypography: ComponentType<TypographyProps> = styled(
+  ({ italic, fontSize, upper, light, capital, bold, font, ...others }) => (
+    <BaseTypography {...others} />
+  )
+)(
   ({
+    theme,
     italic,
     fontSize,
     upper,
     light,
     capital,
     bold,
-    ...others
-  }: TypographyProps) => <BaseTypography {...others} />
-)({
-  fontStyle: props => (props.italic ? 'italic' : 'normal'),
-  fontSize: props => fonts.sizes[props.fontSize ? props.fontSize : 0],
-  textTransform: props =>
-    props.upper ? 'uppercase' : props.capital ? 'capitalize' : 'none',
-  fontWeight: props => (props.light ? 200 : props.bold ? 700 : 400)
-})
+    font = 'typography'
+  }: { theme: Theme } & TypographyProps) =>
+    Object.assign(theme.fonts[font], {
+      fontStyle: italic ? 'italic' : 'normal',
+      fontSize: fonts.sizes[fontSize ? fontSize : 0],
+      textTransform: upper ? 'uppercase' : capital ? 'capitalize' : 'none',
+      fontWeight: light ? 200 : bold ? 700 : 400
+    })
+)
 
 const Strike: FC<{ strike: boolean }> = ({ strike, children }) =>
   strike ? <s>{children}</s> : <>{children}</>
@@ -69,13 +83,6 @@ export const Typography: FC<TypographyProps> = ({
     </Strike>
   )
 }
-
-export const Span: FC<SpanProps> = props => (
-  <Typography {...props} component="span" />
-)
-export const Paragraph: FC<ParagraphProps> = props => (
-  <Typography {...props} component="p" />
-)
 
 // For documentation only
 export type TypographyDocsProps = Omit<

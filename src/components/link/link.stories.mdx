@@ -1,4 +1,4 @@
-import { Link, Paragraph, Typography } from '../../'
+import { Link, Typography } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { LinkDocs } from './Link'
 
@@ -12,7 +12,7 @@ A Link is an anchor element with extra styleing options.
 
 <Preview>
   <Story name="default">
-    <Paragraph>
+    <Typography>
       <Link href="javascript:;">Link</Link>{' '}
       <Link href="javascript:;" color="inherit">
         color="inherit"
@@ -23,7 +23,7 @@ A Link is an anchor element with extra styleing options.
       <Link href="http://committed.io" target="_blank">
         External
       </Link>
-    </Paragraph>
+    </Typography>
   </Story>
 </Preview>
 
@@ -42,11 +42,11 @@ For when a link need to be applied to a separately styled element
 
 <Preview>
   <Story name="clear">
-    <Paragraph>
+    <Typography>
       <Link variant="clear" href="javascript:;">
         Link
       </Link>
-    </Paragraph>
+    </Typography>
   </Story>
 </Preview>
 
@@ -56,14 +56,14 @@ For when a link need to be applied to a separately styled element
 
 <Preview>
   <Story name="styled">
-    <Paragraph>
+    <Typography>
       <Link variant="styled" href="#link">
         Internal
       </Link>{' '}
       <Link variant="styled" href="http://committed.io">
         External
       </Link>
-    </Paragraph>
+    </Typography>
   </Story>
 </Preview>
 

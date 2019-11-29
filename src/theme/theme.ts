@@ -19,6 +19,14 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
+export type FontType =
+  | 'typography'
+  | 'heading'
+  | 'subheading'
+  | 'text'
+  | 'display'
+  | 'monospace'
+
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
     fonts: {

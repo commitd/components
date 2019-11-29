@@ -65,12 +65,12 @@ export const components: Components = {
   h4: props => <Display.d4 mb={[1, 2]} mt={[2, 2]} {...props} />,
   h5: props => <Display.d5 mb={1} mt={1} {...props} />,
   h6: props => <Display.d6 mb={1} mt={1} {...props} />,
-  thematicBreak: Divider,
-  hr: Divider,
+  thematicBreak: props => <Divider my={3} {...props} />,
+  hr: props => <Divider my={2} {...props} />,
   p: props => <Text {...props} />,
-  em: props => <Text {...props} italic />,
-  strong: props => <Text {...props} bold />,
-  delete: props => <Text {...props} strike />,
+  em: props => <Text {...props} italic component="span" />,
+  strong: props => <Text {...props} bold component="span" />,
+  delete: props => <Text {...props} strike component="span" />,
   a: ({ children, href, ...props }) => (
     <Link variant="styled" href={href} {...props} />
   ),

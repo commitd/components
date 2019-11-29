@@ -1,10 +1,8 @@
-import { ComponentType } from 'react'
-import { styled } from '@material-ui/styles'
+import React, { ComponentType } from 'react'
 import { Typography, TypographyProps } from './Typography'
-import { Theme } from '../../theme'
 
 export type TextProps = TypographyProps
 
-const textFont = ({ theme }: { theme: Theme }) => theme.fonts.text
-
-export const Text: ComponentType<TextProps> = styled(Typography)(textFont)
+export const Text: ComponentType<TextProps> = props => (
+  <Typography {...props} font="text" />
+)

@@ -245,21 +245,114 @@ To use alternative font style in only is certain places `Text` can be used and t
   </Story>
 </Preview>
 
+To use these inline, add the span component.
+
+<Preview>
+  <Story name="inline text">
+    <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
+      <Box width={1 / 5} p={3}>
+        <Text>
+          This is{' '}
+          <Text component="span" light>
+            Light
+          </Text>{' '}
+          text
+        </Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Typography>
+          This is{' '}
+          <Typography component="span" bold>
+            Bold
+          </Typography>{' '}
+          text
+        </Typography>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text>
+          This is{' '}
+          <Text component="span" upper>
+            uppercase
+          </Text>{' '}
+          text
+        </Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Typography>
+          This is{' '}
+          <Typography component="span" capital>
+            capitals
+          </Typography>{' '}
+          text
+        </Typography>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text>
+          This is{' '}
+          <Text component="span" italic>
+            Italic
+          </Text>{' '}
+          text
+        </Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Typography>
+          This is{' '}
+          <Typography component="span" color="primary">
+            Primary
+          </Typography>{' '}
+          text
+        </Typography>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text>
+          This is{' '}
+          <Text component="span" color="secondary">
+            Secondary
+          </Text>{' '}
+          text
+        </Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Typography>
+          This is{' '}
+          <Typography component="span" color="textSecondary">
+            textSecondary
+          </Typography>{' '}
+          text
+        </Typography>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Text>
+          This is{' '}
+          <Text component="span" strike>
+            strikethrough
+          </Text>{' '}
+          text
+        </Text>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Typography>
+          This is{' '}
+          <Typography component="span" strike bold italic capital>
+            multiple
+          </Typography>{' '}
+          text
+        </Typography>
+      </Box>
+    </Flex>
+  </Story>
+</Preview>
+
 ### Shorthand
 
-Components are provided for `Span` (`span`) and `Paragraph` (`p`) elements. Also `Caption` and `Monospace` components.
+Components are for for font variant `Text`, `Caption` and `Monospace` components.
 
 <Preview>
   <Story name="shorthand">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
         <Text>Text</Text>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Paragraph>Paragraph</Paragraph>
-      </Box>
-      <Box width={1 / 5} p={3}>
-        <Span>Span</Span>
       </Box>
       <Box width={1 / 5} p={3}>
         <Caption>caption</Caption>
@@ -273,7 +366,7 @@ Components are provided for `Span` (`span`) and `Paragraph` (`p`) elements. Also
 
 ## Alternatives
 
-Two alternative typography components are provided to support the use of different fonts for headings `Display` and normal text `Text`.
+Two alternative typography components are provided to support the use of different fonts, for headings `Display` and normal text `Text`.
 The font stack for these can be customized in the `ThemeProvider`. These are intended for use on pages where a simgle font is not sufficient
 or engaging enough. Say a help page.
 

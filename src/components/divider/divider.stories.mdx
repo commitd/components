@@ -5,10 +5,9 @@ import {
   Button,
   Flex,
   Box,
-  Text,
+  Typography,
   Heading,
-  Icons,
-  Paragraph
+  Icons
 } from '../../'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { DividerDocs } from './Divider'
@@ -49,7 +48,7 @@ Use a divider to separate different groups of content.
         </Flex>
         <Divider variant="middle" />
         <Flex mt={2} mb={2} flexDirection="column">
-          <Text gutterBottom={true}>Select type</Text>
+          <Typography gutterBottom={true}>Select type</Typography>
           <Flex>
             <Chip clickable={false} m={1} color="primary" label="Soft" />
             <Chip clickable={true} m={1} label="Medium" />
@@ -73,17 +72,17 @@ There are different size variants to achieve different effects.
 <Preview>
   <Story name="variants">
     <Flex flexDirection="column">
-      <Text>Normal</Text>
+      <Typography>Normal</Typography>
       <Divider />
-      <Text>Lighter</Text>
+      <Typography>Lighter</Typography>
       <Divider light={true} />
-      <Text>Inset - primary</Text>
+      <Typography>Inset - primary</Typography>
       <Divider variant="inset" color="primary.main" />
-      <Text>Middle - secondary</Text>
+      <Typography>Middle - secondary</Typography>
       <Divider variant="middle" color="secondary.main" />
-      <Text>Full width - warning</Text>
+      <Typography>Full width - warning</Typography>
       <Divider variant="fullWidth" color="warning.main" />
-      <Text>End</Text>
+      <Typography>End</Typography>
     </Flex>
   </Story>
 </Preview>

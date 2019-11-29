@@ -137,9 +137,6 @@ export type MenuListProps = MenuListProps
 export { Monospace } from './typography/Monospace'
 import { MonospaceProps } from './typography/Monospace'
 export type MonospaceProps = MonospaceProps
-export { Paragraph } from './typography/Typography'
-import { ParagraphProps } from './typography/Typography'
-export type ParagraphProps = ParagraphProps
 export { Popover } from './popover/Popover'
 import { PopoverProps } from './popover/Popover'
 export type PopoverProps = PopoverProps
@@ -158,9 +155,6 @@ export type SelectProps = SelectProps
 export { Slider } from './slider/Slider'
 import { SliderProps } from './slider/Slider'
 export type SliderProps = SliderProps
-export { Span } from './typography/Typography'
-import { SpanProps } from './typography/Typography'
-export type SpanProps = SpanProps
 export { Subheading } from './typography/Subheading'
 import { SubheadingProps } from './typography/Subheading'
 export type SubheadingProps = SubheadingProps
