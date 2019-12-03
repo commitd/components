@@ -67,7 +67,7 @@ export const components: Components = {
   h6: props => <Display.d6 mb={1} mt={1} {...props} />,
   thematicBreak: props => <Divider my={3} {...props} />,
   hr: props => <Divider my={2} {...props} />,
-  p: props => <Text {...props} />,
+  p: props => <Text {...props} my={3} />,
   em: props => <Text {...props} italic component="span" />,
   strong: props => <Text {...props} bold component="span" />,
   delete: props => <Text {...props} strike component="span" />,
