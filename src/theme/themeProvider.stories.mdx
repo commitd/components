@@ -1,6 +1,8 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { Box, Heading, Text, Typography, Display, Monospace } from '../'
+import { Box, Button, Heading, Text, Typography, Display, Monospace } from '../'
 import { ThemeProvider, ThemeProviderDocs } from './ThemeProvider'
+import cyan from '@material-ui/core/colors/cyan'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 
 <Meta title="components|ThemeProvider" component={ThemeProvider} />
 
@@ -17,8 +19,9 @@ but others can be used if necessary.
 </ThemeProvider>
 ```
 
+
 Custom font stacks can be provided for different typography components. You may need to separately load your font, using imports, links or css; see [example](https://github.com/commitd/components/tree/master/example).
-We reccommend using [typefaces](https://github.com/KyleAMathews/typefaces)
+We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
 
 <Preview>
   <Story name="default">
@@ -35,6 +38,19 @@ We reccommend using [typefaces](https://github.com/KyleAMathews/typefaces)
       <Display.d1>Display</Display.d1>
       <Text>Text</Text>
       <Monospace>Monospace</Monospace>
+      <Button color="primary">Button</Button>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+Custom palette colours can be specified. For example, the primary, secondary or brand colors. Either variants of each shade must be specified, or a [material-ui color preset](https://material-ui.com/customization/color/#color) should be used.
+
+<Preview>
+  <Story name="colors">
+    <ThemeProvider
+      paletteColors={{primary: blueGrey, brand: cyan}}
+    >
+      <Button color="primary">Custom Colours</Button>
     </ThemeProvider>
   </Story>
 </Preview>

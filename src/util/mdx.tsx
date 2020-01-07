@@ -1,5 +1,4 @@
 import React from 'react'
-import { styled } from '@material-ui/styles'
 import { Box } from '../components/box/Box'
 import { Display } from '../components/typography/Display'
 import { Divider } from '../components/divider/Divider'
@@ -11,15 +10,10 @@ import {
   TableRow,
   TableCell
 } from '../components/table/Table'
-import { theme } from '../theme'
+import { Theme } from '../theme'
+import { makeStyles } from '@material-ui/core/styles'
 
 // https://mdxjs.com/getting-started#table-of-components
-
-const StripedTable = styled(Table)({
-  '& tr:nth-child(even)': {
-    backgroundColor: theme.palettes.neutral[100]
-  }
-})
 
 type ComponentType =
   | 'wrapper'
@@ -58,6 +52,18 @@ export type Components = {
   }>
 }
 
+const useStylesTable = makeStyles((theme: Theme) => ({
+  table: {
+    backgroundColor: theme.palette.grey[100]
+  }
+}))
+
+const useStylesBlockquote = makeStyles((theme: Theme) => ({
+  blockquote: {
+    borderLeft: `solid ${theme.spacing(2)}px ${theme.palette.brand[200]}`
+  }
+}))
+
 export const components: Components = {
   h1: props => <Display.d1 mb={[2, 3]} mt={[3, 4]} {...props} />,
   h2: props => <Display.d2 mb={[2, 3]} mt={[2, 3]} {...props} />,
@@ -74,15 +80,18 @@ export const components: Components = {
   a: ({ children, href, ...props }) => (
     <Link variant="styled" href={href} {...props} />
   ),
-  blockquote: props => (
-    <Box
-      borderLeft={`solid ${theme.spacing(2)}px ${theme.palettes.brand[200]}`}
-      pl={3}
-    >
-      <Text {...props} />
-    </Box>
-  ),
-  table: StripedTable,
+  blockquote: props => {
+    const classes = useStylesBlockquote()
+    return (
+      <Box className={classes.blockquote} pl={3}>
+        <Text {...props} />
+      </Box>
+    )
+  },
+  table: props => {
+    const classes = useStylesTable()
+    return <Table className={classes.table} {...props} />
+  },
   thead: TableHead,
   tr: TableRow,
   td: ({ align, ...props }: any) => (
