@@ -1,7 +1,6 @@
 import * as allColors from './colors'
 import * as fonts from './fonts'
 import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
-import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 
 declare module '@material-ui/core/styles/createPalette' {
@@ -27,6 +26,8 @@ export type FontType =
   | 'display'
   | 'monospace'
 
+export type PaletteColors = typeof defaultPaletteColors
+
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
     fonts: {
@@ -51,6 +52,15 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   }
 }
 
+declare module '@material-ui/core/styles/createPalette' {
+  interface Palette {
+    brand: PaletteColor
+    success: PaletteColor
+    warning: PaletteColor
+    info: PaletteColor
+  }
+}
+
 const addTransparency = (color: string) => `${color}88`
 
 export const spacing = (factor: number) => {
@@ -62,7 +72,7 @@ export const spacing = (factor: number) => {
   return [0, 4, 8, 16, 32, 64, 128][factor]
 }
 
-export const palettes = {
+export const defaultPaletteColors = {
   ...allColors,
   brand: allColors.committedYellow,
   primary: allColors.committedGrey,
@@ -74,16 +84,16 @@ export const palettes = {
   neutral: allColors.grey
 }
 
-export const palette = {
-  text: palettes.neutral[900]
-}
+export const createPalette = (paletteColors: PaletteColors) => ({
+  text: paletteColors.neutral[900]
+})
 
-const text = {
-  primary: palettes.neutral[800],
-  secondary: palettes.neutral[700],
-  disabled: palettes.neutral[500],
-  hint: palettes.neutral[500]
-}
+const createText = (paletteColors: PaletteColors) => ({
+  primary: paletteColors.neutral[800],
+  secondary: paletteColors.neutral[700],
+  disabled: paletteColors.neutral[500],
+  hint: paletteColors.neutral[500]
+})
 
 const action = {
   active: 'rgba(0, 0, 0, 0.54)',
@@ -94,384 +104,415 @@ const action = {
   disabledBackground: 'rgba(0, 0, 0, 0.12)'
 }
 
-export const light: ThemeOptions = {
-  fonts: fonts.defaultFonts,
-  palette: {
-    type: 'light',
-    brand: {
-      light: palettes.brand[300],
-      main: palettes.brand[500],
-      dark: palettes.brand[700],
-      contrastText: palette.text
-    },
-    primary: {
-      light: palettes.primary[400],
-      main: palettes.primary[600],
-      dark: palettes.primary[800],
-      contrastText: palettes.brand[500]
-    },
-    secondary: {
-      light: palettes.brand[50],
-      main: palettes.brand[200],
-      dark: palettes.brand[400],
-      contrastText: palettes.primary[500]
-    },
-    error: palettes.error,
-    success: {
-      light: palettes.success[300],
-      main: palettes.success[500],
-      dark: palettes.success[700],
-      contrastText: palette.text
-    },
-    warning: {
-      light: palettes.warning[200],
-      main: palettes.warning[400],
-      dark: palettes.warning[600],
-      contrastText: palette.text
-    },
-    info: {
-      light: palettes.info[100],
-      main: palettes.info[300],
-      dark: palettes.info[500],
-      contrastText: palette.text
-    },
-    background: {
-      default: palettes.neutral[50],
-      paper: 'white'
-    },
-    text,
-    grey: palettes.neutral,
-    action,
-    divider: 'rgba(0, 0, 0, 0.12)'
-  },
-  spacing: spacing,
-  typography: {
-    htmlFontSize: 16,
-    fontSize: 16,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-    h1: {
-      fontSize: fonts.sizes[5]
-    },
-    h2: {
-      fontSize: fonts.sizes[4]
-    },
-    h3: {
-      fontSize: fonts.sizes[3]
-    },
-    h4: {
-      fontSize: fonts.sizes[2]
-    },
-    h5: {
-      fontSize: fonts.sizes[1]
-    },
-    h6: {
-      fontSize: fonts.sizes[0]
-    },
-    subtitle1: {
-      fontSize: fonts.sizes[0]
-    },
-    subtitle2: {
-      fontSize: fonts.sizes[-1]
-    },
-    body1: {
-      fontSize: fonts.sizes[0]
-    },
-    body2: {
-      fontSize: fonts.sizes[1]
-    },
-    button: {
-      fontSize: fonts.sizes[0]
-    },
-    caption: {
-      fontSize: fonts.sizes[-1]
-    },
-    overline: {
-      fontSize: fonts.sizes[-1]
-    }
-  },
-  shape: {
-    borderRadius: 2
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        textTransform: 'none'
+export const createLightOptions = (paletteColors: PaletteColors) => {
+  const palette = createPalette(paletteColors)
+  const text = createText(paletteColors)
+  return {
+    fonts: fonts.defaultFonts,
+    palette: {
+      type: 'light',
+      brand: {
+        light: paletteColors.brand[300],
+        main: paletteColors.brand[500],
+        dark: paletteColors.brand[700],
+        contrastText: palette.text
       },
-      contained: {
-        '&:hover': {
-          backgroundColor: lighten(palettes.primary[300], action.hoverOpacity)
+      primary: {
+        light: paletteColors.primary[400],
+        main: paletteColors.primary[600],
+        dark: paletteColors.primary[800],
+        contrastText: paletteColors.brand[500]
+      },
+      secondary: {
+        light: paletteColors.brand[50],
+        main: paletteColors.brand[200],
+        dark: paletteColors.brand[400],
+        contrastText: paletteColors.primary[500]
+      },
+      error: paletteColors.error,
+      success: {
+        light: paletteColors.success[300],
+        main: paletteColors.success[500],
+        dark: paletteColors.success[700],
+        contrastText: palette.text
+      },
+      warning: {
+        light: paletteColors.warning[200],
+        main: paletteColors.warning[400],
+        dark: paletteColors.warning[600],
+        contrastText: palette.text
+      },
+      info: {
+        light: paletteColors.info[100],
+        main: paletteColors.info[300],
+        dark: paletteColors.info[500],
+        contrastText: palette.text
+      },
+      background: {
+        default: paletteColors.neutral[50],
+        paper: 'white'
+      },
+      text,
+      grey: paletteColors.neutral,
+      action,
+      divider: 'rgba(0, 0, 0, 0.12)'
+    },
+    spacing: spacing,
+    typography: {
+      htmlFontSize: 16,
+      fontSize: 16,
+      fontWeightLight: 300,
+      fontWeightRegular: 400,
+      fontWeightMedium: 500,
+      fontWeightBold: 700,
+      h1: {
+        fontSize: fonts.sizes[5]
+      },
+      h2: {
+        fontSize: fonts.sizes[4]
+      },
+      h3: {
+        fontSize: fonts.sizes[3]
+      },
+      h4: {
+        fontSize: fonts.sizes[2]
+      },
+      h5: {
+        fontSize: fonts.sizes[1]
+      },
+      h6: {
+        fontSize: fonts.sizes[0]
+      },
+      subtitle1: {
+        fontSize: fonts.sizes[0]
+      },
+      subtitle2: {
+        fontSize: fonts.sizes[-1]
+      },
+      body1: {
+        fontSize: fonts.sizes[0]
+      },
+      body2: {
+        fontSize: fonts.sizes[1]
+      },
+      button: {
+        fontSize: fonts.sizes[0]
+      },
+      caption: {
+        fontSize: fonts.sizes[-1]
+      },
+      overline: {
+        fontSize: fonts.sizes[-1]
+      }
+    },
+    shape: {
+      borderRadius: 2
+    },
+    overrides: {
+      MuiButton: {
+        root: {
+          textTransform: 'none'
         },
-        '&$disabled': {
-          color: addTransparency(text.primary),
-          backgroundColor: addTransparency(palettes.neutral[300])
-        }
-      },
-      containedPrimary: {
-        '&:hover': {
-          backgroundColor: lighten(palettes.primary[500], action.hoverOpacity)
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(palettes.primary[500]),
-          color: addTransparency(palettes.secondary[500])
-        }
-      },
-      containedSecondary: {
-        '&$disabled': {
-          backgroundColor: addTransparency(palettes.secondary[200]),
-          color: addTransparency(palettes.primary[500])
-        }
-      },
-      text: {
-        '&$disabled': {
-          color: addTransparency(text.primary)
-        }
-      },
-      textPrimary: {
-        color: palettes.primary[500],
-        '&:hover': {
-          backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.brand[500]
-        },
-        '&$disabled': {
-          color: addTransparency(palettes.primary[500])
-        }
-      },
-      textSecondary: {
-        color: palettes.brand[800],
-        '&:hover': {
-          backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.primary[500]
-        },
-        '&$disabled': {
-          color: addTransparency(palettes.brand[500])
-        }
-      },
-      outlined: {
-        '&$disabled': {
-          borderColor: addTransparency(palettes.neutral[500]),
-          color: addTransparency(palettes.neutral[200])
-        }
-      },
-      outlinedPrimary: {
-        backgroundColor: palettes.brand[100],
-        '&:hover': {
-          backgroundColor: palettes.brand[200]
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.brand[500]
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(palettes.brand[100]),
-          borderColor: addTransparency(palettes.primary[500]),
-          color: addTransparency(palettes.primary[500])
-        }
-      },
-      outlinedSecondary: {
-        backgroundColor: palettes.primary[400],
-        '&:hover': {
-          backgroundColor: lighten(palettes.primary[400], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.primary[500]
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(palettes.primary[400]),
-          borderColor: addTransparency(palettes.secondary[300]),
-          color: addTransparency(palettes.secondary[300])
-        }
-      },
-      disabled: {}
-    },
-    MuiCheckbox: {
-      root: {
-        color: palettes.neutral[500],
-        '&$disabled': {
-          color: addTransparency(palettes.neutral[500])
-        }
-      },
-      colorPrimary: {
-        color: palettes.primary[500],
-        '&$checked': {
-          color: palettes.primary[500],
+        contained: {
           '&:hover': {
-            backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+            backgroundColor: lighten(
+              paletteColors.primary[300],
+              action.hoverOpacity
+            )
+          },
+          '&$disabled': {
+            color: addTransparency(text.primary),
+            backgroundColor: addTransparency(paletteColors.neutral[300])
           }
         },
-        '& span:nth-of-type(2)': {
-          color: palettes.brand[500]
-        },
-        '&$disabled': {
-          color: addTransparency(palettes.primary[500])
-        }
-      },
-      colorSecondary: {
-        color: palettes.secondary[300],
-        '&$checked': {
-          color: palettes.secondary[300],
+        containedPrimary: {
           '&:hover': {
-            backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+            backgroundColor: lighten(
+              paletteColors.primary[500],
+              action.hoverOpacity
+            )
+          },
+          '&$disabled': {
+            backgroundColor: addTransparency(paletteColors.primary[500]),
+            color: addTransparency(paletteColors.secondary[500])
           }
         },
-        '& span:nth-of-type(2)': {
-          color: palettes.primary[500]
-        },
-        '&$disabled': {
-          color: addTransparency(palettes.secondary[300])
-        }
-      }
-    },
-    MuiCssBaseline: {
-      '@global': {
-        /* Disable auto-enlargement of small text in Safari */
-        textSizeAdjust: '100%',
-        /* Enable kerning and optional ligatures */
-        textRendering: 'optimizeLegibility',
-        /**
-         * Form elements render using OS defaults,
-         * so font-family inheritance must be specifically declared
-         */
-        'button, input, optgroup, select, textarea': {
-          fontFamily: 'inherit',
-          fontSize: 'inherit'
-        }
-      }
-    },
-    MuiDialog: {
-      paper: {
-        borderTop: `4px solid ${allColors.committedYellow[500]}`
-      }
-    },
-    MuiDivider: {
-      vertical: {
-        // 100% is the default, this doesn't seem to work so set to auto
-        height: 'auto'
-      }
-    },
-    MuiIconButton: {
-      colorPrimary: {
-        '&:hover': {
-          backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.brand[500]
-        }
-      },
-      colorSecondary: {
-        color: palettes.brand[800],
-        '&:hover': {
-          backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: palettes.primary[500]
-        }
-      }
-    },
-    MuiRadio: {
-      root: {
-        color: palettes.neutral[500],
-        '&$disabled': {
-          color: addTransparency(palettes.neutral[500])
-        }
-      },
-      colorPrimary: {
-        color: palettes.primary[500],
-        '&$checked': {
-          color: palettes.primary[500],
-          '&:hover': {
-            backgroundColor: fade(palettes.brand[500], action.hoverOpacity)
+        containedSecondary: {
+          '&$disabled': {
+            backgroundColor: addTransparency(paletteColors.secondary[200]),
+            color: addTransparency(paletteColors.primary[500])
           }
         },
-        '& span:nth-of-type(2)': {
-          color: palettes.brand[500]
+        text: {
+          '&$disabled': {
+            color: addTransparency(text.primary)
+          }
         },
-        '& svg:nth-of-type(2)': {
-          color: palettes.brand[500]
+        textPrimary: {
+          color: paletteColors.primary[500],
+          '&:hover': {
+            backgroundColor: fade(paletteColors.brand[500], action.hoverOpacity)
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.brand[500]
+          },
+          '&$disabled': {
+            color: addTransparency(paletteColors.primary[500])
+          }
         },
-        '&$disabled': {
-          color: addTransparency(palettes.primary[500]),
+        textSecondary: {
+          color: paletteColors.brand[800],
+          '&:hover': {
+            backgroundColor: fade(
+              paletteColors.primary[500],
+              action.hoverOpacity
+            )
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.primary[500]
+          },
+          '&$disabled': {
+            color: addTransparency(paletteColors.brand[500])
+          }
+        },
+        outlined: {
+          '&$disabled': {
+            borderColor: addTransparency(paletteColors.neutral[500]),
+            color: addTransparency(paletteColors.neutral[200])
+          }
+        },
+        outlinedPrimary: {
+          backgroundColor: paletteColors.brand[100],
+          '&:hover': {
+            backgroundColor: paletteColors.brand[200]
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.brand[500]
+          },
+          '&$disabled': {
+            backgroundColor: addTransparency(paletteColors.brand[100]),
+            borderColor: addTransparency(paletteColors.primary[500]),
+            color: addTransparency(paletteColors.primary[500])
+          }
+        },
+        outlinedSecondary: {
+          backgroundColor: paletteColors.primary[400],
+          '&:hover': {
+            backgroundColor: lighten(
+              paletteColors.primary[400],
+              action.hoverOpacity
+            )
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.primary[500]
+          },
+          '&$disabled': {
+            backgroundColor: addTransparency(paletteColors.primary[400]),
+            borderColor: addTransparency(paletteColors.secondary[300]),
+            color: addTransparency(paletteColors.secondary[300])
+          }
+        },
+        disabled: {}
+      },
+      MuiCheckbox: {
+        root: {
+          color: paletteColors.neutral[500],
+          '&$disabled': {
+            color: addTransparency(paletteColors.neutral[500])
+          }
+        },
+        colorPrimary: {
+          color: paletteColors.primary[500],
+          '&$checked': {
+            color: paletteColors.primary[500],
+            '&:hover': {
+              backgroundColor: fade(
+                paletteColors.brand[500],
+                action.hoverOpacity
+              )
+            }
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.brand[500]
+          },
+          '&$disabled': {
+            color: addTransparency(paletteColors.primary[500])
+          }
+        },
+        colorSecondary: {
+          color: paletteColors.secondary[300],
+          '&$checked': {
+            color: paletteColors.secondary[300],
+            '&:hover': {
+              backgroundColor: fade(
+                paletteColors.primary[500],
+                action.hoverOpacity
+              )
+            }
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.primary[500]
+          },
+          '&$disabled': {
+            color: addTransparency(paletteColors.secondary[300])
+          }
+        }
+      },
+      MuiCssBaseline: {
+        '@global': {
+          /* Disable auto-enlargement of small text in Safari */
+          textSizeAdjust: '100%',
+          /* Enable kerning and optional ligatures */
+          textRendering: 'optimizeLegibility',
+          /**
+           * Form elements render using OS defaults,
+           * so font-family inheritance must be specifically declared
+           */
+          'button, input, optgroup, select, textarea': {
+            fontFamily: 'inherit',
+            fontSize: 'inherit'
+          }
+        }
+      },
+      MuiDialog: {
+        paper: {
+          borderTop: `4px solid ${allColors.committedYellow[500]}`
+        }
+      },
+      MuiDivider: {
+        vertical: {
+          // 100% is the default, this doesn't seem to work so set to auto
+          height: 'auto'
+        }
+      },
+      MuiIconButton: {
+        colorPrimary: {
+          '&:hover': {
+            backgroundColor: fade(paletteColors.brand[500], action.hoverOpacity)
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.brand[500]
+          }
+        },
+        colorSecondary: {
+          color: paletteColors.brand[800],
+          '&:hover': {
+            backgroundColor: fade(
+              paletteColors.primary[500],
+              action.hoverOpacity
+            )
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.primary[500]
+          }
+        }
+      },
+      MuiRadio: {
+        root: {
+          color: paletteColors.neutral[500],
+          '&$disabled': {
+            color: addTransparency(paletteColors.neutral[500])
+          }
+        },
+        colorPrimary: {
+          color: paletteColors.primary[500],
+          '&$checked': {
+            color: paletteColors.primary[500],
+            '&:hover': {
+              backgroundColor: fade(
+                paletteColors.brand[500],
+                action.hoverOpacity
+              )
+            }
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.brand[500]
+          },
           '& svg:nth-of-type(2)': {
-            color: addTransparency(palettes.brand[500])
-          }
-        }
-      },
-      colorSecondary: {
-        color: palettes.secondary[300],
-        '&$checked': {
-          color: palettes.secondary[300],
-          '&:hover': {
-            backgroundColor: fade(palettes.primary[500], action.hoverOpacity)
+            color: paletteColors.brand[500]
+          },
+          '&$disabled': {
+            color: addTransparency(paletteColors.primary[500]),
+            '& svg:nth-of-type(2)': {
+              color: addTransparency(paletteColors.brand[500])
+            }
           }
         },
-        '& span:nth-of-type(2)': {
-          color: palettes.primary[500]
-        },
-        '& svg:nth-of-type(2)': {
-          color: palettes.primary[500]
-        },
-        '&$disabled': {
-          color: addTransparency(palettes.secondary[300]),
+        colorSecondary: {
+          color: paletteColors.secondary[300],
+          '&$checked': {
+            color: paletteColors.secondary[300],
+            '&:hover': {
+              backgroundColor: fade(
+                paletteColors.primary[500],
+                action.hoverOpacity
+              )
+            }
+          },
+          '& span:nth-of-type(2)': {
+            color: paletteColors.primary[500]
+          },
           '& svg:nth-of-type(2)': {
-            color: addTransparency(palettes.primary[500])
+            color: paletteColors.primary[500]
+          },
+          '&$disabled': {
+            color: addTransparency(paletteColors.secondary[300]),
+            '& svg:nth-of-type(2)': {
+              color: addTransparency(paletteColors.primary[500])
+            }
           }
         }
-      }
-    },
-    MuiSwitch: {
-      root: {
-        color: palettes.neutral[500],
-        '&$disabled': {
-          color: addTransparency(palettes.neutral[500])
+      },
+      MuiSwitch: {
+        root: {
+          color: paletteColors.neutral[500],
+          '&$disabled': {
+            color: addTransparency(paletteColors.neutral[500])
+          }
+        },
+        colorPrimary: {
+          '&$checked + $track': {
+            backgroundColor: paletteColors.brand[500]
+          }
         }
       },
-      colorPrimary: {
-        '&$checked + $track': {
-          backgroundColor: palettes.brand[500]
+      MuiTableHead: {
+        root: {
+          '& th': {
+            fontWeight: 'bold',
+            color: text.primary
+          },
+          borderBottom: `2px solid ${paletteColors.brand[500]}`
         }
-      }
-    },
-    MuiTableHead: {
-      root: {
-        '& th': {
-          fontWeight: 'bold',
-          color: text.primary
-        },
-        borderBottom: `2px solid ${palettes.brand[500]}`
-      }
-    },
-    MuiTableBody: {
-      root: {
-        '& tr:nth-child(even)': {
-          backgroundColor: palettes.neutral[100]
-        },
-        borderColor: palettes.neutral[100]
-      }
-    },
-    MuiTableCell: {
-      body: {
-        borderBottomColor: palettes.neutral[100]
-      }
-    },
-    MuiTableFooter: {
-      root: {
-        '& th,td': {
-          fontWeight: 'bold',
-          color: text.primary
-        },
-        borderTop: `2px solid ${palettes.brand[500]}`,
-        borderBottom: `2px solid ${palettes.brand[500]}`
-      }
-    },
-    MuiTabs: {
-      indicator: {
-        backgroundColor: palettes.brand[500],
-        height: '4px'
+      },
+      MuiTableBody: {
+        root: {
+          '& tr:nth-child(even)': {
+            backgroundColor: paletteColors.neutral[100]
+          },
+          borderColor: paletteColors.neutral[100]
+        }
+      },
+      MuiTableCell: {
+        body: {
+          borderBottomColor: paletteColors.neutral[100]
+        }
+      },
+      MuiTableFooter: {
+        root: {
+          '& th,td': {
+            fontWeight: 'bold',
+            color: text.primary
+          },
+          borderTop: `2px solid ${paletteColors.brand[500]}`,
+          borderBottom: `2px solid ${paletteColors.brand[500]}`
+        }
+      },
+      MuiTabs: {
+        indicator: {
+          backgroundColor: paletteColors.brand[500],
+          height: '4px'
+        }
       }
     }
   }

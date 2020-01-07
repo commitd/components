@@ -6,6 +6,8 @@ import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import * as themes from './theme'
 import { defaultFonts } from './fonts'
+import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
+import { createLightOptions, PaletteColors } from './theme'
 
 export interface ThemeProviderProps {
   /**
@@ -31,11 +33,18 @@ export interface ThemeProviderProps {
     display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
     monospace?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
   }
+  /**
+   *  To override the value of particular colors in the palette. For example, the primary, secondary or brand colors.
+   *
+   *  Variants of each shade should be specified. Or a material-ui color preset should be used https://material-ui.com/customization/color/#color
+   */
+  paletteColors?: Partial<PaletteColors>
   children?: React.ReactNode
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
   fonts = {},
+  paletteColors = {},
   ...rest
 }: ThemeProviderProps) => {
   const defaultFont = fonts.typography || defaultFonts.typography
@@ -47,9 +56,12 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
     display: fonts.display || defaultFont,
     monospace: fonts.monospace || defaultFonts.monospace
   }
-  const theme = Object.assign({}, themes.light, {
+  const lightOptions = createLightOptions(
+    deepmerge(themes.defaultPaletteColors, paletteColors)
+  )
+  const theme: ThemeOptions = Object.assign({}, lightOptions, {
     fonts: allFonts,
-    typography: Object.assign(themes.light.typography, allFonts.typography)
+    typography: Object.assign(lightOptions.typography, allFonts.typography)
   })
   const muiTheme = responsiveFontSizes(createMuiTheme(theme))
   return (
