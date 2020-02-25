@@ -1,7 +1,7 @@
-import * as allColors from './colors'
-import * as fonts from './fonts'
 import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
+import * as allColors from './colors'
+import * as fonts from './fonts'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
@@ -63,11 +63,12 @@ declare module '@material-ui/core/styles/createPalette' {
 
 const addTransparency = (color: string) => `${color}88`
 
-export const spacing = (factor: number) => {
-  if (factor < 0 || factor > 6) {
-    throw new Error(
-      `Spacing ${factor} invalid, must be between 0 and 6 inclusive`
-    )
+export const spacing = (factor: number): number => {
+  if (factor < 0) {
+    return spacing(0)
+  }
+  if (factor > 6) {
+    return spacing(6)
   }
   return [0, 4, 8, 16, 32, 64, 128][factor]
 }
