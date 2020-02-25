@@ -29,7 +29,8 @@ We have a fixed list of spacings that double with each step. Using fixed spacing
 feeling to the design. If a space is too small, go up a step, too large go down, try to avoid custom spacings.
 
 The [positioning props][positioning] that deal with spacing (e.g. margin and padding) take a number from 0 to 6 to select the correct
-spacing, 0 being no space and 6 is 128px.
+spacing, 0 being no space and 6 is 128px. In order to be compatible with others using different sets we map less that 0 to 0,
+greater than 6 to 6 and floor the number, incase not an integer.
 
 <Flex flexDirection="column">
   <Flex alignItems="center">

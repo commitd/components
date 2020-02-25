@@ -64,12 +64,13 @@ declare module '@material-ui/core/styles/createPalette' {
 const addTransparency = (color: string) => `${color}88`
 
 export const spacing = (factor: number) => {
-  if (factor < 0 || factor > 6) {
-    throw new Error(
-      `Spacing ${factor} invalid, must be between 0 and 6 inclusive`
-    )
+  // should be an int, but just incase
+  var index = Math.floor(factor)
+  if (index < 0) index = 0
+  if (index > 6) {
+    index = 6
   }
-  return [0, 4, 8, 16, 32, 64, 128][factor]
+  return [0, 4, 8, 16, 32, 64, 128][index]
 }
 
 export const defaultPaletteColors = {
