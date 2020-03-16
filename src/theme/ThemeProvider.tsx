@@ -5,9 +5,22 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import * as themes from './theme'
-import { defaultFonts } from './fonts'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
-import { createLightOptions, PaletteColors } from './theme'
+import {
+  PaletteColors,
+  createCommittedPalette,
+  createCommittedFonts,
+  createCommittedOverrides,
+  createCommittedShape,
+  createCommittedSpacing,
+  createCommittedTypography
+} from './theme'
+import { defaultFonts } from './fonts'
+import { PaletteOptions, Palette } from '@material-ui/core/styles/createPalette'
+import { ShapeOptions } from '@material-ui/core/styles/shape'
+import { SpacingOptions } from '@material-ui/core/styles/createSpacing'
+import { TypographyOptions } from '@material-ui/core/styles/createTypography'
+import { Overrides } from '@material-ui/core/styles/overrides'
 
 export interface ThemeProviderProps {
   /**
@@ -39,33 +52,44 @@ export interface ThemeProviderProps {
    *  Variants of each shade should be specified. Or a material-ui color preset should be used https://material-ui.com/customization/color/#color
    */
   paletteColors?: Partial<PaletteColors>
+  createPalette?: (paletteColors: PaletteColors) => PaletteOptions
+  createFonts?: () => typeof defaultFonts | undefined
+  createShape?: () => ShapeOptions | undefined
+  createSpacing?: () => SpacingOptions | undefined
+  createTypography?: () =>
+    | TypographyOptions
+    | ((palette: Palette) => TypographyOptions)
+    | undefined
+  createOverrides?: (paletteColors: PaletteColors) => Overrides | undefined
   children?: React.ReactNode
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
-  fonts = {},
+  createPalette = createCommittedPalette,
+  createFonts = createCommittedFonts,
+  createOverrides = createCommittedOverrides,
+  createShape = createCommittedShape,
+  createSpacing = createCommittedSpacing,
+  createTypography = createCommittedTypography,
   paletteColors = {},
   ...rest
 }: ThemeProviderProps) => {
-  const defaultFont = fonts.typography || defaultFonts.typography
-  const allFonts = {
-    typography: defaultFont,
-    heading: fonts.heading || defaultFont,
-    subheading: fonts.subheading || fonts.heading || defaultFont,
-    text: fonts.text || defaultFont,
-    display: fonts.display || defaultFont,
-    monospace: fonts.monospace || defaultFonts.monospace
-  }
-  const lightOptions = createLightOptions(
-    deepmerge(themes.defaultPaletteColors, paletteColors)
+  const mergedPaletteColors = deepmerge(
+    themes.defaultPaletteColors,
+    paletteColors
   )
-  const theme: ThemeOptions = Object.assign({}, lightOptions, {
-    fonts: allFonts,
-    typography: Object.assign(lightOptions.typography, allFonts.typography)
-  })
-  const muiTheme = responsiveFontSizes(createMuiTheme(theme))
+  const themeOptions: ThemeOptions = {
+    palette: createPalette(mergedPaletteColors),
+    fonts: createFonts(),
+    shape: createShape(),
+    spacing: createSpacing(),
+    typography: createTypography(),
+    overrides: createOverrides(mergedPaletteColors)
+  }
+
+  const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))
   return (
-    <MuiThemeProvider theme={deepmerge(muiTheme, { fonts })}>
+    <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <div {...rest} />
     </MuiThemeProvider>
