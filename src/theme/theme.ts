@@ -77,7 +77,11 @@ export const defaultPaletteColors = {
   ...allColors,
   brand: allColors.committedYellow,
   primary: allColors.committedGrey,
-  secondary: allColors.committedYellow,
+  secondary: {
+    '300': allColors.committedYellow[50],
+    '500': allColors.committedYellow[200],
+    '700': allColors.committedYellow[400]
+  },
   success: allColors.teal,
   warning: allColors.orange,
   error: allColors.red,
@@ -125,10 +129,10 @@ export const createLightOptions = (paletteColors: PaletteColors) => {
         contrastText: paletteColors.brand[500]
       },
       secondary: {
-        light: paletteColors.brand[50],
-        main: paletteColors.brand[200],
-        dark: paletteColors.brand[400],
         contrastText: paletteColors.primary[500]
+        light: paletteColors.secondary[300],
+        main: paletteColors.secondary[500],
+        dark: paletteColors.secondary[700]
       },
       error: paletteColors.error,
       success: {
