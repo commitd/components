@@ -1,26 +1,26 @@
 import React, { FC } from 'react'
-import deepmerge from 'deepmerge'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import * as themes from './theme'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 import {
-  PaletteColors,
-  createCommittedPalette,
   createCommittedFonts,
   createCommittedOverrides,
   createCommittedShape,
   createCommittedSpacing,
-  createCommittedTypography
+  createCommittedTypography,
+  createCommittedPaletteOptions,
+  defaultPaletteColors
 } from './theme'
 import { defaultFonts } from './fonts'
 import { PaletteOptions, Palette } from '@material-ui/core/styles/createPalette'
+import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { ShapeOptions } from '@material-ui/core/styles/shape'
 import { SpacingOptions } from '@material-ui/core/styles/createSpacing'
 import { TypographyOptions } from '@material-ui/core/styles/createTypography'
 import { Overrides } from '@material-ui/core/styles/overrides'
+import { augmentColor } from './themeMaterialUtil'
 
 export interface ThemeProviderProps {
   /**
@@ -46,13 +46,7 @@ export interface ThemeProviderProps {
     display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
     monospace?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
   }
-  /**
-   *  To override the value of particular colors in the palette. For example, the primary, secondary or brand colors.
-   *
-   *  Variants of each shade should be specified. Or a material-ui color preset should be used https://material-ui.com/customization/color/#color
-   */
-  paletteColors?: Partial<PaletteColors>
-  createPalette?: (paletteColors: PaletteColors) => PaletteOptions
+  createPaletteOptions?: () => PaletteOptions
   createFonts?: () => typeof defaultFonts | undefined
   createShape?: () => ShapeOptions | undefined
   createSpacing?: () => SpacingOptions | undefined
@@ -60,31 +54,45 @@ export interface ThemeProviderProps {
     | TypographyOptions
     | ((palette: Palette) => TypographyOptions)
     | undefined
-  createOverrides?: (paletteColors: PaletteColors) => Overrides | undefined
+  createOverrides?: (palette: Palette) => Overrides | undefined
   children?: React.ReactNode
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
-  createPalette = createCommittedPalette,
+  createPaletteOptions = createCommittedPaletteOptions,
   createFonts = createCommittedFonts,
   createOverrides = createCommittedOverrides,
   createShape = createCommittedShape,
   createSpacing = createCommittedSpacing,
   createTypography = createCommittedTypography,
-  paletteColors = {},
   ...rest
 }: ThemeProviderProps) => {
-  const mergedPaletteColors = deepmerge(
-    themes.defaultPaletteColors,
-    paletteColors
+  const paletteOptions = createPaletteOptions()
+  const palette = createMuiPalette(paletteOptions)
+  // createMuiPalette() "augments" inputted colors (than may be in several forms) to make them conform to {main: #xxxx, light:#xxxx ,...etc}
+  // manually augment committed custom theme colors that createMuiPalette is not aware of
+  palette.success = augmentColor(
+    paletteOptions.success,
+    defaultPaletteColors.success
   )
+  palette.warning = augmentColor(
+    paletteOptions.warning,
+    defaultPaletteColors.warning
+  )
+  palette.brand = augmentColor(paletteOptions.brand, defaultPaletteColors.brand)
+  palette.info = augmentColor(paletteOptions.info, defaultPaletteColors.info)
+  palette.neutral = augmentColor(
+    paletteOptions.neutral,
+    defaultPaletteColors.neutral
+  )
+
   const themeOptions: ThemeOptions = {
-    palette: createPalette(mergedPaletteColors),
+    palette,
     fonts: createFonts(),
     shape: createShape(),
     spacing: createSpacing(),
     typography: createTypography(),
-    overrides: createOverrides(mergedPaletteColors)
+    overrides: createOverrides(palette)
   }
 
   const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))

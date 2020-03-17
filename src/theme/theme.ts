@@ -2,22 +2,28 @@ import * as allColors from './colors'
 import * as fonts from './fonts'
 import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
-import { PaletteOptions } from '@material-ui/core/styles/createPalette'
+import {
+  PaletteOptions,
+  Palette,
+  PaletteColor
+} from '@material-ui/core/styles/createPalette'
 import { defaultFonts } from './fonts'
 import { Overrides } from '@material-ui/core/styles/overrides'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
-    success: PaletteColorOptions
-    warning: PaletteColorOptions
-    brand: PaletteColorOptions
-    info: PaletteColorOptions
+    success?: PaletteColorOptions
+    warning?: PaletteColorOptions
+    brand?: PaletteColorOptions
+    info?: PaletteColorOptions
+    neutral?: PaletteColorOptions
   }
 
   interface Palette {
     success: PaletteColor
     warning: PaletteColor
     info: PaletteColor
+    neutral: PaletteColor
   }
 }
 
@@ -92,15 +98,11 @@ export const defaultPaletteColors = {
   neutral: allColors.grey
 }
 
-export const createDefaultPalette = (paletteColors: PaletteColors) => ({
-  text: paletteColors.neutral[900]
-})
-
-const createCommittedText = (paletteColors: PaletteColors) => ({
-  primary: paletteColors.neutral[800],
-  secondary: paletteColors.neutral[700],
-  disabled: paletteColors.neutral[500],
-  hint: paletteColors.neutral[500]
+const createCommittedText = () => ({
+  primary: defaultPaletteColors.neutral[800],
+  secondary: defaultPaletteColors.neutral[700],
+  disabled: defaultPaletteColors.neutral[500],
+  hint: defaultPaletteColors.neutral[500]
 })
 
 const action = {
@@ -113,18 +115,17 @@ const action = {
 }
 
 export const createCommittedFonts = () => fonts.defaultFonts
-export const createCommittedPalette = (
-  paletteColors: PaletteColors
-): PaletteOptions => {
-  const palette = createDefaultPalette(paletteColors)
-  const text = createCommittedText(paletteColors)
+export const createCommittedPaletteOptions = (): PaletteOptions => {
+  const paletteColors = defaultPaletteColors
+  const text = createCommittedText()
+  const textColor = paletteColors.neutral[900]
   return {
     type: 'light',
     brand: {
       light: paletteColors.brand[300],
       main: paletteColors.brand[500],
       dark: paletteColors.brand[700],
-      contrastText: palette.text
+      contrastText: textColor
     },
     primary: {
       light: paletteColors.primary[400],
@@ -143,19 +144,19 @@ export const createCommittedPalette = (
       light: paletteColors.success[300],
       main: paletteColors.success[500],
       dark: paletteColors.success[700],
-      contrastText: palette.text
+      contrastText: textColor
     },
     warning: {
       light: paletteColors.warning[200],
       main: paletteColors.warning[400],
       dark: paletteColors.warning[600],
-      contrastText: palette.text
+      contrastText: textColor
     },
     info: {
       light: paletteColors.info[100],
       main: paletteColors.info[300],
       dark: paletteColors.info[500],
-      contrastText: palette.text
+      contrastText: textColor
     },
     background: {
       default: paletteColors.neutral[50],
@@ -163,6 +164,7 @@ export const createCommittedPalette = (
     },
     text,
     grey: paletteColors.neutral,
+    neutral: paletteColors.neutral,
     action,
     divider: 'rgba(0, 0, 0, 0.12)'
   }
@@ -221,10 +223,23 @@ export const createCommittedShape = () => ({
   borderRadius: 2
 })
 
-export const createCommittedOverrides = (
-  paletteColors: PaletteColors
-): Overrides => {
-  const text = createCommittedText(paletteColors)
+// eqiv to color[400]
+const mainLight = (color: PaletteColor): string => {
+  return lighten(color.main, 0.25)
+}
+
+// color[200]
+const lightLight = (color: PaletteColor): string => {
+  return lighten(color.light, 0.25)
+}
+
+// color[100]
+const lightLightVery = (color: PaletteColor): string => {
+  return lighten(color.light, 0.5)
+}
+
+export const createCommittedOverrides = (palette: Palette): Overrides => {
+  const text = createCommittedText()
   return {
     MuiButton: {
       root: {
@@ -232,32 +247,23 @@ export const createCommittedOverrides = (
       },
       contained: {
         '&:hover': {
-          backgroundColor: lighten(
-            paletteColors.primary[300],
-            action.hoverOpacity
-          )
+          backgroundColor: lighten(palette.primary.light, action.hoverOpacity)
         },
         '&$disabled': {
-          color: addTransparency(text.primary),
-          backgroundColor: addTransparency(paletteColors.neutral[300])
+          backgroundColor: addTransparency(palette.neutral.light)
         }
       },
       containedPrimary: {
         '&:hover': {
-          backgroundColor: lighten(
-            paletteColors.primary[500],
-            action.hoverOpacity
-          )
+          backgroundColor: lighten(palette.primary.main, action.hoverOpacity)
         },
         '&$disabled': {
-          backgroundColor: addTransparency(paletteColors.primary[500]),
-          color: addTransparency(paletteColors.secondary[500])
+          backgroundColor: addTransparency(palette.primary.main)
         }
       },
       containedSecondary: {
         '&$disabled': {
-          backgroundColor: addTransparency(paletteColors.secondary[200]),
-          color: addTransparency(paletteColors.primary[500])
+          backgroundColor: addTransparency(lightLight(palette.secondary))
         }
       },
       text: {
@@ -266,106 +272,84 @@ export const createCommittedOverrides = (
         }
       },
       textPrimary: {
-        color: paletteColors.primary[500],
+        color: palette.primary.main,
         '&:hover': {
-          backgroundColor: fade(paletteColors.brand[500], action.hoverOpacity)
+          backgroundColor: fade(palette.brand.main, action.hoverOpacity)
         },
-        '& span:nth-of-type(2)': {
-          color: paletteColors.brand[500]
-        },
-        '&$disabled': {
-          color: addTransparency(paletteColors.primary[500])
-        }
+        '&$disabled': {}
       },
       textSecondary: {
-        color: paletteColors.brand[800],
+        color: palette.brand.dark,
         '&:hover': {
-          backgroundColor: fade(paletteColors.primary[500], action.hoverOpacity)
-        },
-        '& span:nth-of-type(2)': {
-          color: paletteColors.primary[500]
-        },
-        '&$disabled': {
-          color: addTransparency(paletteColors.brand[500])
+          backgroundColor: fade(palette.primary.main, action.hoverOpacity)
         }
       },
       outlined: {
         '&$disabled': {
-          borderColor: addTransparency(paletteColors.neutral[500]),
-          color: addTransparency(paletteColors.neutral[200])
+          borderColor: addTransparency(palette.neutral.main),
+          color: addTransparency(lightLight(palette.neutral))
         }
       },
       outlinedPrimary: {
-        backgroundColor: paletteColors.brand[100],
+        backgroundColor: lightLightVery(palette.brand),
         '&:hover': {
-          backgroundColor: paletteColors.brand[200]
-        },
-        '& span:nth-of-type(2)': {
-          color: paletteColors.brand[500]
+          backgroundColor: lightLight(palette.brand)
         },
         '&$disabled': {
-          backgroundColor: addTransparency(paletteColors.brand[100]),
-          borderColor: addTransparency(paletteColors.primary[500]),
-          color: addTransparency(paletteColors.primary[500])
+          backgroundColor: addTransparency(lightLightVery(palette.brand)),
+          borderColor: addTransparency(palette.primary.main)
         }
       },
       outlinedSecondary: {
-        backgroundColor: paletteColors.primary[400],
+        backgroundColor: mainLight(palette.primary),
         '&:hover': {
           backgroundColor: lighten(
-            paletteColors.primary[400],
+            mainLight(palette.primary),
             action.hoverOpacity
           )
         },
-        '& span:nth-of-type(2)': {
-          color: paletteColors.primary[500]
-        },
         '&$disabled': {
-          backgroundColor: addTransparency(paletteColors.primary[400]),
-          borderColor: addTransparency(paletteColors.secondary[300]),
-          color: addTransparency(paletteColors.secondary[300])
+          backgroundColor: addTransparency(mainLight(palette.primary)),
+          borderColor: addTransparency(palette.secondary.light)
         }
       },
       disabled: {}
     },
     MuiCheckbox: {
       root: {
-        color: paletteColors.neutral[500],
+        color: palette.neutral.main,
         '&$disabled': {
-          color: addTransparency(paletteColors.neutral[500])
+          color: addTransparency(palette.neutral.main)
         }
       },
       colorPrimary: {
-        color: paletteColors.primary[500],
+        color: palette.primary.main,
         '&$checked': {
-          color: paletteColors.primary[500],
+          color: palette.primary.main,
           '&:hover': {
-            backgroundColor: fade(paletteColors.brand[500], action.hoverOpacity)
+            backgroundColor: fade(palette.brand.main, action.hoverOpacity)
           }
         },
         '& span:nth-of-type(2)': {
-          color: paletteColors.brand[500]
+          color: palette.brand.main
         },
         '&$disabled': {
-          color: addTransparency(paletteColors.primary[500])
+          color: addTransparency(palette.primary.main)
         }
       },
       colorSecondary: {
-        color: paletteColors.secondary[300],
+        color: palette.secondary.light,
         '&$checked': {
-          color: paletteColors.secondary[300],
+          color: palette.secondary.light,
           '&:hover': {
-            backgroundColor: fade(
-              paletteColors.primary[500],
-              action.hoverOpacity
-            )
+            backgroundColor: fade(palette.primary.main, action.hoverOpacity)
           }
         },
         '& span:nth-of-type(2)': {
-          color: paletteColors.primary[500]
+          color: palette.primary.main
         },
         '&$disabled': {
-          color: addTransparency(paletteColors.secondary[300])
+          color: addTransparency(palette.secondary.light)
         }
       }
     },
@@ -387,7 +371,7 @@ export const createCommittedOverrides = (
     },
     MuiDialog: {
       paper: {
-        borderTop: `4px solid ${paletteColors.brand[500]}`
+        borderTop: `4px solid ${palette.brand.main}`
       }
     },
     MuiDivider: {
@@ -399,85 +383,82 @@ export const createCommittedOverrides = (
     MuiIconButton: {
       colorPrimary: {
         '&:hover': {
-          backgroundColor: fade(paletteColors.brand[500], action.hoverOpacity)
+          backgroundColor: fade(palette.brand.main, action.hoverOpacity)
         },
         '& span:nth-of-type(2)': {
-          color: paletteColors.brand[500]
+          color: palette.brand.main
         }
       },
       colorSecondary: {
-        color: paletteColors.brand[800],
+        color: palette.brand.dark,
         '&:hover': {
-          backgroundColor: fade(paletteColors.primary[500], action.hoverOpacity)
+          backgroundColor: fade(palette.primary.main, action.hoverOpacity)
         },
         '& span:nth-of-type(2)': {
-          color: paletteColors.primary[500]
+          color: palette.primary.main
         }
       }
     },
     MuiRadio: {
       root: {
-        color: paletteColors.neutral[500],
+        color: palette.neutral.main,
         '&$disabled': {
-          color: addTransparency(paletteColors.neutral[500])
+          color: addTransparency(palette.neutral.main)
         }
       },
       colorPrimary: {
-        color: paletteColors.primary[500],
+        color: palette.primary.main,
         '&$checked': {
-          color: paletteColors.primary[500],
+          color: palette.primary.main,
           '&:hover': {
-            backgroundColor: fade(paletteColors.brand[500], action.hoverOpacity)
+            backgroundColor: fade(palette.brand.main, action.hoverOpacity)
           }
         },
         '& span:nth-of-type(2)': {
-          color: paletteColors.brand[500]
+          color: palette.brand.main
         },
         '& svg:nth-of-type(2)': {
-          color: paletteColors.brand[500]
+          color: palette.brand.main
         },
         '&$disabled': {
-          color: addTransparency(paletteColors.primary[500]),
+          color: addTransparency(palette.primary.main),
           '& svg:nth-of-type(2)': {
-            color: addTransparency(paletteColors.brand[500])
+            color: addTransparency(palette.brand.main)
           }
         }
       },
       colorSecondary: {
-        color: paletteColors.secondary[300],
+        color: palette.secondary.light,
         '&$checked': {
-          color: paletteColors.secondary[300],
+          color: palette.secondary.light,
           '&:hover': {
-            backgroundColor: fade(
-              paletteColors.primary[500],
-              action.hoverOpacity
-            )
+            backgroundColor: fade(palette.primary.main, action.hoverOpacity)
           }
         },
         '& span:nth-of-type(2)': {
-          color: paletteColors.primary[500]
+          color: palette.primary.main
         },
         '& svg:nth-of-type(2)': {
-          color: paletteColors.primary[500]
+          color: palette.primary.main
         },
         '&$disabled': {
-          color: addTransparency(paletteColors.secondary[300]),
+          color: addTransparency(palette.secondary.light),
           '& svg:nth-of-type(2)': {
-            color: addTransparency(paletteColors.primary[500])
+            color: addTransparency(palette.primary.main)
           }
         }
       }
     },
     MuiSwitch: {
       root: {
-        color: paletteColors.neutral[500],
+        color: palette.neutral.main,
         '&$disabled': {
-          color: addTransparency(paletteColors.neutral[500])
+          color: addTransparency(palette.neutral.main)
         }
       },
       colorPrimary: {
         '&$checked + $track': {
-          backgroundColor: paletteColors.brand[500]
+          backgroundColor: palette.brand.main
         }
       }
     },
@@ -487,20 +468,20 @@ export const createCommittedOverrides = (
           fontWeight: 'bold',
           color: text.primary
         },
-        borderBottom: `2px solid ${paletteColors.brand[500]}`
+        borderBottom: `2px solid ${palette.brand.main}`
       }
     },
     MuiTableBody: {
       root: {
         '& tr:nth-child(even)': {
-          backgroundColor: paletteColors.neutral[100]
+          backgroundColor: lightLightVery(palette.neutral)
         },
-        borderColor: paletteColors.neutral[100]
+        borderColor: lightLightVery(palette.neutral)
       }
     },
     MuiTableCell: {
       body: {
-        borderBottomColor: paletteColors.neutral[100]
+        borderBottomColor: lightLightVery(palette.neutral)
       }
     },
     MuiTableFooter: {
@@ -509,13 +490,13 @@ export const createCommittedOverrides = (
           fontWeight: 'bold',
           color: text.primary
         },
-        borderTop: `2px solid ${paletteColors.brand[500]}`,
-        borderBottom: `2px solid ${paletteColors.brand[500]}`
+        borderTop: `2px solid ${palette.brand.main}`,
+        borderBottom: `2px solid ${palette.brand.main}`
       }
     },
     MuiTabs: {
       indicator: {
-        backgroundColor: paletteColors.brand[500],
+        backgroundColor: palette.brand.main,
         height: '4px'
       }
     }
