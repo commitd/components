@@ -24,7 +24,9 @@ import { augmentColor } from './themeMaterialUtil'
 
 export interface ThemeProviderProps {
   /**
-   *  To override the font families used. default is used for Typography,
+   *  Should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   *
+   *  default is used for Typography,
    *  text for Text, display for Display and mono for Monospace.
    *
    *  typography: { fontFamily: '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"'},
@@ -39,13 +41,32 @@ export interface ThemeProviderProps {
    *
    */
   createFonts?: () => FontOptions | undefined
+  /**
+   * Should either return a [set of material-ui color intentions](https://material-ui.com/customization/palette/#customization) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   *
+   * The material-ui colors can be specified: palette.primary, palette.secondary, palette.error, palette.warning, palette.info or palette.success
+   *
+   * Additionally the committed-theme colors can be specified: palette.brand, palette.neutral
+   */
   createPaletteOptions?: () => PaletteOptions
+  /**
+   * Should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   */
   createShape?: () => ShapeOptions | undefined
+  /**
+   * Should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   */
   createSpacing?: () => SpacingOptions | undefined
+  /**
+   * Should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   */
   createTypography?: () =>
     | TypographyOptions
     | ((palette: Palette) => TypographyOptions)
     | undefined
+  /**
+   * Should either return [material-ui overrides options](https://material-ui.com/customization/globals/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults. It is passed the palette created using the `createPaletteOptions()` prop
+   */
   createOverrides?: (palette: Palette) => Overrides | undefined
   children?: React.ReactNode
 }
