@@ -1,8 +1,29 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { Box, Button, Heading, Text, Typography, Display, Monospace } from '../'
+import {
+  Box,
+  Button,
+  Heading,
+  Text,
+  Typography,
+  Display,
+  Monospace,
+  Chip,
+  Flex,
+  Avatar,
+  Icons
+} from '../'
 import { ThemeProvider, ThemeProviderDocs } from './ThemeProvider'
 import cyan from '@material-ui/core/colors/cyan'
 import blueGrey from '@material-ui/core/colors/blueGrey'
+import {
+  PaletteColor,
+  PaletteOptions
+} from '@material-ui/core/styles/createPalette'
+import { createMuiTheme } from '@material-ui/core'
+import { Background } from '../util'
+import commmitImage from '../../public/images/Avatar1-YellowTrans-32px.png'
+import * as C from '../'
+import deepmerge from 'deepmerge'
 
 <Meta title="components|ThemeProvider" component={ThemeProvider} />
 
@@ -19,6 +40,9 @@ but others can be used if necessary.
 </ThemeProvider>
 ```
 
+## Custom Fonts
+
+The optional `createFonts()` prop should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
 
 Custom font stacks can be provided for different typography components. You may need to separately load your font, using imports, links or css; see [example](https://github.com/commitd/components/tree/master/example).
 We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
@@ -26,11 +50,20 @@ We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
 <Preview>
   <Story name="default">
     <ThemeProvider
-      fonts={{
-        typography: { fontFamily: '"Helvetica Neue"' },
-        text: { fontFamily: '"Times New Roman"' },
-        display: { fontFamily: 'Arial, sans-serif', fontWeight: 700 },
-        mono: { fontFamily: 'monospace', fontWeight: 100 }
+      createFonts={() => {
+        const fontFamily = 'Rockwell, sans-serif'
+        return {
+          typography: { fontFamily },
+          heading: { fontFamily },
+          subheading: { fontFamily },
+          text: { fontFamily },
+          display: {
+            fontFamily
+          },
+          monospace: {
+            fontFamily
+          }
+        }
       }}
     >
       <Heading.h2>Heading</Heading.h2>
@@ -43,15 +76,1103 @@ We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
   </Story>
 </Preview>
 
-Custom palette colours can be specified. For example, the primary, secondary or brand colors. Either variants of each shade must be specified, or a [material-ui color preset](https://material-ui.com/customization/color/#color) should be used.
+## Custom Colours
+
+Custom palette colours can be specified. For example, the primary, secondary or brand colors.
+
+The optional `createPalette()` prop should either return a [set of material-ui color intentions](https://material-ui.com/customization/palette/#customization) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+The material-ui colors can be specified: palette.primary, palette.secondary, palette.error, palette.warning, palette.info or palette.success
+
+Additionally the committed-theme colors can be specified: palette.brand, palette.neutral
 
 <Preview>
-  <Story name="colors">
+  <Story name="custom-colors">
     <ThemeProvider
-      paletteColors={{primary: blueGrey, brand: cyan}}
+      createPaletteOptions={() => ({
+        primary: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff'
+        },
+        brand: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff'
+        },
+        secondary: {
+          //yellow
+          light: '#ffff6b',
+          main: '#fdd835',
+          dark: '#c6a700',
+          contrastText: '#000'
+        }
+      })}
     >
-      <Button color="primary">Custom Colours</Button>
+      <Button color="primary" mr={3}>
+        Custom Primary Button
+      </Button>
+      <Button color="secondary">Custom Secondary Button</Button>
     </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Shape
+
+The optional `createShape()` prop should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+<Preview>
+  <Story name="custom-shape">
+    <ThemeProvider
+      createShape={() => ({
+        borderRadius: 20
+      })}
+    >
+      <Button color="primary" mr={3}>
+        Custom Primary Button
+      </Button>
+      <Button color="secondary">Custom Secondary Button</Button>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Spacing
+
+Override the meaning of spacing props. These are dimensionless values given to things like margin and padding. All Material components will be affected, so Use with care.
+
+The optional `createSpacing()` prop should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+<Preview>
+  <Story name="custom-spacing">
+    <C.ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createSpacing={() => factor => factor * 10}
+    >
+      <Background width="1VH">
+        <C.Column flexWrap="wrap">
+          <C.Flex
+            flexGrow={1}
+            p={3}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+          >
+            <C.Column>
+              <C.Button m={3}>Default</C.Button>
+              <C.Button m={3} color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+            <C.Column>
+              <C.Button m={3} variant="outlined">
+                Default
+              </C.Button>
+              <C.Button m={3} variant="outlined" color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} variant="outlined" color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+            <C.Column>
+              <C.Button m={3} variant="text">
+                Default
+              </C.Button>
+              <C.Button m={3} variant="text" color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} variant="text" color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+            <C.Column>
+              <C.Button disabled={true} m={3}>
+                Default
+              </C.Button>
+              <C.Button disabled={true} m={3} color="primary">
+                Primary
+              </C.Button>
+              <C.Button disabled={true} m={3} color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+          </C.Flex>
+        </C.Column>
+      </Background>
+    </C.ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Typography
+
+The optional `createTypography()` prop should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+<Preview>
+  <Story name="custom-typography">
+    <C.ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createTypography={() => ({
+        htmlFontSize: 16,
+        fontSize: 20,
+        h1: {
+          fontSize: '1.2rem'
+        }
+      })}
+    >
+      <Background width="1VH">
+        <C.Flex
+          flexGrow={1}
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.default"
+        >
+          <C.Box width={1 / 2}>
+            <C.Typography>System Typography</C.Typography>
+            <C.Heading.h2 gutterBottom>h2. Heading</C.Heading.h2>
+            <C.Heading.h3 gutterBottom>h3. Heading</C.Heading.h3>
+            <C.Heading.h4 gutterBottom>h4. Heading</C.Heading.h4>
+            <C.Subheading.h3 gutterBottom>
+              subheading. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit. Quos blanditiis tenetur
+            </C.Subheading.h3>
+            <C.Typography variant="body1" gutterBottom>
+              body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </C.Typography>
+            <C.Typography variant="body2" gutterBottom>
+              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </C.Typography>
+          </C.Box>
+          <C.Box width={1 / 2}>
+            <C.Text>Disply Typography</C.Text>
+            <C.Display.d1 gutterBottom>d1. Heading</C.Display.d1>
+            <C.Display.d2 gutterBottom>d2. Heading</C.Display.d2>
+            <C.Text gutterBottom>
+              Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </C.Text>
+            <C.Monospace wrap>
+              Monospace. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum
+              inventore consectetur.
+            </C.Monospace>
+          </C.Box>
+        </C.Flex>
+      </Background>
+    </C.ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Global CSS Overrides
+
+The optional `createOverrides()` prop should either return [material-ui overrides options](https://material-ui.com/customization/globals/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults. It is passed the palette created using the `createPaletteOptions()` prop
+
+<Preview>
+  <Story name="custom-overrides">
+    <C.ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createOverrides={palette => ({
+        MuiButton: {
+          contained: {
+            color: 'white',
+            backgroundColor: 'red'
+          },
+          containedPrimary: {
+            color: 'black',
+            backgroundColor: 'white'
+          },
+          containedSecondary: {
+            color: 'white',
+            backgroundColor: 'blue'
+          }
+        }
+      })}
+    >
+      <Background width="1VH">
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-button--default-story">
+            Buttons
+          </C.Link>
+        </C.Caption>
+        <C.Column flexWrap="wrap">
+          <C.Flex
+            flexGrow={1}
+            p={3}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+          >
+            <C.Column>
+              <C.Button m={3}>Default</C.Button>
+              <C.Button m={3} color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+          </C.Flex>
+        </C.Column>
+      </Background>
+    </C.ThemeProvider>
+  </Story>
+</Preview>
+
+## Example theme
+
+An example of a theme with all options customised:
+
+<Preview>
+  <Story name="custom-theme">
+    <C.ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createPaletteOptions={() => ({
+        primary: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff'
+        },
+        brand: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff'
+        },
+        secondary: {
+          //yellow
+          light: '#ffff6b',
+          main: '#fdd835',
+          dark: '#c6a700',
+          contrastText: '#000'
+        }
+      })}
+      createFonts={() => {
+        const fontFamily = 'Rockwell, sans-serif'
+        return {
+          typography: { fontFamily },
+          heading: { fontFamily },
+          subheading: { fontFamily },
+          text: { fontFamily },
+          display: {
+            fontFamily
+          },
+          monospace: {
+            fontFamily
+          }
+        }
+      }}
+      createShape={() => ({
+        borderRadius: 0
+      })}
+      createSpacing={() => factor => factor * 3}
+      createTypography={() => ({
+        htmlFontSize: 16,
+        fontSize: 20,
+        h1: {
+          fontSize: '1.2rem'
+        }
+      })}
+      createOverrides={palette =>
+        deepmerge(C.theme.createCommittedOverrides(palette), {
+          MuiButton: {
+            outlinedSecondary: {
+              color: 'white',
+              borderColor: palette.primary.main
+            }
+          }
+        })
+      }
+    >
+      <Background width="1VH">
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-button--default-story">
+            Buttons
+          </C.Link>
+        </C.Caption>
+        <C.Column flexWrap="wrap">
+          <C.Flex
+            flexGrow={1}
+            p={3}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+          >
+            <C.Column>
+              <C.Button m={3}>Default</C.Button>
+              <C.Button m={3} color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+            <C.Column>
+              <C.Button m={3} variant="outlined">
+                Default
+              </C.Button>
+              <C.Button m={3} variant="outlined" color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} variant="outlined" color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+            <C.Column>
+              <C.Button m={3} variant="text">
+                Default
+              </C.Button>
+              <C.Button m={3} variant="text" color="primary">
+                Primary
+              </C.Button>
+              <C.Button m={3} variant="text" color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+            <C.Column>
+              <C.Button disabled={true} m={3}>
+                Default
+              </C.Button>
+              <C.Button disabled={true} m={3} color="primary">
+                Primary
+              </C.Button>
+              <C.Button disabled={true} m={3} color="secondary">
+                Secondary
+              </C.Button>
+            </C.Column>
+          </C.Flex>
+          <C.Caption>
+            <C.Link href="/components/?path=/docs/components-iconbutton--default-story">
+              Icon Buttons
+            </C.Link>
+          </C.Caption>
+          <C.Flex
+            flexGrow={1}
+            p={3}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+            bgcolor="background.default"
+          >
+            <C.IconButton aria-label="delete">
+              <C.Icons.Delete />
+            </C.IconButton>
+            <C.IconButton aria-label="delete" disabled color="primary">
+              <C.Icons.Delete />
+            </C.IconButton>
+            <C.IconButton color="secondary" aria-label="add an alarm">
+              <C.Icons.Alarm />
+            </C.IconButton>
+            <C.IconButton color="primary" aria-label="add to shopping cart">
+              <C.Icons.AddShoppingCart />
+            </C.IconButton>
+          </C.Flex>
+          <C.Caption>
+            <C.Link href="/components/?path=/docs/components-badge--default-story">
+              Badges
+            </C.Link>
+          </C.Caption>
+          <C.Flex
+            flexGrow={1}
+            p={3}
+            pt={4}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+            bgcolor="background.default"
+          >
+            <C.Badge badgeContent={'default'}>
+              <C.IconButton>
+                <C.Icons.Mail />
+              </C.IconButton>
+            </C.Badge>
+            <C.Badge color="primary" badgeContent={4}>
+              <C.IconButton>
+                <C.Icons.Mail />
+              </C.IconButton>
+            </C.Badge>
+            <C.Badge color="secondary" badgeContent={87}>
+              <C.IconButton>
+                <C.Icons.Mail />
+              </C.IconButton>
+            </C.Badge>
+            <C.Badge color="error" badgeContent={1000}>
+              <C.IconButton>
+                <C.Icons.Mail />
+              </C.IconButton>
+            </C.Badge>
+          </C.Flex>
+        </C.Column>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-avatar--default-story">
+            Avatars
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          p={3}
+          pt={4}
+          m={1}
+          justifyContent="space-evenly"
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          <C.Avatar m={1} bgcolor="primary.main" color="primary.contrastText">
+            CF
+          </C.Avatar>
+          <C.Avatar
+            m={1}
+            bgcolor="secondary.main"
+            color="secondary.contrastText"
+          >
+            SH
+          </C.Avatar>
+          <C.Avatar m={1}>
+            <C.Icons.Folder />
+          </C.Avatar>
+          <C.Avatar m={1} bgcolor="black" color="white">
+            <C.Icons.Pageview />
+          </C.Avatar>
+          <C.Avatar m={1} bgcolor="primary.light" color="text.primary">
+            <C.Icons.Assignment />
+          </C.Avatar>
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-chip--default-story">
+            Chips
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          p={3}
+          m={1}
+          justifyContent="space-evenly"
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          <C.Chip
+            avatar={<C.Avatar src={commmitImage} />}
+            label="Chip"
+            onDelete={() => {}}
+          />
+          <C.Chip label="Chip" />
+          <C.Chip
+            icon={<C.Icons.Face />}
+            label="Chip"
+            onClick={() => {}}
+            onDelete={() => {}}
+            color="primary"
+          />
+          <C.Chip
+            variant="outlined"
+            icon={<C.Icons.AccountCircle />}
+            label="Chip"
+            onClick={() => {}}
+            color="secondary"
+          />
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-textfield--simple">
+            Text Fields
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          p={3}
+          pt={4}
+          m={1}
+          justifyContent="space-evenly"
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          {React.createElement(() => {
+            const currencies = [
+              {
+                value: 'USD',
+                label: '$'
+              },
+              {
+                value: 'EUR',
+                label: '€'
+              },
+              {
+                value: 'BTC',
+                label: '฿'
+              },
+              {
+                value: 'JPY',
+                label: '¥'
+              }
+            ]
+            const [values, setValues] = React.useState({
+              name: 'Cat in the Hat',
+              age: '',
+              multiline: 'Controlled',
+              currency: 'EUR'
+            })
+            const handleChange = name => event =>
+              setValues({ ...values, [name]: event.target.value })
+            return (
+              <C.Form noValidate autoComplete="off">
+                <C.Flex flexWrap="wrap" alignContent="space-between">
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-name"
+                    label="Name"
+                    value={values.name}
+                    onChange={handleChange('name')}
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-uncontrolled"
+                    label="Uncontrolled"
+                    defaultValue="foo"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    required
+                    id="standard-required"
+                    label="Required"
+                    defaultValue="Hello World"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    error
+                    id="standard-error"
+                    label="Error"
+                    defaultValue="Hello World"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    disabled
+                    id="standard-disabled"
+                    label="Disabled"
+                    defaultValue="Hello World"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-password-input"
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-multiline-flexible"
+                    label="Multiline"
+                    multiline
+                    rowsMax="4"
+                    value={values.multiline}
+                    onChange={handleChange('multiline')}
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-multiline-static"
+                    label="Multiline"
+                    multiline
+                    rows="4"
+                    defaultValue="Default Value"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-read-only-input"
+                    label="Read Only"
+                    defaultValue="Hello World"
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-helperText"
+                    label="Helper text"
+                    defaultValue="Default Value"
+                    helperText="Some important text"
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-number"
+                    label="Number"
+                    value={values.age}
+                    onChange={handleChange('age')}
+                    type="number"
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                  />
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-select-currency"
+                    select
+                    label="Select"
+                    value={values.currency}
+                    onChange={handleChange('currency')}
+                    helperText="Please select your currency"
+                  >
+                    {currencies.map(option => (
+                      <C.MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </C.MenuItem>
+                    ))}
+                  </C.TextField>
+                  <C.TextField
+                    flexGrow={1}
+                    m={3}
+                    id="standard-select-currency-native"
+                    select
+                    label="Native select"
+                    value={values.currency}
+                    onChange={handleChange('currency')}
+                    SelectProps={{
+                      native: true
+                    }}
+                    helperText="Please select your currency"
+                  >
+                    {currencies.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </C.TextField>
+                </C.Flex>
+              </C.Form>
+            )
+          })}
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-checkbox--default-story">
+            Checkbox
+          </C.Link>
+          , <C.Link href="/components/?path=/docs/components-radio--default-story">
+            Radio
+          </C.Link> and <C.Link href="/components/?path=/docs/components-switch--default-story">Switch</C.Link>
+        </C.Caption>
+        {React.createElement(() => {
+          const [checked, setChecked] = React.useState(true)
+          return (
+            <C.Flex
+              flexGrow={1}
+              p={3}
+              pt={4}
+              m={1}
+              justifyContent="space-evenly"
+              border="1px solid black"
+              bgcolor="background.defaul"
+            >
+              <C.Column justifyContent="center">
+                <C.Checkbox
+                  checked={checked}
+                  onChange={event => setChecked(event.target.checked)}
+                  color="primary"
+                />
+                <C.Checkbox
+                  checked={!checked}
+                  onChange={event => setChecked(!event.target.checked)}
+                  color="secondary"
+                />
+              </C.Column>
+              <C.Column justifyContent="center">
+                <C.Radio
+                  checked={checked}
+                  onChange={event => setChecked(event.target.checked)}
+                  color="primary"
+                />
+                <C.Radio
+                  checked={!checked}
+                  onChange={event => setChecked(!event.target.checked)}
+                  color="secondary"
+                />
+              </C.Column>
+              <C.Column justifyContent="center">
+                <C.Switch
+                  checked={checked}
+                  onChange={event => setChecked(event.target.checked)}
+                  color="primary"
+                />
+                <C.Switch
+                  checked={!checked}
+                  onChange={event => setChecked(!event.target.checked)}
+                  color="secondary"
+                />
+              </C.Column>
+            </C.Flex>
+          )
+        })}
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-slider--default-story">
+            Slider
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          flexDirection="column"
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          <C.Slider m={3} flexGrow={1} aria-labelledby="continuous-slider" />
+          <C.Slider
+            m={3}
+            flexGrow={1}
+            defaultValue={80}
+            step={10}
+            valueLabelDisplay="on"
+          />
+          <C.Slider m={3} flexGrow={1} value={30} disabled={true} />
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-list--default-story">
+            Lists
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          flexDirection="column"
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          <C.Box minWidth={500} m={3} bgcolor="background.paper">
+            <C.List component="nav" aria-label="main mailbox folders">
+              <C.ListItem button>
+                <C.ListItemIcon>
+                  <C.Icons.Inbox />
+                </C.ListItemIcon>
+                <C.ListItemText primary="Inbox" />
+              </C.ListItem>
+              <C.ListItem button>
+                <C.ListItemIcon>
+                  <C.Icons.Drafts />
+                </C.ListItemIcon>
+                <C.ListItemText primary="Drafts" />
+              </C.ListItem>
+            </C.List>
+            <Divider />
+            <C.List component="nav" aria-label="secondary mailbox folders">
+              <C.ListItem button>
+                <C.ListItemText primary="Trash" />
+              </C.ListItem>
+              <C.ListItem button>
+                <C.ListItemText primary="Spam" />
+              </C.ListItem>
+            </C.List>
+          </C.Box>
+        </C.Flex>
+        <C.Flex
+          flexGrow={1}
+          flexDirection="column"
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          <C.Box minWidth={500} m={3} bgcolor="background.paper">
+            <C.List>
+              {['18 June 2014', '20 July 2015', '3 January 2018'].map(
+                (item, index) => (
+                  <C.ListItem key={index} role={undefined} dense button>
+                    <C.ListItemIcon>
+                      <C.Checkbox
+                        edge="start"
+                        tabIndex={-1}
+                        disableRipple
+                        inputProps={{
+                          'aria-labelledby': 1
+                        }}
+                      />
+                    </C.ListItemIcon>
+                    <C.ListItemText
+                      id={index}
+                      primary={`Line item ${index + 1}`}
+                      secondary={item}
+                    />
+                    <C.ListItemSecondaryAction>
+                      <C.IconButton edge="end">
+                        <C.Icons.Comment />
+                      </C.IconButton>
+                    </C.ListItemSecondaryAction>
+                  </C.ListItem>
+                )
+              )}
+            </C.List>
+          </C.Box>
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-card--default-story">
+            Cards
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          flexWrap="wrap"
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.defaul"
+        >
+          <C.Card m={3} width={1 / 2}>
+            <C.Box height={100} bgcolor="primary.main" />
+            <C.CardHeader bgcolor="primary.main" color="primary.contrastText">
+              Committed Card
+            </C.CardHeader>
+            <C.CardContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Id
+              nibh tortor id aliquet lectus. Feugiat nibh sed pulvinar proin
+              gravida hendrerit lectus. Facilisis magna etiam tempor orci eu
+              lobortis elementum.
+            </C.CardContent>
+            <C.CardActions>
+              <C.Button color="primary" variant="text">
+                Yes
+              </C.Button>
+              <C.Button color="primary" variant="text">
+                No
+              </C.Button>
+            </C.CardActions>
+          </C.Card>
+          <C.Card m={3} width={1 / 2}>
+            <C.CardHeader
+              bgcolor="secondary.main"
+              color="secondary.contrastText"
+            >
+              Card
+            </C.CardHeader>
+            <C.CardActions>
+              <C.Checkbox
+                icon={
+                  <C.Icons.FavoriteBorder
+                    style={{ color: C.colors.grey[600] }}
+                  />
+                }
+                checkedIcon={<C.Icons.Favorite style={{ color: 'red' }} />}
+              />
+              <C.Checkbox
+                icon={
+                  <C.Icons.BookmarkBorder
+                    style={{ color: C.colors.grey[600] }}
+                  />
+                }
+                checkedIcon={
+                  <C.Icons.Bookmark
+                    style={{ color: C.colors.lightBlue[400] }}
+                  />
+                }
+              />
+              <C.IconButton>
+                <C.Icons.Share />
+              </C.IconButton>
+            </C.CardActions>
+          </C.Card>
+          <C.Card>
+            <C.Flex>
+              <C.CardContent>
+                <C.Heading.h5 mb={1}>Title</C.Heading.h5>
+                <C.Subheading.h5
+                  mt={0}
+                  mb={2}
+                  variant="subtitle1"
+                  color="textSecondary"
+                >
+                  Subtitle
+                </C.Subheading.h5>
+                <C.Flex alignItems="center" p={3}>
+                  <C.IconButton size="small">
+                    <C.Icons.SkipPrevious fontSize="small" />
+                  </C.IconButton>
+                  <C.IconButton>
+                    <C.Icons.PlayArrow fontSize="large" />
+                  </C.IconButton>
+                  <C.IconButton size="small">
+                    <C.Icons.SkipNext fontSize="small" />
+                  </C.IconButton>
+                </C.Flex>
+              </C.CardContent>
+              <C.CardMedia
+                width="200px"
+                height="200px"
+                image="https://picsum.photos/id/645/200/200"
+                title="Picsum"
+              />
+            </C.Flex>
+          </C.Card>
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-table--default-story">
+            Tables
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          flexDirection="column"
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.default"
+        >
+          <C.Box m={2} p={3} bgcolor="background.paper">
+            <C.Table>
+              <C.TableHead>
+                <C.TableRow>
+                  <C.TableCell>Dessert (100g serving)</C.TableCell>
+                  <C.TableCell align="right">Calories</C.TableCell>
+                  <C.TableCell align="right">Fat&nbsp;(g)</C.TableCell>
+                  <C.TableCell align="right">Carbs&nbsp;(g)</C.TableCell>
+                  <C.TableCell align="right">Protein&nbsp;(g)</C.TableCell>
+                </C.TableRow>
+              </C.TableHead>
+              <C.TableBody>
+                {[
+                  ['Frozen yoghurt', 159, 6.0, 24, 4.0],
+                  ['Ice cream sandwich', 237, 9.0, 37, 4.3],
+                  ['Eclair', 262, 16.0, 24, 6.0],
+                  ['Cupcake', 305, 3.7, 67, 4.3],
+                  ['Gingerbread', 356, 16.0, 49, 3]
+                ].map(row => (
+                  <C.TableRow key={row[0]}>
+                    <C.TableCell component="th" scope="row">
+                      {row[0]}
+                    </C.TableCell>
+                    <C.TableCell align="right">{row[1]}</C.TableCell>
+                    <C.TableCell align="right">{row[2]}</C.TableCell>
+                    <C.TableCell align="right">{row[3]}</C.TableCell>
+                    <C.TableCell align="right">{row[4]}</C.TableCell>
+                  </C.TableRow>
+                ))}
+              </C.TableBody>
+            </C.Table>
+          </C.Box>
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/components-tabs--appbar">
+            Tabs
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          flexDirection="column"
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.default"
+        >
+          {React.createElement(() => {
+            const [value, setValue] = React.useState(0)
+            function handleChange(event, newValue) {
+              setValue(newValue)
+            }
+            return (
+              <C.Box>
+                <C.AppBar position="static">
+                  <C.Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="simple tabs example"
+                  >
+                    <C.Tab label="Item One" />
+                    <C.Tab label="Item Two" />
+                    <C.Tab label="Item Three" />
+                  </C.Tabs>
+                </C.AppBar>
+                <C.TabPanel p={3} selected={value} index={0}>
+                  Item One
+                </C.TabPanel>
+                <C.TabPanel p={3} selected={value} index={1}>
+                  Item Two
+                </C.TabPanel>
+                <C.TabPanel p={3} selected={value} index={2}>
+                  Item Three
+                </C.TabPanel>
+              </C.Box>
+            )
+          })}
+        </C.Flex>
+        <C.Caption>
+          <C.Link href="/components/?path=/docs/design-system-typography--typography">
+            Typography
+          </C.Link>
+        </C.Caption>
+        <C.Flex
+          flexGrow={1}
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid black"
+          bgcolor="background.default"
+        >
+          <C.Box width={1 / 2}>
+            <C.Typography>System Typography</C.Typography>
+            <C.Heading.h2 gutterBottom>h2. Heading</C.Heading.h2>
+            <C.Heading.h3 gutterBottom>h3. Heading</C.Heading.h3>
+            <C.Heading.h4 gutterBottom>h4. Heading</C.Heading.h4>
+            <C.Subheading.h3 gutterBottom>
+              subheading. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit. Quos blanditiis tenetur
+            </C.Subheading.h3>
+            <C.Typography variant="body1" gutterBottom>
+              body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </C.Typography>
+            <C.Typography variant="body2" gutterBottom>
+              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </C.Typography>
+          </C.Box>
+          <C.Box width={1 / 2}>
+            <C.Text>Disply Typography</C.Text>
+            <C.Display.d1 gutterBottom>d1. Heading</C.Display.d1>
+            <C.Display.d2 gutterBottom>d2. Heading</C.Display.d2>
+            <C.Text gutterBottom>
+              Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </C.Text>
+            <C.Monospace wrap>
+              Monospace. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum
+              inventore consectetur.
+            </C.Monospace>
+          </C.Box>
+        </C.Flex>
+      </Background>
+    </C.ThemeProvider>
   </Story>
 </Preview>
 

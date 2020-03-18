@@ -1,17 +1,32 @@
 import React, { FC } from 'react'
-import deepmerge from 'deepmerge'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
-import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import * as themes from './theme'
-import { defaultFonts } from './fonts'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
-import { createLightOptions, PaletteColors } from './theme'
+import {
+  createCommittedFonts,
+  createCommittedOverrides,
+  createCommittedShape,
+  createCommittedSpacing,
+  createCommittedTypography,
+  createCommittedPaletteOptions,
+  defaultPaletteColors,
+  FontOptions
+} from './theme'
+import deepmerge from 'deepmerge'
+import { PaletteOptions, Palette } from '@material-ui/core/styles/createPalette'
+import createMuiPalette from '@material-ui/core/styles/createPalette'
+import { ShapeOptions } from '@material-ui/core/styles/shape'
+import { SpacingOptions } from '@material-ui/core/styles/createSpacing'
+import { TypographyOptions } from '@material-ui/core/styles/createTypography'
+import { Overrides } from '@material-ui/core/styles/overrides'
+import { augmentColor } from './themeMaterialUtil'
 
 export interface ThemeProviderProps {
   /**
-   *  To override the font families used. default is used for Typography,
+   *  Should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   *
+   *  default is used for Typography,
    *  text for Text, display for Display and mono for Monospace.
    *
    *  typography: { fontFamily: '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"'},
@@ -25,45 +40,76 @@ export interface ThemeProviderProps {
    *  monospace: { fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace' }
    *
    */
-  fonts?: {
-    typography?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    heading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    subheading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    text?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    monospace?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  }
+  createFonts?: () => FontOptions | undefined
   /**
-   *  To override the value of particular colors in the palette. For example, the primary, secondary or brand colors.
+   * Should either return a [set of material-ui color intentions](https://material-ui.com/customization/palette/#customization) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
    *
-   *  Variants of each shade should be specified. Or a material-ui color preset should be used https://material-ui.com/customization/color/#color
+   * The material-ui colors can be specified: palette.primary, palette.secondary, palette.error, palette.warning, palette.info or palette.success
+   *
+   * Additionally the committed-theme colors can be specified: palette.brand, palette.neutral
    */
-  paletteColors?: Partial<PaletteColors>
+  createPaletteOptions?: () => PaletteOptions
+  /**
+   * Should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   */
+  createShape?: () => ShapeOptions | undefined
+  /**
+   * Should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   */
+  createSpacing?: () => SpacingOptions | undefined
+  /**
+   * Should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+   */
+  createTypography?: () =>
+    | TypographyOptions
+    | ((palette: Palette) => TypographyOptions)
+    | undefined
+  /**
+   * Should either return [material-ui overrides options](https://material-ui.com/customization/globals/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults. It is passed the palette created using the `createPaletteOptions()` prop
+   */
+  createOverrides?: (palette: Palette) => Overrides | undefined
   children?: React.ReactNode
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
-  fonts = {},
-  paletteColors = {},
+  createPaletteOptions = createCommittedPaletteOptions,
+  createFonts = createCommittedFonts,
+  createOverrides = createCommittedOverrides,
+  createShape = createCommittedShape,
+  createSpacing = createCommittedSpacing,
+  createTypography = createCommittedTypography,
   ...rest
 }: ThemeProviderProps) => {
-  const defaultFont = fonts.typography || defaultFonts.typography
-  const allFonts = {
-    typography: defaultFont,
-    heading: fonts.heading || defaultFont,
-    subheading: fonts.subheading || fonts.heading || defaultFont,
-    text: fonts.text || defaultFont,
-    display: fonts.display || defaultFont,
-    monospace: fonts.monospace || defaultFonts.monospace
-  }
-  const lightOptions = createLightOptions(
-    deepmerge(themes.defaultPaletteColors, paletteColors)
+  const paletteOptions = createPaletteOptions()
+  const palette = createMuiPalette(paletteOptions)
+  // createMuiPalette() "augments" inputted colors (that may be in several forms) to make them conform to {main: #xxxx, light:#xxxx ,...etc}
+  // manually augment committed custom theme colors that createMuiPalette is not aware of
+  palette.success = augmentColor(
+    paletteOptions.success,
+    defaultPaletteColors.success
   )
-  const theme: ThemeOptions = Object.assign({}, lightOptions, {
-    fonts: allFonts,
-    typography: Object.assign(lightOptions.typography, allFonts.typography)
-  })
-  const muiTheme = responsiveFontSizes(createMuiTheme(theme))
+  palette.warning = augmentColor(
+    paletteOptions.warning,
+    defaultPaletteColors.warning
+  )
+  palette.brand = augmentColor(paletteOptions.brand, defaultPaletteColors.brand)
+  palette.info = augmentColor(paletteOptions.info, defaultPaletteColors.info)
+  palette.neutral = augmentColor(
+    paletteOptions.neutral,
+    defaultPaletteColors.neutral
+  )
+
+  const themeOptions: ThemeOptions = {
+    palette,
+    fonts: createFonts(),
+    shape: createShape(),
+    spacing: createSpacing(),
+    typography: createTypography(),
+    overrides: createOverrides(palette)
+  }
+
+  const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))
+  const fonts = createFonts()
   return (
     <MuiThemeProvider theme={deepmerge(muiTheme, { fonts })}>
       <CssBaseline />
