@@ -69,7 +69,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
 }: ThemeProviderProps) => {
   const paletteOptions = createPaletteOptions()
   const palette = createMuiPalette(paletteOptions)
-  // createMuiPalette() "augments" inputted colors (than may be in several forms) to make them conform to {main: #xxxx, light:#xxxx ,...etc}
+  // createMuiPalette() "augments" inputted colors (that may be in several forms) to make them conform to {main: #xxxx, light:#xxxx ,...etc}
   // manually augment committed custom theme colors that createMuiPalette is not aware of
   palette.success = augmentColor(
     paletteOptions.success,
