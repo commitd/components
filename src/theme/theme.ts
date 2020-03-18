@@ -37,27 +37,24 @@ export type FontType =
 
 export type PaletteColors = typeof defaultPaletteColors
 
+export interface Fonts {
+  typography: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+  heading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+  subheading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+  text: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+  display: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+  monospace: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
+}
+
+export type FontOptions = Partial<Fonts>
+
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
-    fonts: {
-      typography: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      heading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      subheading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      text: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      display: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      monospace: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    }
+    fonts: Fonts
   }
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
-    fonts?: {
-      typography?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      heading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      subheading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      text?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-      monospace?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    }
+    fonts?: FontOptions
   }
 }
 

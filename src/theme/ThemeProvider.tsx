@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
-import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
 import {
@@ -11,9 +10,10 @@ import {
   createCommittedSpacing,
   createCommittedTypography,
   createCommittedPaletteOptions,
-  defaultPaletteColors
+  defaultPaletteColors,
+  FontOptions
 } from './theme'
-import { defaultFonts } from './fonts'
+import deepmerge from 'deepmerge'
 import { PaletteOptions, Palette } from '@material-ui/core/styles/createPalette'
 import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { ShapeOptions } from '@material-ui/core/styles/shape'
@@ -38,16 +38,8 @@ export interface ThemeProviderProps {
    *  monospace: { fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace' }
    *
    */
-  fonts?: {
-    typography?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    heading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    subheading?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    text?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    display?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-    monospace?: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  }
+  createFonts?: () => FontOptions | undefined
   createPaletteOptions?: () => PaletteOptions
-  createFonts?: () => typeof defaultFonts | undefined
   createShape?: () => ShapeOptions | undefined
   createSpacing?: () => SpacingOptions | undefined
   createTypography?: () =>
@@ -96,8 +88,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   }
 
   const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))
+  const fonts = createFonts()
   return (
-    <MuiThemeProvider theme={muiTheme}>
+    <MuiThemeProvider theme={deepmerge(muiTheme, { fonts })}>
       <CssBaseline />
       <div {...rest} />
     </MuiThemeProvider>
