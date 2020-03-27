@@ -14,12 +14,12 @@ import * as C from '../'
         </C.Link>
       </C.Caption>
       <C.Column flexWrap="wrap">
-        <C.Flex
+        <C.Card
+          display="flex"
           flexGrow={1}
           p={3}
           m={1}
           justifyContent="space-evenly"
-          border="1px solid black"
         >
           <C.Column>
             <C.Button m={3}>Default</C.Button>
@@ -63,19 +63,18 @@ import * as C from '../'
               Secondary
             </C.Button>
           </C.Column>
-        </C.Flex>
+        </C.Card>
         <C.Caption>
           <C.Link href="/components/?path=/docs/components-iconbutton--default-story">
             Icon Buttons
           </C.Link>
         </C.Caption>
-        <C.Flex
+        <C.Card
+          display="flex"
           flexGrow={1}
           p={3}
           m={1}
           justifyContent="space-evenly"
-          border="1px solid black"
-          bgcolor="background.default"
         >
           <C.IconButton aria-label="delete">
             <C.Icons.Delete />
@@ -89,20 +88,19 @@ import * as C from '../'
           <C.IconButton color="primary" aria-label="add to shopping cart">
             <C.Icons.AddShoppingCart />
           </C.IconButton>
-        </C.Flex>
+        </C.Card>
         <C.Caption>
           <C.Link href="/components/?path=/docs/components-badge--default-story">
             Badges
           </C.Link>
         </C.Caption>
-        <C.Flex
+        <C.Card
+          display="flex"
           flexGrow={1}
           p={3}
           pt={4}
           m={1}
           justifyContent="space-evenly"
-          border="1px solid black"
-          bgcolor="background.default"
         >
           <C.Badge badgeContent={'default'}>
             <C.IconButton>
@@ -124,21 +122,20 @@ import * as C from '../'
               <C.Icons.Mail />
             </C.IconButton>
           </C.Badge>
-        </C.Flex>
+        </C.Card>
       </C.Column>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-avatar--default-story">
           Avatars
         </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         p={3}
         pt={4}
         m={1}
         justifyContent="space-evenly"
-        border="1px solid black"
-        bgcolor="background.defaul"
       >
         <C.Avatar m={1} bgcolor="primary.main" color="primary.contrastText">
           CF
@@ -155,19 +152,18 @@ import * as C from '../'
         <C.Avatar m={1} bgcolor="primary.light" color="text.primary">
           <C.Icons.Assignment />
         </C.Avatar>
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-chip--default-story">
           Chips
         </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         p={3}
         m={1}
         justifyContent="space-evenly"
-        border="1px solid black"
-        bgcolor="background.defaul"
       >
         <C.Chip
           avatar={<C.Avatar src={commmitImage} />}
@@ -189,20 +185,19 @@ import * as C from '../'
           onClick={() => {}}
           color="secondary"
         />
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-textfield--simple">
           Text Fields
         </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         p={3}
         pt={4}
         m={1}
         justifyContent="space-evenly"
-        border="1px solid black"
-        bgcolor="background.defaul"
       >
         {React.createElement(() => {
           const currencies = [
@@ -369,7 +364,7 @@ import * as C from '../'
             </C.Form>
           )
         })}
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-checkbox--default-story">
           Checkbox
@@ -381,14 +376,13 @@ import * as C from '../'
       {React.createElement(() => {
         const [checked, setChecked] = React.useState(true)
         return (
-          <C.Flex
+          <C.Card
+            display="flex"
             flexGrow={1}
             p={3}
             pt={4}
             m={1}
             justifyContent="space-evenly"
-            border="1px solid black"
-            bgcolor="background.defaul"
           >
             <C.Column justifyContent="center">
               <C.Checkbox
@@ -426,7 +420,7 @@ import * as C from '../'
                 color="secondary"
               />
             </C.Column>
-          </C.Flex>
+          </C.Card>
         )
       })}
       <C.Caption>
@@ -434,14 +428,13 @@ import * as C from '../'
           Slider
         </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         flexDirection="column"
         p={3}
         pt={4}
         m={1}
-        border="1px solid black"
-        bgcolor="background.defaul"
       >
         <C.Slider m={3} flexGrow={1} aria-labelledby="continuous-slider" />
         <C.Slider
@@ -452,13 +445,14 @@ import * as C from '../'
           valueLabelDisplay="on"
         />
         <C.Slider m={3} flexGrow={1} value={30} disabled={true} />
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-list--default-story">
           Lists
         </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         flexDirection="column"
         p={3}
@@ -492,15 +486,14 @@ import * as C from '../'
             </C.ListItem>
           </C.List>
         </C.Box>
-      </C.Flex>
-      <C.Flex
+      </C.Card>
+      <C.Card
+        display="flex"
         flexGrow={1}
         flexDirection="column"
         p={3}
         pt={4}
         m={1}
-        border="1px solid black"
-        bgcolor="background.defaul"
       >
         <C.Box minWidth={500} m={3} bgcolor="background.paper">
           <C.List>
@@ -532,22 +525,14 @@ import * as C from '../'
             )}
           </C.List>
         </C.Box>
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-card--default-story">
           Cards
         </C.Link>
       </C.Caption>
-      <C.Flex
-        flexGrow={1}
-        flexWrap="wrap"
-        p={3}
-        pt={4}
-        m={1}
-        border="1px solid black"
-        bgcolor="background.defaul"
-      >
-        <C.Card m={3} width={1 / 2}>
+      <C.Card display="flex" flexGrow={1} flexWrap="wrap" p={3} pt={4} m={1}>
+        <C.Card m={3} width={1 / 2} elevation={3}>
           <C.Box height={100} bgcolor="primary.main" />
           <C.CardHeader bgcolor="primary.main" color="primary.contrastText">
             Committed Card
@@ -568,7 +553,7 @@ import * as C from '../'
             </C.Button>
           </C.CardActions>
         </C.Card>
-        <C.Card m={3} width={1 / 2}>
+        <C.Card m={3} width={1 / 2} elevation={6}>
           <C.CardHeader bgcolor="secondary.main" color="secondary.contrastText">
             Card
           </C.CardHeader>
@@ -592,7 +577,7 @@ import * as C from '../'
             </C.IconButton>
           </C.CardActions>
         </C.Card>
-        <C.Card>
+        <C.Card elevation={8}>
           <C.Flex>
             <C.CardContent>
               <C.Heading.h5 mb={1}>Title</C.Heading.h5>
@@ -624,20 +609,19 @@ import * as C from '../'
             />
           </C.Flex>
         </C.Card>
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/components-table--default-story">
           Tables
         </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         flexDirection="column"
         p={3}
         pt={4}
         m={1}
-        border="1px solid black"
-        bgcolor="background.default"
       >
         <C.Box m={2} p={3} bgcolor="background.paper">
           <C.Table>
@@ -671,18 +655,19 @@ import * as C from '../'
             </C.TableBody>
           </C.Table>
         </C.Box>
-      </C.Flex>
+      </C.Card>
       <C.Caption>
-        <C.Link href="/components/?path=/docs/components-tabs--appbar">Tabs</C.Link>
+        <C.Link href="/components/?path=/docs/components-tabs--appbar">
+          Tabs
+        </C.Link>
       </C.Caption>
-      <C.Flex
+      <C.Card
+        display="flex"
         flexGrow={1}
         flexDirection="column"
         p={3}
         pt={4}
         m={1}
-        border="1px solid black"
-        bgcolor="background.default"
       >
         {React.createElement(() => {
           const [value, setValue] = React.useState(0)
@@ -714,20 +699,13 @@ import * as C from '../'
             </C.Box>
           )
         })}
-      </C.Flex>
+      </C.Card>
       <C.Caption>
         <C.Link href="/components/?path=/docs/design-system-typography--typography">
           Typography
         </C.Link>
       </C.Caption>
-      <C.Flex
-        flexGrow={1}
-        p={3}
-        pt={4}
-        m={1}
-        border="1px solid black"
-        bgcolor="background.default"
-      >
+      <C.Card display="flex" flexGrow={1} p={3} pt={4} m={1}>
         <C.Box width={1 / 2}>
           <C.Typography>System Typography</C.Typography>
           <C.Heading.h2 gutterBottom>h2. Heading</C.Heading.h2>
@@ -763,7 +741,7 @@ import * as C from '../'
             consectetur.
           </C.Monospace>
         </C.Box>
-      </C.Flex>
+      </C.Card>
     </Background>
   </C.ThemeProvider>
 </Story>
