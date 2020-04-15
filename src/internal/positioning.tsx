@@ -6,7 +6,7 @@ import {
   spacing,
   DisplayProps,
   FlexboxProps,
-  SpacingProps
+  SpacingProps,
 } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
 import { griditem, GriditemProps } from './griditem'
@@ -20,10 +20,5 @@ export const withPositioning = <P extends object>(
   WrappedComponent: React.ElementType<P>
 ) =>
   (styled(WrappedComponent)(
-    compose(
-      display,
-      spacing,
-      flexbox,
-      griditem
-    )
+    compose(display, spacing, flexbox, griditem)
   ) as unknown) as ComponentType<P & PositioningProps>

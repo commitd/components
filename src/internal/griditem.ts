@@ -1,60 +1,62 @@
-import { style, compose, PropsFor, StyleFunction } from '@material-ui/system'
-type SimpleStyleFunction<PropKey extends keyof any> = StyleFunction<
-  Partial<Record<PropKey, any>>
->
+import {
+  style,
+  compose,
+  PropsFor,
+  ComposedStyleFunction,
+} from '@material-ui/system'
 
 export const gridColumnStart = style({
-  prop: 'gridColumnStart'
+  prop: 'gridColumnStart',
 })
 
 export const gridColumnEnd = style({
-  prop: 'gridColumnEnd'
+  prop: 'gridColumnEnd',
 })
 
 export const gridRowStart = style({
-  prop: 'gridRowStart'
+  prop: 'gridRowStart',
 })
 
 export const gridRowEnd = style({
-  prop: 'gridRowEnd'
+  prop: 'gridRowEnd',
 })
 
 export const gridColumn = style({
-  prop: 'gridColumn'
+  prop: 'gridColumn',
 })
 
 export const gridRow = style({
-  prop: 'gridRow'
+  prop: 'gridRow',
 })
 
 export const gridArea = style({
-  prop: 'gridArea'
+  prop: 'gridArea',
 })
 
 export const justifySelf = style({
-  prop: 'justifySelf'
+  prop: 'justifySelf',
 })
 
 export const alignSelf = style({
-  prop: 'alignSelf'
+  prop: 'alignSelf',
 })
 
 export const placeSelf = style({
-  prop: 'placeSelf'
+  prop: 'placeSelf',
 })
 
-export const griditem: SimpleStyleFunction<
-  | 'gridColumnStart'
-  | 'gridColumnEnd'
-  | 'gridRowStart'
-  | 'gridRowEnd'
-  | 'gridColumn'
-  | 'gridRow'
-  | 'gridArea'
-  | 'justifySelf'
-  | 'alignSelf'
-  | 'placeSelf'
-> = compose(
+export const griditem: ComposedStyleFunction<[
+  typeof gridColumnStart,
+  typeof gridColumnEnd,
+  typeof gridRowStart,
+  typeof gridRowEnd,
+  typeof gridColumn,
+  typeof gridRow,
+  typeof gridArea,
+  typeof justifySelf,
+  typeof alignSelf,
+  typeof placeSelf
+]> = compose(
   gridColumnStart,
   gridColumnEnd,
   gridRowStart,

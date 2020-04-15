@@ -1,6 +1,6 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React from 'react'
 import MaterialTooltip, {
-  TooltipProps as MaterialTooltipProps
+  TooltipProps as MaterialTooltipProps,
 } from '@material-ui/core/Tooltip'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { Theme } from '../../theme'
@@ -17,8 +17,8 @@ function arrowGenerator(color: string) {
       height: '1em',
       '&::before': {
         borderWidth: '0 1em 1em 1em',
-        borderColor: `transparent transparent ${color} transparent`
-      }
+        borderColor: `transparent transparent ${color} transparent`,
+      },
     },
     '&[x-placement*="top"] $arrow': {
       bottom: 0,
@@ -28,8 +28,8 @@ function arrowGenerator(color: string) {
       height: '1em',
       '&::before': {
         borderWidth: '1em 1em 0 1em',
-        borderColor: `${color} transparent transparent transparent`
-      }
+        borderColor: `${color} transparent transparent transparent`,
+      },
     },
     '&[x-placement*="right"] $arrow': {
       left: 0,
@@ -38,8 +38,8 @@ function arrowGenerator(color: string) {
       width: '1em',
       '&::before': {
         borderWidth: '1em 1em 1em 0',
-        borderColor: `transparent ${color} transparent transparent`
-      }
+        borderColor: `transparent ${color} transparent transparent`,
+      },
     },
     '&[x-placement*="left"] $arrow': {
       right: 0,
@@ -48,16 +48,16 @@ function arrowGenerator(color: string) {
       width: '1em',
       '&::before': {
         borderWidth: '1em 0 1em 1em',
-        borderColor: `transparent transparent transparent ${color}`
-      }
-    }
+        borderColor: `transparent transparent transparent ${color}`,
+      },
+    },
   }
 }
 
 const useStylesArrow = makeStyles((theme: Theme) =>
   createStyles({
     tooltip: {
-      position: 'relative'
+      position: 'relative',
     },
     arrow: {
       position: 'absolute',
@@ -68,10 +68,10 @@ const useStylesArrow = makeStyles((theme: Theme) =>
         display: 'block',
         width: 0,
         height: 0,
-        borderStyle: 'solid'
-      }
+        borderStyle: 'solid',
+      },
     },
-    popper: arrowGenerator(theme.palette.grey[700])
+    popper: arrowGenerator(theme.palette.grey[700]),
   })
 )
 
@@ -87,10 +87,10 @@ export const Tooltip = (props: TooltipProps) => {
           modifiers: {
             arrow: {
               enabled: Boolean(arrowRef),
-              element: arrowRef
-            }
-          }
-        }
+              element: arrowRef,
+            },
+          },
+        },
       }}
       {...props}
       title={
@@ -102,36 +102,3 @@ export const Tooltip = (props: TooltipProps) => {
     />
   )
 }
-
-// For documentation only
-export type TooltipDocsProps = Omit<
-  TooltipProps,
-  keyof Omit<HTMLAttributes<HTMLDivElement>, 'title'>
-> & {
-  /**
-   * If true, the tooltip is shown.
-   */
-  open?: boolean
-  /**
-   * Tooltip placement.
-   * @default bottom
-   */
-  placement?:
-    | 'bottom-end'
-    | 'bottom-start'
-    | 'bottom'
-    | 'left-end'
-    | 'left-start'
-    | 'left'
-    | 'right-end'
-    | 'right-start'
-    | 'right'
-    | 'top-end'
-    | 'top-start'
-    | 'top'
-  /**
-   * Tooltip title. Zero-length titles string are never displayed.
-   */
-  title: React.ReactNode
-}
-export const TooltipDocs: FC<TooltipDocsProps> = () => null

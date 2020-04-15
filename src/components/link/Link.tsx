@@ -1,8 +1,8 @@
-import React, { FC, ComponentType, AnchorHTMLAttributes } from 'react'
+import React, { FC, ComponentType } from 'react'
 import { styled } from '@material-ui/styles'
 import { colors } from '../../theme'
 import MaterialLink, {
-  LinkProps as MaterialLinkProps
+  LinkProps as MaterialLinkProps,
 } from '@material-ui/core/Link'
 import { withNoOpener } from '../../internal'
 
@@ -42,20 +42,20 @@ const StyledLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
     } left bottom transparent no-repeat`,
   backgroundSize: () => '100% 2px',
   ['&:hover']: {
-    backgroundSize: '100% 100%'
-  }
+    backgroundSize: '100% 100%',
+  },
 })
 
 const ClearLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
   color: 'inherit',
   textDecoration: 'none',
   ['& .gatsby-resp-image-background-image']: {
-    display: 'none !important'
+    display: 'none !important',
   },
   ['&:hover']: {
     textDecoration: 'none',
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 })
 
 export const Link: FC<LinkProps> = ({
@@ -70,14 +70,3 @@ export const Link: FC<LinkProps> = ({
   }
   return <RawLink {...others} />
 }
-
-// For documentation only
-export type LinkDocsProps = Omit<
-  LinkProps,
-  keyof (Omit<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    'color' | 'href' | 'target' | 'rel'
-  >)
->
-
-export const LinkDocs: FC<LinkDocsProps> = () => null

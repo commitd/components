@@ -11,7 +11,7 @@ import {
   createCommittedTypography,
   createCommittedPaletteOptions,
   defaultPaletteColors,
-  FontOptions
+  FontOptions,
 } from './theme'
 import deepmerge from 'deepmerge'
 import { PaletteOptions, Palette } from '@material-ui/core/styles/createPalette'
@@ -105,7 +105,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
     shape: createShape(),
     spacing: createSpacing(),
     typography: createTypography(),
-    overrides: createOverrides(palette)
+    overrides: createOverrides(palette),
   }
 
   const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))

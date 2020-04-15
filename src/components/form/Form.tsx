@@ -3,7 +3,7 @@ import {
   withPositioning,
   PositioningProps,
   withSizing,
-  SizingProps
+  SizingProps,
 } from '../../internal'
 
 export type FormProps = FormHTMLAttributes<HTMLFormElement> &
@@ -12,4 +12,4 @@ export type FormProps = FormHTMLAttributes<HTMLFormElement> &
 
 export const Form: ComponentType<FormProps> = withSizing(
   withPositioning<FormProps>('form')
-)
+) as ComponentType<FormProps>

@@ -1,0 +1,58 @@
+import { IconButton, Icons } from '../../../src'
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { IconButtonDocs } from './IconButtonDocs'
+
+<Meta title="components|IconButton" component={IconButton} />
+
+# IconButton
+
+Extends [Material UI IconButton](https://material-ui.com/api/icon-button/)
+
+Icon buttons can be used for common and obvious actions, where the semantics can not be misunderstood.
+Or in compact forms of drawers or toolbars.
+
+Icons are also appropriate for toggle buttons that allow a single choice to be selected or deselected,
+such as adding or removing a star to an item.
+
+<Preview>
+  <Story name="default">
+    <IconButton onClick={action('delete')} aria-label="delete">
+      <Icons.Delete />
+    </IconButton>
+  </Story>
+  <Story name="disabled">
+    <IconButton
+      onClick={action('delete')}
+      aria-label="delete"
+      disabled
+      color="primary"
+    >
+      <Icons.Delete />
+    </IconButton>
+  </Story>
+  <Story name="primary">
+    <IconButton
+      onClick={action('click')}
+      color="secondary"
+      aria-label="add an alarm"
+    >
+      <Icons.Alarm />
+    </IconButton>
+  </Story>
+  <Story name="secondary">
+    <IconButton
+      onClick={action('click')}
+      color="primary"
+      aria-label="add to shopping cart"
+    >
+      <Icons.AddShoppingCart />
+    </IconButton>
+  </Story>
+</Preview>
+
+## Props
+
+Supports aria and html props aswell as [Spacing and Flexbox props](/components/?path=/docs/design-system-positioning--page).
+
+<Props of={IconButtonDocs} />

@@ -1,6 +1,6 @@
 import { FC, ComponentType } from 'react'
 import MaterialButton, {
-  ButtonProps as MaterialButtonProps
+  ButtonProps as MaterialButtonProps,
 } from '@material-ui/core/Button'
 import { withNoOpener, withPositioning, PositioningProps } from '../../internal'
 
@@ -10,7 +10,7 @@ export const Button: ComponentType<ButtonProps> = withPositioning(
   withNoOpener(MaterialButton)
 )
 Button.defaultProps = {
-  variant: 'contained'
+  variant: 'contained',
 }
 
 // For documentation only

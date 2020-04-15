@@ -1,6 +1,6 @@
-import { FC, ComponentType, HTMLAttributes } from 'react'
+import { ComponentType } from 'react'
 import MaterialChip, {
-  ChipProps as MaterialChipProps
+  ChipProps as MaterialChipProps,
 } from '@material-ui/core/Chip'
 import { styled } from '@material-ui/styles'
 import {
@@ -8,22 +8,11 @@ import {
   spacing,
   flexbox,
   SpacingProps,
-  FlexboxProps
+  FlexboxProps,
 } from '@material-ui/system'
 
 export type ChipProps = MaterialChipProps & SpacingProps & FlexboxProps
 
 export const Chip: ComponentType<ChipProps> = styled(MaterialChip)(
-  compose(
-    spacing,
-    flexbox
-  )
+  compose(spacing, flexbox)
 )
-
-// For documentation only
-export type ChipDocsProps = Omit<
-  MaterialChipProps,
-  keyof Omit<HTMLAttributes<HTMLDivElement>, 'color'>
->
-
-export const ChipDocs: FC<ChipDocsProps> = () => null

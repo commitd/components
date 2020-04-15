@@ -8,7 +8,7 @@ import {
   DisplayProps,
   SpacingProps,
   FlexboxProps,
-  SizingProps
+  SizingProps,
 } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
 import { getDisplayName } from './util'
@@ -21,7 +21,7 @@ export type WithWrapperProps = SpacingProps &
   DisplayProps &
   GriditemProps
 
-const keys = [
+const keys: Array<keyof WithWrapperProps> = [
   'm',
   'mt',
   'mr',
@@ -84,17 +84,11 @@ const keys = [
   'gridColumn',
   'gridRow',
   'gridArea',
-  'placeSelf'
+  'placeSelf',
 ]
 
 const Wrapper = styled('div')(
-  compose(
-    display,
-    spacing,
-    flexbox,
-    sizing,
-    griditem
-  )
+  compose(display, spacing, flexbox, sizing, griditem)
 )
 
 export const withWrapper = <P extends object>(

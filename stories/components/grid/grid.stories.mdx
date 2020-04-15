@@ -1,0 +1,751 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Grid, Box, Card, colors } from '../../../src'
+import { GridBox } from '../../util/GridBox'
+import { Gridcontainer } from '../../util/docsutil'
+import { GridDocs } from './GridDocs'
+
+<Meta title="components|Grid" component={Grid} />
+
+# Grid
+
+Does not extend Material-UI Grid, this implementation is based on CSS Grid.
+
+Grid supports the layout of components in 2 dimensions. Where possible prefer [`Flex`](http://localhost:6006/components/?path=/docs/components-flex--default) for one dimensional layouts.
+
+We use a styled `Box` in the example to remove not-relevant props.
+
+<Preview>
+  <Story name="default">
+    <Grid
+      gridTemplateColumns="40px 50px auto 50px 40px"
+      gridTemplateRows="25% 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+## Areas
+
+Defines a grid template by referencing the names of the grid areas which are specified with the grid-area property.
+Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.
+
+Values:
+
+- grid-area-name - the name of a grid area specified with grid-area
+- . - a period signifies an empty grid cell
+- none - no grid areas are defined
+
+<Preview>
+  <Story name="areas">
+    <Grid
+      gridTemplateColumns="100px 100px 100px 100px"
+      gridTemplateRows="50px 100px 50px"
+      gridTemplateAreas={`'header header header header' 'sidebar . main main' 'footer footer footer footer'`}
+    >
+      <GridBox gridArea="header">Header</GridBox>
+      <GridBox gridArea="sidebar">Sidebar</GridBox>
+      <GridBox gridArea="main">Main</GridBox>
+      <GridBox gridArea="footer">Footer</GridBox>
+    </Grid>
+  </Story>
+</Preview>
+
+`gridTemplate` and `grid` can be used as a shorthand notation, however, as in this example it can be dificult to follow.
+For clarity, we reccommend using the mroe verbose versions except for simple layouts.
+
+<Preview>
+  <Story name="areas-shorthand">
+    <Grid
+      gridTemplate={`'header header header header' 50px 'sidebar . main main' 100px 'footer footer footer footer' 50px / 100px 100px 100px 100px`}
+    >
+      <GridBox gridArea="header">Header</GridBox>
+      <GridBox gridArea="sidebar">Sidebar</GridBox>
+      <GridBox gridArea="main">Main</GridBox>
+      <GridBox gridArea="footer">Footer</GridBox>
+    </Grid>
+  </Story>
+</Preview>
+
+## Gaps
+
+Specifies the size of the grid lines.
+You can think of it like setting the width of the gutters between the columns/rows.
+We use the spacing in the theme. `gap` only supports the case where both the row
+and column spacing is the same.
+
+<Preview>
+  <Story name="gaps">
+    <Grid
+      rowGap={3}
+      columnGap={2}
+      gridTemplateColumns="100px 100px 100px"
+      gridTemplateRows="100px 100px 100px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="gap-same">
+    <Grid gap={2} gridTemplateColumns="100px 100px" gridAutoRows="100px">
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+## Justify Items
+
+Aligns grid items along the inline (row) axis (as opposed to align-items which aligns along the column axis).
+This value applies to all grid items inside the container.
+
+Values:
+
+- `start` - aligns items to be flush with the start edge of their cell
+- `end` - aligns items to be flush with the end edge of their cell
+- `center` - aligns items in the center of their cell
+- `stretch` - fills the whole width of the cell (this is the default)
+
+<Preview>
+  <Story name="justify-items-start">
+    <Grid
+      justifyItems="start"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+  <Story name="justify-items-end">
+    <Grid
+      justifyItems="end"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+  <Story name="justify-items-center">
+    <Grid
+      justifyItems="center"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+  <Story name="justify-items-stretch">
+    <Grid
+      justifyItems="stretch"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+## Align Items
+
+Aligns grid items along the column axis (as opposed to justify-items which aligns along the inline (row) axis).
+This value applies to all grid items inside the container.
+
+Values:
+
+- `start` - aligns items to be flush with the start edge of their cell
+- `end` - aligns items to be flush with the end edge of their cell
+- `center` - aligns items in the center of their cell
+- `stretch` - fills the whole height of the cell (this is the default)
+
+<Preview>
+  <Story name="align-items-start">
+    <Grid
+      alignItems="start"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+  <Story name="align-items-end">
+    <Grid
+      alignItems="end"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+  <Story name="align-items-center">
+    <Grid
+      alignItems="center"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+  <Story name="align-items-stretch">
+    <Grid
+      alignItems="stretch"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+## Place Items
+
+`place-items` sets both the align-items and justify-items properties in a single declaration.
+It does not support breakpoit changing.
+
+Values:
+
+- `align-items / justify-items` - The first value sets align-items, the second value justify-items. If the second value is omitted, the first value is assigned to both properties.
+  All major browsers except Edge support the place-items shorthand property.
+
+## Justify Content
+
+Sometimes the total size of your grid might be less than the size of its grid container.
+This could happen if all of your grid items are sized with non-flexible units like px.
+In this case you can set the alignment of the grid within the grid container.
+This property aligns the grid along the inline (row) axis (as opposed to align-content which aligns the grid along the column axis).
+
+Values:
+
+- `start` - aligns the grid to be flush with the start edge of the grid container
+- `end` - aligns the grid to be flush with the end edge of the grid container
+- `center` - aligns the grid in the center of the grid container
+- `stretch` - resizes the grid items to allow the grid to fill the full width of the grid container
+- `space-around` - places an even amount of space between each grid item, with half-sized spaces on the far ends
+- `space-between` - places an even amount of space between each grid item, with no space at the far ends
+- `space-evenly` - places an even amount of space between each grid item, including the far ends
+
+<Preview>
+  Start
+  <Story name="justify-content-start">
+    <Card>
+      <Grid
+        justifyContent="start"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+<Preview>
+  End
+  <Story name="justify-content-end">
+    <Card>
+      <Grid
+        justifyContent="end"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+<Preview>
+  Center
+  <Story name="justify-content-center">
+    <Card>
+      <Grid
+        justifyContent="center"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+<Preview>
+  Stretch
+  <Story name="justify-content-stretch">
+    <Card>
+      <Grid
+        justifyContent="stretch"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+<Preview>
+  Space Around
+  <Story name="justify-content-space-around">
+    <Card>
+      <Grid
+        justifyContent="space-around"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+<Preview>
+  Space Between
+  <Story name="justify-content-space-between">
+    <Card>
+      <Grid
+        justifyContent="space-between"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+<Preview>
+  Space Evenly
+  <Story name="justify-content-space-evenly">
+    <Card>
+      <Grid
+        justifyContent="space-evenly"
+        border="1px solid grey"
+        gridTemplateColumns="50px 50px"
+        gridTemplateRows="50px 50px"
+      >
+        <GridBox />
+        <GridBox />
+        <GridBox />
+        <GridBox />
+      </Grid>
+    </Card>
+  </Story>
+</Preview>
+
+## Align Content
+
+Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like px. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the block (column) axis (as opposed to justify-content which aligns the grid along the inline (row) axis).
+
+Values:
+
+- `start` - aligns the grid to be flush with the start edge of the grid container
+- `end` - aligns the grid to be flush with the end edge of the grid container
+- `center` - aligns the grid in the center of the grid container
+- `stretch` - resizes the grid items to allow the grid to fill the full height of the grid container
+- `space-around` - places an even amount of space between each grid item, with half-sized spaces on the far ends
+- `space-between` - places an even amount of space between each grid item, with no space at the far ends
+- `space-evenly` - places an even amount of space between each grid item, including the far ends
+
+<Preview>
+  Start
+  <Story name="align-content-start">
+    <Grid
+      minHeight="150px"
+      alignContent="start"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  End
+  <Story name="align-content-end">
+    <Grid
+      minHeight="150px"
+      alignContent="end"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  Center
+  <Story name="align-content-center">
+    <Grid
+      minHeight="150px"
+      alignContent="center"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  Stretch
+  <Story name="align-content-stretch">
+    <Grid
+      minHeight="150px"
+      alignContent="stretch"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  Space Around
+  <Story name="align-content-space-around">
+    <Grid
+      minHeight="150px"
+      alignContent="space-around"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  Space Between
+  <Story name="align-content-space-between">
+    <Grid
+      minHeight="150px"
+      alignContent="space-between"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+<Preview>
+  Space Evenly
+  <Story name="align-content-space-evenly">
+    <Grid
+      minHeight="150px"
+      alignContent="space-evenly"
+      border="1px solid grey"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox />
+      <GridBox />
+      <GridBox />
+      <GridBox />
+    </Grid>
+  </Story>
+</Preview>
+
+## Place Content
+
+`place-content` sets both the align-content and justify-content properties in a single declaration.
+It does not support breakpoit changing.
+All major browsers except Edge support the place-content shorthand property.
+
+Values:
+
+- `start` - aligns the grid to be flush with the start edge of the grid container
+- `end` - aligns the grid to be flush with the end edge of the grid container
+- `center` - aligns the grid in the center of the grid container
+- `stretch` - resizes the grid items to allow the grid to fill the full height of the grid container
+- `space-around` - places an even amount of space between each grid item, with half-sized spaces on the far ends
+- `space-between` - places an even amount of space between each grid item, with no space at the far ends
+- `space-evenly` - places an even amount of space between each grid item, including the far ends
+
+## Flow
+
+If you have grid items that you don't explicitly place on the grid,
+the auto-placement algorithm kicks in to automatically place the items.
+This property controls how the auto-placement algorithm works.
+
+Values:
+
+- `row` - tells the auto-placement algorithm to fill in each row in turn, adding new rows as necessary (default)
+- `column` - tells the auto-placement algorithm to fill in each column in turn, adding new columns as necessary
+- `dense` - tells the auto-placement algorithm to attempt to fill in holes earlier in the grid if smaller items come up later
+
+<Preview>
+  Row
+  <Story name="grid-auto-flow-row">
+    <Grid
+      gridAutoFlow="row"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox>2</GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
+    </Grid>
+  </Story>
+  Column
+  <Story name="grid-auto-flow-columnrow">
+    <Grid
+      gridAutoFlow="column"
+      gridTemplateColumns="50px 50px"
+      gridTemplateRows="50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox>2</GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
+    </Grid>
+  </Story>
+</Preview>
+
+# Grid Items
+
+## Item coverage
+
+`grid-column-start`, `grid-column-end`, `grid-row-start`, `grid-row-end` determine a grid item's location
+within the grid by referring to specific grid lines.
+`grid-column-start/grid-row-start` is the line where the item begins, and
+`grid-column-end/grid-row-end` is the line where the item ends.
+
+Values:
+
+- `line` - can be a number to refer to a numbered grid line, or a name to refer to a named grid line
+- `span <number>` - the item will span across the provided number of grid tracks
+- `span <name>` - the item will span across until it hits the next line with the provided name
+- `auto` - indicates auto-placement, an automatic span, or a default span of one
+
+<Preview>
+  <Story name="coverage">
+    <Grid
+      gridTemplateColumns="50px 50px 50px 50px"
+      gridTemplateRows="50px 50px 50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox
+        gridColumnStart="3"
+        gridColumnEnd="5"
+        gridRowStart="1"
+        gridRowEnd="3"
+      >
+        2
+      </GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
+      <GridBox>5</GridBox>
+    </Grid>
+  </Story>
+</Preview>
+
+If no `grid-column-end/grid-row-end` is declared, the item will span 1 track by default.
+
+Items can overlap each other. You can use z-index to control their stacking order.
+
+`grid-column` and `grid-row` are shorthand for `grid-column-start` + `grid-column-end`,
+and `grid-row-start` + `grid-row-end`, respectively.
+
+Values:
+
+- `<start-line> / <end-line>` - each one accepts all the same values as the longhand version, including span
+
+If no end line value is declared, the item will span 1 track by default.
+
+## Item Grid Area
+
+`gridArea` Gives an item a name so that it can be referenced by a template created with the `grid-template-areas` property.
+Alternatively, this property can be used as an even shorter shorthand for `grid-row-start + grid-column-start + grid-row-end + grid-column-end`.
+
+Values:
+
+`name` - a name of your choosing
+`row-start / column-start / row-end / column-end` - can be numbers or named lines
+
+<Preview>
+  <Story name="itemArea">
+    <Grid
+      gridTemplateColumns="50px 50px 50px 50px"
+      gridTemplateRows="50px 50px 50px 50px"
+    >
+      <GridBox>1</GridBox>
+      <GridBox gridArea="1 / 3 / 3 / 5">2</GridBox>
+      <GridBox>3</GridBox>
+      <GridBox>4</GridBox>
+      <GridBox>5</GridBox>
+    </Grid>
+  </Story>
+</Preview>
+
+## Justify Self
+
+`justify-self` aligns a grid item inside a cell along the row axis
+(as opposed to align-self which aligns along the column axis).
+This value applies to a grid item inside a single cell.
+
+Values:
+
+- `start` - aligns the grid item to be flush with the start edge of the cell
+- `end` - aligns the grid item to be flush with the end edge of the cell
+- `center` - aligns the grid item in the center of the cell
+- `stretch` - fills the whole width of the cell (this is the default)
+
+To set alignment for all the items in a grid, this behavior can also be set on the grid container via the justify-items property.
+
+## Align Self
+
+Aligns a grid item inside a cell along the column axis (as opposed to justify-self which aligns along the row axis).
+This value applies to the content inside a single grid item.
+
+Values:
+
+- `start` - aligns the grid item to be flush with the start edge of the cell
+- `end` - aligns the grid item to be flush with the end edge of the cell
+- `center` - aligns the grid item in the center of the cell
+- `stretch` - fills the whole height of the cell (this is the default)
+
+## Place Self
+
+`place-self` sets both the align-self and justify-self properties in a single declaration.
+
+Values:
+
+- `auto` - The “default” alignment for the layout mode.
+- `start` - aligns the grid item to be flush with the start edge of the cell
+- `end` - aligns the grid item to be flush with the end edge of the cell
+- `center` - aligns the grid item in the center of the cell
+- `stretch` - fills the whole height of the cell (this is the default)
+
+<Preview>
+  <Story name="place-self">
+    <Grid
+      border="1px solid grey"
+      gridTemplateColumns="100px 100px"
+      gridTemplateRows="100px 100px"
+    >
+      <GridBox placeSelf="center" />
+      <GridBox alignSelf="start" justifySelf="end" />
+      <GridBox justifySelf="start" alignSelf="end" />
+      <GridBox placeSelf="stretch" />
+    </Grid>
+  </Story>
+</Preview>
+
+# Props
+
+The following shows main Grid props but type are simplified for display.
+
+<Props of={Gridcontainer} />
+
+Supports all usual div aria and html props and [Positioning props](/components/?path=/docs/design-system-positioning--page) for Spacing, Sizing and Flexbox.
+
+<Props of={GridDocs} />
+
+# Credit
+
+Much of this is taken from [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/), see for further details.

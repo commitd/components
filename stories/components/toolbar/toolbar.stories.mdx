@@ -1,0 +1,27 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Toolbar, AppBar, Box, Heading, Button } from '../../../src'
+
+<Meta title="components|Toolbar" component={Toolbar} />
+
+# Toolbar
+
+This is used primarily within an AppBar to group the elements.
+
+<Preview>
+  <Story name="app bar">
+    <AppBar position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Example</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Toolbar} />

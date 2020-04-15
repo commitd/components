@@ -2,8 +2,10 @@ import React from 'react'
 import { styled } from '@material-ui/styles'
 import { Theme } from '../../theme'
 import { Typography, TypographyProps } from './Typography'
+import { OverrideComponent } from '../../internal/util'
 
-export type HeadingProps = TypographyProps
+export type HeadingProps = TypographyProps &
+  OverrideComponent & { theme?: Theme }
 
 const displayFont = ({ theme }: { theme: Theme }) => theme.fonts.heading
 
@@ -32,5 +34,5 @@ export const Heading: {
   ))(displayFont),
   h6: styled(({ variant, component, ...others }: HeadingProps) => (
     <Typography {...others} variant="h6" />
-  ))(displayFont)
+  ))(displayFont),
 }

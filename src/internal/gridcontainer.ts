@@ -1,99 +1,101 @@
-import { style, compose, PropsFor, StyleFunction } from '@material-ui/system'
-type SimpleStyleFunction<PropKey extends keyof any> = StyleFunction<
-  Partial<Record<PropKey, any>>
->
+import {
+  style,
+  compose,
+  PropsFor,
+  ComposedStyleFunction,
+} from '@material-ui/system'
 
 export const gridTemplateColumns = style({
-  prop: 'gridTemplateColumns'
+  prop: 'gridTemplateColumns',
 })
 
 export const gridTemplateRows = style({
-  prop: 'gridTemplateRows'
+  prop: 'gridTemplateRows',
 })
 
 export const gridTemplateAreas = style({
-  prop: 'gridTemplateAreas'
+  prop: 'gridTemplateAreas',
 })
 
 export const gridTemplate = style({
-  prop: 'gridTemplate'
+  prop: 'gridTemplate',
 })
 
 export const columnGap = style({
   prop: 'columnGap',
   themeKey: 'spacing',
   // although grid-column-gap is deprecated in favor of column-gap seems to error in react
-  cssProperty: 'gridColumnGap'
+  cssProperty: 'gridColumnGap',
 })
 
 export const rowGap = style({
   prop: 'rowGap',
   themeKey: 'spacing',
   // although grid-row-gap is deprecated in favor of row-gap seems to error in react
-  cssProperty: 'gridRowGap'
+  cssProperty: 'gridRowGap',
 })
 
 export const gap = style({
   prop: 'gap',
   themeKey: 'spacing',
   // although grid-gap is deprecated in favor of gap seems to error in react
-  cssProperty: 'gridGap'
+  cssProperty: 'gridGap',
 })
 
 export const justifyItems = style({
-  prop: 'justifyItems'
+  prop: 'justifyItems',
 })
 
 export const alignItems = style({
-  prop: 'alignItems'
+  prop: 'alignItems',
 })
 
 export const placeItems = style({
-  prop: 'placeItems'
+  prop: 'placeItems',
 })
 
 export const justifyContent = style({
-  prop: 'justifyContent'
+  prop: 'justifyContent',
 })
 
 export const alignContent = style({
-  prop: 'alignContent'
+  prop: 'alignContent',
 })
 
 export const placeContent = style({
-  prop: 'placeContent'
+  prop: 'placeContent',
 })
 
 export const gridAutoColumns = style({
-  prop: 'gridAutoColumns'
+  prop: 'gridAutoColumns',
 })
 
 export const gridAutoRows = style({
-  prop: 'gridAutoRows'
+  prop: 'gridAutoRows',
 })
 
 export const gridAutoFlow = style({
-  prop: 'gridAutoFlow'
+  prop: 'gridAutoFlow',
 })
 
-export const gridcontainer: SimpleStyleFunction<
-  | 'gridTemplateColumns'
-  | 'gridTemplateRows'
-  | 'gridTemplateAreas'
-  | 'gridTemplate'
-  | 'columnGap'
-  | 'rowGap'
-  | 'gap'
-  | 'justifyItems'
-  | 'alignItems'
-  | 'placeItems'
-  | 'justifyContent'
-  | 'alignContent'
-  | 'placeContent'
-  | 'gridAutoColumns'
-  | 'gridAutoRows'
-  | 'gridAutoFlow'
-> = compose(
+export const gridcontainer: ComposedStyleFunction<[
+  typeof gridTemplateColumns,
+  typeof gridTemplateRows,
+  typeof gridTemplateAreas,
+  typeof gridTemplate,
+  typeof columnGap,
+  typeof rowGap,
+  typeof gap,
+  typeof justifyItems,
+  typeof alignItems,
+  typeof placeItems,
+  typeof justifyContent,
+  typeof alignContent,
+  typeof placeContent,
+  typeof gridAutoColumns,
+  typeof gridAutoRows,
+  typeof gridAutoFlow
+]> = compose(
   gridTemplateColumns,
   gridTemplateRows,
   gridTemplateAreas,

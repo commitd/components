@@ -1,0 +1,62 @@
+import { Logo, Flex } from '../../../src'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { LogoDocs } from './LogoDocs'
+
+<Meta title="components|Logo" component={Logo} />
+
+# Logo
+
+The Committed Logo
+
+<Preview>
+  <Story name="size 512">
+    <Logo size={512} />
+  </Story>
+  <Story name="default">
+    <Logo />
+  </Story>
+  <Story name="size 128">
+    <Logo size={128} />
+  </Story>
+  <Story name="size 64">
+    <Logo size={64} />
+  </Story>
+  <Story name="size 24">
+    <Logo size={24} />
+  </Story>
+  <Story name="size 16">
+    <Logo size={16} />
+  </Story>
+</Preview>
+
+Size can be a percentage by setting size less than or equal to 1
+
+<Preview>
+  <Story name="size 100%">
+    <Logo size={1} />
+  </Story>
+  <Story name="size 50%">
+    <Logo size={1 / 2} />
+  </Story>
+  <Story name="size 25%">
+    <Logo size={1 / 4} />
+  </Story>
+</Preview>
+
+An array can be provided for responsive sizes
+
+<Preview>
+  <Story name="responsive">
+    <Flex>
+      <Logo size={1} />
+      <Logo size={[1 / 2, 1]} />
+      <Logo size={[1 / 4, 1 / 2, 1]} />
+    </Flex>
+  </Story>
+</Preview>
+
+## Props
+
+Supports standard SVG props.
+
+<Props of={LogoDocs} />
