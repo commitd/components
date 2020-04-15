@@ -26,8 +26,8 @@ if (!packageChanged && lockfileChanged) {
 }
 
 // Request changes to src also include changes to tests.
-const hasSrcChanges = allFiles.some(p => includes(p, '.tsx'))
-const hasStoriesChanges = allFiles.some(p => includes(p, '.stories.'))
+const hasSrcChanges = allFiles.some((p) => includes(p, '.tsx'))
+const hasStoriesChanges = allFiles.some((p) => includes(p, '.stories.'))
 
 if (hasSrcChanges && !hasStoriesChanges) {
   warn(
@@ -35,23 +35,24 @@ if (hasSrcChanges && !hasStoriesChanges) {
   )
 }
 
-const isDirectory = fileName => {
-  return fs.lstatSync(fileName).isDirectory()
-}
-
-const hasStories = folderName =>
-  fs.readdirSync(folderName).filter(f => f.includes('.stories.')).length > 0
+const storiesFolderPath = 'stories/components'
+const hasStories = (folderName) =>
+  fs
+    .readdirSync(path.join(storiesFolderPath, folderName))
+    .filter((f) => f.includes('.stories.')).length > 0
 
 // A component should have a corresponding story
 // Start with a full list of all Components folders, then look
 // through contents for a stories file
 const componentsFolderPath = 'src/components'
-const components = fs
-  .readdirSync(componentsFolderPath)
-  .map(f => path.join(componentsFolderPath, f))
-  .filter(isDirectory)
 
-components.forEach(component => {
+const isDirectory = (fileName) => {
+  return fs.lstatSync(path.join(componentsFolderPath, fileName)).isDirectory()
+}
+
+const components = fs.readdirSync(componentsFolderPath).filter(isDirectory)
+
+components.forEach((component) => {
   if (!hasStories(component)) {
     fail(`Could not find stories for component: ${component}`)
   }
