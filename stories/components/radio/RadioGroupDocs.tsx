@@ -1,9 +1,8 @@
-import React, { FC, HTMLAttributes } from 'react'
-import { RadioGroupProps as MaterialRadioGroupProps } from '@material-ui/core/RadioGroup'
+import * as React from 'react'
+import { RadioGroupProps } from '@material-ui/core/RadioGroup'
 
-// For documentation only
 export type RadioGroupDocsProps = Omit<
-  MaterialRadioGroupProps,
-  keyof Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>
+  RadioGroupProps,
+  keyof Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 >
-export const RadioGroupDocs: FC<RadioGroupDocsProps> = () => null
+export const RadioGroupDocs: React.FC<RadioGroupDocsProps> = () => null

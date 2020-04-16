@@ -18,7 +18,7 @@ import {
   makeStyles,
   useTheme,
   Theme,
-  createStyles
+  createStyles,
 } from '../../../src'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { DrawerDocs } from './DrawerDocs'
@@ -38,7 +38,7 @@ and [side sheet](https://material.io/components/sheets-side/)
     {() => {
       const theme = useTheme()
       const [open, setOpen] = React.useState(false)
-      const toggleDrawer = value => event => {
+      const toggleDrawer = (value) => (event) => {
         if (
           event.type === 'keydown' &&
           (event.key === 'Tab' || event.key === 'Shift')
@@ -105,7 +105,7 @@ and [side sheet](https://material.io/components/sheets-side/)
           <Drawer
             variant="temporary"
             ModalProps={{
-              keepMounted: true // Better open performance on mobile.
+              keepMounted: true, // Better open performance on mobile.
             }}
             open={open}
             onClose={toggleDrawer(false)}

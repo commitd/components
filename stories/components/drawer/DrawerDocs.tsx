@@ -1,10 +1,9 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { DrawerProps } from '@material-ui/core/Drawer'
 
-// For documentation only
 export type DrawerDocsProps = Omit<
   DrawerProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 
-export const DrawerDocs: FC<DrawerDocsProps> = () => null
+export const DrawerDocs: React.FC<DrawerDocsProps> = () => null

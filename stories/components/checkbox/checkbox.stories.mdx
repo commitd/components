@@ -9,7 +9,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  FormGroup
+  FormGroup,
 } from '../../../src'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { CheckboxDocs } from './CheckboxDocs'
@@ -34,7 +34,7 @@ Use when single select/deselect option, use radio when one option of more then t
       onChange={action('checked')}
       value="checkedA"
       inputProps={{
-        'aria-label': 'checkbox'
+        'aria-label': 'checkbox',
       }}
     />
   </Story>
@@ -43,14 +43,14 @@ Use when single select/deselect option, use radio when one option of more then t
       checked={false}
       color="primary"
       inputProps={{
-        'aria-label': 'primary checkbox'
+        'aria-label': 'primary checkbox',
       }}
     />
   </Story>
   <Story name="uncontrolled checked">
     <Checkbox
       inputProps={{
-        'aria-label': 'uncontrolled-checkbox'
+        'aria-label': 'uncontrolled-checkbox',
       }}
     />
   </Story>
@@ -58,7 +58,7 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       disabled={true}
       inputProps={{
-        'aria-label': 'disabled checkbox'
+        'aria-label': 'disabled checkbox',
       }}
     />
   </Story>
@@ -67,7 +67,7 @@ Use when single select/deselect option, use radio when one option of more then t
       disabled={true}
       checked={true}
       inputProps={{
-        'aria-label': 'disabled checked checkbox'
+        'aria-label': 'disabled checked checkbox',
       }}
     />
   </Story>
@@ -75,7 +75,7 @@ Use when single select/deselect option, use radio when one option of more then t
     <Checkbox
       indeterminate={true}
       inputProps={{
-        'aria-label': 'indeterminate checkbox'
+        'aria-label': 'indeterminate checkbox',
       }}
     />
   </Story>
@@ -84,7 +84,7 @@ Use when single select/deselect option, use radio when one option of more then t
       defaultChecked={true}
       color="default"
       inputProps={{
-        'aria-label': 'checkbox with default color'
+        'aria-label': 'checkbox with default color',
       }}
     />
   </Story>
@@ -115,7 +115,7 @@ Example with state
           <Checkbox
             checked={checked}
             color="default"
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -123,7 +123,7 @@ Example with state
           <Checkbox
             checked={checked}
             color="primary"
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -131,7 +131,7 @@ Example with state
           <Checkbox
             checked={checked}
             color="secondary"
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -139,7 +139,7 @@ Example with state
           <Checkbox
             checked={checked}
             disabled
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -148,7 +148,7 @@ Example with state
             checked={checked}
             color="primary"
             disabled
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -157,7 +157,7 @@ Example with state
             checked={checked}
             color="secondary"
             disabled
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -221,7 +221,7 @@ In some usecases it's better to make flush with the start of the end of the box.
             checked={checked}
             color="primary"
             edge="start"
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}
@@ -240,7 +240,7 @@ In some usecases it's better to make flush with the start of the end of the box.
             checked={checked}
             color="primary"
             edge="end"
-            onChange={event => {
+            onChange={(event) => {
               click(event.target.checked)
               setChecked(event.target.checked)
             }}

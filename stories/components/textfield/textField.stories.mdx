@@ -18,28 +18,28 @@ but others can be used if necessary.
       const currencies = [
         {
           value: 'USD',
-          label: '$'
+          label: '$',
         },
         {
           value: 'EUR',
-          label: '€'
+          label: '€',
         },
         {
           value: 'BTC',
-          label: '฿'
+          label: '฿',
         },
         {
           value: 'JPY',
-          label: '¥'
-        }
+          label: '¥',
+        },
       ]
       const [values, setValues] = React.useState({
         name: 'Cat in the Hat',
         age: '',
         multiline: 'Controlled',
-        currency: 'EUR'
+        currency: 'EUR',
       })
-      const handleChange = name => event =>
+      const handleChange = (name) => (event) =>
         setValues({ ...values, [name]: event.target.value })
       return (
         <Form noValidate autoComplete="off">
@@ -91,7 +91,7 @@ but others can be used if necessary.
               label="Read Only"
               defaultValue="Hello World"
               InputProps={{
-                readOnly: true
+                readOnly: true,
               }}
             />
             <TextField m={3} id="standard-dense" label="Dense" margin="dense" />
@@ -140,7 +140,7 @@ but others can be used if necessary.
               onChange={handleChange('age')}
               type="number"
               InputLabelProps={{
-                shrink: true
+                shrink: true,
               }}
             />
             <TextField
@@ -158,7 +158,7 @@ but others can be used if necessary.
               onChange={handleChange('currency')}
               helperText="Please select your currency"
             >
-              {currencies.map(option => (
+              {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
@@ -172,11 +172,11 @@ but others can be used if necessary.
               value={values.currency}
               onChange={handleChange('currency')}
               SelectProps={{
-                native: true
+                native: true,
               }}
               helperText="Please select your currency"
             >
-              {currencies.map(option => (
+              {currencies.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>

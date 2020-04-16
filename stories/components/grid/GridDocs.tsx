@@ -1,6 +1,5 @@
-import { FC } from 'react'
+import * as React from 'react'
 
-// For documentation only
 import {
   BordersProps,
   PaletteProps,
@@ -14,4 +13,4 @@ export type GridDocsProps = BordersProps &
   ShadowsProps &
   TypographyProps
 
-export const GridDocs: FC<GridDocsProps> = () => null
+export const GridDocs: React.FC<GridDocsProps> = () => null

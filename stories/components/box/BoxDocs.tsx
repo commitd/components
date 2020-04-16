@@ -1,20 +1,16 @@
-import { FC } from 'react'
-import { BoxProps } from '../../../src'
-// import {
-//   GridcontinerProps,
-//   GriditemProps
-// } from '../../internal'
-// import MaterialBox, {
-//   BoxProps as MaterialBoxProps
-// } from '@material-ui/core/Box'
+import * as React from 'react'
+//import { BoxProps } from '../../../src'
+// TODO remove BoxProp when storybook issue fixed
 
-// export type BoxProps = MaterialBoxProps &
-//   Omit<GridcontinerProps, 'justifyContent' | 'alignItems' | 'theme'> &
-//   Omit<GriditemProps, 'justifySelf' | 'alignSelf' | 'theme'> & {
-//     ref?: Ref<HTMLDivElement>
-//   }
+import { GridcontinerProps, GriditemProps } from '../../../src/internal'
+import { BoxProps as MaterialBoxProps } from '@material-ui/core/Box'
 
-// For documentation only
+export type BoxProps = MaterialBoxProps &
+  Omit<GridcontinerProps, 'justifyContent' | 'alignItems' | 'theme'> &
+  Omit<GriditemProps, 'justifySelf' | 'alignSelf' | 'theme'> & {
+    ref?: React.Ref<HTMLDivElement>
+  }
+
 import {
   BordersProps,
   PaletteProps,
@@ -28,5 +24,5 @@ export type BaseBoxProps = BordersProps &
   ShadowsProps &
   TypographyProps
 export type RestBoxProps = Omit<BoxProps, keyof BaseBoxProps>
-export const BaseBoxDocs: FC<BaseBoxProps> = () => null
-export const RestBoxDocs: FC<RestBoxProps> = () => null
+export const BaseBoxDocs: React.FC<BaseBoxProps> = () => null
+export const RestBoxDocs: React.FC<RestBoxProps> = () => null

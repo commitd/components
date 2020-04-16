@@ -1,22 +1,23 @@
-import React, { FC } from 'react'
-import { LogoProps } from '../../../src'
+import * as React from 'react'
 
-// export interface BaseLogoProps {
-//   /**
-//    * Adjust the size in px of the loader, or % if <= 1.
-//    * Supply an array for responsive adjustment.
-//    *
-//    * @default 256
-//    */
-//   size?: number | number[]
-// }
+//TODO: Use directly when storybook issue fixed
+//import { LogoProps } from '../../../src'
 
-// export type LogoProps = BaseLogoProps & React.HTMLAttributes<SVGElement>
+export interface BaseLogoProps {
+  /**
+   * Adjust the size in px of the loader, or % if <= 1.
+   * Supply an array for responsive adjustment.
+   *
+   * @default 256
+   */
+  size?: number | number[]
+}
 
-export type BaseLogoProps = Omit<
+export type LogoProps = BaseLogoProps & React.HTMLAttributes<SVGElement>
+
+export type LogoDocsProps = Omit<
   LogoProps,
   keyof React.HTMLAttributes<SVGElement>
 >
 
-// For documentation only
-export const LogoDocs: FC<BaseLogoProps> = () => null
+export const LogoDocs: React.FC<LogoDocsProps> = () => null

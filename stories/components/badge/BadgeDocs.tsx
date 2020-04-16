@@ -1,8 +1,6 @@
 import { FC, HTMLAttributes } from 'react'
-import Badge, { BadgeProps } from '@material-ui/core/Badge'
-export { Badge, BadgeProps }
+import { BadgeProps } from '@material-ui/core/Badge'
 
-// For documentation only
 export type BaseBadgeProps = Omit<
   BadgeProps,
   keyof Omit<HTMLAttributes<HTMLDivElement>, 'color'>

@@ -1,10 +1,9 @@
-import { FC, HTMLAttributes } from 'react'
-import { TextFieldProps as MaterialTextFieldProps } from '@material-ui/core/TextField'
+import * as React from 'react'
+import { TextFieldProps } from '@material-ui/core/TextField'
 
-// For documentation only
 export type TextFieldDocsProps = Omit<
-  MaterialTextFieldProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  TextFieldProps,
+  keyof React.HTMLAttributes<HTMLDivElement>
 > & {
   /**
    * The variant to use.
@@ -12,4 +11,4 @@ export type TextFieldDocsProps = Omit<
    */
   variant?: 'standard' | 'outlined' | 'filled'
 }
-export const TextFieldDocs: FC<TextFieldDocsProps> = () => null
+export const TextFieldDocs: React.FC<TextFieldDocsProps> = () => null

@@ -6,7 +6,7 @@ import {
   TableCell,
   TableFooter,
   TableHead,
-  TableRow
+  TableRow,
 } from '../../../src'
 import {
   TableDocs,
@@ -16,7 +16,7 @@ import {
   TableHeadDocs,
   TablePaginationDocs,
   TableRowDocs,
-  TableSortLabelDocs
+  TableSortLabelDocs,
 } from './TableDocs'
 
 <Meta title="components|Table" component={Table} />
@@ -36,7 +36,7 @@ Extends [Material UI Table](https://material-ui.com/components/tables/)
         createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
         createData('Eclair', 262, 16.0, 24, 6.0),
         createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9)
+        createData('Gingerbread', 356, 16.0, 49, 3.9),
       ]
       return (
         <Table>
@@ -50,7 +50,7 @@ Extends [Material UI Table](https://material-ui.com/components/tables/)
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {rows.map((row) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row">
                   {row.name}

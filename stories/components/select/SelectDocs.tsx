@@ -1,9 +1,11 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { SelectProps } from '@material-ui/core/Select'
 
-// For documentation only
 export type SelectDocsProps = Omit<
   SelectProps,
-  keyof Omit<HTMLAttributes<HTMLButtonElement>, 'color' | 'onChange' | 'id'>
+  keyof Omit<
+    React.HTMLAttributes<HTMLButtonElement>,
+    'color' | 'onChange' | 'id'
+  >
 >
-export const SelectDocs: FC<SelectDocsProps> = () => null
+export const SelectDocs: React.FC<SelectDocsProps> = () => null

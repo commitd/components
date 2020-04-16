@@ -203,28 +203,28 @@ import * as C from '../src'
           const currencies = [
             {
               value: 'USD',
-              label: '$'
+              label: '$',
             },
             {
               value: 'EUR',
-              label: '€'
+              label: '€',
             },
             {
               value: 'BTC',
-              label: '฿'
+              label: '฿',
             },
             {
               value: 'JPY',
-              label: '¥'
-            }
+              label: '¥',
+            },
           ]
           const [values, setValues] = React.useState({
             name: 'Cat in the Hat',
             age: '',
             multiline: 'Controlled',
-            currency: 'EUR'
+            currency: 'EUR',
           })
-          const handleChange = name => event =>
+          const handleChange = (name) => (event) =>
             setValues({ ...values, [name]: event.target.value })
           return (
             <C.Form noValidate autoComplete="off">
@@ -302,7 +302,7 @@ import * as C from '../src'
                   label="Read Only"
                   defaultValue="Hello World"
                   InputProps={{
-                    readOnly: true
+                    readOnly: true,
                   }}
                 />
                 <C.TextField
@@ -322,7 +322,7 @@ import * as C from '../src'
                   onChange={handleChange('age')}
                   type="number"
                   InputLabelProps={{
-                    shrink: true
+                    shrink: true,
                   }}
                 />
                 <C.TextField
@@ -335,7 +335,7 @@ import * as C from '../src'
                   onChange={handleChange('currency')}
                   helperText="Please select your currency"
                 >
-                  {currencies.map(option => (
+                  {currencies.map((option) => (
                     <C.MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </C.MenuItem>
@@ -350,11 +350,11 @@ import * as C from '../src'
                   value={values.currency}
                   onChange={handleChange('currency')}
                   SelectProps={{
-                    native: true
+                    native: true,
                   }}
                   helperText="Please select your currency"
                 >
-                  {currencies.map(option => (
+                  {currencies.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
@@ -387,36 +387,36 @@ import * as C from '../src'
             <C.Column justifyContent="center">
               <C.Checkbox
                 checked={checked}
-                onChange={event => setChecked(event.target.checked)}
+                onChange={(event) => setChecked(event.target.checked)}
                 color="primary"
               />
               <C.Checkbox
                 checked={!checked}
-                onChange={event => setChecked(!event.target.checked)}
+                onChange={(event) => setChecked(!event.target.checked)}
                 color="secondary"
               />
             </C.Column>
             <C.Column justifyContent="center">
               <C.Radio
                 checked={checked}
-                onChange={event => setChecked(event.target.checked)}
+                onChange={(event) => setChecked(event.target.checked)}
                 color="primary"
               />
               <C.Radio
                 checked={!checked}
-                onChange={event => setChecked(!event.target.checked)}
+                onChange={(event) => setChecked(!event.target.checked)}
                 color="secondary"
               />
             </C.Column>
             <C.Column justifyContent="center">
               <C.Switch
                 checked={checked}
-                onChange={event => setChecked(event.target.checked)}
+                onChange={(event) => setChecked(event.target.checked)}
                 color="primary"
               />
               <C.Switch
                 checked={!checked}
-                onChange={event => setChecked(!event.target.checked)}
+                onChange={(event) => setChecked(!event.target.checked)}
                 color="secondary"
               />
             </C.Column>
@@ -506,7 +506,7 @@ import * as C from '../src'
                       tabIndex={-1}
                       disableRipple
                       inputProps={{
-                        'aria-labelledby': 1
+                        'aria-labelledby': 1,
                       }}
                     />
                   </C.ListItemIcon>
@@ -640,8 +640,8 @@ import * as C from '../src'
                 ['Ice cream sandwich', 237, 9.0, 37, 4.3],
                 ['Eclair', 262, 16.0, 24, 6.0],
                 ['Cupcake', 305, 3.7, 67, 4.3],
-                ['Gingerbread', 356, 16.0, 49, 3]
-              ].map(row => (
+                ['Gingerbread', 356, 16.0, 49, 3],
+              ].map((row) => (
                 <C.TableRow key={row[0]}>
                   <C.TableCell component="th" scope="row">
                     {row[0]}

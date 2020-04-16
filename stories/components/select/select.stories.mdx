@@ -16,7 +16,7 @@ import {
   MenuItem,
   makeStyles,
   Theme,
-  createStyles
+  createStyles,
 } from '../../../src'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import { SelectDocs } from './SelectDocs'
@@ -133,7 +133,7 @@ for you. The first example shows how this is done, the others just ignore it.
       <Select
         onChange={action('change')}
         name="name"
-        renderValue={value => `⚠️ - ${value}`}
+        renderValue={(value) => `⚠️ - ${value}`}
         input={<OutlinedInput id="name-error" />}
       >
         <MenuItem value="">
@@ -201,7 +201,7 @@ for you. The first example shows how this is done, the others just ignore it.
         onChange={action('change')}
         name="age"
         inputProps={{
-          id: 'age-required'
+          id: 'age-required',
         }}
       >
         <MenuItem value="">
@@ -239,14 +239,14 @@ for you. The first example shows how this is done, the others just ignore it.
     {React.createElement(() => {
       const [values, setValues] = React.useState({
         age: '',
-        name: 'hai'
+        name: 'hai',
       })
       const inputLabel = React.useRef(null)
       const [labelWidth, setLabelWidth] = React.useState(0)
       function handleChange(event) {
-        setValues(oldValues => ({
+        setValues((oldValues) => ({
           ...oldValues,
-          [event.target.name]: event.target.value
+          [event.target.name]: event.target.value,
         }))
       }
       return (
@@ -341,7 +341,7 @@ for you. The first example shows how this is done, the others just ignore it.
                 value={values.name}
                 onChange={handleChange}
                 name="name"
-                renderValue={value => `⚠️ - ${value}`}
+                renderValue={(value) => `⚠️ - ${value}`}
                 input={<OutlinedInput id="name-error" />}
               >
                 <MenuItem value="">
@@ -411,7 +411,7 @@ for you. The first example shows how this is done, the others just ignore it.
                 onChange={handleChange}
                 name="age"
                 inputProps={{
-                  id: 'age-required'
+                  id: 'age-required',
                 }}
               >
                 <MenuItem value="">

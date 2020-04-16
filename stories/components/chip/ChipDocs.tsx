@@ -1,10 +1,9 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { ChipProps as MaterialChipProps } from '@material-ui/core/Chip'
 
-// For documentation only
 export type ChipDocsProps = Omit<
   MaterialChipProps,
-  keyof Omit<HTMLAttributes<HTMLDivElement>, 'color'>
+  keyof Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>
 >
 
-export const ChipDocs: FC<ChipDocsProps> = () => null
+export const ChipDocs: React.FC<ChipDocsProps> = () => null

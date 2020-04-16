@@ -1,10 +1,9 @@
-import { FC, HTMLAttributes } from 'react'
-import { FormControlProps as MaterialFormControlProps } from '@material-ui/core/FormControl'
+import * as React from 'react'
+import { FormControlProps } from '@material-ui/core/FormControl'
 
-// For documentation only
 export type FormControlDocsProps = Omit<
-  MaterialFormControlProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  FormControlProps,
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 
-export const FormControlDocs: FC<FormControlDocsProps> = () => null
+export const FormControlDocs: React.FC<FormControlDocsProps> = () => null

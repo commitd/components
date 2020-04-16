@@ -1,24 +1,25 @@
-import { FC } from 'react'
-import { TabPanelProps, BoxProps } from '../../../src'
+import * as React from 'react'
+// TODO use when storybook issue fixed
+//import { TabPanelProps, BoxProps } from '../../../src'
+//type BaseTabPanelProps = Omit<TabPanelProps, keyof BoxProps>
 
-// export type BaseTabPanelProps = {
-//   /**
-//    * Content of the tab panel
-//    */
-//   children?: React.ReactNode
-//   /**
-//    * The index of the panel, can be anything that can be compared with ===
-//    */
-//   index: any
-//   /**
-//    * The currently selected index
-//    */
-//   selected: any
-// }
+import { BoxProps } from '@material-ui/core/Box'
 
-// export type TabPanelProps = BaseTabPanelProps & BoxProps
+export type BaseTabPanelProps = {
+  /**
+   * Content of the tab panel
+   */
+  children?: React.ReactNode
+  /**
+   * The index of the panel, can be anything that can be compared with ===
+   */
+  index: any
+  /**
+   * The currently selected index
+   */
+  selected: any
+}
 
-type BaseTabPanelProps = Omit<TabPanelProps, keyof BoxProps>
+export type TabPanelProps = BaseTabPanelProps & BoxProps
 
-// For documentation only
-export const TabPanelDocs: FC<BaseTabPanelProps> = () => null
+export const TabPanelDocs: React.FC<BaseTabPanelProps> = () => null

@@ -8,7 +8,7 @@ import {
   Button,
   Icons,
   Box,
-  AppBar
+  AppBar,
 } from '../../../src'
 import { TabDocs } from './TabDocs'
 import { TabsDocs } from './TabsDocs'
@@ -30,7 +30,7 @@ In addition to the `Tab` extenaion we add a `TabPanel` component for convenience
       function a11yProps(index) {
         return {
           id: `simple-tab-${index}`,
-          'aria-controls': `simple-tabpanel-${index}`
+          'aria-controls': `simple-tabpanel-${index}`,
         }
       }
       const clicked = action('clicked')

@@ -1,12 +1,6 @@
-import { FC } from 'react'
-import { FlexProps, RowProps, ColumnProps } from '../../../src'
+import * as React from 'react'
 //import { BoxProps } from '../../../src'
 
-// export type FlexProps = Omit<BoxProps, 'display'>
-// export type RowProps = Omit<FlexProps, 'flexDirection'>
-// export type ColumnProps = Omit<FlexProps, 'flexDirection'>
-
-// For documentation only
 import {
   BordersProps,
   PaletteProps,
@@ -19,4 +13,4 @@ export type FlexDocsProps = BordersProps &
   PositionsProps &
   ShadowsProps &
   TypographyProps
-export const FlexDocs: FC<FlexDocsProps> = () => null
+export const FlexDocs: React.FC<FlexDocsProps> = () => null

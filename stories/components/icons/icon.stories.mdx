@@ -24,7 +24,7 @@ Click to copy the name. Then use `<Icons.Name />`
       const icons = Object.keys(Icons)
       return (
         <Flex flexWrap="wrap">
-          {icons.map(key => (
+          {icons.map((key) => (
             <Copy m={1} key={key} title={key}>
               {React.createElement(Icons[key])}
             </Copy>

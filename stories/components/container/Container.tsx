@@ -1,10 +1,9 @@
-import { FC, HTMLAttributes } from 'react'
-import Container, { ContainerProps } from '@material-ui/core/Container'
-export { Container, ContainerProps }
+import * as React from 'react'
+import { ContainerProps } from '@material-ui/core/Container'
+export type { ContainerProps }
 
-// For documentation only
 export type ContainerDocsProps = Omit<
   ContainerProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
-export const ContainerDocs: FC<ContainerDocsProps> = () => null
+export const ContainerDocs: React.FC<ContainerDocsProps> = () => null

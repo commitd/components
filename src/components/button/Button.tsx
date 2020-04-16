@@ -13,7 +13,6 @@ Button.defaultProps = {
   variant: 'contained',
 }
 
-// For documentation only
 export type BaseButtonProps = Pick<
   MaterialButtonProps,
   'children' | 'color' | 'fullWidth' | 'href' | 'size' | 'variant'

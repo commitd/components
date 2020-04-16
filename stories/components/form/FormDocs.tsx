@@ -1,4 +1,4 @@
-import { FC, FormHTMLAttributes } from 'react'
+import * as React from 'react'
 
-export type FormProps = FormHTMLAttributes<HTMLFormElement>
-export const FormDocs: FC<FormProps> = () => null
+export type FormProps = React.FormHTMLAttributes<HTMLFormElement>
+export const FormDocs: React.FC<FormProps> = () => null

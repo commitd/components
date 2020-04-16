@@ -3,7 +3,7 @@ import {
   Form,
   FormGroup,
   FormControlLabel,
-  FormLabel
+  FormLabel,
 } from '../../../src'
 import { action } from '@storybook/addon-actions'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
@@ -60,7 +60,7 @@ To toggle states
   <Story name="labels">
     {() => {
       const [checked, setChecked] = React.useState(true)
-      const handleChange = event => setChecked(!checked)
+      const handleChange = (event) => setChecked(!checked)
       return (
         <Form>
           <FormLabel component="legend">Switches</FormLabel>

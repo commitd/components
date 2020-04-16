@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { TypographyProps as MaterialTypographyProps } from '@material-ui/core/Typography'
 
 // TODO: reference
@@ -21,9 +21,8 @@ export type ExtraTypographyProps = {
   strike?: boolean
 }
 
-// For documentation only
 export type TypographyDocsProps = Omit<
   ExtraTypographyProps & MaterialTypographyProps,
-  keyof Omit<HTMLAttributes<HTMLElement>, 'color'> | 'variantMapping'
+  keyof Omit<React.HTMLAttributes<HTMLElement>, 'color'> | 'variantMapping'
 >
-export const TypographyDocs: FC<TypographyDocsProps> = () => null
+export const TypographyDocs: React.FC<TypographyDocsProps> = () => null

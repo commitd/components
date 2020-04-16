@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { ListProps } from '@material-ui/core/List'
 import { ListItemProps } from '@material-ui/core/ListItem'
 import { ListItemAvatarProps } from '@material-ui/core/ListItemAvatar'
@@ -7,38 +7,37 @@ import { ListItemSecondaryActionProps } from '@material-ui/core/ListItemSecondar
 import { ListItemTextProps } from '@material-ui/core/ListItemText'
 import { ListSubheaderProps } from '@material-ui/core/ListSubheader'
 
-// For documentation only
 export type ListDocsProps = Omit<
   ListProps,
-  keyof HTMLAttributes<HTMLUListElement>
+  keyof React.HTMLAttributes<HTMLUListElement>
 >
 export type ListItemDocsProps = Omit<
   ListItemProps,
-  keyof HTMLAttributes<HTMLLIElement>
+  keyof React.HTMLAttributes<HTMLLIElement>
 >
 export type ListItemAvatarDocsProps = ListItemAvatarProps
 export type ListItemIconDocsProps = Omit<
   ListItemIconProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 export type ListItemSecondaryActionDocsProps = Omit<
   ListItemSecondaryActionProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 export type ListItemTextDocsProps = Omit<
   ListItemTextProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 export type ListSubheaderDocsProps = Omit<
   ListSubheaderProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 
-export const ListDocs: FC<ListDocsProps> = () => null
-export const ListItemDocs: FC<ListItemDocsProps> = () => null
-export const ListItemAvatarDocs: FC<ListItemAvatarDocsProps> = () => null
-export const ListItemIconDocs: FC<ListItemIconDocsProps> = () => null
-export const ListItemSecondaryActionDocs: FC<ListItemSecondaryActionDocsProps> = () =>
+export const ListDocs: React.FC<ListDocsProps> = () => null
+export const ListItemDocs: React.FC<ListItemDocsProps> = () => null
+export const ListItemAvatarDocs: React.FC<ListItemAvatarDocsProps> = () => null
+export const ListItemIconDocs: React.FC<ListItemIconDocsProps> = () => null
+export const ListItemSecondaryActionDocs: React.FC<ListItemSecondaryActionDocsProps> = () =>
   null
-export const ListItemTextDocs: FC<ListItemTextDocsProps> = () => null
-export const ListSubheaderDocs: FC<ListSubheaderDocsProps> = () => null
+export const ListItemTextDocs: React.FC<ListItemTextDocsProps> = () => null
+export const ListSubheaderDocs: React.FC<ListSubheaderDocsProps> = () => null

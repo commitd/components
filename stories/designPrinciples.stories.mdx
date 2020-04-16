@@ -104,16 +104,16 @@ The [placement props][positioning] that deal with sizing (e.g. width and height)
 and numbers less than or equal to `1` are transformed into a percentage for example `1/2 => "50%"`.
 
 <Box p={3} width={100} bgcolor={colors.red[500]} color="white">
-    w={'{100}'}
+  w={'{100}'}
 </Box>
 <Box p={3} width={1 / 3} bgcolor={colors.green[500]} color="white">
-    w={'{1 / 3}'}
+  w={'{1 / 3}'}
 </Box>
 <Box p={3} width={300} bgcolor={colors.magenta[500]} color="white">
-    w={'{300}'}
+  w={'{300}'}
 </Box>
 <Box p={3} width={1 / 2} bgcolor={colors.blue[500]} color="white">
-    w={'{1 / 2}'}
+  w={'{1 / 2}'}
 </Box>
 
 ## Breakpoints
@@ -155,19 +155,19 @@ CSS media queries is the idiomatic approach to make your UI responsive. We provi
 In the following demo, we change the background color (red, blue & green) based on the screen width.
 
 ```js
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
-      backgroundColor: theme.palette.secondary.main
+      backgroundColor: theme.palette.secondary.main,
     },
     [theme.breakpoints.up('md')]: {
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: theme.palette.primary.main,
     },
     [theme.breakpoints.up('lg')]: {
-      backgroundColor: green[500]
-    }
-  }
+      backgroundColor: green[500],
+    },
+  },
 })
 ```
 

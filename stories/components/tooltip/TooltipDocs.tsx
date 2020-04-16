@@ -1,11 +1,7 @@
-import React, { FC, HTMLAttributes } from 'react'
-import { TooltipProps as MaterialTooltipProps } from '@material-ui/core/Tooltip'
+import * as React from 'react'
+import { TooltipProps } from '@material-ui/core/Tooltip'
 
-// For documentation only
-export type TooltipDocsProps = Omit<
-  MaterialTooltipProps,
-  keyof Omit<HTMLAttributes<HTMLDivElement>, 'title'>
-> & {
+export type TooltipDocsProps = {
   /**
    * If true, the tooltip is shown.
    */
@@ -31,5 +27,10 @@ export type TooltipDocsProps = Omit<
    * Tooltip title. Zero-length titles string are never displayed.
    */
   title: React.ReactNode
-}
-export const TooltipDocs: FC<TooltipDocsProps> = () => null
+} & Omit<
+  TooltipProps,
+  keyof Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+>
+export const TooltipDocs: React.FC<TooltipDocsProps> = (
+  props: TooltipDocsProps
+) => null

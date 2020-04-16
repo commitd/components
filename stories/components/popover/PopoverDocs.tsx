@@ -1,9 +1,8 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { PopoverProps } from '@material-ui/core/Popover'
 
-// For documentation only
 export type PopoverDocsProps = Omit<
   PopoverProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
-export const PopoverDocs: FC<PopoverDocsProps> = () => null
+export const PopoverDocs: React.FC<PopoverDocsProps> = () => null

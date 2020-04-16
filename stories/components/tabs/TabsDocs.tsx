@@ -1,9 +1,11 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { TabsProps } from '@material-ui/core/Tabs'
 
-// For documentation only
 export type TabsDocsProps = Omit<
   TabsProps,
-  keyof Omit<HTMLAttributes<HTMLButtonElement>, 'color' | 'onChange' | 'track'>
+  keyof Omit<
+    React.HTMLAttributes<HTMLButtonElement>,
+    'color' | 'onChange' | 'track'
+  >
 >
-export const TabsDocs: FC<TabsDocsProps> = () => null
+export const TabsDocs: React.FC<TabsDocsProps> = () => null

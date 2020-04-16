@@ -1,22 +1,21 @@
-import { FC, HTMLAttributes } from 'react'
+import * as React from 'react'
 import { MenuProps } from '@material-ui/core/Menu'
 import { MenuItemProps } from '@material-ui/core/MenuItem'
 import { MenuListProps } from '@material-ui/core/MenuList'
 
-// For documentation only
 export type MenuDocsProps = Omit<
   MenuProps,
-  keyof HTMLAttributes<HTMLDivElement>
+  keyof React.HTMLAttributes<HTMLDivElement>
 >
 export type MenuItemDocsProps = Omit<
   MenuItemProps,
-  keyof HTMLAttributes<HTMLLIElement>
+  keyof React.HTMLAttributes<HTMLLIElement>
 >
 export type MenuListDocsProps = Omit<
   MenuListProps,
-  keyof HTMLAttributes<HTMLUListElement>
+  keyof React.HTMLAttributes<HTMLUListElement>
 >
 
-export const MenuDocs: FC<MenuDocsProps> = () => null
-export const MenuItemDocs: FC<MenuItemDocsProps> = () => null
-export const MenuListDocs: FC<MenuListDocsProps> = () => null
+export const MenuDocs: React.FC<MenuDocsProps> = () => null
+export const MenuItemDocs: React.FC<MenuItemDocsProps> = () => null
+export const MenuListDocs: React.FC<MenuListDocsProps> = () => null

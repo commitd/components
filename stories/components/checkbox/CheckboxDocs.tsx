@@ -1,9 +1,8 @@
-import { FC, HTMLAttributes } from 'react'
-import { CheckboxProps as MaterialCheckboxProps } from '@material-ui/core/Checkbox'
+import * as React from 'react'
+import { CheckboxProps } from '@material-ui/core/Checkbox'
 
-// For documentation only
 export type CheckboxDocsProps = Omit<
-  MaterialCheckboxProps,
-  keyof HTMLAttributes<HTMLElement>
+  CheckboxProps,
+  keyof React.HTMLAttributes<HTMLElement>
 >
-export const CheckboxDocs: FC<CheckboxDocsProps> = () => null
+export const CheckboxDocs: React.FC<CheckboxDocsProps> = () => null
