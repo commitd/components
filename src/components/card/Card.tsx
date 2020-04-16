@@ -24,7 +24,9 @@ import {
 
 export type CardProps = MaterialCardProps & PositioningProps
 
-export const Card = withPositioning<CardProps>(MaterialCard)
+export const Card: ComponentType<CardProps> = withPositioning<CardProps>(
+  MaterialCard
+)
 
 // Card supplementary components
 
