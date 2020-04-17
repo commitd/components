@@ -1,4 +1,4 @@
-import React, { FC, ComponentType } from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
 import { colors } from '../../theme'
 import MaterialLink, {
@@ -31,7 +31,7 @@ const external = `linear-gradient(${bColor}, ${bColor})`
 
 const isExternal = (url: string | undefined) => url && url.startsWith('http')
 
-const StyledLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
+const StyledLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)({
   color: 'inherit',
   textDecoration: 'none',
   transition: 'background 100ms ease-out',
@@ -46,7 +46,7 @@ const StyledLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
   },
 })
 
-const ClearLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
+const ClearLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)({
   color: 'inherit',
   textDecoration: 'none',
   ['& .gatsby-resp-image-background-image']: {
@@ -58,7 +58,7 @@ const ClearLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
   },
 })
 
-export const Link: FC<LinkProps> = ({
+export const Link: React.FC<LinkProps> = ({
   variant = 'default',
   ...others
 }: LinkProps) => {

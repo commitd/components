@@ -1,4 +1,4 @@
-import React, { ComponentType, FC } from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
 import MaterialTypography, {
   TypographyProps as MaterialTypographyProps,
@@ -7,13 +7,10 @@ import { withPositioning, PositioningProps } from '../../internal'
 import { fonts, Theme, theme } from '../../theme'
 import { OverrideComponent } from '../../internal/util'
 
-type BaseTypographyProps = Omit<
-  MaterialTypographyProps & PositioningProps,
-  'theme'
->
-const BaseTypography: ComponentType<BaseTypographyProps> = withPositioning(
-  MaterialTypography
-) as ComponentType<BaseTypographyProps>
+type BaseTypographyProps = MaterialTypographyProps & PositioningProps
+const BaseTypography: React.ComponentType<BaseTypographyProps> = withPositioning<
+  MaterialTypographyProps
+>(MaterialTypography)
 
 export type ExtraTypographyProps = {
   /** Select from a scaled font size, 0 in normal, negative index for smaller, positive for larger */
@@ -49,7 +46,7 @@ export type ParagraphProps = Omit<TypographyProps, 'component'>
 
 export type Ref = HTMLElement
 
-export const StyledTypography: ComponentType<TypographyProps> = styled(
+export const StyledTypography: React.ComponentType<TypographyProps> = styled(
   ({ italic, fontSize, upper, light, capital, bold, font, ...others }) => (
     <BaseTypography {...others} />
   )
@@ -71,12 +68,12 @@ export const StyledTypography: ComponentType<TypographyProps> = styled(
       textTransform: upper ? 'uppercase' : capital ? 'capitalize' : 'none',
       fontWeight: light ? 200 : bold ? 700 : 400,
     })
-) as ComponentType<TypographyProps>
+) as React.ComponentType<TypographyProps>
 
-const Strike: FC<{ strike: boolean }> = ({ strike, children }) =>
+const Strike: React.FC<{ strike: boolean }> = ({ strike, children }) =>
   strike ? <s>{children}</s> : <>{children}</>
 
-export const Typography: FC<TypographyProps> = ({
+export const Typography: React.FC<TypographyProps> = ({
   strike = false,
   ...props
 }: TypographyProps) => {

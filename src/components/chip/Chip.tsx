@@ -1,4 +1,4 @@
-import { ComponentType } from 'react'
+import React from 'react'
 import MaterialChip, {
   ChipProps as MaterialChipProps,
 } from '@material-ui/core/Chip'
@@ -13,6 +13,6 @@ import {
 
 export type ChipProps = MaterialChipProps & SpacingProps & FlexboxProps
 
-export const Chip: ComponentType<ChipProps> = styled(MaterialChip)(
+export const Chip: React.ComponentType<ChipProps> = styled(MaterialChip)(
   compose(spacing, flexbox)
 )

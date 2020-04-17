@@ -1,4 +1,4 @@
-import { ComponentType, Ref } from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
 import { compose } from '@material-ui/system'
 import {
@@ -14,9 +14,9 @@ import MaterialBox, {
 export type BoxProps = MaterialBoxProps &
   Omit<GridcontinerProps, 'justifyContent' | 'alignItems' | 'theme'> &
   Omit<GriditemProps, 'justifySelf' | 'alignSelf' | 'theme'> & {
-    ref?: Ref<HTMLDivElement>
+    ref?: React.Ref<HTMLDivElement>
   }
 
-export const Box: ComponentType<BoxProps> = styled(MaterialBox)(
+export const Box: React.ComponentType<BoxProps> = styled(MaterialBox)(
   compose(gridcontainer, griditem)
-) as ComponentType<BoxProps>
+)

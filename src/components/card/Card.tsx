@@ -1,3 +1,4 @@
+import React from 'react'
 import MaterialCard, {
   CardProps as MaterialCardProps,
 } from '@material-ui/core/Card'
@@ -14,19 +15,14 @@ import MaterialCardMedia, {
 } from '@material-ui/core/CardMedia'
 import { styled } from '@material-ui/styles'
 import { palette, PaletteProps } from '@material-ui/system'
-import React, { ComponentType, FC } from 'react'
-import {
-  PositioningProps,
-  SizingProps,
-  withPositioning,
-  withSizing,
-} from '../../internal'
+import { withPositioning, PositioningProps } from '../../internal/positioning'
+import { SizingProps, withSizing } from '../../internal'
 
 export type CardProps = MaterialCardProps & PositioningProps
 
-export const Card: ComponentType<CardProps> = withPositioning<CardProps>(
-  MaterialCard
-)
+export const Card: React.ComponentType<CardProps> = withPositioning<
+  MaterialCardProps
+>(MaterialCard)
 
 // Card supplementary components
 
@@ -35,7 +31,7 @@ export type CardMediaProps = MaterialCardMediaProps & SizingProps
 
 export const StyledCardHeader = styled(MaterialCardHeader)(palette)
 
-export const CardHeader: FC<CardHeaderProps> = ({
+export const CardHeader: React.FC<CardHeaderProps> = ({
   children,
   ...others
 }: CardHeaderProps) => {
@@ -44,9 +40,9 @@ export const CardHeader: FC<CardHeaderProps> = ({
   }
   return <StyledCardHeader {...others}>{children}</StyledCardHeader>
 }
-export const CardMedia = withSizing(MaterialCardMedia) as ComponentType<
-  CardMediaProps
->
+export const CardMedia: React.ComponentType<CardMediaProps> = withSizing(
+  MaterialCardMedia
+)
 
 export { CardContent, CardActionArea, CardActions }
 export type { CardContentProps, CardActionAreaProps, CardActionsProps }

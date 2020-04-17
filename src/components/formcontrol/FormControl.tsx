@@ -1,4 +1,4 @@
-import { ComponentType } from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
@@ -18,7 +18,7 @@ export type FormControlProps = MaterialFormControlProps &
   FlexboxProps &
   SizingProps
 
-export const FormControl: ComponentType<MaterialFormControlProps> = styled(
+export const FormControl: React.ComponentType<MaterialFormControlProps> = styled(
   MaterialFormControl
 )(compose(spacing, flexbox, sizing))
 

@@ -1,4 +1,4 @@
-import { ComponentType } from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
@@ -18,6 +18,6 @@ export interface IconButtonProps
     FlexboxProps,
     AProps {}
 
-export const IconButton: ComponentType<IconButtonProps> = styled(
+export const IconButton: React.ComponentType<IconButtonProps> = styled(
   withNoOpener(MaterialIconButton)
 )(compose(spacing, flexbox))

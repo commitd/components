@@ -4,44 +4,45 @@ import {
   PropsFor,
   ComposedStyleFunction,
 } from '@material-ui/system'
+import { Theme } from '../theme'
 
-export const gridColumnStart = style({
+export const gridColumnStart = style<'gridColumnStart', Theme>({
   prop: 'gridColumnStart',
 })
 
-export const gridColumnEnd = style({
+export const gridColumnEnd = style<'gridColumnEnd', Theme>({
   prop: 'gridColumnEnd',
 })
 
-export const gridRowStart = style({
+export const gridRowStart = style<'gridRowStart', Theme>({
   prop: 'gridRowStart',
 })
 
-export const gridRowEnd = style({
+export const gridRowEnd = style<'gridRowEnd', Theme>({
   prop: 'gridRowEnd',
 })
 
-export const gridColumn = style({
+export const gridColumn = style<'gridColumn', Theme>({
   prop: 'gridColumn',
 })
 
-export const gridRow = style({
+export const gridRow = style<'gridRow', Theme>({
   prop: 'gridRow',
 })
 
-export const gridArea = style({
+export const gridArea = style<'gridArea', Theme>({
   prop: 'gridArea',
 })
 
-export const justifySelf = style({
+export const justifySelf = style<'justifySelf', Theme>({
   prop: 'justifySelf',
 })
 
-export const alignSelf = style({
+export const alignSelf = style<'alignSelf', Theme>({
   prop: 'alignSelf',
 })
 
-export const placeSelf = style({
+export const placeSelf = style<'placeSelf', Theme>({
   prop: 'placeSelf',
 })
 
@@ -69,4 +70,4 @@ export const griditem: ComposedStyleFunction<[
   placeSelf
 )
 
-export type GriditemProps = PropsFor<typeof griditem>
+export type GriditemProps = Omit<PropsFor<typeof griditem>, 'theme'>

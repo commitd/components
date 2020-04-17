@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
 import { style, compose } from '@material-ui/system'
 import { fractionToPercent } from '../../util/transform'
@@ -42,9 +42,9 @@ const height = style<'size', Theme>({
   transform: fractionToPercent,
 })
 
-export const Logo: ComponentType<LogoProps> = styled<ComponentType<LogoProps>>(
-  LogoSvg
-)(
+export const Logo: React.ComponentType<LogoProps> = styled<
+  React.ComponentType<LogoProps>
+>(LogoSvg)(
   compose(width, height, () => ({
     display: 'block',
     margin: 'auto',

@@ -1,4 +1,4 @@
-import { ComponentType } from 'react'
+import React from 'react'
 import {
   compose,
   display,
@@ -16,9 +16,10 @@ export type PositioningProps = SpacingProps &
   DisplayProps &
   GriditemProps
 
+// The natural typing causes typescript to error, hence the casts to force it.
 export const withPositioning = <P extends object>(
   WrappedComponent: React.ElementType<P>
 ) =>
   (styled(WrappedComponent)(
     compose(display, spacing, flexbox, griditem)
-  ) as unknown) as ComponentType<P & PositioningProps>
+  ) as unknown) as React.ComponentType<P & PositioningProps>

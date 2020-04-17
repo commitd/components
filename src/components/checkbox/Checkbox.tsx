@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
+import React from 'react'
 import MaterialCheckbox, {
   CheckboxProps as MaterialCheckboxProps,
 } from '@material-ui/core/Checkbox'
 import { Box } from '../box/Box'
 export type CheckboxProps = MaterialCheckboxProps
 
-export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
+export const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
   const { checked: checkedProp, defaultChecked, onChange } = props
   const { current: isControlled } = React.useRef(checkedProp != null)
   const [checkedState, setCheckedState] = React.useState(

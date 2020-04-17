@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import MaterialAvatar, {
   AvatarProps as MaterialAvatarProps,
 } from '@material-ui/core/Avatar'

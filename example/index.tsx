@@ -58,7 +58,7 @@ const Content = () => (
         'Eastern Galaxy',
         'Pribox',
         'Rejux',
-        'Baleen'
+        'Baleen',
       ].map((name, index) => (
         <Post key={name} name={name} index={index} />
       ))}
@@ -119,7 +119,7 @@ const App = () => (
   <C.ThemeProvider
     fonts={{
       typography: { fontFamily: 'Lato' },
-      display: { fontFamily: 'Arciform' }
+      display: { fontFamily: 'Arciform' },
     }}
   >
     <C.Box position="relative" minHeight="100vh">
