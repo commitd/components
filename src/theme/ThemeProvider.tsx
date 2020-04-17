@@ -55,7 +55,7 @@ export interface ThemeProps {
    *
    * The material-ui colors can be specified: palette.primary, palette.secondary, palette.error, palette.warning, palette.info or palette.success
    *
-   * Additionally the committed-theme colors can be specified: palette.brand, palette.neutral
+   * Additionally, a committed-theme color can be specified: palette.brand
    */
   createPaletteOptions: () => PaletteOptions
   /**
@@ -110,6 +110,10 @@ const createTheme = ({
   const palette = createMuiPalette(paletteOptions)
   // createMuiPalette() "augments" inputted colors (that may be in several forms) to make them conform to {main: #xxxx, light:#xxxx ,...etc}
   // manually augment committed custom theme colors that createMuiPalette is not aware of
+  palette.brand = augmentColor(
+    paletteOptions.brand,
+    committedLightPaletteColors.brand
+  )
   palette.success = augmentColor(
     paletteOptions.success,
     committedLightPaletteColors.success
@@ -118,17 +122,13 @@ const createTheme = ({
     paletteOptions.warning,
     committedLightPaletteColors.warning
   )
-  palette.brand = augmentColor(
-    paletteOptions.brand,
-    committedLightPaletteColors.brand
-  )
   palette.info = augmentColor(
     paletteOptions.info,
     committedLightPaletteColors.info
   )
-  palette.neutral = augmentColor(
-    paletteOptions.neutral,
-    committedLightPaletteColors.neutral
+  palette.error = augmentColor(
+    paletteOptions.error,
+    committedLightPaletteColors.error
   )
 
   const themeOptions: ThemeOptions = {

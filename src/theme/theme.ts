@@ -7,18 +7,11 @@ import { Overrides } from '@material-ui/core/styles/overrides'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
-    success?: PaletteColorOptions
-    warning?: PaletteColorOptions
     brand?: PaletteColorOptions
-    info?: PaletteColorOptions
-    neutral?: PaletteColorOptions
   }
 
   interface Palette {
-    success: PaletteColor
-    warning: PaletteColor
-    info: PaletteColor
-    neutral: PaletteColor
+    brand: PaletteColor
   }
 }
 
@@ -173,7 +166,7 @@ export const baseCommittedOverrides = (
           backgroundColor: lighten(palette.primary.light, action.hoverOpacity),
         },
         '&$disabled': {
-          backgroundColor: addTransparency(palette.neutral.light),
+          backgroundColor: addTransparency(palette.grey[300]),
         },
       },
       containedPrimary: {
@@ -209,8 +202,8 @@ export const baseCommittedOverrides = (
       },
       outlined: {
         '&$disabled': {
-          borderColor: addTransparency(palette.neutral.main),
-          color: addTransparency(lightLight(palette.neutral)),
+          borderColor: addTransparency(palette.grey[500]),
+          color: addTransparency(palette.grey[200]),
         },
       },
       outlinedPrimary: {
@@ -240,9 +233,9 @@ export const baseCommittedOverrides = (
     },
     MuiCheckbox: {
       root: {
-        color: palette.neutral.main,
+        color: palette.grey[500],
         '&$disabled': {
-          color: addTransparency(palette.neutral.main),
+          color: addTransparency(palette.grey[500]),
         },
       },
       colorPrimary: {
@@ -278,9 +271,9 @@ export const baseCommittedOverrides = (
     },
     MuiCssBaseline: {
       '@global': {
-        /* Disable auto-enlargement of small text in Safari */
+        // @ts-ignore - Disable auto-enlargement of small text in Safari
         textSizeAdjust: '100%',
-        /* Enable kerning and optional ligatures */
+        // @ts-ignore - Enable kerning and optional ligatures
         textRendering: 'optimizeLegibility',
         /**
          * Form elements render using OS defaults,
@@ -324,9 +317,9 @@ export const baseCommittedOverrides = (
     },
     MuiRadio: {
       root: {
-        color: palette.neutral.main,
+        color: palette.grey[500],
         '&$disabled': {
-          color: addTransparency(palette.neutral.main),
+          color: addTransparency(palette.grey[500]),
         },
       },
       colorPrimary: {
@@ -374,9 +367,9 @@ export const baseCommittedOverrides = (
     },
     MuiSwitch: {
       root: {
-        color: palette.neutral.main,
+        color: palette.grey[500],
         '&$disabled': {
-          color: addTransparency(palette.neutral.main),
+          color: addTransparency(palette.grey[500]),
         },
       },
       colorPrimary: {
@@ -397,14 +390,14 @@ export const baseCommittedOverrides = (
     MuiTableBody: {
       root: {
         '& tr:nth-child(even)': {
-          backgroundColor: lightLightVery(palette.neutral),
+          backgroundColor: palette.grey[100],
         },
-        borderColor: lightLightVery(palette.neutral),
+        borderColor: palette.grey[100],
       },
     },
     MuiTableCell: {
       body: {
-        borderBottomColor: lightLightVery(palette.neutral),
+        borderBottomColor: palette.grey[100],
       },
     },
     MuiTableFooter: {
