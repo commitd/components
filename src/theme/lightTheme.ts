@@ -188,6 +188,7 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
         },
       },
       outlinedSecondary: {
+        color: palette.secondary.dark,
         backgroundColor: mainLight(palette.primary),
         '&:hover': {
           backgroundColor: lighten(
@@ -197,7 +198,7 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
         },
         '&$disabled': {
           backgroundColor: addTransparency(mainLight(palette.primary)),
-          borderColor: addTransparency(palette.secondary.light),
+          borderColor: addTransparency(palette.secondary.main),
         },
       },
       disabled: {},
@@ -315,9 +316,9 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
         },
       },
       colorSecondary: {
-        color: palette.secondary.light,
+        color: palette.brand.dark,
         '&$checked': {
-          color: palette.secondary.light,
+          color: palette.brand.dark,
           '&:hover': {
             backgroundColor: fade(palette.primary.main, action.hoverOpacity),
           },
@@ -354,8 +355,9 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
         '& th': {
           fontWeight: 'bold',
           color: text.primary,
+          borderBottom: 'none',
         },
-        borderBottom: `2px solid ${palette.brand.main}`,
+        borderBottom: `1px solid ${palette.brand.main}`,
       },
     },
     MuiTableBody: {

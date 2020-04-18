@@ -42,11 +42,13 @@ A `ThemeProvider` should wrap the output component of your app.
 
 ## Light and Dark
 
-By default, we used the Committed light and dark themes that can be switched using the `choice` prop or the users system preference.
-Both the light and dark themes can be customised by supplying customisation functions detailed below.
+By default, we used the Committed light and dark themes switched on the users system preference.
+The choice prop can be used to force either the light or dark theme or to allow dynamic switching.
+
+### Committed Light
 
 <Preview>
-  <Story name="lightanddark">
+  <Story name="light">
     <ThemeProvider choice="light">
       <Background width="1VH">
         <Overview />
@@ -54,6 +56,8 @@ Both the light and dark themes can be customised by supplying customisation func
     </ThemeProvider>
   </Story>
 </Preview>
+
+### Committed Dark
 
 <Preview>
   <Story name="dark">
@@ -65,6 +69,36 @@ Both the light and dark themes can be customised by supplying customisation func
   </Story>
 </Preview>
 
+### Theme Switch
+
+To toggle the theme switch between choice `light` and `dark`.
+We leave to implementation to set in context.
+
+<Preview>
+  <Story name="switch">
+    {React.createElement(() => {
+      const [themeChoice, setTheme] = React.useState(true)
+      return (
+        <ThemeProvider choice={themeChoice ? 'light' : 'dark'}>
+          <C.ThemeSwitch
+            checked={themeChoice}
+            onChange={(event) => setTheme(event.target.checked)}
+            color="primary"
+          />
+          <Background width="1VH">
+            <Overview />
+          </Background>
+        </ThemeProvider>
+      )
+    })}
+  </Story>
+</Preview>
+
+## Customisation
+
+The theme(s) can be customised by providing theme creation functions. Providing as a direct prop applies to both the light and dark themes.
+Or to customise separately, provide as a keyed object under `light` and `dark` props. The following functions for customisation are available.
+
 ## Custom Fonts
 
 The optional `createFonts()` prop should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
@@ -73,7 +107,7 @@ Custom font stacks can be provided for different typography components. You may 
 We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
 
 <Preview>
-  <Story name="default">
+  <Story name="custom-fonts">
     <ThemeProvider
       createFonts={() => {
         const fontFamily = 'Rockwell, sans-serif'
@@ -187,7 +221,9 @@ The optional `createSpacing()` prop should either return [material-ui spacing op
             p={3}
             m={1}
             justifyContent="space-evenly"
-            border="1px solid black"
+            border="1px solid"
+            borderColor="text.primary"
+            bgcolor="background.paper"
           >
             <C.Column>
               <C.Button m={3}>Default</C.Button>
@@ -260,8 +296,9 @@ The optional `createTypography()` prop should either return [material-ui typogra
           p={3}
           pt={4}
           m={1}
-          border="1px solid black"
-          bgcolor="background.default"
+          border="1px solid"
+          borderColor="text.primary"
+          bgcolor="background.paper"
         >
           <C.Box width={1 / 2}>
             <C.Typography>System Typography</C.Typography>

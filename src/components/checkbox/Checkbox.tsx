@@ -32,7 +32,12 @@ export const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
     let color = 'transparent'
     if (checked && !props.disabled) {
       if (props.color === 'primary') {
-        color = 'brand.main'
+        const primaryColor = theme.palette.primary.main
+        const brandColor = theme.palette.brand.main
+        color =
+          brandColor === primaryColor
+            ? theme.palette.primary.contrastText
+            : brandColor
       }
       if (props.color === 'secondary') {
         color = theme.palette.getContrastText(theme.palette.secondary.main)

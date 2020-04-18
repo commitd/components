@@ -31,6 +31,8 @@ import {
 import { augmentColor } from './themeMaterialUtil'
 import { useMediaQuery } from '@material-ui/core'
 
+export type ThemeChoice = 'light' | 'dark'
+
 export interface ThemeProps {
   /**
    *  Should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
@@ -91,7 +93,7 @@ export interface ThemeProviderProps extends Partial<ThemeProps> {
   /**
    * Force the theme choice, if null use browser preference
    */
-  choice?: null | 'light' | 'dark'
+  choice?: null | ThemeChoice
   /**
    * Elements to be themed
    */

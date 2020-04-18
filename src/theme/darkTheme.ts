@@ -22,27 +22,20 @@ import {
 
 export type DarkPaletteColors = typeof committedDarkPaletteColors
 
-const reversedColors = allColors
-// Object.keys(allColors).forEach(key => {
-//   if (allColors[key].reverse) {
-//     reversedColors[key] = allColors[key].reverse()
-//   }
-// })
-
 export const committedDarkPaletteColors = {
-  ...reversedColors,
-  brand: reversedColors.committedGrey,
-  primary: reversedColors.committedYellow,
+  ...allColors,
+  brand: allColors.committedGrey,
+  primary: allColors.committedYellow,
   secondary: {
-    '300': reversedColors.committedGrey[50],
-    '500': reversedColors.committedGrey[200],
-    '700': reversedColors.committedGrey[400],
+    '300': allColors.committedGrey[50],
+    '500': allColors.committedGrey[200],
+    '700': allColors.committedGrey[400],
   },
-  success: reversedColors.teal,
-  warning: reversedColors.orange,
-  error: reversedColors.red,
-  info: reversedColors.lightBlueVivid,
-  grey: reversedColors.grey,
+  success: allColors.teal,
+  warning: allColors.orange,
+  error: allColors.red,
+  info: allColors.lightBlueVivid,
+  grey: allColors.grey,
 }
 
 const text = {
@@ -203,28 +196,35 @@ export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
         },
       },
       outlinedPrimary: {
-        backgroundColor: palette.brand.light,
-        '&:hover': {
-          backgroundColor: lightLight(palette.brand),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(lightLightVery(palette.brand)),
-          borderColor: addTransparency(palette.primary.main),
-        },
-      },
-      outlinedSecondary: {
-        //        color: palette.getContrastText(palette.grey[300]),
-        color: palette.getContrastText(mainLight(palette.primary)),
-        backgroundColor: mainLight(palette.primary),
+        color: palette.getContrastText(palette.primary.light),
+        borderColor: palette.getContrastText(palette.primary.light),
+        backgroundColor: palette.primary.light,
         '&:hover': {
           backgroundColor: lighten(
-            mainLight(palette.primary),
+            lightLight(palette.primary),
             action.hoverOpacity
+          ),
+          borderColor: darken(
+            palette.getContrastText(palette.primary.light),
+            0.25
           ),
         },
         '&$disabled': {
           backgroundColor: addTransparency(mainLight(palette.primary)),
           borderColor: addTransparency(palette.secondary.light),
+        },
+      },
+      outlinedSecondary: {
+        color: palette.primary.dark,
+        borderColor: palette.primary.dark,
+        backgroundColor: palette.brand.light,
+        '&:hover': {
+          backgroundColor: lightLight(palette.brand),
+          borderColor: darken(palette.primary.dark, 0.25),
+        },
+        '&$disabled': {
+          backgroundColor: addTransparency(lightLightVery(palette.brand)),
+          borderColor: addTransparency(palette.primary.main),
         },
       },
       disabled: {},
@@ -342,9 +342,9 @@ export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
         },
       },
       colorSecondary: {
-        color: palette.secondary.light,
+        color: palette.secondary.main,
         '&$checked': {
-          color: palette.secondary.light,
+          color: palette.secondary.main,
           '&:hover': {
             backgroundColor: fade(palette.primary.main, action.hoverOpacity),
           },
@@ -372,7 +372,7 @@ export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
       },
       colorPrimary: {
         '&$checked + $track': {
-          backgroundColor: palette.brand.main,
+          backgroundColor: palette.primary.light,
         },
       },
     },
@@ -381,21 +381,22 @@ export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
         '& th': {
           fontWeight: 'bold',
           color: text.primary,
+          borderBottom: 'none',
         },
-        borderBottom: `2px solid ${palette.brand.main}`,
+        borderBottom: `1px solid ${palette.primary.main}`,
       },
     },
     MuiTableBody: {
       root: {
         '& tr:nth-child(even)': {
-          backgroundColor: palette.grey[100],
+          backgroundColor: palette.grey[700],
         },
-        borderColor: palette.grey[100],
+        borderColor: palette.grey[700],
       },
     },
     MuiTableCell: {
       body: {
-        borderBottomColor: palette.grey[100],
+        borderBottomColor: palette.grey[700],
       },
     },
     MuiTableFooter: {
