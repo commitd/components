@@ -7,5 +7,6 @@ export * from './ThemeProvider'
 export { Theme } from '@material-ui/core/styles/createMuiTheme'
 export { ThemeSwitch } from './ThemeSwitch'
 export type { ThemeSwitchProps } from './ThemeSwitch'
+export { useThemeChoice } from './useThemeChoice'
 
 export { colors, fonts, theme }

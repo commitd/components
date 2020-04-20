@@ -1,28 +1,29 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import {
+  AppBar,
+  Avatar,
   Box,
   Button,
-  Heading,
-  Text,
-  Typography,
-  Display,
-  Monospace,
+  Caption,
   Chip,
+  Column,
+  createCommittedLightOverrides,
+  Display,
   Flex,
-  Avatar,
+  Heading,
   Icons,
+  Link,
+  Monospace,
+  Subheading,
+  Text,
   ThemeProvider,
+  Toolbar,
+  Typography,
 } from '../../src'
-import * as C from '../../src'
+
 import cyan from '@material-ui/core/colors/cyan'
 import blueGrey from '@material-ui/core/colors/blueGrey'
-import {
-  PaletteColor,
-  PaletteOptions,
-} from '@material-ui/core/styles/createPalette'
-import { createMuiTheme } from '@material-ui/core'
 import { Background, Overview } from '../util'
-import commmitImage from '../../public/images/Avatar1-YellowTrans-32px.png'
 import { ThemeProviderDocs } from './ThemeProviderDocs'
 import deepmerge from 'deepmerge'
 
@@ -66,31 +67,6 @@ The choice prop can be used to force either the light or dark theme or to allow 
         <Overview />
       </Background>
     </ThemeProvider>
-  </Story>
-</Preview>
-
-### Theme Switch
-
-To toggle the theme switch between choice `light` and `dark`.
-We leave to implementation to set in context.
-
-<Preview>
-  <Story name="switch">
-    {React.createElement(() => {
-      const [themeChoice, setTheme] = React.useState(true)
-      return (
-        <ThemeProvider choice={themeChoice ? 'light' : 'dark'}>
-          <C.ThemeSwitch
-            checked={themeChoice}
-            onChange={(event) => setTheme(event.target.checked)}
-            color="primary"
-          />
-          <Background width="1VH">
-            <Overview />
-          </Background>
-        </ThemeProvider>
-      )
-    })}
   </Story>
 </Preview>
 
@@ -210,13 +186,13 @@ The optional `createSpacing()` prop should either return [material-ui spacing op
 
 <Preview>
   <Story name="custom-spacing">
-    <C.ThemeProvider
+    <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
       createSpacing={() => (factor) => factor * 10}
     >
       <Background width="1VH">
-        <C.Column flexWrap="wrap">
-          <C.Flex
+        <Column flexWrap="wrap">
+          <Flex
             flexGrow={1}
             p={3}
             m={1}
@@ -225,52 +201,52 @@ The optional `createSpacing()` prop should either return [material-ui spacing op
             borderColor="text.primary"
             bgcolor="background.paper"
           >
-            <C.Column>
-              <C.Button m={3}>Default</C.Button>
-              <C.Button m={3} color="primary">
+            <Column>
+              <Button m={3}>Default</Button>
+              <Button m={3} color="primary">
                 Primary
-              </C.Button>
-              <C.Button m={3} color="secondary">
+              </Button>
+              <Button m={3} color="secondary">
                 Secondary
-              </C.Button>
-            </C.Column>
-            <C.Column>
-              <C.Button m={3} variant="outlined">
+              </Button>
+            </Column>
+            <Column>
+              <Button m={3} variant="outlined">
                 Default
-              </C.Button>
-              <C.Button m={3} variant="outlined" color="primary">
+              </Button>
+              <Button m={3} variant="outlined" color="primary">
                 Primary
-              </C.Button>
-              <C.Button m={3} variant="outlined" color="secondary">
+              </Button>
+              <Button m={3} variant="outlined" color="secondary">
                 Secondary
-              </C.Button>
-            </C.Column>
-            <C.Column>
-              <C.Button m={3} variant="text">
+              </Button>
+            </Column>
+            <Column>
+              <Button m={3} variant="text">
                 Default
-              </C.Button>
-              <C.Button m={3} variant="text" color="primary">
+              </Button>
+              <Button m={3} variant="text" color="primary">
                 Primary
-              </C.Button>
-              <C.Button m={3} variant="text" color="secondary">
+              </Button>
+              <Button m={3} variant="text" color="secondary">
                 Secondary
-              </C.Button>
-            </C.Column>
-            <C.Column>
-              <C.Button disabled={true} m={3}>
+              </Button>
+            </Column>
+            <Column>
+              <Button disabled={true} m={3}>
                 Default
-              </C.Button>
-              <C.Button disabled={true} m={3} color="primary">
+              </Button>
+              <Button disabled={true} m={3} color="primary">
                 Primary
-              </C.Button>
-              <C.Button disabled={true} m={3} color="secondary">
+              </Button>
+              <Button disabled={true} m={3} color="secondary">
                 Secondary
-              </C.Button>
-            </C.Column>
-          </C.Flex>
-        </C.Column>
+              </Button>
+            </Column>
+          </Flex>
+        </Column>
       </Background>
-    </C.ThemeProvider>
+    </ThemeProvider>
   </Story>
 </Preview>
 
@@ -280,7 +256,7 @@ The optional `createTypography()` prop should either return [material-ui typogra
 
 <Preview>
   <Story name="custom-typography">
-    <C.ThemeProvider
+    <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
       createTypography={() => ({
         htmlFontSize: 16,
@@ -291,7 +267,7 @@ The optional `createTypography()` prop should either return [material-ui typogra
       })}
     >
       <Background width="1VH">
-        <C.Flex
+        <Flex
           flexGrow={1}
           p={3}
           pt={4}
@@ -300,44 +276,44 @@ The optional `createTypography()` prop should either return [material-ui typogra
           borderColor="text.primary"
           bgcolor="background.paper"
         >
-          <C.Box width={1 / 2}>
-            <C.Typography>System Typography</C.Typography>
-            <C.Heading.h2 gutterBottom>h2. Heading</C.Heading.h2>
-            <C.Heading.h3 gutterBottom>h3. Heading</C.Heading.h3>
-            <C.Heading.h4 gutterBottom>h4. Heading</C.Heading.h4>
-            <C.Subheading.h3 gutterBottom>
+          <Box width={1 / 2}>
+            <Typography>System Typography</Typography>
+            <Heading.h2 gutterBottom>h2. Heading</Heading.h2>
+            <Heading.h3 gutterBottom>h3. Heading</Heading.h3>
+            <Heading.h4 gutterBottom>h4. Heading</Heading.h4>
+            <Subheading.h3 gutterBottom>
               subheading. Lorem ipsum dolor sit amet, consectetur adipisicing
               elit. Quos blanditiis tenetur
-            </C.Subheading.h3>
-            <C.Typography variant="body1" gutterBottom>
+            </Subheading.h3>
+            <Typography variant="body1" gutterBottom>
               body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
               consectetur.
-            </C.Typography>
-            <C.Typography variant="body2" gutterBottom>
+            </Typography>
+            <Typography variant="body2" gutterBottom>
               body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
               consectetur.
-            </C.Typography>
-          </C.Box>
-          <C.Box width={1 / 2}>
-            <C.Text>Disply Typography</C.Text>
-            <C.Display.d1 gutterBottom>d1. Heading</C.Display.d1>
-            <C.Display.d2 gutterBottom>d2. Heading</C.Display.d2>
-            <C.Text gutterBottom>
+            </Typography>
+          </Box>
+          <Box width={1 / 2}>
+            <Text>Disply Typography</Text>
+            <Display.d1 gutterBottom>d1. Heading</Display.d1>
+            <Display.d2 gutterBottom>d2. Heading</Display.d2>
+            <Text gutterBottom>
               Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
               consectetur.
-            </C.Text>
-            <C.Monospace wrap>
+            </Text>
+            <Monospace wrap>
               Monospace. Lorem ipsum dolor sit amet, consectetur adipisicing
               elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum
               inventore consectetur.
-            </C.Monospace>
-          </C.Box>
-        </C.Flex>
+            </Monospace>
+          </Box>
+        </Flex>
       </Background>
-    </C.ThemeProvider>
+    </ThemeProvider>
   </Story>
 </Preview>
 
@@ -347,7 +323,7 @@ The optional `createOverrides()` prop should either return [material-ui override
 
 <Preview>
   <Story name="custom-overrides">
-    <C.ThemeProvider
+    <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
       createOverrides={(palette) => ({
         MuiButton: {
@@ -367,32 +343,32 @@ The optional `createOverrides()` prop should either return [material-ui override
       })}
     >
       <Background width="1VH">
-        <C.Caption>
-          <C.Link href="/components/?path=/docs/components-button--default-story">
+        <Caption>
+          <Link href="/components/?path=/docs/components-button--default-story">
             Buttons
-          </C.Link>
-        </C.Caption>
-        <C.Column flexWrap="wrap">
-          <C.Flex
+          </Link>
+        </Caption>
+        <Column flexWrap="wrap">
+          <Flex
             flexGrow={1}
             p={3}
             m={1}
             justifyContent="space-evenly"
             border="1px solid black"
           >
-            <C.Column>
-              <C.Button m={3}>Default</C.Button>
-              <C.Button m={3} color="primary">
+            <Column>
+              <Button m={3}>Default</Button>
+              <Button m={3} color="primary">
                 Primary
-              </C.Button>
-              <C.Button m={3} color="secondary">
+              </Button>
+              <Button m={3} color="secondary">
                 Secondary
-              </C.Button>
-            </C.Column>
-          </C.Flex>
-        </C.Column>
+              </Button>
+            </Column>
+          </Flex>
+        </Column>
       </Background>
-    </C.ThemeProvider>
+    </ThemeProvider>
   </Story>
 </Preview>
 
@@ -402,7 +378,7 @@ An example of a theme with all options customised:
 
 <Preview>
   <Story name="custom-theme">
-    <C.ThemeProvider
+    <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
       createPaletteOptions={() => ({
         primary: {
@@ -454,7 +430,7 @@ An example of a theme with all options customised:
         },
       })}
       createOverrides={(palette) =>
-        deepmerge(C.createCommittedLightOverrides(palette), {
+        deepmerge(createCommittedLightOverrides(palette), {
           MuiButton: {
             outlinedSecondary: {
               color: 'white',
@@ -468,7 +444,7 @@ An example of a theme with all options customised:
       <Background width="1VH">
         <Overview />
       </Background>
-    </C.ThemeProvider>
+    </ThemeProvider>
   </Story>
 </Preview>
 
