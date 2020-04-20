@@ -1,6 +1,6 @@
 import { Link, Typography } from '../../../src'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { LinkDocs } from './LinkDocs'
+import { LinkDocs, CustomLink } from './LinkDocs'
 
 <Meta title="components|Link" component={Link} />
 
@@ -64,6 +64,27 @@ For when a link need to be applied to a separately styled element
         External
       </Link>
     </Typography>
+  </Story>
+</Preview>
+
+### Composition
+
+Links support substituting the rendered element for one supplied to the `component` prop.
+
+<Preview>
+  <Story name="component">
+    <>
+      <ul>
+        <Link href="test.com" component="li">
+          Test
+        </Link>
+      </ul>
+      {/* const CustomComponent = ({ href }: { href: string }) => <div>{href}</div>
+          export const CustomLink = ({ href }: { href: string }) => (
+            <Link component={CustomComponent} href={href} />
+          ) */}
+      <CustomLink href="test.com" />
+    </>
   </Story>
 </Preview>
 

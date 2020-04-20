@@ -4,6 +4,12 @@ import * as React from 'react'
 import MaterialLink, {
   LinkProps as MaterialLinkProps,
 } from '@material-ui/core/Link'
+import { Link } from '../../../src'
+
+const CustomComponent = ({ href }: { href: string }) => <div>{href}</div>
+export const CustomLink = ({ href }: { href: string }) => (
+  <Link component={CustomComponent} href={href} />
+)
 
 export interface LinkProps extends Omit<MaterialLinkProps, 'variant'> {
   /**
