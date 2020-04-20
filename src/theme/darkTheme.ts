@@ -285,7 +285,7 @@ export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
     },
     MuiDialog: {
       paper: {
-        borderTop: `4px solid ${palette.brand.main}`,
+        borderTop: `4px solid ${palette.primary.main}`,
       },
     },
     MuiDivider: {
