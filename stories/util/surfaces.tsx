@@ -11,12 +11,13 @@ export const Background = styled('div')(({ theme }: WithTheme) => ({
   height: '100%',
 }))
 
-const InnerSurfaces: React.SFC<{ theme: Theme }> = ({ theme }) => (
+const InnerSurfaces: React.FC<{ theme: Theme }> = ({ theme }) => (
   <Flex
     m={1}
     mt={3}
     p={3}
     bgcolor={theme.palette.background.default}
+    color={theme.palette.text.primary}
     flexDirection="column"
     alignItems="center"
     justifyContent="center"
@@ -34,16 +35,21 @@ const InnerSurfaces: React.SFC<{ theme: Theme }> = ({ theme }) => (
       <Heading.h5>Paper</Heading.h5>
       <Flex p={2}>
         <Flex p={2} flexDirection="column">
-          <Text>Default</Text>
+          <Text color="inherit">Default</Text>
           <Text color="primary">Primary</Text>
           <Text color="secondary">Secondary</Text>
           <Text color="error">Error</Text>
         </Flex>
         <Flex p={2} flexDirection="column">
-          <Text color="textPrimary">Text Primary</Text>
-          <Text color="textSecondary">Text Secondary</Text>
+          {/* Forced due to issue with nesting themes */}
+          <div style={{ color: theme.palette.text.primary }}>
+            <Text>Text Primary</Text>
+          </div>
+          <div style={{ color: theme.palette.text.secondary }}>
+            <Text>Text Secondary</Text>
+          </div>
           <div style={{ color: theme.palette.text.disabled }}>
-            <Text color="inherit">Text Disabled</Text>
+            <Text>Text Disabled</Text>
           </div>
           <div style={{ color: theme.palette.text.hint }}>
             <Text>Text Hint</Text>
