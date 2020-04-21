@@ -5,7 +5,8 @@ import { Logo } from '../components/logo/Logo'
 import { makeStyles } from '@material-ui/styles'
 import { Theme } from '/theme'
 import { style } from '@material-ui/system'
-import { Icons, IconButton } from '../components'
+import { Icons } from '../components/icons/Icons'
+import { IconButton } from '../components/iconbutton/IconButton'
 
 const styleColor = style({
   prop: 'color',
