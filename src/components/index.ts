@@ -106,7 +106,6 @@ import MenuList from '@material-ui/core/MenuList'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Popover from '@material-ui/core/Popover'
 import Radio from '@material-ui/core/Radio'
-import Select from '@material-ui/core/Select'
 import Tab from '@material-ui/core/Tab'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -151,7 +150,6 @@ export {
   OutlinedInput,
   Popover,
   Radio,
-  Select,
   Tab,
   Table,
   TableBody,
@@ -196,7 +194,6 @@ export type { MenuListProps } from '@material-ui/core/MenuList'
 export type { OutlinedInputProps } from '@material-ui/core/OutlinedInput'
 export type { PopoverProps } from '@material-ui/core/Popover'
 export type { RadioProps } from '@material-ui/core/Radio'
-export type { SelectProps } from '@material-ui/core/Select'
 export type { TabProps } from '@material-ui/core/Tab'
 export type { TableProps } from '@material-ui/core/Table'
 export type { TableBodyProps } from '@material-ui/core/TableBody'
