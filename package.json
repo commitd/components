@@ -27,7 +27,7 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook --docs",
     "format": "prettier --write '**/{src,test,stories,example}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local --dangerfile dangerfile.lite.ts",
