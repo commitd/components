@@ -13,12 +13,14 @@ import MaterialFormControl, {
   FormControlProps as MaterialFormControlProps,
 } from '@material-ui/core/FormControl'
 
-export type FormControlProps = MaterialFormControlProps &
+export type FormControlProps<
+  C extends React.ElementType
+> = MaterialFormControlProps<C, { component?: C }> &
   SpacingProps &
   FlexboxProps &
   SizingProps
 
-export const FormControl: React.ComponentType<MaterialFormControlProps> = styled(
+export const FormControl: React.ComponentType<FormControlProps<any>> = styled(
   MaterialFormControl
 )(compose(spacing, flexbox, sizing))
 
