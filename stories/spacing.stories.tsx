@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Flex, Text, colors, theme } from '../src'
 
 export default {
-  title: 'Spacing',
+  title: 'Design System|Spacing',
 }
 
 export const exampleSpacing = () => (
@@ -104,3 +104,7 @@ export const egdeCases = () => (
     </Flex>
   </Flex>
 )
+
+egdeCases.story = {
+  parameters: { docs: { disable: true } },
+}
