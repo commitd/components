@@ -1,8 +1,11 @@
 import React from 'react'
 import { Typography, TypographyProps } from './Typography'
 
-export type TextProps = TypographyProps
+export type TextProps<C extends React.ElementType> = TypographyProps<C>
 
-export const Text: React.ComponentType<TextProps> = React.forwardRef(
-  (props, ref) => <Typography ref={ref} {...props} font="text" />
+export const Text = React.forwardRef(
+  <C extends React.ElementType>(
+    props: TextProps<C>,
+    ref?: React.Ref<HTMLElement>
+  ) => <Typography<C> forwardedRef={ref} {...props} font="text" />
 )

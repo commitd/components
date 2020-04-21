@@ -1,11 +1,10 @@
 import * as React from 'react'
 import { PaletteProps } from '@material-ui/system'
 import { SizingProps } from '../../../src/internal'
-import { styled } from '@material-ui/styles'
 import { CardProps as MaterialCardProps } from '@material-ui/core/Card'
+import { CardContentProps } from '@material-ui/core/CardContent'
 import { CardActionAreaProps } from '@material-ui/core/CardActionArea'
 import { CardActionsProps } from '@material-ui/core/CardActions'
-import { OverrideComponent } from '../../../src/internal/util'
 import { CardHeaderProps as MaterialCardHeaderProps } from '@material-ui/core/CardHeader'
 import { CardMediaProps as MaterialCardMediaProps } from '@material-ui/core/CardMedia'
 
@@ -19,7 +18,10 @@ export type CardHeaderDocsProps = Omit<
   CardHeaderProps,
   keyof (React.AriaAttributes & React.HTMLAttributes<HTMLDivElement>)
 >
-export type CardContentDocsProps = OverrideComponent
+export type CardContentDocsProps = Omit<
+  CardContentProps,
+  keyof (React.AriaAttributes & React.HTMLAttributes<HTMLDivElement>)
+>
 export type CardActionAreaDocsProps = Omit<
   CardActionAreaProps,
   keyof (React.AriaAttributes & React.HTMLAttributes<HTMLDivElement>)

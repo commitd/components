@@ -24,5 +24,11 @@ export type ExtraTypographyProps = {
 export type TypographyDocsProps = Omit<
   ExtraTypographyProps & MaterialTypographyProps,
   keyof Omit<React.HTMLAttributes<HTMLElement>, 'color'> | 'variantMapping'
->
+> & {
+  /**
+   * Base typography and text component support changing the underlying component type with this prop. Specialized types are mostly predefining this component and can not be overridden.
+   * @default 'span'
+   */
+  component?: React.ElementType
+}
 export const TypographyDocs: React.FC<TypographyDocsProps> = () => null

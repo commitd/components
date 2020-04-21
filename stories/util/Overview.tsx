@@ -581,12 +581,7 @@ export const Overview = () => (
         <C.Flex>
           <C.CardContent>
             <C.Heading.h5 mb={1}>Title</C.Heading.h5>
-            <C.Subheading.h5
-              mt={0}
-              mb={2}
-              variant="subtitle1"
-              color="textSecondary"
-            >
+            <C.Subheading.h5 mt={0} mb={2} color="textSecondary">
               Subtitle
             </C.Subheading.h5>
             <C.Flex alignItems="center" p={3}>
