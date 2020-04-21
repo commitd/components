@@ -1,0 +1,453 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Caption,
+  Chip,
+  Column,
+  createCommittedLightOverrides,
+  Display,
+  Flex,
+  Heading,
+  Icons,
+  Link,
+  Monospace,
+  Subheading,
+  Text,
+  ThemeProvider,
+  Toolbar,
+  Typography,
+} from '../../src'
+
+import cyan from '@material-ui/core/colors/cyan'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+import { Background, Overview } from '../util'
+import { ThemeProviderDocs } from './ThemeProviderDocs'
+import deepmerge from 'deepmerge'
+
+<Meta title="Components|ThemeProvider" component={ThemeProvider} />
+
+# ThemeProvider
+
+Extends [Material UI ThemeProvider](https://material-ui.com/styles/api/#themeprovider)
+
+A `ThemeProvider` should wrap the output component of your app.
+
+```jsx
+<ThemeProvider>
+  <AppRoot />
+</ThemeProvider>
+```
+
+## Light and Dark
+
+By default, we used the Committed light and dark themes switched on the users system preference.
+The choice prop can be used to force either the light or dark theme or to allow dynamic switching.
+
+### Committed Light
+
+<Preview>
+  <Story name="light">
+    <ThemeProvider choice="light">
+      <Background width="1VH">
+        <Overview />
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+### Committed Dark
+
+<Preview>
+  <Story name="dark">
+    <ThemeProvider choice="dark">
+      <Background width="1VH">
+        <Overview />
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Customisation
+
+The theme(s) can be customised by providing theme creation functions. Providing as a direct prop applies to both the light and dark themes.
+Or to customise separately, provide as a keyed object under `light` and `dark` props. The following functions for customisation are available.
+
+## Custom Fonts
+
+The optional `createFonts()` prop should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+Custom font stacks can be provided for different typography components. You may need to separately load your font, using imports, links or css; see [example](https://github.com/commitd/components/tree/master/example).
+We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
+
+<Preview>
+  <Story name="custom-fonts">
+    <ThemeProvider
+      createFonts={() => {
+        const fontFamily = 'Rockwell, sans-serif'
+        return {
+          typography: { fontFamily },
+          heading: { fontFamily },
+          subheading: { fontFamily },
+          text: { fontFamily },
+          display: {
+            fontFamily,
+          },
+          monospace: {
+            fontFamily,
+          },
+        }
+      }}
+    >
+      <Heading.h2>Heading</Heading.h2>
+      <Typography>Typography</Typography>
+      <Display.d1>Display</Display.d1>
+      <Text>Text</Text>
+      <Monospace>Monospace</Monospace>
+      <Button color="primary">Button</Button>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Colours
+
+Custom palette colours can be specified. For example, the primary, secondary or brand colors.
+
+The optional `createPalette()` prop should either return a [set of material-ui color intentions](https://material-ui.com/customization/palette/#customization) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+The material-ui colors can be specified: palette.primary, palette.secondary, palette.error, palette.warning, palette.info or palette.success
+
+A full range (50-900) of neutral colours can be specified with palette.grey
+
+Additionally the committed-theme colors can be specified: palette.brand, the brand color is used in some places instead of the primary.
+Specify the brand the same as primary to return to material styles.
+
+<Preview>
+  <Story name="custom-colors">
+    <ThemeProvider
+      createPaletteOptions={() => ({
+        primary: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff',
+        },
+        brand: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff',
+        },
+        secondary: {
+          //yellow
+          light: '#ffff6b',
+          main: '#fdd835',
+          dark: '#c6a700',
+          contrastText: '#000',
+        },
+      })}
+    >
+      <Button color="primary" mr={3}>
+        Custom Primary Button
+      </Button>
+      <Button color="secondary">Custom Secondary Button</Button>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Shape
+
+The optional `createShape()` prop should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+<Preview>
+  <Story name="custom-shape">
+    <ThemeProvider
+      createShape={() => ({
+        borderRadius: 20,
+      })}
+    >
+      <Button color="primary" mr={3}>
+        Custom Primary Button
+      </Button>
+      <Button color="secondary">Custom Secondary Button</Button>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Spacing
+
+Override the meaning of spacing props. These are dimensionless values given to things like margin and padding. All Material components will be affected, so Use with care.
+
+The optional `createSpacing()` prop should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+<Preview>
+  <Story name="custom-spacing">
+    <ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createSpacing={() => (factor) => factor * 10}
+    >
+      <Background width="1VH">
+        <Column flexWrap="wrap">
+          <Flex
+            flexGrow={1}
+            p={3}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid"
+            borderColor="text.primary"
+            bgcolor="background.paper"
+          >
+            <Column>
+              <Button m={3}>Default</Button>
+              <Button m={3} color="primary">
+                Primary
+              </Button>
+              <Button m={3} color="secondary">
+                Secondary
+              </Button>
+            </Column>
+            <Column>
+              <Button m={3} variant="outlined">
+                Default
+              </Button>
+              <Button m={3} variant="outlined" color="primary">
+                Primary
+              </Button>
+              <Button m={3} variant="outlined" color="secondary">
+                Secondary
+              </Button>
+            </Column>
+            <Column>
+              <Button m={3} variant="text">
+                Default
+              </Button>
+              <Button m={3} variant="text" color="primary">
+                Primary
+              </Button>
+              <Button m={3} variant="text" color="secondary">
+                Secondary
+              </Button>
+            </Column>
+            <Column>
+              <Button disabled={true} m={3}>
+                Default
+              </Button>
+              <Button disabled={true} m={3} color="primary">
+                Primary
+              </Button>
+              <Button disabled={true} m={3} color="secondary">
+                Secondary
+              </Button>
+            </Column>
+          </Flex>
+        </Column>
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Typography
+
+The optional `createTypography()` prop should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+
+<Preview>
+  <Story name="custom-typography">
+    <ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createTypography={() => ({
+        htmlFontSize: 16,
+        fontSize: 20,
+        h1: {
+          fontSize: '1.2rem',
+        },
+      })}
+    >
+      <Background width="1VH">
+        <Flex
+          flexGrow={1}
+          p={3}
+          pt={4}
+          m={1}
+          border="1px solid"
+          borderColor="text.primary"
+          bgcolor="background.paper"
+        >
+          <Box width={1 / 2}>
+            <Typography>System Typography</Typography>
+            <Heading.h2 gutterBottom>h2. Heading</Heading.h2>
+            <Heading.h3 gutterBottom>h3. Heading</Heading.h3>
+            <Heading.h4 gutterBottom>h4. Heading</Heading.h4>
+            <Subheading.h3 gutterBottom>
+              subheading. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit. Quos blanditiis tenetur
+            </Subheading.h3>
+            <Typography variant="body1" gutterBottom>
+              body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </Typography>
+          </Box>
+          <Box width={1 / 2}>
+            <Text>Disply Typography</Text>
+            <Display.d1 gutterBottom>d1. Heading</Display.d1>
+            <Display.d2 gutterBottom>d2. Heading</Display.d2>
+            <Text gutterBottom>
+              Text. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur.
+            </Text>
+            <Monospace wrap>
+              Monospace. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum
+              inventore consectetur.
+            </Monospace>
+          </Box>
+        </Flex>
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Custom Global CSS Overrides
+
+The optional `createOverrides()` prop should either return [material-ui overrides options](https://material-ui.com/customization/globals/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults. It is passed the palette created using the `createPaletteOptions()` prop
+
+<Preview>
+  <Story name="custom-overrides">
+    <ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createOverrides={(palette) => ({
+        MuiButton: {
+          contained: {
+            color: 'white',
+            backgroundColor: 'red',
+          },
+          containedPrimary: {
+            color: 'black',
+            backgroundColor: 'white',
+          },
+          containedSecondary: {
+            color: 'white',
+            backgroundColor: 'blue',
+          },
+        },
+      })}
+    >
+      <Background width="1VH">
+        <Caption>
+          <Link href="/components/?path=/docs/components-button--default-story">
+            Buttons
+          </Link>
+        </Caption>
+        <Column flexWrap="wrap">
+          <Flex
+            flexGrow={1}
+            p={3}
+            m={1}
+            justifyContent="space-evenly"
+            border="1px solid black"
+          >
+            <Column>
+              <Button m={3}>Default</Button>
+              <Button m={3} color="primary">
+                Primary
+              </Button>
+              <Button m={3} color="secondary">
+                Secondary
+              </Button>
+            </Column>
+          </Flex>
+        </Column>
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Example theme
+
+An example of a theme with all options customised:
+
+<Preview>
+  <Story name="custom-theme">
+    <ThemeProvider
+      style={{ width: '100%', height: '100%', border: '1px' }}
+      createPaletteOptions={() => ({
+        primary: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff',
+        },
+        brand: {
+          //blue
+          light: '#4f83cc',
+          main: '#01579b',
+          dark: '#002f6c',
+          contrastText: '#fff',
+        },
+        secondary: {
+          //yellow
+          light: '#ffff6b',
+          main: '#fdd835',
+          dark: '#c6a700',
+          contrastText: '#000',
+        },
+      })}
+      createFonts={() => {
+        const fontFamily = 'Rockwell, sans-serif'
+        return {
+          typography: { fontFamily },
+          heading: { fontFamily },
+          subheading: { fontFamily },
+          text: { fontFamily },
+          display: {
+            fontFamily,
+          },
+          monospace: {
+            fontFamily,
+          },
+        }
+      }}
+      createShape={() => ({
+        borderRadius: 0,
+      })}
+      createSpacing={() => (factor) => factor * 3}
+      createTypography={() => ({
+        htmlFontSize: 16,
+        fontSize: 20,
+        h1: {
+          fontSize: '1.2rem',
+        },
+      })}
+      createOverrides={(palette) =>
+        deepmerge(createCommittedLightOverrides(palette), {
+          MuiButton: {
+            outlinedSecondary: {
+              color: 'white',
+              borderColor: palette.primary.main,
+            },
+          },
+        })
+      }
+      choice="light"
+    >
+      <Background width="1VH">
+        <Overview />
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={ThemeProviderDocs} />

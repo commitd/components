@@ -1,11 +1,13 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React from 'react'
 import MaterialCheckbox, {
-  CheckboxProps as MaterialCheckboxProps
+  CheckboxProps as MaterialCheckboxProps,
 } from '@material-ui/core/Checkbox'
+import { useTheme } from '@material-ui/core/styles'
 import { Box } from '../box/Box'
 export type CheckboxProps = MaterialCheckboxProps
 
-export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
+export const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps) => {
+  const theme = useTheme()
   const { checked: checkedProp, defaultChecked, onChange } = props
   const { current: isControlled } = React.useRef(checkedProp != null)
   const [checkedState, setCheckedState] = React.useState(
@@ -30,10 +32,15 @@ export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
     let color = 'transparent'
     if (checked && !props.disabled) {
       if (props.color === 'primary') {
-        color = 'secondary.dark'
+        const primaryColor = theme.palette.primary.main
+        const brandColor = theme.palette.brand.main
+        color =
+          brandColor === primaryColor
+            ? theme.palette.primary.contrastText
+            : brandColor
       }
       if (props.color === 'secondary') {
-        color = 'primary.main'
+        color = theme.palette.getContrastText(theme.palette.secondary.main)
       }
     }
     let paddingLeft = '14px'
@@ -72,10 +79,3 @@ export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
     )
   }
 }
-
-// For documentation only
-export type CheckboxDocsProps = Omit<
-  CheckboxProps,
-  keyof HTMLAttributes<HTMLElement>
->
-export const CheckboxDocs: FC<CheckboxDocsProps> = () => null

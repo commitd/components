@@ -706,13 +706,6 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@commitd/components@^0.0.18":
-  version "0.0.18"
-  resolved "https://npm.pkg.github.com/download/@commitd/components/0.0.18/58ba0453a8e7733ef39cb5e798185b4f0c4c5a0e7943f8fe59fa5d13bc8b86dc#f4dc933e1bbf92cac6de55bcb4daddfbc10a7402"
-  integrity sha512-E5G/64KYZ8MGhfZva9PW80EMPNZgIUSikUBFSQZs4z/J1UQXbrFAf6p04Zl9vLm3jCg4sA5MbDtscuD++p2Xsg==
-  dependencies:
-    clsx "^1.0.4"
-
 "@iarna/toml@^2.2.0":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.3.tgz#f060bf6eaafae4d56a7dac618980838b0696e2ab"
@@ -1368,11 +1361,6 @@ clones@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/clones/-/clones-1.2.0.tgz#b34c872045446a9f264ccceb7731bca05c529b71"
   integrity sha512-FXDYw4TjR8wgPZYui2LeTqWh1BLpfQ8lB6upMtlpDF6WlOOxghmTTxWyngdKTgozqBgKnHbTVwTE+hOHqAykuQ==
-
-clsx@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.0.4.tgz#0c0171f6d5cb2fe83848463c15fcc26b4df8c2ec"
-  integrity sha512-1mQ557MIZTrL/140j+JVdRM6e31/OA4vTYxXgqIIZlndyfjHpyawKZia1Im05Vp9BWmImkcNrNtFYQMyFcgJDg==
 
 coa@^2.0.2:
   version "2.0.2"
@@ -3115,11 +3103,6 @@ magic-string@^0.22.4:
   integrity sha512-oreip9rJZkzvA8Qzk9HFs8fZGF/u7H/gtrE8EN6RjKJ9kh2HlC+yQ2QezifqTZfGyiuAV0dRv5a+y/8gBb1m9w==
   dependencies:
     vlq "^0.2.2"
-
-main.css@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/main.css/-/main.css-2.0.0.tgz#5eb5293e3dfd7f380ef9e22caf301bf341443fbf"
-  integrity sha512-pmnD+2uPFw7hAs7FiDYLBiIiJfH9DfdvxUx1EkEDcOYyh90WQYEn0oV1d6I7UyoSaMZJ6zSJjNXRsTUwaD4FtA==
 
 map-cache@^0.2.2:
   version "0.2.2"

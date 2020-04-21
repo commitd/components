@@ -1,28 +1,21 @@
-import { FC, SVGProps } from 'react'
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 import * as MaterialIcons from '@material-ui/icons'
 
 export interface IconProps extends SvgIconProps {}
 
 type SvgIconComponent = typeof SvgIcon
+type Keys = keyof typeof MaterialIcons
 
-const icons = Object.keys(MaterialIcons).filter(key => key.endsWith('Sharp'))
+const icons = Object.keys(MaterialIcons).filter((key) => key.endsWith('Sharp'))
 
-export const Icons: { [key: string]: SvgIconComponent } = icons.reduce(
+export const Icons: {
+  [key: string]: SvgIconComponent
+} = icons.reduce(
   (obj, key) => {
-    obj[key.slice(0, -5)] = MaterialIcons[key]
+    obj[key.slice(0, -5)] = MaterialIcons[key as Keys]
     return obj
   },
-  {}
+  {} as {
+    [key: string]: SvgIconComponent
+  }
 )
-
-// For documentation only
-export type IconsDocsProps = Omit<
-  IconProps,
-  keyof Omit<
-    SVGProps<SVGSVGElement>,
-    'color' | 'htmlColor' | 'shapeRendering' | 'titleAccess' | 'viewBox'
-  >
->
-
-export const IconsDocs: FC<IconsDocsProps> = () => null

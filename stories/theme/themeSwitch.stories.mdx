@@ -1,0 +1,77 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import {
+  AppBar,
+  Box,
+  Heading,
+  Toolbar,
+  ThemeProvider,
+  ThemeSwitch,
+  useThemeChoice,
+} from '../../src'
+import { Background, Overview } from '../util'
+import { ThemeSwitchDocs } from './ThemeSwitchDocs'
+
+<Meta title="Components|ThemeSwitch" component={ThemeSwitch} />
+
+# ThemeSwitch
+
+The `ThemeSwitch` provides a styled button to switch between `light` and `dark` themes.
+It is available in two different variants `commit` and `celestial`, and the icons colors can be customized
+by selecting from the pallete. Note that the pallete will be relative tothe current theme.
+
+<Preview>
+  <Story name="switch">
+    {React.createElement(() => {
+      const [
+        themeChoice,
+        toggleThemeChoice,
+        componentMounted,
+      ] = useThemeChoice()
+      const component = componentMounted ? (
+        <ThemeProvider choice={themeChoice}>
+          <AppBar position="relative">
+            <Toolbar>
+              <Box flexGrow={1}>
+                <Heading.h1>Example</Heading.h1>
+              </Box>
+              <ThemeSwitch
+                themeChoice={themeChoice}
+                toggleThemeChoice={toggleThemeChoice}
+              />
+              <ThemeSwitch
+                themeChoice={themeChoice}
+                toggleThemeChoice={toggleThemeChoice}
+                variant="celestial"
+              />
+              <ThemeSwitch
+                themeChoice={themeChoice}
+                toggleThemeChoice={toggleThemeChoice}
+                variant="celestial"
+                lightColor="common.white"
+                darkColor="common.black"
+              />
+            </Toolbar>
+          </AppBar>
+          <Background width="1VH">
+            <Overview />
+          </Background>
+        </ThemeProvider>
+      ) : null
+      return component
+    })}
+  </Story>
+</Preview>
+
+You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.
+
+## `useThemeChoice` Hook
+
+As a further convenience, we supply a `useThemeChoice` hook to simplify the theme switching.
+This defaults to using the `prefers-color-scheme: dark` media query to automatically switch to
+dark according to uses preferences. If the user has selected a particular mode then local storage is used to _remember_ that choice.
+It supplies the current `themeChoice` a `toggleTheme` function to use in a control and a `componentMounted` flag to state the component has determined the correct start theme.
+The above story demonstrates its use.
+
+## Props
+
+<Props of={ThemeSwitchDocs} />

@@ -1,0 +1,100 @@
+import { useState } from 'react'
+import { Popover, Text, Button } from '../../../src'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { PopoverDocs } from './PopoverDocs'
+
+<Meta title="Components|Popover" component={Popover} />
+
+# Popover
+
+Extends [Material UI Popover](https://material-ui.com/components/popover/)
+
+Popovers can be used to display content ontop of another component.
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const [anchorEl, setAnchorEl] = useState(null)
+      function handleClick(event) {
+        setAnchorEl(event.currentTarget)
+      }
+      function handleClose() {
+        setAnchorEl(null)
+      }
+      const open = Boolean(anchorEl)
+      const id = open ? 'simple-popover' : undefined
+      return (
+        <div>
+          <Button
+            aria-describedby={id}
+            variant="contained"
+            onClick={handleClick}
+          >
+            Open Popover
+          </Button>
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Text>The content of the Popover.</Text>
+          </Popover>
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
+```typescript
+export default function SimplePopover() {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
+  function handleClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  return (
+    <div>
+      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        Open Popover
+      </Button>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Text>The content of the Popover.</Text>
+      </Popover>
+    </div>
+  );
+
+```
+
+## Props
+
+<Props of={PopoverDocs} />

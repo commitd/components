@@ -3,34 +3,37 @@ import { styled } from '@material-ui/styles'
 import { Theme } from '../../theme'
 import { Typography, TypographyProps } from './Typography'
 
-export type HeadingProps = TypographyProps
+export type HeadingProps<C extends React.ElementType> = Omit<
+  TypographyProps<C>,
+  'variant'
+>
 
-const displayFont = ({ theme }: { theme: Theme }) => theme.fonts.heading
+const headingFont = ({ theme }: { theme: Theme }) => theme.fonts.heading
 
 export const Heading: {
-  h1: React.ComponentType<HeadingProps>
-  h2: React.ComponentType<HeadingProps>
-  h3: React.ComponentType<HeadingProps>
-  h4: React.ComponentType<HeadingProps>
-  h5: React.ComponentType<HeadingProps>
-  h6: React.ComponentType<HeadingProps>
+  h1: <C extends React.ElementType>(props: HeadingProps<C>) => JSX.Element
+  h2: <C extends React.ElementType>(props: HeadingProps<C>) => JSX.Element
+  h3: <C extends React.ElementType>(props: HeadingProps<C>) => JSX.Element
+  h4: <C extends React.ElementType>(props: HeadingProps<C>) => JSX.Element
+  h5: <C extends React.ElementType>(props: HeadingProps<C>) => JSX.Element
+  h6: <C extends React.ElementType>(props: HeadingProps<C>) => JSX.Element
 } = {
-  h1: styled(({ variant, component, ...others }: HeadingProps) => (
-    <Typography {...others} variant="h1" />
-  ))(displayFont),
-  h2: styled(({ variant, component, ...others }: HeadingProps) => (
-    <Typography {...others} variant="h2" />
-  ))(displayFont),
-  h3: styled(({ variant, component, ...others }: HeadingProps) => (
-    <Typography {...others} variant="h3" />
-  ))(displayFont),
-  h4: styled(({ variant, component, ...others }: HeadingProps) => (
-    <Typography {...others} variant="h4" />
-  ))(displayFont),
-  h5: styled(({ variant, component, ...others }: HeadingProps) => (
-    <Typography {...others} variant="h5" />
-  ))(displayFont),
-  h6: styled(({ variant, component, ...others }: HeadingProps) => (
-    <Typography {...others} variant="h6" />
-  ))(displayFont)
+  h1: styled((props: HeadingProps<any>) => (
+    <Typography {...props} variant="h1" />
+  ))(headingFont) as (props: HeadingProps<any>) => JSX.Element,
+  h2: styled((props: HeadingProps<any>) => (
+    <Typography {...props} variant="h2" />
+  ))(headingFont) as (props: HeadingProps<any>) => JSX.Element,
+  h3: styled((props: HeadingProps<any>) => (
+    <Typography {...props} variant="h3" />
+  ))(headingFont) as (props: HeadingProps<any>) => JSX.Element,
+  h4: styled((props: HeadingProps<any>) => (
+    <Typography {...props} variant="h4" />
+  ))(headingFont) as (props: HeadingProps<any>) => JSX.Element,
+  h5: styled((props: HeadingProps<any>) => (
+    <Typography {...props} variant="h5" />
+  ))(headingFont) as (props: HeadingProps<any>) => JSX.Element,
+  h6: styled((props: HeadingProps<any>) => (
+    <Typography {...props} variant="h6" />
+  ))(headingFont) as (props: HeadingProps<any>) => JSX.Element,
 }

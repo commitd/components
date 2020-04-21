@@ -1,0 +1,130 @@
+import {
+  Divider,
+  Card,
+  Chip,
+  Button,
+  Flex,
+  Box,
+  Typography,
+  Heading,
+  Icons,
+} from '../../../src'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { DividerDocs } from './DividerDocs'
+
+<Meta title="Components|Divider" component={Divider} />
+
+# Divider
+
+Extends [Material UI Divider](https://material-ui.com/components/dividers/).
+
+Use a divider to separate different groups of content.
+
+<Preview>
+  <Story name="default">
+    <Divider />
+  </Story>
+</Preview>
+
+## Example use
+
+<Preview>
+  <Story name="card">
+    <Box width={300}>
+      <Card p={2}>
+        <Flex mb={2} flexDirection="column">
+          <Flex alignItems="baseline">
+            <Box flexGrow={1}>
+              <Heading.h4 gutterBottom={true}>Toothbrush</Heading.h4>
+            </Box>
+            <Box>
+              <Heading.h6 gutterBottom>$4.50</Heading.h6>
+            </Box>
+          </Flex>
+          <Paragraph color="textSecondary" light={true}>
+            Pinstriped cornflower blue cotton blouse takes you on a walk to the
+            park or just down the hall.
+          </Paragraph>
+        </Flex>
+        <Divider variant="middle" />
+        <Flex mt={2} mb={2} flexDirection="column">
+          <Typography gutterBottom={true}>Select type</Typography>
+          <Flex>
+            <Chip clickable={false} m={1} color="primary" label="Soft" />
+            <Chip clickable={true} m={1} label="Medium" />
+            <Chip clickable={true} m={1} label="Hard" />
+          </Flex>
+        </Flex>
+        <Box>
+          <Button variant="text" color="primary">
+            Add to cart
+          </Button>
+        </Box>
+      </Card>
+    </Box>
+  </Story>
+</Preview>
+
+## Variants
+
+There are different size variants to achieve different effects.
+
+<Preview>
+  <Story name="variants">
+    <Flex flexDirection="column">
+      <Typography>Normal</Typography>
+      <Divider />
+      <Typography>Lighter</Typography>
+      <Divider light={true} />
+      <Typography>Inset - primary</Typography>
+      <Divider variant="inset" color="primary.main" />
+      <Typography>Middle - secondary</Typography>
+      <Divider variant="middle" color="secondary.main" />
+      <Typography>Full width - warning</Typography>
+      <Divider variant="fullWidth" color="warning.main" />
+      <Typography>End</Typography>
+    </Flex>
+  </Story>
+</Preview>
+
+## Vertical
+
+Dividers can also be used vertically for separation in toolbars.
+
+<Preview>
+  <Story name="vertical">
+    <Flex
+      width="fit-content"
+      border="1px solid lightgrey"
+      borderRadius="shape.borderRadius"
+      color="text.secondary"
+      bgcolor="background.paper"
+    >
+      <Flex m={2}>
+        <Icons.FormatAlignLeft />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatAlignCenter />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatAlignRight />
+      </Flex>
+      <Divider mx={1} orientation="vertical" />
+      <Flex m={2}>
+        <Icons.FormatBold />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatItalic />
+      </Flex>
+      <Flex m={2}>
+        <Icons.FormatUnderlined />
+      </Flex>
+    </Flex>
+  </Story>
+</Preview>
+
+## Props
+
+Supports [Spacing props](/components/?path=/docs/design-system-positioning--page).
+
+<Props of={DividerDocs} />

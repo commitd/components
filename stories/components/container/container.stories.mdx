@@ -1,0 +1,26 @@
+import { Container, Box } from '../../../src'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { ContainerDocs } from './Container'
+
+<Meta title="Components|Container" component={Container} />
+
+# Container
+
+Extends [Material UI Container](https://material-ui.com/api/continer/).
+
+Use a container to keep the content within the `maxWidth` set by a breakpoint.
+
+<Preview>
+  <Story name="default">
+    <Container maxWidth="sm">
+      <Box bgcolor="background.default" p={3}>
+        Container
+      </Box>
+    </Container>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={ContainerDocs} />

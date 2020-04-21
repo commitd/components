@@ -8,12 +8,13 @@ import {
   DisplayProps,
   SpacingProps,
   FlexboxProps,
-  SizingProps
+  SizingProps,
 } from '@material-ui/system'
 import { styled } from '@material-ui/styles'
 import { getDisplayName } from './util'
 import { griditem, GriditemProps } from './griditem'
 import { omit, keep } from '../util/transform'
+import deepmerge from 'deepmerge'
 
 export type WithWrapperProps = SpacingProps &
   FlexboxProps &
@@ -21,7 +22,7 @@ export type WithWrapperProps = SpacingProps &
   DisplayProps &
   GriditemProps
 
-const keys = [
+const keys: Array<keyof WithWrapperProps> = [
   'm',
   'mt',
   'mr',
@@ -84,17 +85,11 @@ const keys = [
   'gridColumn',
   'gridRow',
   'gridArea',
-  'placeSelf'
+  'placeSelf',
 ]
 
 const Wrapper = styled('div')(
-  compose(
-    display,
-    spacing,
-    flexbox,
-    sizing,
-    griditem
-  )
+  compose(display, spacing, flexbox, sizing, griditem)
 )
 
 export const withWrapper = <P extends object>(
@@ -105,12 +100,15 @@ export const withWrapper = <P extends object>(
     displayName = `WithWrapper(${getDisplayName(WrappedComponent)})`
 
     render() {
-      const passThroughProps = omit(this.props, keys)
+      const passThroughProps = deepmerge<P>(
+        omit(this.props, keys),
+        overrides || {}
+      )
       const wrapperProps = keep(this.props, keys)
 
       return (
         <Wrapper {...wrapperProps}>
-          <WrappedComponent {...(passThroughProps as P)} {...overrides} />
+          <WrappedComponent {...passThroughProps} />
         </Wrapper>
       )
     }

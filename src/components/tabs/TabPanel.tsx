@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Box, BoxProps } from '../box/Box'
 
 export type BaseTabPanelProps = {
@@ -34,6 +34,3 @@ export const TabPanel = ({
     {children}
   </Box>
 )
-
-// For documentation only
-export const TabPanelDocs: FC<BaseTabPanelProps> = () => null

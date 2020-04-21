@@ -1,0 +1,70 @@
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { Menu, MenuItem, Button } from '../../../src'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { MenuDocs, MenuItemDocs, MenuListDocs } from './MenuDocs'
+
+<Meta title="Components|Menu" component={Menu} />
+
+# Menu
+
+Extends [Material UI Table](https://material-ui.com/components/menus/)
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const [anchorEl, setAnchorEl] = React.useState(null)
+      const click = action('clicked')
+      function handleClick(event) {
+        setAnchorEl(event.currentTarget)
+        click(event)
+      }
+      function handleClose(event) {
+        setAnchorEl(null)
+        click(event)
+      }
+      return (
+        <div>
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            Open Menu
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu>
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
+# Props
+
+## Menu
+
+Supports standard `div` props
+
+<Props of={MenuDocs} />
+
+## MenuItem
+
+Supports standard `li` props
+
+<Props of={MenuItemDocs} />
+
+## MenuList
+
+Supports standard `ul` props
+
+<Props of={MenuListDocs} />

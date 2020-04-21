@@ -1,13 +1,13 @@
-import { FC, ComponentType, HTMLAttributes } from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
   flexbox,
   SpacingProps,
-  FlexboxProps
+  FlexboxProps,
 } from '@material-ui/system'
 import MaterialIconButton, {
-  IconButtonProps as MaterialIconButtonProps
+  IconButtonProps as MaterialIconButtonProps,
 } from '@material-ui/core/IconButton'
 import { styled } from '@material-ui/styles'
 import { withNoOpener, AProps } from '../../internal'
@@ -18,21 +18,6 @@ export interface IconButtonProps
     FlexboxProps,
     AProps {}
 
-export const IconButton: ComponentType<IconButtonProps> = styled(
+export const IconButton: React.ComponentType<IconButtonProps> = styled(
   withNoOpener(MaterialIconButton)
-)(
-  compose(
-    spacing,
-    flexbox
-  )
-)
-
-// For documentation only
-export type IconButtonDocsProps = Omit<
-  IconButtonProps,
-  keyof (SpacingProps &
-    FlexboxProps &
-    Omit<HTMLAttributes<HTMLDivElement>, 'color'>)
->
-
-export const IconButtonDocs: FC<IconButtonDocsProps> = () => null
+)(compose(spacing, flexbox))

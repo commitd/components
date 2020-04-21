@@ -1,0 +1,80 @@
+import { Loader } from '../../../src'
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+
+<Meta title="Components|Loader" component={Loader} />
+
+# Loader
+
+<Preview>
+  <Story name="default">
+    <Loader color="secondary.dark" />
+  </Story>
+</Preview>
+
+The size can be controlled with the `size` prop.
+
+<Preview>
+  <Story name="small">
+    <Loader color="secondary.dark" size={100} />
+  </Story>
+</Preview>
+
+Omit the `color` to get the default greyscale version.
+
+<Preview>
+  <Story name="grey">
+    <Loader size={200} />
+  </Story>
+</Preview>
+
+## Variants
+
+There are some animation variants.
+
+### Spin
+
+<Preview>
+  <Story name="spin">
+    <Loader variant={'spin'} color="secondary.main" size={200} />
+  </Story>
+  <Story name="spin grey">
+    <Loader variant={'spin'} size={200} />
+  </Story>
+</Preview>
+
+### Draw
+
+<Preview>
+  <Story name="draw">
+    <Loader variant={'draw'} color="primary.light" size={200} />
+  </Story>
+  <Story name="draw grey">
+    <Loader variant={'draw'} size={200} />
+  </Story>
+</Preview>
+
+### Flip
+
+<Preview>
+  <Story name="flip">
+    <Loader variant={'flip'} color="primary.light" size={200} />
+  </Story>
+  <Story name="flip grey">
+    <Loader variant={'flip'} size={200} />
+  </Story>
+</Preview>
+
+### Scale
+
+<Preview>
+  <Story name="scale">
+    <Loader variant={'scale'} color="secondary.light" size={200} />
+  </Story>
+  <Story name="scale grey">
+    <Loader variant={'scale'} size={200} />
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Loader} />

@@ -1,13 +1,13 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React from 'react'
 import {
   compose,
   spacing,
   flexbox,
   SpacingProps,
-  FlexboxProps
+  FlexboxProps,
 } from '@material-ui/system'
 import MaterialRadioGroup, {
-  RadioGroupProps as MaterialRadioGroupProps
+  RadioGroupProps as MaterialRadioGroupProps,
 } from '@material-ui/core/RadioGroup'
 import { styled } from '@material-ui/styles'
 
@@ -17,16 +17,4 @@ export type RadioGroupProps = MaterialRadioGroupProps &
 
 export const RadioGroup: React.ComponentType<RadioGroupProps> = styled<
   React.ComponentType<MaterialRadioGroupProps>
->(MaterialRadioGroup)(
-  compose(
-    spacing,
-    flexbox
-  )
-)
-
-// For documentation only
-export type RadioGroupDocsProps = Omit<
-  MaterialRadioGroupProps,
-  keyof Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>
->
-export const RadioGroupDocs: FC<RadioGroupDocsProps> = () => null
+>(MaterialRadioGroup)(compose(spacing, flexbox))

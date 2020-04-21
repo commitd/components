@@ -9,7 +9,7 @@ export const sizes = {
   [3]: '1.728rem',
   [4]: '2.074rem',
   [5]: '2.488rem',
-  [6]: '2.9856rem'
+  [6]: '2.9856rem',
 }
 
 const systemFont =
@@ -21,10 +21,10 @@ export const defaultFonts = {
   subheading: { fontFamily: systemFont },
   text: { fontFamily: systemFont },
   display: {
-    fontFamily: '"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif'
+    fontFamily: '"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
   },
   monospace: {
     fontFamily:
-      '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace'
-  }
+      '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace',
+  },
 }

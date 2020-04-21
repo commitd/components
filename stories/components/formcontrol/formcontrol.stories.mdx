@@ -1,0 +1,38 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import {
+  Form,
+  FormControl,
+  InputLabel,
+  FormHelperText,
+  Input,
+  Button,
+} from '../../../src'
+import { FormControlDocs } from './FormControlDocs'
+
+<Meta title="Components|FormControl" component={FormControl} />
+
+# FormControl
+
+Extends [Material-UI FormControl](https://material-ui.com/api/form-control/) to add positioning props.
+
+Where possible prefer [`TextField`](http://localhost:6006/components/?path=/docs/components-textfield--simple).
+
+<Preview>
+  <Story name="default">
+    <Form display="flex" width={1}>
+      <FormControl flexGrow={1}>
+        <InputLabel htmlFor="my-input">Email address</InputLabel>
+        <Input id="my-input" aria-describedby="my-helper-text" />
+      </FormControl>
+      <Button color="primary" mt={2}>
+        Submit
+      </Button>
+    </Form>
+  </Story>
+</Preview>
+
+# Props
+
+Supports all usual div aria and html props and [Positioning props](/components/?path=/docs/design-system-positioning--page) for Spacing, Sizing and Flexbox.
+
+<Props of={FormControlDocs} />

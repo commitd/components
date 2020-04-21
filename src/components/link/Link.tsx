@@ -1,12 +1,15 @@
-import React, { FC, ComponentType, AnchorHTMLAttributes } from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
-import { colors } from '../../theme'
+import { Theme, colors } from '../../theme'
 import MaterialLink, {
-  LinkProps as MaterialLinkProps
+  LinkProps as MaterialLinkProps,
 } from '@material-ui/core/Link'
 import { withNoOpener } from '../../internal'
 
-export interface LinkProps extends Omit<MaterialLinkProps, 'variant'> {
+export type LinkProps<C extends React.ElementType> = Omit<
+  MaterialLinkProps<C, { component?: C }>,
+  'variant'
+> & {
   /**
    *
    * Styling variations on the link,
@@ -24,44 +27,48 @@ export const RawLink: React.ComponentType<MaterialLinkProps> = withNoOpener<
   MaterialLinkProps
 >(MaterialLink)
 
-const aColor = colors.committedYellow[300]
-const bColor = colors.red[200]
-const internal = `linear-gradient(${aColor}, ${aColor})`
-const external = `linear-gradient(${bColor}, ${bColor})`
+const internalColor = colors.committedYellow[300]
+const externalColor = colors.red[200]
+const internal = `linear-gradient(${internalColor}, ${internalColor})`
+const external = `linear-gradient(${externalColor}, ${externalColor})`
 
 const isExternal = (url: string | undefined) => url && url.startsWith('http')
 
-const StyledLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
-  color: 'inherit',
-  textDecoration: 'none',
-  transition: 'background 100ms ease-out',
-  fontWeight: 'bold',
-  background: ({ href }) =>
-    `${
+const StyledLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)(
+  ({ theme, href }: MaterialLinkProps & { theme: Theme }) => ({
+    color: 'inherit',
+    textDecoration: 'none',
+    transition: 'background 100ms ease-out',
+    fontWeight: 'bold',
+    background: `${
       isExternal(href) ? external : internal
     } left bottom transparent no-repeat`,
-  backgroundSize: () => '100% 2px',
-  ['&:hover']: {
-    backgroundSize: '100% 100%'
-  }
-})
+    backgroundSize: '100% 2px',
+    ['&:hover']: {
+      backgroundSize: '100% 100%',
+      color: theme.palette.getContrastText(
+        isExternal(href) ? externalColor : internalColor
+      ),
+    },
+  })
+)
 
-const ClearLink: ComponentType<MaterialLinkProps> = styled(RawLink)({
+const ClearLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)({
   color: 'inherit',
   textDecoration: 'none',
   ['& .gatsby-resp-image-background-image']: {
-    display: 'none !important'
+    display: 'none !important',
   },
   ['&:hover']: {
     textDecoration: 'none',
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 })
 
-export const Link: FC<LinkProps> = ({
+export const Link = <C extends React.ElementType>({
   variant = 'default',
   ...others
-}: LinkProps) => {
+}: LinkProps<C>) => {
   switch (variant) {
     case 'clear':
       return <ClearLink {...others} />
@@ -70,14 +77,3 @@ export const Link: FC<LinkProps> = ({
   }
   return <RawLink {...others} />
 }
-
-// For documentation only
-export type LinkDocsProps = Omit<
-  LinkProps,
-  keyof (Omit<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    'color' | 'href' | 'target' | 'rel'
-  >)
->
-
-export const LinkDocs: FC<LinkDocsProps> = () => null

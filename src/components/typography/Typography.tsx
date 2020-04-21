@@ -1,13 +1,18 @@
-import React, { ComponentType, FC, HTMLAttributes } from 'react'
+import React from 'react'
 import { styled } from '@material-ui/styles'
 import MaterialTypography, {
-  TypographyProps as MaterialTypographyProps
+  TypographyProps as MaterialTypographyProps,
 } from '@material-ui/core/Typography'
 import { withPositioning, PositioningProps } from '../../internal'
 import { fonts, Theme, theme } from '../../theme'
 
-type BaseTypographyProps = MaterialTypographyProps & PositioningProps
-const BaseTypography: ComponentType<BaseTypographyProps> = withPositioning(
+type BaseTypographyProps<C extends React.ElementType> = MaterialTypographyProps<
+  C,
+  { component?: C }
+> &
+  PositioningProps
+
+const BaseTypography = withPositioning<MaterialTypographyProps>(
   MaterialTypography
 )
 
@@ -35,19 +40,32 @@ export type InternalTypographyProps = {
   font?: theme.FontType
 }
 
-export type TypographyProps = BaseTypographyProps &
+//TODO: check if Omit theme still required
+export type TypographyProps<C extends React.ElementType> = BaseTypographyProps<
+  C
+> &
   ExtraTypographyProps &
   InternalTypographyProps
-export type SpanProps = Omit<TypographyProps, 'component'>
-export type ParagraphProps = Omit<TypographyProps, 'component'>
+
+export type SpanProps = TypographyProps<'span'>
+export type ParagraphProps = TypographyProps<'p'>
 
 export type Ref = HTMLElement
 
-export const StyledTypography: ComponentType<TypographyProps> = styled(
-  ({ italic, fontSize, upper, light, capital, bold, font, ...others }) => (
-    <BaseTypography {...others} />
-  )
-)(
+function WrappedTypography<C extends React.ElementType>({
+  italic,
+  fontSize,
+  upper,
+  light,
+  capital,
+  bold,
+  font,
+  ...others
+}: TypographyProps<C>) {
+  return <BaseTypography {...others} />
+}
+
+export const StyledTypography = styled(WrappedTypography)(
   ({
     theme,
     italic,
@@ -56,23 +74,24 @@ export const StyledTypography: ComponentType<TypographyProps> = styled(
     light,
     capital,
     bold,
-    font = 'typography'
-  }: { theme: Theme } & TypographyProps) =>
+    font = 'typography',
+  }: { theme: Theme } & TypographyProps<any>) =>
     Object.assign(theme.fonts[font], {
       fontStyle: italic ? 'italic' : 'normal',
+      // @ts-ignore
       fontSize: fonts.sizes[fontSize ? fontSize : 0],
       textTransform: upper ? 'uppercase' : capital ? 'capitalize' : 'none',
-      fontWeight: light ? 200 : bold ? 700 : 400
+      fontWeight: light ? 200 : bold ? 700 : 400,
     })
-)
+) as React.ComponentType<TypographyProps<any>>
 
-const Strike: FC<{ strike: boolean }> = ({ strike, children }) =>
+const Strike: React.FC<{ strike: boolean }> = ({ strike, children }) =>
   strike ? <s>{children}</s> : <>{children}</>
 
-export const Typography: FC<TypographyProps> = ({
+export function Typography<C extends React.ElementType>({
   strike = false,
   ...props
-}: TypographyProps) => {
+}: TypographyProps<C>) {
   return (
     <Strike strike={strike}>
       {props.variant ? (
@@ -83,10 +102,3 @@ export const Typography: FC<TypographyProps> = ({
     </Strike>
   )
 }
-
-// For documentation only
-export type TypographyDocsProps = Omit<
-  ExtraTypographyProps & MaterialTypographyProps,
-  keyof Omit<HTMLAttributes<HTMLElement>, 'color'> | 'variantMapping'
->
-export const TypographyDocs: FC<TypographyDocsProps> = () => null

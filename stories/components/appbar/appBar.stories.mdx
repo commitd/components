@@ -1,0 +1,38 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { AppBar, Box, Heading, Button, Toolbar } from '../../../src'
+import { BaseAppBarDocs, RestAppBarDocs } from './AppBarDocs'
+
+<Meta title="Components|AppBar" component={AppBar} />
+
+# AppBar
+
+Extends [Material UI AppBar](https://material-ui.com/components/app-bar/).
+
+The App Bar should the used for information and actions on the current screen.
+
+<Preview>
+  <Story name="default">
+    <AppBar position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Example</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+  </Story>
+</Preview>
+
+# Props
+
+Supports standard html aria and event props for a `div`.
+
+## Main props
+
+<Props of={BaseAppBarDocs} />
+
+## Other props
+
+<Props of={RestAppBarDocs} />
