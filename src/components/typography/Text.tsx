@@ -7,5 +7,5 @@ export const Text = React.forwardRef(
   <C extends React.ElementType>(
     props: TextProps<C>,
     ref?: React.Ref<HTMLElement>
-  ) => <Typography<C> forwardedRef={ref} {...props} font="text" />
+  ) => <Typography<C> ref={ref} {...props} font="text" />
 )
