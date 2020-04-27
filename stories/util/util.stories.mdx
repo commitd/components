@@ -1,11 +1,37 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
-import { copyToClipboard, mdx as Cmdx, Button } from '../../src'
+import {
+  copyToClipboard,
+  mdx as Cmdx,
+  Button,
+  useWidth,
+  Typography,
+} from '../../src'
 
 <Meta title="Design System|Utils" parameters={{ order: 8 }} />
 
 # Utilities
 
-We collect some utilites, none components, that may be useful.
+We collect some utilites that may be useful.
+
+## Use width hook
+
+A hook to get the current Breakpoint range we are in using the text code.
+
+```
+value         |0px     600px    960px    1280px   1920px
+key           |xs      sm       md       lg       xl
+screen width  |--------|--------|--------|--------|-------->
+range         |   xs   |   sm   |   md   |   lg   |   xl
+```
+
+<Preview>
+  <Story name="use Width Hook">
+    {React.createElement(() => {
+      const width = useWidth()
+      return <Typogaphy>Current breakpoint is {width}</Typogaphy>
+    })}
+  </Story>
+</Preview>
 
 ## Copy to clipboard
 
