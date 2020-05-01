@@ -162,26 +162,16 @@ export const baseCommittedOverrides = (
         textTransform: 'none',
       },
       contained: {
-        '&:hover': {
-          backgroundColor: lighten(palette.primary.light, action.hoverOpacity),
-        },
         '&$disabled': {
           backgroundColor: addTransparency(palette.grey[300]),
         },
       },
       containedPrimary: {
-        '&:hover': {
-          backgroundColor: lighten(palette.primary.main, action.hoverOpacity),
-        },
         '&$disabled': {
           backgroundColor: addTransparency(palette.primary.main),
         },
       },
-      containedSecondary: {
-        '&$disabled': {
-          backgroundColor: addTransparency(lightLight(palette.secondary)),
-        },
-      },
+      containedSecondary: {},
       text: {
         '&$disabled': {
           color: addTransparency(text.primary),
@@ -194,41 +184,15 @@ export const baseCommittedOverrides = (
         },
         '&$disabled': {},
       },
-      textSecondary: {
-        color: palette.brand.dark,
-        '&:hover': {
-          backgroundColor: fade(palette.primary.main, action.hoverOpacity),
-        },
-      },
+      textSecondary: {},
       outlined: {
         '&$disabled': {
           borderColor: addTransparency(palette.grey[500]),
           color: addTransparency(palette.grey[200]),
         },
       },
-      outlinedPrimary: {
-        backgroundColor: lightLightVery(palette.brand),
-        '&:hover': {
-          backgroundColor: lightLight(palette.brand),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(lightLightVery(palette.brand)),
-          borderColor: addTransparency(palette.primary.main),
-        },
-      },
-      outlinedSecondary: {
-        backgroundColor: mainLight(palette.primary),
-        '&:hover': {
-          backgroundColor: lighten(
-            mainLight(palette.primary),
-            action.hoverOpacity
-          ),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(mainLight(palette.primary)),
-          borderColor: addTransparency(palette.secondary.light),
-        },
-      },
+      outlinedPrimary: {},
+      outlinedSecondary: {},
       disabled: {},
     },
     MuiCheckbox: {
@@ -254,13 +218,6 @@ export const baseCommittedOverrides = (
         },
       },
       colorSecondary: {
-        color: palette.secondary.light,
-        '&$checked': {
-          color: palette.secondary.light,
-          '&:hover': {
-            backgroundColor: fade(palette.primary.main, action.hoverOpacity),
-          },
-        },
         '& span:nth-of-type(2)': {
           color: palette.primary.main,
         },
@@ -285,36 +242,14 @@ export const baseCommittedOverrides = (
         },
       },
     },
-    MuiDialog: {
-      paper: {
-        borderTop: `4px solid ${palette.brand.main}`,
-      },
-    },
+    MuiDialog: {},
     MuiDivider: {
       vertical: {
         // 100% is the default, this doesn't seem to work so set to auto
         height: 'auto',
       },
     },
-    MuiIconButton: {
-      colorPrimary: {
-        '&:hover': {
-          backgroundColor: fade(palette.brand.main, action.hoverOpacity),
-        },
-        '& span:nth-of-type(2)': {
-          color: palette.brand.main,
-        },
-      },
-      colorSecondary: {
-        color: palette.brand.dark,
-        '&:hover': {
-          backgroundColor: fade(palette.primary.main, action.hoverOpacity),
-        },
-        '& span:nth-of-type(2)': {
-          color: palette.primary.main,
-        },
-      },
-    },
+    MuiIconButton: {},
     MuiRadio: {
       root: {
         color: palette.grey[500],
@@ -323,19 +258,6 @@ export const baseCommittedOverrides = (
         },
       },
       colorPrimary: {
-        color: palette.primary.main,
-        '&$checked': {
-          color: palette.primary.main,
-          '&:hover': {
-            backgroundColor: fade(palette.brand.main, action.hoverOpacity),
-          },
-        },
-        '& span:nth-of-type(2)': {
-          color: palette.brand.main,
-        },
-        '& svg:nth-of-type(2)': {
-          color: palette.brand.main,
-        },
         '&$disabled': {
           color: addTransparency(palette.primary.main),
           '& svg:nth-of-type(2)': {
@@ -344,13 +266,6 @@ export const baseCommittedOverrides = (
         },
       },
       colorSecondary: {
-        color: palette.secondary.light,
-        '&$checked': {
-          color: palette.secondary.light,
-          '&:hover': {
-            backgroundColor: fade(palette.primary.main, action.hoverOpacity),
-          },
-        },
         '& span:nth-of-type(2)': {
           color: palette.primary.main,
         },
@@ -372,32 +287,24 @@ export const baseCommittedOverrides = (
           color: addTransparency(palette.grey[500]),
         },
       },
-      colorPrimary: {
-        '&$checked + $track': {
-          backgroundColor: palette.brand.main,
-        },
-      },
     },
     MuiTableHead: {
       root: {
         '& th': {
           fontWeight: 'bold',
           color: text.primary,
+          borderBottom: 'none',
         },
-        borderBottom: `2px solid ${palette.brand.main}`,
       },
     },
     MuiTableBody: {
       root: {
-        '& tr:nth-child(even)': {
-          backgroundColor: palette.grey[100],
+        '& tr:last-child > th': {
+          borderBottom: 'none',
         },
-        borderColor: palette.grey[100],
-      },
-    },
-    MuiTableCell: {
-      body: {
-        borderBottomColor: palette.grey[100],
+        '& tr:last-child > td': {
+          borderBottom: 'none',
+        },
       },
     },
     MuiTableFooter: {
@@ -405,9 +312,9 @@ export const baseCommittedOverrides = (
         '& th,td': {
           fontWeight: 'bold',
           color: text.primary,
+          borderBottom: 'none',
+          borderTop: 'none',
         },
-        borderTop: `2px solid ${palette.brand.main}`,
-        borderBottom: `2px solid ${palette.brand.main}`,
       },
     },
     MuiTabs: {
