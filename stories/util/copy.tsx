@@ -1,15 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Tooltip, BoxProps } from '../../src'
-
-export const copyToClipboard = (text: string) => {
-  console.log('Copied to clipboard:', text)
-  var textField = document.createElement('textarea')
-  textField.innerText = text
-  document.body.appendChild(textField)
-  textField.select()
-  document.execCommand('copy')
-  textField.remove()
-}
+import { Box, Tooltip, BoxProps, copyToClipboard } from '../../src'
 
 export type CopyProps = BoxProps & {
   title: string

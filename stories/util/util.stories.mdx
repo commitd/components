@@ -4,7 +4,13 @@ import {
   mdx as Cmdx,
   Button,
   useWidth,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
   Typography,
+  TextField,
+  ThemeProvider,
 } from '../../src'
 
 <Meta title="Design System|Utils" parameters={{ order: 8 }} />
@@ -49,6 +55,62 @@ A utility function to support copy to clipboard functionality, as used in [color
     </Button>
   </Story>
 </Preview>
+
+This should work in a dialog
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const [open, setOpen] = React.useState(false)
+      function handleClickOpen() {
+        setOpen(true)
+      }
+      function handleClose() {
+        setOpen(false)
+      }
+      return (
+        <div>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Open dialog
+          </Button>
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle id="alert-dialog-title">
+              {'Copy in dialog?'}
+            </DialogTitle>
+            <DialogContent>
+              Copied in dialog{' '}
+              <Button
+                color="primary"
+                onClick={() => {
+                  copyToClipboard('Copied in dialog')
+                }}
+              >
+                Copy
+              </Button>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary" autoFocus>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
+Try and paste here
+
+<ThemeProvider>
+  <TextField
+    m={3}
+    id="paste-area"
+    label="Paste"
+    placeholder="Paste here"
+    multiline
+  />
+</ThemeProvider>
 
 ## mdx
 
