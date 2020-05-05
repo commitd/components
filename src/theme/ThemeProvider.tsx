@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
@@ -13,23 +14,22 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 import deepmerge from 'deepmerge'
 import React, { FC } from 'react'
 import {
-  createCommittedDarkPaletteOptions,
   createCommittedDarkOverrides,
+  createCommittedDarkPaletteOptions,
 } from './darkTheme'
 import {
   committedLightPaletteColors,
-  createCommittedLightPaletteOptions,
   createCommittedLightOverrides,
+  createCommittedLightPaletteOptions,
 } from './lightTheme'
 import {
-  FontOptions,
   createCommittedFonts,
   createCommittedShape,
   createCommittedSpacing,
   createCommittedTypography,
+  FontOptions,
 } from './theme'
 import { augmentColor } from './themeMaterialUtil'
-import { useMediaQuery } from '@material-ui/core'
 
 export type ThemeChoice = 'light' | 'dark'
 

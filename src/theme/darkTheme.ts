@@ -1,7 +1,7 @@
 import {
+  darken,
   fade,
   lighten,
-  darken,
 } from '@material-ui/core/styles/colorManipulator'
 import {
   Palette,
@@ -133,7 +133,7 @@ const lightLightVery = (color: PaletteColor): string => {
 }
 
 export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
-  return deepmerge(baseCommittedOverrides(palette, text, action), {
+  return deepmerge(baseCommittedOverrides(palette), {
     MuiBadge: {
       colorSecondary: {
         backgroundColor: palette.secondary.dark,

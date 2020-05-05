@@ -53,22 +53,6 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-export interface TextPalette {
-  primary: string
-  secondary: string
-  disabled: string
-  hint: string
-}
-
-export interface ActionPalette {
-  active: string
-  hover: string
-  hoverOpacity: number
-  selected: string
-  disabled: string
-  disabledBackground: string
-}
-
 export const addTransparency = (color: string) => `${color}88`
 
 export const spacing = (factor: number) => {
@@ -136,11 +120,7 @@ export const createCommittedShape = () => ({
   borderRadius: 2,
 })
 
-export const baseCommittedOverrides = (
-  palette: Palette,
-  text: TextPalette,
-  action: ActionPalette
-): Overrides => {
+export const baseCommittedOverrides = (palette: Palette): Overrides => {
   return {
     MuiButton: {
       root: {
@@ -159,13 +139,16 @@ export const baseCommittedOverrides = (
       containedSecondary: {},
       text: {
         '&$disabled': {
-          color: addTransparency(text.primary),
+          color: addTransparency(palette.text.primary),
         },
       },
       textPrimary: {
         color: palette.primary.main,
         '&:hover': {
-          backgroundColor: fade(palette.brand.main, action.hoverOpacity),
+          backgroundColor: fade(
+            palette.brand.main,
+            palette.action.hoverOpacity
+          ),
         },
         '&$disabled': {},
       },
@@ -192,7 +175,10 @@ export const baseCommittedOverrides = (
         '&$checked': {
           color: palette.primary.main,
           '&:hover': {
-            backgroundColor: fade(palette.brand.main, action.hoverOpacity),
+            backgroundColor: fade(
+              palette.brand.main,
+              palette.action.hoverOpacity
+            ),
           },
         },
         '& span:nth-of-type(2)': {
@@ -277,7 +263,7 @@ export const baseCommittedOverrides = (
       root: {
         '& th': {
           fontWeight: 'bold',
-          color: text.primary,
+          color: palette.text.primary,
           borderBottom: 'none',
         },
       },
@@ -296,7 +282,7 @@ export const baseCommittedOverrides = (
       root: {
         '& th,td': {
           fontWeight: 'bold',
-          color: text.primary,
+          color: palette.text.primary,
           borderBottom: 'none',
           borderTop: 'none',
         },

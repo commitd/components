@@ -1,15 +1,17 @@
-import * as allColors from './colors'
-import deepmerge from 'deepmerge'
 import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
 import {
-  PaletteOptions,
   Palette,
   PaletteColor,
+  PaletteOptions,
+  TypeAction,
+  TypeText,
 } from '@material-ui/core/styles/createPalette'
 import { Overrides } from '@material-ui/core/styles/overrides'
-import { baseCommittedOverrides } from './theme'
+import deepmerge from 'deepmerge'
+import * as allColors from './colors'
 import {
   addTransparency,
+  baseCommittedOverrides,
   createCommittedFonts,
   createCommittedShape,
   createCommittedSpacing,
@@ -32,14 +34,14 @@ export const committedLightPaletteColors = {
   grey: allColors.grey,
 }
 
-const text = {
+const text: TypeText = {
   primary: committedLightPaletteColors.grey[800],
   secondary: committedLightPaletteColors.grey[700],
   disabled: committedLightPaletteColors.grey[500],
   hint: committedLightPaletteColors.grey[500],
 }
 
-const action = {
+const action: TypeAction = {
   // The color of an active action like an icon button.
   active: 'rgba(0, 0, 0, 0.54)',
   // The color of an hovered action.
@@ -127,7 +129,7 @@ const lightLightVery = (color: PaletteColor): string => {
 }
 
 export const createCommittedLightOverrides = (palette: Palette): Overrides => {
-  return deepmerge(baseCommittedOverrides(palette, text, action), {
+  return deepmerge(baseCommittedOverrides(palette), {
     MuiButton: {
       contained: {
         '&:hover': {
