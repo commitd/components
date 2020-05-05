@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ThemeChoice } from './ThemeProvider'
 
-export const useThemeChoice = () => {
+export const useThemeChoice: () => [ThemeChoice, () => void, boolean] = () => {
   const [themeChoice, setThemeChoice] = useState<ThemeChoice>('light')
   const [componentMounted, setComponentMounted] = useState(false)
   const setMode = (mode: ThemeChoice) => {
