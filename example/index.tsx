@@ -4,17 +4,29 @@ import 'typeface-lato'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as C from '../dist'
-import logo from './images/Committed - Yellow Trans-128px.png'
+import logoLight from './images/Committed - Yellow Trans-128px.png'
+import logoDark from './images/Committed - Black-128px.png'
 
 const footerHeight = '200px'
 
-const Header = () => (
+const Header = ({
+  themeChoice,
+  toggleThemeChoice,
+}: {
+  themeChoice: C.ThemeChoice
+  toggleThemeChoice: () => void
+}) => (
   <C.AppBar position="relative">
     <C.Toolbar>
       <C.Box flexGrow={1}>
         <C.Heading.h1>Example</C.Heading.h1>
       </C.Box>
       <C.Avatar src="https://i.pravatar.cc/40" />
+      <C.ThemeSwitch
+        themeChoice={themeChoice}
+        toggleThemeChoice={toggleThemeChoice}
+        variant="celestial"
+      />
       <C.Button color="inherit" variant="text">
         Logout
       </C.Button>
@@ -27,7 +39,7 @@ const Post = ({ name, index }: { name: string; index: number }) => (
     <C.Flex
       flexDirection="column"
       bgcolor="primary.main"
-      color="secondary.main"
+      color="secondary.dark"
     >
       <img src={`https://picsum.photos/300/200?random=${index}`} />
       <C.CardActionArea>
@@ -69,6 +81,12 @@ const Content = () => (
   </C.Container>
 )
 
+const Logo = () => {
+  const theme = C.useTheme()
+  const logo = theme.palette.type == 'light' ? logoLight : logoDark
+  return <img width="128px" src={logo} alt="Committed Logo" />
+}
+
 const Footer = () => (
   <C.Row
     p={3}
@@ -78,10 +96,10 @@ const Footer = () => (
     height={footerHeight}
     justifyContent="space-around"
     bgcolor="primary.main"
-    color="white"
+    color="primary.contrastText"
   >
     <C.Column justifyContent="center" alignItems="center">
-      <img width="128px" src={logo} alt="Committed Logo" />
+      <Logo />
     </C.Column>
     <C.Column>
       <C.Heading.h5 mb={0}>Links</C.Heading.h5>
@@ -115,21 +133,31 @@ const Footer = () => (
   </C.Row>
 )
 
-const App = () => (
-  <C.ThemeProvider
-    fonts={{
-      typography: { fontFamily: 'Lato' },
-      display: { fontFamily: 'Arciform' },
-    }}
-  >
-    <C.Box position="relative" minHeight="100vh">
-      <C.Box pb={footerHeight} bgcolor="background.default">
-        <Header />
-        <Content />
+const App = () => {
+  const [themeChoice, toggleThemeChoice, componentMounted] = C.useThemeChoice()
+  const component = componentMounted ? (
+    <C.ThemeProvider
+      choice={themeChoice}
+      createFonts={() =>
+        Object.assign(C.fonts.defaultFonts, {
+          typography: { fontFamily: 'Lato' },
+          display: { fontFamily: 'Arciform' },
+        })
+      }
+    >
+      <C.Box position="relative" minHeight="100vh" bgcolor="background.paper">
+        <C.Box pb={footerHeight}>
+          <Header
+            themeChoice={themeChoice}
+            toggleThemeChoice={toggleThemeChoice}
+          />
+          <Content />
+        </C.Box>
+        <Footer />
       </C.Box>
-      <Footer />
-    </C.Box>
-  </C.ThemeProvider>
-)
+    </C.ThemeProvider>
+  ) : null
 
+  return component
+}
 ReactDOM.render(<App />, document.getElementById('root'))
