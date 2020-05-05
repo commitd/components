@@ -1,7 +1,7 @@
 import * as fonts from './fonts'
-import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
+import { fade } from '@material-ui/core/styles/colorManipulator'
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
-import { Palette, PaletteColor } from '@material-ui/core/styles/createPalette'
+import { Palette } from '@material-ui/core/styles/createPalette'
 import { defaultFonts } from './fonts'
 import { Overrides } from '@material-ui/core/styles/overrides'
 
@@ -135,21 +135,6 @@ export const createCommittedTypography = () => ({
 export const createCommittedShape = () => ({
   borderRadius: 2,
 })
-
-// eqiv to color[400]
-const mainLight = (color: PaletteColor): string => {
-  return lighten(color.main, 0.25)
-}
-
-// color[200]
-const lightLight = (color: PaletteColor): string => {
-  return lighten(color.light, 0.25)
-}
-
-// color[100]
-const lightLightVery = (color: PaletteColor): string => {
-  return lighten(color.light, 0.5)
-}
 
 export const baseCommittedOverrides = (
   palette: Palette,
