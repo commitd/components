@@ -28,7 +28,7 @@
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook --docs",
-    "format": "prettier --write '**/{src,test,stories,example}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
+    "format": "prettier --write '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local --dangerfile dangerfile.lite.ts",
     "danger:pr": "cross-env DANGER_GITHUB_API_TOKEN=${GITHUB_TOKEN} danger pr https://github.com/commitd/components/pull/${PR}"
