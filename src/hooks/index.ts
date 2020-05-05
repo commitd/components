@@ -1,13 +1,16 @@
 // Re exporting
 export { useWidth } from './useWidth'
-export { createStyles, useTheme } from '@material-ui/styles'
+export { createStyles } from '@material-ui/styles'
 import { Theme as CommittedTheme } from '../theme'
 import {
   Styles,
   WithStylesOptions,
   ClassNameMap,
 } from '@material-ui/styles/withStyles'
-import { makeStyles as MaterialMakeStyles } from '@material-ui/styles'
+import {
+  useTheme as materialUseTheme,
+  makeStyles as materialMakeStyles,
+} from '@material-ui/styles'
 
 /**
  * `makeStyles` where the passed `styles` do depend on props
@@ -31,5 +34,9 @@ export function makeStyles<
   style: Styles<Theme, {}, ClassKey>,
   options?: Omit<WithStylesOptions<Theme>, 'withTheme'>
 ): (props?: any) => ClassNameMap<ClassKey> {
-  return MaterialMakeStyles<Theme, {}, ClassKey>(style, options)
+  return materialMakeStyles<Theme, {}, ClassKey>(style, options)
+}
+
+export function useTheme<Theme = CommittedTheme>() {
+  return materialUseTheme<Theme>()
 }
