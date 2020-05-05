@@ -14,6 +14,7 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 import deepmerge from 'deepmerge'
 import React, { FC } from 'react'
 import {
+  committedDarkPaletteColors,
   createCommittedDarkOverrides,
   createCommittedDarkPaletteOptions,
 } from './darkTheme'
@@ -29,6 +30,7 @@ import {
   createCommittedTypography,
   FontOptions,
 } from './theme'
+import { materialFonts } from './fonts'
 import { augmentColor } from './themeMaterialUtil'
 
 export type ThemeChoice = 'light' | 'dark'
@@ -59,7 +61,7 @@ export interface ThemeProps {
    *
    * Additionally, a committed-theme color can be specified: palette.brand
    */
-  createPaletteOptions: () => PaletteOptions
+  createPaletteOptions: () => PaletteOptions | undefined
   /**
    * Should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
    */
@@ -108,42 +110,48 @@ const createTheme = ({
   createSpacing,
   createTypography,
 }: ThemeProps) => {
-  const paletteOptions = createPaletteOptions()
+  const paletteOptions = createPaletteOptions() || {}
   const palette = createMuiPalette(paletteOptions)
   // createMuiPalette() "augments" inputted colors (that may be in several forms) to make them conform to {main: #xxxx, light:#xxxx ,...etc}
   // manually augment committed custom theme colors that createMuiPalette is not aware of
   palette.brand = augmentColor(
-    paletteOptions.brand,
-    committedLightPaletteColors.brand
-  )
-  palette.success = augmentColor(
-    paletteOptions.success,
-    committedLightPaletteColors.success
-  )
-  palette.warning = augmentColor(
-    paletteOptions.warning,
-    committedLightPaletteColors.warning
-  )
-  palette.info = augmentColor(
-    paletteOptions.info,
-    committedLightPaletteColors.info
-  )
-  palette.error = augmentColor(
-    paletteOptions.error,
-    committedLightPaletteColors.error
+    paletteOptions ? paletteOptions.brand : palette.primary,
+    palette.type == 'light'
+      ? committedLightPaletteColors.brand
+      : committedDarkPaletteColors.brand
   )
 
-  const themeOptions: ThemeOptions = {
+  let themeOptions: ThemeOptions = {
     palette,
-    fonts: createFonts(),
-    shape: createShape(),
-    spacing: createSpacing(),
-    typography: createTypography(),
-    overrides: createOverrides(palette),
+  }
+
+  let fonts = createFonts()
+  if (fonts !== undefined) {
+    themeOptions.fonts = fonts
+  } else {
+    // Need to resupply material fonts for extra defined types
+    themeOptions.fonts = materialFonts
+    fonts = materialFonts
+  }
+
+  const shape = createShape()
+  if (shape !== undefined) {
+    themeOptions.shape = shape
+  }
+  const spacing = createSpacing()
+  if (spacing !== undefined) {
+    themeOptions.spacing = spacing
+  }
+  const typography = createTypography()
+  if (typography !== undefined) {
+    themeOptions.typography = typography
+  }
+  const overrides = createOverrides(palette)
+  if (overrides !== undefined) {
+    themeOptions.overrides = overrides
   }
 
   const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))
-  const fonts = createFonts()
   return deepmerge(muiTheme, { fonts })
 }
 
@@ -162,7 +170,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   const lightOptions = Object.assign(
     {
       createPaletteOptions: createPaletteOptions
-        ? createPaletteOptions
+        ? () => Object.assign({ type: 'light' }, createPaletteOptions() || {})
         : createCommittedLightPaletteOptions,
       createOverrides: createOverrides
         ? createOverrides
@@ -180,7 +188,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   const darkOptions = Object.assign(
     {
       createPaletteOptions: createPaletteOptions
-        ? createPaletteOptions
+        ? () => Object.assign({ type: 'dark' }, createPaletteOptions() || {})
         : createCommittedDarkPaletteOptions,
       createOverrides: createOverrides
         ? createOverrides

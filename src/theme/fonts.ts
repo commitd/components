@@ -1,4 +1,4 @@
-export const size = '16px'
+export const size = 16
 
 export const sizes = {
   [-2]: '0.694rem',
@@ -15,6 +15,11 @@ export const sizes = {
 const systemFont =
   '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"'
 
+const materialFont = '"Roboto", "Helvetica", "Arial", sans-serif"'
+
+const monospaceFont =
+  '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace'
+
 export const defaultFonts = {
   typography: { fontFamily: systemFont },
   heading: { fontFamily: systemFont },
@@ -23,8 +28,18 @@ export const defaultFonts = {
   display: {
     fontFamily: '"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
   },
+  monospace: { fontFamily: monospaceFont },
+}
+
+export const materialFonts = {
+  typography: { fontFamily: materialFont },
+  heading: { fontFamily: materialFont },
+  subheading: { fontFamily: materialFont },
+  text: { fontFamily: materialFont },
+  display: {
+    fontFamily: materialFont,
+  },
   monospace: {
-    fontFamily:
-      '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace',
+    fontFamily: monospaceFont,
   },
 }

@@ -4,6 +4,7 @@ import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import { Palette } from '@material-ui/core/styles/createPalette'
 import { defaultFonts } from './fonts'
 import { Overrides } from '@material-ui/core/styles/overrides'
+import { TypographyOptions } from '@material-ui/core/styles/createTypography'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
@@ -47,9 +48,6 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
     brand: PaletteColor
-    success: PaletteColor
-    warning: PaletteColor
-    info: PaletteColor
   }
 }
 
@@ -67,9 +65,9 @@ export const spacing = (factor: number) => {
 
 export const createCommittedFonts = () => fonts.defaultFonts
 export const createCommittedSpacing = () => spacing
-export const createCommittedTypography = () => ({
-  htmlFontSize: 16,
-  fontSize: 16,
+export const createCommittedTypography: () => TypographyOptions = () => ({
+  htmlFontSize: fonts.size,
+  fontSize: fonts.size,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
