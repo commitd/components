@@ -12,6 +12,21 @@ import {
   makeStyles as materialMakeStyles,
 } from '@material-ui/styles'
 
+export function useTheme<Theme = CommittedTheme>() {
+  return materialUseTheme<Theme>()
+}
+
+/**
+ * `makeStyles` where the passed `styles` do not depend on props
+ */
+export function makeStyles<
+  Theme = CommittedTheme,
+  ClassKey extends string = string
+>(
+  style: Styles<Theme, {}, ClassKey>,
+  options?: Omit<WithStylesOptions<Theme>, 'withTheme'>
+): (props?: any) => ClassNameMap<ClassKey>
+
 /**
  * `makeStyles` where the passed `styles` do depend on props
  */
@@ -25,18 +40,17 @@ export function makeStyles<
 ): (props: Props) => ClassNameMap<ClassKey>
 
 /**
- * `makeStyles` where the passed `styles` do not depend on props
+ * `makeStyles` where the passed `styles` do depend on props
  */
 export function makeStyles<
   Theme = CommittedTheme,
+  Props extends {} = {},
   ClassKey extends string = string
 >(
-  style: Styles<Theme, {}, ClassKey>,
+  styles: Styles<Theme, Props, ClassKey>,
   options?: Omit<WithStylesOptions<Theme>, 'withTheme'>
-): (props?: any) => ClassNameMap<ClassKey> {
-  return materialMakeStyles<Theme, {}, ClassKey>(style, options)
-}
-
-export function useTheme<Theme = CommittedTheme>() {
-  return materialUseTheme<Theme>()
+):
+  | ((props: Props) => ClassNameMap<ClassKey>)
+  | ((props?: Props) => ClassNameMap<ClassKey>) {
+  return materialMakeStyles<Theme, Props, ClassKey>(styles, options)
 }
