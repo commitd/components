@@ -15,9 +15,6 @@ export const getPreferredColorScheme = () => {
   return 'light'
 }
 
-console.log(lightImage)
-console.log(darkImage)
-
 export default create({
   colorPrimary: '#ffbb00',
   colorSecondary: '#4098D7',
