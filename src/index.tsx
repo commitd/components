@@ -1,8 +1,9 @@
 export * from './components'
 export * from './theme'
-export * from './hooks'
-import { mdx, copyToClipboard } from './util'
-export { mdx, copyToClipboard }
+export { ThemeProvider, colors } from './theme'
+export type { ThemeProviderProps } from './theme'
+export * from './styles'
+export { styled, withTheme, withStyles, makeStyles, useTheme } from './styles'
+export type { ComponentCreator } from './styles'
 
-// Reexport
-export { styled } from '@material-ui/styles'
+export * from './util'
