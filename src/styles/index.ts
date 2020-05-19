@@ -1,3 +1,4 @@
+export { createStyles } from '@material-ui/styles'
 // Override material exports as required to reflect committed theme
 export { useWidth } from './useWidth'
 import { ConsistentWith, Omit } from '@material-ui/types'

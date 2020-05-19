@@ -7,13 +7,9 @@ import {
   StepLabel,
   Button,
   Typography,
-  StepperProps,
-  StepLabelProps,
-  StepProps,
-  Theme,
 } from '../../../src'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       width: '100%',
@@ -29,15 +25,15 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad']
+  return ['Select settings', 'Create a group', 'Create the thing']
 }
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return 'Select campaign settings...'
+      return 'Select settings...'
     case 1:
-      return 'What is an ad group anyways?'
+      return "Don't bother with this?"
     case 2:
       return 'This is the bit I really care about!'
     default:
