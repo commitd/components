@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
 import { ThemeChoice } from './theme'
 
-/**
- * DEPRECATED
- *
- * Use ThemeController instead.
- */
-export const useThemeChoice: () => [ThemeChoice, () => void, boolean] = () => {
-  const [themeChoice, setThemeChoice] = useState<ThemeChoice>('light')
-  const [componentMounted, setComponentMounted] = useState(false)
+export const ThemeContext = React.createContext<{
+  choice: ThemeChoice
+  toggle: () => void
+}>({
+  choice: 'light',
+  toggle: () => {},
+})
+
+export const ThemeController: React.FC = (props) => {
+  const [themeChoice, setThemeChoice] = React.useState<ThemeChoice>('light')
+
   const setMode = (mode: ThemeChoice) => {
     window.localStorage.setItem('themeChoice', mode)
     setThemeChoice(mode)
@@ -22,8 +25,10 @@ export const useThemeChoice: () => [ThemeChoice, () => void, boolean] = () => {
     }
   }
 
-  useEffect(() => {
+  // paints the app before it renders elements
+  React.useLayoutEffect(() => {
     const localTheme = window.localStorage.getItem('themeChoice') as ThemeChoice
+
     if (localTheme) {
       setThemeChoice(localTheme)
     } else if (
@@ -32,8 +37,16 @@ export const useThemeChoice: () => [ThemeChoice, () => void, boolean] = () => {
     ) {
       setThemeChoice('dark')
     }
-    setComponentMounted(true)
   }, [])
 
-  return [themeChoice, toggleThemeChoice, componentMounted]
+  return (
+    <ThemeContext.Provider
+      value={{
+        choice: themeChoice,
+        toggle: toggleThemeChoice,
+      }}
+    >
+      {props.children}
+    </ThemeContext.Provider>
+  )
 }

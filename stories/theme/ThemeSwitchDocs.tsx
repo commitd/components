@@ -4,14 +4,10 @@ import { ThemeChoice } from '../../src'
 // TODO: change to raw props when storybook issue fixed
 export interface BaseThemeSwitchProps {
   /**
-   * The theme choice mode selected
+   *  Change to the style of the buttons
+   *  @default commit
    */
-  mode?: ThemeChoice
-  /**
-   * Function to toggle the theme
-   * @default media-query: prefers-color-scheme: dark
-   */
-  toggleTheme: () => void
+  variant?: 'commit' | 'celestial'
   /**
    *  Theme based color from the palette form the light theme, defaults to
    *  @default brand.main
@@ -23,10 +19,20 @@ export interface BaseThemeSwitchProps {
    */
   darkColor?: string
   /**
-   *  Change to the style of the buttons
-   *  @default commit
+   * __Deprecated__
+   *
+   * The theme choice themeChoice selected
+   * @deprecated - Supplied by context
+   * @default media-query: prefers-color-scheme: dark
    */
-  variant?: 'commit' | 'celestial'
+  themeChoice?: ThemeChoice
+  /**
+   * __Deprecated__
+   *
+   * Function to toggle the theme
+   * @deprecated - Supplied by context
+   */
+  toggleThemeChoice?: () => void
 }
 
 export const ThemeSwitchDocs: React.FC<BaseThemeSwitchProps> = (

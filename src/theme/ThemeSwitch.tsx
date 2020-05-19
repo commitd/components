@@ -1,12 +1,13 @@
-import React from 'react'
-import { withPositioning, PositioningProps } from '../internal'
-import { ThemeChoice } from './ThemeProvider'
-import { Logo } from '../components/logo/Logo'
 import { makeStyles } from '@material-ui/styles'
-import { Theme } from '/theme'
 import { style } from '@material-ui/system'
-import { Icons } from '../components/icons/Icons'
+import React from 'react'
 import { IconButton } from '../components/iconbutton/IconButton'
+import { Icons } from '../components/icons/Icons'
+import { Logo } from '../components/logo/Logo'
+import { PositioningProps, withPositioning } from '../internal'
+import { Theme } from './'
+import { ThemeChoice } from './theme'
+import { useThemeController } from './ThemeProvider'
 
 const styleColor = style({
   prop: 'color',
@@ -25,13 +26,15 @@ const selectColor = (theme: Theme) => ({
 export interface BaseThemeSwitchProps {
   /**
    * The theme choice themeChoice selected
+   * @deprecated - Supplied by context
    * @default media-query: prefers-color-scheme: dark
    */
-  themeChoice: ThemeChoice
+  themeChoice?: ThemeChoice
   /**
    * Function to toggle the theme
+   * @deprecated - Supplied by context
    */
-  toggleThemeChoice: () => void
+  toggleThemeChoice?: () => void
   /**
    *  Theme based color from the palette form the light theme, defaults to
    *  @default brand.main
@@ -44,7 +47,7 @@ export interface BaseThemeSwitchProps {
   darkColor?: string
   /**
    *  Change to the style of the buttons
-   *  @default commit
+   *  @default celestial
    */
   variant?: 'commit' | 'celestial'
 }
@@ -97,16 +100,22 @@ const Toggle = ({
   toggleThemeChoice,
   lightColor = 'brand.main',
   darkColor = 'brand.main',
-  variant = 'commit',
+  variant = 'celestial',
 }: BaseThemeSwitchProps) => {
-  const isLight = themeChoice === 'light'
+  const [choice, toggle] = useThemeController()
+
+  // allow props to override theme until deprecated removed
+  const internalChoice = themeChoice || choice
+  const internalToggle = toggleThemeChoice || toggle
+
+  const isLight = internalChoice === 'light'
   const title = isLight ? 'Use dark theme' : 'Use light theme'
   let icon
   switch (variant) {
     case 'commit':
       icon = (
         <CommitIcon
-          themeChoice={themeChoice}
+          themeChoice={internalChoice}
           lightColor={lightColor}
           darkColor={darkColor}
         />
@@ -115,7 +124,7 @@ const Toggle = ({
     case 'celestial':
       icon = (
         <CelestialIcon
-          themeChoice={themeChoice}
+          themeChoice={internalChoice}
           lightColor={lightColor}
           darkColor={darkColor}
         />
@@ -128,7 +137,7 @@ const Toggle = ({
   return (
     <IconButton
       color={isLight ? 'primary' : 'secondary'}
-      onClick={toggleThemeChoice}
+      onClick={internalToggle}
       title={title}
       aria-label="switch-theme"
     >

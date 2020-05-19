@@ -6,6 +6,8 @@ import { defaultFonts } from './fonts'
 import { Overrides } from '@material-ui/core/styles/overrides'
 import { TypographyOptions } from '@material-ui/core/styles/createTypography'
 
+export type ThemeChoice = 'light' | 'dark'
+
 declare module '@material-ui/core/styles/createPalette' {
   interface PaletteOptions {
     brand?: PaletteColorOptions

@@ -21,6 +21,51 @@ by selecting from the pallete. Note that the pallete will be relative tothe curr
 
 <Preview>
   <Story name="switch">
+    <ThemeProvider>
+      <AppBar position="relative">
+        <Toolbar>
+          <Box flexGrow={1}>
+            <Heading.h1>Example</Heading.h1>
+          </Box>
+          <ThemeSwitch />
+          <ThemeSwitch variant="commit" />
+          <ThemeSwitch
+            variant="celestial"
+            lightColor="common.white"
+            darkColor="common.black"
+          />
+        </Toolbar>
+      </AppBar>
+      <Background width="1VH">
+        <Overview />
+      </Background>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.
+
+## `useThemeController` Hook
+
+As a further convenience, we supply a `useThemeController` hook to simplify the use of responding to the theme choice
+or to toggle the theme, say to make a custom theme switch.
+
+This defaults to using the `prefers-color-scheme: dark` media query to automatically switch to
+dark according to uses preferences. If the user has selected a particular mode then local storage is used to _remember_ that choice.
+It supplies the current `themeChoice` a `toggleTheme` function to use in a control and a `componentMounted` flag to state the component has determined the correct start theme.
+The above story demonstrates its use.
+
+## Props
+
+<Props of={ThemeSwitchDocs} />
+
+# Deprecated useThemeChoice
+
+The use of the `useThemeChoice` hook to connect `ThemeSwitch` and ThemeProvider is no longer required and deprecated.
+This example just shows that it still works.
+
+<Preview>
+  <Story name="deprecated">
     {React.createElement(() => {
       const [
         themeChoice,
@@ -41,7 +86,7 @@ by selecting from the pallete. Note that the pallete will be relative tothe curr
               <ThemeSwitch
                 themeChoice={themeChoice}
                 toggleThemeChoice={toggleThemeChoice}
-                variant="celestial"
+                variant="commit"
               />
               <ThemeSwitch
                 themeChoice={themeChoice}
@@ -63,15 +108,3 @@ by selecting from the pallete. Note that the pallete will be relative tothe curr
 </Preview>
 
 You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.
-
-## `useThemeChoice` Hook
-
-As a further convenience, we supply a `useThemeChoice` hook to simplify the theme switching.
-This defaults to using the `prefers-color-scheme: dark` media query to automatically switch to
-dark according to uses preferences. If the user has selected a particular mode then local storage is used to _remember_ that choice.
-It supplies the current `themeChoice` a `toggleTheme` function to use in a control and a `componentMounted` flag to state the component has determined the correct start theme.
-The above story demonstrates its use.
-
-## Props
-
-<Props of={ThemeSwitchDocs} />

@@ -1,7 +1,9 @@
-import { useMediaQuery } from '@material-ui/core'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
-import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme'
+import {
+  createMuiTheme,
+  CssBaseline,
+  responsiveFontSizes,
+  ThemeOptions,
+} from '@material-ui/core'
 import createMuiPalette, {
   Palette,
   PaletteOptions,
@@ -18,6 +20,7 @@ import {
   createCommittedDarkOverrides,
   createCommittedDarkPaletteOptions,
 } from './darkTheme'
+import { materialFonts } from './fonts'
 import {
   committedLightPaletteColors,
   createCommittedLightOverrides,
@@ -29,11 +32,10 @@ import {
   createCommittedSpacing,
   createCommittedTypography,
   FontOptions,
+  ThemeChoice,
 } from './theme'
-import { materialFonts } from './fonts'
+import { ThemeController, ThemeContext } from './ThemeController'
 import { augmentColor } from './themeMaterialUtil'
-
-export type ThemeChoice = 'light' | 'dark'
 
 export interface ThemeProps {
   /**
@@ -155,7 +157,12 @@ const createTheme = ({
   return deepmerge(muiTheme, { fonts })
 }
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({
+export const useThemeController = (): [ThemeChoice, () => void] => {
+  const { choice, toggle } = React.useContext(ThemeContext)
+  return [choice, toggle]
+}
+
+const ControlledThemeProvider: FC<ThemeProviderProps> = ({
   light = {},
   dark = {},
   choice = null,
@@ -167,6 +174,8 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
   createTypography = createCommittedTypography,
   ...rest
 }: ThemeProviderProps) => {
+  const [controllerChoice] = useThemeController()
+
   const lightOptions = Object.assign(
     {
       createPaletteOptions: createPaletteOptions
@@ -212,7 +221,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
       darkMode = true
       break
     default:
-      darkMode = useMediaQuery('(prefers-color-scheme: dark)')
+      darkMode = controllerChoice === 'dark'
       break
   }
 
@@ -228,3 +237,9 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
     </MuiThemeProvider>
   )
 }
+
+export const ThemeProvider: FC<ThemeProviderProps> = (props) => (
+  <ThemeController>
+    <ControlledThemeProvider {...props} />
+  </ThemeController>
+)
