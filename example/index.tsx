@@ -9,24 +9,14 @@ import logoDark from './images/Committed - Black-128px.png'
 
 const footerHeight = '200px'
 
-const Header = ({
-  themeChoice,
-  toggleThemeChoice,
-}: {
-  themeChoice: C.ThemeChoice
-  toggleThemeChoice: () => void
-}) => (
+const Header = () => (
   <C.AppBar position="relative">
     <C.Toolbar>
       <C.Box flexGrow={1}>
         <C.Heading.h1>Example</C.Heading.h1>
       </C.Box>
       <C.Avatar src="https://i.pravatar.cc/40" />
-      <C.ThemeSwitch
-        themeChoice={themeChoice}
-        toggleThemeChoice={toggleThemeChoice}
-        variant="celestial"
-      />
+      <C.ThemeSwitch variant="celestial" />
       <C.Button color="inherit" variant="text">
         Logout
       </C.Button>
@@ -82,8 +72,8 @@ const Content = () => (
 )
 
 const Logo = () => {
-  const theme = C.useTheme()
-  const logo = theme.palette.type == 'light' ? logoLight : logoDark
+  const [choice] = C.useThemeController()
+  const logo = choice == 'light' ? logoLight : logoDark
   return <img width="128px" src={logo} alt="Committed Logo" />
 }
 
@@ -133,31 +123,23 @@ const Footer = () => (
   </C.Row>
 )
 
-const App = () => {
-  const [themeChoice, toggleThemeChoice, componentMounted] = C.useThemeChoice()
-  const component = componentMounted ? (
-    <C.ThemeProvider
-      choice={themeChoice}
-      createFonts={() =>
-        Object.assign(C.fonts.defaultFonts, {
-          typography: { fontFamily: 'Lato' },
-          display: { fontFamily: 'Arciform' },
-        })
-      }
-    >
-      <C.Box position="relative" minHeight="100vh" bgcolor="background.paper">
-        <C.Box pb={footerHeight}>
-          <Header
-            themeChoice={themeChoice}
-            toggleThemeChoice={toggleThemeChoice}
-          />
-          <Content />
-        </C.Box>
-        <Footer />
+const App = () => (
+  <C.ThemeProvider
+    createFonts={() =>
+      Object.assign(C.fonts.defaultFonts, {
+        typography: { fontFamily: 'Lato' },
+        display: { fontFamily: 'Arciform' },
+      })
+    }
+  >
+    <C.Box position="relative" minHeight="100vh" bgcolor="background.paper">
+      <C.Box pb={footerHeight}>
+        <Header />
+        <Content />
       </C.Box>
-    </C.ThemeProvider>
-  ) : null
+      <Footer />
+    </C.Box>
+  </C.ThemeProvider>
+)
 
-  return component
-}
 ReactDOM.render(<App />, document.getElementById('root'))
