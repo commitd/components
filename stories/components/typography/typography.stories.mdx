@@ -252,91 +252,55 @@ To use these inline, add the span component.
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
         <Text>
-          This is{' '}
-          <Text component="span" light>
-            Light
-          </Text>{' '}
-          text
+          This is <Span light>Light</Span> text
         </Text>
       </Box>
       <Box width={1 / 5} p={3}>
         <Typography>
-          This is{' '}
-          <Typography component="span" bold>
-            Bold
-          </Typography>{' '}
-          text
+          This is <Span bold>Bold</Span> text
         </Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Text>
-          This is{' '}
-          <Text component="span" upper>
-            uppercase
-          </Text>{' '}
-          text
+          This is <Span upper>uppercase</Span> text
         </Text>
       </Box>
       <Box width={1 / 5} p={3}>
         <Typography>
-          This is{' '}
-          <Typography component="span" capital>
-            capitals
-          </Typography>{' '}
-          text
+          This is <Span capital>capitals</Span> text
         </Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Text>
-          This is{' '}
-          <Text component="span" italic>
-            Italic
-          </Text>{' '}
-          text
+          This is <Span italic>Italic</Span> text
         </Text>
       </Box>
       <Box width={1 / 5} p={3}>
         <Typography>
-          This is{' '}
-          <Typography component="span" color="primary">
-            Primary
-          </Typography>{' '}
-          text
+          This is <Span color="primary">Primary</Span> text
         </Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Text>
-          This is{' '}
-          <Text component="span" color="secondary">
-            Secondary
-          </Text>{' '}
-          text
+          This is <Span color="secondary">Secondary</Span> text
         </Text>
       </Box>
       <Box width={1 / 5} p={3}>
         <Typography>
-          This is{' '}
-          <Typography component="span" color="textSecondary">
-            textSecondary
-          </Typography>{' '}
-          text
+          This is <Span color="textSecondary">textSecondary</Span> text
         </Typography>
       </Box>
       <Box width={1 / 5} p={3}>
         <Text>
-          This is{' '}
-          <Text component="span" strike>
-            strikethrough
-          </Text>{' '}
-          text
+          This is <Span strike>strikethrough</Span> text
         </Text>
       </Box>
       <Box width={1 / 5} p={3}>
         <Typography>
           This is{' '}
-          <Typography component="span" strike bold italic capital>
+          <Span strike bold italic capital>
             multiple
-          </Typography>{' '}
+          </Span>{' '}
           text
         </Typography>
       </Box>
@@ -346,7 +310,7 @@ To use these inline, add the span component.
 
 ### Shorthand
 
-Components are for for font variant `Text`, `Caption` and `Monospace` components.
+Shorthand components are avaialble for the font variants `Text`, `Caption` and `Monospace` and for inner component types `span` and `p`.
 
 <Preview>
   <Story name="shorthand">
@@ -359,6 +323,12 @@ Components are for for font variant `Text`, `Caption` and `Monospace` components
       </Box>
       <Box width={1 / 5} p={3}>
         <Monospace>monospace</Monospace>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Paragraph>parahraph</Paragraph>
+      </Box>
+      <Box width={1 / 5} p={3}>
+        <Span>span</Span>
       </Box>
     </Flex>
   </Story>

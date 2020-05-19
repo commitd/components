@@ -47,9 +47,6 @@ export type TypographyProps<C extends React.ElementType> = BaseTypographyProps<
   ExtraTypographyProps &
   InternalTypographyProps
 
-export type SpanProps = TypographyProps<'span'>
-export type ParagraphProps = TypographyProps<'p'>
-
 export type Ref = HTMLElement
 
 function WrappedTypography<C extends React.ElementType>({
@@ -101,4 +98,16 @@ export function Typography<C extends React.ElementType>({
       )}
     </Strike>
   )
+}
+
+export type SpanProps = TypographyProps<'span'>
+
+export function Span(props: SpanProps) {
+  return <Typography component="span" {...props} />
+}
+
+export type ParagraphProps = TypographyProps<'p'>
+
+export function Paragraph(props: ParagraphProps) {
+  return <Typography component="p" {...props} />
 }
