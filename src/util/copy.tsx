@@ -15,7 +15,6 @@ export const Copy = ({ title, placement, children, ...others }: CopyProps) => {
 
   return (
     <Tooltip
-      key={`${name}`}
       title={copied ? 'Copied' : title}
       placement={placement}
       onClose={() => setCopied(false)}

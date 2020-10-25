@@ -44,7 +44,7 @@ const StyledLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)(
       isExternal(href) ? external : internal
     } left bottom transparent no-repeat`,
     backgroundSize: '100% 2px',
-    ['&:hover']: {
+    '&:hover': {
       backgroundSize: '100% 100%',
       color: theme.palette.getContrastText(
         isExternal(href) ? externalColor : internalColor
@@ -56,10 +56,10 @@ const StyledLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)(
 const ClearLink: React.ComponentType<MaterialLinkProps> = styled(RawLink)({
   color: 'inherit',
   textDecoration: 'none',
-  ['& .gatsby-resp-image-background-image']: {
+  '& .gatsby-resp-image-background-image': {
     display: 'none !important',
   },
-  ['&:hover']: {
+  '&:hover': {
     textDecoration: 'none',
     cursor: 'pointer',
   },

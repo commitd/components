@@ -1,6 +1,3 @@
-export { createStyles } from '@material-ui/styles'
-// Override material exports as required to reflect committed theme
-export { useWidth } from './useWidth'
 import { ConsistentWith, Omit } from '@material-ui/types'
 import { Theme as CommittedTheme } from '../theme'
 import {
@@ -20,6 +17,9 @@ import {
   CreateCSSProperties,
   StyledComponentProps,
 } from '@material-ui/styles/withStyles'
+export { createStyles } from '@material-ui/styles'
+// Override material exports as required to reflect committed theme
+export { useWidth } from './useWidth'
 
 /**
  * @internal

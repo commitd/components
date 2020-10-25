@@ -26,6 +26,8 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook --docs",
     "format": "prettier --write '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
@@ -42,18 +44,29 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged --pattern '**/*.*(ts|tsx|json|md)'; tsdx lint",
-      "pre-push": "yarn build; yarn danger:local"
+      "pre-push": "yarn test && yarn build && yarn danger:local"
     }
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
+  "size-limit": [
+    {
+      "path": "dist/components.cjs.production.min.js",
+      "limit": "40 KB"
+    },
+    {
+      "path": "dist/components.esm.js",
+      "limit": "30 KB"
+    }
+  ],
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@compositor/kit": "^1.0.47",
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
+    "@size-limit/preset-small-lib": "^4.6.2",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-info": "^5.3.18",
@@ -69,6 +82,9 @@
     "babel-loader": "^8.1.0",
     "danger": "^10.1.0",
     "danger-plugin-spellcheck": "^1.5.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-security": "^1.4.0",
     "husky": "^4.2.3",
     "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
@@ -77,6 +93,7 @@
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
     "shx": "^0.3.2",
+    "size-limit": "^4.6.2",
     "styled-components": "^5.1.0",
     "ts-loader": "^6.2.2",
     "tsdx": "^0.13.1",

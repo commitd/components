@@ -13,6 +13,9 @@ import {
 import { Theme } from '../theme'
 import { makeStyles } from '@material-ui/core/styles'
 
+// export shortcodes for convenience
+import * as allComponents from '../components'
+
 // https://mdxjs.com/getting-started#table-of-components
 
 type ComponentType =
@@ -81,6 +84,7 @@ export const components: Components = {
     <Link variant="styled" href={href} {...props} />
   ),
   blockquote: (props) => {
+    /* eslint-disable-next-line react-hooks/rules-of-hooks */
     const classes = useStylesBlockquote()
     return (
       <Box className={classes.blockquote} pl={3}>
@@ -89,6 +93,7 @@ export const components: Components = {
     )
   },
   table: (props) => {
+    /* eslint-disable-next-line react-hooks/rules-of-hooks */
     const classes = useStylesTable()
     return <Table className={classes.table} {...props} />
   },
@@ -106,7 +111,4 @@ export const components: Components = {
     </li>
   ),
 }
-
-// export shortcodes for convenience
-import * as allComponents from '../components'
 export const shortcodes = allComponents
