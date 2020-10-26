@@ -1,9 +1,9 @@
 import { Slider, Typography, Box } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
 import { SliderDocs } from './SliderDocs'
 
-<Meta title="Components|Slider" component={Slider} />
+<Meta title="Components/Slider" component={Slider} />
 
 # Slider
 
@@ -11,7 +11,7 @@ Extends [Material UI Slider](https://material-ui.com/components/slider/)
 
 Allows for selection from a (numeric) range of values.
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const marks = [
@@ -101,13 +101,13 @@ Allows for selection from a (numeric) range of values.
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 # Variants
 
 ## Disabled
 
-<Preview>
+<Canvas>
   <Story name="disabled">
     <Slider
       value={30}
@@ -116,19 +116,19 @@ Allows for selection from a (numeric) range of values.
       aria-labelledby="disabled-slider"
     />
   </Story>
-</Preview>
+</Canvas>
 
 ## Continuous
 
-<Preview>
+<Canvas>
   <Story name="continuous">
     <Slider onChange={action('changed')} aria-labelledby="continuous-slider" />
   </Story>
-</Preview>
+</Canvas>
 
 ## Range
 
-<Preview>
+<Canvas>
   <Story name="range">
     <Slider
       defaultValue={[20, 37]}
@@ -137,11 +137,11 @@ Allows for selection from a (numeric) range of values.
       aria-labelledby="range-slider"
     />
   </Story>
-</Preview>
+</Canvas>
 
 ## Vertical
 
-<Preview>
+<Canvas>
   <Story name="vertical">
     <Slider
       height={300}
@@ -151,10 +151,10 @@ Allows for selection from a (numeric) range of values.
       aria-labelledby="vertical-slider"
     />
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Support standard html span props and all [Positioning Props](/components/?path=/docs/design-system-positioning--page).
 
-<Props of={SliderDocs} />
+<ArgsTable of={SliderDocs} />

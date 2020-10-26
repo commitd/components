@@ -1,8 +1,8 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { Tooltip, IconButton, Button, Icons, Flex, Box } from '../../../src'
 import { TooltipDocs } from './TooltipDocs'
 
-<Meta title="Components|Tooltip" component={Tooltip} />
+<Meta title="Components/Tooltip" component={Tooltip} />
 
 # Tooltip
 
@@ -12,7 +12,7 @@ Tooltips display extra information when users hover over, focus on, or tap an el
 
 When activated, Tooltips display a text label identifying an element, such as a description of its function.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Flex justifyContent="center">
       <Tooltip title="Delete">
@@ -22,13 +22,13 @@ When activated, Tooltips display a text label identifying an element, such as a 
       </Tooltip>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Placement
 
 The Tooltip has 12 placements choices. Prefer, Top, Bottom, Right, Left, in that order.
 
-<Preview>
+<Canvas>
   <Story name="placement">
     <div>
       <Flex justifyContent="center">
@@ -80,8 +80,8 @@ The Tooltip has 12 placements choices. Prefer, Top, Bottom, Right, Left, in that
       </Flex>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
-<Props of={TooltipDocs} />
+<ArgsTable of={TooltipDocs} />

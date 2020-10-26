@@ -1,8 +1,8 @@
 import { Hidden, Card, Text, Flex, Box, Loader } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { HiddenDocs } from './HiddenDocs'
 
-<Meta title="Components|Hidden" component={Hidden} />
+<Meta title="Components/Hidden" component={Hidden} />
 
 # Hidden
 
@@ -12,13 +12,13 @@ Quickly and responsively toggle the visibility value of components and more with
 
 All elements are visible unless they are explicitly hidden. This component can be used to hide any content
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Hidden mdUp={true}>
       <Loader />
     </Hidden>
   </Story>
-</Preview>
+</Canvas>
 
 ## How it works
 
@@ -36,7 +36,7 @@ mdDown      |                     hide | show
 The following example exercices all the props of hidden.
 It really only makes sence to use one props at a time. Remamber the ones you can see are the ones that are not hidden.
 
-<Preview>
+<Canvas>
   <Story name="up">
     <Flex alignItems="baseline">
       <Hidden xsUp={true}>
@@ -124,8 +124,8 @@ It really only makes sence to use one props at a time. Remamber the ones you can
       </Hidden>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={HiddenDocs} />
+<ArgsTable of={HiddenDocs} />

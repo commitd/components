@@ -15,7 +15,7 @@ import {
   ListItemText,
   ListItemSecondaryAction,
 } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   ListDocs,
   ListItemDocs,
@@ -26,7 +26,7 @@ import {
   ListSubheaderDocs,
 } from './ListDocs'
 
-<Meta title="Components|List" component={List} />
+<Meta title="Components/List" component={List} />
 
 # List
 
@@ -35,7 +35,7 @@ Extends [Material-UI List](https://material-ui.com/components/lists/) and associ
 Lists can be used as toggle actions or as part of input forms.
 Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Flex justifyContent="center" bgcolor="background.default">
       <Box minWidth={500} m={3} bgcolor="background.paper">
@@ -65,9 +65,9 @@ Use when single select/deselect option, use radio when one option of more then t
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   <Story name="with icons">
     <Flex justifyContent="center" bgcolor="background.default">
       <Box minWidth={500} m={3} bgcolor="background.paper">
@@ -94,13 +94,13 @@ Use when single select/deselect option, use radio when one option of more then t
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## To Fix
 
 Secondary text is not being displayed properly
 
-<Preview>
+<Canvas>
   <Story name="with secondary">
     <Flex justifyContent="center" bgcolor="background.default">
       <Box minWidth={500} m={3} bgcolor="background.paper">
@@ -112,7 +112,7 @@ Secondary text is not being displayed properly
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## With Labels
 
@@ -120,28 +120,28 @@ Secondary text is not being displayed properly
 
 ## List
 
-<Props of={ListDocs} />
+<ArgsTable of={ListDocs} />
 
 ## ListItem
 
-<Props of={ListItemDocs} />
+<ArgsTable of={ListItemDocs} />
 
 ## ListItemAvatar
 
-<Props of={ListItemAvatarDocs} />
+<ArgsTable of={ListItemAvatarDocs} />
 
 ## ListItemIcon
 
-<Props of={ListItemIconDocs} />
+<ArgsTable of={ListItemIconDocs} />
 
 ## ListItemSecondaryAction
 
-<Props of={ListItemSecondaryActionDocs} />
+<ArgsTable of={ListItemSecondaryActionDocs} />
 
 ## ListItemText
 
-<Props of={ListItemTextDocs} />
+<ArgsTable of={ListItemTextDocs} />
 
 ## ListSubheader
 
-<Props of={ListSubheaderDocs} />
+<ArgsTable of={ListSubheaderDocs} />

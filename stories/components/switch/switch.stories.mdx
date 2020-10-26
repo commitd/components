@@ -6,16 +6,16 @@ import {
   FormLabel,
 } from '../../../src'
 import { action } from '@storybook/addon-actions'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { SwitchDocs } from './SwitchDocs'
 
-<Meta title="Components|Switch" component={Switch} />
+<Meta title="Components/Switch" component={Switch} />
 
 # Switch
 
 To toggle states
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Switch
       defaultChecked
@@ -52,11 +52,11 @@ To toggle states
   <Story name="checked">
     <Switch disabled={true} checked={true} />
   </Story>
-</Preview>
+</Canvas>
 
 ## Labels
 
-<Preview>
+<Canvas>
   <Story name="labels">
     {() => {
       const [checked, setChecked] = React.useState(true)
@@ -136,10 +136,10 @@ To toggle states
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Supports [Display, Spacing and Flexbox props](/components/?path=/docs/design-system-positioning--page).
 
-<Props of={SwitchDocs} />
+<ArgsTable of={SwitchDocs} />

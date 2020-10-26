@@ -9,10 +9,10 @@ import {
   Heading,
   Icons,
 } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { DividerDocs } from './DividerDocs'
 
-<Meta title="Components|Divider" component={Divider} />
+<Meta title="Components/Divider" component={Divider} />
 
 # Divider
 
@@ -20,15 +20,15 @@ Extends [Material UI Divider](https://material-ui.com/components/dividers/).
 
 Use a divider to separate different groups of content.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Divider />
   </Story>
-</Preview>
+</Canvas>
 
 ## Example use
 
-<Preview>
+<Canvas>
   <Story name="card">
     <Box width={300}>
       <Card p={2}>
@@ -63,13 +63,13 @@ Use a divider to separate different groups of content.
       </Card>
     </Box>
   </Story>
-</Preview>
+</Canvas>
 
 ## Variants
 
 There are different size variants to achieve different effects.
 
-<Preview>
+<Canvas>
   <Story name="variants">
     <Flex flexDirection="column">
       <Typography>Normal</Typography>
@@ -85,13 +85,13 @@ There are different size variants to achieve different effects.
       <Typography>End</Typography>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Vertical
 
 Dividers can also be used vertically for separation in toolbars.
 
-<Preview>
+<Canvas>
   <Story name="vertical">
     <Flex
       width="fit-content"
@@ -121,10 +121,10 @@ Dividers can also be used vertically for separation in toolbars.
       </Flex>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Supports [Spacing props](/components/?path=/docs/design-system-positioning--page).
 
-<Props of={DividerDocs} />
+<ArgsTable of={DividerDocs} />

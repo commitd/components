@@ -40,6 +40,7 @@ export type ComponentCreator<Component extends React.ElementType> = <
     Overwrite<Props, { className?: string; theme?: Theme }>
 >
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export function styled<Component extends React.ElementType>(
   Component: Component
 ): ComponentCreator<Component> {

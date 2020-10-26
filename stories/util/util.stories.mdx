@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   copyToClipboard,
   mdx as Cmdx,
@@ -13,11 +13,11 @@ import {
   ThemeProvider,
 } from '../../src'
 
-<Meta title="Design System|Utils" parameters={{ order: 8 }} />
+<Meta title="Design System/Utils" parameters={{ order: 8 }} />
 
 # Utilities
 
-We collect some utilites that may be useful.
+We collect some utilities that may be useful.
 
 ## Use width hook
 
@@ -30,20 +30,20 @@ screen width  |--------|--------|--------|--------|-------->
 range         |   xs   |   sm   |   md   |   lg   |   xl
 ```
 
-<Preview>
+<Canvas>
   <Story name="use Width Hook">
     {React.createElement(() => {
       const width = useWidth()
       return <Typogaphy>Current breakpoint is {width}</Typogaphy>
     })}
   </Story>
-</Preview>
+</Canvas>
 
 ## Copy to clipboard
 
 A utility function to support copy to clipboard functionality, as used in [colors](/components/?path=/docs/design-system-colour--page) and [icons](/components/?path=/docs/components-icons--default-story).
 
-<Preview>
+<Canvas>
   <Story name="copy">
     <Button
       color="primary"
@@ -54,11 +54,11 @@ A utility function to support copy to clipboard functionality, as used in [color
       Copy
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 This should work in a dialog
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [open, setOpen] = React.useState(false)
@@ -98,7 +98,7 @@ This should work in a dialog
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 Try and paste here
 

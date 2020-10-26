@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
 import {
   Tabs,
@@ -14,7 +14,7 @@ import { TabDocs } from './TabDocs'
 import { TabsDocs } from './TabsDocs'
 import { TabPanelDocs } from './TabPanelDocs'
 
-<Meta title="Components|Tabs" component={Tabs} />
+<Meta title="Components/Tabs" component={Tabs} />
 
 # Tabs
 
@@ -23,7 +23,7 @@ Extends [Material UI Tab](https://material-ui.com/components/tabs/)
 Tabs can be used for navigation between different components at the same level of heirarchy.
 In addition to the `Tab` extenaion we add a `TabPanel` component for convenience, it's use is shown below.
 
-<Preview>
+<Canvas>
   <Story name="appbar">
     {() => {
       const [value, setValue] = React.useState(0)
@@ -64,11 +64,11 @@ In addition to the `Tab` extenaion we add a `TabPanel` component for convenience
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Simple
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [value, setValue] = React.useState(0)
@@ -88,20 +88,20 @@ In addition to the `Tab` extenaion we add a `TabPanel` component for convenience
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
 ## Tabs
 
-<Props of={TabsDocs} />
+<ArgsTable of={TabsDocs} />
 
 ## Tab
 
-<Props of={TabDocs} />
+<ArgsTable of={TabDocs} />
 
 ## TabPanel
 
 Supports all [Box](/components/?path=/docs/components-box--default-story) and [Positioning props](/components/?path=/docs/design-system-positioning--page)
 
-<Props of={TabPanelDocs} />
+<ArgsTable of={TabPanelDocs} />

@@ -3,7 +3,7 @@ import { ThemeProvider } from '../../src'
 import { Background, Overview } from '../util'
 
 export default {
-  title: 'Components|Themes',
+  title: 'Components/Themes',
 }
 
 export const light = () => (

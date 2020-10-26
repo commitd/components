@@ -9,7 +9,7 @@ import {
 } from '../../../src'
 import { Cartesian } from '@compositor/kit'
 import bgImage from '../../../public/images/Committed-Colour-512px.png'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
 import {
   CardDocs,
@@ -20,7 +20,7 @@ import {
   CardMediaDocs,
 } from './CardDocs'
 
-<Meta title="Components|Card" component={Card} />
+<Meta title="Components/Card" component={Card} />
 
 # Card
 
@@ -28,18 +28,18 @@ Extends [Material UI Card](https://material-ui.com/components/cards/). We also e
 
 Use `Card` component to group element onto a card.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Card>
       <CardHeader>Simple Card</CardHeader>
       <CardContent>The contents of the card</CardContent>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
 ## Card Variations
 
-<Preview>
+<Canvas>
   <Story name="square">
     <Card m={4} square={true}>
       <CardHeader>Square</CardHeader>
@@ -58,11 +58,11 @@ Use `Card` component to group element onto a card.
       <CardHeader>Raised</CardHeader>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
 ## Card Header
 
-<Preview>
+<Canvas>
   <Story name="no header">
     <Card m={4} width={[1, 1 / 2]}>
       <CardContent>No header</CardContent>
@@ -92,11 +92,11 @@ Use `Card` component to group element onto a card.
       <CardContent>Content</CardContent>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
 ## Card Actions
 
-<Preview>
+<Canvas>
   <Story name="action area">
     <Card m={4} width={[1, null, 1 / 3]}>
       <CardHeader>Action Area</CardHeader>
@@ -131,18 +131,18 @@ Use `Card` component to group element onto a card.
       </CardActionArea>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
 ## Elevation
 
-<Preview>
+<Canvas>
   <Cartesian
     component={Card}
     margin={4}
     elevation={[0, 1, 2, 3, 4, 6]}
     children={<CardContent>Contents</CardContent>}
   />
-</Preview>
+</Canvas>
 
 ## Props
 
@@ -151,30 +151,30 @@ Main props for cards, excluding normal spacing props, see [Box](/components/box)
 
 ## Card Props
 
-<Props of={CardDocs} />
+<ArgsTable of={CardDocs} />
 
 ## CardHeader Props
 
 Supports all aria and `div` props.
 
-<Props of={CardHeaderDocs} />
+<ArgsTable of={CardHeaderDocs} />
 
 ## CardContent Props
 
 Supports all aria and `div` props.
 
-<Props of={CardContentDocs} />
+<ArgsTable of={CardContentDocs} />
 
 ## CardActionArea Props
 
 Supports all aria and `div` props.
 
-<Props of={CardActionAreaDocs} />
+<ArgsTable of={CardActionAreaDocs} />
 
 ## CardActions Props
 
-<Props of={CardActionsDocs} />
+<ArgsTable of={CardActionsDocs} />
 
 ## CardMedia Props
 
-<Props of={CardMediaDocs} />
+<ArgsTable of={CardMediaDocs} />

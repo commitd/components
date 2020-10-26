@@ -1,8 +1,8 @@
 import { Link, Typography } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { LinkDocs, CustomLink } from './LinkDocs'
 
-<Meta title="Components|Link" component={Link} />
+<Meta title="Components/Link" component={Link} />
 
 # Link
 
@@ -10,7 +10,7 @@ Extends [Material UI Link](https://material-ui.com/components/links/)
 
 A Link is an anchor element with extra styleing options.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Typography>
       <Link href="javascript:;">Link</Link>{' '}
@@ -25,7 +25,7 @@ A Link is an anchor element with extra styleing options.
       </Link>
     </Typography>
   </Story>
-</Preview>
+</Canvas>
 
 ## Security
 
@@ -40,7 +40,7 @@ Without this, the target page can potentially redirect your page to a malicious 
 
 For when a link need to be applied to a separately styled element
 
-<Preview>
+<Canvas>
   <Story name="clear">
     <Typography>
       <Link variant="clear" href="javascript:;">
@@ -48,13 +48,13 @@ For when a link need to be applied to a separately styled element
       </Link>
     </Typography>
   </Story>
-</Preview>
+</Canvas>
 
 ### Styled
 
 For when a link need to be applied to a separately styled element
 
-<Preview>
+<Canvas>
   <Story name="styled">
     <Typography>
       <Link variant="styled" href="#link">
@@ -65,13 +65,13 @@ For when a link need to be applied to a separately styled element
       </Link>
     </Typography>
   </Story>
-</Preview>
+</Canvas>
 
 ### Composition
 
 Links support substituting the rendered element for one supplied to the `component` prop.
 
-<Preview>
+<Canvas>
   <Story name="component">
     <>
       <ul>
@@ -86,8 +86,8 @@ Links support substituting the rendered element for one supplied to the `compone
       <CustomLink href="test.com" />
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={LinkDocs} />
+<ArgsTable of={LinkDocs} />

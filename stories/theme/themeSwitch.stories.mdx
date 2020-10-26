@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   AppBar,
   Box,
@@ -11,7 +11,7 @@ import {
 import { Background, Overview } from '../util'
 import { ThemeSwitchDocs } from './ThemeSwitchDocs'
 
-<Meta title="Components|ThemeSwitch" component={ThemeSwitch} />
+<Meta title="Components/ThemeSwitch" component={ThemeSwitch} />
 
 # ThemeSwitch
 
@@ -19,7 +19,7 @@ The `ThemeSwitch` provides a styled button to switch between `light` and `dark` 
 It is available in two different variants `commit` and `celestial`, and the icons colors can be customized
 by selecting from the pallete. Note that the pallete will be relative tothe current theme.
 
-<Preview>
+<Canvas>
   <Story name="switch">
     <ThemeProvider>
       <AppBar position="relative">
@@ -41,7 +41,7 @@ by selecting from the pallete. Note that the pallete will be relative tothe curr
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.
 
@@ -57,14 +57,14 @@ The above story demonstrates its use.
 
 ## Props
 
-<Props of={ThemeSwitchDocs} />
+<ArgsTable of={ThemeSwitchDocs} />
 
 # Deprecated useThemeChoice
 
 The use of the `useThemeChoice` hook to connect `ThemeSwitch` and ThemeProvider is no longer required and deprecated.
 This example just shows that it still works.
 
-<Preview>
+<Canvas>
   <Story name="deprecated">
     {React.createElement(() => {
       const [
@@ -105,6 +105,6 @@ This example just shows that it still works.
       return component
     })}
   </Story>
-</Preview>
+</Canvas>
 
 You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.

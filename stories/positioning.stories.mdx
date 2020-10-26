@@ -2,7 +2,7 @@ import { Meta, Props, Preview } from '@storybook/addon-docs/blocks'
 import { Box, Flex, colors } from '../src'
 import { Spacing, Display, Flexbox, Sizing, Griditem } from './util/docsutil'
 
-<Meta title="Design System|Positioning" parameters={{ order: 5 }} />
+<Meta title="Design System/Positioning" />
 
 # Positioning Props
 
@@ -36,7 +36,7 @@ undefined e.g. `[100, undefined, 200]`
 Set the display value of components, with support for some of the more common values,
 as well as some extras for controlling display when printing.
 
-<Props of={Display} />
+<ArgsTable of={Display} />
 
 Simple example,
 
@@ -90,7 +90,7 @@ The `null` retains the earlier behaviour through that brakpoint (`sm`, in this c
 
 The Flexbox props allow the declaration of CSS controlling layout according to the flex box [specification](https://www.w3.org/TR/css-flexbox-1/).
 
-<Props of={Flexbox} />
+<ArgsTable of={Flexbox} />
 
 For example of use see the [Flex page](/components/?path=/docs/components-flex--default-story).
 
@@ -101,7 +101,7 @@ A string may be supplied and it's value will be used directly, however we encora
 to use as if a number is supplied in the range `[0-6]` it is transformed to a fixed set of spacing values see
 [Design principles - Spacing](/components/?path=/docs/design-system-design-principles--page).
 
-<Props of={Spacing} />
+<ArgsTable of={Spacing} />
 
 For example
 
@@ -136,7 +136,7 @@ Where the 3 center boxes have spacings:
 Make it easy to declare the size of an element. These props are added where the size of the element can be changed.
 String values are used directly, numeric values greter than on become `px` values and between `[0-1]` are transformed to '%' values.
 
-<Props of={Sizing} />
+<ArgsTable of={Sizing} />
 
 For example
 
@@ -160,6 +160,6 @@ Where the 2 center boxes have sizing:
 
 The Grid item props allow the declaration of CSS controlling layout according to the grid [specification](https://www.w3.org/TR/css-grid-1/).
 
-<Props of={Griditem} />
+<ArgsTable of={Griditem} />
 
 For example of use see the [Grid page](/components/?path=/docs/components-grid--default-story).

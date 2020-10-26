@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
 import { Menu, MenuItem, Button } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { MenuDocs, MenuItemDocs, MenuListDocs } from './MenuDocs'
 
-<Meta title="Components|Menu" component={Menu} />
+<Meta title="Components/Menu" component={Menu} />
 
 # Menu
 
 Extends [Material UI Table](https://material-ui.com/components/menus/)
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [anchorEl, setAnchorEl] = React.useState(null)
@@ -47,7 +47,7 @@ Extends [Material UI Table](https://material-ui.com/components/menus/)
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
@@ -55,16 +55,16 @@ Extends [Material UI Table](https://material-ui.com/components/menus/)
 
 Supports standard `div` props
 
-<Props of={MenuDocs} />
+<ArgsTable of={MenuDocs} />
 
 ## MenuItem
 
 Supports standard `li` props
 
-<Props of={MenuItemDocs} />
+<ArgsTable of={MenuItemDocs} />
 
 ## MenuList
 
 Supports standard `ul` props
 
-<Props of={MenuListDocs} />
+<ArgsTable of={MenuListDocs} />

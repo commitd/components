@@ -1,10 +1,10 @@
 import { Chip, Flex, Avatar, Icons } from '../../../src'
 import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { action } from '@storybook/addon-actions'
 import { ChipDocs } from './ChipDocs'
 
-<Meta title="Components|Chip" component={Chip} />
+<Meta title="Components/Chip" component={Chip} />
 
 # Chip
 
@@ -13,7 +13,7 @@ Extends [Material UI Chip](https://material-ui.com/components/chips/).
 Chips can be used for small bits of information such as labels or attributes and can optionally
 add actions to, say edit and delete.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Chip label="Basic Chip" />
   </Story>
@@ -101,13 +101,13 @@ add actions to, say edit and delete.
       color="secondary"
     />
   </Story>
-</Preview>
+</Canvas>
 
 # Outlined
 
 There is also an outlined variant
 
-<Preview>
+<Canvas>
   <Story name="Outlined default">
     <Chip
       variant="outlined"
@@ -138,13 +138,13 @@ There is also an outlined variant
       color="secondary"
     />
   </Story>
-</Preview>
+</Canvas>
 
 # Size
 
 There is also a small size
 
-<Preview>
+<Canvas>
   <Story name="small default">
     <Chip
       size="small"
@@ -166,11 +166,11 @@ There is also a small size
       color="default"
     />
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Supports Spacing and Flexbox [Positioning props](/components/?path=/docs/design-system-positioning--page).
 Supports Aria amd standard `'div'` props.
 
-<Props of={ChipDocs} />
+<ArgsTable of={ChipDocs} />

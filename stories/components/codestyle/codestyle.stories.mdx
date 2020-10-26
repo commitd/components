@@ -1,8 +1,8 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { Chip, Flex, Avatar, Icons, CodeStyle } from '../../../src'
 import image from '../../../public/images/Avatar1-YellowTrans-32px.png'
 
-<Meta title="Components|CodeStyle" component={CodeStyle} />
+<Meta title="Components/CodeStyle" component={CodeStyle} />
 
 # CodeStyle
 
@@ -10,7 +10,7 @@ This component provides styling for nested code blocks created with [Prism](http
 This does not interpret the code, that should be done separately. It is intended for use with, say,
 remark-prism when processing markdown files.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <CodeStyle>
       <div
@@ -36,11 +36,11 @@ remark-prism when processing markdown files.
       />
     </CodeStyle>
   </Story>
-</Preview>
+</Canvas>
 
 Supports different language types:
 
-<Preview>
+<Canvas>
   <Story name="bash">
     <CodeStyle>
       <div
@@ -53,11 +53,11 @@ Supports different language types:
       />
     </CodeStyle>
   </Story>
-</Preview>
+</Canvas>
 
 Supports inline code:
 
-<Preview>
+<Canvas>
   <Story name="inline">
     <CodeStyle>
       <p>
@@ -65,4 +65,4 @@ Supports inline code:
       </p>
     </CodeStyle>
   </Story>
-</Preview>
+</Canvas>

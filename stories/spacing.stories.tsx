@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Flex, Text, colors, theme } from '../src'
 
 export default {
-  title: 'Design System|Spacing',
+  title: 'Design System/Spacing',
 }
 
 export const exampleSpacing = () => (

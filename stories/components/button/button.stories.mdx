@@ -1,9 +1,9 @@
 import { Button, Box } from '../../../src'
 import { Cartesian } from '@compositor/kit'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { BaseButtonDocs, RestButtonDocs } from './ButtonDocs'
 
-<Meta title="Components|Button" component={Button} />
+<Meta title="Components/Button" component={Button} />
 
 # Button
 
@@ -11,17 +11,17 @@ Extends [Material UI Button](https://material-ui.com/components/buttons/).
 
 Buttons make common actions immediately visible and easy to perform with one click or tap. They can be used for any type of action, including navigation.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Button margin={2}>Hello</Button>
   </Story>
-</Preview>
+</Canvas>
 
 # Contained
 
 This is the default style for the button, and should be used for the primary action.
 
-<Preview>
+<Canvas>
   <Story name="simple">
     <Button>Default</Button>
   </Story>
@@ -31,7 +31,7 @@ This is the default style for the button, and should be used for the primary act
   <Story name="secondary">
     <Button color="secondary">Secondary</Button>
   </Story>
-</Preview>
+</Canvas>
 
 # variants
 
@@ -41,7 +41,7 @@ Some button variants are available and should be used for secondary buttons such
 
 Use outlined for lower emphisis actions.
 
-<Preview>
+<Canvas>
   <Story name="outlined default">
     <Button variant="outlined">Default</Button>
   </Story>
@@ -55,13 +55,13 @@ Use outlined for lower emphisis actions.
       Secondary
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## Text
 
 Use the "text" variant for lower emphisis actions or for paring with a main action.
 
-<Preview>
+<Canvas>
   <Story name="text default">
     <Button variant="text">Default</Button>
   </Story>
@@ -75,11 +75,11 @@ Use the "text" variant for lower emphisis actions or for paring with a main acti
       Secondary
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 # Size
 
-<Preview>
+<Canvas>
   <Story name="small">
     <Button size="small" color="primary">
       Small
@@ -95,13 +95,13 @@ Use the "text" variant for lower emphisis actions or for paring with a main acti
       Large
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 # Disabled
 
 Disabled buttons add transparency.
 
-<Preview>
+<Canvas>
   <Story name="disabled default">
     <Box>
       <Button m={1} disabled={false} color="default">
@@ -192,7 +192,7 @@ Disabled buttons add transparency.
       </Button>
     </Box>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
@@ -200,8 +200,8 @@ Supports [Display, Spacing and Flexbox props](/components/?path=/docs/design-sys
 
 ## Main props
 
-<Props of={BaseButtonDocs} />
+<ArgsTable of={BaseButtonDocs} />
 
 ## Other props
 
-<Props of={RestButtonDocs} />
+<ArgsTable of={RestButtonDocs} />
