@@ -1,22 +1,21 @@
-import { ConsistentWith, Omit } from '@material-ui/types'
-import { Theme as CommittedTheme } from '../theme'
 import {
-  Styles,
-  WithStylesOptions,
-  ClassNameMap,
-} from '@material-ui/styles/withStyles'
-import {
-  WithTheme,
-  ThemedComponentProps,
-  withTheme as materialWithTheme,
-  useTheme as materialUseTheme,
   makeStyles as materialMakeStyles,
   styled as materialStyled,
+  StyledComponent,
+  ThemedComponentProps,
+  useTheme as materialUseTheme,
+  withTheme as materialWithTheme,
+  WithTheme,
 } from '@material-ui/styles'
 import {
+  ClassNameMap,
   CreateCSSProperties,
   StyledComponentProps,
+  Styles,
+  WithStylesOptions,
 } from '@material-ui/styles/withStyles'
+import { ConsistentWith, Omit, Overwrite } from '@material-ui/types'
+import { Theme as CommittedTheme } from '../theme'
 export { createStyles } from '@material-ui/styles'
 // Override material exports as required to reflect committed theme
 export { useWidth } from './useWidth'
@@ -26,22 +25,19 @@ export { useWidth } from './useWidth'
  */
 export type ComponentCreator<Component extends React.ElementType> = <
   Theme = CommittedTheme,
-  Props extends {} = {}
+  Props extends {} = React.ComponentPropsWithoutRef<Component>
 >(
   styles:
     | CreateCSSProperties<Props>
     | ((props: { theme: Theme } & Props) => CreateCSSProperties<Props>),
   options?: WithStylesOptions<Theme>
-) => React.ComponentType<
+) => StyledComponent<
   Omit<
     JSX.LibraryManagedAttributes<Component, React.ComponentProps<Component>>,
     'classes' | 'className'
   > &
-    StyledComponentProps<'root'> & { className?: string } & (Props extends {
-      theme: Theme
-    }
-      ? Omit<Props, 'theme'> & { theme?: Theme }
-      : Props)
+    StyledComponentProps<'root'> &
+    Overwrite<Props, { className?: string; theme?: Theme }>
 >
 
 export function styled<Component extends React.ElementType>(
