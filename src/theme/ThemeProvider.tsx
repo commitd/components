@@ -118,7 +118,7 @@ const createTheme = ({
   // manually augment committed custom theme colors that createMuiPalette is not aware of
   palette.brand = augmentColor(
     paletteOptions ? paletteOptions.brand : palette.primary,
-    palette.type == 'light'
+    palette.type === 'light'
       ? committedLightPaletteColors.brand
       : committedDarkPaletteColors.brand
   )
@@ -172,7 +172,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
   createShape = createCommittedShape,
   createSpacing = createCommittedSpacing,
   createTypography = createCommittedTypography,
-  ...rest
+  children,
 }: ThemeProviderProps) => {
   const [controllerChoice] = useThemeController()
 
@@ -227,13 +227,13 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
 
   const theme = React.useMemo(
     () => createTheme(darkMode ? darkOptions : lightOptions),
-    [darkMode]
+    [darkMode, darkOptions, lightOptions]
   )
 
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <div {...rest} />
+      {children}
     </MuiThemeProvider>
   )
 }

@@ -29,6 +29,10 @@ export interface LoaderProps {
    *  @default draw
    */
   variant?: 'draw' | 'spin' | 'flip' | 'scale'
+  /**
+   * Set false to stop animation of logo
+   */
+  loading?: boolean
 }
 
 export const useStyles = makeStyles<Theme, LoaderProps>((theme) => ({
@@ -113,17 +117,17 @@ export const useStyles = makeStyles<Theme, LoaderProps>((theme) => ({
 }))
 
 export const Loader = (props: LoaderProps) => {
-  const { size = 256, variant = 'draw' } = props
+  const { size = 256, variant = 'draw', loading = true } = props
   const classes = useStyles(props)
   return (
     <Logo
       size={size}
       className={clsx(
         classes.color,
-        variant === 'draw' && classes.draw,
-        variant === 'spin' && classes.spin,
-        variant === 'flip' && classes.flip,
-        variant === 'scale' && classes.scale
+        loading && variant === 'draw' && classes.draw,
+        loading && variant === 'spin' && classes.spin,
+        loading && variant === 'flip' && classes.flip,
+        loading && variant === 'scale' && classes.scale
       )}
     />
   )
