@@ -1,10 +1,10 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { Grid, Box, Card, colors } from '../../../src'
 import { GridBox } from '../../util/GridBox'
 import { Gridcontainer } from '../../util/docsutil'
 import { GridDocs } from './GridDocs'
 
-<Meta title="Components|Grid" component={Grid} />
+<Meta title="Components/Grid" component={Grid} />
 
 # Grid
 
@@ -14,7 +14,7 @@ Grid supports the layout of components in 2 dimensions. Where possible prefer [`
 
 We use a styled `Box` in the example to remove not-relevant props.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Grid
       gridTemplateColumns="40px 50px auto 50px 40px"
@@ -32,7 +32,7 @@ We use a styled `Box` in the example to remove not-relevant props.
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Areas
 
@@ -45,7 +45,7 @@ Values:
 - . - a period signifies an empty grid cell
 - none - no grid areas are defined
 
-<Preview>
+<Canvas>
   <Story name="areas">
     <Grid
       gridTemplateColumns="100px 100px 100px 100px"
@@ -58,12 +58,12 @@ Values:
       <GridBox gridArea="footer">Footer</GridBox>
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 `gridTemplate` and `grid` can be used as a shorthand notation, however, as in this example it can be dificult to follow.
 For clarity, we reccommend using the mroe verbose versions except for simple layouts.
 
-<Preview>
+<Canvas>
   <Story name="areas-shorthand">
     <Grid
       gridTemplate={`'header header header header' 50px 'sidebar . main main' 100px 'footer footer footer footer' 50px / 100px 100px 100px 100px`}
@@ -74,7 +74,7 @@ For clarity, we reccommend using the mroe verbose versions except for simple lay
       <GridBox gridArea="footer">Footer</GridBox>
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Gaps
 
@@ -83,7 +83,7 @@ You can think of it like setting the width of the gutters between the columns/ro
 We use the spacing in the theme. `gap` only supports the case where both the row
 and column spacing is the same.
 
-<Preview>
+<Canvas>
   <Story name="gaps">
     <Grid
       rowGap={3}
@@ -102,9 +102,9 @@ and column spacing is the same.
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   <Story name="gap-same">
     <Grid gap={2} gridTemplateColumns="100px 100px" gridAutoRows="100px">
       <GridBox />
@@ -113,7 +113,7 @@ and column spacing is the same.
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Justify Items
 
@@ -127,7 +127,7 @@ Values:
 - `center` - aligns items in the center of their cell
 - `stretch` - fills the whole width of the cell (this is the default)
 
-<Preview>
+<Canvas>
   <Story name="justify-items-start">
     <Grid
       justifyItems="start"
@@ -180,7 +180,7 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Align Items
 
@@ -194,7 +194,7 @@ Values:
 - `center` - aligns items in the center of their cell
 - `stretch` - fills the whole height of the cell (this is the default)
 
-<Preview>
+<Canvas>
   <Story name="align-items-start">
     <Grid
       alignItems="start"
@@ -247,7 +247,7 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Place Items
 
@@ -276,7 +276,7 @@ Values:
 - `space-between` - places an even amount of space between each grid item, with no space at the far ends
 - `space-evenly` - places an even amount of space between each grid item, including the far ends
 
-<Preview>
+<Canvas>
   Start
   <Story name="justify-content-start">
     <Card>
@@ -293,9 +293,9 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   End
   <Story name="justify-content-end">
     <Card>
@@ -312,9 +312,9 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Center
   <Story name="justify-content-center">
     <Card>
@@ -331,9 +331,9 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Stretch
   <Story name="justify-content-stretch">
     <Card>
@@ -350,9 +350,9 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Space Around
   <Story name="justify-content-space-around">
     <Card>
@@ -369,9 +369,9 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Space Between
   <Story name="justify-content-space-between">
     <Card>
@@ -388,9 +388,9 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Space Evenly
   <Story name="justify-content-space-evenly">
     <Card>
@@ -407,7 +407,7 @@ Values:
       </Grid>
     </Card>
   </Story>
-</Preview>
+</Canvas>
 
 ## Align Content
 
@@ -423,7 +423,7 @@ Values:
 - `space-between` - places an even amount of space between each grid item, with no space at the far ends
 - `space-evenly` - places an even amount of space between each grid item, including the far ends
 
-<Preview>
+<Canvas>
   Start
   <Story name="align-content-start">
     <Grid
@@ -439,9 +439,9 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   End
   <Story name="align-content-end">
     <Grid
@@ -457,9 +457,9 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Center
   <Story name="align-content-center">
     <Grid
@@ -475,9 +475,9 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Stretch
   <Story name="align-content-stretch">
     <Grid
@@ -493,9 +493,9 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Space Around
   <Story name="align-content-space-around">
     <Grid
@@ -511,9 +511,9 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Space Between
   <Story name="align-content-space-between">
     <Grid
@@ -529,9 +529,9 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   Space Evenly
   <Story name="align-content-space-evenly">
     <Grid
@@ -547,7 +547,7 @@ Values:
       <GridBox />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Place Content
 
@@ -577,7 +577,7 @@ Values:
 - `column` - tells the auto-placement algorithm to fill in each column in turn, adding new columns as necessary
 - `dense` - tells the auto-placement algorithm to attempt to fill in holes earlier in the grid if smaller items come up later
 
-<Preview>
+<Canvas>
   Row
   <Story name="grid-auto-flow-row">
     <Grid
@@ -604,7 +604,7 @@ Values:
       <GridBox>4</GridBox>
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 # Grid Items
 
@@ -622,7 +622,7 @@ Values:
 - `span <name>` - the item will span across until it hits the next line with the provided name
 - `auto` - indicates auto-placement, an automatic span, or a default span of one
 
-<Preview>
+<Canvas>
   <Story name="coverage">
     <Grid
       gridTemplateColumns="50px 50px 50px 50px"
@@ -642,7 +642,7 @@ Values:
       <GridBox>5</GridBox>
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 If no `grid-column-end/grid-row-end` is declared, the item will span 1 track by default.
 
@@ -667,7 +667,7 @@ Values:
 `name` - a name of your choosing
 `row-start / column-start / row-end / column-end` - can be numbers or named lines
 
-<Preview>
+<Canvas>
   <Story name="itemArea">
     <Grid
       gridTemplateColumns="50px 50px 50px 50px"
@@ -680,7 +680,7 @@ Values:
       <GridBox>5</GridBox>
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Justify Self
 
@@ -721,7 +721,7 @@ Values:
 - `center` - aligns the grid item in the center of the cell
 - `stretch` - fills the whole height of the cell (this is the default)
 
-<Preview>
+<Canvas>
   <Story name="place-self">
     <Grid
       border="1px solid grey"
@@ -734,17 +734,17 @@ Values:
       <GridBox placeSelf="stretch" />
     </Grid>
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
 The following shows main Grid props but type are simplified for display.
 
-<Props of={Gridcontainer} />
+<ArgsTable of={Gridcontainer} />
 
 Supports all usual div aria and html props and [Positioning props](/components/?path=/docs/design-system-positioning--page) for Spacing, Sizing and Flexbox.
 
-<Props of={GridDocs} />
+<ArgsTable of={GridDocs} />
 
 # Credit
 

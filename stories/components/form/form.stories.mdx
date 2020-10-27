@@ -1,14 +1,14 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { Form, TextField, Button } from '../../../src'
 import { FormDocs } from './FormDocs'
 
-<Meta title="Components|Form" component={Form} />
+<Meta title="Components/Form" component={Form} />
 
 # Form
 
 Extends html `form` to add positioning props.
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Form width={1 / 2}>
       <TextField id="standard-name" label="Name" margin="normal" />
@@ -17,10 +17,10 @@ Extends html `form` to add positioning props.
       </Button>
     </Form>
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
 Supports all usual form props and [Positioning props](/components/?path=/docs/design-system-positioning--page).
 
-<Props of={FormDocs} />
+<ArgsTable of={FormDocs} />

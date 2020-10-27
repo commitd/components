@@ -1,28 +1,29 @@
-import React from 'react'
-import { addParameters, addDecorator } from '@storybook/react'
-import committedTheme from './theme.js'
+import { committedLight } from './committed/theme.js'
+import { withTheme } from './committed/withTheme'
 
-import { ThemeProvider } from '../src'
-
-addDecorator(storyFn => <ThemeProvider>{storyFn()}</ThemeProvider>)
-addParameters({
+export const decorators = [withTheme]
+export const parameters = {
   options: {
-    // Currently require here aswell as in manager.js - should be able to remove in 6.0
-    theme: committedTheme,
-    storySort: (a, b) => {
-      if (a[0] === b[0]) {
-        return 0
-      }
-      if (
-        a[1].parameters &&
-        a[1].parameters.order &&
-        b[1].parameters &&
-        b[1].parameters.order
-      ) {
-        return a[1].parameters.order - b[1].parameters.order
-      } else {
-        return a[1].id.localeCompare(b[1].id, { numeric: true })
-      }
-    }
-  }
-})
+    storySort: {
+      order: [
+        'Design System',
+        [
+          'Introduction',
+          'Getting Started',
+          'Design Principles',
+          'Colour',
+          'Typography',
+          'Positioning',
+          'Spacing',
+          'Overview',
+          'Utils',
+          'Status',
+        ],
+        'Components',
+      ],
+    },
+  },
+  docs: {
+    theme: committedLight,
+  },
+}

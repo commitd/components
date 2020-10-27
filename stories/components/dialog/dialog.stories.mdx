@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   Dialog,
   DialogTitle,
@@ -15,7 +15,7 @@ import {
   DialogActionsDocs,
 } from './DialogDocs'
 
-<Meta title="Components|Dialog" component={Dialog} />
+<Meta title="Components/Dialog" component={Dialog} />
 
 # Dialog
 
@@ -25,7 +25,7 @@ Tooltips display extra information when users hover over, focus on, or tap an el
 
 When activated, Tooltips display a text label identifying an element, such as a description of its function.
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [open, setOpen] = React.useState(false)
@@ -67,26 +67,26 @@ When activated, Tooltips display a text label identifying an element, such as a 
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 ## Dialog
 
-<Props of={DialogDocs} />
+<ArgsTable of={DialogDocs} />
 
 ## DialogTitle
 
-<Props of={DialogTitleDocs} />
+<ArgsTable of={DialogTitleDocs} />
 
 ## DialogContent
 
-<Props of={DialogContentDocs} />
+<ArgsTable of={DialogContentDocs} />
 
 ## DialogContentText
 
-<Props of={DialogContentTextDocs} />
+<ArgsTable of={DialogContentTextDocs} />
 
 ## DialogActions
 
-<Props of={DialogActionsDocs} />
+<ArgsTable of={DialogActionsDocs} />

@@ -10,11 +10,11 @@ import {
   FormControl,
   FormLabel,
 } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { RadioDocs } from './RadioDocs'
 import { RadioGroupDocs } from './RadioGroupDocs'
 
-<Meta title="Components|Radio" component={Radio} />
+<Meta title="Components/Radio" component={Radio} />
 
 # Radio
 
@@ -26,7 +26,7 @@ use radio when one option of more then two choices; [further info](https://www.n
 
 Radios should always be used with a `RadioGroup` to handle the state control and layout.
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [value, setValue] = React.useState('female')
@@ -71,11 +71,11 @@ Radios should always be used with a `RadioGroup` to handle the state control and
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Variants
 
-<Preview>
+<Canvas>
   <Story name="variants">
     {React.createElement(() => {
       const [value, setValue] = React.useState('1')
@@ -114,16 +114,16 @@ Radios should always be used with a `RadioGroup` to handle the state control and
       )
     })}
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Support standard html button props.
 
-<Props of={RadioDocs} />
+<ArgsTable of={RadioDocs} />
 
 ## RadioGroup
 
 Supports Spacing and Flexbox [positioning props](/components/?path=/docs/design-system-positioning--page)
 
-<Props of={RadioGroupDocs} />
+<ArgsTable of={RadioGroupDocs} />

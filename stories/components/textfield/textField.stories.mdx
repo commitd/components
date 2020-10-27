@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { Box, From, TextField, Flex, MenuItem } from '../../../src'
 import { TextFieldDocs } from './TextFieldDocs'
 
-<Meta title="Components|TextField" component={TextField} />
+<Meta title="Components/TextField" component={TextField} />
 
 # TextField
 
@@ -12,7 +12,7 @@ Extends [Material UI TextField](https://material-ui.com/components/text-fields/)
 TextFields should be used for data entry. By default we used the outlined variant,
 but others can be used if necessary.
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const currencies = [
@@ -193,10 +193,10 @@ but others can be used if necessary.
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Support standard html span props and all [Positioning Props](/components/?path=/docs/design-system-positioning--page).
 
-<Props of={TextFieldDocs} />
+<ArgsTable of={TextFieldDocs} />

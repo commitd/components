@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   Form,
   FormControl,
@@ -9,7 +9,7 @@ import {
 } from '../../../src'
 import { FormControlDocs } from './FormControlDocs'
 
-<Meta title="Components|FormControl" component={FormControl} />
+<Meta title="Components/FormControl" component={FormControl} />
 
 # FormControl
 
@@ -17,7 +17,7 @@ Extends [Material-UI FormControl](https://material-ui.com/api/form-control/) to 
 
 Where possible prefer [`TextField`](http://localhost:6006/components/?path=/docs/components-textfield--simple).
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Form display="flex" width={1}>
       <FormControl flexGrow={1}>
@@ -29,10 +29,10 @@ Where possible prefer [`TextField`](http://localhost:6006/components/?path=/docs
       </Button>
     </Form>
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
 Supports all usual div aria and html props and [Positioning props](/components/?path=/docs/design-system-positioning--page) for Spacing, Sizing and Flexbox.
 
-<Props of={FormControlDocs} />
+<ArgsTable of={FormControlDocs} />

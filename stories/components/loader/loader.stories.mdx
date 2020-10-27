@@ -1,19 +1,19 @@
 import { Button, Column, Loader } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 
-<Meta title="Components|Loader" component={Loader} />
+<Meta title="Components/Loader" component={Loader} />
 
 # Loader
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Loader color="secondary.dark" />
   </Story>
-</Preview>
+</Canvas>
 
 The loading prop can be used to stop the animation and be used as a static loading indicator
 
-<Preview>
+<Canvas>
   <Story name="loading">
     {() => {
       const [loading, setLoading] = React.useState(false)
@@ -31,23 +31,23 @@ The loading prop can be used to stop the animation and be used as a static loadi
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 The size can be controlled with the `size` prop.
 
-<Preview>
+<Canvas>
   <Story name="small">
     <Loader color="secondary.dark" size={100} />
   </Story>
-</Preview>
+</Canvas>
 
 Omit the `color` to get the default greyscale version.
 
-<Preview>
+<Canvas>
   <Story name="grey">
     <Loader size={200} />
   </Story>
-</Preview>
+</Canvas>
 
 ## Variants
 
@@ -55,48 +55,48 @@ There are some animation variants.
 
 ### Spin
 
-<Preview>
+<Canvas>
   <Story name="spin">
     <Loader variant={'spin'} color="secondary.main" size={200} />
   </Story>
   <Story name="spin grey">
     <Loader variant={'spin'} size={200} />
   </Story>
-</Preview>
+</Canvas>
 
 ### Draw
 
-<Preview>
+<Canvas>
   <Story name="draw">
     <Loader variant={'draw'} color="primary.light" size={200} />
   </Story>
   <Story name="draw grey">
     <Loader variant={'draw'} size={200} />
   </Story>
-</Preview>
+</Canvas>
 
 ### Flip
 
-<Preview>
+<Canvas>
   <Story name="flip">
     <Loader variant={'flip'} color="primary.light" size={200} />
   </Story>
   <Story name="flip grey">
     <Loader variant={'flip'} size={200} />
   </Story>
-</Preview>
+</Canvas>
 
 ### Scale
 
-<Preview>
+<Canvas>
   <Story name="scale">
     <Loader variant={'scale'} color="secondary.light" size={200} />
   </Story>
   <Story name="scale grey">
     <Loader variant={'scale'} size={200} />
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={Loader} />
+<ArgsTable of={Loader} />

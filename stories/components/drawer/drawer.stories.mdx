@@ -20,10 +20,10 @@ import {
   Theme,
   createStyles,
 } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { DrawerDocs } from './DrawerDocs'
 
-<Meta title="Components|Drawer" component={Drawer} />
+<Meta title="Components/Drawer" component={Drawer} />
 
 # Drawer
 
@@ -33,7 +33,7 @@ Drawers provide an extra surface that can be anchored to the left or right of th
 They can be used for navigation or for tools and settings. See [Navigation drawer](https://material.io/components/navigation-drawer/)
 and [side sheet](https://material.io/components/sheets-side/)
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const theme = useTheme()
@@ -116,7 +116,7 @@ and [side sheet](https://material.io/components/sheets-side/)
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 The implementation can be swapped with js to avoid SEO duplication of links.
 
@@ -124,4 +124,4 @@ The implementation can be swapped with js to avoid SEO duplication of links.
 
 Supports standard div aria and event props.
 
-<Props of={DrawerDocs} />
+<ArgsTable of={DrawerDocs} />

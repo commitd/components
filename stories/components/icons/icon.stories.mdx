@@ -1,24 +1,24 @@
 import { Icons, Flex } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { IconsDocs } from './IconsDocs'
 import { Copy } from '../../util/copy'
 
-<Meta title="Components|Icons" component={Icons} />
+<Meta title="Components/Icons" component={Icons} />
 
 # Icon
 
 Extends [Material-UI Icons](https://material-ui.com/components/icons/).
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Icons.Mood />
   </Story>
-</Preview>
+</Canvas>
 
 We use the Sharp set of icons from Material (but drop the sharp from the name title).
 Click to copy the name. Then use `<Icons.Name />`
 
-<Preview>
+<Canvas>
   <Story name="icons">
     {React.createElement(() => {
       const icons = Object.keys(Icons)
@@ -33,10 +33,10 @@ Click to copy the name. Then use `<Icons.Name />`
       )
     })}
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Supports standard `svg` props.
 
-<Props of={IconsDocs} />
+<ArgsTable of={IconsDocs} />

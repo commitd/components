@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   AppBar,
   Avatar,
@@ -27,7 +27,7 @@ import { Background, Overview } from '../util'
 import { ThemeProviderDocs } from './ThemeProviderDocs'
 import deepmerge from 'deepmerge'
 
-<Meta title="Components|ThemeProvider" component={ThemeProvider} />
+<Meta title="Components/ThemeProvider" component={ThemeProvider} />
 
 # ThemeProvider
 
@@ -48,7 +48,7 @@ The choice prop can be used to force either the light or dark theme or to allow 
 
 ### Committed Light
 
-<Preview>
+<Canvas>
   <Story name="light">
     <ThemeProvider choice="light">
       <Background width="1VH">
@@ -56,11 +56,11 @@ The choice prop can be used to force either the light or dark theme or to allow 
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ### Committed Dark
 
-<Preview>
+<Canvas>
   <Story name="dark">
     <ThemeProvider choice="dark">
       <Background width="1VH">
@@ -68,7 +68,7 @@ The choice prop can be used to force either the light or dark theme or to allow 
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Customisation
 
@@ -83,7 +83,7 @@ The optional `createFonts()` prop should either return a `theme.FontOptions` obj
 Custom font stacks can be provided for different typography components. You may need to separately load your font, using imports, links or css; see [example](https://github.com/commitd/components/tree/master/example).
 We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
 
-<Preview>
+<Canvas>
   <Story name="custom-fonts">
     <ThemeProvider
       createFonts={() => {
@@ -110,7 +110,7 @@ We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
       <Button color="primary">Button</Button>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Colours
 
@@ -125,7 +125,7 @@ A full range (50-900) of neutral colours can be specified with palette.grey
 Additionally the committed-theme colors can be specified: palette.brand, the brand color is used in some places instead of the primary.
 Specify the brand the same as primary to return to material styles.
 
-<Preview>
+<Canvas>
   <Story name="custom-colors">
     <ThemeProvider
       createPaletteOptions={() => ({
@@ -158,13 +158,13 @@ Specify the brand the same as primary to return to material styles.
       <Button color="secondary">Custom Secondary Button</Button>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Shape
 
 The optional `createShape()` prop should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
 
-<Preview>
+<Canvas>
   <Story name="custom-shape">
     <ThemeProvider
       createShape={() => ({
@@ -177,7 +177,7 @@ The optional `createShape()` prop should either return material-ui shape options
       <Button color="secondary">Custom Secondary Button</Button>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Spacing
 
@@ -185,7 +185,7 @@ Override the meaning of spacing props. These are dimensionless values given to t
 
 The optional `createSpacing()` prop should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
 
-<Preview>
+<Canvas>
   <Story name="custom-spacing">
     <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
@@ -249,13 +249,13 @@ The optional `createSpacing()` prop should either return [material-ui spacing op
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Typography
 
 The optional `createTypography()` prop should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
 
-<Preview>
+<Canvas>
   <Story name="custom-typography">
     <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
@@ -316,13 +316,13 @@ The optional `createTypography()` prop should either return [material-ui typogra
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Global CSS Overrides
 
 The optional `createOverrides()` prop should either return [material-ui overrides options](https://material-ui.com/customization/globals/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults. It is passed the palette created using the `createPaletteOptions()` prop
 
-<Preview>
+<Canvas>
   <Story name="custom-overrides">
     <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
@@ -371,13 +371,13 @@ The optional `createOverrides()` prop should either return [material-ui override
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Example theme
 
 An example of a theme with all options customised:
 
-<Preview>
+<Canvas>
   <Story name="custom-theme">
     <ThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
@@ -447,8 +447,8 @@ An example of a theme with all options customised:
       </Background>
     </ThemeProvider>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={ThemeProviderDocs} />
+<ArgsTable of={ThemeProviderDocs} />

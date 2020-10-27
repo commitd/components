@@ -1,4 +1,4 @@
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   Table,
   TableBoby,
@@ -19,13 +19,13 @@ import {
   TableSortLabelDocs,
 } from './TableDocs'
 
-<Meta title="Components|Table" component={Table} />
+<Meta title="Components/Table" component={Table} />
 
 # Table
 
 Extends [Material UI Table](https://material-ui.com/components/tables/)
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       function createData(name, calories, fat, carbs, protein) {
@@ -66,11 +66,11 @@ Extends [Material UI Table](https://material-ui.com/components/tables/)
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 Example with footer
 
-<Preview>
+<Canvas>
   <Story name="footer">
     <Table>
       <TableHead>
@@ -109,38 +109,38 @@ Example with footer
       </TableFooter>
     </Table>
   </Story>
-</Preview>
+</Canvas>
 
 # Props
 
 ## Table
 
-<Props of={TableDocs} />
+<ArgsTable of={TableDocs} />
 
 ## TableBody
 
-<Props of={TableBodyDocs} />
+<ArgsTable of={TableBodyDocs} />
 
 ## TableCell
 
-<Props of={TableCellDocs} />
+<ArgsTable of={TableCellDocs} />
 
 ## TableFooter
 
-<Props of={TableFooterDocs} />
+<ArgsTable of={TableFooterDocs} />
 
 ## TableHead
 
-<Props of={TableHeadDocs} />
+<ArgsTable of={TableHeadDocs} />
 
 ## TablePagination
 
-<Props of={TablePaginationDocs} />
+<ArgsTable of={TablePaginationDocs} />
 
 ## TableRow
 
-<Props of={TableRowDocs} />
+<ArgsTable of={TableRowDocs} />
 
 ## TableSortLabel
 
-<Props of={TableSortLabelDocs} />
+<ArgsTable of={TableSortLabelDocs} />

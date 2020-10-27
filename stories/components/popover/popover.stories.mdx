@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Popover, Text, Button } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { PopoverDocs } from './PopoverDocs'
 
-<Meta title="Components|Popover" component={Popover} />
+<Meta title="Components/Popover" component={Popover} />
 
 # Popover
 
@@ -11,7 +11,7 @@ Extends [Material UI Popover](https://material-ui.com/components/popover/)
 
 Popovers can be used to display content ontop of another component.
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [anchorEl, setAnchorEl] = useState(null)
@@ -52,7 +52,7 @@ Popovers can be used to display content ontop of another component.
       )
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ```typescript
 export default function SimplePopover() {
@@ -97,4 +97,4 @@ export default function SimplePopover() {
 
 ## Props
 
-<Props of={PopoverDocs} />
+<ArgsTable of={PopoverDocs} />

@@ -12,11 +12,11 @@ import {
   Column,
   Box,
 } from '../../../src'
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { TypographyDocs } from './TypographyDocs'
 
 <Meta
-  title="Design System|Typography"
+  title="Design System/Typography"
   component={Typography}
   parameters={{ order: 6 }}
 />
@@ -29,7 +29,7 @@ Extends [Material UI Typography](https://material-ui.com/components/typography/)
 By default Typography is a `div`, the alternative classes can be provided using the `component` prop. Also see
 Shorthands below.
 
-<Preview>
+<Canvas>
   <Story name="typography">
     <Column>
       <Typography variant="h1" gutterBottom>
@@ -78,7 +78,7 @@ Shorthands below.
       </Typography>
     </Column>
   </Story>
-</Preview>
+</Canvas>
 
 # Headings
 
@@ -87,7 +87,7 @@ they should be used in line with [best practice](https://developer.mozilla.org/e
 responsive size settings, however the sizes can be set independently using the `fontSize` prop and selecting a responsive list of sizes from theme's
 fontSizes array, `fontSize={[3,4,5]}`.
 
-<Preview>
+<Canvas>
   <Story name="heading">
     <Column>
       <Heading.h1>Heading 1</Heading.h1>
@@ -98,13 +98,13 @@ fontSizes array, `fontSize={[3,4,5]}`.
       <Heading.h6>Heading 6</Heading.h6>
     </Column>
   </Story>
-</Preview>
+</Canvas>
 
 ## Subheadings
 
 A style is supplied for subheading, the layout is dependent on requirements.
 
-<Preview>
+<Canvas>
   <Story name="subheading">
     <Column>
       <Heading.h1>Heading 1</Heading.h1>
@@ -119,7 +119,7 @@ A style is supplied for subheading, the layout is dependent on requirements.
       <Subheading.h5>Subheading 5</Subheading.h5>
     </Column>
   </Story>
-</Preview>
+</Canvas>
 
 ## Styling
 
@@ -130,7 +130,7 @@ These are ignored if the `variant` is supplied.
 
 A sizing scale is provided to customise the size:
 
-<Preview>
+<Canvas>
   <Story name="size">
     <Column>
       <Typography fontSize={-2}>Size -2</Typography>
@@ -144,13 +144,13 @@ A sizing scale is provided to customise the size:
       <Typography fontSize={6}>Size 6</Typography>
     </Column>
   </Story>
-</Preview>
+</Canvas>
 
 ### Alignment
 
 The `align` prop can be used to set the text alignment.
 
-<Preview>
+<Canvas>
   <Story name="alignment">
     <Column>
       <Text align="left">Left</Text>
@@ -158,14 +158,14 @@ The `align` prop can be used to set the text alignment.
       <Text align="right">Right</Text>
     </Column>
   </Story>
-</Preview>
+</Canvas>
 
 ### Variations
 
 If you do not use a `variant` prop then there are other props that can be used to customize the apperance.
 Examples are shown below.
 
-<Preview>
+<Canvas>
   <Story name="variations">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
@@ -202,11 +202,11 @@ Examples are shown below.
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 To use alternative font style in only is certain places `Text` can be used and the font stack supplied in the [ThemeProvider](/components/?path=/docs/components-themeprovider--default-story).
 
-<Preview>
+<Canvas>
   <Story name="text">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
@@ -243,11 +243,11 @@ To use alternative font style in only is certain places `Text` can be used and t
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 To use these inline, add the span component.
 
-<Preview>
+<Canvas>
   <Story name="inline text">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
@@ -306,13 +306,13 @@ To use these inline, add the span component.
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ### Shorthand
 
 Shorthand components are avaialble for the font variants `Text`, `Caption` and `Monospace` and for inner component types `span` and `p`.
 
-<Preview>
+<Canvas>
   <Story name="shorthand">
     <Flex justifyContent="space-around" flexWrap="wrap" alignItems="baseline">
       <Box width={1 / 5} p={3}>
@@ -332,7 +332,7 @@ Shorthand components are avaialble for the font variants `Text`, `Caption` and `
       </Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Alternatives
 
@@ -345,7 +345,7 @@ or engaging enough. Say a help page.
 Traditional heading elements are designed to work best in the main page content.
 When you need a heading to stand out, consider using a display heading: a larger, slightly more opinionated heading style.
 
-<Preview>
+<Canvas>
   <Story name="display">
     <Column>
       <Display.d1>Display 1</Display.d1>
@@ -356,10 +356,10 @@ When you need a heading to stand out, consider using a display heading: a larger
       <Display.d6>Display 6</Display.d6>
     </Column>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 Main props for `Typography`, `Text`, `Span` and `Paragraph`.
 
-<Props of={TypographyDocs} />
+<ArgsTable of={TypographyDocs} />
