@@ -1,4 +1,3 @@
-import React from 'react'
 import MaterialCard, {
   CardProps as MaterialCardProps,
 } from '@material-ui/core/Card'
@@ -6,7 +5,9 @@ import CardActionArea, {
   CardActionAreaProps,
 } from '@material-ui/core/CardActionArea'
 import CardActions, { CardActionsProps } from '@material-ui/core/CardActions'
-import CardContent, { CardContentProps } from '@material-ui/core/CardContent'
+import MaterialCardContent, {
+  CardContentProps,
+} from '@material-ui/core/CardContent'
 import MaterialCardHeader, {
   CardHeaderProps as MaterialCardHeaderProps,
 } from '@material-ui/core/CardHeader'
@@ -15,12 +16,17 @@ import MaterialCardMedia, {
 } from '@material-ui/core/CardMedia'
 import { styled } from '@material-ui/styles'
 import { palette, PaletteProps } from '@material-ui/system'
-import { withPositioning, PositioningProps } from '../../internal/positioning'
-import { SizingProps, withSizing } from '../../internal'
+import React from 'react'
+import {
+  SizingProps,
+  withSizing,
+  withWrapper,
+  WithWrapperProps,
+} from '../../internal'
 
-export type CardProps = MaterialCardProps & PositioningProps
+export type CardProps = MaterialCardProps & WithWrapperProps
 
-export const Card: React.ComponentType<CardProps> = withPositioning<
+export const Card: React.ComponentType<CardProps> = withWrapper<
   MaterialCardProps
 >(MaterialCard)
 
@@ -44,5 +50,9 @@ export const CardMedia: React.ComponentType<CardMediaProps> = withSizing(
   MaterialCardMedia
 )
 
-export { CardContent, CardActionArea, CardActions }
+export const CardContent: React.ComponentType<CardContentProps> = withSizing(
+  MaterialCardContent
+)
+
+export { CardActionArea, CardActions }
 export type { CardContentProps, CardActionAreaProps, CardActionsProps }
