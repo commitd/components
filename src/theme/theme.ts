@@ -163,6 +163,12 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
       outlinedSecondary: {},
       disabled: {},
     },
+    MuiBackdrop: {
+      root: {
+        zIndex: 1201, //zIndex.drawer + 1,
+        color: palette.grey[500],
+      },
+    },
     MuiCheckbox: {
       root: {
         color: palette.grey[500],

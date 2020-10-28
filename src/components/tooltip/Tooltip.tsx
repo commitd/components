@@ -2,7 +2,7 @@ import React from 'react'
 import MaterialTooltip, {
   TooltipProps as MaterialTooltipProps,
 } from '@material-ui/core/Tooltip'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '../../styles'
 import { Theme } from '../../theme'
 
 export type TooltipProps = MaterialTooltipProps

@@ -1,62 +1,152 @@
-// Direct from material-ui
-import Badge from '@material-ui/core/Badge'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
-import Collapse from '@material-ui/core/Collapse'
-import Container from '@material-ui/core/Container'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Drawer from '@material-ui/core/Drawer'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormLabel from '@material-ui/core/FormLabel'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import Grow from '@material-ui/core/Grow'
-import Hidden from '@material-ui/core/Hidden'
-import Input from '@material-ui/core/Input'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import InputLabel from '@material-ui/core/InputLabel'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import MenuList from '@material-ui/core/MenuList'
-import MobileStepper from '@material-ui/core/MobileStepper'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import Paper from '@material-ui/core/Paper'
-import Popover from '@material-ui/core/Popover'
-import Radio from '@material-ui/core/Radio'
-import Snackbar from '@material-ui/core/Snackbar'
-import SnackbarContent from '@material-ui/core/SnackbarContent'
-import Step from '@material-ui/core/Step'
-import StepButton from '@material-ui/core/StepButton'
-import StepConnector from '@material-ui/core/StepConnector'
-import StepContent from '@material-ui/core/StepContent'
-import StepIcon from '@material-ui/core/StepIcon'
-import StepLabel from '@material-ui/core/StepLabel'
-import Stepper from '@material-ui/core/Stepper'
-import Tab from '@material-ui/core/Tab'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableFooter from '@material-ui/core/TableFooter'
-import TableHead from '@material-ui/core/TableHead'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
-import TableSortLabel from '@material-ui/core/TableSortLabel'
-import Tabs from '@material-ui/core/Tabs'
-import Toolbar from '@material-ui/core/Toolbar'
+export {
+  Accordion,
+  AccordionActions,
+  AccordionDetails,
+  AccordionSummary,
+  Backdrop,
+  Badge,
+  Breadcrumbs,
+  ButtonGroup,
+  CircularProgress,
+  ClickAwayListener,
+  Collapse,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Drawer,
+  Fab,
+  Fade,
+  FormControlLabel,
+  FormLabel,
+  FormGroup,
+  FormHelperText,
+  Grow,
+  Hidden,
+  Input,
+  InputAdornment,
+  InputLabel,
+  LinearProgress,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  ListSubheader,
+  Menu,
+  MenuItem,
+  MenuList,
+  MobileStepper,
+  NoSsr,
+  OutlinedInput,
+  Paper,
+  Popover,
+  Portal,
+  Radio,
+  Snackbar,
+  SnackbarContent,
+  Step,
+  StepButton,
+  StepConnector,
+  StepContent,
+  StepIcon,
+  StepLabel,
+  Stepper,
+  SwipeableDrawer,
+  Tab,
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel,
+  Tabs,
+  TextareaAutosize,
+  Toolbar,
+  Zoom,
+  useMediaQuery,
+  useScrollTrigger,
+} from '@material-ui/core'
+
+export * from '@material-ui/core/utils'
+
+export type {
+  AccordionProps,
+  AccordionActionsProps,
+  AccordionDetailsProps,
+  AccordionSummaryProps,
+  BackdropProps,
+  BadgeProps,
+  BreadcrumbsProps,
+  ButtonGroupProps,
+  CircularProgressProps,
+  ClickAwayListenerProps,
+  CollapseProps,
+  ContainerProps,
+  DialogProps,
+  DialogActionsProps,
+  DialogContentProps,
+  DialogContentTextProps,
+  DialogTitleProps,
+  DrawerProps,
+  FabProps,
+  FadeProps,
+  FormControlLabelProps,
+  FormLabelProps,
+  FormGroupProps,
+  FormHelperTextProps,
+  GrowProps,
+  HiddenProps,
+  InputProps,
+  InputAdornmentProps,
+  InputLabelProps,
+  LinearProgressProps,
+  ListProps,
+  ListItemProps,
+  ListItemAvatarProps,
+  ListItemIconProps,
+  ListItemSecondaryActionProps,
+  ListItemTextProps,
+  ListSubheaderProps,
+  MenuProps,
+  MenuItemProps,
+  MenuListProps,
+  NoSsrProps,
+  OutlinedInputProps,
+  PaperProps,
+  PopoverProps,
+  PortalProps,
+  MobileStepperProps,
+  RadioProps,
+  SnackbarProps,
+  SnackbarContentProps,
+  StepProps,
+  StepButtonProps,
+  StepConnectorProps,
+  StepContentProps,
+  StepIconProps,
+  StepLabelProps,
+  StepperProps,
+  SwipeableDrawerProps,
+  TabProps,
+  TableProps,
+  TableBodyProps,
+  TableCellProps,
+  TableFooterProps,
+  TableHeadProps,
+  TablePaginationProps,
+  TableRowProps,
+  TableSortLabelProps,
+  TabsProps,
+  TextareaAutosizeProps,
+  ToolbarProps,
+  ZoomProps,
+} from '@material-ui/core'
 
 export { AppBar } from './appbar/AppBar'
 export type { AppBarProps } from './appbar/AppBar'
@@ -137,123 +227,3 @@ export { Tooltip } from './tooltip/Tooltip'
 export type { TooltipProps } from './tooltip/Tooltip'
 export { Typography } from './typography/Typography'
 export type { TypographyProps } from './typography/Typography'
-
-export {
-  Badge,
-  Breadcrumbs,
-  ButtonGroup,
-  CircularProgress,
-  ClickAwayListener,
-  Collapse,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Drawer,
-  FormControlLabel,
-  FormLabel,
-  FormGroup,
-  FormHelperText,
-  Grow,
-  Hidden,
-  Input,
-  InputAdornment,
-  InputLabel,
-  LinearProgress,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-  ListSubheader,
-  Menu,
-  MenuItem,
-  MenuList,
-  MobileStepper,
-  OutlinedInput,
-  Paper,
-  Popover,
-  Radio,
-  Snackbar,
-  SnackbarContent,
-  Step,
-  StepButton,
-  StepConnector,
-  StepContent,
-  StepIcon,
-  StepLabel,
-  Stepper,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TableSortLabel,
-  Tabs,
-  Toolbar,
-}
-
-export type { BadgeProps } from '@material-ui/core/Badge'
-export type { BreadcrumbsProps } from '@material-ui/core/Breadcrumbs'
-export type { ButtonGroupProps } from '@material-ui/core/ButtonGroup'
-export type { CircularProgressProps } from '@material-ui/core/CircularProgress'
-export type { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener'
-export type { CollapseProps } from '@material-ui/core/Collapse'
-export type { ContainerProps } from '@material-ui/core/Container'
-export type { DialogProps } from '@material-ui/core/Dialog'
-export type { DialogActionsProps } from '@material-ui/core/DialogActions'
-export type { DialogContentProps } from '@material-ui/core/DialogContent'
-export type { DialogContentTextProps } from '@material-ui/core/DialogContentText'
-export type { DialogTitleProps } from '@material-ui/core/DialogTitle'
-export type { DrawerProps } from '@material-ui/core/Drawer'
-export type { FormControlLabelProps } from '@material-ui/core/FormControlLabel'
-export type { FormLabelProps } from '@material-ui/core/FormLabel'
-export type { FormGroupProps } from '@material-ui/core/FormGroup'
-export type { FormHelperTextProps } from '@material-ui/core/FormHelperText'
-export type { GrowProps } from '@material-ui/core/Grow'
-export type { HiddenProps } from '@material-ui/core/Hidden'
-export type { InputProps } from '@material-ui/core/Input'
-export type { InputAdornmentProps } from '@material-ui/core/InputAdornment'
-export type { InputLabelProps } from '@material-ui/core/InputLabel'
-export type { LinearProgressProps } from '@material-ui/core/LinearProgress'
-export type { ListProps } from '@material-ui/core/List'
-export type { ListItemProps } from '@material-ui/core/ListItem'
-export type { ListItemAvatarProps } from '@material-ui/core/ListItemAvatar'
-export type { ListItemIconProps } from '@material-ui/core/ListItemIcon'
-export type { ListItemSecondaryActionProps } from '@material-ui/core/ListItemSecondaryAction'
-export type { ListItemTextProps } from '@material-ui/core/ListItemText'
-export type { ListSubheaderProps } from '@material-ui/core/ListSubheader'
-export type { MenuProps } from '@material-ui/core/Menu'
-export type { MenuItemProps } from '@material-ui/core/MenuItem'
-export type { MenuListProps } from '@material-ui/core/MenuList'
-export type { OutlinedInputProps } from '@material-ui/core/OutlinedInput'
-export type { PaperProps } from '@material-ui/core/Paper'
-export type { PopoverProps } from '@material-ui/core/Popover'
-export type { MobileStepperProps } from '@material-ui/core/MobileStepper'
-export type { RadioProps } from '@material-ui/core/Radio'
-export type { SnackbarProps } from '@material-ui/core/Snackbar'
-export type { SnackbarContentProps } from '@material-ui/core/SnackbarContent'
-export type { StepProps } from '@material-ui/core/Step'
-export type { StepButtonProps } from '@material-ui/core/StepButton'
-export type { StepConnectorProps } from '@material-ui/core/StepConnector'
-export type { StepContentProps } from '@material-ui/core/StepContent'
-export type { StepIconProps } from '@material-ui/core/StepIcon'
-export type { StepLabelProps } from '@material-ui/core/StepLabel'
-export type { StepperProps } from '@material-ui/core/Stepper'
-export type { TabProps } from '@material-ui/core/Tab'
-export type { TableProps } from '@material-ui/core/Table'
-export type { TableBodyProps } from '@material-ui/core/TableBody'
-export type { TableCellProps } from '@material-ui/core/TableCell'
-export type { TableFooterProps } from '@material-ui/core/TableFooter'
-export type { TableHeadProps } from '@material-ui/core/TableHead'
-export type { TablePaginationProps } from '@material-ui/core/TablePagination'
-export type { TableRowProps } from '@material-ui/core/TableRow'
-export type { TableSortLabelProps } from '@material-ui/core/TableSortLabel'
-export type { TabsProps } from '@material-ui/core/Tabs'
-export type { ToolbarProps } from '@material-ui/core/Toolbar'

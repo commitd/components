@@ -11,7 +11,7 @@ import {
   TableCell,
 } from '../components'
 import { Theme } from '../theme'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '../styles'
 
 // export shortcodes for convenience
 import * as allComponents from '../components'

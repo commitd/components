@@ -2,7 +2,7 @@ import React from 'react'
 import MaterialCheckbox, {
   CheckboxProps as MaterialCheckboxProps,
 } from '@material-ui/core/Checkbox'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '../../styles'
 import { Box } from '../box/Box'
 export type CheckboxProps = MaterialCheckboxProps
 

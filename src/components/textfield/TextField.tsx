@@ -3,7 +3,7 @@ import { withWrapper, WithWrapperProps } from '../../internal'
 import MaterialTextField, {
   TextFieldProps as MaterialTextFieldProps,
 } from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '../../styles'
 
 export type TextFieldProps = Omit<MaterialTextFieldProps, 'variant'> &
   WithWrapperProps

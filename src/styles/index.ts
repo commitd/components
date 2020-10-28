@@ -5,7 +5,6 @@ import {
   ThemedComponentProps,
   useTheme as materialUseTheme,
   withTheme as materialWithTheme,
-  WithTheme,
 } from '@material-ui/styles'
 import {
   ClassNameMap,
@@ -16,9 +15,15 @@ import {
 } from '@material-ui/styles/withStyles'
 import { ConsistentWith, Omit, Overwrite } from '@material-ui/types'
 import { Theme as CommittedTheme } from '../theme'
-export { createStyles } from '@material-ui/styles'
-// Override material exports as required to reflect committed theme
+export { createStyles } from '@material-ui/core/styles'
+export {
+  default as createPalette,
+  Palette,
+  PaletteColor,
+} from '@material-ui/core/styles/createPalette'
 export { useWidth } from './useWidth'
+
+// Override material exports as required to reflect committed theme
 
 /**
  * @internal
@@ -39,6 +44,16 @@ export type ComponentCreator<Component extends React.ElementType> = <
     StyledComponentProps<'root'> &
     Overwrite<Props, { className?: string; theme?: Theme }>
 >
+
+export interface WithTheme<Theme = CommittedTheme> {
+  theme: Theme
+  /**
+   * Deprecated. Will be removed in v5. Refs are now automatically forwarded to
+   * the inner component.
+   * @deprecated since version 4.0
+   */
+  innerRef?: React.Ref<any>
+}
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export function styled<Component extends React.ElementType>(

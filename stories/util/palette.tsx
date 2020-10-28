@@ -1,12 +1,15 @@
 import React from 'react'
-import { withTheme } from '@material-ui/styles'
 
 import { Color } from './colors'
-import { Flex, Box, Heading, Theme } from '../../src'
 import {
+  Flex,
+  Box,
+  Heading,
+  Theme,
+  withTheme,
   Palette as CreatePalette,
   PaletteColor,
-} from '@material-ui/core/styles/createPalette'
+} from '../../src'
 
 type PaletteKeys = keyof CreatePalette
 
@@ -16,7 +19,7 @@ export interface PaletteProps {
   width?: number
 }
 
-export const Palette = withTheme<PaletteProps, any>(
+export const Palette = withTheme<React.FC<PaletteProps>>(
   ({ name, theme, width = 1 / 3 }: PaletteProps) => {
     const colors = theme.palette[name] as PaletteColor
     return (
