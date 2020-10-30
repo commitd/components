@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { Pagination, PaginationItem } from '../../../src'
+
+<Meta title="Labs/Pagination" component={Pagination} />
+
+# ⚠ Pagination
+
+Re-exports [Material UI Lab Pagination](https://material-ui.com/components/pagination/).
+To use you must also have the peer dependency `@material-ui/lab` installed.
+
+<Canvas>
+  <Story name="default">
+    <Pagination count={10} />
+    <Pagination count={10} color="primary" />
+    <Pagination count={10} color="secondary" />
+    <Pagination count={10} disabled />
+  </Story>
+</Canvas>
+
+# Props
+
+Supports standard positioning, html aria and event props for a `div`.
+
+## Main props
+
+<ArgsTable of={Pagination} />
+
+<ArgsTable of={PaginationItem} />

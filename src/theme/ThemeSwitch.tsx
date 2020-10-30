@@ -4,7 +4,7 @@ import React from 'react'
 import { IconButton } from '../components/iconbutton/IconButton'
 import { Icons } from '../components/icons/Icons'
 import { Logo } from '../components/logo/Logo'
-import { PositioningProps, withPositioning } from '../internal'
+import { PositioningProps, withPositioningProps } from '../internal'
 import { Theme } from './'
 import { ThemeChoice } from './theme'
 import { useThemeController } from './ThemeProvider'
@@ -146,6 +146,6 @@ const Toggle = ({
   )
 }
 
-export const ThemeSwitch: React.ComponentType<ThemeSwitchProps> = withPositioning<
+export const ThemeSwitch: React.ComponentType<ThemeSwitchProps> = withPositioningProps<
   BaseThemeSwitchProps
 >(Toggle)

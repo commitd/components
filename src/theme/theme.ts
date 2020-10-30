@@ -122,6 +122,12 @@ export const createCommittedShape = () => ({
 
 export const baseCommittedOverrides = (palette: Palette): Overrides => {
   return {
+    MuiAlert: {
+      root: {
+        marginTop: '8px',
+        marginBottom: '8px',
+      },
+    },
     MuiButton: {
       root: {
         textTransform: 'none',

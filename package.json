@@ -1,5 +1,5 @@
 {
-  "version": "3.2.1",
+  "version": "4.0.0",
   "name": "@committed/components",
   "description": "Committed Component Library",
   "author": "Committed",
@@ -38,6 +38,7 @@
   "peerDependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
   },
@@ -66,6 +67,7 @@
     "@compositor/kit": "^1.0.47",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@size-limit/preset-small-lib": "^4.6.2",
     "@storybook/addon-actions": "^6.0.27",
     "@storybook/addon-docs": "^6.0.27",

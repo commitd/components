@@ -172,6 +172,8 @@ export { Caption } from './typography/Caption'
 export type { CaptionProps } from './typography/Caption'
 export { Checkbox } from './checkbox/Checkbox'
 export type { CheckboxProps } from './checkbox/Checkbox'
+export { CheckToken } from './checktoken/CheckToken'
+export type { CheckTokenProps } from './checktoken/CheckToken'
 export { Chip } from './chip/Chip'
 export type { ChipProps } from './chip/Chip'
 export { CodeStyle } from './codestyle/CodeStyle'
@@ -203,6 +205,8 @@ export { Logo } from './logo/Logo'
 export type { LogoProps } from './logo/Logo'
 export { Monospace } from './typography/Monospace'
 export type { MonospaceProps } from './typography/Monospace'
+export { Pagination } from './pagination/Pagination'
+export type { PaginationProps } from './pagination/Pagination'
 export { Paragraph } from './typography/Typography'
 export type { ParagraphProps } from './typography/Typography'
 export { RadioGroup } from './radio/RadioGroup'
@@ -227,3 +231,41 @@ export { Tooltip } from './tooltip/Tooltip'
 export type { TooltipProps } from './tooltip/Tooltip'
 export { Typography } from './typography/Typography'
 export type { TypographyProps } from './typography/Typography'
+
+// Optional Material labs exports
+
+export {
+  Alert,
+  Autocomplete,
+  useAutocomplete,
+  PaginationItem,
+  Skeleton,
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineItem,
+  TimelineOppositeContent,
+  TimelineSeparator,
+  ToggleButton,
+  ToggleButtonGroup,
+  TreeView,
+  TreeItem,
+} from '@material-ui/lab'
+export type {
+  AlertProps,
+  AutocompleteProps,
+  PaginationItemProps,
+  SkeletonProps,
+  TimelineProps,
+  TimelineConnectorProps,
+  TimelineContentProps,
+  TimelineDotProps,
+  TimelineItemProps,
+  TimelineOppositeContentProps,
+  TimelineSeparatorProps,
+  ToggleButtonProps,
+  ToggleButtonGroupProps,
+  TreeViewProps,
+  TreeItemProps,
+} from '@material-ui/lab'

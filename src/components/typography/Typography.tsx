@@ -3,7 +3,7 @@ import { styled } from '@material-ui/styles'
 import MaterialTypography, {
   TypographyProps as MaterialTypographyProps,
 } from '@material-ui/core/Typography'
-import { withPositioning, PositioningProps } from '../../internal'
+import { withPositioningProps, PositioningProps } from '../../internal'
 import { fonts, Theme, theme } from '../../theme'
 
 type BaseTypographyProps<C extends React.ElementType> = MaterialTypographyProps<
@@ -12,7 +12,7 @@ type BaseTypographyProps<C extends React.ElementType> = MaterialTypographyProps<
 > &
   PositioningProps
 
-const BaseTypography = withPositioning<MaterialTypographyProps>(
+const BaseTypography = withPositioningProps<MaterialTypographyProps>(
   MaterialTypography
 )
 

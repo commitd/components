@@ -1,12 +1,12 @@
 import React from 'react'
-import { withWrapper, WithWrapperProps } from '../../internal'
+import { withBoxProps, BoxProps } from '../../internal'
 import MaterialTextField, {
   TextFieldProps as MaterialTextFieldProps,
 } from '@material-ui/core/TextField'
 import { makeStyles } from '../../styles'
 
-export type TextFieldProps = Omit<MaterialTextFieldProps, 'variant'> &
-  WithWrapperProps
+export type CommittedTextFieldProps = Omit<MaterialTextFieldProps, 'variant'>
+export type TextFieldProps = CommittedTextFieldProps & BoxProps
 
 const useStyles = makeStyles((theme) => {
   const borderColor =
@@ -59,35 +59,38 @@ const useStyles = makeStyles((theme) => {
   }
 })
 
-function CommittedTextField(props: TextFieldProps) {
-  const classes = useStyles()
+const CommittedTextField: React.FC<CommittedTextFieldProps> = React.forwardRef(
+  (props, ref) => {
+    const classes = useStyles()
 
-  const inputProps = Object.assign(
-    {},
-    {
-      classes,
-      disableUnderline: true,
-    },
-    props.InputProps || {}
-  )
+    const inputProps = Object.assign(
+      {},
+      {
+        classes,
+        disableUnderline: true,
+      },
+      props.InputProps || {}
+    )
 
-  const inputLabelProps = Object.assign(
-    {},
-    { shrink: true },
-    props.InputLabelProps || {}
-  )
+    const inputLabelProps = Object.assign(
+      {},
+      { shrink: true },
+      props.InputLabelProps || {}
+    )
 
-  return (
-    <MaterialTextField
-      InputProps={inputProps}
-      InputLabelProps={inputLabelProps}
-      variant="filled"
-      fullWidth={true}
-      {...props}
-    />
-  )
-}
+    return (
+      <MaterialTextField
+        ref={ref}
+        InputProps={inputProps}
+        InputLabelProps={inputLabelProps}
+        variant="filled"
+        fullWidth={true}
+        {...props}
+      />
+    )
+  }
+)
 
-export const TextField: React.ComponentType<TextFieldProps> = withWrapper<
-  MaterialTextFieldProps
->(CommittedTextField)
+export const TextField = withBoxProps<CommittedTextFieldProps>(
+  CommittedTextField
+)

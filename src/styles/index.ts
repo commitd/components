@@ -16,6 +16,7 @@ import {
 import { ConsistentWith, Omit, Overwrite } from '@material-ui/types'
 import { Theme as CommittedTheme } from '../theme'
 export { createStyles } from '@material-ui/core/styles'
+export * from '@material-ui/core/styles/colorManipulator'
 export {
   default as createPalette,
   Palette,

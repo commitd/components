@@ -1,7 +1,5 @@
-export * from './wrapper'
+export * from './wrappers'
 export * from './noopener'
-export * from './positioning'
-export * from './sizing'
 export { gridcontainer } from './gridcontainer'
 export { griditem } from './griditem'
 export type { GridcontinerProps } from './gridcontainer'

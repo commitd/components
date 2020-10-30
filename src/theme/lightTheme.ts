@@ -1,4 +1,4 @@
-import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
+import { fade, lighten, darken } from '../styles'
 import {
   Palette,
   PaletteColor,
@@ -153,27 +153,30 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
         },
       },
       outlinedPrimary: {
-        backgroundColor: lightLightVery(palette.brand),
-        '&:hover': {
-          backgroundColor: lightLight(palette.brand),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(lightLightVery(palette.brand)),
-          borderColor: addTransparency(palette.primary.main),
-        },
-      },
-      outlinedSecondary: {
         color: palette.secondary.dark,
-        backgroundColor: mainLight(palette.primary),
+        backgroundColor: palette.primary.light,
+        borderColor: palette.primary.main,
         '&:hover': {
-          backgroundColor: lighten(
-            mainLight(palette.primary),
-            action.hoverOpacity
-          ),
+          backgroundColor: darken(palette.primary.main, action.hoverOpacity),
+          borderColor: palette.primary.main,
         },
         '&$disabled': {
           backgroundColor: addTransparency(mainLight(palette.primary)),
           borderColor: addTransparency(palette.secondary.main),
+        },
+      },
+      outlinedSecondary: {
+        color: palette.primary.dark,
+        borderColor: palette.primary.main,
+        backgroundColor: lightLightVery(palette.brand),
+        '&:hover': {
+          backgroundColor: lightLight(palette.brand),
+          borderColor: palette.primary.main,
+        },
+        '&$disabled': {
+          color: addTransparency(palette.primary.dark),
+          backgroundColor: addTransparency(lightLightVery(palette.brand)),
+          borderColor: addTransparency(palette.primary.main),
         },
       },
     },
