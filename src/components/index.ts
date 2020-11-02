@@ -3,7 +3,6 @@ export {
   AccordionActions,
   AccordionDetails,
   AccordionSummary,
-  Backdrop,
   Badge,
   Breadcrumbs,
   ButtonGroup,
@@ -73,14 +72,13 @@ export {
   useScrollTrigger,
 } from '@material-ui/core'
 
-export * from '@material-ui/core/utils'
+export { capitalize, debounce, isMuiElement } from '@material-ui/core/utils'
 
 export type {
   AccordionProps,
   AccordionActionsProps,
   AccordionDetailsProps,
   AccordionSummaryProps,
-  BackdropProps,
   BadgeProps,
   BreadcrumbsProps,
   ButtonGroupProps,
@@ -154,6 +152,8 @@ export { Avatar } from './avatar/Avatar'
 export type { AvatarProps } from './avatar/Avatar'
 export { Box } from './box/Box'
 export type { BoxProps } from './box/Box'
+export { Backdrop } from './backdrop/Backdrop'
+export type { BackdropProps } from './backdrop/Backdrop'
 export { Button } from './button/Button'
 export type { ButtonProps } from './button/Button'
 export { Card } from './card/Card'
@@ -195,8 +195,6 @@ export { Heading } from './typography/Heading'
 export type { HeadingProps } from './typography/Heading'
 export { IconButton } from './iconbutton/IconButton'
 export type { IconButtonProps } from './iconbutton/IconButton'
-export { Icons } from './icons/Icons'
-export type { IconProps } from './icons/Icons'
 export { Link } from './link/Link'
 export type { LinkProps } from './link/Link'
 export { Loader } from './loader/Loader'

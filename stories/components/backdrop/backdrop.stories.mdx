@@ -22,7 +22,7 @@ Re-exports [Material UI AppBar](https://material-ui.com/components/backdrop/).
           <Button variant="outlined" color="primary" onClick={handleOpen}>
             Show backdrop
           </Button>
-          <Backdrop open={open} onClick={handleClose}>
+          <Backdrop zIndex="modal" open={open} onClick={handleClose}>
             <Loader variant="spin" />
           </Backdrop>
         </>

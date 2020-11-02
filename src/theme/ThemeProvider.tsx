@@ -27,15 +27,15 @@ import {
   createCommittedLightPaletteOptions,
 } from './lightTheme'
 import {
+  createCommittedFontSizing,
   createCommittedFonts,
   createCommittedShape,
   createCommittedSpacing,
   createCommittedTypography,
-  FontOptions,
-  ThemeChoice,
 } from './theme'
 import { ThemeController, ThemeContext } from './ThemeController'
 import { augmentColor } from './themeMaterialUtil'
+import { FontSizing, FontOptions, ThemeChoice } from './types'
 
 export interface ThemeProps {
   /**
@@ -72,6 +72,8 @@ export interface ThemeProps {
    * Should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
    */
   createSpacing: () => SpacingOptions | undefined
+
+  createFontSizing: () => FontSizing | undefined
   /**
    * Should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
    */
@@ -110,6 +112,7 @@ const createTheme = ({
   createFonts,
   createShape,
   createSpacing,
+  createFontSizing,
   createTypography,
 }: ThemeProps) => {
   const paletteOptions = createPaletteOptions() || {}
@@ -144,10 +147,15 @@ const createTheme = ({
   if (spacing !== undefined) {
     themeOptions.spacing = spacing
   }
+  const fontSizing = createFontSizing()
+  if (fontSizing !== undefined) {
+    themeOptions.fontSizing = fontSizing
+  }
   const typography = createTypography()
   if (typography !== undefined) {
     themeOptions.typography = typography
   }
+
   const overrides = createOverrides(palette)
   if (overrides !== undefined) {
     themeOptions.overrides = overrides
@@ -169,6 +177,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
   createPaletteOptions,
   createOverrides,
   createFonts = createCommittedFonts,
+  createFontSizing = createCommittedFontSizing,
   createShape = createCommittedShape,
   createSpacing = createCommittedSpacing,
   createTypography = createCommittedTypography,
@@ -187,6 +196,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
     },
     {
       createFonts,
+      createFontSizing,
       createShape,
       createSpacing,
       createTypography,
@@ -205,6 +215,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
     },
     {
       createFonts,
+      createFontSizing,
       createShape,
       createSpacing,
       createTypography,

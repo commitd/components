@@ -2,10 +2,9 @@ import React from 'react'
 import MaterialAvatar, {
   AvatarProps as MaterialAvatarProps,
 } from '@material-ui/core/Avatar'
-import { styled } from '@material-ui/styles'
+import { styled, compose } from '../../styles'
 import {
   style,
-  compose,
   spacing,
   flexbox,
   SpacingProps,

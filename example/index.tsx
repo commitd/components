@@ -4,6 +4,9 @@ import 'typeface-lato'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as C from '../dist'
+import { useThemeController } from '../dist'
+import CallSharp from '@material-ui/icons/CallSharp'
+import EmailSharp from '@material-ui/icons/EmailSharp'
 import logoLight from './images/Committed - Yellow Trans-128px.png'
 import logoDark from './images/Committed - Black-128px.png'
 
@@ -72,7 +75,7 @@ const Content = () => (
 )
 
 const Logo = () => {
-  const [choice] = C.useThemeController()
+  const [choice] = useThemeController()
   const logo = choice == 'light' ? logoLight : logoDark
   return <img width="128px" src={logo} alt="Committed Logo" />
 }
@@ -101,13 +104,13 @@ const Footer = () => (
     <C.Column>
       <C.Flex p={3}>
         <C.Box p={1} color="secondary.dark">
-          <C.Icons.Call />
+          <CallSharp />
         </C.Box>
         <C.Text p={1}>(+44) 01242 220 347</C.Text>
       </C.Flex>
       <C.Flex p={3}>
         <C.Box p={1} color="secondary.dark">
-          <C.Icons.Email />
+          <EmailSharp />
         </C.Box>
         <C.Text p={1}>contct@committed.io</C.Text>
       </C.Flex>

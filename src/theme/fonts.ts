@@ -1,3 +1,4 @@
+import { FontSizing } from './types'
 export const size = 16
 
 export const sizes = {
@@ -10,6 +11,16 @@ export const sizes = {
   4: '2.074rem',
   5: '2.488rem',
   6: '2.9856rem',
+}
+
+export const sizing: FontSizing = (factor: number) => {
+  // should be an int, but just incase
+  var index = Math.floor(factor) as -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6
+  if (index < -2) index = -2
+  if (index > 6) {
+    index = 6
+  }
+  return sizes[index]
 }
 
 const systemFont =

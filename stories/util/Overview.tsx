@@ -1,5 +1,6 @@
 import React from 'react'
 import * as C from '../../src'
+import { Icons } from '../util/Icons'
 import commmitImage from '../../public/images/Avatar1-YellowTrans-32px.png'
 
 export const Overview = () => (
@@ -73,16 +74,16 @@ export const Overview = () => (
         justifyContent="space-evenly"
       >
         <C.IconButton aria-label="delete">
-          <C.Icons.Delete />
+          <Icons.Delete />
         </C.IconButton>
         <C.IconButton aria-label="delete" disabled color="primary">
-          <C.Icons.Delete />
+          <Icons.Delete />
         </C.IconButton>
         <C.IconButton color="secondary" aria-label="add an alarm">
-          <C.Icons.Alarm />
+          <Icons.Alarm />
         </C.IconButton>
         <C.IconButton color="primary" aria-label="add to shopping cart">
-          <C.Icons.AddShoppingCart />
+          <Icons.AddShoppingCart />
         </C.IconButton>
       </C.Card>
       <C.Caption>
@@ -100,22 +101,22 @@ export const Overview = () => (
       >
         <C.Badge badgeContent={'default'}>
           <C.IconButton>
-            <C.Icons.Mail />
+            <Icons.Mail />
           </C.IconButton>
         </C.Badge>
         <C.Badge color="primary" badgeContent={4}>
           <C.IconButton>
-            <C.Icons.Mail />
+            <Icons.Mail />
           </C.IconButton>
         </C.Badge>
         <C.Badge color="secondary" badgeContent={87}>
           <C.IconButton>
-            <C.Icons.Mail />
+            <Icons.Mail />
           </C.IconButton>
         </C.Badge>
         <C.Badge color="error" badgeContent={1000}>
           <C.IconButton>
-            <C.Icons.Mail />
+            <Icons.Mail />
           </C.IconButton>
         </C.Badge>
       </C.Card>
@@ -140,13 +141,13 @@ export const Overview = () => (
         SH
       </C.Avatar>
       <C.Avatar m={1}>
-        <C.Icons.Folder />
+        <Icons.Folder />
       </C.Avatar>
       <C.Avatar m={1} bgcolor="black" color="white">
-        <C.Icons.Pageview />
+        <Icons.Pageview />
       </C.Avatar>
       <C.Avatar m={1} bgcolor="primary.light" color="text.primary">
-        <C.Icons.Assignment />
+        <Icons.Assignment />
       </C.Avatar>
     </C.Card>
     <C.Caption>
@@ -168,7 +169,7 @@ export const Overview = () => (
       />
       <C.Chip label="Chip" />
       <C.Chip
-        icon={<C.Icons.Face />}
+        icon={<Icons.Face />}
         label="Chip"
         onClick={() => {}}
         onDelete={() => {}}
@@ -176,7 +177,7 @@ export const Overview = () => (
       />
       <C.Chip
         variant="outlined"
-        icon={<C.Icons.AccountCircle />}
+        icon={<Icons.AccountCircle />}
         label="Chip"
         onClick={() => {}}
         color="secondary"
@@ -465,13 +466,13 @@ export const Overview = () => (
         <C.List component="nav" aria-label="main mailbox folders">
           <C.ListItem button>
             <C.ListItemIcon>
-              <C.Icons.Inbox />
+              <Icons.Inbox />
             </C.ListItemIcon>
             <C.ListItemText primary="Inbox" />
           </C.ListItem>
           <C.ListItem button>
             <C.ListItemIcon>
-              <C.Icons.Drafts />
+              <Icons.Drafts />
             </C.ListItemIcon>
             <C.ListItemText primary="Drafts" />
           </C.ListItem>
@@ -517,7 +518,7 @@ export const Overview = () => (
                 />
                 <C.ListItemSecondaryAction>
                   <C.IconButton edge="end">
-                    <C.Icons.Comment />
+                    <Icons.Comment />
                   </C.IconButton>
                 </C.ListItemSecondaryAction>
               </C.ListItem>
@@ -560,20 +561,26 @@ export const Overview = () => (
         <C.CardActions>
           <C.Checkbox
             icon={
-              <C.Icons.FavoriteBorder style={{ color: C.colors.grey[600] }} />
+              <Icons.FavoriteBorder
+                style={{ color: C.theme.colors.grey[600] }}
+              />
             }
-            checkedIcon={<C.Icons.Favorite style={{ color: 'red' }} />}
+            checkedIcon={<Icons.Favorite style={{ color: 'red' }} />}
           />
           <C.Checkbox
             icon={
-              <C.Icons.BookmarkBorder style={{ color: C.colors.grey[600] }} />
+              <Icons.BookmarkBorder
+                style={{ color: C.theme.colors.grey[600] }}
+              />
             }
             checkedIcon={
-              <C.Icons.Bookmark style={{ color: C.colors.lightBlue[400] }} />
+              <Icons.Bookmark
+                style={{ color: C.theme.colors.lightBlue[400] }}
+              />
             }
           />
           <C.IconButton>
-            <C.Icons.Share />
+            <Icons.Share />
           </C.IconButton>
         </C.CardActions>
       </C.Card>
@@ -586,13 +593,13 @@ export const Overview = () => (
             </C.Subheading.h5>
             <C.Flex alignItems="center" p={3}>
               <C.IconButton size="small">
-                <C.Icons.SkipPrevious fontSize="small" />
+                <Icons.SkipPrevious fontSize="small" />
               </C.IconButton>
               <C.IconButton>
-                <C.Icons.PlayArrow fontSize="large" />
+                <Icons.PlayArrow fontSize="large" />
               </C.IconButton>
               <C.IconButton size="small">
-                <C.Icons.SkipNext fontSize="small" />
+                <Icons.SkipNext fontSize="small" />
               </C.IconButton>
             </C.Flex>
           </C.CardContent>

@@ -1,5 +1,5 @@
 import { Meta, Props, Preview } from '@storybook/addon-docs/blocks'
-import { Box, Flex, colors } from '../src'
+import { Box, Flex, theme, colors } from '../src'
 import { Spacing, Display, Flexbox, Sizing, Griditem } from './util/docsutil'
 
 <Meta title="Design System/Positioning" />
@@ -14,7 +14,7 @@ the most common used values but all valid CSS is supported.
 ### Transformations
 
 To simplify the declaration of props, numeric values may go through a transform function. For example, `75` may be transformed to `"75px"`
-and where percent values may be declarde then suppling a value less than or equal to 1 will transform to a percentage, e.g. `1/2` becomes `"50%"`.
+and where percent values are required then supplying a value less than or equal to 1 will transform to a percentage, e.g. `1/2` becomes `"50%"`.
 
 Any prop value supplied as a `string` will be used directly.
 
@@ -28,7 +28,7 @@ The breakpoints are: `xs, sm, md, lg, xl`. The following example illustrates the
 ```
 
 This box will have width 100 from `xs` up, it will stay at 100 until a larger breakpoint is declared,
-so from md and up the width will be 200. You can use an array as a shorthand but miggin steps must be set
+so from md and up the width will be 200. You can use an array as a shorthand but missing steps must be set
 undefined e.g. `[100, undefined, 200]`
 
 ## Display Props
@@ -84,7 +84,7 @@ Advanced example, all props support supplying an array or object for responsive 
 </Box>
 ```
 
-The `null` retains the earlier behaviour through that brakpoint (`sm`, in this case), this is not required in the object case.
+The `null` retains the earlier behaviour through that breakpoint (`sm`, in this case), this is not required in the object case.
 
 ## Flexbox Props
 
@@ -96,8 +96,8 @@ For example of use see the [Flex page](/components/?path=/docs/components-flex--
 
 ## Spacing Props
 
-Allow the controll of the margin and padding of elements.
-A string may be supplied and it's value will be used directly, however we encorage the use of the standard spacing values and make this simple
+Allow the control of the margin and padding of elements.
+A string may be supplied and it's value will be used directly, however we encourage the use of the standard spacing values and make this simple
 to use as if a number is supplied in the range `[0-6]` it is transformed to a fixed set of spacing values see
 [Design principles - Spacing](/components/?path=/docs/design-system-design-principles--page).
 
@@ -134,7 +134,7 @@ Where the 3 center boxes have spacings:
 ## Sizing Props
 
 Make it easy to declare the size of an element. These props are added where the size of the element can be changed.
-String values are used directly, numeric values greter than on become `px` values and between `[0-1]` are transformed to '%' values.
+String values are used directly, numeric values greater than on become `px` values and between `[0-1]` are transformed to '%' values.
 
 <ArgsTable of={Sizing} />
 

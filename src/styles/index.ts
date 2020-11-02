@@ -23,6 +23,7 @@ export {
   PaletteColor,
 } from '@material-ui/core/styles/createPalette'
 export { useWidth } from './useWidth'
+export { compose } from '@material-ui/system'
 
 // Override material exports as required to reflect committed theme
 

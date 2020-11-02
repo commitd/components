@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import ExpandMore from '@material-ui/icons/ExpandMoreSharp'
 import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
   AccordionActions,
-  Icons,
   Heading,
   Typography,
 } from '../../../src'
@@ -20,7 +20,7 @@ Re-exports [Material UI Accordion](https://material-ui.com/components/accordion/
     <div>
       <Accordion>
         <AccordionSummary
-          expandIcon={<Icons.ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
@@ -34,7 +34,7 @@ Re-exports [Material UI Accordion](https://material-ui.com/components/accordion/
       </Accordion>
       <Accordion>
         <AccordionSummary
-          expandIcon={<Icons.ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
@@ -49,7 +49,7 @@ Re-exports [Material UI Accordion](https://material-ui.com/components/accordion/
       </Accordion>
       <Accordion disabled>
         <AccordionSummary
-          expandIcon={<Icons.ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel3a-content"
           id="panel3a-header"
         >

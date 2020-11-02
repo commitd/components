@@ -1,57 +1,9 @@
-import * as fonts from './fonts'
-import { fade } from '@material-ui/core/styles/colorManipulator'
-import { BaseCSSProperties } from '@material-ui/styles/withStyles'
 import { Palette } from '@material-ui/core/styles/createPalette'
-import { defaultFonts } from './fonts'
-import { Overrides } from '@material-ui/core/styles/overrides'
 import { TypographyOptions } from '@material-ui/core/styles/createTypography'
-
-export type ThemeChoice = 'light' | 'dark'
-
-declare module '@material-ui/core/styles/createPalette' {
-  interface PaletteOptions {
-    brand?: PaletteColorOptions
-  }
-
-  interface Palette {
-    brand: PaletteColor
-  }
-}
-
-export type FontType =
-  | 'typography'
-  | 'heading'
-  | 'subheading'
-  | 'text'
-  | 'display'
-  | 'monospace'
-
-export interface Fonts {
-  typography: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  heading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  subheading: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  text: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  display: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-  monospace: { [P in keyof BaseCSSProperties]: BaseCSSProperties[P] }
-}
-
-export type FontOptions = Partial<Fonts>
-
-declare module '@material-ui/core/styles/createMuiTheme' {
-  interface Theme {
-    fonts: Fonts
-  }
-  // allow configuration using `createMuiTheme`
-  interface ThemeOptions {
-    fonts?: FontOptions
-  }
-}
-
-declare module '@material-ui/core/styles/createPalette' {
-  interface Palette {
-    brand: PaletteColor
-  }
-}
+import { Overrides } from '@material-ui/core/styles/overrides'
+import { fade } from '../styles'
+import * as fonts from './fonts'
+import { defaultFonts } from './fonts'
 
 export const addTransparency = (color: string) => `${color}88`
 
@@ -66,6 +18,7 @@ export const spacing = (factor: number) => {
 }
 
 export const createCommittedFonts = () => fonts.defaultFonts
+export const createCommittedFontSizing = () => fonts.sizing
 export const createCommittedSpacing = () => spacing
 export const createCommittedTypography: () => TypographyOptions = () => ({
   htmlFontSize: fonts.size,
@@ -75,43 +28,43 @@ export const createCommittedTypography: () => TypographyOptions = () => ({
   fontWeightMedium: 500,
   fontWeightBold: 700,
   h1: {
-    fontSize: fonts.sizes[5],
+    fontSize: fonts.sizing(5),
   },
   h2: {
-    fontSize: fonts.sizes[4],
+    fontSize: fonts.sizing(4),
   },
   h3: {
-    fontSize: fonts.sizes[3],
+    fontSize: fonts.sizing(3),
   },
   h4: {
-    fontSize: fonts.sizes[2],
+    fontSize: fonts.sizing(2),
   },
   h5: {
-    fontSize: fonts.sizes[1],
+    fontSize: fonts.sizing(1),
   },
   h6: {
-    fontSize: fonts.sizes[0],
+    fontSize: fonts.sizing(0),
   },
   subtitle1: {
-    fontSize: fonts.sizes[0],
+    fontSize: fonts.sizing(0),
   },
   subtitle2: {
-    fontSize: fonts.sizes[-1],
+    fontSize: fonts.sizing(-1),
   },
   body1: {
-    fontSize: fonts.sizes[0],
+    fontSize: fonts.sizing(0),
   },
   body2: {
-    fontSize: fonts.sizes[1],
+    fontSize: fonts.sizing(1),
   },
   button: {
-    fontSize: fonts.sizes[0],
+    fontSize: fonts.sizing(0),
   },
   caption: {
-    fontSize: fonts.sizes[-1],
+    fontSize: fonts.sizing(-1),
   },
   overline: {
-    fontSize: fonts.sizes[-1],
+    fontSize: fonts.sizing(-1),
   },
   ...defaultFonts.typography,
 })
@@ -171,7 +124,7 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
     },
     MuiBackdrop: {
       root: {
-        zIndex: 1201, //zIndex.drawer + 1,
+        //zIndex: 1199, //zIndex.drawer - 1,
         color: palette.grey[500],
       },
     },

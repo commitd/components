@@ -1,5 +1,5 @@
 import { Meta, Preview } from '@storybook/addon-docs/blocks'
-import { Flex, Box, theme, colors } from '../src'
+import { ThemeProvider, Flex, Box, colors, theme, Text } from '../src'
 
 <Meta title="Design System/Design Principles" />
 
@@ -32,71 +32,73 @@ The [positioning props][positioning] that deal with spacing (e.g. margin and pad
 spacing, 0 being no space and 6 is 128px. In order to be compatible with others using different sets we map less that 0 to 0,
 greater than 6 to 6 and floor the number, incase not an integer.
 
-<Flex flexDirection="column">
-  <Flex alignItems="center">
-    <Text>0</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[200]}
-      width={theme.spacing(0)}
-    />
+<ThemeProvider>
+  <Flex flexDirection="column">
+    <Flex alignItems="center">
+      <Text>0</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[200]}
+        width={theme.spacing(0)}
+      />
+    </Flex>
+    <Flex alignItems="center">
+      <Text>1</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[300]}
+        width={theme.spacing(1)}
+      />
+    </Flex>
+    <Flex alignItems="center">
+      <Text>2</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[400]}
+        width={theme.spacing(2)}
+      />
+    </Flex>
+    <Flex alignItems="center">
+      <Text>3</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[500]}
+        width={theme.spacing(3)}
+      />
+    </Flex>
+    <Flex alignItems="center">
+      <Text>4</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[600]}
+        width={theme.spacing(4)}
+      />
+    </Flex>
+    <Flex alignItems="center">
+      <Text>5</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[700]}
+        width={theme.spacing(5)}
+      />
+    </Flex>
+    <Flex alignItems="center">
+      <Text>6</Text>
+      <Box
+        m={1}
+        py={1}
+        bgcolor={colors.committedYellow[800]}
+        width={theme.spacing(6)}
+      />
+    </Flex>
   </Flex>
-  <Flex alignItems="center">
-    <Text>1</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[300]}
-      width={theme.spacing(1)}
-    />
-  </Flex>
-  <Flex alignItems="center">
-    <Text>2</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[400]}
-      width={theme.spacing(2)}
-    />
-  </Flex>
-  <Flex alignItems="center">
-    <Text>3</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[500]}
-      width={theme.spacing(3)}
-    />
-  </Flex>
-  <Flex alignItems="center">
-    <Text>4</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[600]}
-      width={theme.spacing(4)}
-    />
-  </Flex>
-  <Flex alignItems="center">
-    <Text>5</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[700]}
-      width={theme.spacing(5)}
-    />
-  </Flex>
-  <Flex alignItems="center">
-    <Text>6</Text>
-    <Box
-      m={1}
-      py={1}
-      bgcolor={colors.committedYellow[800]}
-      width={theme.spacing(6)}
-    />
-  </Flex>
-</Flex>
+</ThemeProvider>
 
 ## Sizing
 
@@ -134,7 +136,7 @@ range         |   xs   |   sm   |   md   |   lg   |   xl
 - xl, extra-large: 1920px
 
 We can refer to them in certain props with their keys or in standard
-ordering for example the following two exanmles are equivalent:
+ordering for example the following two examples are equivalent:
 
 ```jsx
 <Box margin={{ xs: 2, sm: 3, md: 4 }} />

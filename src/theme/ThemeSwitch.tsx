@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/styles'
 import { style } from '@material-ui/system'
 import React from 'react'
 import { IconButton } from '../components/iconbutton/IconButton'
-import { Icons } from '../components/icons/Icons'
+import { Icons } from '../internal/Icons'
 import { Logo } from '../components/logo/Logo'
 import { PositioningProps, withPositioningProps } from '../internal'
 import { Theme } from './'
-import { ThemeChoice } from './theme'
+import { ThemeChoice } from './types'
 import { useThemeController } from './ThemeProvider'
 
 const styleColor = style({
@@ -87,9 +87,9 @@ const CelestialIcon = (props: IconProps) => {
   const { themeChoice } = props
   const classes = useStyles(props)
   if (themeChoice === 'dark') {
-    return <Icons.Brightness5 className={classes.color} />
+    return <Icons.LightMode className={classes.color} />
   } else {
-    return <Icons.Brightness3 className={classes.color} />
+    return <Icons.DarkMode className={classes.color} />
   }
 }
 
