@@ -1,8 +1,7 @@
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
-export type { SpacingOptions } from '@material-ui/core/styles/createSpacing'
-export type { ShapeOptions } from '@material-ui/core/styles/shape'
-export type { TypographyOptions } from '@material-ui/core/styles/createTypography'
-export type { Overrides } from '@material-ui/core/styles/overrides'
+import { Overrides } from '@material-ui/core/styles/overrides'
+import { Palette } from '@material-ui/core/styles/createPalette'
+export type { BreakpointsOptions } from '@material-ui/core/styles/createBreakpoints'
 export type {
   Palette,
   PaletteColor,
@@ -10,6 +9,36 @@ export type {
   TypeAction,
   TypeText,
 } from '@material-ui/core/styles/createPalette'
+export type { SpacingOptions } from '@material-ui/core/styles/createSpacing'
+export type { TypographyOptions } from '@material-ui/core/styles/createTypography'
+export type { Overrides } from '@material-ui/core/styles/overrides'
+export type { Shadows } from '@material-ui/core/styles/shadows'
+export type { ShapeOptions } from '@material-ui/core/styles/shape'
+export type { TransitionsOptions } from '@material-ui/core/styles/transitions'
+export type { ZIndexOptions } from '@material-ui/core/styles/zIndex'
+
+export interface SpacingFunction {
+  (value: number): number
+}
+
+export interface DefaultOverrideOptionsFunction {
+  (helpers: {
+    palette: Palette
+    fontSizing: FontSizing
+    spacing: SpacingFunction
+  }): Overrides
+}
+
+export interface OverrideOptionsFunction {
+  (
+    defaultOverrides: Overrides,
+    helpers: {
+      palette: Palette
+      fontSizing: FontSizing
+      spacing: SpacingFunction
+    }
+  ): Overrides
+}
 
 export type ThemeChoice = 'light' | 'dark'
 

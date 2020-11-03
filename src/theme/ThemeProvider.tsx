@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core'
 import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
-import deepmerge from 'deepmerge'
 import React, { FC } from 'react'
 import {
   committedDarkPaletteColors,
@@ -164,8 +163,7 @@ const createTheme = ({
     themeOptions.overrides = overrides
   }
 
-  const muiTheme = responsiveFontSizes(createMuiTheme(themeOptions))
-  return deepmerge(muiTheme, { fonts })
+  return responsiveFontSizes(createMuiTheme(themeOptions, { fonts }))
 }
 
 export const useThemeController = (): [ThemeChoice, () => void] => {
