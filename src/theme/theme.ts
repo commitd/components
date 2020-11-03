@@ -1,6 +1,4 @@
-import { Palette } from '@material-ui/core/styles/createPalette'
-import { TypographyOptions } from '@material-ui/core/styles/createTypography'
-import { Overrides } from '@material-ui/core/styles/overrides'
+import { Palette, TypographyOptions, Overrides } from './types'
 import { fade } from '../styles'
 import * as fonts from './fonts'
 import { defaultFonts } from './fonts'

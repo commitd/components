@@ -561,22 +561,16 @@ export const Overview = () => (
         <C.CardActions>
           <C.Checkbox
             icon={
-              <Icons.FavoriteBorder
-                style={{ color: C.theme.colors.grey[600] }}
-              />
+              <Icons.FavoriteBorder style={{ color: C.colors.grey[600] }} />
             }
             checkedIcon={<Icons.Favorite style={{ color: 'red' }} />}
           />
           <C.Checkbox
             icon={
-              <Icons.BookmarkBorder
-                style={{ color: C.theme.colors.grey[600] }}
-              />
+              <Icons.BookmarkBorder style={{ color: C.colors.grey[600] }} />
             }
             checkedIcon={
-              <Icons.Bookmark
-                style={{ color: C.theme.colors.lightBlue[400] }}
-              />
+              <Icons.Bookmark style={{ color: C.colors.lightBlue[400] }} />
             }
           />
           <C.IconButton>

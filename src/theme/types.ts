@@ -1,9 +1,9 @@
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
-export { SpacingOptions } from '@material-ui/core/styles/createSpacing'
-export { ShapeOptions } from '@material-ui/core/styles/shape'
-export { TypographyOptions } from '@material-ui/core/styles/createTypography'
-export { Overrides } from '@material-ui/core/styles/overrides'
-export {
+export type { SpacingOptions } from '@material-ui/core/styles/createSpacing'
+export type { ShapeOptions } from '@material-ui/core/styles/shape'
+export type { TypographyOptions } from '@material-ui/core/styles/createTypography'
+export type { Overrides } from '@material-ui/core/styles/overrides'
+export type {
   Palette,
   PaletteColor,
   PaletteOptions,
