@@ -22,3 +22,16 @@ declare module '@styled-system/theme-get' {
 }
 
 declare module '@storybook/addon-docs/blocks'
+
+// Next utils are written in ts so can be removed later
+declare module '@material-ui/utils' {
+  export interface DeepmergeOptions {
+    clone?: boolean
+  }
+
+  export function deepmerge<T>(
+    target: T,
+    source: unknown,
+    options?: DeepmergeOptions
+  ): T
+}
