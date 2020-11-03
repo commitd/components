@@ -1,4 +1,13 @@
-import { Palette, TypographyOptions, Overrides } from './types'
+import {
+  FontOptions,
+  FontSizing,
+  Overrides,
+  Palette,
+  ShapeOptions,
+  SpacingOptions,
+  TypographyOptions,
+  SpacingFunction,
+} from './types'
 import { fade } from '../styles'
 import * as fonts from './fonts'
 import { defaultFonts } from './fonts'
@@ -15,10 +24,10 @@ export const spacing = (factor: number) => {
   return [0, 4, 8, 16, 32, 64, 128][index]
 }
 
-export const createCommittedFonts = () => fonts.defaultFonts
-export const createCommittedFontSizing = () => fonts.sizing
-export const createCommittedSpacing = () => spacing
-export const createCommittedTypography: () => TypographyOptions = () => ({
+export const committedFonts: FontOptions = fonts.defaultFonts
+export const committedFontSizing: FontSizing = fonts.sizing
+export const committedSpacing: SpacingOptions = spacing
+export const committedTypography: TypographyOptions = {
   htmlFontSize: fonts.size,
   fontSize: fonts.size,
   fontWeightLight: 300,
@@ -65,18 +74,26 @@ export const createCommittedTypography: () => TypographyOptions = () => ({
     fontSize: fonts.sizing(-1),
   },
   ...defaultFonts.typography,
-})
+}
 
-export const createCommittedShape = () => ({
+export const committedShape: ShapeOptions = {
   borderRadius: 2,
-})
+}
 
-export const baseCommittedOverrides = (palette: Palette): Overrides => {
+export const committedOverrides = (
+  _defaultOverrides: Overrides,
+  helpers: {
+    palette: Palette
+    fontSizing: FontSizing
+    spacing: SpacingFunction
+  }
+): Overrides => {
+  const { palette, spacing } = helpers
   return {
     MuiAlert: {
       root: {
-        marginTop: '8px',
-        marginBottom: '8px',
+        marginTop: `${spacing(2)}px`,
+        marginBottom: `${spacing(2)}px`,
       },
     },
     MuiButton: {
@@ -122,7 +139,6 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
     },
     MuiBackdrop: {
       root: {
-        //zIndex: 1199, //zIndex.drawer - 1,
         color: palette.grey[500],
       },
     },
@@ -130,7 +146,7 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
       root: {
         color: palette.grey[500],
         '&$disabled': {
-          color: addTransparency(palette.grey[500]),
+          color: fade(palette.grey[500], 0.7),
         },
       },
       colorPrimary: {
@@ -143,12 +159,15 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
               palette.action.hoverOpacity
             ),
           },
+          '&$disabled': {
+            color: fade(palette.grey[500], 0.7),
+          },
         },
         '& span:nth-of-type(2)': {
           color: palette.brand.main,
         },
         '&$disabled': {
-          color: addTransparency(palette.primary.main),
+          color: fade(palette.grey[500], 0.7),
         },
       },
       colorSecondary: {
@@ -156,7 +175,7 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
           color: palette.primary.main,
         },
         '&$disabled': {
-          color: addTransparency(palette.secondary.light),
+          color: fade(palette.grey[500], 0.7),
         },
       },
     },
@@ -254,7 +273,7 @@ export const baseCommittedOverrides = (palette: Palette): Overrides => {
     MuiTabs: {
       indicator: {
         backgroundColor: palette.brand.main,
-        height: '4px',
+        height: `${spacing(1)}px`,
       },
     },
   }

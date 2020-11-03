@@ -7,7 +7,6 @@ import {
   Caption,
   Chip,
   Column,
-  createCommittedLightOverrides,
   Display,
   Flex,
   Heading,
@@ -17,15 +16,17 @@ import {
   Subheading,
   Text,
   ThemeProvider,
+  ConThemeProvider,
   Toolbar,
   Typography,
+  CustomThemeProvider,
+  createCommittedThemes,
 } from '../../src'
-
+import { useDarkMode } from 'storybook-dark-mode'
 import cyan from '@material-ui/core/colors/cyan'
 import blueGrey from '@material-ui/core/colors/blueGrey'
 import { Background, Overview } from '../util'
 import { ThemeProviderDocs } from './ThemeProviderDocs'
-import deepmerge from 'deepmerge'
 
 <Meta title="Components/ThemeProvider" component={ThemeProvider} />
 
@@ -33,7 +34,7 @@ import deepmerge from 'deepmerge'
 
 Extends [Material UI ThemeProvider](https://material-ui.com/styles/api/#themeprovider)
 
-A `ThemeProvider` should wrap the output component of your app.
+A `ThemeProvider` should wrap the output component of your app and provide themes for the light and dark mode.
 
 ```jsx
 <ThemeProvider>
@@ -43,7 +44,7 @@ A `ThemeProvider` should wrap the output component of your app.
 
 ## Light and Dark
 
-By default, we used the Committed light and dark themes switched on the users system preference.
+By default, we used the provided light and dark themes switched on the users system preference.
 The choice prop can be used to force either the light or dark theme or to allow dynamic switching.
 
 ### Committed Light
@@ -62,7 +63,7 @@ The choice prop can be used to force either the light or dark theme or to allow 
 
 <Canvas>
   <Story name="dark">
-    <ThemeProvider choice="dark">
+    <ThemeProvider choice="dark" {...createCommittedThemes()}>
       <Background width="1VH">
         <Overview />
       </Background>
@@ -70,126 +71,199 @@ The choice prop can be used to force either the light or dark theme or to allow 
   </Story>
 </Canvas>
 
-## Customisation
+### Material Themes
 
-The theme(s) can be customised by providing theme creation functions. Providing as a direct prop applies to both the light and dark themes.
-Or to customise separately, provide as a keyed object under `light` and `dark` props. The following functions for customisation are available.
-All functions can return a full option object to replace the Committed defaults or return `undefined` to go back to Material-UI defaults
+There is also a convenience component `MaterialThemeProvider` which supports more standard material themes.
+
+## Customization
+
+To customize the theme use the underlying `CustomThemeProvider` component and provide your own `light` and `dark` `Theme` objects.
+We also provide two functions to create default themes, and take an options argument to simplify customization from either base styles.
+
+- `createCommittedThemes` creates Committed's default theming.
+- `createMaterialThemes` create the more standard Material-UI themes, adapted slightly for our Theme object additions.
+
+The two `createXxxxThemes` functions above simplify this process by allowing partial overrides of either the Committed or Material themes.
+Both functions take an `options` object that is either a `ThemeConfig` described below or a `ThemesConfig` which has type:
+
+```ts
+{
+ common?: ThemeConfig
+ light?: ThemeConfig
+ dark?: ThemeConfig
+}
+```
+
+The `common` options are applied to both themes, then `light` and `dark` options applied respectively.
+The common are applied first, then the theme specific applied according to the rules below.
+If you supply only a single ThemeConfig then those options are applied as below to both themes.
+
+Options can be provided to customize the following elements:
+
+- breakpoints
+- palette
+- fonts
+- shape
+- spacing
+- fontSizing
+- typography
+- transitions
+- zIndex
+- css overrides
+
+For `fontSizing` and `spacing` the last one provided is used as they are functions.
+For the others you can provide a partial options object of the appropriate type and it is deep merged with the defaults.
+Or you can provide a function that is passed the defaults and should return the complete options to be used (according to the usual Material use).
+Finally, the `overrides` function is also supplied some helpers to enable simpler setting up of the css overrides, inline with the rest of the theme.
+We provide the `palette` object and the `fontSizing` and `spacing` functions.
+
+Full details of the separate options are detailed in props and typing. We give some demonstrations of the possibilities below.
 
 ## Custom Fonts
 
-The optional `createFonts()` prop should either return a `theme.FontOptions` object to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+The optional `fonts` key should either return a `theme.FontOptions` object to be merged with the Committed theme defaults,
+or it should be a function, to which we provide the defaults as an argument, and should return undefined to use the Material-UI defaults.
 
 Custom font stacks can be provided for different typography components. You may need to separately load your font, using imports, links or css; see [example](https://github.com/commitd/components/tree/master/example).
-We recommend using [typefaces](https://github.com/KyleAMathews/typefaces)
+We recommend using [typefaces](https://github.com/KyleAMathews/typefaces). In the following example we override all the fonts except the monospace which will remain the Committed default.
 
 <Canvas>
   <Story name="custom-fonts">
-    <ThemeProvider
-      createFonts={() => {
-        const fontFamily = 'Rockwell, sans-serif'
-        return {
-          typography: { fontFamily },
-          heading: { fontFamily },
-          subheading: { fontFamily },
-          text: { fontFamily },
-          display: {
-            fontFamily,
-          },
-          monospace: {
-            fontFamily,
-          },
-        }
-      }}
-    >
-      <Heading.h2>Heading</Heading.h2>
-      <Typography>Typography</Typography>
-      <Display.d1>Display</Display.d1>
-      <Text>Text</Text>
-      <Monospace>Monospace</Monospace>
-      <Button color="primary">Button</Button>
-    </ThemeProvider>
+    {() => {
+      const choice = useDarkMode() ? 'dark' : 'light'
+      const fontFamily = 'Rockwell, sans-serif'
+      return (
+        <CustomThemeProvider
+          choice={choice}
+          {...createCommittedThemes({
+            fonts: {
+              typography: { fontFamily },
+              heading: { fontFamily },
+              subheading: { fontFamily },
+              text: { fontFamily },
+              display: {
+                fontFamily,
+              },
+            },
+          })}
+        >
+          <Heading.h2>Heading</Heading.h2>
+          <Typography>Typography</Typography>
+          <Display.d1>Display</Display.d1>
+          <Text>Text</Text>
+          <Monospace>Monospace</Monospace>
+          <Button color="primary">Button</Button>
+        </CustomThemeProvider>
+      )
+    }}
   </Story>
 </Canvas>
 
 ## Custom Colours
 
-Custom palette colours can be specified. For example, the primary, secondary or brand colors.
+Custom palette colours can be specified. For example, the primary, secondary or brand colours.
 
-The optional `createPalette()` prop should either return a [set of material-ui color intentions](https://material-ui.com/customization/palette/#customization) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+The optional `palette()` key in `ThemeConfig` should either be a [set of Material-UI colour intentions](https://material-ui.com/customization/palette/#customization) to merge with the Committed/Material theme defaults (depending on which creation function is used),
+or it should use a function to completely override the defaults.
 
-The material-ui colors can be specified: palette.primary, palette.secondary, palette.error, palette.warning, palette.info or palette.success
+The Material-ui colours can be specified: `primary`, `secondary`, `error`, `warning`, `info` or `success`.
 
-A full range (50-900) of neutral colours can be specified with palette.grey
+A full range (50-900) of neutral colours can be specified with `grey`
 
-Additionally the committed-theme colors can be specified: palette.brand, the brand color is used in some places instead of the primary.
-Specify the brand the same as primary to return to material styles.
+Additionally, the Committed theme colour `brand` can be specified, the brand colour is used in some places instead of the primary.
+You can specify the `brand` the same as `primary` to return to Material styles. The following example overrides the main colours.
 
 <Canvas>
   <Story name="custom-colors">
-    <ThemeProvider
-      createPaletteOptions={() => ({
-        primary: {
-          //blue
-          light: '#4f83cc',
-          main: '#01579b',
-          dark: '#002f6c',
-          contrastText: '#fff',
-        },
-        brand: {
-          //blue
-          light: '#4f83cc',
-          main: '#01579b',
-          dark: '#002f6c',
-          contrastText: '#fff',
-        },
-        secondary: {
-          //yellow
-          light: '#ffff6b',
-          main: '#fdd835',
-          dark: '#c6a700',
-          contrastText: '#000',
-        },
-      })}
-    >
-      <Button color="primary" mr={3}>
-        Custom Primary Button
-      </Button>
-      <Button color="secondary">Custom Secondary Button</Button>
-    </ThemeProvider>
+    {() => {
+      const choice = useDarkMode() ? 'dark' : 'light'
+      return (
+        <CustomThemeProvider
+          choice={choice}
+          {...createCommittedThemes({
+            palette: {
+              primary: {
+                //blue
+                light: '#4f83cc',
+                main: '#01579b',
+                dark: '#002f6c',
+                contrastText: '#fff',
+              },
+              brand: {
+                //blue
+                light: '#4f83cc',
+                main: '#01579b',
+                dark: '#002f6c',
+                contrastText: '#fff',
+              },
+              secondary: {
+                //yellow
+                light: '#ffff6b',
+                main: '#fdd835',
+                dark: '#c6a700',
+                contrastText: '#000',
+              },
+            },
+          })}
+        >
+          <Button color="primary" mr={3}>
+            Custom Primary Button
+          </Button>
+          <Button color="secondary">Custom Secondary Button</Button>
+        </CustomThemeProvider>
+      )
+    }}
   </Story>
 </Canvas>
 
 ## Custom Shape
 
-The optional `createShape()` prop should either return material-ui shape options i.e. `{ borderRadius: xx }` to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+The optional `shape` key of ThemeConfig can be used to alter the shape options i.e. `{ borderRadius: xx }`.
+As there is only one key, at the moment, the object and function forms are equivalent.
+The following example provides different values for the light and dark themes, for demonstration purposes.
 
 <Canvas>
   <Story name="custom-shape">
-    <ThemeProvider
-      createShape={() => ({
-        borderRadius: 20,
-      })}
-    >
-      <Button color="primary" mr={3}>
-        Custom Primary Button
-      </Button>
-      <Button color="secondary">Custom Secondary Button</Button>
-    </ThemeProvider>
+    {() => {
+      const choice = useDarkMode() ? 'dark' : 'light'
+      return (
+        <CustomThemeProvider
+          choice={choice}
+          {...createCommittedThemes({
+            light: {
+              shape: {
+                borderRadius: 50,
+              },
+            },
+            dark: {
+              shape: {
+                borderRadius: 10,
+              },
+            },
+          })}
+        >
+          <Button color="primary" mr={3}>
+            Custom Primary Button
+          </Button>
+          <Button color="secondary">Custom Secondary Button</Button>
+        </CustomThemeProvider>
+      )
+    }}
   </Story>
 </Canvas>
 
 ## Custom Spacing
 
-Override the meaning of spacing props. These are dimensionless values given to things like margin and padding. All Material components will be affected, so Use with care.
+Override the meaning of spacing props. These are dimensionless values given to things like margin and padding.
+All Material components will be affected, so Use with care.
 
-The optional `createSpacing()` prop should either return [material-ui spacing options](https://material-ui.com/customization/spacing/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+The optional `spacing` key of ThemeConfig should be a [Material-UI spacing options](https://material-ui.com/customization/spacing/)
+to replace the Committed/Material theme defaults.
 
 <Canvas>
   <Story name="custom-spacing">
-    <ThemeProvider
-      style={{ width: '100%', height: '100%', border: '1px' }}
-      createSpacing={() => (factor) => factor * 10}
+    <CustomThemeProvider
+      {...createCommittedThemes({ spacing: (factor) => factor * 1 })}
     >
       <Background width="1VH">
         <Column flexWrap="wrap">
@@ -247,23 +321,28 @@ The optional `createSpacing()` prop should either return [material-ui spacing op
           </Flex>
         </Column>
       </Background>
-    </ThemeProvider>
+    </CustomThemeProvider>
   </Story>
 </Canvas>
 
 ## Custom Typography
 
-The optional `createTypography()` prop should either return [material-ui typography options](https://material-ui.com/customization/typography/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults.
+The optional `typography` key of ThemeConfig should return [Material-UI typography options](https://material-ui.com/customization/typography/) to merge with the Committed/Material defaults, or it use the function form to supply full overrides.
 
 <Canvas>
   <Story name="custom-typography">
-    <ThemeProvider
+    <CustomThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
-      createTypography={() => ({
-        htmlFontSize: 16,
-        fontSize: 20,
-        h1: {
-          fontSize: '1.2rem',
+      {...createCommittedThemes({
+        typography: {
+          htmlFontSize: 16,
+          fontSize: 20,
+          h1: {
+            fontSize: '1.2rem',
+          },
+          h2: {
+            fontWeight: 700,
+          },
         },
       })}
     >
@@ -314,33 +393,37 @@ The optional `createTypography()` prop should either return [material-ui typogra
           </Box>
         </Flex>
       </Background>
-    </ThemeProvider>
+    </CustomThemeProvider>
   </Story>
 </Canvas>
 
 ## Custom Global CSS Overrides
 
-The optional `createOverrides()` prop should either return [material-ui overrides options](https://material-ui.com/customization/globals/) to replace the Committed theme defaults, or it should return undefined to use the Material-UI defaults. It is passed the palette created using the `createPaletteOptions()` prop
+The optional `overrides` prop should either be [Material-UI overrides options](https://material-ui.com/customization/globals/) to be merged with the Committed/Material theme defaults, or it should use the function form to provide complete overrides.
+The function form is passed the palette, fontSizing and spacing to be used.
 
 <Canvas>
   <Story name="custom-overrides">
-    <ThemeProvider
+    <CustomThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
-      createOverrides={(palette) => ({
-        MuiButton: {
-          contained: {
-            color: 'white',
-            backgroundColor: 'red',
+      {...createCommittedThemes({
+        overrides: (defaults, helpers) => ({
+          ...defaults,
+          MuiButton: {
+            contained: {
+              color: 'white',
+              backgroundColor: 'red',
+            },
+            containedPrimary: {
+              color: 'black',
+              backgroundColor: 'white',
+            },
+            containedSecondary: {
+              color: 'white',
+              backgroundColor: helpers.palette.primary.main,
+            },
           },
-          containedPrimary: {
-            color: 'black',
-            backgroundColor: 'white',
-          },
-          containedSecondary: {
-            color: 'white',
-            backgroundColor: 'blue',
-          },
-        },
+        }),
       })}
     >
       <Background width="1VH">
@@ -369,83 +452,73 @@ The optional `createOverrides()` prop should either return [material-ui override
           </Flex>
         </Column>
       </Background>
-    </ThemeProvider>
+    </CustomThemeProvider>
   </Story>
 </Canvas>
 
 ## Example theme
 
-An example of a theme with all options customised:
+An example of a theme with most options customized:
 
 <Canvas>
   <Story name="custom-theme">
-    <ThemeProvider
+    <CustomThemeProvider
       style={{ width: '100%', height: '100%', border: '1px' }}
-      createPaletteOptions={() => ({
-        primary: {
-          //blue
-          light: '#4f83cc',
-          main: '#01579b',
-          dark: '#002f6c',
-          contrastText: '#fff',
-        },
-        brand: {
-          //blue
-          light: '#4f83cc',
-          main: '#01579b',
-          dark: '#002f6c',
-          contrastText: '#fff',
-        },
-        secondary: {
-          //yellow
-          light: '#ffff6b',
-          main: '#fdd835',
-          dark: '#c6a700',
-          contrastText: '#000',
-        },
-      })}
-      createFonts={() => {
-        const fontFamily = 'Rockwell, sans-serif'
-        return {
-          typography: { fontFamily },
-          heading: { fontFamily },
-          subheading: { fontFamily },
-          text: { fontFamily },
-          display: {
-            fontFamily,
+      {...createCommittedThemes({
+        palette: {
+          primary: {
+            //blue
+            light: '#4f83cc',
+            main: '#01579b',
+            dark: '#002f6c',
+            contrastText: '#fff',
           },
-          monospace: {
-            fontFamily,
+          brand: {
+            //blue
+            light: '#4f83cc',
+            main: '#01579b',
+            dark: '#002f6c',
+            contrastText: '#fff',
           },
-        }
-      }}
-      createShape={() => ({
-        borderRadius: 0,
-      })}
-      createSpacing={() => (factor) => factor * 3}
-      createTypography={() => ({
-        htmlFontSize: 16,
-        fontSize: 20,
-        h1: {
-          fontSize: '1.2rem',
+          secondary: {
+            //yellow
+            light: '#ffff6b',
+            main: '#fdd835',
+            dark: '#c6a700',
+            contrastText: '#000',
+          },
         },
-      })}
-      createOverrides={(palette) =>
-        deepmerge(createCommittedLightOverrides(palette), {
+        fonts: {
+          typography: { fontFamily: 'Rockwell, sans-serif' },
+          heading: { fontFamily: 'Rockwell, sans-serif' },
+        },
+        shape: {
+          borderRadius: 0,
+        },
+        spacing: (factor) => factor * 3,
+        fontSizing: (factor) => factor * 1.5,
+        typography: {
+          htmlFontSize: 16,
+          fontSize: 20,
+          h1: {
+            fontSize: '1.2rem',
+          },
+        },
+        overrides: {
           MuiButton: {
             outlinedSecondary: {
               color: 'white',
-              borderColor: palette.primary.main,
+              borderColor: 'green',
             },
           },
-        })
-      }
+        },
+      })}
       choice="light"
     >
       <Background width="1VH">
         <Overview />
       </Background>
-    </ThemeProvider>
+    </CustomThemeProvider>
   </Story>
 </Canvas>
 

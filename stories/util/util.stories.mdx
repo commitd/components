@@ -2,6 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import {
   copyToClipboard,
   mdx as Cmdx,
+  Box,
   Button,
   useWidth,
   Dialog,
@@ -12,6 +13,8 @@ import {
   TextField,
   ThemeProvider,
 } from '../../src'
+import { SwitchedThemeProvider } from './SwitchedThemeProvider'
+export default (props) => <SwitchedThemeProvider {...props} />
 
 <Meta title="Design System/Utils" parameters={{ order: 8 }} />
 
@@ -34,7 +37,13 @@ range         |   xs   |   sm   |   md   |   lg   |   xl
   <Story name="use Width Hook">
     {React.createElement(() => {
       const width = useWidth()
-      return <Typogaphy>Current breakpoint is {width}</Typogaphy>
+      return (
+        <Box bgcolor="background.paper">
+          <Typogaphy bgcolor="background.paper">
+            Current breakpoint is {width}
+          </Typogaphy>
+        </Box>
+      )
     })}
   </Story>
 </Canvas>
@@ -102,15 +111,9 @@ This should work in a dialog
 
 Try and paste here
 
-<ThemeProvider>
-  <TextField
-    m={3}
-    id="paste-area"
-    label="Paste"
-    placeholder="Paste here"
-    multiline
-  />
-</ThemeProvider>
+<Box p={3} bgcolor="background.paper">
+  <TextField id="paste-area" label="Paste" placeholder="Paste here" multiline />
+</Box>
 
 ## mdx
 
