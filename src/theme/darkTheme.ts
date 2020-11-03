@@ -3,12 +3,6 @@ import {
   fade,
   lighten,
 } from '@material-ui/core/styles/colorManipulator'
-import {
-  Palette,
-  PaletteColor,
-  PaletteOptions,
-} from '@material-ui/core/styles/createPalette'
-import { Overrides } from '@material-ui/core/styles/overrides'
 import deepmerge from 'deepmerge'
 import * as allColors from './colors'
 import {
@@ -19,6 +13,7 @@ import {
   createCommittedSpacing,
   createCommittedTypography,
 } from './theme'
+import { Overrides, Palette, PaletteColor, PaletteOptions } from './types'
 
 export type DarkPaletteColors = typeof committedDarkPaletteColors
 

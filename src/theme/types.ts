@@ -1,4 +1,15 @@
 import { BaseCSSProperties } from '@material-ui/styles/withStyles'
+export { SpacingOptions } from '@material-ui/core/styles/createSpacing'
+export { ShapeOptions } from '@material-ui/core/styles/shape'
+export { TypographyOptions } from '@material-ui/core/styles/createTypography'
+export { Overrides } from '@material-ui/core/styles/overrides'
+export {
+  Palette,
+  PaletteColor,
+  PaletteOptions,
+  TypeAction,
+  TypeText,
+} from '@material-ui/core/styles/createPalette'
 
 export type ThemeChoice = 'light' | 'dark'
 

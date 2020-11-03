@@ -1,13 +1,5 @@
-import { fade, lighten, darken } from '../styles'
-import {
-  Palette,
-  PaletteColor,
-  PaletteOptions,
-  TypeAction,
-  TypeText,
-} from '@material-ui/core/styles/createPalette'
-import { Overrides } from '@material-ui/core/styles/overrides'
 import deepmerge from 'deepmerge'
+import { darken, fade, lighten } from '../styles'
 import * as allColors from './colors'
 import {
   addTransparency,
@@ -17,6 +9,14 @@ import {
   createCommittedSpacing,
   createCommittedTypography,
 } from './theme'
+import {
+  Overrides,
+  Palette,
+  PaletteColor,
+  PaletteOptions,
+  TypeAction,
+  TypeText,
+} from './types'
 
 export const committedLightPaletteColors = {
   ...allColors,

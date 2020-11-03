@@ -4,14 +4,7 @@ import {
   responsiveFontSizes,
   ThemeOptions,
 } from '@material-ui/core'
-import createMuiPalette, {
-  Palette,
-  PaletteOptions,
-} from '@material-ui/core/styles/createPalette'
-import { SpacingOptions } from '@material-ui/core/styles/createSpacing'
-import { TypographyOptions } from '@material-ui/core/styles/createTypography'
-import { Overrides } from '@material-ui/core/styles/overrides'
-import { ShapeOptions } from '@material-ui/core/styles/shape'
+import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 import deepmerge from 'deepmerge'
 import React, { FC } from 'react'
@@ -27,15 +20,25 @@ import {
   createCommittedLightPaletteOptions,
 } from './lightTheme'
 import {
-  createCommittedFontSizing,
   createCommittedFonts,
+  createCommittedFontSizing,
   createCommittedShape,
   createCommittedSpacing,
   createCommittedTypography,
 } from './theme'
-import { ThemeController, ThemeContext } from './ThemeController'
+import { ThemeContext, ThemeController } from './ThemeController'
 import { augmentColor } from './themeMaterialUtil'
-import { FontSizing, FontOptions, ThemeChoice } from './types'
+import {
+  FontOptions,
+  FontSizing,
+  Overrides,
+  Palette,
+  PaletteOptions,
+  ShapeOptions,
+  SpacingOptions,
+  ThemeChoice,
+  TypographyOptions,
+} from './types'
 
 export interface ThemeProps {
   /**
