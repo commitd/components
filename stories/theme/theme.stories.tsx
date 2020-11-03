@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider } from '../../src'
+import { MaterialThemeProvider, ThemeProvider } from '../../src'
 import { Background, Overview } from '../util'
 
 export default {
@@ -30,32 +30,12 @@ dark.story = {
   parameters: { docs: { disable: true } },
 }
 
-export const materialColours = () => (
-  <ThemeProvider createPaletteOptions={() => undefined}>
-    <Background>
-      <Overview />
-    </Background>
-  </ThemeProvider>
-)
-
-materialColours.story = {
-  parameters: { docs: { disable: true } },
-}
-
 export const materialLight = () => (
-  <ThemeProvider
-    choice="light"
-    createPaletteOptions={() => undefined}
-    createOverrides={() => undefined}
-    createFonts={() => undefined}
-    createShape={() => undefined}
-    createSpacing={() => undefined}
-    createTypography={() => undefined}
-  >
+  <MaterialThemeProvider choice="light">
     <Background>
       <Overview />
     </Background>
-  </ThemeProvider>
+  </MaterialThemeProvider>
 )
 
 materialLight.story = {
@@ -63,19 +43,11 @@ materialLight.story = {
 }
 
 export const materialDark = () => (
-  <ThemeProvider
-    choice="dark"
-    createPaletteOptions={() => undefined}
-    createOverrides={() => undefined}
-    createFonts={() => undefined}
-    createShape={() => undefined}
-    createSpacing={() => undefined}
-    createTypography={() => undefined}
-  >
+  <MaterialThemeProvider choice="dark">
     <Background>
       <Overview />
     </Background>
-  </ThemeProvider>
+  </MaterialThemeProvider>
 )
 
 materialDark.story = {

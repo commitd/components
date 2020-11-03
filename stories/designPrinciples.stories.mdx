@@ -1,12 +1,14 @@
 import { Meta, Preview } from '@storybook/addon-docs/blocks'
-import { ThemeProvider, Flex, Box, colors, theme, Text } from '../src'
+import { Flex, Box, colors, theme, Text } from '../src'
+import { SwitchedThemeProvider } from './util/SwitchedThemeProvider'
+export default (props) => <SwitchedThemeProvider {...props} />
 
 <Meta title="Design System/Design Principles" />
 
 # Design Principles
 
 We don't want to reinvent the wheel, therefore, we use the [Material](https://material.io/) design system, from Google, and their
-[principles](https://material.io/design/introduction/#principles). Committed Components is our particular customisation of it.
+[principles](https://material.io/design/introduction/#principles). Committed Components is our particular customization of it.
 
 ## Material-UI
 
@@ -30,75 +32,73 @@ feeling to the design. If a space is too small, go up a step, too large go down,
 
 The [positioning props][positioning] that deal with spacing (e.g. margin and padding) take a number from 0 to 6 to select the correct
 spacing, 0 being no space and 6 is 128px. In order to be compatible with others using different sets we map less that 0 to 0,
-greater than 6 to 6 and floor the number, incase not an integer.
+greater than 6 to 6 and floor the number, in case not an integer.
 
-<ThemeProvider>
-  <Flex flexDirection="column">
-    <Flex alignItems="center">
-      <Text>0</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[200]}
-        width={theme.spacing(0)}
-      />
-    </Flex>
-    <Flex alignItems="center">
-      <Text>1</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[300]}
-        width={theme.spacing(1)}
-      />
-    </Flex>
-    <Flex alignItems="center">
-      <Text>2</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[400]}
-        width={theme.spacing(2)}
-      />
-    </Flex>
-    <Flex alignItems="center">
-      <Text>3</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[500]}
-        width={theme.spacing(3)}
-      />
-    </Flex>
-    <Flex alignItems="center">
-      <Text>4</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[600]}
-        width={theme.spacing(4)}
-      />
-    </Flex>
-    <Flex alignItems="center">
-      <Text>5</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[700]}
-        width={theme.spacing(5)}
-      />
-    </Flex>
-    <Flex alignItems="center">
-      <Text>6</Text>
-      <Box
-        m={1}
-        py={1}
-        bgcolor={colors.committedYellow[800]}
-        width={theme.spacing(6)}
-      />
-    </Flex>
+<Flex flexDirection="column" bgcolor="background.paper">
+  <Flex alignItems="center">
+    <Text>0</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[200]}
+      width={theme.spacing(0)}
+    />
   </Flex>
-</ThemeProvider>
+  <Flex alignItems="center">
+    <Text>1</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[300]}
+      width={theme.spacing(1)}
+    />
+  </Flex>
+  <Flex alignItems="center">
+    <Text>2</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[400]}
+      width={theme.spacing(2)}
+    />
+  </Flex>
+  <Flex alignItems="center">
+    <Text>3</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[500]}
+      width={theme.spacing(3)}
+    />
+  </Flex>
+  <Flex alignItems="center">
+    <Text>4</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[600]}
+      width={theme.spacing(4)}
+    />
+  </Flex>
+  <Flex alignItems="center">
+    <Text>5</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[700]}
+      width={theme.spacing(5)}
+    />
+  </Flex>
+  <Flex alignItems="center">
+    <Text>6</Text>
+    <Box
+      m={1}
+      py={1}
+      bgcolor={colors.committedYellow[800]}
+      width={theme.spacing(6)}
+    />
+  </Flex>
+</Flex>
 
 ## Sizing
 

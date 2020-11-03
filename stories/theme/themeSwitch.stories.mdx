@@ -6,7 +6,6 @@ import {
   Toolbar,
   ThemeProvider,
   ThemeSwitch,
-  useThemeChoice,
 } from '../../src'
 import { Background, Overview } from '../util'
 import { ThemeSwitchDocs } from './ThemeSwitchDocs'
@@ -17,7 +16,7 @@ import { ThemeSwitchDocs } from './ThemeSwitchDocs'
 
 The `ThemeSwitch` provides a styled button to switch between `light` and `dark` themes.
 It is available in two different variants `commit` and `celestial`, and the icons colors can be customized
-by selecting from the pallete. Note that the pallete will be relative tothe current theme.
+by selecting from the palette. Note that the palette will be relative to the current theme.
 
 <Canvas>
   <Story name="switch">
@@ -55,56 +54,8 @@ dark according to uses preferences. If the user has selected a particular mode t
 It supplies the current `themeChoice` a `toggleTheme` function to use in a control and a `componentMounted` flag to state the component has determined the correct start theme.
 The above story demonstrates its use.
 
+You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.
+
 ## Props
 
 <ArgsTable of={ThemeSwitchDocs} />
-
-# Deprecated useThemeChoice
-
-The use of the `useThemeChoice` hook to connect `ThemeSwitch` and ThemeProvider is no longer required and deprecated.
-This example just shows that it still works.
-
-<Canvas>
-  <Story name="deprecated">
-    {React.createElement(() => {
-      const [
-        themeChoice,
-        toggleThemeChoice,
-        componentMounted,
-      ] = useThemeChoice()
-      const component = componentMounted ? (
-        <ThemeProvider choice={themeChoice}>
-          <AppBar position="relative">
-            <Toolbar>
-              <Box flexGrow={1}>
-                <Heading.h1>Example</Heading.h1>
-              </Box>
-              <ThemeSwitch
-                themeChoice={themeChoice}
-                toggleThemeChoice={toggleThemeChoice}
-              />
-              <ThemeSwitch
-                themeChoice={themeChoice}
-                toggleThemeChoice={toggleThemeChoice}
-                variant="commit"
-              />
-              <ThemeSwitch
-                themeChoice={themeChoice}
-                toggleThemeChoice={toggleThemeChoice}
-                variant="celestial"
-                lightColor="common.white"
-                darkColor="common.black"
-              />
-            </Toolbar>
-          </AppBar>
-          <Background width="1VH">
-            <Overview />
-          </Background>
-        </ThemeProvider>
-      ) : null
-      return component
-    })}
-  </Story>
-</Canvas>
-
-You don't have to use the `ThemeSwitch` to switch the theme, you can make your own.

@@ -127,13 +127,13 @@ const Footer = () => (
 )
 
 const App = () => (
-  <C.ThemeProvider
-    createFonts={() =>
-      Object.assign(C.fonts.defaultFonts, {
+  <C.CustomThemeProvider
+    {...C.createCommittedThemes({
+      fonts: {
         typography: { fontFamily: 'Lato' },
         display: { fontFamily: 'Arciform' },
-      })
-    }
+      },
+    })}
   >
     <C.Box position="relative" minHeight="100vh" bgcolor="background.paper">
       <C.Box pb={footerHeight}>
@@ -142,7 +142,7 @@ const App = () => (
       </C.Box>
       <Footer />
     </C.Box>
-  </C.ThemeProvider>
+  </C.CustomThemeProvider>
 )
 
 ReactDOM.render(<App />, document.getElementById('root'))

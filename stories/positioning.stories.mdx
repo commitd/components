@@ -1,6 +1,8 @@
 import { Meta, Props, Preview } from '@storybook/addon-docs/blocks'
 import { Box, Flex, theme, colors } from '../src'
 import { Spacing, Display, Flexbox, Sizing, Griditem } from './util/docsutil'
+import { SwitchedThemeProvider } from './util/SwitchedThemeProvider'
+export default (props) => <SwitchedThemeProvider {...props} />
 
 <Meta title="Design System/Positioning" />
 
@@ -41,16 +43,16 @@ as well as some extras for controlling display when printing.
 Simple example,
 
 <Box w={1} p={3} bgcolor={colors.grey[100]}>
-  <Box m={2} p={1} bgcolor="white" display="block">
+  <Box m={2} p={1} bgcolor="background.paper" display="block">
     block
   </Box>
-  <Box m={2} p={1} bgcolor="white" display="inline">
+  <Box m={2} p={1} bgcolor="background.paper" display="inline">
     inline
   </Box>
-  <Box m={2} p={1} bgcolor="white" display="inline">
+  <Box m={2} p={1} bgcolor="background.paper" display="inline">
     inline
   </Box>
-  <Box m={2} p={1} bgcolor="white" display="block">
+  <Box m={2} p={1} bgcolor="background.paper" display="block">
     block
   </Box>
 </Box>
@@ -67,10 +69,15 @@ code omits spacing for clarity
 Advanced example, all props support supplying an array or object for responsive behaviour
 
 <Box w={1} p={3} bgcolor={colors.grey[100]}>
-  <Box m={2} p={1} bgcolor="white" display={{ xs: 'block', md: 'none' }}>
+  <Box
+    m={2}
+    p={1}
+    bgcolor="background.paper"
+    display={{ xs: 'block', md: 'none' }}
+  >
     hide on screens wider than md
   </Box>
-  <Box m={2} p={1} bgcolor="white" display={['none', 'block']}>
+  <Box m={2} p={1} bgcolor="background.paper" display={['none', 'block']}>
     hide on screens smaller than md
   </Box>
 </Box>
@@ -107,17 +114,26 @@ For example
 
 <Flex w={1} bgcolor={colors.grey[100]} justifyContent="center">
   <Box m={2} border="1px solid black">
-    <Box bgcolor="white" m={3} p={2}>
+    <Box bgcolor="background.paper" m={3} p={2}>
       margin 3, padding 2
     </Box>
   </Box>
   <Box m={2} border="1px solid black">
-    <Box bgcolor="white" m={2} p={3}>
+    <Box bgcolor="background.paper" m={2} p={3}>
       margin 2, padding 3
     </Box>
   </Box>
   <Box m={2} border="1px solid black">
-    <Box bgcolor="white" mx={2} mt={1} mb={3} pt={1} pb={3} pl={2} pr={1}>
+    <Box
+      bgcolor="background.paper"
+      mx={2}
+      mt={1}
+      mb={3}
+      pt={1}
+      pb={3}
+      pl={2}
+      pr={1}
+    >
       varied
     </Box>
   </Box>
@@ -141,10 +157,22 @@ String values are used directly, numeric values greater than on become `px` valu
 For example
 
 <Box w={1} bgcolor={colors.grey[100]} justifyContent="center">
-  <Box display="inline-block" bgcolor="white" width={300} height={100} m={3}>
+  <Box
+    display="inline-block"
+    bgcolor="background.paper"
+    width={300}
+    height={100}
+    m={3}
+  >
     width 200, height 100
   </Box>
-  <Box display="inline-block" bgcolor="white" width={1 / 2} height={50} m={3}>
+  <Box
+    display="inline-block"
+    bgcolor="background.paper"
+    width={1 / 2}
+    height={50}
+    m={3}
+  >
     width 50%, height 50
   </Box>
 </Box>
