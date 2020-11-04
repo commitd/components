@@ -14,6 +14,7 @@ import {
   DialogContentTextDocs,
   DialogActionsDocs,
 } from './DialogDocs'
+import { ConfirmDialog } from './ConfirmDialog'
 
 <Meta title="Components/Dialog" component={Dialog} />
 
@@ -63,6 +64,32 @@ When activated, Tooltips display a text label identifying an element, such as a 
               </Button>
             </DialogActions>
           </Dialog>
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="confirm dialog">
+    {() => {
+      const [open, setOpen] = React.useState(false)
+      function handleClickOpen() {
+        setOpen(true)
+      }
+      function handleClose() {
+        setOpen(false)
+      }
+      return (
+        <div>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Open confirm dialog
+          </Button>
+          <ConfirmDialog
+            open={open}
+            onClose={handleClose}
+            content="This cannot be undone."
+          />
         </div>
       )
     }}
