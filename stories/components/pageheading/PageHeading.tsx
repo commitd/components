@@ -23,8 +23,10 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
       {title && <Heading.h2>{title}</Heading.h2>}
 
       <Flex justifyContent="flex-end" flexWrap="wrap" flex={1} flexShrink={0}>
-        {buttons.map((b) => (
-          <Box ml={2}>{b}</Box>
+        {buttons.map((b, i) => (
+          <Box key={i} ml={2}>
+            {b}
+          </Box>
         ))}
       </Flex>
     </Box>
