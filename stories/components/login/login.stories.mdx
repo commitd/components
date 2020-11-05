@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { Login } from './Login'
+
+<Meta title="Components/Login" component={Login} />
+
+# Login
+
+A login form following [best practices](web.dev/sign-in-form-best-practices/#checklist).
+
+It uses built in brower validation of emails and passwords with `type="email"` and `type="password"`.
+
+The signin button is disabled while sign in is taking place to prevent accidental multiple login attempts.
+
+The form is mobile friendly. `type=email` is used to bring up the correct keyboard.
+
+The typed in password can viewed with the show password button to make sign in easier.
+
+Accessiblity is considered. `aria-label` and `aria-describedby` is used for password inputs.
+
+<Canvas>
+  <Story name="default">
+    <Login
+      onChangeEmail={() => {}}
+      onChangePassword={() => {}}
+      email="jsmith"
+      password="password"
+      onSignIn={() => {}}
+    />
+  </Story>
+</Canvas>
+
+The `passwordRules` optionally displays the password rules for easier sign in.
+
+<Canvas>
+  <Story name="password rules">
+    <Login
+      onChangeEmail={() => {}}
+      onChangePassword={() => {}}
+      email="jsmith"
+      password="password"
+      onSignIn={() => {}}
+      passwordRules="8 or more characters with one letter and symbol"
+    />
+  </Story>
+</Canvas>
+
+The `errorMessage` can be used to display errors related to sign in.
+
+<Canvas>
+  <Story name="error">
+    <Login
+      onChangeEmail={() => {}}
+      onChangePassword={() => {}}
+      email="jsmith"
+      password="password"
+      onSignIn={() => {}}
+      errorMessage="Account is disabled or does not exist"
+    />
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Login} />
