@@ -46,11 +46,3 @@ const output = {
 test('Should deepmerge, for arrays last array wins', function () {
   expect(deepmerge(x, y)).toEqual(output)
 })
-
-test('Should deepmerge, with x {}', function () {
-  expect(deepmerge({}, y)).toEqual(y)
-})
-
-test('Should deepmerge, with y {}', function () {
-  expect(deepmerge(x, {})).toEqual(x)
-})
