@@ -1,8 +1,8 @@
 import React from 'react'
 import {
-  withPositioning,
+  withPositioningProps,
   PositioningProps,
-  withSizing,
+  withSizingProps,
   SizingProps,
 } from '../../internal'
 
@@ -11,6 +11,6 @@ type PositionedFormProps = React.FormHTMLAttributes<HTMLFormElement> &
 
 export type FormProps = PositionedFormProps & SizingProps
 
-export const Form: React.ComponentType<FormProps> = withSizing(
-  withPositioning<FormProps>('form')
+export const Form: React.ComponentType<FormProps> = withSizingProps(
+  withPositioningProps<FormProps>((props) => <form {...props} />)
 )

@@ -3,8 +3,8 @@ import { styled } from '@material-ui/styles'
 import MaterialTypography, {
   TypographyProps as MaterialTypographyProps,
 } from '@material-ui/core/Typography'
-import { withPositioning, PositioningProps } from '../../internal'
-import { fonts, Theme, theme } from '../../theme'
+import { withPositioningProps, PositioningProps } from '../../internal'
+import { FontType, Theme } from '../../theme'
 
 type BaseTypographyProps<C extends React.ElementType> = MaterialTypographyProps<
   C,
@@ -12,7 +12,7 @@ type BaseTypographyProps<C extends React.ElementType> = MaterialTypographyProps<
 > &
   PositioningProps
 
-const BaseTypography = withPositioning<MaterialTypographyProps>(
+const BaseTypography = withPositioningProps<MaterialTypographyProps>(
   MaterialTypography
 )
 
@@ -37,7 +37,7 @@ export type ExtraTypographyProps = {
 
 export type InternalTypographyProps = {
   /** Select the font to use from the theme */
-  font?: theme.FontType
+  font?: FontType
 }
 
 //TODO: check if Omit theme still required
@@ -76,7 +76,7 @@ export const StyledTypography = styled(WrappedTypography)(
     Object.assign(theme.fonts[font], {
       fontStyle: italic ? 'italic' : 'normal',
       // @ts-ignore
-      fontSize: fonts.sizes[fontSize ? fontSize : 0],
+      fontSize: theme.fontSizing(fontSize ? fontSize : 0),
       textTransform: upper ? 'uppercase' : capital ? 'capitalize' : 'none',
       fontWeight: light ? 200 : bold ? 700 : 400,
     })
@@ -92,7 +92,7 @@ export function Typography<C extends React.ElementType>({
   return (
     <Strike strike={strike}>
       {props.variant ? (
-        <BaseTypography {...props} />
+        <WrappedTypography {...props} />
       ) : (
         <StyledTypography {...props} />
       )}

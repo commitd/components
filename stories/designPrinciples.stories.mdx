@@ -1,12 +1,14 @@
 import { Meta, Preview } from '@storybook/addon-docs/blocks'
-import { Flex, Box, theme, colors } from '../src'
+import { Flex, Box, colors, theme, Text } from '../src'
+import { SwitchedThemeProvider } from './util/SwitchedThemeProvider'
+export default (props) => <SwitchedThemeProvider {...props} />
 
 <Meta title="Design System/Design Principles" />
 
 # Design Principles
 
 We don't want to reinvent the wheel, therefore, we use the [Material](https://material.io/) design system, from Google, and their
-[principles](https://material.io/design/introduction/#principles). Committed Components is our particular customisation of it.
+[principles](https://material.io/design/introduction/#principles). Committed Components is our particular customization of it.
 
 ## Material-UI
 
@@ -30,9 +32,9 @@ feeling to the design. If a space is too small, go up a step, too large go down,
 
 The [positioning props][positioning] that deal with spacing (e.g. margin and padding) take a number from 0 to 6 to select the correct
 spacing, 0 being no space and 6 is 128px. In order to be compatible with others using different sets we map less that 0 to 0,
-greater than 6 to 6 and floor the number, incase not an integer.
+greater than 6 to 6 and floor the number, in case not an integer.
 
-<Flex flexDirection="column">
+<Flex flexDirection="column" bgcolor="background.paper">
   <Flex alignItems="center">
     <Text>0</Text>
     <Box
@@ -134,7 +136,7 @@ range         |   xs   |   sm   |   md   |   lg   |   xl
 - xl, extra-large: 1920px
 
 We can refer to them in certain props with their keys or in standard
-ordering for example the following two exanmles are equivalent:
+ordering for example the following two examples are equivalent:
 
 ```jsx
 <Box margin={{ xs: 2, sm: 3, md: 4 }} />

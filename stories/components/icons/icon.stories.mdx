@@ -1,22 +1,17 @@
-import { Icons, Flex } from '../../../src'
+import { Flex } from '../../../src'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { IconsDocs } from './IconsDocs'
 import { Copy } from '../../util/copy'
+import { Icons } from '../../util/Icons'
 
 <Meta title="Components/Icons" component={Icons} />
 
 # Icon
 
-Extends [Material-UI Icons](https://material-ui.com/components/icons/).
+We recommend using the Sharp Material-UI icons directly from `@material-ui/icons` and setting up a project icons file to allow easy changing of all semantically equivalent icons.
+This will help to improve maintainability and reduce bundle size through tree shaking.
 
-<Canvas>
-  <Story name="default">
-    <Icons.Mood />
-  </Story>
-</Canvas>
-
-We use the Sharp set of icons from Material (but drop the sharp from the name title).
-Click to copy the name. Then use `<Icons.Name />`
+Click to copy the name. Then use `import {Name} from '@material-ui/icons'`
 
 <Canvas>
   <Story name="icons">
@@ -25,7 +20,7 @@ Click to copy the name. Then use `<Icons.Name />`
       return (
         <Flex flexWrap="wrap">
           {icons.map((key) => (
-            <Copy m={1} key={key} title={key}>
+            <Copy m={1} key={key} title={key + 'Sharp'}>
               {React.createElement(Icons[key])}
             </Copy>
           ))}
@@ -37,6 +32,6 @@ Click to copy the name. Then use `<Icons.Name />`
 
 ## Props
 
-Supports standard `svg` props.
+Icons support the standard `svg` props.
 
 <ArgsTable of={IconsDocs} />

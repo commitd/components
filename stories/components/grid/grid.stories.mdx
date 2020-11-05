@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
-import { Grid, Box, Card, colors } from '../../../src'
+import { Grid, Box, Card, colors, theme } from '../../../src'
 import { GridBox } from '../../util/GridBox'
 import { Gridcontainer } from '../../util/docsutil'
 import { GridDocs } from './GridDocs'
@@ -60,8 +60,8 @@ Values:
   </Story>
 </Canvas>
 
-`gridTemplate` and `grid` can be used as a shorthand notation, however, as in this example it can be dificult to follow.
-For clarity, we reccommend using the mroe verbose versions except for simple layouts.
+`gridTemplate` and `grid` can be used as a shorthand notation, however, as in this example it can be difficult to follow.
+For clarity, we recommend using the more verbose versions except for simple layouts.
 
 <Canvas>
   <Story name="areas-shorthand">
@@ -252,7 +252,7 @@ Values:
 ## Place Items
 
 `place-items` sets both the align-items and justify-items properties in a single declaration.
-It does not support breakpoit changing.
+It does not support breakpoint changing.
 
 Values:
 

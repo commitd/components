@@ -8,7 +8,6 @@ import {
   Text,
   Toolbar,
   Paragraph,
-  Icons,
   List,
   ListItem,
   ListItemIcon,
@@ -22,6 +21,8 @@ import {
 } from '../../../src'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { DrawerDocs } from './DrawerDocs'
+import InboxSharp from '@material-ui/icons/InboxSharp'
+import MailSharp from '@material-ui/icons/MailSharp'
 
 <Meta title="Components/Drawer" component={Drawer} />
 
@@ -74,7 +75,7 @@ and [side sheet](https://material.io/components/sheets-side/)
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <Icons.Inbox /> : <Icons.Mail />}
+                  {index % 2 === 0 ? <InboxSharp /> : <MailSharp />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -85,7 +86,7 @@ and [side sheet](https://material.io/components/sheets-side/)
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <Icons.Inbox /> : <Icons.Mail />}
+                  {index % 2 === 0 ? <InboxSharp /> : <MailSharp />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>

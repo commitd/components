@@ -1,14 +1,22 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderOptions } from '@testing-library/react'
-import { ThemeProvider } from '../src'
+import { createCommittedThemes, ThemeProvider } from '../src'
 
 const Light: React.FC = ({ children }) => {
-  return <ThemeProvider choice="light">{children}</ThemeProvider>
+  return (
+    <ThemeProvider choice="light" {...createCommittedThemes()}>
+      {children}
+    </ThemeProvider>
+  )
 }
 
 const Dark: React.FC = ({ children }) => {
-  return <ThemeProvider choice="dark">{children}</ThemeProvider>
+  return (
+    <ThemeProvider choice="dark" {...createCommittedThemes()}>
+      {children}
+    </ThemeProvider>
+  )
 }
 
 export const renderLight = (

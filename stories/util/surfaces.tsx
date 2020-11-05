@@ -1,7 +1,14 @@
 import React from 'react'
-import { withTheme, styled } from '@material-ui/styles'
-import { WithTheme, Theme } from '@material-ui/core'
-import { Flex, Text, Heading, copyToClipboard } from '../../src'
+import {
+  withTheme,
+  styled,
+  WithTheme,
+  Theme,
+  Flex,
+  Text,
+  Heading,
+  copyToClipboard,
+} from '../../src'
 
 export const Background = styled('div')(({ theme }: WithTheme) => ({
   background: theme.palette.background.default,

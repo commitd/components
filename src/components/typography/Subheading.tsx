@@ -1,11 +1,14 @@
 import React from 'react'
-import { styled } from '@material-ui/styles'
-import { Theme, fonts } from '../../theme'
+import { styled, compose } from '../../styles'
+import { Theme } from '../../theme'
 import { Typography, TypographyProps } from './Typography'
 
 export type SubheadingProps = Omit<TypographyProps<'h6'>, 'variant'>
 
 const font = ({ theme }: { theme: Theme }) => theme.fonts.subheading
+const fontSize = (factor: number) => ({ theme }: { theme: Theme }) => ({
+  fontSize: theme.fontSizing(factor),
+})
 
 export const Subheading: {
   h1: React.ComponentType<SubheadingProps>
@@ -22,11 +25,11 @@ export const Subheading: {
   ))(font),
   h3: styled((props: SubheadingProps) => (
     <Typography {...props} variant="subtitle1" />
-  ))(Object.assign({ fontSize: fonts.sizes[-1] }, font)),
+  ))(compose(fontSize(-1), font)),
   h4: styled((props: SubheadingProps) => (
     <Typography {...props} variant="subtitle1" />
-  ))(Object.assign({ fontSize: fonts.sizes[-1] }, font)),
+  ))(compose(fontSize(-1), font)),
   h5: styled((props: SubheadingProps) => (
     <Typography {...props} variant="subtitle1" />
-  ))(Object.assign({ fontSize: fonts.sizes[-1] }, font)),
+  ))(compose(fontSize(-1), font)),
 }

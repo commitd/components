@@ -6,7 +6,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 Install the design system and dependencies in your application
 
-```sh
+```bash
 yarn add @committed/components @material-ui/core @material-ui/icons
 ```
 
@@ -38,19 +38,20 @@ Import and use the design system UI components in your application.
 
 ```jsx
 import React from 'react'
-import { Box, Text } from '@committed/components'
+import { Box, Typography } from '@committed/components'
 
 const AppRoot = (props) => (
   <Box p={3}>
-    <Text color="blue">Hello</Text>
+    <Typography>Hello</Typography>
   </Box>
 )
 ```
 
 ## Icons
 
-We currently use the Sharp icons from `@material-ui/icons` exposed on the `Icons` component. In order to use this you must add the peer dependency:
+We do not re-export the Material Icons, we recommend using the Sharp icons from `@material-ui/icons`.
+In order to use these you must add the dependency:
 
-```sh
+```bash
 yarn add @material-ui/icons
 ```

@@ -3,22 +3,10 @@ import {
   fade,
   lighten,
 } from '@material-ui/core/styles/colorManipulator'
-import {
-  Palette,
-  PaletteColor,
-  PaletteOptions,
-} from '@material-ui/core/styles/createPalette'
-import { Overrides } from '@material-ui/core/styles/overrides'
-import deepmerge from 'deepmerge'
+import { deepmerge } from '@material-ui/utils'
 import * as allColors from './colors'
-import {
-  addTransparency,
-  baseCommittedOverrides,
-  createCommittedFonts,
-  createCommittedShape,
-  createCommittedSpacing,
-  createCommittedTypography,
-} from './theme'
+import { addTransparency } from './commonTheme'
+import { OverrideOptionsFunction, PaletteColor, PaletteOptions } from './types'
 
 export type DarkPaletteColors = typeof committedDarkPaletteColors
 
@@ -64,57 +52,55 @@ const action = {
   activatedOpacity: 0.24,
 }
 
-export const createCommittedDarkPaletteOptions = (): PaletteOptions => {
-  const paletteColors = committedDarkPaletteColors
-  const textColor = paletteColors.grey[900]
-  return {
-    type: 'dark',
-    brand: {
-      light: paletteColors.brand[300],
-      main: paletteColors.brand[500],
-      dark: paletteColors.brand[700],
-      contrastText: textColor,
-    },
-    primary: {
-      light: paletteColors.primary[300],
-      main: paletteColors.primary[500],
-      dark: paletteColors.primary[700],
-      contrastText: paletteColors.brand[500],
-    },
-    secondary: {
-      light: paletteColors.secondary[300],
-      main: paletteColors.secondary[500],
-      dark: paletteColors.secondary[700],
-      contrastText: paletteColors.primary[500],
-    },
-    error: paletteColors.error,
-    success: {
-      light: paletteColors.success[300],
-      main: paletteColors.success[500],
-      dark: paletteColors.success[700],
-      contrastText: textColor,
-    },
-    warning: {
-      light: paletteColors.warning[200],
-      main: paletteColors.warning[400],
-      dark: paletteColors.warning[600],
-      contrastText: textColor,
-    },
-    info: {
-      light: paletteColors.info[100],
-      main: paletteColors.info[300],
-      dark: paletteColors.info[500],
-      contrastText: textColor,
-    },
-    background: {
-      default: 'black',
-      paper: paletteColors.grey[800],
-    },
-    text,
-    grey: paletteColors.grey,
-    action,
-    divider: 'rgba(255, 255, 255, 0.8)',
-  }
+const paletteColors = committedDarkPaletteColors
+const textColor = paletteColors.grey[900]
+export const committedDarkPalette: PaletteOptions = {
+  type: 'dark',
+  brand: {
+    light: paletteColors.brand[300],
+    main: paletteColors.brand[500],
+    dark: paletteColors.brand[700],
+    contrastText: textColor,
+  },
+  primary: {
+    light: paletteColors.primary[300],
+    main: paletteColors.primary[500],
+    dark: paletteColors.primary[700],
+    contrastText: paletteColors.brand[500],
+  },
+  secondary: {
+    light: paletteColors.secondary[300],
+    main: paletteColors.secondary[500],
+    dark: paletteColors.secondary[700],
+    contrastText: paletteColors.primary[500],
+  },
+  error: paletteColors.error,
+  success: {
+    light: paletteColors.success[300],
+    main: paletteColors.success[500],
+    dark: paletteColors.success[700],
+    contrastText: textColor,
+  },
+  warning: {
+    light: paletteColors.warning[200],
+    main: paletteColors.warning[400],
+    dark: paletteColors.warning[600],
+    contrastText: textColor,
+  },
+  info: {
+    light: paletteColors.info[100],
+    main: paletteColors.info[300],
+    dark: paletteColors.info[500],
+    contrastText: textColor,
+  },
+  background: {
+    default: 'black',
+    paper: paletteColors.grey[800],
+  },
+  text,
+  grey: paletteColors.grey,
+  action,
+  divider: 'rgba(255, 255, 255, 0.8)',
 }
 
 // eqiv to color[400]
@@ -132,8 +118,12 @@ const lightLightVery = (color: PaletteColor): string => {
   return lighten(color.light, 0.5)
 }
 
-export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
-  return deepmerge(baseCommittedOverrides(palette), {
+export const committedDarkOverrides: OverrideOptionsFunction = (
+  defaultOverrides,
+  helpers
+) => {
+  const { palette } = helpers
+  return deepmerge(defaultOverrides, {
     MuiBadge: {
       colorSecondary: {
         backgroundColor: palette.secondary.dark,
@@ -293,13 +283,4 @@ export const createCommittedDarkOverrides = (palette: Palette): Overrides => {
       },
     },
   })
-}
-
-export const darkTheme = {
-  createPaletteOptions: createCommittedDarkPaletteOptions,
-  createOverrides: createCommittedDarkOverrides,
-  createFonts: createCommittedFonts,
-  createShape: createCommittedShape,
-  createSpacing: createCommittedSpacing,
-  createTypography: createCommittedTypography,
 }

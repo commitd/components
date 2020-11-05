@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeChoice } from './theme'
+import { ThemeChoice } from './types'
 
 export const ThemeContext = React.createContext<{
   choice: ThemeChoice

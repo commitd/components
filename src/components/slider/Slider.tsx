@@ -1,8 +1,8 @@
-import { withWrapper, WithWrapperProps } from '../../internal'
 import MaterialSlider, {
   SliderProps as MaterialSliderProps,
 } from '@material-ui/core/Slider'
+import { BoxProps, withBoxProps } from '../../internal/wrappers'
 
-export type SliderProps = WithWrapperProps & MaterialSliderProps
+export type SliderProps = BoxProps & MaterialSliderProps
 
-export const Slider = withWrapper(MaterialSlider)
+export const Slider = withBoxProps<MaterialSliderProps>(MaterialSlider)

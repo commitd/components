@@ -1,22 +1,14 @@
-import { fade, lighten } from '@material-ui/core/styles/colorManipulator'
+import { deepmerge } from '@material-ui/utils'
+import { darken, fade, lighten } from '../styles'
+import * as allColors from './colors'
+import { addTransparency } from './commonTheme'
 import {
-  Palette,
+  OverrideOptionsFunction,
   PaletteColor,
   PaletteOptions,
   TypeAction,
   TypeText,
-} from '@material-ui/core/styles/createPalette'
-import { Overrides } from '@material-ui/core/styles/overrides'
-import deepmerge from 'deepmerge'
-import * as allColors from './colors'
-import {
-  addTransparency,
-  baseCommittedOverrides,
-  createCommittedFonts,
-  createCommittedShape,
-  createCommittedSpacing,
-  createCommittedTypography,
-} from './theme'
+} from './types'
 
 export const committedLightPaletteColors = {
   ...allColors,
@@ -60,57 +52,56 @@ const action: TypeAction = {
   activatedOpacity: 0.12,
 }
 
-export const createCommittedLightPaletteOptions = (): PaletteOptions => {
-  const paletteColors = committedLightPaletteColors
-  const textColor = paletteColors.grey[900]
-  return {
-    type: 'light',
-    brand: {
-      light: paletteColors.brand[300],
-      main: paletteColors.brand[500],
-      dark: paletteColors.brand[700],
-      contrastText: textColor,
-    },
-    primary: {
-      light: paletteColors.primary[400],
-      main: paletteColors.primary[600],
-      dark: paletteColors.primary[800],
-      contrastText: paletteColors.brand[500],
-    },
-    secondary: {
-      light: paletteColors.secondary[300],
-      main: paletteColors.secondary[500],
-      dark: paletteColors.secondary[700],
-      contrastText: paletteColors.primary[500],
-    },
-    error: paletteColors.error,
-    success: {
-      light: paletteColors.success[300],
-      main: paletteColors.success[500],
-      dark: paletteColors.success[700],
-      contrastText: textColor,
-    },
-    warning: {
-      light: paletteColors.warning[200],
-      main: paletteColors.warning[400],
-      dark: paletteColors.warning[600],
-      contrastText: textColor,
-    },
-    info: {
-      light: paletteColors.info[100],
-      main: paletteColors.info[300],
-      dark: paletteColors.info[500],
-      contrastText: textColor,
-    },
-    background: {
-      default: paletteColors.grey[50],
-      paper: 'white',
-    },
-    text,
-    grey: paletteColors.grey,
-    action,
-    divider: 'rgba(0, 0, 0, 0.12)',
-  }
+const paletteColors = committedLightPaletteColors
+const textColor = paletteColors.grey[900]
+
+export const committedLightPalette: PaletteOptions = {
+  type: 'light',
+  brand: {
+    light: paletteColors.brand[300],
+    main: paletteColors.brand[500],
+    dark: paletteColors.brand[700],
+    contrastText: textColor,
+  },
+  primary: {
+    light: paletteColors.primary[400],
+    main: paletteColors.primary[600],
+    dark: paletteColors.primary[800],
+    contrastText: paletteColors.brand[500],
+  },
+  secondary: {
+    light: paletteColors.secondary[300],
+    main: paletteColors.secondary[500],
+    dark: paletteColors.secondary[700],
+    contrastText: paletteColors.primary[500],
+  },
+  error: paletteColors.error,
+  success: {
+    light: paletteColors.success[300],
+    main: paletteColors.success[500],
+    dark: paletteColors.success[700],
+    contrastText: textColor,
+  },
+  warning: {
+    light: paletteColors.warning[200],
+    main: paletteColors.warning[400],
+    dark: paletteColors.warning[600],
+    contrastText: textColor,
+  },
+  info: {
+    light: paletteColors.info[100],
+    main: paletteColors.info[300],
+    dark: paletteColors.info[500],
+    contrastText: textColor,
+  },
+  background: {
+    default: paletteColors.grey[50],
+    paper: 'white',
+  },
+  text,
+  grey: paletteColors.grey,
+  action,
+  divider: 'rgba(0, 0, 0, 0.12)',
 }
 
 // eqiv to color[400]
@@ -128,8 +119,12 @@ const lightLightVery = (color: PaletteColor): string => {
   return lighten(color.light, 0.5)
 }
 
-export const createCommittedLightOverrides = (palette: Palette): Overrides => {
-  return deepmerge(baseCommittedOverrides(palette), {
+export const committedLightOverrides: OverrideOptionsFunction = (
+  defaultOverrides,
+  helpers
+) => {
+  const { palette } = helpers
+  return deepmerge(defaultOverrides, {
     MuiButton: {
       contained: {
         '&:hover': {
@@ -153,27 +148,30 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
         },
       },
       outlinedPrimary: {
-        backgroundColor: lightLightVery(palette.brand),
-        '&:hover': {
-          backgroundColor: lightLight(palette.brand),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(lightLightVery(palette.brand)),
-          borderColor: addTransparency(palette.primary.main),
-        },
-      },
-      outlinedSecondary: {
         color: palette.secondary.dark,
-        backgroundColor: mainLight(palette.primary),
+        backgroundColor: palette.primary.light,
+        borderColor: palette.primary.main,
         '&:hover': {
-          backgroundColor: lighten(
-            mainLight(palette.primary),
-            action.hoverOpacity
-          ),
+          backgroundColor: darken(palette.primary.main, action.hoverOpacity),
+          borderColor: palette.primary.main,
         },
         '&$disabled': {
           backgroundColor: addTransparency(mainLight(palette.primary)),
           borderColor: addTransparency(palette.secondary.main),
+        },
+      },
+      outlinedSecondary: {
+        color: palette.primary.dark,
+        borderColor: palette.primary.main,
+        backgroundColor: lightLightVery(palette.brand),
+        '&:hover': {
+          backgroundColor: lightLight(palette.brand),
+          borderColor: palette.primary.main,
+        },
+        '&$disabled': {
+          color: addTransparency(palette.primary.dark),
+          backgroundColor: addTransparency(lightLightVery(palette.brand)),
+          borderColor: addTransparency(palette.primary.main),
         },
       },
     },
@@ -272,13 +270,4 @@ export const createCommittedLightOverrides = (palette: Palette): Overrides => {
       },
     },
   })
-}
-
-export const lightTheme = {
-  createPaletteOptions: createCommittedLightPaletteOptions,
-  createOverrides: createCommittedLightOverrides,
-  createFonts: createCommittedFonts,
-  createShape: createCommittedShape,
-  createSpacing: createCommittedSpacing,
-  createTypography: createCommittedTypography,
 }

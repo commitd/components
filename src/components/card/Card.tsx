@@ -26,16 +26,14 @@ import {
 import React from 'react'
 import {
   SizingProps,
-  withSizing,
-  withWrapper,
-  WithWrapperProps,
+  withSizingProps,
+  withBoxProps,
+  BoxProps,
 } from '../../internal'
 
-export type CardProps = MaterialCardProps & WithWrapperProps
+export type CardProps = MaterialCardProps & BoxProps
 
-export const Card: React.ComponentType<CardProps> = withWrapper<
-  MaterialCardProps
->(MaterialCard)
+export const Card: React.ComponentType<CardProps> = withBoxProps(MaterialCard)
 
 // Card supplementary components
 
@@ -54,11 +52,11 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
   }
   return <StyledCardHeader {...others}>{children}</StyledCardHeader>
 }
-export const CardMedia: React.ComponentType<CardMediaProps> = withSizing(
+export const CardMedia: React.ComponentType<CardMediaProps> = withSizingProps(
   MaterialCardMedia
 )
 
-export const CardContent: React.ComponentType<CardContentProps> = withSizing(
+export const CardContent: React.ComponentType<CardContentProps> = withSizingProps(
   MaterialCardContent
 )
 

@@ -16,9 +16,16 @@ declare module '*.woff'
 declare module '*.woff2'
 declare module '*.ttf'
 declare module '*.eot'
-// TODO move to supporting folder
-declare module '@styled-system/theme-get' {
-  export function themeGet(keys: string, fallback?: string): any
-}
 
-declare module '@storybook/addon-docs/blocks'
+// Next utils are written in ts so can be removed later
+declare module '@material-ui/utils' {
+  export interface DeepmergeOptions {
+    clone?: boolean
+  }
+
+  export function deepmerge<T>(
+    target: T,
+    source: unknown,
+    options?: DeepmergeOptions
+  ): T
+}
