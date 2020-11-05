@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from './test-utils'
-import { AppBar } from '../src'
+import { Box } from '../src'
 
-describe('AppBar', () => {
+describe('Box', () => {
   it('renders without crashing', () => {
-    const { asFragment } = render(<AppBar />)
+    const { asFragment } = render(<Box />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from './test-utils'
-import { AppBar } from '../src'
+import { Avatar } from '../src'
 
-describe('AppBar', () => {
+describe('Avatar', () => {
   it('renders without crashing', () => {
-    const { asFragment } = render(<AppBar />)
+    const { asFragment } = render(<Avatar />)
     expect(asFragment()).toMatchSnapshot()
   })
 })
