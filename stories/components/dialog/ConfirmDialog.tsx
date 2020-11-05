@@ -40,19 +40,15 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
         </DialogContent>
       )}
       <DialogActions>
+        <Button onClick={onCancel} variant="text" startIcon={<Icons.Clear />}>
+          {cancelButtonText}
+        </Button>
         <Button
           color="primary"
           startIcon={deleting ? <Icons.Delete /> : <Icons.Check />}
           onClick={onConfirm}
         >
           {confirmButtonText}
-        </Button>
-        <Button
-          onClick={onCancel}
-          color="secondary"
-          startIcon={<Icons.Clear />}
-        >
-          {cancelButtonText}
         </Button>
       </DialogActions>
     </Dialog>

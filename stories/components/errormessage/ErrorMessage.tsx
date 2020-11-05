@@ -1,14 +1,19 @@
 import React from 'react'
-import { Text, IconButton, Collapse } from '../../../src'
-import Alert, { Color } from '@material-ui/lab/Alert'
-import AlertTitle from '@material-ui/lab/AlertTitle'
+import {
+  Text,
+  IconButton,
+  Collapse,
+  Alert,
+  AlertTitle,
+  AlertProps,
+} from '../../../src'
 import { Icons } from '../../util/Icons'
 
 interface MessageProps {
   title?: string
   message?: string
   icon?: React.ReactNode
-  severity?: Color
+  severity?: AlertProps['color']
   closeable?: boolean
   onClose?: () => void
 }

@@ -10,10 +10,10 @@ import {
   List,
   ListItem,
   Palette,
+  lighten,
 } from '../../../src'
 import React, { PropsWithChildren } from 'react'
 import clsx from 'clsx'
-import tinycolor from 'tinycolor2'
 
 export interface Described<I> {
   title: string
@@ -40,7 +40,7 @@ const useStyles = makeStyles<Theme, { selectionColor: string }>((theme) => {
       borderColor: ({ selectionColor }) =>
         theme.palette[selectionColor].contrastText,
       background: ({ selectionColor }) =>
-        tinycolor(theme.palette[selectionColor].light).lighten(20).toString(),
+        lighten(theme.palette[selectionColor].light, 0.6),
 
       color: ({ selectionColor }) => theme.palette[selectionColor].contrastText,
       zIndex: 1,
