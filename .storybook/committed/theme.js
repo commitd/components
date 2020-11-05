@@ -1,6 +1,4 @@
 import { create } from '@storybook/theming'
-import lightImage from '../../public/images/Committed-Colour-512px.png'
-import darkImage from '../../public/images/Committed-Yellow-Trans-512px.png'
 
 const overrides = {
   colorPrimary: '#ffbb00',
@@ -19,11 +17,11 @@ const overrides = {
 export const committedLight = create({
   ...overrides,
   base: 'light',
-  brandImage: lightImage,
+  brandImage: 'https://committed.software/Committed_Light.svg',
 })
 
 export const committedDark = create({
   ...overrides,
   base: 'dark',
-  brandImage: darkImage,
+  brandImage: 'https://committed.software/Committed_Dark.svg',
 })

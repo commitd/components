@@ -234,6 +234,7 @@ export type { TypographyProps } from './typography/Typography'
 
 export {
   Alert,
+  AlertTitle,
   Autocomplete,
   useAutocomplete,
   PaginationItem,

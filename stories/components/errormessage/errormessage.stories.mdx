@@ -1,0 +1,21 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { Button, Container } from '../../../src'
+import { ErrorMessage } from './ErrorMessage'
+
+<Meta title="Candidates/ErrorMessage" component={ErrorMessage} />
+
+# ErrorMessage
+
+Display an error message.
+
+<Canvas>
+  <Story name="default">
+    <Container maxWidth="md">
+      <ErrorMessage closeable={true} />
+    </Container>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={ErrorMessage} />

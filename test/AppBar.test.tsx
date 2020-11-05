@@ -6,7 +6,7 @@ describe('AppBar', () => {
   it('renders without crashing', () => {
     const { asFragment } = render(
       <AppBar>
-        <Toolbar></Toolbar>
+        <Toolbar />
       </AppBar>
     )
     expect(asFragment()).toMatchSnapshot()
