@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBar renders without crashing 1`] = `
+<DocumentFragment>
+  <header
+    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary WithStyles(ForwardRef(AppBar))-root-1 WithStyles(ForwardRef(AppBar))-root-2 mui-fixed MuiPaper-elevation4"
+  />
+</DocumentFragment>
+`;

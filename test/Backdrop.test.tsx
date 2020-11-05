@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from './test-utils'
-import { AppBar } from '../src'
+import { Backdrop } from '../src'
 
-describe('AppBar', () => {
+describe('Backdrop', () => {
   it('renders without crashing', () => {
-    const { asFragment } = render(<AppBar />)
+    const { asFragment } = render(<Backdrop open={true} />)
     expect(asFragment()).toMatchSnapshot()
   })
 })
