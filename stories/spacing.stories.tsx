@@ -105,6 +105,4 @@ export const egdeCases = () => (
   </Flex>
 )
 
-egdeCases.story = {
-  parameters: { docs: { disable: true } },
-}
+egdeCases.parameters = { docs: { disable: true } }

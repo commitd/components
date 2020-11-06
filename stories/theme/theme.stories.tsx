@@ -14,9 +14,7 @@ export const light = () => (
   </ThemeProvider>
 )
 
-light.story = {
-  parameters: { docs: { disable: true } },
-}
+light.parameters = { docs: { disable: true } }
 
 export const dark = () => (
   <ThemeProvider choice="dark">
@@ -26,9 +24,7 @@ export const dark = () => (
   </ThemeProvider>
 )
 
-dark.story = {
-  parameters: { docs: { disable: true } },
-}
+dark.parameters = { docs: { disable: true } }
 
 export const materialLight = () => (
   <MaterialThemeProvider choice="light">
@@ -38,9 +34,7 @@ export const materialLight = () => (
   </MaterialThemeProvider>
 )
 
-materialLight.story = {
-  parameters: { docs: { disable: true } },
-}
+materialLight.parameters = { docs: { disable: true } }
 
 export const materialDark = () => (
   <MaterialThemeProvider choice="dark">
@@ -50,6 +44,4 @@ export const materialDark = () => (
   </MaterialThemeProvider>
 )
 
-materialDark.story = {
-  parameters: { docs: { disable: true } },
-}
+materialDark.parameters = { docs: { disable: true } }
