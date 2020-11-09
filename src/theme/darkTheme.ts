@@ -1,8 +1,4 @@
-import {
-  darken,
-  fade,
-  lighten,
-} from '@material-ui/core/styles/colorManipulator'
+import { darken, fade, lighten } from '../styles'
 import { deepmerge } from '@material-ui/utils'
 import * as allColors from './colors'
 import { addTransparency } from './commonTheme'
