@@ -28,5 +28,8 @@
     "parcel": "^1.12.4",
     "shx": "^0.3.2",
     "typescript": "^4.0.5"
+  },
+  "resolutions": {
+    "node-forge": "^0.10.0"
   }
 }
