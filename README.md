@@ -40,6 +40,16 @@ We use storybook to develop and document the components, this is run in developm
 yarn storybook
 ```
 
+## Dev Containers
+
+This project contains a [VSCode Dev Container Configuration](https://code.visualstudio.com/docs/remote/containers).
+
+To use this, you must install the [VSCode Remote Container Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+
+Once this is installed, you should be prompted (when opening the project in it's root directory) to `Reopen in Container`. If this prompt does not appear, open the Command Palette and run `Remote Containers: Rebuild and Reopen in Container`.
+
+This will re-open the project, with the project files mounted in a Docker container, which will include all the VSCode extensions from the dev container (e.g. useful extensions, formatters etc).
+
 ## CI
 
 Pull requests go through CI checks using Drone. Merged pull requests to master update the deployed documentation and can update the package in the GitHub registry if the version number is updated.
