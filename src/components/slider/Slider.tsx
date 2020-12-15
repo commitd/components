@@ -3,6 +3,11 @@ import MaterialSlider, {
 } from '@material-ui/core/Slider'
 import { BoxProps, withBoxProps } from '../../internal/wrappers'
 
-export type SliderProps = BoxProps & MaterialSliderProps
+export type SliderProps = BoxProps &
+  Omit<MaterialSliderProps, 'onChange'> & {
+    onChange?:
+      | ((e: React.ChangeEvent<{}>, value: number | number[]) => void)
+      | undefined
+  }
 
 export const Slider = withBoxProps<MaterialSliderProps>(MaterialSlider)
