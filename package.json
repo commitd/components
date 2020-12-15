@@ -59,7 +59,7 @@
     },
     {
       "path": "dist/components.esm.js",
-      "limit": "30 KB"
+      "limit": "40 KB"
     }
   ],
   "jest": {
