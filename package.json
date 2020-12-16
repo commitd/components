@@ -1,5 +1,5 @@
 {
-  "version": "4.0.1",
+  "version": "4.1.0",
   "name": "@committed/components",
   "description": "Committed Component Library",
   "author": "Committed",
@@ -39,8 +39,8 @@
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "husky": {
     "hooks": {
@@ -59,9 +59,20 @@
     },
     {
       "path": "dist/components.esm.js",
-      "limit": "30 KB"
+      "limit": "40 KB"
     }
   ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverage": true,
+    "testResultsProcessor": "jest-sonar-reporter",
+    "coveragePathIgnorePatterns": [
+      "setupTests.tsx",
+      ".*/index.ts",
+      ".*.test.ts",
+      ".*.stories.tsx"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@compositor/kit": "^1.0.47",
@@ -69,14 +80,11 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@size-limit/preset-small-lib": "^4.6.2",
-    "@storybook/addon-actions": "^6.0.28",
-    "@storybook/addon-docs": "^6.0.28",
-    "@storybook/addon-essentials": "^6.0.28",
-    "@storybook/addon-links": "^6.0.28",
-    "@storybook/addons": "^6.0.28",
-    "@storybook/react": "^6.0.28",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addons": "^6.1.11",
+    "@storybook/react": "^6.1.11",
     "@storybook/storybook-deployer": "^2.8.7",
-    "@storybook/theming": "^6.0.28",
+    "@storybook/theming": "^6.1.11",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.3",
     "@types/jest": "^25.2.1",
@@ -93,6 +101,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-security": "^1.4.0",
     "husky": "^4.2.3",
+    "jest-sonar-reporter": "^2.0.0",
     "levenary": "^1.1.1",
     "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
