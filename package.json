@@ -32,7 +32,7 @@
     "build-storybook": "build-storybook --docs",
     "format": "prettier --write '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "deploy-storybook": "storybook-to-ghpages",
-    "danger:local": "danger local --dangerfile dangerfile.lite.ts",
+    "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
     "danger:pr": "cross-env DANGER_GITHUB_API_TOKEN=${GITHUB_TOKEN} danger pr https://github.com/commitd/components/pull/${PR}"
   },
   "peerDependencies": {
