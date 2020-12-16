@@ -6555,10 +6555,10 @@ danger-plugin-spellcheck@^1.5.0:
   optionalDependencies:
     esdoc "^1.1.0"
 
-danger@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/danger/-/danger-10.1.0.tgz#c507b7d059b3c26e9a75e968803d2e556c2e96d9"
-  integrity sha512-nE5N1qCsC68lT8KjYaWZVL9GIZbP5YHuG0OgAQ+PzxaTIGCqOSYt48+auHUvwntTZ0aBaAMnsk3LjIitkNzFVg==
+danger@^10.5.4:
+  version "10.5.4"
+  resolved "https://registry.yarnpkg.com/danger/-/danger-10.5.4.tgz#e4f3cd7267a2262178aafffb5ba6f379779276ab"
+  integrity sha512-+1OQymly06JlYwkY0CLJzjzRaSV5qx0/FBhM8uRQz+aNh0Zl6SeUzVYLoeyA+h1UZeXhjYwzlzVDATM+p0691w==
   dependencies:
     "@babel/polyfill" "^7.2.5"
     "@octokit/rest" "^16.43.1"
@@ -6584,7 +6584,7 @@ danger@^10.1.0:
     memfs-or-file-map-to-github-branch "^1.1.0"
     micromatch "^3.1.10"
     node-cleanup "^2.1.2"
-    node-fetch "^2.3.0"
+    node-fetch "2.6.1"
     override-require "^1.1.1"
     p-limit "^2.1.0"
     parse-diff "^0.7.0"
@@ -11821,6 +11821,11 @@ node-dir@^0.1.10:
   integrity sha1-X1Zl2TNRM1yqvvjxxVRRbPXx5OU=
   dependencies:
     minimatch "^3.0.2"
+
+node-fetch@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-fetch@^1.0.1:
   version "1.7.3"
