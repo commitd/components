@@ -1,7 +1,10 @@
 # Committed Components
 
 [![Committed Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcommitted.software%2Fbadge)](https://committed.io)
-[![Build Status](https://drone.committed.software/api/badges/commitd/components/status.svg)](https://drone.committed.software/commitd/components)
+![Build Status](https://github.com/commitd/components/workflows/build/badge.svg?branch=main)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=commitd_components&metric=alert_status&token=aa002ca75e2f3a6d028af9074bceeda1ffa2f9f7)](https://sonarcloud.io/dashboard?id=commitd_components)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=commitd_components&metric=coverage&token=aa002ca75e2f3a6d028af9074bceeda1ffa2f9f7)](https://sonarcloud.io/dashboard?id=commitd_components)
+![GitHub repo size](https://img.shields.io/github/repo-size/commitd/components)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://committed.software/components)
 
 For documentation see https://committed.software/components
@@ -52,8 +55,8 @@ This will re-open the project, with the project files mounted in a Docker contai
 
 ## CI
 
-Pull requests go through CI checks using Drone. Merged pull requests to master update the deployed documentation and can update the package in the GitHub registry if the version number is updated.
+Pull requests go through CI checks using Github Actions. Releases update the deployed documentation and update the package in the NPM registry.
 
 ## License
 
-[MIT](/LICENSE) - © Committed Software 2019 https://committed.io
+[MIT](/LICENSE) - © Committed Software 2019-2020 https://committed.io
