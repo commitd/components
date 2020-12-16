@@ -5,9 +5,7 @@ import { BoxProps, withBoxProps } from '../../internal/wrappers'
 
 export type SliderProps = BoxProps &
   Omit<MaterialSliderProps, 'onChange'> & {
-    onChange?:
-      | ((e: React.ChangeEvent<{}>, value: number | number[]) => void)
-      | undefined
+    onChange?: (e: React.ChangeEvent<{}>, value: number | number[]) => void
   }
 
 export const Slider = withBoxProps<MaterialSliderProps>(MaterialSlider)
