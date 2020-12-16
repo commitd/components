@@ -7,4 +7,4 @@ export type GridRef = HTMLDivElement
 
 export const Grid = React.forwardRef<GridRef, GridProps>(
   (props: GridProps, ref) => <Box ref={ref} {...props} display="grid" />
-)
+) as React.ForwardRefExoticComponent<GridProps>

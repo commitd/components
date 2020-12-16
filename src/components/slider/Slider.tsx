@@ -8,4 +8,6 @@ export type SliderProps = BoxProps &
     onChange?: (e: React.ChangeEvent<{}>, value: number | number[]) => void
   }
 
-export const Slider = withBoxProps<MaterialSliderProps>(MaterialSlider)
+export const Slider = withBoxProps<MaterialSliderProps>(
+  MaterialSlider
+) as React.ComponentType<SliderProps>

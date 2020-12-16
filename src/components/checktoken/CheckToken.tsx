@@ -22,7 +22,7 @@ export interface CheckTokenProps
   children?: React.ReactNode
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   selected,
   ...props
 }: CheckboxProps) => {
@@ -87,4 +87,4 @@ export const CheckToken = withPositioningProps<CheckTokenProps>(
       </ToggleButton>
     )
   }
-)
+) as React.ComponentType<CheckTokenProps>
