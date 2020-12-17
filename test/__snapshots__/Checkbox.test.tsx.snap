@@ -1,16 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox renders without crashing 1`] = `
+exports[`renders dark without crashing 1`] = `
 <DocumentFragment>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
+        data-indeterminate="false"
+        type="checkbox"
+        value=""
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+        />
+      </svg>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`renders light without crashing 1`] = `
+<DocumentFragment>
+  <span
+    aria-disabled="false"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      <input
+        class="PrivateSwitchBase-input"
+        data-indeterminate="false"
+        type="checkbox"
+        value=""
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+        />
+      </svg>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`renders variants without crashing 1`] = `
+<DocumentFragment>
+  <span
+    aria-disabled="false"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      <input
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value=""
@@ -32,7 +98,7 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root PrivateSwitchBase-checked-2 Mui-checked"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root PrivateSwitchBase-checked MuiCheckbox-checked"
   >
     <span
       class="MuiIconButton-label"
@@ -40,7 +106,7 @@ exports[`Checkbox renders without crashing 1`] = `
       <input
         aria-label="checkbox"
         checked=""
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value="checkedA"
@@ -52,7 +118,7 @@ exports[`Checkbox renders without crashing 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          class="makeStyles-tick-5 makeStyles-tick-6"
+          class="makeStyles-tick makeStyles-tick"
           d="M4 6H19V18H4z"
         />
         <path
@@ -66,14 +132,14 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
         aria-label="primary checkbox"
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value=""
@@ -95,14 +161,14 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
         aria-label="uncontrolled-checkbox"
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value=""
@@ -124,7 +190,7 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="true"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-disabled-3 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-disabled MuiCheckbox-disabled MuiIconButton-colorSecondary MuiIconButton-disabled MuiButtonBase-disabled"
     tabindex="-1"
   >
     <span
@@ -132,7 +198,7 @@ exports[`Checkbox renders without crashing 1`] = `
     >
       <input
         aria-label="disabled checkbox"
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         disabled=""
         type="checkbox"
@@ -152,7 +218,7 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="true"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked-2 Mui-checked PrivateSwitchBase-disabled-3 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary PrivateSwitchBase-checked MuiCheckbox-checked PrivateSwitchBase-disabled MuiCheckbox-disabled MuiIconButton-colorSecondary MuiIconButton-disabled MuiButtonBase-disabled"
     tabindex="-1"
   >
     <span
@@ -161,7 +227,7 @@ exports[`Checkbox renders without crashing 1`] = `
       <input
         aria-label="disabled checked checkbox"
         checked=""
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         disabled=""
         type="checkbox"
@@ -174,7 +240,7 @@ exports[`Checkbox renders without crashing 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          class="makeStyles-tick-5 makeStyles-tick-7"
+          class="makeStyles-tick makeStyles-tick"
           d="M4 6H19V18H4z"
         />
         <path
@@ -185,14 +251,14 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorSecondary MuiCheckbox-indeterminate MuiIconButton-colorSecondary"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary MuiCheckbox-indeterminate MuiIconButton-colorSecondary"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
         aria-label="indeterminate checkbox"
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="true"
         type="checkbox"
         value=""
@@ -214,7 +280,7 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root PrivateSwitchBase-checked-2 Mui-checked"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root PrivateSwitchBase-checked MuiCheckbox-checked"
   >
     <span
       class="MuiIconButton-label"
@@ -222,7 +288,7 @@ exports[`Checkbox renders without crashing 1`] = `
       <input
         aria-label="checkbox with default color"
         checked=""
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value=""
@@ -234,7 +300,7 @@ exports[`Checkbox renders without crashing 1`] = `
         viewBox="0 0 24 24"
       >
         <path
-          class="makeStyles-tick-5 makeStyles-tick-8"
+          class="makeStyles-tick makeStyles-tick"
           d="M4 6H19V18H4z"
         />
         <path
@@ -248,14 +314,14 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
     style="color: red;"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value=""
@@ -277,13 +343,13 @@ exports[`Checkbox renders without crashing 1`] = `
   </span>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
-        class="PrivateSwitchBase-input-4"
+        class="PrivateSwitchBase-input"
         data-indeterminate="false"
         type="checkbox"
         value=""

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useWidth } from '../src'
-import { render, screen } from './test-utils'
+import { renderLight, screen } from './setupTests'
 
 const Width = () => {
   const width = useWidth()
@@ -9,7 +9,7 @@ const Width = () => {
 
 describe('useWidth', () => {
   it('defaults to xs', () => {
-    render(<Width />)
+    renderLight(<Width />)
     expect(screen.getByText('xs')).toBeInTheDocument()
   })
 })

@@ -95,56 +95,62 @@ const CelestialIcon = (props: IconProps) => {
 
 export type ThemeSwitchProps = BaseThemeSwitchProps & PositioningProps
 
-const Toggle = ({
-  themeChoice,
-  toggleThemeChoice,
-  lightColor = 'brand.main',
-  darkColor = 'brand.main',
-  variant = 'celestial',
-}: BaseThemeSwitchProps) => {
-  const [choice, toggle] = useThemeController()
+const Toggle = React.forwardRef<HTMLButtonElement, BaseThemeSwitchProps>(
+  (
+    {
+      themeChoice,
+      toggleThemeChoice,
+      lightColor = 'brand.main',
+      darkColor = 'brand.main',
+      variant = 'celestial',
+    },
+    ref
+  ) => {
+    const [choice, toggle] = useThemeController()
 
-  // allow props to override theme until deprecated removed
-  const internalChoice = themeChoice || choice
-  const internalToggle = toggleThemeChoice || toggle
+    // allow props to override theme until deprecated removed
+    const internalChoice = themeChoice || choice
+    const internalToggle = toggleThemeChoice || toggle
 
-  const isLight = internalChoice === 'light'
-  const title = isLight ? 'Use dark theme' : 'Use light theme'
-  let icon
-  switch (variant) {
-    case 'commit':
-      icon = (
-        <CommitIcon
-          themeChoice={internalChoice}
-          lightColor={lightColor}
-          darkColor={darkColor}
-        />
-      )
-      break
-    case 'celestial':
-      icon = (
-        <CelestialIcon
-          themeChoice={internalChoice}
-          lightColor={lightColor}
-          darkColor={darkColor}
-        />
-      )
-      break
-    default:
-      break
+    const isLight = internalChoice === 'light'
+    const title = isLight ? 'Use dark theme' : 'Use light theme'
+    let icon
+    switch (variant) {
+      case 'commit':
+        icon = (
+          <CommitIcon
+            themeChoice={internalChoice}
+            lightColor={lightColor}
+            darkColor={darkColor}
+          />
+        )
+        break
+      case 'celestial':
+        icon = (
+          <CelestialIcon
+            themeChoice={internalChoice}
+            lightColor={lightColor}
+            darkColor={darkColor}
+          />
+        )
+        break
+      default:
+        break
+    }
+
+    return (
+      <IconButton
+        ref={ref}
+        color={isLight ? 'primary' : 'secondary'}
+        onClick={internalToggle}
+        title={title}
+        aria-label="switch-theme"
+      >
+        {icon}
+      </IconButton>
+    )
   }
-
-  return (
-    <IconButton
-      color={isLight ? 'primary' : 'secondary'}
-      onClick={internalToggle}
-      title={title}
-      aria-label="switch-theme"
-    >
-      {icon}
-    </IconButton>
-  )
-}
+)
 
 export const ThemeSwitch: React.ComponentType<ThemeSwitchProps> = withPositioningProps<
   BaseThemeSwitchProps

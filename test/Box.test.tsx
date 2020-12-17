@@ -1,10 +1,13 @@
 import React from 'react'
-import { render } from './test-utils'
+import { renderLight, renderDark } from './setupTests'
 import { Box } from '../src'
 
-describe('Box', () => {
-  it('renders without crashing', () => {
-    const { asFragment } = render(<Box />)
-    expect(asFragment()).toMatchSnapshot()
-  })
+it('renders light without crashing', () => {
+  const { asFragment } = renderLight(<Box />)
+  expect(asFragment()).toMatchSnapshot()
+})
+
+it('renders dark without crashing', () => {
+  const { asFragment } = renderDark(<Box />)
+  expect(asFragment()).toMatchSnapshot()
 })

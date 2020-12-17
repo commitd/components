@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ForwardRefExoticComponent } from 'react'
 import { styled } from '@material-ui/styles'
 import MaterialTypography, {
   TypographyProps as MaterialTypographyProps,
@@ -12,8 +12,13 @@ type BaseTypographyProps<C extends React.ElementType> = MaterialTypographyProps<
 > &
   PositioningProps
 
+// function test() {
+//   const ref = React.useRef(null)
+//   return <MaterialTypography ref={ref} />
+// }
+
 const BaseTypography = withPositioningProps<MaterialTypographyProps>(
-  MaterialTypography
+  MaterialTypography as ForwardRefExoticComponent<MaterialTypographyProps>
 )
 
 export type ExtraTypographyProps = {
