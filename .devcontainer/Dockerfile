@@ -4,14 +4,19 @@
 ARG VARIANT="14-buster"
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+# Add additional packages 
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+        # Add utilties
+        && sudo apt -y install --no-install-recommends software-properties-common apt-transport-https gnupg2 bash-completion \
+        # Add key for GitHub CLI
+        && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \
+        && sudo apt-add-repository https://cli.github.com/packages \
+        && sudo apt update \
+        # Install github cli
+        && sudo apt -y install --no-install-recommends gh
 
-# [Optional] Uncomment if you want to install an additional version of node using nvm
-# ARG EXTRA_NODE_VERSION=10
-# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
-
-# [Optional] Uncomment if you want to install more global node modules
-# RUN sudo -u node npm install -g <your-package-list-here>
-
+# Add bash completions
+RUN echo 'source <(gh completion -s bash)' >> ~/.bashrc \
+    && echo 'source <(kubectl completion bash)' >> ~/.bashrc \
+    && echo 'source <(skaffold completion bash)' >> ~/.bashrc \
+    && touch ~/.bash_profile

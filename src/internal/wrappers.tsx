@@ -16,26 +16,26 @@ import { omit } from '../util/transform'
 
 export type { SizingProps }
 
-export type BoxProps = SpacingProps &
-  FlexboxProps &
-  SizingProps &
-  DisplayProps &
-  GriditemProps
-
 export type PositioningProps = SpacingProps &
   FlexboxProps &
   DisplayProps &
   GriditemProps
 
-// The natural typing causes typescript to error, hence the casts to force it.
-export const withPositioning = <P extends object>(
-  WrappedComponent: React.ElementType<P>
-) =>
-  (styled(WrappedComponent)(
-    compose(display, spacing, flexbox, griditem)
-  ) as unknown) as React.ComponentType<P & PositioningProps>
+export type BoxProps = PositioningProps & SizingProps
 
-export const boxPropsKeys: Array<keyof BoxProps> = [
+export const sizingPropsKeys: Array<keyof SizingProps> = [
+  'width',
+  'maxWidth',
+  'minWidth',
+  'height',
+  'maxHeight',
+  'minHeight',
+  'sizeWidth',
+  'sizeHeight',
+  'boxSizing',
+]
+
+export const positioningPropsKeys: Array<keyof PositioningProps> = [
   'm',
   'mt',
   'mr',
@@ -77,14 +77,6 @@ export const boxPropsKeys: Array<keyof BoxProps> = [
   'alignSelf',
   'justifyItems',
   'justifySelf',
-  'width',
-  'maxWidth',
-  'minWidth',
-  'height',
-  'maxHeight',
-  'minHeight',
-  'sizeWidth',
-  'sizeHeight',
   'display',
   'displayPrint',
   'overflow',
@@ -101,30 +93,62 @@ export const boxPropsKeys: Array<keyof BoxProps> = [
   'placeSelf',
 ]
 
-export const withBoxProps = <P extends object>(
+export const boxPropsKeys: Array<keyof BoxProps> = [
+  ...positioningPropsKeys,
+  ...sizingPropsKeys,
+]
+
+type WrapperType<T> = {
+  <P extends object & { ref?: React.Ref<any> }>(
+    Component: React.ForwardRefExoticComponent<P>
+  ): React.ForwardRefExoticComponent<P & T>
+  <P extends object>(
+    Component: React.FunctionComponent<P>
+  ): React.ForwardRefExoticComponent<P & T>
+  <P extends object>(
+    WrappedComponent: React.ComponentType<P>
+  ): React.ComponentType<P & T>
+}
+
+export const withBoxProps: WrapperType<BoxProps> = <P extends object>(
   WrappedComponent: React.ComponentType<P>
 ) =>
-  styled((props) => {
-    const rest = omit(props, boxPropsKeys) as any
-    return <WrappedComponent {...rest} />
-  })(
+  styled(
+    React.forwardRef<React.ComponentType<P>, P & BoxProps>(function withBox(
+      props,
+      ref
+    ) {
+      const rest = omit(props, boxPropsKeys) as any
+      return <WrappedComponent {...rest} ref={ref} />
+    })
+  )(
     compose(display, spacing, flexbox, sizing, griditem)
-  ) as React.ComponentType<P & BoxProps>
+  ) as React.ForwardRefExoticComponent<P & BoxProps>
 
-export const withPositioningProps = <P extends object>(
+export const withPositioningProps: WrapperType<PositioningProps> = <
+  P extends object
+>(
   WrappedComponent: React.ComponentType<P>
 ) =>
-  styled((props) => {
-    const rest = omit(props, boxPropsKeys) as any
-    return <WrappedComponent {...rest} />
-  })(compose(display, spacing, flexbox, griditem)) as React.ComponentType<
-    P & PositioningProps
-  >
+  styled(
+    React.forwardRef<React.ComponentType<P>, P & PositioningProps>(
+      function withPositioning(props, ref) {
+        const rest = omit(props, positioningPropsKeys) as any
+        return <WrappedComponent {...rest} ref={ref} />
+      }
+    )
+  )(
+    compose(display, spacing, flexbox, griditem)
+  ) as React.ForwardRefExoticComponent<P & PositioningProps>
 
-export const withSizingProps = <P extends object>(
+export const withSizingProps: WrapperType<SizingProps> = <P extends object>(
   WrappedComponent: React.ComponentType<P>
 ) =>
-  styled((props) => {
-    const rest = omit(props, boxPropsKeys) as any
-    return <WrappedComponent {...rest} />
-  })(sizing) as React.ComponentType<P & SizingProps>
+  styled(
+    React.forwardRef<React.ComponentType<P>, P & SizingProps>(
+      function withSizing(props, ref) {
+        const rest = omit(props, sizingPropsKeys) as any
+        return <WrappedComponent {...rest} ref={ref} />
+      }
+    )
+  )(sizing) as React.ForwardRefExoticComponent<P & SizingProps>

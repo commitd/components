@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders dark without crashing 1`] = `
+<DocumentFragment>
+  <form
+    class="ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root ForwardRef(withSizing)-root ForwardRef(withSizing)-root"
+  />
+</DocumentFragment>
+`;
+
+exports[`renders light without crashing 1`] = `
+<DocumentFragment>
+  <form
+    class="ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root ForwardRef(withSizing)-root ForwardRef(withSizing)-root"
+  />
+</DocumentFragment>
+`;

@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders without crashing 1`] = `
+exports[`renders all variants 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-3 Styled(MuiBox)-root-1 Styled(MuiBox)-root-2"
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained Component-root-4 Component-root-5"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
       tabindex="0"
       type="button"
     >
@@ -20,7 +20,7 @@ exports[`Button renders without crashing 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained Component-root-4 Component-root-6 Mui-disabled Mui-disabled"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
       disabled=""
       tabindex="-1"
       type="button"
@@ -33,10 +33,10 @@ exports[`Button renders without crashing 1`] = `
     </button>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-8 Styled(MuiBox)-root-1 Styled(MuiBox)-root-7"
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained Component-root-4 Component-root-9 MuiButton-containedPrimary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary"
       tabindex="0"
       type="button"
     >
@@ -50,7 +50,7 @@ exports[`Button renders without crashing 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained Component-root-4 Component-root-10 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
       disabled=""
       tabindex="-1"
       type="button"
@@ -63,10 +63,10 @@ exports[`Button renders without crashing 1`] = `
     </button>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-12 Styled(MuiBox)-root-1 Styled(MuiBox)-root-11"
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained Component-root-4 Component-root-13 MuiButton-containedSecondary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary"
       tabindex="0"
       type="button"
     >
@@ -80,7 +80,7 @@ exports[`Button renders without crashing 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained Component-root-4 Component-root-14 MuiButton-containedSecondary Mui-disabled Mui-disabled"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-disabled MuiButtonBase-disabled"
       disabled=""
       tabindex="-1"
       type="button"
@@ -93,100 +93,10 @@ exports[`Button renders without crashing 1`] = `
     </button>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-16 Styled(MuiBox)-root-1 Styled(MuiBox)-root-15"
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined Component-root-4 Component-root-17"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined Component-root-4 Component-root-18 Mui-disabled Mui-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root-20 Styled(MuiBox)-root-1 Styled(MuiBox)-root-19"
-  >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined Component-root-4 Component-root-21 MuiButton-outlinedPrimary"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined Component-root-4 Component-root-22 MuiButton-outlinedPrimary Mui-disabled Mui-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root-24 Styled(MuiBox)-root-1 Styled(MuiBox)-root-23"
-  >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined Component-root-4 Component-root-25 MuiButton-outlinedSecondary"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined Component-root-4 Component-root-26 MuiButton-outlinedSecondary Mui-disabled Mui-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root-28 Styled(MuiBox)-root-1 Styled(MuiBox)-root-27"
-  >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text Component-root-4 Component-root-29"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
       tabindex="0"
       type="button"
     >
@@ -200,7 +110,7 @@ exports[`Button renders without crashing 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text Component-root-4 Component-root-30 Mui-disabled Mui-disabled"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
       disabled=""
       tabindex="-1"
       type="button"
@@ -213,10 +123,10 @@ exports[`Button renders without crashing 1`] = `
     </button>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-32 Styled(MuiBox)-root-1 Styled(MuiBox)-root-31"
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text Component-root-4 Component-root-33 MuiButton-textPrimary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary"
       tabindex="0"
       type="button"
     >
@@ -230,7 +140,7 @@ exports[`Button renders without crashing 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text Component-root-4 Component-root-34 MuiButton-textPrimary Mui-disabled Mui-disabled"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-disabled MuiButtonBase-disabled"
       disabled=""
       tabindex="-1"
       type="button"
@@ -243,10 +153,10 @@ exports[`Button renders without crashing 1`] = `
     </button>
   </div>
   <div
-    class="MuiBox-root MuiBox-root-36 Styled(MuiBox)-root-1 Styled(MuiBox)-root-35"
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text Component-root-4 Component-root-37 MuiButton-textSecondary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary"
       tabindex="0"
       type="button"
     >
@@ -260,7 +170,7 @@ exports[`Button renders without crashing 1`] = `
       />
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text Component-root-4 Component-root-38 MuiButton-textSecondary Mui-disabled Mui-disabled"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-disabled MuiButtonBase-disabled"
       disabled=""
       tabindex="-1"
       type="button"
@@ -272,5 +182,129 @@ exports[`Button renders without crashing 1`] = `
       </span>
     </button>
   </div>
+  <div
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Default
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Default
+      </span>
+    </button>
+  </div>
+  <div
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Primary
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-disabled MuiButtonBase-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Primary
+      </span>
+    </button>
+  </div>
+  <div
+    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Secondary
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-disabled MuiButtonBase-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Secondary
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders dark without crashing 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    />
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`renders light without crashing 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    />
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
 </DocumentFragment>
 `;

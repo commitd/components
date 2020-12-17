@@ -93,4 +93,4 @@ const CommittedTextField: React.FC<CommittedTextFieldProps> = React.forwardRef(
 
 export const TextField = withBoxProps<CommittedTextFieldProps>(
   CommittedTextField
-)
+) as React.ForwardRefExoticComponent<CommittedTextFieldProps>

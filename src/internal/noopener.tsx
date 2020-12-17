@@ -14,7 +14,7 @@ export function withNoOpener<P extends AProps & { ref?: React.Ref<any> }>(
   Component: React.ForwardRefExoticComponent<P>
 ): React.ForwardRefExoticComponent<P>
 
-export function withNoOpener<P>(
+export function withNoOpener<P extends AProps>(
   Component: React.FunctionComponent<P>
 ): React.ForwardRefExoticComponent<P>
 

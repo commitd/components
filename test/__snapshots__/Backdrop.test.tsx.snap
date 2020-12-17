@@ -1,10 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Backdrop renders without crashing 1`] = `
+exports[`renders light without crashing 1`] = `
 <DocumentFragment>
   <div
     aria-hidden="true"
-    class="MuiBackdrop-root WithStyles(ForwardRef(Backdrop))-root-1 WithStyles(ForwardRef(Backdrop))-root-2"
+    class="MuiBackdrop-root WithStyles(ForwardRef(Backdrop))-root WithStyles(ForwardRef(Backdrop))-root"
+    style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+  />
+</DocumentFragment>
+`;
+
+exports[`renders light without crashing 2`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="MuiBackdrop-root WithStyles(ForwardRef(Backdrop))-root WithStyles(ForwardRef(Backdrop))-root"
     style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
   />
 </DocumentFragment>

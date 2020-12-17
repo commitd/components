@@ -7,7 +7,7 @@ import { Row } from '../flex/Flex'
 import { makeStyles, fade } from '../../styles'
 
 interface CheckboxProps {
-  color: 'primary' | 'secondary' | 'default'
+  color?: 'primary' | 'secondary' | 'default'
   selected?: boolean | undefined
   disabled?: boolean
 }
@@ -22,7 +22,7 @@ export interface CheckTokenProps
   children?: React.ReactNode
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   selected,
   ...props
 }: CheckboxProps) => {
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => {
     },
     selected: {
       color: theme.palette.action.active,
-      borderColor: ({ color }: CheckTokenProps) => {
+      borderColor: ({ color = 'default' }: CheckTokenProps) => {
         if (
           color !== 'default' &&
           ['primary', 'secondary', 'error', 'warning', 'info'].includes(color)
@@ -72,13 +72,24 @@ const useStyles = makeStyles((theme) => {
 
 export const CheckToken = withPositioningProps<CheckTokenProps>(
   (props: CheckTokenProps) => {
-    const { children, onClick, ...rest } = props
+    const {
+      children,
+      onClick,
+      color = 'default',
+      value = 'check',
+      ...rest
+    } = props
     const classes = useStyles(props)
     return (
-      <ToggleButton {...rest} onChange={onClick} classes={classes}>
+      <ToggleButton
+        {...rest}
+        onChange={onClick}
+        value={value}
+        classes={classes}
+      >
         <Row>
           <Checkbox
-            color={props.color}
+            color={color}
             selected={props.selected}
             disabled={props.disabled}
           />
@@ -87,4 +98,4 @@ export const CheckToken = withPositioningProps<CheckTokenProps>(
       </ToggleButton>
     )
   }
-)
+) as React.ComponentType<CheckTokenProps>
