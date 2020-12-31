@@ -4,7 +4,6 @@ import * as allColors from './colors'
 import { addTransparency } from './commonTheme'
 import {
   OverrideOptionsFunction,
-  PaletteColor,
   PaletteOptions,
   TypeAction,
   TypeText,
@@ -14,11 +13,7 @@ export const committedLightPaletteColors = {
   ...allColors,
   brand: allColors.committedYellow,
   primary: allColors.committedGrey,
-  secondary: {
-    '300': allColors.committedYellow[50],
-    '500': allColors.committedYellow[200],
-    '700': allColors.committedYellow[400],
-  },
+  secondary: allColors.committedYellow,
   success: allColors.teal,
   warning: allColors.orange,
   error: allColors.red,
@@ -104,21 +99,6 @@ export const committedLightPalette: PaletteOptions = {
   divider: 'rgba(0, 0, 0, 0.12)',
 }
 
-// eqiv to color[400]
-const mainLight = (color: PaletteColor): string => {
-  return lighten(color.main, 0.25)
-}
-
-// color[200]
-const lightLight = (color: PaletteColor): string => {
-  return lighten(color.light, 0.25)
-}
-
-// color[100]
-const lightLightVery = (color: PaletteColor): string => {
-  return lighten(color.light, 0.5)
-}
-
 export const committedLightOverrides: OverrideOptionsFunction = (
   defaultOverrides,
   helpers
@@ -138,41 +118,16 @@ export const committedLightOverrides: OverrideOptionsFunction = (
       },
       containedSecondary: {
         '&$disabled': {
-          backgroundColor: addTransparency(lightLight(palette.secondary)),
+          backgroundColor: addTransparency(
+            lighten(palette.secondary.light, 0.25)
+          ),
         },
       },
       textSecondary: {
-        color: palette.brand.dark,
-        '&:hover': {
-          backgroundColor: fade(palette.primary.main, action.hoverOpacity),
-        },
-      },
-      outlinedPrimary: {
-        color: palette.secondary.dark,
-        backgroundColor: palette.primary.light,
-        borderColor: palette.primary.main,
-        '&:hover': {
-          backgroundColor: darken(palette.primary.main, action.hoverOpacity),
-          borderColor: palette.primary.main,
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(mainLight(palette.primary)),
-          borderColor: addTransparency(palette.secondary.main),
-        },
+        color: darken(palette.secondary.dark, 0.2),
       },
       outlinedSecondary: {
-        color: palette.primary.dark,
-        borderColor: palette.primary.main,
-        backgroundColor: lightLightVery(palette.brand),
-        '&:hover': {
-          backgroundColor: lightLight(palette.brand),
-          borderColor: palette.primary.main,
-        },
-        '&$disabled': {
-          color: addTransparency(palette.primary.dark),
-          backgroundColor: addTransparency(lightLightVery(palette.brand)),
-          borderColor: addTransparency(palette.primary.main),
-        },
+        color: darken(palette.secondary.dark, 0.2),
       },
     },
     MuiCheckbox: {

@@ -22,6 +22,7 @@ const InnerSurfaces: React.FC<{ theme: Theme }> = ({ theme }) => (
     m={1}
     mt={3}
     p={3}
+    flexGrow={1}
     bgcolor={theme.palette.background.default}
     color={theme.palette.text.primary}
     flexDirection="column"

@@ -25,6 +25,65 @@ The App Bar should the used for information and actions on the current screen.
   </Story>
 </Canvas>
 
+# Colors
+
+By default the color is `primary` and can optionally be set to `secondary`, `default`, `transparent`, or `inherit`.
+
+<Canvas>
+  <Story name="colors">
+    <AppBar color="primary" position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Primary</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+    <AppBar color="secondary" position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Secondary</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+    <AppBar color="default" position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>"Default"</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+    <AppBar color="transparent" position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Transparent</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+    <AppBar color="inherit" position="relative">
+      <Toolbar>
+        <Box flexGrow={1}>
+          <Heading.h1>Inherit</Heading.h1>
+        </Box>
+        <Button color="inherit" variant="text">
+          Login
+        </Button>
+      </Toolbar>
+    </AppBar>
+  </Story>
+</Canvas>
+
 # Props
 
 Supports standard html aria and event props for a `div`.

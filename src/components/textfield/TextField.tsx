@@ -5,7 +5,10 @@ import MaterialTextField, {
 } from '@material-ui/core/TextField'
 import { makeStyles } from '../../styles'
 
-export type CommittedTextFieldProps = Omit<MaterialTextFieldProps, 'variant'>
+export type CommittedTextFieldProps = Omit<
+  MaterialTextFieldProps,
+  'variant' | 'margin'
+>
 export type TextFieldProps = CommittedTextFieldProps & BoxProps
 
 const useStyles = makeStyles((theme) => {
@@ -93,4 +96,4 @@ const CommittedTextField: React.FC<CommittedTextFieldProps> = React.forwardRef(
 
 export const TextField = withBoxProps<CommittedTextFieldProps>(
   CommittedTextField
-) as React.ForwardRefExoticComponent<CommittedTextFieldProps>
+) as React.ForwardRefExoticComponent<TextFieldProps>

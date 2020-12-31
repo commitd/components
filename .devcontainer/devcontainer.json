@@ -15,7 +15,8 @@
     "github.vscode-pull-request-github",
     "ms-vsliveshare.vsliveshare",
     "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "ryanluker.vscode-coverage-gutters"
   ],
   "postCreateCommand": "yarn install",
   "remoteUser": "node"

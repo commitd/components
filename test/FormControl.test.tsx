@@ -1,23 +1,23 @@
 import React from 'react'
-import { renderLight, renderDark, fireEvent } from './setupTests'
-import { Form, TextField, Button } from '../src'
+import { Form, FormControl, Input, InputLabel } from '../src'
+import { fireEvent, renderDark, renderLight } from './setupTests'
 
 const Example = ({ onSubmit }: { onSubmit: (e: any) => void }) => (
   <Form width={1 / 2} onSubmit={onSubmit} data-testid="form">
-    <TextField id="standard-name" label="Name" margin={2} />
-    <Button type="submit" color="primary" mt={2}>
-      Submit
-    </Button>
+    <FormControl>
+      <InputLabel htmlFor="my-input">Email address</InputLabel>
+      <Input id="my-input" aria-describedby="my-helper-text" />
+    </FormControl>
   </Form>
 )
 
 it('renders light without crashing', () => {
-  const { asFragment } = renderLight(<Form />)
+  const { asFragment } = renderLight(<Example onSubmit={jest.fn()} />)
   expect(asFragment()).toMatchSnapshot()
 })
 
 it('renders dark without crashing', () => {
-  const { asFragment } = renderDark(<Form />)
+  const { asFragment } = renderDark(<Example onSubmit={jest.fn()} />)
   expect(asFragment()).toMatchSnapshot()
 })
 

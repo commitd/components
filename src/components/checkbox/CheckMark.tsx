@@ -5,20 +5,24 @@ import { Theme } from '../../theme'
 
 export type CheckMarkProps = SvgIconProps
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(({ palette }: Theme) => ({
   tick: {
     fill: ({ color }: SvgIconProps) => {
       let bgcolor = 'transparent'
       if (color === 'primary') {
-        const primaryColor = theme.palette.primary.main
-        const brandColor = theme.palette.brand.main
-        bgcolor =
-          brandColor === primaryColor
-            ? theme.palette.primary.contrastText
-            : brandColor
+        if (palette.type === 'dark') {
+          bgcolor = palette.secondary.main
+        } else {
+          const primaryColor = palette.secondary.main
+          const brandColor = palette.brand.main
+          bgcolor =
+            brandColor === primaryColor
+              ? palette.primary.contrastText
+              : brandColor
+        }
       }
       if (color === 'secondary') {
-        bgcolor = theme.palette.getContrastText(theme.palette.secondary.main)
+        bgcolor = palette.getContrastText(palette.secondary.main)
       }
       return bgcolor
     },

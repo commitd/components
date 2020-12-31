@@ -12,7 +12,7 @@ The main light theme colours. They can be referred to in palette based props usi
 We use the brand colour for accents and highlights, not as the primary colour.
 
 <ThemeProvider choice="light">
-  <Flex flexWrap="wrap">
+  <Flex p={3} bgcolor="background.default" flexWrap="wrap">
     <Palette key="brand" name="brand" width={1} />
     <Palette key="primary" name="primary" />
     <Palette key="secondary" name="secondary" />
@@ -20,8 +20,8 @@ We use the brand colour for accents and highlights, not as the primary colour.
     <Palette key="warning" name="warning" />
     <Palette key="success" name="success" />
     <Palette key="info" name="info" />
+    <Surfaces />
   </Flex>
-  <Surfaces />
 </ThemeProvider>
 
 ## Main Dark
@@ -30,7 +30,7 @@ The main dark theme colours. They can be referred to in palette based props usin
 We use the brand colour for accents and highlights, not as the primary colour.
 
 <ThemeProvider choice="dark">
-  <Flex flexWrap="wrap">
+  <Flex p={3} bgcolor="background.default" flexWrap="wrap">
     <Palette key="brand" name="brand" width={1} />
     <Palette key="primary" name="primary" />
     <Palette key="secondary" name="secondary" />
@@ -38,8 +38,8 @@ We use the brand colour for accents and highlights, not as the primary colour.
     <Palette key="warning" name="warning" />
     <Palette key="success" name="success" />
     <Palette key="info" name="info" />
+    <Surfaces />
   </Flex>
-  <Surfaces />
 </ThemeProvider>
 
 ## Colours

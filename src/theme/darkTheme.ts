@@ -1,20 +1,15 @@
-import { darken, fade, lighten } from '../styles'
 import { deepmerge } from '@material-ui/utils'
+import { fade, lighten } from '../styles'
 import * as allColors from './colors'
-import { addTransparency } from './commonTheme'
-import { OverrideOptionsFunction, PaletteColor, PaletteOptions } from './types'
+import { OverrideOptionsFunction, PaletteOptions } from './types'
 
 export type DarkPaletteColors = typeof committedDarkPaletteColors
 
 export const committedDarkPaletteColors = {
   ...allColors,
-  brand: allColors.committedGrey,
+  brand: allColors.committedYellow,
   primary: allColors.committedYellow,
-  secondary: {
-    '300': allColors.committedGrey[50],
-    '500': allColors.committedGrey[200],
-    '700': allColors.committedGrey[400],
-  },
+  secondary: allColors.committedGrey,
   success: allColors.teal,
   warning: allColors.orange,
   error: allColors.red,
@@ -59,10 +54,10 @@ export const committedDarkPalette: PaletteOptions = {
     contrastText: textColor,
   },
   primary: {
-    light: paletteColors.primary[300],
-    main: paletteColors.primary[500],
-    dark: paletteColors.primary[700],
-    contrastText: paletteColors.brand[500],
+    light: paletteColors.primary[500],
+    main: paletteColors.primary[700],
+    dark: paletteColors.primary[900],
+    contrastText: paletteColors.secondary[500],
   },
   secondary: {
     light: paletteColors.secondary[300],
@@ -91,27 +86,12 @@ export const committedDarkPalette: PaletteOptions = {
   },
   background: {
     default: 'black',
-    paper: paletteColors.grey[800],
+    paper: paletteColors.grey[900],
   },
   text,
   grey: paletteColors.grey,
   action,
   divider: 'rgba(255, 255, 255, 0.8)',
-}
-
-// eqiv to color[400]
-const mainLight = (color: PaletteColor): string => {
-  return lighten(color.main, 0.25)
-}
-
-// color[200]
-const lightLight = (color: PaletteColor): string => {
-  return lighten(color.light, 0.25)
-}
-
-// color[100]
-const lightLightVery = (color: PaletteColor): string => {
-  return lighten(color.light, 0.5)
 }
 
 export const committedDarkOverrides: OverrideOptionsFunction = (
@@ -150,49 +130,18 @@ export const committedDarkOverrides: OverrideOptionsFunction = (
         },
       },
       textSecondary: {
-        color: palette.secondary.main,
-        '&:hover': {
-          backgroundColor: fade(palette.primary.main, action.hoverOpacity),
-        },
-      },
-      outlinedPrimary: {
-        color: palette.getContrastText(palette.primary.light),
-        borderColor: palette.getContrastText(palette.primary.light),
-        backgroundColor: palette.primary.light,
-        '&:hover': {
-          backgroundColor: lighten(
-            lightLight(palette.primary),
-            action.hoverOpacity
-          ),
-          borderColor: darken(
-            palette.getContrastText(palette.primary.light),
-            0.25
-          ),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(mainLight(palette.primary)),
-          borderColor: addTransparency(palette.secondary.light),
-        },
+        color: palette.secondary.light,
       },
       outlinedSecondary: {
-        color: palette.primary.dark,
-        borderColor: palette.primary.dark,
-        backgroundColor: palette.brand.light,
-        '&:hover': {
-          backgroundColor: lightLight(palette.brand),
-          borderColor: darken(palette.primary.dark, 0.25),
-        },
-        '&$disabled': {
-          backgroundColor: addTransparency(lightLightVery(palette.brand)),
-          borderColor: addTransparency(palette.primary.main),
-        },
+        color: palette.secondary.light,
+        borderColor: palette.secondary.light,
       },
     },
     MuiCheckbox: {
       colorSecondary: {
-        color: palette.secondary.main,
+        color: palette.secondary.light,
         '&$checked': {
-          color: palette.secondary.main,
+          color: palette.secondary.light,
           '&:hover': {
             backgroundColor: fade(palette.primary.main, action.hoverOpacity),
           },

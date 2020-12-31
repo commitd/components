@@ -1,6 +1,7 @@
 import React, { RefObject } from 'react'
 import { renderLight, renderDark, userEvent } from './setupTests'
-import { Box, Button } from '../src'
+import { Button } from '../src'
+import { Cartesian } from '../stories/util/Cartesian'
 
 it('renders light without crashing', () => {
   const { asFragment } = renderLight(<Button />)
@@ -28,80 +29,14 @@ it('expect to pass ref', () => {
 
 it('renders all variants', () => {
   const { asFragment } = renderLight(
-    <>
-      <Box>
-        <Button m={1} disabled={false} color="default">
-          Default
-        </Button>
-        <Button m={1} disabled={true} color="default">
-          Default
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} color="primary">
-          Primary
-        </Button>
-        <Button m={1} disabled={true} color="primary">
-          Primary
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} color="secondary">
-          Secondary
-        </Button>
-        <Button m={1} disabled={true} color="secondary">
-          Secondary
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} variant="outlined" color="default">
-          Default
-        </Button>
-        <Button m={1} disabled={true} variant="outlined" color="default">
-          Default
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} variant="outlined" color="primary">
-          Primary
-        </Button>
-        <Button m={1} disabled={true} variant="outlined" color="primary">
-          Primary
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} variant="outlined" color="secondary">
-          Secondary
-        </Button>
-        <Button m={1} disabled={true} variant="outlined" color="secondary">
-          Secondary
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} variant="text" color="default">
-          Default
-        </Button>
-        <Button m={1} disabled={true} variant="text" color="default">
-          Default
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} variant="text" color="primary">
-          Primary
-        </Button>
-        <Button m={1} disabled={true} variant="text" color="primary">
-          Primary
-        </Button>
-      </Box>
-      <Box>
-        <Button m={1} disabled={false} variant="text" color="secondary">
-          Secondary
-        </Button>
-        <Button m={1} disabled={true} variant="text" color="secondary">
-          Secondary
-        </Button>
-      </Box>
-    </>
+    <Cartesian
+      component={Button}
+      color={['primary', 'secondary', 'default']}
+      variant={['contained', 'outlined', 'text']}
+      disabled={[false, true]}
+      size={['small', 'medium', 'large']}
+      children="Button"
+    />
   )
   expect(asFragment()).toMatchSnapshot()
 })

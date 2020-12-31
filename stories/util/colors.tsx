@@ -1,6 +1,6 @@
 import React from 'react'
 import { Copy } from './copy'
-import { Flex, Box, Text, FlexProps } from '../../src'
+import { Flex, Box, Text, FlexProps, colors } from '../../src'
 
 export interface ColorsProps {
   name: string
@@ -48,3 +48,9 @@ export const Colors = ({ colors, name, accent = false }: ColorsProps) => (
       ))}
   </Flex>
 )
+
+const keys = Object.keys(colors)
+export const randomColor = () => {
+  const color = keys[Math.floor(Math.random() * keys.length)]
+  return colors[color][300]
+}
