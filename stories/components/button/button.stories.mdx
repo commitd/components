@@ -1,5 +1,5 @@
-import { Button, Box } from '../../../src'
-import { Cartesian } from '@compositor/kit'
+import { Button, Box, Tooltip, Monospace } from '../../../src'
+import { Cartesian } from '../../util/Cartesian'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { BaseButtonDocs, RestButtonDocs } from './ButtonDocs'
 
@@ -191,6 +191,33 @@ Disabled buttons add transparency.
         Secondary
       </Button>
     </Box>
+  </Story>
+</Canvas>
+
+# Swatch
+
+<Canvas>
+  <Story name="all">
+    <Cartesian
+      component={(props) => {
+        const { m, children, ...display } = props
+        return (
+          <Tooltip
+            title={<Monospace>{JSON.stringify(display, null, 2)}</Monospace>}
+          >
+            <span>
+              <Button {...props} />
+            </span>
+          </Tooltip>
+        )
+      }}
+      m={3}
+      color={['primary', 'secondary', 'default']}
+      variant={['contained', 'outlined', 'text']}
+      disabled={[false, true]}
+      size={['small', 'medium', 'large']}
+      children="Button"
+    />
   </Story>
 </Canvas>
 

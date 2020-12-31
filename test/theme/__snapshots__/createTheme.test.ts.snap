@@ -88,7 +88,7 @@ Object {
       },
       "containedSecondary": Object {
         "&$disabled": Object {
-          "backgroundColor": "rgb(255, 249, 231)88",
+          "backgroundColor": "rgb(255, 219, 121)88",
         },
       },
       "disabled": Object {},
@@ -98,32 +98,9 @@ Object {
           "color": "#CFCFCF88",
         },
       },
-      "outlinedPrimary": Object {
-        "&$disabled": Object {
-          "backgroundColor": "rgb(110, 110, 110)88",
-          "borderColor": "#FFDD8088",
-        },
-        "&:hover": Object {
-          "backgroundColor": "rgb(59, 59, 59)",
-          "borderColor": "#3E3E3E",
-        },
-        "backgroundColor": "#616161",
-        "borderColor": "#3E3E3E",
-        "color": "#FFc526",
-      },
+      "outlinedPrimary": Object {},
       "outlinedSecondary": Object {
-        "&$disabled": Object {
-          "backgroundColor": "rgb(255, 231, 166)88",
-          "borderColor": "#3E3E3E88",
-          "color": "#2E2E2E88",
-        },
-        "&:hover": Object {
-          "backgroundColor": "rgb(255, 219, 121)",
-          "borderColor": "#3E3E3E",
-        },
-        "backgroundColor": "rgb(255, 231, 166)",
-        "borderColor": "#3E3E3E",
-        "color": "#2E2E2E",
+        "color": "rgb(204, 137, 0)",
       },
       "root": Object {
         "textTransform": "none",
@@ -135,16 +112,10 @@ Object {
       },
       "textPrimary": Object {
         "&$disabled": Object {},
-        "&:hover": Object {
-          "backgroundColor": "rgba(255, 187, 0, 0.04)",
-        },
         "color": "#3E3E3E",
       },
       "textSecondary": Object {
-        "&:hover": Object {
-          "backgroundColor": "rgba(62, 62, 62, 0.04)",
-        },
-        "color": "#FFAC00",
+        "color": "rgb(204, 137, 0)",
       },
     },
     "MuiCheckbox": Object {
@@ -174,12 +145,12 @@ Object {
           "&:hover": Object {
             "backgroundColor": "rgba(62, 62, 62, 0.04)",
           },
-          "color": "#FFc526",
+          "color": "#FFAC00",
         },
         "&$disabled": Object {
           "color": "rgba(126, 126, 126, 0.7)",
         },
-        "color": "#FFc526",
+        "color": "#FFAC00",
       },
       "root": Object {
         "&$disabled": Object {
@@ -266,7 +237,7 @@ Object {
           "& svg:nth-of-type(2)": Object {
             "color": "#3E3E3E88",
           },
-          "color": "#FFF7E088",
+          "color": "#FFCF4D88",
         },
         "color": "#FFAC00",
       },
@@ -422,9 +393,9 @@ Object {
     },
     "secondary": Object {
       "contrastText": "#454545",
-      "dark": "#FFc526",
-      "light": "#FFF7E0",
-      "main": "#FFDD80",
+      "dark": "#FFAC00",
+      "light": "#FFCF4D",
+      "main": "#FFBB00",
     },
     "success": Object {
       "contrastText": "#222222",
@@ -726,7 +697,7 @@ Object {
     },
     "MuiBadge": Object {
       "colorSecondary": Object {
-        "backgroundColor": "#616161",
+        "backgroundColor": "#363636",
       },
     },
     "MuiButton": Object {
@@ -741,22 +712,22 @@ Object {
       },
       "containedPrimary": Object {
         "&$disabled": Object {
-          "backgroundColor": "#FFBB0088",
+          "backgroundColor": "#FFAC0088",
         },
         "&:hover": Object {
-          "backgroundColor": "rgb(255, 210, 91)",
+          "backgroundColor": "rgb(255, 192, 20)",
         },
         "color": "rgba(0, 0, 0, 0.87)",
       },
       "containedSecondary": Object {
         "&:hover": Object {
           "@media (hover: none)": Object {
-            "backgroundColor": "#A2A2A2",
+            "backgroundColor": "#454545",
           },
-          "backgroundColor": "rgb(109, 109, 109)",
+          "backgroundColor": "rgb(70, 70, 70)",
         },
-        "backgroundColor": "#616161",
-        "color": "#FFAC00",
+        "backgroundColor": "#363636",
+        "color": "#FF9600",
       },
       "disabled": Object {},
       "outlined": Object {
@@ -765,31 +736,10 @@ Object {
           "color": "#CFCFCF88",
         },
       },
-      "outlinedPrimary": Object {
-        "&$disabled": Object {
-          "backgroundColor": "rgb(255, 204, 63)88",
-          "borderColor": "#E9E9E988",
-        },
-        "&:hover": Object {
-          "backgroundColor": "rgb(255, 221, 131)",
-          "borderColor": "rgba(0, 0, 0, 0.87)",
-        },
-        "backgroundColor": "#FFCF4D",
-        "borderColor": "rgba(0, 0, 0, 0.87)",
-        "color": "rgba(0, 0, 0, 0.87)",
-      },
+      "outlinedPrimary": Object {},
       "outlinedSecondary": Object {
-        "&$disabled": Object {
-          "backgroundColor": "rgb(190, 190, 190)88",
-          "borderColor": "#FFBB0088",
-        },
-        "&:hover": Object {
-          "backgroundColor": "rgb(157, 157, 157)",
-          "borderColor": "rgb(191, 129, 0)",
-        },
-        "backgroundColor": "#7D7D7D",
-        "borderColor": "#FFAC00",
-        "color": "#FFAC00",
+        "borderColor": "#7D7D7D",
+        "color": "#7D7D7D",
       },
       "root": Object {
         "textTransform": "none",
@@ -801,51 +751,45 @@ Object {
       },
       "textPrimary": Object {
         "&$disabled": Object {},
-        "&:hover": Object {
-          "backgroundColor": "rgba(69, 69, 69, 0.08)",
-        },
-        "color": "#FFBB00",
+        "color": "#FFAC00",
       },
       "textSecondary": Object {
-        "&:hover": Object {
-          "backgroundColor": "rgba(255, 187, 0, 0.08)",
-        },
-        "color": "#A2A2A2",
+        "color": "#7D7D7D",
       },
     },
     "MuiCheckbox": Object {
       "colorPrimary": Object {
         "& span:nth-of-type(2)": Object {
-          "color": "#454545",
+          "color": "#FFBB00",
         },
         "&$checked": Object {
           "&$disabled": Object {
             "color": "rgba(126, 126, 126, 0.7)",
           },
           "&:hover": Object {
-            "backgroundColor": "rgba(69, 69, 69, 0.08)",
+            "backgroundColor": "rgba(255, 187, 0, 0.08)",
           },
-          "color": "#FFBB00",
+          "color": "#FFAC00",
         },
         "&$disabled": Object {
           "color": "rgba(126, 126, 126, 0.7)",
         },
-        "color": "#FFBB00",
+        "color": "#FFAC00",
       },
       "colorSecondary": Object {
         "& span:nth-of-type(2)": Object {
-          "color": "#FFBB00",
+          "color": "#FFAC00",
         },
         "&$checked": Object {
           "&:hover": Object {
-            "backgroundColor": "rgba(255, 187, 0, 0.08)",
+            "backgroundColor": "rgba(255, 172, 0, 0.08)",
           },
-          "color": "#A2A2A2",
+          "color": "#7D7D7D",
         },
         "&$disabled": Object {
           "color": "rgba(126, 126, 126, 0.7)",
         },
-        "color": "#A2A2A2",
+        "color": "#7D7D7D",
       },
       "root": Object {
         "&$disabled": Object {
@@ -866,7 +810,7 @@ Object {
     },
     "MuiDialog": Object {
       "paper": Object {
-        "borderTop": "4px solid #FFBB00",
+        "borderTop": "4px solid #FFAC00",
       },
     },
     "MuiDivider": Object {
@@ -877,64 +821,64 @@ Object {
     "MuiIconButton": Object {
       "colorPrimary": Object {
         "& span:nth-of-type(2)": Object {
-          "color": "#FFBB00",
+          "color": "#FFAC00",
         },
         "&:hover": Object {
-          "backgroundColor": "rgba(255, 187, 0, 0.08)",
+          "backgroundColor": "rgba(255, 172, 0, 0.08)",
         },
       },
       "colorSecondary": Object {
         "& span:nth-of-type(2)": Object {
-          "color": "#A2A2A2",
+          "color": "#454545",
         },
         "&:hover": Object {
-          "backgroundColor": "rgba(255, 187, 0, 0.08)",
+          "backgroundColor": "rgba(255, 172, 0, 0.08)",
         },
-        "color": "#A2A2A2",
+        "color": "#454545",
       },
     },
     "MuiRadio": Object {
       "colorPrimary": Object {
         "& span:nth-of-type(2)": Object {
-          "color": "#7D7D7D",
+          "color": "#FFCF4D",
         },
         "& svg:nth-of-type(2)": Object {
-          "color": "#7D7D7D",
-        },
-        "&$checked": Object {
-          "&:hover": Object {
-            "backgroundColor": "rgba(69, 69, 69, 0.08)",
-          },
-          "color": "#FFBB00",
-        },
-        "&$disabled": Object {
-          "& svg:nth-of-type(2)": Object {
-            "color": "#45454588",
-          },
-          "color": "#FFBB0088",
-        },
-        "color": "#FFBB00",
-      },
-      "colorSecondary": Object {
-        "& span:nth-of-type(2)": Object {
-          "color": "#FFBB00",
-        },
-        "& svg:nth-of-type(2)": Object {
-          "color": "#FFBB00",
+          "color": "#FFCF4D",
         },
         "&$checked": Object {
           "&:hover": Object {
             "backgroundColor": "rgba(255, 187, 0, 0.08)",
           },
-          "color": "#A2A2A2",
+          "color": "#FFAC00",
         },
         "&$disabled": Object {
           "& svg:nth-of-type(2)": Object {
             "color": "#FFBB0088",
           },
-          "color": "#E9E9E988",
+          "color": "#FFAC0088",
         },
-        "color": "#A2A2A2",
+        "color": "#FFAC00",
+      },
+      "colorSecondary": Object {
+        "& span:nth-of-type(2)": Object {
+          "color": "#FFAC00",
+        },
+        "& svg:nth-of-type(2)": Object {
+          "color": "#FFAC00",
+        },
+        "&$checked": Object {
+          "&:hover": Object {
+            "backgroundColor": "rgba(255, 172, 0, 0.08)",
+          },
+          "color": "#454545",
+        },
+        "&$disabled": Object {
+          "& svg:nth-of-type(2)": Object {
+            "color": "#FFAC0088",
+          },
+          "color": "#7D7D7D88",
+        },
+        "color": "#454545",
       },
       "root": Object {
         "&$disabled": Object {
@@ -946,7 +890,7 @@ Object {
     "MuiSwitch": Object {
       "colorPrimary": Object {
         "&$checked + $track": Object {
-          "backgroundColor": "#FFCF4D",
+          "backgroundColor": "#FFBB00",
         },
       },
       "root": Object {
@@ -959,7 +903,7 @@ Object {
     "MuiTableBody": Object {
       "root": Object {
         "& tr:last-child": Object {
-          "borderBottom": "1px solid #FFBB00",
+          "borderBottom": "1px solid #FFAC00",
         },
         "& tr:last-child > td": Object {
           "borderBottom": "none",
@@ -981,8 +925,8 @@ Object {
           "color": "#F7F7F7",
           "fontWeight": "bold",
         },
-        "borderBottom": "1px solid #FFBB00",
-        "borderTop": "1px solid #FFBB00",
+        "borderBottom": "1px solid #FFAC00",
+        "borderTop": "1px solid #FFAC00",
       },
     },
     "MuiTableHead": Object {
@@ -992,12 +936,12 @@ Object {
           "color": "#F7F7F7",
           "fontWeight": "bold",
         },
-        "borderBottom": "1px solid #FFBB00",
+        "borderBottom": "1px solid #FFAC00",
       },
     },
     "MuiTabs": Object {
       "indicator": Object {
-        "backgroundColor": "#454545",
+        "backgroundColor": "#FFBB00",
         "height": "4px",
       },
     },
@@ -1019,13 +963,13 @@ Object {
     "augmentColor": [Function],
     "background": Object {
       "default": "black",
-      "paper": "#3B3B3B",
+      "paper": "#222222",
     },
     "brand": Object {
       "contrastText": "#222222",
-      "dark": "#363636",
-      "light": "#7D7D7D",
-      "main": "#454545",
+      "dark": "#FFAC00",
+      "light": "#FFCF4D",
+      "main": "#FFBB00",
     },
     "common": Object {
       "black": "#000",
@@ -1078,15 +1022,15 @@ Object {
     },
     "primary": Object {
       "contrastText": "#454545",
-      "dark": "#FFAC00",
-      "light": "#FFCF4D",
-      "main": "#FFBB00",
+      "dark": "#FF9600",
+      "light": "#FFBB00",
+      "main": "#FFAC00",
     },
     "secondary": Object {
       "contrastText": "#FFBB00",
-      "dark": "#616161",
-      "light": "#E9E9E9",
-      "main": "#A2A2A2",
+      "dark": "#363636",
+      "light": "#7D7D7D",
+      "main": "#454545",
     },
     "success": Object {
       "contrastText": "#222222",
@@ -1769,9 +1713,9 @@ Object {
     },
     "brand": Object {
       "contrastText": "#222222",
-      "dark": "#363636",
-      "light": "#7D7D7D",
-      "main": "#454545",
+      "dark": "#FFAC00",
+      "light": "#FFCF4D",
+      "main": "#FFBB00",
     },
     "common": Object {
       "black": "#000",

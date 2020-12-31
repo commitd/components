@@ -118,12 +118,6 @@ export const committedOverrides = (
       },
       textPrimary: {
         color: palette.primary.main,
-        '&:hover': {
-          backgroundColor: fade(
-            palette.brand.main,
-            palette.action.hoverOpacity
-          ),
-        },
         '&$disabled': {},
       },
       textSecondary: {},

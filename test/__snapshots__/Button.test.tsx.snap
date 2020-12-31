@@ -2,276 +2,708 @@
 
 exports[`renders all variants 1`] = `
 <DocumentFragment>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Default
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        Primary
-      </span>
-    </button>
-  </div>
-  <div
-    class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-outlinedSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary"
-      tabindex="0"
-      type="button"
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-disabled MuiButtonBase-disabled"
-      disabled=""
-      tabindex="-1"
-      type="button"
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
     >
-      <span
-        class="MuiButton-label"
-      >
-        Secondary
-      </span>
-    </button>
-  </div>
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedPrimary MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-textSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textPrimary MuiButton-textSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSecondary MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-outlinedSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSecondary MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-textSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-textSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSecondary MuiButton-textSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-containedSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-outlinedSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSizeSmall MuiButton-sizeSmall"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSizeLarge MuiButton-sizeLarge"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-text ForwardRef(withPositioning)-root ForwardRef(withPositioning)-root MuiButton-textSizeLarge MuiButton-sizeLarge MuiButton-disabled MuiButtonBase-disabled"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Button
+    </span>
+  </button>
 </DocumentFragment>
 `;
 
