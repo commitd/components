@@ -85,7 +85,7 @@ export const committedDarkPalette: PaletteOptions = {
     contrastText: textColor,
   },
   background: {
-    default: 'black',
+    default: '#000000',
     paper: paletteColors.grey[900],
   },
   text,
