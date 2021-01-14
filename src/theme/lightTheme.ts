@@ -91,7 +91,7 @@ export const committedLightPalette: PaletteOptions = {
   },
   background: {
     default: paletteColors.grey[50],
-    paper: 'white',
+    paper: '#FFFFFF',
   },
   text,
   grey: paletteColors.grey,
