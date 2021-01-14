@@ -328,7 +328,7 @@ Object {
     "augmentColor": [Function],
     "background": Object {
       "default": "#F7F7F7",
-      "paper": "white",
+      "paper": "#FFFFFF",
     },
     "brand": Object {
       "contrastText": "#222222",
