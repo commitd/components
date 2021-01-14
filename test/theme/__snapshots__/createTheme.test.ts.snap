@@ -962,7 +962,7 @@ Object {
     },
     "augmentColor": [Function],
     "background": Object {
-      "default": "black",
+      "default": "#000000",
       "paper": "#222222",
     },
     "brand": Object {
