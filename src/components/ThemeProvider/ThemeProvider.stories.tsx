@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { ThemeProvider, ThemeProviderProps } from '.'
 import { styled } from 'stitches.config'
+import { ThemeProvider, ThemeProviderProps } from '.'
 
 export default {
   title: 'Components/ThemeProvider',

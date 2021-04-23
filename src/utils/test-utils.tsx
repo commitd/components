@@ -5,8 +5,8 @@
  * N.B. This adds a simple custom id generator so ids match between snapshots.
  *
  */
-import '@testing-library/jest-dom/extend-expect'
 import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/extend-expect'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
