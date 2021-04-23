@@ -3,12 +3,122 @@
 exports[`renders dark without error 1`] = `
 <DocumentFragment>
   :root,
-.sxkmjvb {
-  --sx-colors-background: hsl(0,0%,100%);
+.sxfmafz {
+  --sx-colors-yellow100: #ffeecc;
+  --sx-colors-yellow200: #ffde99;
+  --sx-colors-yellow300: #ffcd66;
+  --sx-colors-yellow400: #ffbd33;
+  --sx-colors-yellow500: #ffac00;
+  --sx-colors-yellow600: #cc8a00;
+  --sx-colors-yellow700: #996700;
+  --sx-colors-yellow800: #664500;
+  --sx-colors-yellow900: #332200;
+  --sx-colors-grey100: #d8d8d8;
+  --sx-colors-grey200: #b2b2b2;
+  --sx-colors-grey300: #8b8b8b;
+  --sx-colors-grey400: #656565;
+  --sx-colors-grey500: #3e3e3e;
+  --sx-colors-grey600: #323232;
+  --sx-colors-grey700: #252525;
+  --sx-colors-grey800: #191919;
+  --sx-colors-grey900: #0c0c0c;
+  --sx-colors-blue100: #d4e6f3;
+  --sx-colors-blue200: #a8cce7;
+  --sx-colors-blue300: #7db3da;
+  --sx-colors-blue400: #5199ce;
+  --sx-colors-blue500: #2680c2;
+  --sx-colors-blue600: #1e669b;
+  --sx-colors-blue700: #174d74;
+  --sx-colors-blue800: #0f334e;
+  --sx-colors-blue900: #081a27;
+  --sx-colors-green100: #d4eee6;
+  --sx-colors-green200: #a9ddcd;
+  --sx-colors-green300: #7dcdb5;
+  --sx-colors-green400: #52bc9c;
+  --sx-colors-green500: #27ab83;
+  --sx-colors-green600: #1f8969;
+  --sx-colors-green700: #17674f;
+  --sx-colors-green800: #104434;
+  --sx-colors-green900: #08221a;
+  --sx-colors-red100: #f1d3d3;
+  --sx-colors-red200: #e3a8a8;
+  --sx-colors-red300: #d67c7c;
+  --sx-colors-red400: #c85151;
+  --sx-colors-red500: #ba2525;
+  --sx-colors-red600: #951e1e;
+  --sx-colors-red700: #701616;
+  --sx-colors-red800: #4a0f0f;
+  --sx-colors-red900: #250707;
+  --sx-colors-orange100: #fae4d7;
+  --sx-colors-orange200: #f5c8ae;
+  --sx-colors-orange300: #f0ad86;
+  --sx-colors-orange400: #eb915d;
+  --sx-colors-orange500: #e67635;
+  --sx-colors-orange600: #b85e2a;
+  --sx-colors-orange700: #8a4720;
+  --sx-colors-orange800: #5c2f15;
+  --sx-colors-orange900: #2e180b;
+  --sx-colors-brandYellow: #ffbb00;
+  --sx-colors-brandGrey: #565555;
+  --sx-colors-background: #f7f7f7;
+  --sx-colors-text: #3b3b3b;
+  --sx-colors-primary: var(--sx-colors-grey500);
+  --sx-colors-secondary: var(--sx-colors-yellow200);
+  --sx-colors-paper: #ffffff;
+  --sx-space-0: 0px;
+  --sx-space-1: 4px;
+  --sx-space-2: 8px;
+  --sx-space-3: 12px;
+  --sx-space-4: 16px;
+  --sx-space-5: 24px;
+  --sx-space-6: 32px;
+  --sx-space-7: 48px;
+  --sx-space-8: 64px;
+  --sx-space-9: 96px;
+  --sx-space-10: 128px;
+  --sx-space-11: 192px;
+  --sx-space-12: 256px;
+  --sx-space-13: 384px;
+  --sx-space-14: 512px;
+  --sx-space-15: 640px;
+  --sx-space-16: 768px;
+  --sx-fontSizes-0: 16px;
+  --sx-fontSizes-1: 18px;
+  --sx-fontSizes-2: 20px;
+  --sx-fontSizes-3: 24px;
+  --sx-fontSizes-4: 30px;
+  --sx-fontSizes-5: 36px;
+  --sx-fontSizes-6: 48px;
+  --sx-fontSizes-7: 60px;
+  --sx-fontSizes-8: 72px;
+  --sx-fontSizes--2: 12px;
+  --sx-fontSizes--1: 14px;
+  --sx-fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --sx-fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --sx-fonts-text: "Inter" -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fontWeights-regular: 400;
+  --sx-fontWeights-bold: 700;
+  --sx-fontWeights-light: 300;
+  --sx-lineHeights-body: 140%;
+  --sx-lineHeights-auto: AUTO;
+  --sx-lineHeights-none: 100%;
+  --sx-lineHeights-tight: 110%;
+  --sx-letterSpacings-normal: 0%;
+  --sx-letterSpacings-tight: -1%;
+  --sx-letterSpacings-tighter: -3%;
+  --sx-letterSpacings-wide: 5%;
+  --sx-borderWidths-default: 2px;
+  --sx-radii-default: 2px;
+  --sx-radii-round: 99999px;
 }
 
 .dark-theme {
-  --sx-colors-background: hsl(0,0%,0%);
+  --sx-colors-background: #000000;
+  --sx-colors-text: #f7f7f7;
+  --sx-colors-primary: var(--sx-colors-yellow500);
+  --sx-colors-secondary: var(--sx-colors-616161);
+  --sx-colors-paper: #222222;
 }
 
 @global {
@@ -33,6 +143,17 @@ svg {
   display: block;
 }
 
+pre,
+code {
+  margin: 0;
+  font-family: var(--sx-fonts-monospace);
+}
+
+body,
+button {
+  font-family: var(--sx-fonts-text);
+}
+
 .sx8b8d3 {
   background-color: gainsboro;
   border-radius: 9999px;
@@ -49,8 +170,114 @@ svg {
 }
 
 :root,
-.sxkmjvb {
-  --sx-colors-background: hsl(0,0%,100%);
+.sxfmafz {
+  --sx-colors-yellow100: #ffeecc;
+  --sx-colors-yellow200: #ffde99;
+  --sx-colors-yellow300: #ffcd66;
+  --sx-colors-yellow400: #ffbd33;
+  --sx-colors-yellow500: #ffac00;
+  --sx-colors-yellow600: #cc8a00;
+  --sx-colors-yellow700: #996700;
+  --sx-colors-yellow800: #664500;
+  --sx-colors-yellow900: #332200;
+  --sx-colors-grey100: #d8d8d8;
+  --sx-colors-grey200: #b2b2b2;
+  --sx-colors-grey300: #8b8b8b;
+  --sx-colors-grey400: #656565;
+  --sx-colors-grey500: #3e3e3e;
+  --sx-colors-grey600: #323232;
+  --sx-colors-grey700: #252525;
+  --sx-colors-grey800: #191919;
+  --sx-colors-grey900: #0c0c0c;
+  --sx-colors-blue100: #d4e6f3;
+  --sx-colors-blue200: #a8cce7;
+  --sx-colors-blue300: #7db3da;
+  --sx-colors-blue400: #5199ce;
+  --sx-colors-blue500: #2680c2;
+  --sx-colors-blue600: #1e669b;
+  --sx-colors-blue700: #174d74;
+  --sx-colors-blue800: #0f334e;
+  --sx-colors-blue900: #081a27;
+  --sx-colors-green100: #d4eee6;
+  --sx-colors-green200: #a9ddcd;
+  --sx-colors-green300: #7dcdb5;
+  --sx-colors-green400: #52bc9c;
+  --sx-colors-green500: #27ab83;
+  --sx-colors-green600: #1f8969;
+  --sx-colors-green700: #17674f;
+  --sx-colors-green800: #104434;
+  --sx-colors-green900: #08221a;
+  --sx-colors-red100: #f1d3d3;
+  --sx-colors-red200: #e3a8a8;
+  --sx-colors-red300: #d67c7c;
+  --sx-colors-red400: #c85151;
+  --sx-colors-red500: #ba2525;
+  --sx-colors-red600: #951e1e;
+  --sx-colors-red700: #701616;
+  --sx-colors-red800: #4a0f0f;
+  --sx-colors-red900: #250707;
+  --sx-colors-orange100: #fae4d7;
+  --sx-colors-orange200: #f5c8ae;
+  --sx-colors-orange300: #f0ad86;
+  --sx-colors-orange400: #eb915d;
+  --sx-colors-orange500: #e67635;
+  --sx-colors-orange600: #b85e2a;
+  --sx-colors-orange700: #8a4720;
+  --sx-colors-orange800: #5c2f15;
+  --sx-colors-orange900: #2e180b;
+  --sx-colors-brandYellow: #ffbb00;
+  --sx-colors-brandGrey: #565555;
+  --sx-colors-background: #f7f7f7;
+  --sx-colors-text: #3b3b3b;
+  --sx-colors-primary: var(--sx-colors-grey500);
+  --sx-colors-secondary: var(--sx-colors-yellow200);
+  --sx-colors-paper: #ffffff;
+  --sx-space-0: 0px;
+  --sx-space-1: 4px;
+  --sx-space-2: 8px;
+  --sx-space-3: 12px;
+  --sx-space-4: 16px;
+  --sx-space-5: 24px;
+  --sx-space-6: 32px;
+  --sx-space-7: 48px;
+  --sx-space-8: 64px;
+  --sx-space-9: 96px;
+  --sx-space-10: 128px;
+  --sx-space-11: 192px;
+  --sx-space-12: 256px;
+  --sx-space-13: 384px;
+  --sx-space-14: 512px;
+  --sx-space-15: 640px;
+  --sx-space-16: 768px;
+  --sx-fontSizes-0: 16px;
+  --sx-fontSizes-1: 18px;
+  --sx-fontSizes-2: 20px;
+  --sx-fontSizes-3: 24px;
+  --sx-fontSizes-4: 30px;
+  --sx-fontSizes-5: 36px;
+  --sx-fontSizes-6: 48px;
+  --sx-fontSizes-7: 60px;
+  --sx-fontSizes-8: 72px;
+  --sx-fontSizes--2: 12px;
+  --sx-fontSizes--1: 14px;
+  --sx-fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --sx-fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --sx-fonts-text: "Inter" -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fontWeights-regular: 400;
+  --sx-fontWeights-bold: 700;
+  --sx-fontWeights-light: 300;
+  --sx-lineHeights-body: 140%;
+  --sx-lineHeights-auto: AUTO;
+  --sx-lineHeights-none: 100%;
+  --sx-lineHeights-tight: 110%;
+  --sx-letterSpacings-normal: 0%;
+  --sx-letterSpacings-tight: -1%;
+  --sx-letterSpacings-tighter: -3%;
+  --sx-letterSpacings-wide: 5%;
+  --sx-borderWidths-default: 2px;
+  --sx-radii-default: 2px;
+  --sx-radii-round: 99999px;
 }
 
 <div
@@ -66,8 +293,114 @@ svg {
 exports[`renders light without error 1`] = `
 <DocumentFragment>
   :root,
-.sxkmjvb {
-  --sx-colors-background: hsl(0,0%,100%);
+.sxfmafz {
+  --sx-colors-yellow100: #ffeecc;
+  --sx-colors-yellow200: #ffde99;
+  --sx-colors-yellow300: #ffcd66;
+  --sx-colors-yellow400: #ffbd33;
+  --sx-colors-yellow500: #ffac00;
+  --sx-colors-yellow600: #cc8a00;
+  --sx-colors-yellow700: #996700;
+  --sx-colors-yellow800: #664500;
+  --sx-colors-yellow900: #332200;
+  --sx-colors-grey100: #d8d8d8;
+  --sx-colors-grey200: #b2b2b2;
+  --sx-colors-grey300: #8b8b8b;
+  --sx-colors-grey400: #656565;
+  --sx-colors-grey500: #3e3e3e;
+  --sx-colors-grey600: #323232;
+  --sx-colors-grey700: #252525;
+  --sx-colors-grey800: #191919;
+  --sx-colors-grey900: #0c0c0c;
+  --sx-colors-blue100: #d4e6f3;
+  --sx-colors-blue200: #a8cce7;
+  --sx-colors-blue300: #7db3da;
+  --sx-colors-blue400: #5199ce;
+  --sx-colors-blue500: #2680c2;
+  --sx-colors-blue600: #1e669b;
+  --sx-colors-blue700: #174d74;
+  --sx-colors-blue800: #0f334e;
+  --sx-colors-blue900: #081a27;
+  --sx-colors-green100: #d4eee6;
+  --sx-colors-green200: #a9ddcd;
+  --sx-colors-green300: #7dcdb5;
+  --sx-colors-green400: #52bc9c;
+  --sx-colors-green500: #27ab83;
+  --sx-colors-green600: #1f8969;
+  --sx-colors-green700: #17674f;
+  --sx-colors-green800: #104434;
+  --sx-colors-green900: #08221a;
+  --sx-colors-red100: #f1d3d3;
+  --sx-colors-red200: #e3a8a8;
+  --sx-colors-red300: #d67c7c;
+  --sx-colors-red400: #c85151;
+  --sx-colors-red500: #ba2525;
+  --sx-colors-red600: #951e1e;
+  --sx-colors-red700: #701616;
+  --sx-colors-red800: #4a0f0f;
+  --sx-colors-red900: #250707;
+  --sx-colors-orange100: #fae4d7;
+  --sx-colors-orange200: #f5c8ae;
+  --sx-colors-orange300: #f0ad86;
+  --sx-colors-orange400: #eb915d;
+  --sx-colors-orange500: #e67635;
+  --sx-colors-orange600: #b85e2a;
+  --sx-colors-orange700: #8a4720;
+  --sx-colors-orange800: #5c2f15;
+  --sx-colors-orange900: #2e180b;
+  --sx-colors-brandYellow: #ffbb00;
+  --sx-colors-brandGrey: #565555;
+  --sx-colors-background: #f7f7f7;
+  --sx-colors-text: #3b3b3b;
+  --sx-colors-primary: var(--sx-colors-grey500);
+  --sx-colors-secondary: var(--sx-colors-yellow200);
+  --sx-colors-paper: #ffffff;
+  --sx-space-0: 0px;
+  --sx-space-1: 4px;
+  --sx-space-2: 8px;
+  --sx-space-3: 12px;
+  --sx-space-4: 16px;
+  --sx-space-5: 24px;
+  --sx-space-6: 32px;
+  --sx-space-7: 48px;
+  --sx-space-8: 64px;
+  --sx-space-9: 96px;
+  --sx-space-10: 128px;
+  --sx-space-11: 192px;
+  --sx-space-12: 256px;
+  --sx-space-13: 384px;
+  --sx-space-14: 512px;
+  --sx-space-15: 640px;
+  --sx-space-16: 768px;
+  --sx-fontSizes-0: 16px;
+  --sx-fontSizes-1: 18px;
+  --sx-fontSizes-2: 20px;
+  --sx-fontSizes-3: 24px;
+  --sx-fontSizes-4: 30px;
+  --sx-fontSizes-5: 36px;
+  --sx-fontSizes-6: 48px;
+  --sx-fontSizes-7: 60px;
+  --sx-fontSizes-8: 72px;
+  --sx-fontSizes--2: 12px;
+  --sx-fontSizes--1: 14px;
+  --sx-fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --sx-fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --sx-fonts-text: "Inter" -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fontWeights-regular: 400;
+  --sx-fontWeights-bold: 700;
+  --sx-fontWeights-light: 300;
+  --sx-lineHeights-body: 140%;
+  --sx-lineHeights-auto: AUTO;
+  --sx-lineHeights-none: 100%;
+  --sx-lineHeights-tight: 110%;
+  --sx-letterSpacings-normal: 0%;
+  --sx-letterSpacings-tight: -1%;
+  --sx-letterSpacings-tighter: -3%;
+  --sx-letterSpacings-wide: 5%;
+  --sx-borderWidths-default: 2px;
+  --sx-radii-default: 2px;
+  --sx-radii-round: 99999px;
 }
 
 @global {
@@ -92,6 +425,17 @@ svg {
   display: block;
 }
 
+pre,
+code {
+  margin: 0;
+  font-family: var(--sx-fonts-monospace);
+}
+
+body,
+button {
+  font-family: var(--sx-fonts-text);
+}
+
 .sx8b8d3 {
   background-color: gainsboro;
   border-radius: 9999px;
@@ -108,8 +452,114 @@ svg {
 }
 
 :root,
-.sxkmjvb {
-  --sx-colors-background: hsl(0,0%,100%);
+.sxfmafz {
+  --sx-colors-yellow100: #ffeecc;
+  --sx-colors-yellow200: #ffde99;
+  --sx-colors-yellow300: #ffcd66;
+  --sx-colors-yellow400: #ffbd33;
+  --sx-colors-yellow500: #ffac00;
+  --sx-colors-yellow600: #cc8a00;
+  --sx-colors-yellow700: #996700;
+  --sx-colors-yellow800: #664500;
+  --sx-colors-yellow900: #332200;
+  --sx-colors-grey100: #d8d8d8;
+  --sx-colors-grey200: #b2b2b2;
+  --sx-colors-grey300: #8b8b8b;
+  --sx-colors-grey400: #656565;
+  --sx-colors-grey500: #3e3e3e;
+  --sx-colors-grey600: #323232;
+  --sx-colors-grey700: #252525;
+  --sx-colors-grey800: #191919;
+  --sx-colors-grey900: #0c0c0c;
+  --sx-colors-blue100: #d4e6f3;
+  --sx-colors-blue200: #a8cce7;
+  --sx-colors-blue300: #7db3da;
+  --sx-colors-blue400: #5199ce;
+  --sx-colors-blue500: #2680c2;
+  --sx-colors-blue600: #1e669b;
+  --sx-colors-blue700: #174d74;
+  --sx-colors-blue800: #0f334e;
+  --sx-colors-blue900: #081a27;
+  --sx-colors-green100: #d4eee6;
+  --sx-colors-green200: #a9ddcd;
+  --sx-colors-green300: #7dcdb5;
+  --sx-colors-green400: #52bc9c;
+  --sx-colors-green500: #27ab83;
+  --sx-colors-green600: #1f8969;
+  --sx-colors-green700: #17674f;
+  --sx-colors-green800: #104434;
+  --sx-colors-green900: #08221a;
+  --sx-colors-red100: #f1d3d3;
+  --sx-colors-red200: #e3a8a8;
+  --sx-colors-red300: #d67c7c;
+  --sx-colors-red400: #c85151;
+  --sx-colors-red500: #ba2525;
+  --sx-colors-red600: #951e1e;
+  --sx-colors-red700: #701616;
+  --sx-colors-red800: #4a0f0f;
+  --sx-colors-red900: #250707;
+  --sx-colors-orange100: #fae4d7;
+  --sx-colors-orange200: #f5c8ae;
+  --sx-colors-orange300: #f0ad86;
+  --sx-colors-orange400: #eb915d;
+  --sx-colors-orange500: #e67635;
+  --sx-colors-orange600: #b85e2a;
+  --sx-colors-orange700: #8a4720;
+  --sx-colors-orange800: #5c2f15;
+  --sx-colors-orange900: #2e180b;
+  --sx-colors-brandYellow: #ffbb00;
+  --sx-colors-brandGrey: #565555;
+  --sx-colors-background: #f7f7f7;
+  --sx-colors-text: #3b3b3b;
+  --sx-colors-primary: var(--sx-colors-grey500);
+  --sx-colors-secondary: var(--sx-colors-yellow200);
+  --sx-colors-paper: #ffffff;
+  --sx-space-0: 0px;
+  --sx-space-1: 4px;
+  --sx-space-2: 8px;
+  --sx-space-3: 12px;
+  --sx-space-4: 16px;
+  --sx-space-5: 24px;
+  --sx-space-6: 32px;
+  --sx-space-7: 48px;
+  --sx-space-8: 64px;
+  --sx-space-9: 96px;
+  --sx-space-10: 128px;
+  --sx-space-11: 192px;
+  --sx-space-12: 256px;
+  --sx-space-13: 384px;
+  --sx-space-14: 512px;
+  --sx-space-15: 640px;
+  --sx-space-16: 768px;
+  --sx-fontSizes-0: 16px;
+  --sx-fontSizes-1: 18px;
+  --sx-fontSizes-2: 20px;
+  --sx-fontSizes-3: 24px;
+  --sx-fontSizes-4: 30px;
+  --sx-fontSizes-5: 36px;
+  --sx-fontSizes-6: 48px;
+  --sx-fontSizes-7: 60px;
+  --sx-fontSizes-8: 72px;
+  --sx-fontSizes--2: 12px;
+  --sx-fontSizes--1: 14px;
+  --sx-fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --sx-fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --sx-fonts-text: "Inter" -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --sx-fontWeights-regular: 400;
+  --sx-fontWeights-bold: 700;
+  --sx-fontWeights-light: 300;
+  --sx-lineHeights-body: 140%;
+  --sx-lineHeights-auto: AUTO;
+  --sx-lineHeights-none: 100%;
+  --sx-lineHeights-tight: 110%;
+  --sx-letterSpacings-normal: 0%;
+  --sx-letterSpacings-tight: -1%;
+  --sx-letterSpacings-tighter: -3%;
+  --sx-letterSpacings-wide: 5%;
+  --sx-borderWidths-default: 2px;
+  --sx-radii-default: 2px;
+  --sx-radii-round: 99999px;
 }
 
 <div
