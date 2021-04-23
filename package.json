@@ -38,12 +38,6 @@
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged --pattern '**/*.*(ts|tsx|json|md)'; tsdx lint",
-      "pre-push": "yarn test && yarn build && yarn danger:local"
-    }
-  },
   "prettier": {
     "semi": false,
     "singleQuote": true
