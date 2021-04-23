@@ -28,6 +28,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish Docs
-        run: yarn deploy-storybook --ci
+        run: npm run deploy-storybook -- --ci
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
