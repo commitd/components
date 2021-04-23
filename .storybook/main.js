@@ -1,5 +1,15 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+
 module.exports = {
-  stories: ['../stories/**/*.stories.@(ts|tsx|mdx)'],
+  webpackFinal: async (config) => {
+    config.resolve.plugins = config.resolve.plugins || []
+    config.resolve.plugins.push(new TsconfigPathsPlugin())
+    return config
+  },
+  stories: [
+    '../stories/**/*.stories.@(ts|tsx|mdx)',
+    '../src/**/*.stories.@(ts|tsx|mdx)',
+  ],
   addons: [
     {
       name: '@storybook/addon-essentials',
@@ -9,4 +19,7 @@ module.exports = {
     },
     'storybook-dark-mode',
   ],
+  typescript: {
+    check: false,
+  },
 }

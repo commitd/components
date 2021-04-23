@@ -5,12 +5,6 @@ import {
   DisplayOutside,
   SelfPosition,
 } from 'csstype'
-import {
-  SpacingProps,
-  DisplayProps,
-  FlexboxProps,
-  SizingProps,
-} from '@material-ui/system'
 
 /***********************************************************************************
  * These types are for documentation only,

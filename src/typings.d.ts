@@ -17,15 +17,3 @@ declare module '*.woff2'
 declare module '*.ttf'
 declare module '*.eot'
 
-// Next utils are written in ts so can be removed later
-declare module '@material-ui/utils' {
-  export interface DeepmergeOptions {
-    clone?: boolean
-  }
-
-  export function deepmerge<T>(
-    target: T,
-    source: unknown,
-    options?: DeepmergeOptions
-  ): T
-}

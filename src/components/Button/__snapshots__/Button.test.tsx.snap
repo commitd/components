@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders dark without error 1`] = `
+<DocumentFragment>
+  :root,
+.sxkmjvb {
+  --sx-colors-background: hsl(0,0%,100%);
+}
+
+.dark-theme {
+  --sx-colors-background: hsl(0,0%,0%);
+}
+
+@global {
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+.sx8b8d3 {
+  background-color: gainsboro;
+  border-radius: 9999px;
+  font-size: 13px;
+  border: 0;
+}
+
+.sx8b8d3qj8w3--color-gray {
+  background-color: gainsboro;
+}
+
+.sx8b8d3qj8w3--color-gray:hover {
+  background-color: lightgray;
+}
+
+:root,
+.sxkmjvb {
+  --sx-colors-background: hsl(0,0%,100%);
+}
+
+<div
+    class="dark-theme"
+  >
+    <button
+      class="sx8b8d3 sx8b8d3qj8w3--color-gray"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders light without error 1`] = `
+<DocumentFragment>
+  :root,
+.sxkmjvb {
+  --sx-colors-background: hsl(0,0%,100%);
+}
+
+@global {
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+.sx8b8d3 {
+  background-color: gainsboro;
+  border-radius: 9999px;
+  font-size: 13px;
+  border: 0;
+}
+
+.sx8b8d3qj8w3--color-gray {
+  background-color: gainsboro;
+}
+
+.sx8b8d3qj8w3--color-gray:hover {
+  background-color: lightgray;
+}
+
+:root,
+.sxkmjvb {
+  --sx-colors-background: hsl(0,0%,100%);
+}
+
+<div
+    class="light-theme"
+  >
+    <button
+      class="sx8b8d3 sx8b8d3qj8w3--color-gray"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders dark without error 1`] = `
+<DocumentFragment>
+  :root,
+.sxkmjvb {
+  --sx-colors-background: hsl(0,0%,100%);
+}
+
+.dark-theme {
+  --sx-colors-background: hsl(0,0%,0%);
+}
+
+@global {
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+:root,
+.sxkmjvb {
+  --sx-colors-background: hsl(0,0%,100%);
+}
+
+<div
+    class="dark-theme"
+  />
+</DocumentFragment>
+`;
+
+exports[`renders light without error 1`] = `
+<DocumentFragment>
+  <div
+    class="light-theme"
+  />
+</DocumentFragment>
+`;

@@ -2,7 +2,7 @@
 
 # [Choice] Node.js version: 14, 12, 10
 ARG VARIANT="14-buster"
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # Add additional packages 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -13,10 +13,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         && sudo apt-add-repository https://cli.github.com/packages \
         && sudo apt update \
         # Install github cli
-        && sudo apt -y install --no-install-recommends gh
+        && sudo apt -y install --no-install-recommends gh \
+        && npm install npm@latest -g
 
 # Add bash completions
 RUN echo 'source <(gh completion -s bash)' >> ~/.bashrc \
-    && echo 'source <(kubectl completion bash)' >> ~/.bashrc \
-    && echo 'source <(skaffold completion bash)' >> ~/.bashrc \
     && touch ~/.bash_profile
