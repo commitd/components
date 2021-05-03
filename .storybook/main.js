@@ -6,10 +6,7 @@ module.exports = {
     config.resolve.plugins.push(new TsconfigPathsPlugin())
     return config
   },
-  stories: [
-    '../stories/**/*.stories.@(ts|tsx|mdx)',
-    '../src/**/*.stories.@(ts|tsx|mdx)',
-  ],
+  stories: ['../src/**/*.stories.@(ts|tsx|mdx)'],
   addons: [
     {
       name: '@storybook/addon-essentials',
