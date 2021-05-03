@@ -1,13 +1,7 @@
-import { createCss } from '@stitches/react'
+import { createCss, StitchesCss } from '@stitches/react'
+export type { StitchesVariants } from '@stitches/react'
 
-export const {
-  styled,
-  css,
-  global: globalCss,
-  keyframes,
-  getCssString,
-  theme,
-} = createCss({
+const stitches = createCss({
   theme: {
     colors: {
       yellow100: '#ffeecc',
@@ -70,18 +64,66 @@ export const {
       orange800: '#5c2f15',
       orange900: '#2e180b',
 
+      transparency100: 'hsla(0,0%,0%,0.1)',
+      transparency200: 'hsla(0,0%,0%,0.2)',
+      transparency300: 'hsla(0,0%,0%,0.3)',
+      transparency400: 'hsla(0,0%,0%,0.4)',
+      transparency500: 'hsla(0,0%,0%,0.5)',
+      transparency600: 'hsla(0,0%,0%,0.6)',
+      transparency700: 'hsla(0,0%,0%,0.7)',
+      transparency800: 'hsla(0,0%,0%,0.8)',
+      transparency900: 'hsla(0,0%,0%,0.9)',
+
       brandYellow: '#ffbb00',
       brandGrey: '#565555',
+
+      white: '#FFFFFF',
+      black: '#000000',
 
       // Semantic colors
 
       background: '#f7f7f7',
+      paper: '$white',
       text: '#3b3b3b',
       primary: '$grey500',
-      secondary: '$yellow200',
-      paper: '#ffffff',
+      primaryHighlight: '$grey700',
+      primaryLowlight: '$grey400',
+      primaryBackground: '$grey100',
+      primaryContrast: '$brandYellow',
+      primaryActive: '#ffbb00aa',
+      default: '$black',
+      defaultHighlight: '$transparency100',
+      defaultLowlight: '$grey400',
+      defaultBackground: 'transparent',
+      defaultContrast: '$white',
+      defaultActive: '$transparency200',
+      error: '$red500',
+      errorHighlight: '$red600',
+      errorLowlight: '$red300',
+      errorBackground: '$red100',
+      errorContrast: '$paper',
+      errorActive: '#ba2525aa',
     },
     space: {
+      0: '0px',
+      1: '4px',
+      2: '8px',
+      3: '12px',
+      4: '16px',
+      5: '24px',
+      6: '32px',
+      7: '48px',
+      8: '64px',
+      9: '96px',
+      10: '128px',
+      11: '192px',
+      12: '256px',
+      13: '384px',
+      14: '512px',
+      15: '640px',
+      16: '768px',
+    },
+    sizes: {
       0: '0px',
       1: '4px',
       2: '8px',
@@ -130,7 +172,7 @@ export const {
     lineHeights: {
       body: '140%',
       auto: 'AUTO',
-      none: '100%',
+      none: '1',
       tight: '110%',
     },
     letterSpacings: {
@@ -139,7 +181,6 @@ export const {
       tighter: '-3%',
       wide: '5%',
     },
-    sizes: {},
     borderWidths: {
       default: '2px',
     },
@@ -152,16 +193,134 @@ export const {
     zIndices: {},
     transitions: {},
   },
+  utils: {
+    p: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingTop: value,
+      paddingBottom: value,
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    pt: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingTop: value,
+    }),
+    pr: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingRight: value,
+    }),
+    pb: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingBottom: value,
+    }),
+    pl: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingLeft: value,
+    }),
+    px: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    py: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
+
+    m: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginTop: value,
+      marginBottom: value,
+      marginLeft: value,
+      marginRight: value,
+    }),
+    mt: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginTop: value,
+    }),
+    mr: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginRight: value,
+    }),
+    mb: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginBottom: value,
+    }),
+    ml: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginLeft: value,
+    }),
+    mx: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    my: (config) => (
+      value: `$${keyof typeof config['theme']['space'] | (string & {})}`
+    ) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+
+    size: (config) => (
+      value: `$${keyof typeof config['theme']['sizes'] | (string & {})}`
+    ) => ({
+      width: value,
+      height: value,
+    }),
+  },
 })
+
+export type CSS = StitchesCss<typeof stitches>
+export const {
+  styled,
+  css,
+  global: globalCss,
+  keyframes,
+  getCssString,
+  theme,
+} = stitches
 
 export const lightTheme = theme('light-theme', {})
 
 export const darkTheme = theme('dark-theme', {
   colors: {
+    // Semantic colors
+
     background: '#000000',
     text: '#f7f7f7',
     primary: '$yellow500',
-    secondary: '$616161',
+    primaryContrast: '$grey900',
+    primaryHighlight: '$yellow400',
+    primaryLowlight: '$yellow600',
+    primaryBackground: '$yellow900',
+    primaryActive: '#ffbb00aa',
+    default: '$white',
+    defaultHighlight: '$transparency200',
+    defaultLowlight: '$grey400',
+    defaultBackground: 'transparent',
+    defaultContrast: '$black',
+    defaultActive: '$transparency400',
+    error: '$red500',
+    errorHighlight: '$red400',
+    errorLowlight: '$red600',
+    errorBackground: '$red900',
+    errorContrast: '$paper',
+    errorActive: '#ba2525aa',
     paper: '#222222',
   },
 })
