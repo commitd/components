@@ -2,13 +2,15 @@ import React from 'react'
 import { styled } from 'stitches.config'
 
 
-export const _{{ name }} = styled('div', {})
-
-
-type Styled{{ name }}Props = React.ComponentProps<typeof _{{ name }}>
-export type {{ name }}Props = Styled{{ name }}Props & {}
-
 /**
 * {{ name }} component
 */
-export const {{ name }}: React.FC<{{ name }}Props> = _{{ name }}
+export const Styled{{ name }} = styled('div', {})
+
+
+type Styled{{ name }}Props = React.ComponentProps<typeof Styled{{ name }}>
+export type {{ name }}Props = Styled{{ name }}Props & {}
+
+
+export const {{ name }}: React.FC<{{ name }}Props> = Styled{{ name }}
+{{ name }}.toString = () => `.${Styled{{ name }}.className}`
