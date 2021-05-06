@@ -193,6 +193,16 @@ const stitches = createCss({
     zIndices: {},
     transitions: {},
   },
+  media: {
+    sm: '(min-width: 600px)',
+    md: '(min-width: 960px)',
+    lg: '(min-width: 1280px)',
+    xl: '(min-width: 1920px)',
+    motion: '(prefers-reduced-motion)',
+    hover: '(any-hover: hover)',
+    dark: '(prefers-color-scheme: dark)',
+    light: '(prefers-color-scheme: light)',
+  },
   utils: {
     p: (config) => (
       value: `$${keyof typeof config['theme']['space'] | (string & {})}`
