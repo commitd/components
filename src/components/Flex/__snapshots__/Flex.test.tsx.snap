@@ -254,11 +254,36 @@ button {
   box-sizing: border-box;
 }
 
-.sx88enx-f6j0v {
-  background-color: var(--colors-paper);
-  color: var(--colors-text);
-  border: var(--colors-red500) solid var(--sizes-3);
-  padding: var(--space-4);
+.sx88enx-gjrmb {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background-color: var(--colors-success);
+  color: var(--colors-successContrast);
+}
+
+.sx88enx-uo87o {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background-color: var(--colors-warning);
+  color: var(--colors-warningContrast);
+}
+
+.sx88enx-o36il {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background-color: var(--colors-error);
+  color: var(--colors-errorContrast);
+}
+
+.sxcx7nl {
+  box-sizing: border-box;
+  display: flex;
 }
 
 :root,
@@ -438,9 +463,23 @@ button {
     class="dark-theme"
   >
     <div
-      class="sx88enx sx88enx-f6j0v"
+      class="sxcx7nl"
     >
-      Box
+      <div
+        class="sx88enx sx88enx-gjrmb"
+      >
+        Box
+      </div>
+      <div
+        class="sx88enx sx88enx-uo87o"
+      >
+        Box
+      </div>
+      <div
+        class="sx88enx sx88enx-o36il"
+      >
+        Box
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -658,11 +697,36 @@ button {
   box-sizing: border-box;
 }
 
-.sx88enx-f6j0v {
-  background-color: var(--colors-paper);
-  color: var(--colors-text);
-  border: var(--colors-red500) solid var(--sizes-3);
-  padding: var(--space-4);
+.sx88enx-gjrmb {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background-color: var(--colors-success);
+  color: var(--colors-successContrast);
+}
+
+.sx88enx-uo87o {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background-color: var(--colors-warning);
+  color: var(--colors-warningContrast);
+}
+
+.sx88enx-o36il {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+  background-color: var(--colors-error);
+  color: var(--colors-errorContrast);
+}
+
+.sxcx7nl {
+  box-sizing: border-box;
+  display: flex;
 }
 
 :root,
@@ -842,9 +906,23 @@ button {
     class="light-theme"
   >
     <div
-      class="sx88enx sx88enx-f6j0v"
+      class="sxcx7nl"
     >
-      Box
+      <div
+        class="sx88enx sx88enx-gjrmb"
+      >
+        Box
+      </div>
+      <div
+        class="sx88enx sx88enx-uo87o"
+      >
+        Box
+      </div>
+      <div
+        class="sx88enx sx88enx-o36il"
+      >
+        Box
+      </div>
     </div>
   </div>
 </DocumentFragment>

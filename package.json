@@ -100,6 +100,7 @@
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
     "size-limit": "^4.10.2",
+    "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.7",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "tsdx": "^0.14.1",

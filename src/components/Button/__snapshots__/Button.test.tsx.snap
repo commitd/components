@@ -3,7 +3,7 @@
 exports[`renders dark without error 1`] = `
 <DocumentFragment>
   :root,
-.sx5vych {
+.sxnudsb {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -92,6 +92,24 @@ exports[`renders dark without error 1`] = `
   --colors-errorBackground: var(--colors-red100);
   --colors-errorContrast: var(--colors-paper);
   --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
@@ -178,6 +196,24 @@ exports[`renders dark without error 1`] = `
   --colors-errorBackground: var(--colors-red900);
   --colors-errorContrast: var(--colors-paper);
   --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green400);
+  --colors-successLowlight: var(--colors-green600);
+  --colors-successBackground: var(--colors-green900);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange400);
+  --colors-warningLowlight: var(--colors-orange600);
+  --colors-warningBackground: var(--colors-orange900);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue400);
+  --colors-infoLowlight: var(--colors-blue600);
+  --colors-infoBackground: var(--colors-blue900);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
   --colors-paper: #222222;
 }
 
@@ -287,7 +323,7 @@ button {
 }
 
 :root,
-.sx5vych {
+.sxnudsb {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -376,6 +412,24 @@ button {
   --colors-errorBackground: var(--colors-red100);
   --colors-errorContrast: var(--colors-paper);
   --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
@@ -454,7 +508,7 @@ button {
 exports[`renders light without error 1`] = `
 <DocumentFragment>
   :root,
-.sx5vych {
+.sxnudsb {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -543,6 +597,24 @@ exports[`renders light without error 1`] = `
   --colors-errorBackground: var(--colors-red100);
   --colors-errorContrast: var(--colors-paper);
   --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
@@ -714,7 +786,7 @@ button {
 }
 
 :root,
-.sx5vych {
+.sxnudsb {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -803,6 +875,24 @@ button {
   --colors-errorBackground: var(--colors-red100);
   --colors-errorContrast: var(--colors-paper);
   --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
