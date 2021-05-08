@@ -1,4 +1,4 @@
 export * from './components'
 
 // Stitches
-export * from 'stitches.config'
+export * from './utils/stitches.config'

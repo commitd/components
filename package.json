@@ -6,10 +6,10 @@
   "license": "MIT",
   "private": false,
   "repository": "git://github.com/commitd/components.git",
-  "main": "dist/index.js",
+  "main": "dist/committed-components.cjs.js",
+  "module": "dist/committed-components.esm.js",
   "types": "dist/index.d.ts",
-  "jsnext:main": "dist/index.es.js",
-  "module": "dist/components.esm.js",
+  "sideEffects": false,
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -20,11 +20,13 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "build": "rollpkg build --tsconfig ./tsconfig.build.json",
+    "watch": "rollpkg watch",
+    "prepublishOnly": "npm run lint && npm test && npm run build",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "coverage": "npx live-server coverage/lcov-report",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "generate": "plop --plopfile ./generators/plopfile.js",
@@ -52,9 +54,41 @@
       "limit": "40 KB"
     }
   ],
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/rollpkg/configs/eslint"
+    ],
+    "plugins": [
+      "import"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "settings": {
+      "import/parsers": {
+        "@typescript-eslint/parser": [
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true
+        }
+      }
+    },
+    "rules": {
+      "import/default": "off",
+      "import/no-default-export": "off"
+    },
+    "ignorePatterns": [
+      "dist",
+      "node_modules",
+      "docs",
+      "**/*.stories.tsx",
+      "**/*.test.ts"
+    ]
+  },
   "jest": {
-    "testEnvironment": "jsdom",
-    "collectCoverage": true,
+    "preset": "rollpkg",
     "snapshotSerializers": [
       "jest-stitches"
     ],
@@ -72,7 +106,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
     "@size-limit/preset-small-lib": "^4.6.2",
     "@storybook/addon-docs": "^6.2.8",
     "@storybook/addon-essentials": "^6.2.8",
@@ -84,27 +117,25 @@
     "@testing-library/user-event": "^13.1.5",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "babel-loader": "^8.2.2",
     "danger": "^10.5.4",
     "danger-plugin-spellcheck": "^1.2.3",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
     "jest": "^26.6.3",
     "jest-sonar-reporter": "^2.0.0",
     "jest-stitches": "^1.0.4",
+    "jest-watch-typeahead": "^0.6.3",
     "plop": "^2.7.4",
-    "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
+    "rollpkg": "^0.5.6",
     "size-limit": "^4.10.2",
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.7",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.2.0",
     "typescript": "^4.2.4"
   },
   "dependencies": {

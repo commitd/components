@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { createContext, useState, useLayoutEffect } from 'react'
 
 export type ThemeChoice = 'light' | 'dark'
 
-export const ThemeContext = React.createContext<{
+export const ThemeContext = createContext<{
   choice: ThemeChoice
   toggle: () => void
 }>({
   choice: 'light',
-  toggle: () => {},
+  toggle: () => undefined,
 })
 
 export const ThemeController: React.FC = (props) => {
-  const [themeChoice, setThemeChoice] = React.useState<ThemeChoice>('light')
+  const [themeChoice, setThemeChoice] = useState<ThemeChoice>('light')
 
   const setMode = (mode: ThemeChoice) => {
     window.localStorage.setItem('themeChoice', mode)
@@ -27,7 +27,7 @@ export const ThemeController: React.FC = (props) => {
   }
 
   // paints the app before it renders elements
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const localTheme = window.localStorage.getItem('themeChoice') as ThemeChoice
 
     if (localTheme) {
