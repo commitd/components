@@ -159,6 +159,11 @@ const stitches = createCss({
       14: '512px',
       15: '640px',
       16: '768px',
+      // breakpoints
+      sm: '600px',
+      md: '960px',
+      lg: '1280px',
+      xl: '1920px',
     },
     fontSizes: {
       '-2': '12px',
