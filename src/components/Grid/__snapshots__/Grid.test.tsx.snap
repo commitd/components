@@ -1,0 +1,1052 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders dark without error 1`] = `
+<DocumentFragment>
+  :root,
+.sxezc7y {
+  --colors-yellow100: #ffeecc;
+  --colors-yellow200: #ffde99;
+  --colors-yellow300: #ffcd66;
+  --colors-yellow400: #ffbd33;
+  --colors-yellow500: #ffac00;
+  --colors-yellow600: #cc8a00;
+  --colors-yellow700: #996700;
+  --colors-yellow800: #664500;
+  --colors-yellow900: #332200;
+  --colors-grey100: #d8d8d8;
+  --colors-grey200: #b2b2b2;
+  --colors-grey300: #8b8b8b;
+  --colors-grey400: #656565;
+  --colors-grey500: #3e3e3e;
+  --colors-grey600: #323232;
+  --colors-grey700: #252525;
+  --colors-grey800: #191919;
+  --colors-grey900: #0c0c0c;
+  --colors-blue100: #d4e6f3;
+  --colors-blue200: #a8cce7;
+  --colors-blue300: #7db3da;
+  --colors-blue400: #5199ce;
+  --colors-blue500: #2680c2;
+  --colors-blue600: #1e669b;
+  --colors-blue700: #174d74;
+  --colors-blue800: #0f334e;
+  --colors-blue900: #081a27;
+  --colors-green100: #d4eee6;
+  --colors-green200: #a9ddcd;
+  --colors-green300: #7dcdb5;
+  --colors-green400: #52bc9c;
+  --colors-green500: #27ab83;
+  --colors-green600: #1f8969;
+  --colors-green700: #17674f;
+  --colors-green800: #104434;
+  --colors-green900: #08221a;
+  --colors-red100: #f1d3d3;
+  --colors-red200: #e3a8a8;
+  --colors-red300: #d67c7c;
+  --colors-red400: #c85151;
+  --colors-red500: #ba2525;
+  --colors-red600: #951e1e;
+  --colors-red700: #701616;
+  --colors-red800: #4a0f0f;
+  --colors-red900: #250707;
+  --colors-orange100: #fae4d7;
+  --colors-orange200: #f5c8ae;
+  --colors-orange300: #f0ad86;
+  --colors-orange400: #eb915d;
+  --colors-orange500: #e67635;
+  --colors-orange600: #b85e2a;
+  --colors-orange700: #8a4720;
+  --colors-orange800: #5c2f15;
+  --colors-orange900: #2e180b;
+  --colors-transparency100: hsla(0,0%,0%,0.1);
+  --colors-transparency200: hsla(0,0%,0%,0.2);
+  --colors-transparency300: hsla(0,0%,0%,0.3);
+  --colors-transparency400: hsla(0,0%,0%,0.4);
+  --colors-transparency500: hsla(0,0%,0%,0.5);
+  --colors-transparency600: hsla(0,0%,0%,0.6);
+  --colors-transparency700: hsla(0,0%,0%,0.7);
+  --colors-transparency800: hsla(0,0%,0%,0.8);
+  --colors-transparency900: hsla(0,0%,0%,0.9);
+  --colors-brandYellow: #ffbb00;
+  --colors-brandGrey: #565555;
+  --colors-white: #FFFFFF;
+  --colors-black: #000000;
+  --colors-background: #f7f7f7;
+  --colors-paper: var(--colors-white);
+  --colors-text: #3b3b3b;
+  --colors-primary: var(--colors-grey500);
+  --colors-primaryHighlight: var(--colors-grey700);
+  --colors-primaryLowlight: var(--colors-grey400);
+  --colors-primaryBackground: var(--colors-grey100);
+  --colors-primaryContrast: var(--colors-brandYellow);
+  --colors-primaryActive: #ffbb00aa;
+  --colors-default: var(--colors-black);
+  --colors-defaultHighlight: var(--colors-transparency100);
+  --colors-defaultLowlight: var(--colors-grey400);
+  --colors-defaultBackground: transparent;
+  --colors-defaultContrast: var(--colors-white);
+  --colors-defaultActive: var(--colors-transparency200);
+  --colors-error: var(--colors-red500);
+  --colors-errorHighlight: var(--colors-red600);
+  --colors-errorLowlight: var(--colors-red300);
+  --colors-errorBackground: var(--colors-red100);
+  --colors-errorContrast: var(--colors-paper);
+  --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+  --space-13: 384px;
+  --space-14: 512px;
+  --space-15: 640px;
+  --space-16: 768px;
+  --sizes-0: 0px;
+  --sizes-1: 4px;
+  --sizes-2: 8px;
+  --sizes-3: 12px;
+  --sizes-4: 16px;
+  --sizes-5: 24px;
+  --sizes-6: 32px;
+  --sizes-7: 48px;
+  --sizes-8: 64px;
+  --sizes-9: 96px;
+  --sizes-10: 128px;
+  --sizes-11: 192px;
+  --sizes-12: 256px;
+  --sizes-13: 384px;
+  --sizes-14: 512px;
+  --sizes-15: 640px;
+  --sizes-16: 768px;
+  --sizes-sm: 600px;
+  --sizes-md: 960px;
+  --sizes-lg: 1280px;
+  --sizes-xl: 1920px;
+  --fontSizes-0: 16px;
+  --fontSizes-1: 18px;
+  --fontSizes-2: 20px;
+  --fontSizes-3: 24px;
+  --fontSizes-4: 30px;
+  --fontSizes-5: 36px;
+  --fontSizes-6: 48px;
+  --fontSizes-7: 60px;
+  --fontSizes-8: 72px;
+  --fontSizes--2: 12px;
+  --fontSizes--1: 14px;
+  --fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --fonts-text: "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fontWeights-regular: 400;
+  --fontWeights-bold: 700;
+  --fontWeights-light: 300;
+  --lineHeights-body: 140%;
+  --lineHeights-auto: AUTO;
+  --lineHeights-none: 1;
+  --lineHeights-tight: 110%;
+  --letterSpacings-normal: 0%;
+  --letterSpacings-tight: -1%;
+  --letterSpacings-tighter: -3%;
+  --letterSpacings-wide: 5%;
+  --borderWidths-default: 2px;
+  --radii-default: 2px;
+  --radii-round: 99999px;
+}
+
+.dark-theme {
+  --colors-background: #000000;
+  --colors-text: #f7f7f7;
+  --colors-primary: var(--colors-yellow500);
+  --colors-primaryContrast: var(--colors-grey900);
+  --colors-primaryHighlight: var(--colors-yellow400);
+  --colors-primaryLowlight: var(--colors-yellow600);
+  --colors-primaryBackground: var(--colors-yellow900);
+  --colors-primaryActive: #ffbb00aa;
+  --colors-default: var(--colors-white);
+  --colors-defaultHighlight: var(--colors-transparency200);
+  --colors-defaultLowlight: var(--colors-grey400);
+  --colors-defaultBackground: transparent;
+  --colors-defaultContrast: var(--colors-black);
+  --colors-defaultActive: var(--colors-transparency400);
+  --colors-error: var(--colors-red500);
+  --colors-errorHighlight: var(--colors-red400);
+  --colors-errorLowlight: var(--colors-red600);
+  --colors-errorBackground: var(--colors-red900);
+  --colors-errorContrast: var(--colors-paper);
+  --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green400);
+  --colors-successLowlight: var(--colors-green600);
+  --colors-successBackground: var(--colors-green900);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange400);
+  --colors-warningLowlight: var(--colors-orange600);
+  --colors-warningBackground: var(--colors-orange900);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue400);
+  --colors-infoLowlight: var(--colors-blue600);
+  --colors-infoBackground: var(--colors-blue900);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
+  --colors-paper: #222222;
+}
+
+@global {
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+pre,
+code {
+  margin: 0;
+  font-family: var(--fonts-monospace);
+}
+
+body,
+button {
+  font-family: var(--fonts-text);
+}
+
+.sx88enx {
+  box-sizing: border-box;
+}
+
+.sx88enx-wqtnb {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-green300);
+}
+
+.sx88enx-np19j {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-grey300);
+}
+
+.sx88enx-ymgtw {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-orange300);
+}
+
+.sx88enx-7i4w5 {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-red300);
+}
+
+.sx88enx-nmk3z {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-yellow300);
+}
+
+.sx88enx-ot037 {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-blue300);
+}
+
+.sx5shly {
+  box-sizing: border-box;
+  display: grid;
+}
+
+.sx5shly-469m3 {
+  grid-template-columns: 40px 50px auto 50px 40px;
+  grid-template-rows: 25% 50px;
+}
+
+:root,
+.sxezc7y {
+  --colors-yellow100: #ffeecc;
+  --colors-yellow200: #ffde99;
+  --colors-yellow300: #ffcd66;
+  --colors-yellow400: #ffbd33;
+  --colors-yellow500: #ffac00;
+  --colors-yellow600: #cc8a00;
+  --colors-yellow700: #996700;
+  --colors-yellow800: #664500;
+  --colors-yellow900: #332200;
+  --colors-grey100: #d8d8d8;
+  --colors-grey200: #b2b2b2;
+  --colors-grey300: #8b8b8b;
+  --colors-grey400: #656565;
+  --colors-grey500: #3e3e3e;
+  --colors-grey600: #323232;
+  --colors-grey700: #252525;
+  --colors-grey800: #191919;
+  --colors-grey900: #0c0c0c;
+  --colors-blue100: #d4e6f3;
+  --colors-blue200: #a8cce7;
+  --colors-blue300: #7db3da;
+  --colors-blue400: #5199ce;
+  --colors-blue500: #2680c2;
+  --colors-blue600: #1e669b;
+  --colors-blue700: #174d74;
+  --colors-blue800: #0f334e;
+  --colors-blue900: #081a27;
+  --colors-green100: #d4eee6;
+  --colors-green200: #a9ddcd;
+  --colors-green300: #7dcdb5;
+  --colors-green400: #52bc9c;
+  --colors-green500: #27ab83;
+  --colors-green600: #1f8969;
+  --colors-green700: #17674f;
+  --colors-green800: #104434;
+  --colors-green900: #08221a;
+  --colors-red100: #f1d3d3;
+  --colors-red200: #e3a8a8;
+  --colors-red300: #d67c7c;
+  --colors-red400: #c85151;
+  --colors-red500: #ba2525;
+  --colors-red600: #951e1e;
+  --colors-red700: #701616;
+  --colors-red800: #4a0f0f;
+  --colors-red900: #250707;
+  --colors-orange100: #fae4d7;
+  --colors-orange200: #f5c8ae;
+  --colors-orange300: #f0ad86;
+  --colors-orange400: #eb915d;
+  --colors-orange500: #e67635;
+  --colors-orange600: #b85e2a;
+  --colors-orange700: #8a4720;
+  --colors-orange800: #5c2f15;
+  --colors-orange900: #2e180b;
+  --colors-transparency100: hsla(0,0%,0%,0.1);
+  --colors-transparency200: hsla(0,0%,0%,0.2);
+  --colors-transparency300: hsla(0,0%,0%,0.3);
+  --colors-transparency400: hsla(0,0%,0%,0.4);
+  --colors-transparency500: hsla(0,0%,0%,0.5);
+  --colors-transparency600: hsla(0,0%,0%,0.6);
+  --colors-transparency700: hsla(0,0%,0%,0.7);
+  --colors-transparency800: hsla(0,0%,0%,0.8);
+  --colors-transparency900: hsla(0,0%,0%,0.9);
+  --colors-brandYellow: #ffbb00;
+  --colors-brandGrey: #565555;
+  --colors-white: #FFFFFF;
+  --colors-black: #000000;
+  --colors-background: #f7f7f7;
+  --colors-paper: var(--colors-white);
+  --colors-text: #3b3b3b;
+  --colors-primary: var(--colors-grey500);
+  --colors-primaryHighlight: var(--colors-grey700);
+  --colors-primaryLowlight: var(--colors-grey400);
+  --colors-primaryBackground: var(--colors-grey100);
+  --colors-primaryContrast: var(--colors-brandYellow);
+  --colors-primaryActive: #ffbb00aa;
+  --colors-default: var(--colors-black);
+  --colors-defaultHighlight: var(--colors-transparency100);
+  --colors-defaultLowlight: var(--colors-grey400);
+  --colors-defaultBackground: transparent;
+  --colors-defaultContrast: var(--colors-white);
+  --colors-defaultActive: var(--colors-transparency200);
+  --colors-error: var(--colors-red500);
+  --colors-errorHighlight: var(--colors-red600);
+  --colors-errorLowlight: var(--colors-red300);
+  --colors-errorBackground: var(--colors-red100);
+  --colors-errorContrast: var(--colors-paper);
+  --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+  --space-13: 384px;
+  --space-14: 512px;
+  --space-15: 640px;
+  --space-16: 768px;
+  --sizes-0: 0px;
+  --sizes-1: 4px;
+  --sizes-2: 8px;
+  --sizes-3: 12px;
+  --sizes-4: 16px;
+  --sizes-5: 24px;
+  --sizes-6: 32px;
+  --sizes-7: 48px;
+  --sizes-8: 64px;
+  --sizes-9: 96px;
+  --sizes-10: 128px;
+  --sizes-11: 192px;
+  --sizes-12: 256px;
+  --sizes-13: 384px;
+  --sizes-14: 512px;
+  --sizes-15: 640px;
+  --sizes-16: 768px;
+  --sizes-sm: 600px;
+  --sizes-md: 960px;
+  --sizes-lg: 1280px;
+  --sizes-xl: 1920px;
+  --fontSizes-0: 16px;
+  --fontSizes-1: 18px;
+  --fontSizes-2: 20px;
+  --fontSizes-3: 24px;
+  --fontSizes-4: 30px;
+  --fontSizes-5: 36px;
+  --fontSizes-6: 48px;
+  --fontSizes-7: 60px;
+  --fontSizes-8: 72px;
+  --fontSizes--2: 12px;
+  --fontSizes--1: 14px;
+  --fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --fonts-text: "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fontWeights-regular: 400;
+  --fontWeights-bold: 700;
+  --fontWeights-light: 300;
+  --lineHeights-body: 140%;
+  --lineHeights-auto: AUTO;
+  --lineHeights-none: 1;
+  --lineHeights-tight: 110%;
+  --letterSpacings-normal: 0%;
+  --letterSpacings-tight: -1%;
+  --letterSpacings-tighter: -3%;
+  --letterSpacings-wide: 5%;
+  --borderWidths-default: 2px;
+  --radii-default: 2px;
+  --radii-round: 99999px;
+}
+
+<div
+    class="dark-theme"
+  >
+    <div
+      class="sx5shly sx5shly-469m3"
+    >
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
+        class="sx88enx sx88enx-ot037"
+      />
+      <div
+        class="sx88enx sx88enx-wqtnb"
+      />
+      <div
+        class="sx88enx sx88enx-wqtnb"
+      />
+      <div
+        class="sx88enx sx88enx-ymgtw"
+      />
+      <div
+        class="sx88enx sx88enx-nmk3z"
+      />
+      <div
+        class="sx88enx sx88enx-ymgtw"
+      />
+      <div
+        class="sx88enx sx88enx-ot037"
+      />
+      <div
+        class="sx88enx sx88enx-nmk3z"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders light without error 1`] = `
+<DocumentFragment>
+  :root,
+.sxezc7y {
+  --colors-yellow100: #ffeecc;
+  --colors-yellow200: #ffde99;
+  --colors-yellow300: #ffcd66;
+  --colors-yellow400: #ffbd33;
+  --colors-yellow500: #ffac00;
+  --colors-yellow600: #cc8a00;
+  --colors-yellow700: #996700;
+  --colors-yellow800: #664500;
+  --colors-yellow900: #332200;
+  --colors-grey100: #d8d8d8;
+  --colors-grey200: #b2b2b2;
+  --colors-grey300: #8b8b8b;
+  --colors-grey400: #656565;
+  --colors-grey500: #3e3e3e;
+  --colors-grey600: #323232;
+  --colors-grey700: #252525;
+  --colors-grey800: #191919;
+  --colors-grey900: #0c0c0c;
+  --colors-blue100: #d4e6f3;
+  --colors-blue200: #a8cce7;
+  --colors-blue300: #7db3da;
+  --colors-blue400: #5199ce;
+  --colors-blue500: #2680c2;
+  --colors-blue600: #1e669b;
+  --colors-blue700: #174d74;
+  --colors-blue800: #0f334e;
+  --colors-blue900: #081a27;
+  --colors-green100: #d4eee6;
+  --colors-green200: #a9ddcd;
+  --colors-green300: #7dcdb5;
+  --colors-green400: #52bc9c;
+  --colors-green500: #27ab83;
+  --colors-green600: #1f8969;
+  --colors-green700: #17674f;
+  --colors-green800: #104434;
+  --colors-green900: #08221a;
+  --colors-red100: #f1d3d3;
+  --colors-red200: #e3a8a8;
+  --colors-red300: #d67c7c;
+  --colors-red400: #c85151;
+  --colors-red500: #ba2525;
+  --colors-red600: #951e1e;
+  --colors-red700: #701616;
+  --colors-red800: #4a0f0f;
+  --colors-red900: #250707;
+  --colors-orange100: #fae4d7;
+  --colors-orange200: #f5c8ae;
+  --colors-orange300: #f0ad86;
+  --colors-orange400: #eb915d;
+  --colors-orange500: #e67635;
+  --colors-orange600: #b85e2a;
+  --colors-orange700: #8a4720;
+  --colors-orange800: #5c2f15;
+  --colors-orange900: #2e180b;
+  --colors-transparency100: hsla(0,0%,0%,0.1);
+  --colors-transparency200: hsla(0,0%,0%,0.2);
+  --colors-transparency300: hsla(0,0%,0%,0.3);
+  --colors-transparency400: hsla(0,0%,0%,0.4);
+  --colors-transparency500: hsla(0,0%,0%,0.5);
+  --colors-transparency600: hsla(0,0%,0%,0.6);
+  --colors-transparency700: hsla(0,0%,0%,0.7);
+  --colors-transparency800: hsla(0,0%,0%,0.8);
+  --colors-transparency900: hsla(0,0%,0%,0.9);
+  --colors-brandYellow: #ffbb00;
+  --colors-brandGrey: #565555;
+  --colors-white: #FFFFFF;
+  --colors-black: #000000;
+  --colors-background: #f7f7f7;
+  --colors-paper: var(--colors-white);
+  --colors-text: #3b3b3b;
+  --colors-primary: var(--colors-grey500);
+  --colors-primaryHighlight: var(--colors-grey700);
+  --colors-primaryLowlight: var(--colors-grey400);
+  --colors-primaryBackground: var(--colors-grey100);
+  --colors-primaryContrast: var(--colors-brandYellow);
+  --colors-primaryActive: #ffbb00aa;
+  --colors-default: var(--colors-black);
+  --colors-defaultHighlight: var(--colors-transparency100);
+  --colors-defaultLowlight: var(--colors-grey400);
+  --colors-defaultBackground: transparent;
+  --colors-defaultContrast: var(--colors-white);
+  --colors-defaultActive: var(--colors-transparency200);
+  --colors-error: var(--colors-red500);
+  --colors-errorHighlight: var(--colors-red600);
+  --colors-errorLowlight: var(--colors-red300);
+  --colors-errorBackground: var(--colors-red100);
+  --colors-errorContrast: var(--colors-paper);
+  --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+  --space-13: 384px;
+  --space-14: 512px;
+  --space-15: 640px;
+  --space-16: 768px;
+  --sizes-0: 0px;
+  --sizes-1: 4px;
+  --sizes-2: 8px;
+  --sizes-3: 12px;
+  --sizes-4: 16px;
+  --sizes-5: 24px;
+  --sizes-6: 32px;
+  --sizes-7: 48px;
+  --sizes-8: 64px;
+  --sizes-9: 96px;
+  --sizes-10: 128px;
+  --sizes-11: 192px;
+  --sizes-12: 256px;
+  --sizes-13: 384px;
+  --sizes-14: 512px;
+  --sizes-15: 640px;
+  --sizes-16: 768px;
+  --sizes-sm: 600px;
+  --sizes-md: 960px;
+  --sizes-lg: 1280px;
+  --sizes-xl: 1920px;
+  --fontSizes-0: 16px;
+  --fontSizes-1: 18px;
+  --fontSizes-2: 20px;
+  --fontSizes-3: 24px;
+  --fontSizes-4: 30px;
+  --fontSizes-5: 36px;
+  --fontSizes-6: 48px;
+  --fontSizes-7: 60px;
+  --fontSizes-8: 72px;
+  --fontSizes--2: 12px;
+  --fontSizes--1: 14px;
+  --fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --fonts-text: "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fontWeights-regular: 400;
+  --fontWeights-bold: 700;
+  --fontWeights-light: 300;
+  --lineHeights-body: 140%;
+  --lineHeights-auto: AUTO;
+  --lineHeights-none: 1;
+  --lineHeights-tight: 110%;
+  --letterSpacings-normal: 0%;
+  --letterSpacings-tight: -1%;
+  --letterSpacings-tighter: -3%;
+  --letterSpacings-wide: 5%;
+  --borderWidths-default: 2px;
+  --radii-default: 2px;
+  --radii-round: 99999px;
+}
+
+@global {
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+}
+
+pre,
+code {
+  margin: 0;
+  font-family: var(--fonts-monospace);
+}
+
+body,
+button {
+  font-family: var(--fonts-text);
+}
+
+.sx88enx {
+  box-sizing: border-box;
+}
+
+.sx88enx-wqtnb {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-green300);
+}
+
+.sx88enx-np19j {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-grey300);
+}
+
+.sx88enx-ymgtw {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-orange300);
+}
+
+.sx88enx-7i4w5 {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-red300);
+}
+
+.sx88enx-nmk3z {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-yellow300);
+}
+
+.sx5shly {
+  box-sizing: border-box;
+  display: grid;
+}
+
+.sx5shly-469m3 {
+  grid-template-columns: 40px 50px auto 50px 40px;
+  grid-template-rows: 25% 50px;
+}
+
+:root,
+.sxezc7y {
+  --colors-yellow100: #ffeecc;
+  --colors-yellow200: #ffde99;
+  --colors-yellow300: #ffcd66;
+  --colors-yellow400: #ffbd33;
+  --colors-yellow500: #ffac00;
+  --colors-yellow600: #cc8a00;
+  --colors-yellow700: #996700;
+  --colors-yellow800: #664500;
+  --colors-yellow900: #332200;
+  --colors-grey100: #d8d8d8;
+  --colors-grey200: #b2b2b2;
+  --colors-grey300: #8b8b8b;
+  --colors-grey400: #656565;
+  --colors-grey500: #3e3e3e;
+  --colors-grey600: #323232;
+  --colors-grey700: #252525;
+  --colors-grey800: #191919;
+  --colors-grey900: #0c0c0c;
+  --colors-blue100: #d4e6f3;
+  --colors-blue200: #a8cce7;
+  --colors-blue300: #7db3da;
+  --colors-blue400: #5199ce;
+  --colors-blue500: #2680c2;
+  --colors-blue600: #1e669b;
+  --colors-blue700: #174d74;
+  --colors-blue800: #0f334e;
+  --colors-blue900: #081a27;
+  --colors-green100: #d4eee6;
+  --colors-green200: #a9ddcd;
+  --colors-green300: #7dcdb5;
+  --colors-green400: #52bc9c;
+  --colors-green500: #27ab83;
+  --colors-green600: #1f8969;
+  --colors-green700: #17674f;
+  --colors-green800: #104434;
+  --colors-green900: #08221a;
+  --colors-red100: #f1d3d3;
+  --colors-red200: #e3a8a8;
+  --colors-red300: #d67c7c;
+  --colors-red400: #c85151;
+  --colors-red500: #ba2525;
+  --colors-red600: #951e1e;
+  --colors-red700: #701616;
+  --colors-red800: #4a0f0f;
+  --colors-red900: #250707;
+  --colors-orange100: #fae4d7;
+  --colors-orange200: #f5c8ae;
+  --colors-orange300: #f0ad86;
+  --colors-orange400: #eb915d;
+  --colors-orange500: #e67635;
+  --colors-orange600: #b85e2a;
+  --colors-orange700: #8a4720;
+  --colors-orange800: #5c2f15;
+  --colors-orange900: #2e180b;
+  --colors-transparency100: hsla(0,0%,0%,0.1);
+  --colors-transparency200: hsla(0,0%,0%,0.2);
+  --colors-transparency300: hsla(0,0%,0%,0.3);
+  --colors-transparency400: hsla(0,0%,0%,0.4);
+  --colors-transparency500: hsla(0,0%,0%,0.5);
+  --colors-transparency600: hsla(0,0%,0%,0.6);
+  --colors-transparency700: hsla(0,0%,0%,0.7);
+  --colors-transparency800: hsla(0,0%,0%,0.8);
+  --colors-transparency900: hsla(0,0%,0%,0.9);
+  --colors-brandYellow: #ffbb00;
+  --colors-brandGrey: #565555;
+  --colors-white: #FFFFFF;
+  --colors-black: #000000;
+  --colors-background: #f7f7f7;
+  --colors-paper: var(--colors-white);
+  --colors-text: #3b3b3b;
+  --colors-primary: var(--colors-grey500);
+  --colors-primaryHighlight: var(--colors-grey700);
+  --colors-primaryLowlight: var(--colors-grey400);
+  --colors-primaryBackground: var(--colors-grey100);
+  --colors-primaryContrast: var(--colors-brandYellow);
+  --colors-primaryActive: #ffbb00aa;
+  --colors-default: var(--colors-black);
+  --colors-defaultHighlight: var(--colors-transparency100);
+  --colors-defaultLowlight: var(--colors-grey400);
+  --colors-defaultBackground: transparent;
+  --colors-defaultContrast: var(--colors-white);
+  --colors-defaultActive: var(--colors-transparency200);
+  --colors-error: var(--colors-red500);
+  --colors-errorHighlight: var(--colors-red600);
+  --colors-errorLowlight: var(--colors-red300);
+  --colors-errorBackground: var(--colors-red100);
+  --colors-errorContrast: var(--colors-paper);
+  --colors-errorActive: #ba2525aa;
+  --colors-success: var(--colors-green500);
+  --colors-successHighlight: var(--colors-green600);
+  --colors-successLowlight: var(--colors-green300);
+  --colors-successBackground: var(--colors-green100);
+  --colors-successContrast: var(--colors-paper);
+  --colors-successActive: #27ab83aa;
+  --colors-warning: var(--colors-orange500);
+  --colors-warningHighlight: var(--colors-orange600);
+  --colors-warningLowlight: var(--colors-orange300);
+  --colors-warningBackground: var(--colors-orange100);
+  --colors-warningContrast: var(--colors-paper);
+  --colors-warningActive: #e67635aa;
+  --colors-info: var(--colors-blue500);
+  --colors-infoHighlight: var(--colors-blue600);
+  --colors-infoLowlight: var(--colors-blue300);
+  --colors-infoBackground: var(--colors-blue100);
+  --colors-infoContrast: var(--colors-paper);
+  --colors-infoActive: #2680c2aa;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+  --space-13: 384px;
+  --space-14: 512px;
+  --space-15: 640px;
+  --space-16: 768px;
+  --sizes-0: 0px;
+  --sizes-1: 4px;
+  --sizes-2: 8px;
+  --sizes-3: 12px;
+  --sizes-4: 16px;
+  --sizes-5: 24px;
+  --sizes-6: 32px;
+  --sizes-7: 48px;
+  --sizes-8: 64px;
+  --sizes-9: 96px;
+  --sizes-10: 128px;
+  --sizes-11: 192px;
+  --sizes-12: 256px;
+  --sizes-13: 384px;
+  --sizes-14: 512px;
+  --sizes-15: 640px;
+  --sizes-16: 768px;
+  --sizes-sm: 600px;
+  --sizes-md: 960px;
+  --sizes-lg: 1280px;
+  --sizes-xl: 1920px;
+  --fontSizes-0: 16px;
+  --fontSizes-1: 18px;
+  --fontSizes-2: 20px;
+  --fontSizes-3: 24px;
+  --fontSizes-4: 30px;
+  --fontSizes-5: 36px;
+  --fontSizes-6: 48px;
+  --fontSizes-7: 60px;
+  --fontSizes-8: 72px;
+  --fontSizes--2: 12px;
+  --fontSizes--1: 14px;
+  --fonts-system: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fonts-display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --fonts-monospace: "SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+  --fonts-text: "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue";
+  --fontWeights-regular: 400;
+  --fontWeights-bold: 700;
+  --fontWeights-light: 300;
+  --lineHeights-body: 140%;
+  --lineHeights-auto: AUTO;
+  --lineHeights-none: 1;
+  --lineHeights-tight: 110%;
+  --letterSpacings-normal: 0%;
+  --letterSpacings-tight: -1%;
+  --letterSpacings-tighter: -3%;
+  --letterSpacings-wide: 5%;
+  --borderWidths-default: 2px;
+  --radii-default: 2px;
+  --radii-round: 99999px;
+}
+
+<div
+    class="light-theme"
+  >
+    <div
+      class="sx5shly sx5shly-469m3"
+    >
+      <div
+        class="sx88enx sx88enx-wqtnb"
+      />
+      <div
+        class="sx88enx sx88enx-np19j"
+      />
+      <div
+        class="sx88enx sx88enx-ymgtw"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
+        class="sx88enx sx88enx-nmk3z"
+      />
+      <div
+        class="sx88enx sx88enx-nmk3z"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
+        class="sx88enx sx88enx-np19j"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

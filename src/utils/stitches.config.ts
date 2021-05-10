@@ -356,6 +356,7 @@ export const {
   keyframes,
   getCssString,
   theme,
+  config,
 } = stitches
 
 export const lightTheme = theme('light-theme', {})
