@@ -275,17 +275,30 @@ button {
   font-family: var(--fonts-text);
 }
 
-.sx82sct {
+.sx88enx {
   box-sizing: border-box;
-  flex-shrink: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
 }
 
-.sx82sctx6xj1--maxWidth-lg {
-  max-width: calc(var(--sizes-lg) - var(--sizes-10));
+.sxcx7nl {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sxcx7nl-ca7uk {
+  flex-wrap: wrap;
+}
+
+.sxaxkyl {
+  box-sizing: border-box;
+  display: inline-block;
+  flex-shrink: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  fill: currentColor;
+}
+
+.sxaxkyl-2obmh {
+  color: inherit;
 }
 
 :root,
@@ -470,9 +483,25 @@ button {
     class="dark-theme"
   >
     <div
-      class="sx82sct sx82sctx6xj1--maxWidth-lg"
+      class="sxcx7nl sxcx7nl-ca7uk"
     >
-      Container
+      <div
+        class="sx88enx"
+      >
+        <svg
+          aria-hidden="true"
+          class="sxaxkyl sxaxkyl-2obmh"
+          focusable="false"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -711,17 +740,30 @@ button {
   font-family: var(--fonts-text);
 }
 
-.sx82sct {
+.sx88enx {
   box-sizing: border-box;
-  flex-shrink: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
 }
 
-.sx82sctx6xj1--maxWidth-lg {
-  max-width: calc(var(--sizes-lg) - var(--sizes-10));
+.sxcx7nl {
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sxcx7nl-ca7uk {
+  flex-wrap: wrap;
+}
+
+.sxaxkyl {
+  box-sizing: border-box;
+  display: inline-block;
+  flex-shrink: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  fill: currentColor;
+}
+
+.sxaxkyl-2obmh {
+  color: inherit;
 }
 
 :root,
@@ -906,9 +948,25 @@ button {
     class="light-theme"
   >
     <div
-      class="sx82sct sx82sctx6xj1--maxWidth-lg"
+      class="sxcx7nl sxcx7nl-ca7uk"
     >
-      Container
+      <div
+        class="sx88enx"
+      >
+        <svg
+          aria-hidden="true"
+          class="sxaxkyl sxaxkyl-2obmh"
+          focusable="false"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </DocumentFragment>

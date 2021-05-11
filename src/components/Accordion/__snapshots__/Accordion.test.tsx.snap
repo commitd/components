@@ -275,17 +275,68 @@ button {
   font-family: var(--fonts-text);
 }
 
-.sx82sct {
+.sxaxkyl {
   box-sizing: border-box;
+  display: inline-block;
   flex-shrink: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  -webkit-user-select: none;
+  user-select: none;
+  fill: currentColor;
 }
 
-.sx82sctx6xj1--maxWidth-lg {
-  max-width: calc(var(--sizes-lg) - var(--sizes-10));
+.sxaxkyl-2obmh {
+  color: inherit;
+}
+
+.sxyvlc9 {
+  transition: transform 300ms;
+}
+
+[data-state=open] .sxyvlc9 {
+  transform: rotate(180deg);
+}
+
+.sx3hatl {
+  border-top: 1px solid var(--colors-defaultHighlight);
+  border-radius: var(--radii-default);
+  box-shadow: var(--shadows-1);
+}
+
+.sxiuevh {
+  border-bottom: 1px solid var(--colors-defaultHighlight);
+}
+
+.sxht27n {
+  background-color: transparent;
+  border: none;
+  padding: var(--space-4);
+  flex: 1;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--colors-text);
+  width: 100%;
+}
+
+@media (any-hover: hover) {
+  .sxht27n:hover {
+    background-color: var(--colors-defaultHighlight);
+  }
+}
+
+.sxtk02g {
+  padding: var(--space-4);
+  color: var(--colors-text);
+}
+
+.sxtk02g[data-state="open"] {
+  animation: sxlk62l 300ms ease-out;
+}
+
+.sxtk02g[data-state="closed"] {
+  animation: sxuj3zj 300ms ease-out;
 }
 
 :root,
@@ -470,9 +521,129 @@ button {
     class="dark-theme"
   >
     <div
-      class="sx82sct sx82sctx6xj1--maxWidth-lg"
+      class="sx3hatl"
+      type="single"
     >
-      Container
+      <div
+        class="sxiuevh"
+        data-state="closed"
+      >
+        <h3
+          data-state="closed"
+        >
+          <button
+            aria-controls="radix-id-5574540320-8"
+            aria-expanded="false"
+            class="sxht27n"
+            data-state="closed"
+            id="radix-id-5574540320-7"
+          >
+            Item 1
+            <svg
+              aria-hidden="true"
+              class="sxaxkyl sxaxkyl-2obmh sxyvlc9"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="radix-id-5574540320-7"
+          class="sxtk02g"
+          data-state="closed"
+          hidden=""
+          id="radix-id-5574540320-8"
+          role="region"
+          style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
+        />
+      </div>
+      <div
+        class="sxiuevh"
+        data-state="closed"
+      >
+        <h3
+          data-state="closed"
+        >
+          <button
+            aria-controls="radix-id-5574540320-10"
+            aria-expanded="false"
+            class="sxht27n"
+            data-state="closed"
+            id="radix-id-5574540320-9"
+          >
+            Item 2
+            <svg
+              aria-hidden="true"
+              class="sxaxkyl sxaxkyl-2obmh sxyvlc9"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="radix-id-5574540320-9"
+          class="sxtk02g"
+          data-state="closed"
+          hidden=""
+          id="radix-id-5574540320-10"
+          role="region"
+          style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
+        />
+      </div>
+      <div
+        class="sxiuevh"
+        data-state="closed"
+      >
+        <h3
+          data-state="closed"
+        >
+          <button
+            aria-controls="radix-id-5574540320-12"
+            aria-expanded="false"
+            class="sxht27n"
+            data-state="closed"
+            id="radix-id-5574540320-11"
+          >
+            Item 3
+            <svg
+              aria-hidden="true"
+              class="sxaxkyl sxaxkyl-2obmh sxyvlc9"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="radix-id-5574540320-11"
+          class="sxtk02g"
+          data-state="closed"
+          hidden=""
+          id="radix-id-5574540320-12"
+          role="region"
+          style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
+        />
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -711,17 +882,68 @@ button {
   font-family: var(--fonts-text);
 }
 
-.sx82sct {
+.sxaxkyl {
   box-sizing: border-box;
+  display: inline-block;
   flex-shrink: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  -webkit-user-select: none;
+  user-select: none;
+  fill: currentColor;
 }
 
-.sx82sctx6xj1--maxWidth-lg {
-  max-width: calc(var(--sizes-lg) - var(--sizes-10));
+.sxaxkyl-2obmh {
+  color: inherit;
+}
+
+.sxyvlc9 {
+  transition: transform 300ms;
+}
+
+[data-state=open] .sxyvlc9 {
+  transform: rotate(180deg);
+}
+
+.sx3hatl {
+  border-top: 1px solid var(--colors-defaultHighlight);
+  border-radius: var(--radii-default);
+  box-shadow: var(--shadows-1);
+}
+
+.sxiuevh {
+  border-bottom: 1px solid var(--colors-defaultHighlight);
+}
+
+.sxht27n {
+  background-color: transparent;
+  border: none;
+  padding: var(--space-4);
+  flex: 1;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--colors-text);
+  width: 100%;
+}
+
+@media (any-hover: hover) {
+  .sxht27n:hover {
+    background-color: var(--colors-defaultHighlight);
+  }
+}
+
+.sxtk02g {
+  padding: var(--space-4);
+  color: var(--colors-text);
+}
+
+.sxtk02g[data-state="open"] {
+  animation: sxlk62l 300ms ease-out;
+}
+
+.sxtk02g[data-state="closed"] {
+  animation: sxuj3zj 300ms ease-out;
 }
 
 :root,
@@ -906,9 +1128,129 @@ button {
     class="light-theme"
   >
     <div
-      class="sx82sct sx82sctx6xj1--maxWidth-lg"
+      class="sx3hatl"
+      type="single"
     >
-      Container
+      <div
+        class="sxiuevh"
+        data-state="closed"
+      >
+        <h3
+          data-state="closed"
+        >
+          <button
+            aria-controls="radix-id-5574540320-2"
+            aria-expanded="false"
+            class="sxht27n"
+            data-state="closed"
+            id="radix-id-5574540320-1"
+          >
+            Item 1
+            <svg
+              aria-hidden="true"
+              class="sxaxkyl sxaxkyl-2obmh sxyvlc9"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="radix-id-5574540320-1"
+          class="sxtk02g"
+          data-state="closed"
+          hidden=""
+          id="radix-id-5574540320-2"
+          role="region"
+          style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
+        />
+      </div>
+      <div
+        class="sxiuevh"
+        data-state="closed"
+      >
+        <h3
+          data-state="closed"
+        >
+          <button
+            aria-controls="radix-id-5574540320-4"
+            aria-expanded="false"
+            class="sxht27n"
+            data-state="closed"
+            id="radix-id-5574540320-3"
+          >
+            Item 2
+            <svg
+              aria-hidden="true"
+              class="sxaxkyl sxaxkyl-2obmh sxyvlc9"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="radix-id-5574540320-3"
+          class="sxtk02g"
+          data-state="closed"
+          hidden=""
+          id="radix-id-5574540320-4"
+          role="region"
+          style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
+        />
+      </div>
+      <div
+        class="sxiuevh"
+        data-state="closed"
+      >
+        <h3
+          data-state="closed"
+        >
+          <button
+            aria-controls="radix-id-5574540320-6"
+            aria-expanded="false"
+            class="sxht27n"
+            data-state="closed"
+            id="radix-id-5574540320-5"
+          >
+            Item 3
+            <svg
+              aria-hidden="true"
+              class="sxaxkyl sxaxkyl-2obmh sxyvlc9"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="radix-id-5574540320-5"
+          class="sxtk02g"
+          data-state="closed"
+          hidden=""
+          id="radix-id-5574540320-6"
+          role="region"
+          style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
+        />
+      </div>
     </div>
   </div>
 </DocumentFragment>

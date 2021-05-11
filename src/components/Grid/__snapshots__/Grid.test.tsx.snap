@@ -3,7 +3,7 @@
 exports[`renders dark without error 1`] = `
 <DocumentFragment>
   :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -177,6 +177,7 @@ exports[`renders dark without error 1`] = `
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
 .dark-theme {
@@ -221,6 +222,26 @@ exports[`renders dark without error 1`] = `
   --colors-paper: #222222;
 }
 
+@keyframes sxlk62l {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+}
+
+@keyframes sxuj3zj {
+  from {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+
+  to {
+    height: 0;
+  }
+}
+
 @global {
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
@@ -256,61 +277,6 @@ button {
 
 .sx88enx {
   box-sizing: border-box;
-}
-
-.sx88enx-wqtnb {
-  min-width: 25px;
-  min-height: 25px;
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-  border: 1px solid grey;
-  background-color: var(--colors-green300);
-}
-
-.sx88enx-np19j {
-  min-width: 25px;
-  min-height: 25px;
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-  border: 1px solid grey;
-  background-color: var(--colors-grey300);
-}
-
-.sx88enx-ymgtw {
-  min-width: 25px;
-  min-height: 25px;
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-  border: 1px solid grey;
-  background-color: var(--colors-orange300);
-}
-
-.sx88enx-7i4w5 {
-  min-width: 25px;
-  min-height: 25px;
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-  border: 1px solid grey;
-  background-color: var(--colors-red300);
-}
-
-.sx88enx-nmk3z {
-  min-width: 25px;
-  min-height: 25px;
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-  border: 1px solid grey;
-  background-color: var(--colors-yellow300);
 }
 
 .sx88enx-ot037 {
@@ -324,6 +290,61 @@ button {
   background-color: var(--colors-blue300);
 }
 
+.sx88enx-nmk3z {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-yellow300);
+}
+
+.sx88enx-ymgtw {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-orange300);
+}
+
+.sx88enx-7i4w5 {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-red300);
+}
+
+.sx88enx-np19j {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-grey300);
+}
+
+.sx88enx-wqtnb {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-green300);
+}
+
 .sx5shly {
   box-sizing: border-box;
   display: grid;
@@ -335,7 +356,7 @@ button {
 }
 
 :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -509,6 +530,7 @@ button {
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
 <div
@@ -518,19 +540,10 @@ button {
       class="sx5shly sx5shly-469m3"
     >
       <div
-        class="sx88enx sx88enx-7i4w5"
-      />
-      <div
-        class="sx88enx sx88enx-7i4w5"
-      />
-      <div
         class="sx88enx sx88enx-ot037"
       />
       <div
-        class="sx88enx sx88enx-wqtnb"
-      />
-      <div
-        class="sx88enx sx88enx-wqtnb"
+        class="sx88enx sx88enx-ot037"
       />
       <div
         class="sx88enx sx88enx-ymgtw"
@@ -539,13 +552,22 @@ button {
         class="sx88enx sx88enx-nmk3z"
       />
       <div
+        class="sx88enx sx88enx-np19j"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
+      />
+      <div
         class="sx88enx sx88enx-ymgtw"
       />
       <div
         class="sx88enx sx88enx-ot037"
       />
       <div
-        class="sx88enx sx88enx-nmk3z"
+        class="sx88enx sx88enx-ymgtw"
+      />
+      <div
+        class="sx88enx sx88enx-ymgtw"
       />
     </div>
   </div>
@@ -555,7 +577,7 @@ button {
 exports[`renders light without error 1`] = `
 <DocumentFragment>
   :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -729,6 +751,27 @@ exports[`renders light without error 1`] = `
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+@keyframes sxlk62l {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+}
+
+@keyframes sxuj3zj {
+  from {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+
+  to {
+    height: 0;
+  }
 }
 
 @global {
@@ -768,7 +811,7 @@ button {
   box-sizing: border-box;
 }
 
-.sx88enx-wqtnb {
+.sx88enx-ot037 {
   min-width: 25px;
   min-height: 25px;
   padding-top: var(--space-2);
@@ -776,10 +819,10 @@ button {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
   border: 1px solid grey;
-  background-color: var(--colors-green300);
+  background-color: var(--colors-blue300);
 }
 
-.sx88enx-np19j {
+.sx88enx-nmk3z {
   min-width: 25px;
   min-height: 25px;
   padding-top: var(--space-2);
@@ -787,7 +830,7 @@ button {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
   border: 1px solid grey;
-  background-color: var(--colors-grey300);
+  background-color: var(--colors-yellow300);
 }
 
 .sx88enx-ymgtw {
@@ -812,7 +855,7 @@ button {
   background-color: var(--colors-red300);
 }
 
-.sx88enx-nmk3z {
+.sx88enx-np19j {
   min-width: 25px;
   min-height: 25px;
   padding-top: var(--space-2);
@@ -820,7 +863,18 @@ button {
   padding-left: var(--space-2);
   padding-right: var(--space-2);
   border: 1px solid grey;
-  background-color: var(--colors-yellow300);
+  background-color: var(--colors-grey300);
+}
+
+.sx88enx-wqtnb {
+  min-width: 25px;
+  min-height: 25px;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border: 1px solid grey;
+  background-color: var(--colors-green300);
 }
 
 .sx5shly {
@@ -834,7 +888,7 @@ button {
 }
 
 :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -1008,6 +1062,7 @@ button {
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
 <div
@@ -1017,34 +1072,34 @@ button {
       class="sx5shly sx5shly-469m3"
     >
       <div
-        class="sx88enx sx88enx-wqtnb"
+        class="sx88enx sx88enx-ot037"
       />
       <div
-        class="sx88enx sx88enx-np19j"
+        class="sx88enx sx88enx-nmk3z"
       />
       <div
         class="sx88enx sx88enx-ymgtw"
       />
       <div
-        class="sx88enx sx88enx-7i4w5"
-      />
-      <div
-        class="sx88enx sx88enx-7i4w5"
-      />
-      <div
-        class="sx88enx sx88enx-7i4w5"
-      />
-      <div
-        class="sx88enx sx88enx-nmk3z"
-      />
-      <div
-        class="sx88enx sx88enx-nmk3z"
+        class="sx88enx sx88enx-ot037"
       />
       <div
         class="sx88enx sx88enx-7i4w5"
       />
       <div
         class="sx88enx sx88enx-np19j"
+      />
+      <div
+        class="sx88enx sx88enx-nmk3z"
+      />
+      <div
+        class="sx88enx sx88enx-wqtnb"
+      />
+      <div
+        class="sx88enx sx88enx-wqtnb"
+      />
+      <div
+        class="sx88enx sx88enx-7i4w5"
       />
     </div>
   </div>

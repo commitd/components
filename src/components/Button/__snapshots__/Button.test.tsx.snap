@@ -3,7 +3,7 @@
 exports[`renders dark without error 1`] = `
 <DocumentFragment>
   :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -177,6 +177,7 @@ exports[`renders dark without error 1`] = `
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
 .dark-theme {
@@ -221,6 +222,26 @@ exports[`renders dark without error 1`] = `
   --colors-paper: #222222;
 }
 
+@keyframes sxlk62l {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+}
+
+@keyframes sxuj3zj {
+  from {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+
+  to {
+    height: 0;
+  }
+}
+
 @global {
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
@@ -327,7 +348,7 @@ button {
 }
 
 :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -501,6 +522,7 @@ button {
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
 <div
@@ -516,7 +538,7 @@ button {
 exports[`renders light without error 1`] = `
 <DocumentFragment>
   :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -690,6 +712,27 @@ exports[`renders light without error 1`] = `
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+@keyframes sxlk62l {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+}
+
+@keyframes sxuj3zj {
+  from {
+    height: cal(var(--radix-accordion-panel-height) + var(--sizes-6));
+  }
+
+  to {
+    height: 0;
+  }
 }
 
 @global {
@@ -798,7 +841,7 @@ button {
 }
 
 :root,
-.sxezc7y {
+.sxvxinr {
   --colors-yellow100: #ffeecc;
   --colors-yellow200: #ffde99;
   --colors-yellow300: #ffcd66;
@@ -972,6 +1015,7 @@ button {
   --borderWidths-default: 2px;
   --radii-default: 2px;
   --radii-round: 99999px;
+  --shadows-1: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
 <div
