@@ -532,11 +532,11 @@ button {
           data-state="closed"
         >
           <button
-            aria-controls="radix-id-5574540320-8"
+            aria-controls="radix-id-6987702806-8"
             aria-expanded="false"
             class="sxht27n"
             data-state="closed"
-            id="radix-id-5574540320-7"
+            id="radix-id-6987702806-7"
           >
             Item 1
             <svg
@@ -555,11 +555,11 @@ button {
           </button>
         </h3>
         <div
-          aria-labelledby="radix-id-5574540320-7"
+          aria-labelledby="radix-id-6987702806-7"
           class="sxtk02g"
           data-state="closed"
           hidden=""
-          id="radix-id-5574540320-8"
+          id="radix-id-6987702806-8"
           role="region"
           style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
         />
@@ -572,11 +572,11 @@ button {
           data-state="closed"
         >
           <button
-            aria-controls="radix-id-5574540320-10"
+            aria-controls="radix-id-6987702806-10"
             aria-expanded="false"
             class="sxht27n"
             data-state="closed"
-            id="radix-id-5574540320-9"
+            id="radix-id-6987702806-9"
           >
             Item 2
             <svg
@@ -595,11 +595,11 @@ button {
           </button>
         </h3>
         <div
-          aria-labelledby="radix-id-5574540320-9"
+          aria-labelledby="radix-id-6987702806-9"
           class="sxtk02g"
           data-state="closed"
           hidden=""
-          id="radix-id-5574540320-10"
+          id="radix-id-6987702806-10"
           role="region"
           style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
         />
@@ -612,11 +612,11 @@ button {
           data-state="closed"
         >
           <button
-            aria-controls="radix-id-5574540320-12"
+            aria-controls="radix-id-6987702806-12"
             aria-expanded="false"
             class="sxht27n"
             data-state="closed"
-            id="radix-id-5574540320-11"
+            id="radix-id-6987702806-11"
           >
             Item 3
             <svg
@@ -635,11 +635,11 @@ button {
           </button>
         </h3>
         <div
-          aria-labelledby="radix-id-5574540320-11"
+          aria-labelledby="radix-id-6987702806-11"
           class="sxtk02g"
           data-state="closed"
           hidden=""
-          id="radix-id-5574540320-12"
+          id="radix-id-6987702806-12"
           role="region"
           style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
         />
@@ -1139,11 +1139,11 @@ button {
           data-state="closed"
         >
           <button
-            aria-controls="radix-id-5574540320-2"
+            aria-controls="radix-id-6987702806-2"
             aria-expanded="false"
             class="sxht27n"
             data-state="closed"
-            id="radix-id-5574540320-1"
+            id="radix-id-6987702806-1"
           >
             Item 1
             <svg
@@ -1162,11 +1162,11 @@ button {
           </button>
         </h3>
         <div
-          aria-labelledby="radix-id-5574540320-1"
+          aria-labelledby="radix-id-6987702806-1"
           class="sxtk02g"
           data-state="closed"
           hidden=""
-          id="radix-id-5574540320-2"
+          id="radix-id-6987702806-2"
           role="region"
           style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
         />
@@ -1179,11 +1179,11 @@ button {
           data-state="closed"
         >
           <button
-            aria-controls="radix-id-5574540320-4"
+            aria-controls="radix-id-6987702806-4"
             aria-expanded="false"
             class="sxht27n"
             data-state="closed"
-            id="radix-id-5574540320-3"
+            id="radix-id-6987702806-3"
           >
             Item 2
             <svg
@@ -1202,11 +1202,11 @@ button {
           </button>
         </h3>
         <div
-          aria-labelledby="radix-id-5574540320-3"
+          aria-labelledby="radix-id-6987702806-3"
           class="sxtk02g"
           data-state="closed"
           hidden=""
-          id="radix-id-5574540320-4"
+          id="radix-id-6987702806-4"
           role="region"
           style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
         />
@@ -1219,11 +1219,11 @@ button {
           data-state="closed"
         >
           <button
-            aria-controls="radix-id-5574540320-6"
+            aria-controls="radix-id-6987702806-6"
             aria-expanded="false"
             class="sxht27n"
             data-state="closed"
-            id="radix-id-5574540320-5"
+            id="radix-id-6987702806-5"
           >
             Item 3
             <svg
@@ -1242,11 +1242,11 @@ button {
           </button>
         </h3>
         <div
-          aria-labelledby="radix-id-5574540320-5"
+          aria-labelledby="radix-id-6987702806-5"
           class="sxtk02g"
           data-state="closed"
           hidden=""
-          id="radix-id-5574540320-6"
+          id="radix-id-6987702806-6"
           role="region"
           style="--radix-accordion-panel-height: var(--radix-collapsible-content-height);"
         />
