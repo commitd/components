@@ -1,7 +1,6 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
+import { renderDark, renderLight } from 'test-utils'
 import { Default } from './Avatar.stories'
-import { Avatar } from '.'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

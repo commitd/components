@@ -37,15 +37,18 @@ const StyledFallback = styled(Fallback, {
   justifyContent: 'center',
 })
 
+/**
+ * The Avatar should be used for profile images. If an image is not available initials can be used.
+ */
 export const Avatar: React.FC<AvatarProps> = ({
   src,
-  css = {},
   backgroundColor = '$grey500',
   color = '$text',
   alt = 'Avatar',
   children,
+  ...props
 }) => (
-  <StyledRoot css={css}>
+  <StyledRoot {...props}>
     {src && <StyledImage alt={alt} src={src} />}
     <StyledFallback
       css={{

@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from 'stitches.config'
 
 /**
@@ -9,7 +8,8 @@ import { styled } from 'stitches.config'
  * We use a styled `Box` in the example to remove not-relevant props.
  */
 export const Grid = styled('div', {
+  // RESET
   boxSizing: 'border-box',
-
+  //
   display: 'grid',
 })

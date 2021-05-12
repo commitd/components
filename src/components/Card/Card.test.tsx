@@ -1,6 +1,6 @@
 import React from 'react'
 import { renderLight, renderDark } from 'test-utils'
-import { Default } from './Grid.stories'
+import { Default } from './Card.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

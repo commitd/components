@@ -121,6 +121,7 @@ const stitches = createCss({
       infoBackground: '$blue100',
       infoContrast: '$paper',
       infoActive: '#2680c2aa',
+      focus: '$blue700',
     },
     space: {
       0: '0px',
@@ -214,6 +215,8 @@ const stitches = createCss({
     },
     shadows: {
       1: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
+      2: '0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)',
+      3: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
     },
     zIndices: {},
     transitions: {},
@@ -406,6 +409,7 @@ export const darkTheme = theme('dark-theme', {
     infoContrast: '$paper',
     infoActive: '#2680c2aa',
     paper: '#222222',
+    focus: '$blue300',
   },
 })
 
