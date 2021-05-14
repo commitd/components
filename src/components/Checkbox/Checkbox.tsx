@@ -67,6 +67,20 @@ const StyledRoot = styled(Root, {
     $$default: '$$lowlight',
   },
 
+  '&:focus': {
+    '&[data-state=unchecked]': {
+      backgroundColor: '$$defaultHover',
+    },
+    '&[data-state=checked]': {
+      backgroundColor: '$$defaultHover',
+      color: '$$default',
+    },
+    '&[data-state=indeterminate]': {
+      backgroundColor: '$$defaultHover',
+      color: '$$default',
+    },
+  },
+
   variants: {
     variant: {
       primary: {
