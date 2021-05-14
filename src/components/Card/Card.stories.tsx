@@ -1,6 +1,7 @@
+import { action } from '@storybook/addon-actions'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import { styled } from 'stitches.config'
-import { Story, Meta } from '@storybook/react'
 import { Card } from '.'
 import { Row } from '../'
 
@@ -90,12 +91,7 @@ export const Ghost = () => {
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>
-      <Card
-        as="button"
-        interactive
-        variant="ghost"
-        onClick={() => alert('Action')}
-      >
+      <Card as="button" interactive variant="ghost" onClick={action('Action')}>
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>Ghost</Text>
         <Text css={{ color: '$grey900', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...

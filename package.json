@@ -77,7 +77,9 @@
     },
     "rules": {
       "import/default": "off",
-      "import/no-default-export": "off"
+      "import/no-default-export": "off",
+      "react/display-name": "off",
+      "import/no-named-as-default-member": "warn"
     },
     "ignorePatterns": [
       "dist",
@@ -141,6 +143,7 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^0.0.14",
     "@radix-ui/react-avatar": "^0.0.13",
+    "@radix-ui/react-checkbox": "^0.0.15",
     "@radix-ui/react-polymorphic": "^0.0.11",
     "@stitches/react": "^0.1.9"
   }
