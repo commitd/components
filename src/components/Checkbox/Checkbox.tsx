@@ -1,7 +1,7 @@
 import { Indicator, Root } from '@radix-ui/react-checkbox'
 import React, {
-  forwardRef,
   ComponentProps,
+  forwardRef,
   ForwardRefExoticComponent,
 } from 'react'
 import { styled } from 'stitches.config'
@@ -29,6 +29,7 @@ const StyledRoot = styled(Root, {
   textDecoration: 'none',
   userSelect: 'none',
   flexShrink: 0,
+  verticalAlign: 'middle',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   '&::before': {
     boxSizing: 'border-box',
@@ -101,10 +102,6 @@ const StyledRoot = styled(Root, {
         borderColor: '$$default',
         $$hover: '$$defaultHover',
       },
-      tertiary: {
-        color: '$$default',
-        $$hover: '$$defaultHover',
-      },
     },
     destructive: {
       true: {
@@ -139,6 +136,8 @@ type CheckboxProps = ComponentProps<typeof StyledRoot>
  * Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
  *
  * This checkbox supports the additional `indeterminate` checked state.
+ *
+ * Based on [Radix Checkbox](https://radix-ui.com/primitives/docs/components/checkbox).
  */
 export const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef<
   HTMLButtonElement,
