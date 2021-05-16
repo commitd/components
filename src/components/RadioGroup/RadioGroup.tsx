@@ -4,7 +4,7 @@ import React, {
   forwardRef,
   ForwardRefExoticComponent,
 } from 'react'
-import { styled, CSS } from 'stitches.config'
+import { styled } from 'stitches.config'
 import { Check } from '../Icons'
 
 const StyledRadio = styled('div', {
@@ -178,7 +178,6 @@ const StyledIndicator = styled(Indicator, {
 type RadioProps = ComponentProps<typeof StyledItem> & {
   /** Add a label */
   label?: string
-  css: CSS
 }
 
 export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
@@ -196,7 +195,7 @@ export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
       {children}
     </StyledItem>
   )
-})
+}) as ForwardRefExoticComponent<RadioProps>
 Radio.displayName = 'Radio'
 
 /**
@@ -207,13 +206,11 @@ Radio.displayName = 'Radio'
  *
  * Based on [Radix Radio Group](https://radix-ui.com/primitives/docs/components/radio-group).
  */
-export const RadioGroup: ForwardRefExoticComponent<
-  ComponentProps<typeof Root>
-> = styled(Root, {
+export const RadioGroup: React.FC<ComponentProps<typeof Root>> = styled(Root, {
   display: 'flex',
   '&[data-orientation=vertical]': {
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
-})
+}) as React.FC<ComponentProps<typeof Root>>
 RadioGroup.displayName = 'RadioGroup'
