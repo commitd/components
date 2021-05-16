@@ -84,8 +84,10 @@ const stitches = createCss({
 
       background: '#f7f7f7',
       paper: '$white',
+      tooltip: '$black',
       selection: '#ffbb00aa',
       text: '#3b3b3b',
+      tooltipText: '$white',
       primary: '$grey500',
       primaryHighlight: '$grey700',
       primaryLowlight: '$grey400',
@@ -410,6 +412,9 @@ export const darkTheme = theme('dark-theme', {
     infoContrast: '$paper',
     infoActive: '#2680c2aa',
     paper: '#222222',
+    tooltip: '$white',
+    selection: '#ffbb00aa',
+    tooltipText: '$black',
     focus: '$blue300',
   },
 })
