@@ -20,6 +20,7 @@
     "node": ">=10"
   },
   "scripts": {
+    "postinstall": "rimraf node_modules/@emotion/core/types",
     "build": "rollpkg build --tsconfig ./tsconfig.build.json",
     "watch": "rollpkg watch",
     "prepublishOnly": "npm run lint && npm test && npm run build",

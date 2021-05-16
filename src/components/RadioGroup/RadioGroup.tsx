@@ -4,7 +4,7 @@ import React, {
   forwardRef,
   ForwardRefExoticComponent,
 } from 'react'
-import { styled } from 'stitches.config'
+import { styled, CSS } from 'stitches.config'
 import { Check } from '../Icons'
 
 const StyledRadio = styled('div', {
@@ -119,20 +119,12 @@ const StyledItem = styled(Item, {
     pointerEvents: 'none',
   },
 
-  '&:focus': {
-    [`& ${StyledRadio}`]: {
-      '&[data-state=unchecked]': {
-        backgroundColor: '$$defaultHover',
-      },
-      '&[data-state=checked]': {
-        backgroundColor: '$$defaultHover',
-        color: '$$default',
-      },
-      '&[data-state=indeterminate]': {
-        backgroundColor: '$$defaultHover',
-        color: '$$default',
-      },
-    },
+  [`&[data-state=unchecked]:focus  > ${StyledRadio}`]: {
+    backgroundColor: '$$defaultHover',
+  },
+  [`&[data-state=checked]:focus  > ${StyledRadio}`]: {
+    backgroundColor: '$$defaultHover',
+    color: '$$default',
   },
 
   variants: {
@@ -186,6 +178,7 @@ const StyledIndicator = styled(Indicator, {
 type RadioProps = ComponentProps<typeof StyledItem> & {
   /** Add a label */
   label?: string
+  css: CSS
 }
 
 export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
