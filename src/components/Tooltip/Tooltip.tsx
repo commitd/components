@@ -54,7 +54,6 @@ export const Tooltip: FC<TooltipProps> = ({
 }) => (
   <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
     <Trigger as={Slot}>{children}</Trigger>
-
     <StyledContent
       side={side}
       align={align}
@@ -67,9 +66,9 @@ export const Tooltip: FC<TooltipProps> = ({
           size="1"
           as="p"
           css={{
-            color: '$loContrast',
-            lineHeight: multiline ? '20px' : undefined,
-          }}
+              color: '$loContrast',
+              lineHeight: multiline ? '20px' : undefined,
+            }}
         > */}
         {content}
       </span>

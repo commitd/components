@@ -27,3 +27,19 @@ export const parameters = {
     container: DocsContainer,
   },
 }
+
+export const globalTypes = {
+  portalled: {
+    name: 'Portalled',
+    description:
+      'Switch control the use of react portals for overlay components e.g Tooltip',
+    defaultValue: 'false',
+    toolbar: {
+      icon: 'circlehollow',
+      items: [
+        { value: 'true', right: '🪟', title: 'Use Portals' },
+        { value: 'false', right: '🚪', title: 'No Portals' },
+      ],
+    },
+  },
+}
