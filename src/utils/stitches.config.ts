@@ -1,5 +1,9 @@
 import { createCss, StitchesCss } from '@stitches/react'
 export type { StitchesVariants } from '@stitches/react'
+import '@fontsource/inter/300.css'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/700.css'
+import '@fontsource/dosis'
 
 const stitches = createCss({
   theme: {
@@ -185,7 +189,8 @@ const stitches = createCss({
     fonts: {
       system:
         '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
-      display: '"Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
+      display:
+        '"Dosis", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
       monospace:
         '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace',
       text:
@@ -198,7 +203,6 @@ const stitches = createCss({
     },
     lineHeights: {
       body: '140%',
-      auto: 'AUTO',
       none: '1',
       tight: '110%',
     },

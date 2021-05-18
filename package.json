@@ -142,6 +142,8 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@fontsource/dosis": "^4.3.0",
+    "@fontsource/inter": "^4.3.0",
     "@radix-ui/react-accordion": "^0.0.14",
     "@radix-ui/react-avatar": "^0.0.13",
     "@radix-ui/react-checkbox": "^0.0.15",
