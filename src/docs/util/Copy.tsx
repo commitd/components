@@ -1,4 +1,5 @@
 import React, { useState, FC, ComponentProps } from 'react'
+import { CSS } from 'stitches.config'
 import { Box, Tooltip } from '../../'
 
 const copyToClipboard = (text: string) => {
@@ -6,6 +7,7 @@ const copyToClipboard = (text: string) => {
 }
 export type CopyProps = ComponentProps<typeof Tooltip> & {
   content: string
+  css: CSS
 }
 
 export const Copy: FC<CopyProps> = ({ css, content, children, ...others }) => {

@@ -142,7 +142,7 @@ export const Inline = () => (
       This is <Text css={{ textTransform: 'uppercase' }}>uppercase</Text> text
     </Text>
     <Text>
-      This is <Text css={{ textTransform: 'capitals' }}>capitals</Text> text
+      This is <Text css={{ textTransform: 'capitalize' }}>capitals</Text> text
     </Text>
     <Text>
       This is <Text italic>Italic</Text> text

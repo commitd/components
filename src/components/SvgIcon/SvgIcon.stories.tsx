@@ -1,9 +1,9 @@
-import React, { useState, FC } from 'react'
-import { Meta } from '@storybook/react'
-import * as Icons from '../Icons'
+import { Meta, Story } from '@storybook/react'
+import React from 'react'
 import { SvgIcon } from '.'
-import { Flex, Button as IconButton } from '..'
+import { Flex } from '..'
 import { Copy, usePortalled } from '../../docs/util'
+import * as Icons from '../Icons'
 
 export default {
   title: 'Components/Icons',

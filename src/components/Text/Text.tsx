@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react'
-import { styled, CSS, StitchesVariants } from 'stitches.config'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { forwardRef, PropsWithChildren } from 'react'
+import { CSS, StitchesVariants, styled } from 'stitches.config'
 
 const DEFAULT_TAG = 'span'
 
@@ -111,22 +111,29 @@ export const Text = forwardRef((props, forwardedRef) => {
 
 Text.toString = () => `.${StyledText.className}`
 
-export const Paragraph = forwardRef<HTMLParagraphElement, TextOwnProps>(
-  ({ css, ...props }, forwardedRef) => {
-    return (
-      <Text css={{ mb: '$3', ...css }} as="p" {...props} ref={forwardedRef} />
-    )
-  }
-)
+export const Paragraph = forwardRef<
+  HTMLParagraphElement,
+  PropsWithChildren<TextOwnProps>
+>(({ css, ...props }, forwardedRef) => {
+  return (
+    <Text
+      css={{ mb: '$3', ...css } as CSS}
+      as="p"
+      {...props}
+      ref={forwardedRef}
+    />
+  )
+})
 
 /**
  * Monospace component uses the monospace font and `pre` tag
  */
-export const Monospace = forwardRef<HTMLPreElement, TextOwnProps>(
-  (props, forwardedRef) => {
-    return <Text as="pre" font="monospace" {...props} ref={forwardedRef} />
-  }
-)
+export const Monospace = forwardRef<
+  HTMLPreElement,
+  PropsWithChildren<TextOwnProps>
+>((props, forwardedRef) => {
+  return <Text as="pre" font="monospace" {...props} ref={forwardedRef} />
+})
 
 type CaptionComponent = Polymorphic.ForwardRefComponent<
   typeof DEFAULT_TAG,

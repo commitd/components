@@ -1,9 +1,5 @@
 import { createCss, StitchesCss } from '@stitches/react'
 export type { StitchesVariants } from '@stitches/react'
-import '@fontsource/inter/300.css'
-import '@fontsource/inter/400.css'
-import '@fontsource/inter/700.css'
-import '@fontsource/dosis'
 
 const stitches = createCss({
   theme: {
