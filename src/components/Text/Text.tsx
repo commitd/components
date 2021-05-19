@@ -125,6 +125,19 @@ export const Paragraph = forwardRef<
   )
 })
 
+export const Span = forwardRef<
+  HTMLParagraphElement,
+  PropsWithChildren<TextOwnProps>
+>(({ css, ...props }, forwardedRef) => {
+  return (
+    <Text
+      css={{ display: 'inline', ...css } as CSS}
+      {...props}
+      ref={forwardedRef}
+    />
+  )
+})
+
 /**
  * Monospace component uses the monospace font and `pre` tag
  */

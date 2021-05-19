@@ -1,6 +1,6 @@
+import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Text, Paragraph, Monospace, Caption } from '.'
+import { Caption, Monospace, Paragraph, Span, Text } from '.'
 import { Column, Row } from '../'
 export default {
   title: 'Components/Text',
@@ -119,7 +119,7 @@ export const Variations = () => (
 )
 
 /**
- * Text components use span by default, so they can be nested to supply inline styles.
+ * Text components use span by default, but have display block. The Span component has the display set to inline so is better suited to nested bits of text.
  */
 export const Inline = () => (
   <Row
@@ -127,43 +127,41 @@ export const Inline = () => (
       justifyContent: 'space-around',
       flexWrap: 'wrap',
       alignItems: 'baseline',
-      '& span': {
-        whiteSpace: 'nowrap',
-      },
+      gap: '$4',
     }}
   >
     <Text>
-      This is <Text weight="light">Light</Text> text
+      This is <Span weight="light">Light</Span> text
     </Text>
     <Text>
-      This is <Text weight="bold">Bold</Text> text
+      This is <Span weight="bold">Bold</Span> text
     </Text>
     <Text>
-      This is <Text css={{ textTransform: 'uppercase' }}>uppercase</Text> text
+      This is <Span css={{ textTransform: 'uppercase' }}>uppercase</Span> text
     </Text>
     <Text>
-      This is <Text css={{ textTransform: 'capitalize' }}>capitals</Text> text
+      This is <Span css={{ textTransform: 'capitalize' }}>capitals</Span> text
     </Text>
     <Text>
-      This is <Text italic>Italic</Text> text
+      This is <Span italic>Italic</Span> text
     </Text>
     <Text>
-      This is <Text font="monospace">monospaced</Text> text
+      This is <Span font="monospace">monospaced</Span> text
     </Text>
     <Text>
-      This is <Text color="primary">Primary</Text> text
+      This is <Span color="primary">Primary</Span> text
     </Text>
     <Text>
-      This is <Text color="secondary">Secondary</Text> text
+      This is <Span color="secondary">Secondary</Span> text
     </Text>
     <Text>
-      This is <Text as="s">strikethrough</Text> text
+      This is <Span as="s">strikethrough</Span> text
     </Text>
     <Text>
       This is{' '}
-      <Text as="s" weight="bold" italic>
+      <Span as="s" weight="bold" italic>
         multiple
-      </Text>{' '}
+      </Span>{' '}
       text
     </Text>
   </Row>
