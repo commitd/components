@@ -27,6 +27,11 @@ export default {
         type: 'boolean',
       },
     },
+    nowrap: {
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta
 
@@ -165,6 +170,21 @@ export const Inline = () => (
       text
     </Text>
   </Row>
+)
+
+/** A `nowrap` prop adds style to truncate the text with elipsis. */
+export const NoWrap = () => (
+  <Text nowrap>
+    This long line should be truncated, consectetur adipiscing elit. Nam
+    bibendum, nisl a fermentum viverra, diam urna efficitur ante, sit amet
+    condimentum dolor tellus in augue. Vivamus eu nulla risus. Lorem ipsum dolor
+    sit amet, consectetur adipiscing elit. Quisque nec purus mi. Morbi pretium
+    massa sem, ac semper elit dictum in. Suspendisse hendrerit lorem quis
+    lobortis pellentesque. Ut blandit efficitur urna eu fermentum. Phasellus
+    venenatis pretium quam, eget elementum enim congue non. Nunc vitae quam
+    semper, mollis augue ac, facilisis sem. Sed justo urna, accumsan nec congue
+    eu, hendrerit vel purus. Maecenas ultricies luctus nisi a pharetra.
+  </Text>
 )
 
 /**

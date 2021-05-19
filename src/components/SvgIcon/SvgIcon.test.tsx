@@ -1,7 +1,6 @@
-import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
-import { Default } from './SvgIcon.stories'
 import { StoryContext } from '@storybook/react'
+import { renderDark, renderLight } from 'test-utils'
+import { Default } from './SvgIcon.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(

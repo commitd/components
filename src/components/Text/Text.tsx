@@ -82,6 +82,13 @@ export const StyledText = styled(DEFAULT_TAG, {
         fontStyle: 'italic',
       },
     },
+    nowrap: {
+      true: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      },
+    },
   },
   defaultVariants: {
     size: '0',

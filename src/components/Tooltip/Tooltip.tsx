@@ -14,7 +14,7 @@ type TooltipProps = React.ComponentProps<typeof Root> &
 
 const StyledContent = styled(Content, {
   backgroundColor: '$tooltip',
-  color: '$tooltipText',
+  color: '$textTooltip',
   borderRadius: '$default',
   padding: '$1 $2',
   boxShadow: '$3',
