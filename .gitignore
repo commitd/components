@@ -11,7 +11,6 @@ dist
 lib
 lib-esm
 _bundles
-docs
 coverage
 test-report.xml
 
