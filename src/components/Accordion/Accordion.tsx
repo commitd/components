@@ -1,4 +1,9 @@
-import React, { forwardRef, PropsWithChildren } from 'react'
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  ComponentProps,
+  ForwardRefExoticComponent,
+} from 'react'
 import { styled, keyframes } from 'stitches.config'
 import { ChevronDown } from '../Icons'
 import { Root, Item, Header, Button, Panel } from '@radix-ui/react-accordion'
@@ -68,15 +73,16 @@ export const AccordionPanel = styled(Panel, {
   },
 })
 
-export const AccordionHeader = forwardRef<
-  HTMLButtonElement,
-  PropsWithChildren<typeof AccordionButton>
->(({ children, ...props }, forwardedRef) => (
-  <Header>
-    <AccordionButton {...props} ref={forwardedRef}>
-      {children}
-      <Chevron />
-    </AccordionButton>
-  </Header>
-))
+export const AccordionHeader: ForwardRefExoticComponent<
+  ComponentProps<typeof AccordionButton>
+> = forwardRef<HTMLButtonElement, ComponentProps<typeof AccordionButton>>(
+  ({ children, ...props }, forwardedRef) => (
+    <Header>
+      <AccordionButton {...props} ref={forwardedRef}>
+        {children}
+        <Chevron />
+      </AccordionButton>
+    </Header>
+  )
+)
 AccordionHeader.displayName = 'Accordion.Header'

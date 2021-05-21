@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { Fragment } from 'react'
-import { Flex, Tooltip } from '../../'
+import { Grid, Tooltip } from '../../'
 
 const arr = <T extends unknown>(v: T | Array<T>): Array<T> =>
   Array.isArray(v) ? v : [v]
@@ -17,13 +17,13 @@ const cartesianProduct = (props: { [x: string]: any }): { [x: string]: any } =>
       pairsArr.reduce((result, [k, v]) => ({ ...result, [k]: v }), {})
     )
 
-export const Variants = ({ flexCss = { flexWrap: 'wrap'}, component, container = Fragment, ...props }) => {
+export const Variants = ({ gridCss = { gap: '$3', gridTemplateColumns: '1fr 1fr 1fr 1fr' }, component, container = Fragment, ...props }) => {
   const combinations = cartesianProduct(props)
   const Component = component
   const Container = container
 
   return (
-    <Flex css={flexCss}>
+    <Grid css={gridCss}>
       {combinations.map((props, i: number) => {
         const { css, children, ...display } = props
         return (<Container key={i}>
@@ -32,7 +32,7 @@ export const Variants = ({ flexCss = { flexWrap: 'wrap'}, component, container =
           </Tooltip>
         </Container>
       )})}
-    </Flex>
+    </Grid>
   )
 }
 

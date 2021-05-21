@@ -51,15 +51,13 @@ const StyledInput = styled(DEFAULT_TAG, {
   height: '$7',
   fontSize: '$1',
   px: '$2',
-  '&:-webkit-autofill::first-line': {
-    fontSize: '$1',
-  },
 
   '&:-webkit-autofill': {
     boxShadow: 'inset 0 0 0 1px $$border, inset 0 0 0 100px $$border',
   },
 
   '&:-webkit-autofill::first-line': {
+    fontSize: '$1',
     fontFamily: '$system',
     color: '$text',
   },
