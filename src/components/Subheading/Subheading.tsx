@@ -20,7 +20,7 @@ type SubheadingComponent = Polymorphic.ForwardRefComponent<
 
 export const Subheading = forwardRef(
   ({ variant = DEFAULT_TAG, css, ...props }, forwardedRef) => {
-    let subheadingProps: Partial<SubheadingVariants> = { size: '$1' }
+    let subheadingProps: Partial<SubheadingVariants> = { size: 1 }
     const subheadingCss: CSS = {
       color: '$textSecondary',
       marginTop: '$1',

@@ -10,7 +10,7 @@ export const StyledText = styled(DEFAULT_TAG, {
   margin: '0',
   fontWeight: '$regular',
   fontVariantNumeric: 'tabular-nums',
-  display: 'block',
+  display: 'inline',
   color: '$text',
 
   variants: {
@@ -124,7 +124,7 @@ export const Paragraph = forwardRef<
 >(({ css, ...props }, forwardedRef) => {
   return (
     <Text
-      css={{ mb: '$3', ...css } as CSS}
+      css={{ display: 'block', mb: '$3', ...css } as CSS}
       as="p"
       {...props}
       ref={forwardedRef}
@@ -132,21 +132,28 @@ export const Paragraph = forwardRef<
   )
 })
 
+/**
+ * Convenience export of text with the `span` tag
+ */
 export const Span = forwardRef<
-  HTMLParagraphElement,
+  HTMLSpanElement,
   PropsWithChildren<TextOwnProps>
->(({ css, ...props }, forwardedRef) => {
-  return (
-    <Text
-      css={{ display: 'inline', ...css } as CSS}
-      {...props}
-      ref={forwardedRef}
-    />
-  )
+>((props, forwardedRef) => {
+  return <Text {...props} ref={forwardedRef} />
 })
 
 /**
- * Monospace component uses the monospace font and `pre` tag
+ * Convenience export of text with the `strikethrough` tag
+ */
+export const Strike = forwardRef<
+  HTMLSpanElement,
+  PropsWithChildren<TextOwnProps>
+>((props, forwardedRef) => {
+  return <Text as="s" {...props} ref={forwardedRef} />
+})
+
+/**
+ * Convenience export of text with the monospace font and `pre` tag
  */
 export const Monospace = forwardRef<
   HTMLPreElement,

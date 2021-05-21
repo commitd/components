@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import { Caption, Monospace, Paragraph, Span, Text } from '.'
+import { Caption, Monospace, Paragraph, Span, Text, Strike } from '.'
 import { Column, Row } from '../'
 export default {
   title: 'Components/Text',
   component: Text,
-  subcomponents: { Paragraph, Monospace, Caption },
+  subcomponents: { Paragraph, Monospace, Caption, Span, Strike },
   argTypes: {
     size: {
       control: { type: 'range', min: -2, max: 8, step: 1 },
@@ -115,7 +115,7 @@ export const Variations = () => (
     <Text css={{ textTransform: 'capitalize' }}>capitalize</Text>
     <Text italic>Italic</Text>
     <Text css={{ color: '$primary' }}>Primary</Text>
-    <Text css={{ color: '$secondary' }}>Secondary</Text>
+    <Text css={{ color: '$textSecondary' }}>Secondary</Text>
     <Text as="s">strikethrough</Text>
     <Text as="s" css={{ textTransform: 'capitalize' }} weight="bold" italic>
       multiple
@@ -136,7 +136,7 @@ export const Inline = () => (
     }}
   >
     <Text>
-      This is <Span weight="light">Light</Span> text
+      This is <Text weight="light">Light</Text> text
     </Text>
     <Text>
       This is <Span weight="bold">Bold</Span> text
@@ -154,19 +154,19 @@ export const Inline = () => (
       This is <Span font="monospace">monospaced</Span> text
     </Text>
     <Text>
-      This is <Span color="primary">Primary</Span> text
+      This is <Span css={{ color: '$primary' }}>Primary</Span> text
     </Text>
     <Text>
-      This is <Span color="secondary">Secondary</Span> text
+      This is <Span css={{ color: '$textSecondary' }}>Secondary</Span> text
     </Text>
     <Text>
-      This is <Span as="s">strikethrough</Span> text
+      This is <Strike>strikethrough</Strike> text
     </Text>
     <Text>
       This is{' '}
-      <Span as="s" weight="bold" italic>
+      <Text as="s" weight="bold" italic>
         multiple
-      </Span>{' '}
+      </Text>{' '}
       text
     </Text>
   </Row>

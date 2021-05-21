@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Heading } from '.'
 import { Column } from '../'
