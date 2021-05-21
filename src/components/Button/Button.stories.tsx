@@ -2,6 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Button } from './Button'
 import { Variants } from '../../docs/util'
+import { Row, Grid } from '../'
 
 export default {
   title: 'Components/Button',
@@ -34,65 +35,91 @@ export const Primary = Template.bind({})
 Primary.args = { children: 'Button' }
 
 export const Size = () => (
-  <>
-    <Button css={{ m: '$3' }} size="small">
-      Small
-    </Button>
-    <Button css={{ m: '$3' }} size="default">
-      Default
-    </Button>
-    <Button css={{ m: '$3' }} size="large">
-      Large
-    </Button>
-  </>
+  <Row css={{ gap: '$3' }}>
+    <Button size="small">Small</Button>
+    <Button size="default">Default</Button>
+    <Button size="large">Large</Button>
+  </Row>
 )
 
 export const Variant = () => (
-  <>
-    <Button css={{ m: '$3' }} variant="primary">
-      Primary
-    </Button>
-    <Button css={{ m: '$3' }} variant="secondary">
-      Secondary
-    </Button>
-    <Button css={{ m: '$3' }} variant="tertiary">
-      Tertiary
-    </Button>
-  </>
+  <Row css={{ gap: '$3' }}>
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="tertiary">Tertiary</Button>
+  </Row>
 )
 
 export const Destructive = () => (
-  <>
-    <Button css={{ m: '$3' }} destructive variant="primary">
+  <Row css={{ gap: '$3' }}>
+    <Button destructive variant="primary">
       Primary
     </Button>
-    <Button css={{ m: '$3' }} destructive variant="secondary">
+    <Button destructive variant="secondary">
       Secondary
     </Button>
-    <Button css={{ m: '$3' }} destructive variant="tertiary">
+    <Button destructive variant="tertiary">
       Tertiary
     </Button>
-  </>
+  </Row>
 )
 
 export const Disabled = () => (
-  <>
-    <Button css={{ m: '$3' }} disabled variant="primary">
+  <Row css={{ gap: '$3' }}>
+    <Button disabled variant="primary">
       Primary
     </Button>
-    <Button css={{ m: '$3' }} disabled variant="secondary">
+    <Button disabled variant="secondary">
       Secondary
     </Button>
-    <Button css={{ m: '$3' }} disabled variant="tertiary">
+    <Button disabled variant="tertiary">
       Tertiary
     </Button>
-  </>
+  </Row>
+)
+
+/**
+ * This uses the force prop to simulate hover, focus and active states so they can be compared at the same time.
+ * This prop is not intended for normal use and the buttons here will not interact normally.
+ */
+export const State = () => (
+  <Grid css={{ gap: '$3', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+    <Button variant="primary">Button</Button>
+    <Button variant="primary" force="hover">
+      Button
+    </Button>
+    <Button variant="primary" force="focus">
+      Button
+    </Button>
+    <Button variant="primary" force="active">
+      Button
+    </Button>
+    <Button variant="secondary">Button</Button>
+    <Button variant="secondary" force="hover">
+      Button
+    </Button>
+    <Button variant="secondary" force="focus">
+      Button
+    </Button>
+    <Button variant="secondary" force="active">
+      Button
+    </Button>
+    <Button variant="tertiary">Button</Button>
+    <Button variant="tertiary" force="hover">
+      Button
+    </Button>
+    <Button variant="tertiary" force="focus">
+      Button
+    </Button>
+    <Button variant="tertiary" force="active">
+      Button
+    </Button>
+  </Grid>
 )
 
 export const All = () => (
   <Variants
     component={Button}
-    css={{ m: '$3' }}
     variant={['primary', 'secondary', 'tertiary']}
     size={['small', 'default', 'large']}
     destructive={[false, true]}

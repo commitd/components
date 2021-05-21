@@ -1,5 +1,5 @@
 import React from 'react'
-import { StitchesVariants, styled } from 'stitches.config'
+import { styled } from 'stitches.config'
 
 const DEFAULT_TAG = 'button'
 
@@ -16,7 +16,7 @@ const active = {
   transition: 'background 0s',
 }
 
-const StyledButton = styled(DEFAULT_TAG, {
+export const StyledIconButton = styled(DEFAULT_TAG, {
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -101,20 +101,19 @@ const StyledButton = styled(DEFAULT_TAG, {
     },
     size: {
       small: {
-        paddingLeft: '$3',
-        paddingRight: '$3',
-        height: '$5',
-        fontSize: '$-1',
+        size: '$5',
+        '& > svg': {
+          size: '$4',
+        },
       },
       default: {
-        paddingLeft: '$4',
-        paddingRight: '$4',
-        height: '$6',
+        size: '$6',
       },
       large: {
-        paddingLeft: '$6',
-        paddingRight: '$6',
-        height: '$7',
+        size: '$7',
+        '& > svg': {
+          size: '$6',
+        },
       },
     },
     force: {
@@ -131,15 +130,10 @@ const StyledButton = styled(DEFAULT_TAG, {
   },
 })
 
-type ButtonVariants = StitchesVariants<typeof StyledButton>
-type ButtonOwnProps = React.ComponentProps<typeof StyledButton>
-export type ButtonProps = ButtonOwnProps & {
-  /**  This is a test of the docs process */
-  variant?: ButtonVariants['variant']
-}
+type IconButtonProps = React.ComponentProps<typeof StyledIconButton>
 
 /**
- * Button component
+ * IconButton component
  */
-export const Button: React.FC<ButtonProps> = StyledButton
-Button.toString = () => `.${StyledButton.className}`
+export const IconButton: React.FC<IconButtonProps> = StyledIconButton
+IconButton.toString = () => `.${StyledIconButton.className}`
