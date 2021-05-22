@@ -18,10 +18,15 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '16'
 
       - name: Install deps and build (with cache)
+        if: ${{ !env.ACT }}
         uses: bahmutov/npm-install@v1
+
+      - name: Full Install
+        if: ${{ env.ACT }}
+        run: npm install
 
       - name: Lint
         run: npm run lint

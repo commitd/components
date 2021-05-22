@@ -100,6 +100,7 @@
       "node_modules",
       "utils"
     ],
+    "testRegex": "/src/.*(\\.|/)(test|spec)\\.[jt]sx?$",
     "coveragePathIgnorePatterns": [
       "/src/typings.d.ts",
       "setupTests.tsx",

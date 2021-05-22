@@ -20,10 +20,18 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '14'
 
-      - name: Install deps and build (with cache)
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+
+      - name: Install with cache
+        if: ${{ !env.ACT }}
         uses: bahmutov/npm-install@v1
+
+      - name: Full Install
+        if: ${{ env.ACT }}
+        run: npm install
 
       - name: Lint
         run: npm run lint
