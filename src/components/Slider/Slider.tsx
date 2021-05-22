@@ -8,7 +8,7 @@ import * as RadixSlider from '@radix-ui/react-slider'
 export const StyledSlider = styled('div', {})
 
 type StyledSliderProps = React.ComponentProps<typeof StyledSlider>
-export type SliderProps = StyledSliderProps & {}
+export type SliderProps = StyledSliderProps
 
 export const Slider: React.FC<SliderProps> = () => (
   <StyledSlider>

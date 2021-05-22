@@ -1,55 +1,73 @@
-import React from 'react'
-import { styled } from 'stitches.config'
-import { Text } from '../Text'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { ComponentProps, forwardRef, PropsWithChildren } from 'react'
+import { CSS, styled } from 'stitches.config'
+import { Button } from '../Button'
+import { Heading } from '../Heading'
 
 /**
- * AppBar component
+ * The App Bar should the used for information and actions on the current screen.
  */
-export const AppBarContainer = styled('div', {
+export const AppBar = styled('header', {
   display: 'flex',
   background: '$primary',
   color: '$primaryContrast',
-  minHeight: '64px',
+  minHeight: '$8',
   paddingLeft: '$4',
   paddingRight: '$4',
   alignItems: 'center',
 })
 
-export const AppBarHeading = styled('div', {
+const AppBarHeadingContainer = styled('div', {
   flex: '1',
 })
+
+const HEADING_TAG = 'h1'
+type AppBarHeadingCSSProp = { css?: CSS }
+type AppBarHeadingOwnProps = AppBarHeadingCSSProp &
+  ComponentProps<typeof Heading>
+
+type AppBarHeadingComponent = Polymorphic.ForwardRefComponent<
+  typeof HEADING_TAG,
+  AppBarHeadingOwnProps
+>
+
+export const AppBarHeading = forwardRef(
+  ({ children, css, ...props }, forwardedRef) => (
+    <AppBarHeadingContainer>
+      <Heading
+        variant={HEADING_TAG}
+        css={{ color: '$primaryContrast', ...css } as CSS}
+        size={1}
+        weight="regular"
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </Heading>
+    </AppBarHeadingContainer>
+  )
+) as AppBarHeadingComponent
 
 export const AppBarActions = styled('div', {
   '> *': {
     color: '$primaryContrast',
   },
-  button: {
-    border: 'none',
-  },
 })
 
-type StyledAppBarProps = React.ComponentProps<typeof AppBarContainer>
-export type AppBarProps = StyledAppBarProps & {
-  heading?: React.ReactNode
-  actions?: React.ReactNode[]
-}
+const BUTTON_TAG = 'button'
+type AppBarButtonCSSProp = { css?: CSS }
+type AppBarButtonVariants = ComponentProps<typeof Button>
+type AppBarButtonOwnProps = AppBarButtonCSSProp & AppBarButtonVariants
 
-export const AppBar: React.FC<AppBarProps> = ({ heading, actions }) => {
-  let formattedHeading
-  if (typeof heading === 'string') {
-    formattedHeading = (
-      <Text css={{ color: '$primaryContrast' }} size={1}>
-        Heading
-      </Text>
-    )
-  } else {
-    formattedHeading = heading
-  }
-  return (
-    <AppBarContainer>
-      <AppBarHeading>{formattedHeading}</AppBarHeading>
-      <AppBarActions>{actions}</AppBarActions>
-    </AppBarContainer>
-  )
-}
-AppBar.toString = () => `.${AppBarContainer.className}`
+type AppBarButtonComponent = Polymorphic.ForwardRefComponent<
+  typeof BUTTON_TAG,
+  AppBarButtonOwnProps
+>
+export const AppBarButton = forwardRef<
+  HTMLButtonElement,
+  PropsWithChildren<typeof Button>
+>(({ children, ...props }, forwardedRef) => (
+  <Button variant="primary" {...props} ref={forwardedRef}>
+    {children}
+  </Button>
+)) as AppBarButtonComponent

@@ -1,18 +1,50 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { AppBar, AppBarProps } from '.'
+import { AppBar, AppBarHeading, AppBarActions, AppBarButton } from '.'
 import { Button } from '..'
+import {
+  MemoryRouter,
+  Route,
+  Switch,
+  Link as RouterLink,
+} from 'react-router-dom'
 
 export default {
   title: 'Components/AppBar',
   component: AppBar,
+  subcomponents: { AppBarHeading, AppBarActions, AppBarButton },
 } as Meta
 
 export const Default: React.FC = () => {
   return (
-    <AppBar
-      heading="Example"
-      actions={[<Button color="inherit">Login</Button>]}
-    />
+    <AppBar>
+      <AppBarHeading>Example</AppBarHeading>
+      <AppBarActions>
+        <AppBarButton>Login</AppBarButton>
+      </AppBarActions>
+    </AppBar>
+  )
+}
+
+export const WithReactRouter: React.FC = () => {
+  return (
+    <MemoryRouter>
+      <AppBar>
+        <RouterLink
+          component={AppBarHeading}
+          to="./"
+          as="a"
+          css={{
+            cursor: 'pointer',
+            textDecoration: 'none',
+          }}
+        >
+          Example
+        </RouterLink>
+        <AppBarActions>
+          <AppBarButton>Login</AppBarButton>
+        </AppBarActions>
+      </AppBar>
+    </MemoryRouter>
   )
 }
