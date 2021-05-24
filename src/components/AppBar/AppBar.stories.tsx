@@ -33,7 +33,10 @@ export const WithReactRouter: React.FC = () => {
         <RouterLink
           component={AppBarHeading}
           to="./"
+          // props for component={Link} are passed on despite the error
+          // @ts-ignore
           as="a"
+          // @ts-ignore
           css={{
             cursor: 'pointer',
             textDecoration: 'none',

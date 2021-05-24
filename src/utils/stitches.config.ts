@@ -1,5 +1,6 @@
 import { createCss, StitchesCss } from '@stitches/react'
 export type { StitchesVariants } from '@stitches/react'
+import { sand, sandDark } from '@radix-ui/colors'
 
 const stitches = createCss({
   theme: {
@@ -13,6 +14,8 @@ const stitches = createCss({
       yellow700: '#996700',
       yellow800: '#664500',
       yellow900: '#332200',
+
+      ...sand,
 
       grey100: '#d8d8d8',
       grey200: '#b2b2b2',
@@ -64,23 +67,40 @@ const stitches = createCss({
       orange800: '#5c2f15',
       orange900: '#2e180b',
 
-      transparency100: 'hsla(0,0%,0%,0.1)',
-      transparency200: 'hsla(0,0%,0%,0.2)',
-      transparency300: 'hsla(0,0%,0%,0.3)',
-      transparency400: 'hsla(0,0%,0%,0.4)',
-      transparency500: 'hsla(0,0%,0%,0.5)',
-      transparency600: 'hsla(0,0%,0%,0.6)',
-      transparency700: 'hsla(0,0%,0%,0.7)',
-      transparency800: 'hsla(0,0%,0%,0.8)',
-      transparency900: 'hsla(0,0%,0%,0.9)',
+      transparency000: 'hsla(0,0%,0%,0.05)',
+      transparency100: 'hsla(0,0%,0%,0.08)',
+      transparency200: 'hsla(0,0%,0%,0.1)',
+      transparency300: 'hsla(0,0%,0%,0.15)',
+      transparency400: 'hsla(0,0%,0%,0.2)',
+      transparency500: 'hsla(0,0%,0%,0.25)',
+      transparency600: 'hsla(0,0%,0%,0.3)',
+      transparency700: 'hsla(0,0%,0%,0.35)',
+      transparency800: 'hsla(0,0%,0%,0.4)',
+      transparency900: 'hsla(0,0%,0%,0.5)',
 
       brandYellow: '#ffbb00',
       brandGrey: '#565555',
+      brand: '$grey500',
+      brandHighlight: '$grey700',
+      brandLowlight: '$grey400',
+      brandBackground: '$grey100',
+      brandContrast: '$brandYellow',
+      brandActive: '#ffbb00aa',
 
       white: '#FFFFFF',
       black: '#000000',
 
       // Semantic colors
+      greyBgApp: '$sand000',
+      greyBgLight: '$sand100',
+      greyBg: '$sand200',
+      greyBgHover: '$sand300',
+      greyBgActive: '$sand400',
+      greyLine: '$sand500',
+      greyBorder: '$sand600',
+      greyBorderHover: '$sand700',
+      greyPure: '$sand800',
+      greyText: '$sand900',
 
       background: '#f7f7f7',
       paper: '$white',
@@ -372,7 +392,30 @@ export const lightTheme = theme('light-theme', {})
 
 export const darkTheme = theme('dark-theme', {
   colors: {
+    ...sandDark,
+
+    transparency000: 'hsla(0,0%,0%,0.55)',
+    transparency100: 'hsla(0,0%,0%,0.58)',
+    transparency200: 'hsla(0,0%,0%,0.6)',
+    transparency300: 'hsla(0,0%,0%,0.65)',
+    transparency400: 'hsla(0,0%,0%,0.7)',
+    transparency500: 'hsla(0,0%,0%,0.75)',
+    transparency600: 'hsla(0,0%,0%,0.8)',
+    transparency700: 'hsla(0,0%,0%,0.85)',
+    transparency800: 'hsla(0,0%,0%,0.9)',
+    transparency900: 'hsla(0,0%,0%,0.95)',
+
     // Semantic colors
+    greyBgApp: '$sand000',
+    greyBgLight: '$sand100',
+    greyBg: '$sand200',
+    greyBgHover: '$sand300',
+    greyBgActive: '$sand400',
+    greyLine: '$sand500',
+    greyBorder: '$sand600',
+    greyBorderHover: '$sand700',
+    greyPure: '$sand800',
+    greyText: '$sand900',
 
     background: '#000000',
     text: '#f7f7f7',

@@ -66,6 +66,8 @@ export const WithReactRouter: React.FC = () => {
           <RouterLink
             component={Link}
             to="./example-route"
+            // props for component={Link} are passed on despite the error
+            // @ts-ignore
             css={{ color: '$text' }}
           >
             Click to change Router path

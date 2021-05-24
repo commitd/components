@@ -69,6 +69,13 @@ const StyledButton = styled(DEFAULT_TAG, {
 
   variants: {
     variant: {
+      brand: {
+        $$active: '$colors$brandActive',
+        $$lowlight: '$colors$brandLowlight',
+        $$hover: '$colors$brandHighlight',
+        backgroundColor: '$colors$brand',
+        color: '$colors$brandContrast',
+      },
       primary: {
         $$active: '$colors$primaryActive',
         $$lowlight: '$colors$primaryLowlight',

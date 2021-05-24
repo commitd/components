@@ -79,6 +79,11 @@ export const Disabled = () => (
 )
 
 /**
+ * A `brand` variant is also supplied for particular uses cases, like in the AppBar, where changing to the dark theme does not affect the coloring.
+ */
+export const Brand = () => <Button variant="brand">Brand</Button>
+
+/**
  * This uses the force prop to simulate hover, focus and active states so they can be compared at the same time.
  * This prop is not intended for normal use and the buttons here will not interact normally.
  */

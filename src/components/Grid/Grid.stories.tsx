@@ -9,29 +9,30 @@ export default {
   component: Grid,
 } as Meta
 
-const keys = ['yellow', 'grey', 'blue', 'green', 'red', 'orange']
-const randomColor = () => {
+const keys = ['yellow', 'sand', 'blue', 'green', 'red', 'orange']
+const randomColor = (): CSS['backgroundColor'] => {
   const color = keys[Math.floor(Math.random() * keys.length)]
   return `$${color}300`
 }
 
+const border = '1px solid $greyLine'
+
 type BoxProps = React.ComponentProps<typeof Box>
 type GridBoxProps = Omit<BoxProps, 'css'> & {
-  css?: any
+  css?: CSS
 }
 
 const GridBox: React.FC<GridBoxProps> = ({ css, ...props }) => (
   <Box
-    // @ts-ignore#
     css={
       {
         minWidth: '25px',
         minHeight: '25px',
         p: '$2',
-        border: '1px solid grey',
+        border,
         backgroundColor: randomColor(),
         ...css,
-      } as BoxProps['css']
+      } as CSS
     }
     {...props}
   />
@@ -157,7 +158,7 @@ const Template: Story<{
     css={{
       justifyItems,
       alignItems,
-      border: '1px solid grey',
+      border,
       gridTemplateColumns: '$7 $7',
       gridTemplateRows: '$7 $7',
       width: '$10',
@@ -188,7 +189,7 @@ export const JustifyItems = () => (
     <Grid
       css={{
         justifyItems: 'start',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -201,7 +202,7 @@ export const JustifyItems = () => (
     <Grid
       css={{
         justifyItems: 'end',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -214,7 +215,7 @@ export const JustifyItems = () => (
     <Grid
       css={{
         justifyItems: 'center',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -227,7 +228,7 @@ export const JustifyItems = () => (
     <Grid
       css={{
         justifyItems: 'stretch',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -257,7 +258,7 @@ export const AlignItems = () => (
     <Grid
       css={{
         alignItems: 'start',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -270,7 +271,7 @@ export const AlignItems = () => (
     <Grid
       css={{
         alignItems: 'end',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -283,7 +284,7 @@ export const AlignItems = () => (
     <Grid
       css={{
         alignItems: 'center',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -296,7 +297,7 @@ export const AlignItems = () => (
     <Grid
       css={{
         alignItems: 'stretch',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -343,7 +344,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'start',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -357,7 +358,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'end',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -371,7 +372,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'center',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -385,7 +386,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'stretch',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -399,7 +400,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'space-around',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -413,7 +414,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'space-between',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -427,7 +428,7 @@ export const JustifyContent = () => (
     <Grid
       css={{
         justifyContent: 'space-evenly',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
         width: '$10',
@@ -461,7 +462,7 @@ export const AlignContent = () => (
       css={{
         height: '$10',
         alignContent: 'start',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -475,7 +476,7 @@ export const AlignContent = () => (
       css={{
         minHeight: '$10',
         alignContent: 'end',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -489,7 +490,7 @@ export const AlignContent = () => (
       css={{
         minHeight: '$10',
         alignContent: 'center',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -503,7 +504,7 @@ export const AlignContent = () => (
       css={{
         minHeight: '$10',
         alignContent: 'stretch',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -517,7 +518,7 @@ export const AlignContent = () => (
       css={{
         minHeight: '$10',
         alignContent: 'space-around',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -531,7 +532,7 @@ export const AlignContent = () => (
       css={{
         minHeight: '$10',
         alignContent: 'space-between',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -545,7 +546,7 @@ export const AlignContent = () => (
       css={{
         minHeight: '$10',
         alignContent: 'space-evenly',
-        border: '1px solid grey',
+        border,
         gridTemplateColumns: '$7 $7',
         gridTemplateRows: '$7 $7',
       }}
@@ -738,7 +739,7 @@ export const ItemArea = () => (
 export const Self = () => (
   <Grid
     css={{
-      border: '1px solid grey',
+      border,
       gridTemplateColumns: '100px 100px',
       gridTemplateRows: '100px 100px',
     }}

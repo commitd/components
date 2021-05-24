@@ -55,7 +55,7 @@ export const Responsive: React.FC = () => (
   <Container
     maxWidth={{ '@initial': 'sm', '@md': 'md', '@lg': 'lg', '@xl': 'xl' }}
     css={{
-      backgroundColor: '$grey500',
+      backgroundColor: '$greyBg',
       py: '$3',
       textAlign: 'center',
     }}

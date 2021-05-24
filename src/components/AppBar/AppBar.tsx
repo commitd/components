@@ -9,8 +9,8 @@ import { Heading } from '../Heading'
  */
 export const AppBar = styled('header', {
   display: 'flex',
-  background: '$primary',
-  color: '$primaryContrast',
+  background: '$brand',
+  color: '$brandContrast',
   minHeight: '$8',
   paddingLeft: '$4',
   paddingRight: '$4',
@@ -36,7 +36,7 @@ export const AppBarHeading = forwardRef(
     <AppBarHeadingContainer>
       <Heading
         variant={HEADING_TAG}
-        css={{ color: '$primaryContrast', ...css } as CSS}
+        css={{ color: '$brandContrast', ...css } as CSS}
         size={1}
         weight="regular"
         {...props}
@@ -50,7 +50,7 @@ export const AppBarHeading = forwardRef(
 
 export const AppBarActions = styled('div', {
   '> *': {
-    color: '$primaryContrast',
+    color: '$brandContrast',
   },
 })
 
@@ -67,7 +67,7 @@ export const AppBarButton = forwardRef<
   HTMLButtonElement,
   PropsWithChildren<typeof Button>
 >(({ children, ...props }, forwardedRef) => (
-  <Button variant="primary" {...props} ref={forwardedRef}>
+  <Button variant="brand" {...props} ref={forwardedRef}>
     {children}
   </Button>
 )) as AppBarButtonComponent
