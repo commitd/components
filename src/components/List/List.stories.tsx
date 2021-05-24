@@ -1,15 +1,13 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
-import { List } from '.'
 import {
-  Box,
-  Button,
-  Flex,
+  List,
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
-} from '..'
+} from '.'
+import { Box, Button, Flex } from '..'
 
 import { Check } from '../Icons'
 

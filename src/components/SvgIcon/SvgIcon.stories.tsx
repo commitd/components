@@ -1,32 +1,14 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { SvgIcon } from '.'
-import { Flex } from '..'
-import { Copy, usePortalled } from '../../docs/util'
-import * as Icons from '../Icons'
 
 export default {
-  title: 'Components/Icons',
+  title: 'Components/SvgIcon',
   component: SvgIcon,
 } as Meta
 
-export const Default: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  const icons = Object.keys(Icons).filter((name) => /[A-Z]/.test(name[0]))
-  return (
-    <Flex css={{ flexWrap: 'wrap' }}>
-      {icons.map((key) => {
-        return (
-          <Copy
-            css={{ color: '$text' }}
-            portalled={portalled}
-            key={key}
-            content={key}
-          >
-            {React.createElement((Icons as Record<string, React.FC>)[key])}
-          </Copy>
-        )
-      })}
-    </Flex>
-  )
-}
+export const Default: Story = (args) => (
+  <SvgIcon {...args}>
+    <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
+  </SvgIcon>
+)

@@ -1,13 +1,7 @@
+import { Meta } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { AppBar, AppBarHeading, AppBarActions, AppBarButton } from '.'
-import { Button } from '..'
-import {
-  MemoryRouter,
-  Route,
-  Switch,
-  Link as RouterLink,
-} from 'react-router-dom'
+import { Link as RouterLink, MemoryRouter } from 'react-router-dom'
+import { AppBar, AppBarActions, AppBarButton, AppBarHeading } from '.'
 
 export default {
   title: 'Components/AppBar',

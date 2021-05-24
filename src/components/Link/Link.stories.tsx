@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react'
-import React, { ComponentProps } from 'react'
+import { Meta } from '@storybook/react'
+import React from 'react'
 import { Link as RouterLink, MemoryRouter } from 'react-router-dom'
 import { Link } from '.'
 import { Box, Column, Text } from '../'

@@ -197,7 +197,7 @@ export const Slider: ForwardRefExoticComponent<SliderOwnProps> = forwardRef<
       onValueChange,
       labelStyle = 'hover',
       labelSide = 'top',
-      labelFunction = (value) => value,
+      labelFunction = (val) => val,
       portalled = true,
       ...props
     },
@@ -216,8 +216,8 @@ export const Slider: ForwardRefExoticComponent<SliderOwnProps> = forwardRef<
       defaultProp: defaultValue,
       onChange: onValueChange,
     })
-    const handleLabelFunction = useCallbackRef((value: number) =>
-      labelFunction(value)
+    const handleLabelFunction = useCallbackRef((val: number) =>
+      labelFunction(val)
     )
 
     return (
@@ -231,10 +231,10 @@ export const Slider: ForwardRefExoticComponent<SliderOwnProps> = forwardRef<
         <SliderTrack>
           <SliderRange />
         </SliderTrack>
-        {values.map((value: number, i: number) => (
+        {values.map((val: number, i: number) => (
           <SliderThumb
             key={i}
-            value={handleLabelFunction(value)}
+            value={handleLabelFunction(val)}
             labelStyle={labelStyle}
             labelSide={labelSide}
             portalled={portalled}

@@ -35,8 +35,9 @@ jobs:
         run: npm run lint
 
       - name: Danger
-        run: npm run danger -- ci
+        run: npm run danger:pr -- ci
         env:
+          PR: ${{ github.event.number }}
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Test

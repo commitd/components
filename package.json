@@ -26,6 +26,7 @@
     "prepublishOnly": "npm run lint && npm test && npm run build",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "test": "jest",
+    "test:ci": "jest --coverage",
     "test:watch": "jest --watchAll",
     "coverage": "npx live-server coverage/lcov-report",
     "size": "size-limit",
@@ -36,7 +37,7 @@
     "format": "prettier --write '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
-    "danger:pr": "cross-env DANGER_GITHUB_API_TOKEN=${GITHUB_TOKEN} danger pr https://github.com/commitd/components/pull/${PR}"
+    "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0"
@@ -95,12 +96,17 @@
     "snapshotSerializers": [
       "jest-stitches"
     ],
+    "collectCoverage": true,
     "testResultsProcessor": "jest-sonar-reporter",
     "moduleDirectories": [
       "node_modules",
       "utils"
     ],
     "testRegex": "/src/.*(\\.|/)(test|spec)\\.[jt]sx?$",
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/types/**/*"
+    ],
     "coveragePathIgnorePatterns": [
       "/src/typings.d.ts",
       "setupTests.tsx",
