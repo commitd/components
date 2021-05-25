@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from 'stitches.config'
-import { Box, Text } from '..'
+import { Box } from '../Box'
+import { Text } from '../Text'
 
 /**
  * ListItemText component

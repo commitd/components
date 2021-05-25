@@ -1,7 +1,8 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { FC, forwardRef } from 'react'
 import { CSS, StitchesVariants, styled } from 'stitches.config'
-import { Heading, Text } from '../'
+import { Heading } from '../Heading'
+import { Text } from '../Text'
 
 const DEFAULT_TAG = 'div'
 
