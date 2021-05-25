@@ -1,10 +1,7 @@
 import { Indicator, Root } from '@radix-ui/react-checkbox'
-import React, {
-  ComponentProps,
-  forwardRef,
-  ForwardRefExoticComponent,
-} from 'react'
-import { styled } from 'stitches.config'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { forwardRef, ForwardRefExoticComponent } from 'react'
+import { CSS, StitchesVariants, styled } from 'stitches.config'
 import { Check, CheckIndeterminate } from '../Icons'
 
 const StyledRoot = styled(Root, {
@@ -129,7 +126,11 @@ const StyledIndicator = styled(Indicator, {
   width: '100%',
 })
 
-type CheckboxProps = ComponentProps<typeof StyledRoot>
+type CheckboxCSSProp = { css?: CSS }
+type CheckboxVariants = StitchesVariants<typeof StyledRoot>
+type CheckboxProps = Polymorphic.OwnProps<typeof Root> &
+  CheckboxVariants &
+  CheckboxCSSProp
 
 /**
  * Checkboxes can be used as toggle actions or as part of input forms.

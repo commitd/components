@@ -2,8 +2,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { Arrow, Content, Root, Trigger } from '@radix-ui/react-tooltip'
 import React, { FC } from 'react'
 import { styled } from 'stitches.config'
-// TODO import { Text } from '../Text'
-// TODO Fix dark mode - colours don't change
+import { Text } from '../Text'
 
 type TooltipProps = React.ComponentProps<typeof Root> &
   React.ComponentProps<typeof Content> & {
@@ -61,18 +60,15 @@ export const Tooltip: FC<TooltipProps> = ({
       {...props}
       multiline={multiline}
     >
-      <span>
-        {/* <Text
-          size="1"
-          as="p"
-          css={{
-              color: '$loContrast',
-              lineHeight: multiline ? '20px' : undefined,
-            }}
-        > */}
+      <Text
+        size="0"
+        css={{
+          lineHeight: multiline ? '20px' : undefined,
+          color: 'inherit',
+        }}
+      >
         {content}
-      </span>
-      {/* </Text> */}
+      </Text>
       <StyledArrow offset={5} width={11} height={5} />
     </StyledContent>
   </Root>

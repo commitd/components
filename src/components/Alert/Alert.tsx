@@ -27,9 +27,9 @@ const StyledAlert = styled(DEFAULT_TAG, {
   variants: {
     severity: {
       ghost: {
-        backgroundColor: '$paper',
-        borderColor: '$grey500',
-        color: '$text',
+        backgroundColor: '$greyBgLight',
+        borderColor: '$greyBorder',
+        color: '$greyText',
       },
       warning: {
         backgroundColor: '$warningBackground',

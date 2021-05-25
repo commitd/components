@@ -18,7 +18,7 @@ export const Default: React.FC = () => {
   return (
     <Card>
       <Text css={{ lineHeight: '23px', fontWeight: 500 }}>Default Card</Text>
-      <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+      <Text css={{ color: '$greyText', lineHeight: '23px' }}>
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s,
@@ -35,7 +35,7 @@ export const Classic = () => {
     <Row css={{ gap: '$3' }}>
       <Card>
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>Default Card</Text>
-        <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+        <Text css={{ color: '$greyText', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>
@@ -43,7 +43,7 @@ export const Classic = () => {
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>
           Default Interactive
         </Text>
-        <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+        <Text css={{ color: '$greyText', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>
@@ -61,7 +61,7 @@ export const Outline = () => {
     <Row css={{ gap: '$3' }}>
       <Card variant="outline">
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>Outline</Text>
-        <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+        <Text css={{ color: '$greyText', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>
@@ -69,7 +69,7 @@ export const Outline = () => {
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>
           Outline Interactive
         </Text>
-        <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+        <Text css={{ color: '$greyText', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>
@@ -87,13 +87,13 @@ export const Ghost = () => {
     <Row css={{ gap: '$3' }}>
       <Card variant="ghost">
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>Ghost</Text>
-        <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+        <Text css={{ color: '$greyText', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>
       <Card as="button" interactive variant="ghost" onClick={action('Action')}>
         <Text css={{ lineHeight: '23px', fontWeight: 500 }}>Ghost</Text>
-        <Text css={{ color: '$grey900', lineHeight: '23px' }}>
+        <Text css={{ color: '$greyText', lineHeight: '23px' }}>
           Lorem Ipsum is simply dummy text...
         </Text>
       </Card>

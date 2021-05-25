@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
-import { Default } from './ListItem.stories'
+import { renderDark, renderLight } from 'test-utils'
+import { Default } from './Link.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

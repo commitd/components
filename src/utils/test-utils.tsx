@@ -11,6 +11,11 @@ import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { ThemeProvider } from '..'
+import ResizeObserver from 'resize-observer-polyfill'
+
+// Use the polyfill for the ResizeObserver.
+// This is used in some components.
+global.ResizeObserver = ResizeObserver
 
 const LightTheme: React.FC = ({ children }) => (
   <ThemeProvider choice="light">{children}</ThemeProvider>

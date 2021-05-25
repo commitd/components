@@ -18,7 +18,10 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: '16'
+          node-version: '14'
+
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
 
       - name: Install deps and build (with cache)
         if: ${{ !env.ACT }}
@@ -32,8 +35,9 @@ jobs:
         run: npm run lint
 
       - name: Danger
-        run: npm run danger -- ci
+        run: npm run danger:pr -- ci
         env:
+          PR: ${{ github.event.number }}
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Test

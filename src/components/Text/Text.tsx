@@ -101,7 +101,7 @@ type TextVariants = StitchesVariants<typeof StyledText>
 type TextOwnProps = TextCSSProp & TextVariants
 
 type TextComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
+  typeof DEFAULT_TAG | 'a',
   TextOwnProps
 >
 

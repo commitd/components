@@ -1,12 +1,11 @@
+import { Button, Header, Item, Panel, Root } from '@radix-ui/react-accordion'
 import React, {
-  forwardRef,
-  PropsWithChildren,
   ComponentProps,
+  forwardRef,
   ForwardRefExoticComponent,
 } from 'react'
-import { styled, keyframes } from 'stitches.config'
+import { keyframes, styled } from 'stitches.config'
 import { ChevronDown } from '../Icons'
-import { Root, Item, Header, Button, Panel } from '@radix-ui/react-accordion'
 
 const slideDown = keyframes({
   from: { height: 0 },

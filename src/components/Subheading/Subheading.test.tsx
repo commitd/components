@@ -1,6 +1,6 @@
 import React from 'react'
 import { renderLight, renderDark } from 'test-utils'
-import { Default } from './Subheading.stories'
+import { Default, Variants } from './Subheading.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)
@@ -9,5 +9,10 @@ it('renders light without error', () => {
 
 it('renders dark without error', () => {
   const { asFragment } = renderDark(<Default />)
+  expect(asFragment()).toBeDefined()
+})
+
+it('renders all variants without error', () => {
+  const { asFragment } = renderLight(<Variants />)
   expect(asFragment()).toBeDefined()
 })
