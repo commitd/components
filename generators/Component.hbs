@@ -1,16 +1,33 @@
-import React from 'react'
-import { styled } from 'stitches.config'
+import * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { forwardRef } from 'react'
+import { CSS, StitchesVariants, styled } from 'stitches.config'
 
+const DEFAULT_TAG = 'div'
 
 /**
-* {{ name }} component
-*/
-export const Styled{{ name }} = styled('div', {})
+ * Styled{{ name }} base component
+ */
+const Styled{{ name }} = styled(DEFAULT_TAG, {})
 
-
-type Styled{{ name }}Props = React.ComponentProps<typeof Styled{{ name }}>
-export type {{ name }}Props = Styled{{ name }}Props & {}
-
-
-export const {{ name }}: React.FC<{{ name }}Props> = Styled{{ name }}
-{{ name }}.toString = () => `.${Styled{{ name }}.className}`
+// Either export the component above directly removing the Styled prefix.
+// Or if polymorphism is required or further action on the bases component uncomment below.
+//
+// type {{ name }}CSSProp = { css?: CSS }
+// type {{ name }}Variants = StitchesVariants<typeof Styled{{ name }}>
+// type {{ name }}OwnProps = {{ name }}CSSProp & {{ name }}Variants
+// 
+// type {{ name }}Component = Polymorphic.ForwardRefComponent<
+//   typeof DEFAULT_TAG,
+//   {{ name }}OwnProps
+// >
+// 
+// /**
+//  * {{ name }} component
+//  */
+// export const {{ name }} = forwardRef(({ ...props }, ref) => (
+//   <Styled{{ name }}
+//     ref={ref}
+//     {...props}
+//   />
+// )) as {{ name }}Component
+// {{ name }} .toString = () => `.${Styled{{ name }}.className}`
