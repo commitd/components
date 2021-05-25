@@ -11,7 +11,7 @@ import React, {
   useRef,
 } from 'react'
 import { CSS, StitchesVariants, styled } from 'stitches.config'
-import { Tooltip } from '../'
+import { Tooltip } from '../Tooltip'
 
 type LabelStyle = 'always' | 'hover' | 'none'
 type LabelSide = React.ComponentProps<typeof Tooltip>['side']

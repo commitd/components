@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps } from 'react'
 import { CSS } from 'stitches.config'
-import { Svg } from '../'
+import { Svg } from '../Svg'
 
 export const Logo: FC<ComponentProps<typeof Svg>> = ({ css, ...props }) => (
   <Svg

@@ -16,17 +16,17 @@ const StyledSvg = styled(DEFAULT_TAG, {
   color: 'inherit',
 })
 
-type SvgIconCSSProp = { css?: CSS }
-type SvgIconVariants = StitchesVariants<typeof Text>
-type SvgIconOwnProps = SvgIconCSSProp &
-  SvgIconVariants & {
+type SvgCSSProp = { css?: CSS }
+type SvgVariants = StitchesVariants<typeof StyledSvg>
+type SvgOwnProps = SvgCSSProp &
+  SvgVariants & {
     /** Add a title to the svg */
     title?: string
   }
 
-type SvgIconComponent = Polymorphic.ForwardRefComponent<
+type SvgComponent = Polymorphic.ForwardRefComponent<
   typeof DEFAULT_TAG,
-  SvgIconOwnProps
+  SvgOwnProps
 >
 
 /**
@@ -46,5 +46,5 @@ export const Svg = forwardRef(({ title, children, ...props }, ref) => (
     {title ? <title>{title}</title> : null}
     {children}
   </StyledSvg>
-)) as SvgIconComponent
+)) as SvgComponent
 Svg.toString = () => `.${StyledSvg.className}`

@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderDark, renderLight } from 'test-utils'
-import { Default } from './Logo.stories'
+import { renderLight, renderDark } from 'test-utils'
+import { Default } from './Spinner.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

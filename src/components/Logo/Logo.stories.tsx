@@ -14,7 +14,7 @@ export const Default: Story<ComponentProps<typeof Logo>> = (args) => (
 /** Logo supports the standard `css` props so size can be controlled there.  */
 export const Sizes: FC = () => (
   <>
-    <Logo css={{ size: 512 }} />
+    <Logo css={{ size: '$14' }} />
     <Logo />
     <Logo css={{ size: '$7' }} />
     <Logo css={{ size: '$6' }} />
