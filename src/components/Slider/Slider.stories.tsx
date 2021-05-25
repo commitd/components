@@ -110,7 +110,7 @@ export const Controlled: Story = (_args, context) => {
 }
 
 /**
- * The Slider labels cna be shown, `always`, on `hover`, or `none`. Using the `labelStyle` prop.
+ * The Slider labels can be shown, `always`, on `hover`, or `none`. Using the `labelStyle` prop.
  */
 export const LabelMarkers: Story = (_args, context) => {
   const portalled = usePortalled(context)
@@ -126,12 +126,13 @@ export const LabelMarkers: Story = (_args, context) => {
 /**
  * A custom label function can be provided to format the label
  */
-export const LabelContent: Story = (_args, context) => {
+export const LabelContent: Story = (args, context) => {
   const portalled = usePortalled(context)
   return (
     <Slider
       labelFunction={(value) => `Current value is ${value}`}
       portalled={portalled}
+      {...args}
     />
   )
 }
