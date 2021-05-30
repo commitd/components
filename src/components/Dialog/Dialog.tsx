@@ -2,9 +2,27 @@ import { Close, Content, Overlay, Root, Trigger } from '@radix-ui/react-dialog'
 import * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
 import React, { FC, forwardRef } from 'react'
-import { CSS, styled } from 'stitches.config'
+import { CSS, styled, keyframes } from 'stitches.config'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
+
+const fadeIn = keyframes({
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+})
+
+const fadeOut = keyframes({
+  from: {
+    opacity: 1,
+  },
+  to: {
+    opacity: 0,
+  },
+})
 
 const StyledOverlay = styled(Overlay, {
   position: 'fixed',
@@ -13,6 +31,12 @@ const StyledOverlay = styled(Overlay, {
   top: 0,
   left: 0,
   backgroundColor: '$transparency000',
+  '&[data-state=open]': {
+    animation: `${fadeIn} 200ms ease-out`,
+  },
+  '&[data-state=closed]': {
+    animation: `${fadeOut} 200ms ease-out`,
+  },
 })
 
 const StyledContent = styled(Content, {
@@ -33,6 +57,13 @@ const StyledContent = styled(Content, {
 
   '&:focus': {
     outline: 'none',
+  },
+
+  '&[data-state=open]': {
+    animation: `${fadeIn} 200ms ease-out`,
+  },
+  '&[data-state=closed]': {
+    animation: `${fadeOut} 200ms ease-out`,
   },
 })
 
