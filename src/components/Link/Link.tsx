@@ -22,14 +22,15 @@ export const StyledLink = styled(DEFAULT_TAG, {
   color: 'inherit',
   textDecoration: 'none',
 
+  '&:hover': {
+    cursor: 'pointer',
+  },
+
   variants: {
     variant: {
       clear: {
         '& .gatsby-resp-image-background-image': {
           display: 'none !important',
-        },
-        '&:hover': {
-          cursor: 'pointer',
         },
       },
       default: {

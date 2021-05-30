@@ -5,6 +5,7 @@ import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '.'
 export default {
   title: 'Components/Accordion',
   component: Accordion,
+  subcomponents: { AccordionItem, AccordionHeader, AccordionPanel },
 } as Meta
 
 export const Default: React.FC = () => {
