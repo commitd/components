@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { ThemeProvider, theme, Flex, Box, Column } from '../'
+import { Palette, Swatch, Colors, Surfaces } from './util'
+
+<Meta title="Design System/Colour" />
+
+## Main Light
+
+<ThemeProvider choice="light">
+  <Column css={{ p: '$3', py: '$6',  backgroundColor: '$paper'}}>
+    <Colors key="brand" name="brand" />
+    <Colors key="primary" name="primary" />
+    <Colors key="grey" name="grey" />
+    <Colors key="error" name="error" />
+    <Colors key="warning" name="warning" />
+    <Colors key="success" name="success" />
+    <Colors key="info" name="info" />
+    <Colors key="transparency" name="transparency" />
+  </Column>
+</ThemeProvider>
+
+## Main Dark
+
+<ThemeProvider choice="dark">
+  <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper'}}>
+    <Colors key="brand" name="brand" />
+    <Colors key="primary" name="primary" />
+    <Colors key="grey" name="grey" />
+    <Colors key="error" name="error" />
+    <Colors key="warning" name="warning" />
+    <Colors key="success" name="success" />
+    <Colors key="info" name="info" />
+    <Colors key="transparency" name="transparency" />
+  </Column>
+</ThemeProvider>
+

@@ -58,7 +58,7 @@ const StyledThumb = styled(Thumb, {
     bottom: 0,
     left: 0,
     zIndex: -2,
-    backgroundColor: '$transparency000',
+    backgroundColor: '$transparency1',
     transform: 'scale(1)',
     borderRadius: '$round',
     transition: 'transform 200ms cubic-bezier(0.22, 1, 0.36, 1)',
@@ -72,8 +72,8 @@ const StyledThumb = styled(Thumb, {
 })
 
 export const StyledSlider = styled(Root, {
-  $$track: '$colors$greyBg',
-  $$trackHover: '$colors$greyBgHover',
+  $$track: '$colors$grey3',
+  $$trackHover: '$colors$grey4',
   $$range: '$colors$default',
 
   position: 'relative',

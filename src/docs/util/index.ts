@@ -1,4 +1,4 @@
-// export * from './colors'
+export * from './Colors'
 export * from './Copy'
 // export * from './docsutil'
 // export * from './palette'

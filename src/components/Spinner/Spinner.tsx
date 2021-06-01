@@ -35,7 +35,7 @@ const scaleKeyframes = keyframes({
 const StyledSpinner = styled(Logo, {
   transformOrigin: 'center center',
   strokeDasharray: '2300',
-  color: '$grey100',
+  color: '$grey4',
   variants: {
     variant: {
       draw: {},

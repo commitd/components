@@ -53,7 +53,7 @@ export const Letters = () => (
     <Avatar css={{ m: '$2' }} backgroundColor="$warning">
       OP
     </Avatar>
-    <Avatar css={{ m: '$2' }} backgroundColor="$red500" color="$red100">
+    <Avatar css={{ m: '$2' }} backgroundColor="$red9" color="$red1">
       H
     </Avatar>
     <Avatar css={{ m: '$2' }} backgroundColor="#AB34FA" color="$white">

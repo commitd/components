@@ -20,7 +20,7 @@ const focus = {
 }
 
 const StyledInput = styled(DEFAULT_TAG, {
-  $$inactive: '$colors$greyLine',
+  $$inactive: '$colors$grey7',
   $$active: '$colors$primary',
 
   // Reset
@@ -42,7 +42,7 @@ const StyledInput = styled(DEFAULT_TAG, {
   },
 
   // Custom
-  backgroundColor: '$greyBgLight',
+  backgroundColor: '$grey2',
   boxShadow: 'inset 0 0 0 1px $$inactive',
   borderRadius: '$default',
   color: '$text',
@@ -54,7 +54,7 @@ const StyledInput = styled(DEFAULT_TAG, {
 
   '&:-webkit-autofill': {
     boxShadow: 'inset 0 0 0 1px $$border, inset 0 0 0 100px $$border',
-    backgroundColor: '$greyBgLight',
+    backgroundColor: '$grey2',
   },
 
   '&:-webkit-autofill::first-line': {
@@ -66,21 +66,21 @@ const StyledInput = styled(DEFAULT_TAG, {
   '&:hover': hover,
   '&:focus': focus,
   '&::placeholder': {
-    color: '$greyBorderHover',
+    color: '$grey8',
   },
   '&:disabled': {
     pointerEvents: 'none',
-    backgroundColor: '$greyBg',
-    color: '$greyPure',
+    backgroundColor: '$grey7',
+    color: '$grey9',
     cursor: 'not-allowed',
     '&::placeholder': {
-      color: '$greyBgHover',
+      color: '$grey4',
     },
   },
   '&:read-only': {
-    backgroundColor: '$greyBg',
+    backgroundColor: '$grey3',
     '&:focus': {
-      boxShadow: 'inset 0px 0px 0px 1px $colors$greyBorder',
+      boxShadow: 'inset 0px 0px 0px 1px $colors$grey7',
     },
   },
 

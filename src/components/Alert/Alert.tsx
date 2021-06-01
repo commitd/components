@@ -17,7 +17,7 @@ const StyledAlert = styled(DEFAULT_TAG, {
   },
 
   border: '1px solid',
-  borderRadius: '$2',
+  borderRadius: '$default',
 
   display: 'flex',
   flexDirection: 'column',
@@ -28,9 +28,9 @@ const StyledAlert = styled(DEFAULT_TAG, {
   variants: {
     severity: {
       ghost: {
-        backgroundColor: '$greyBgLight',
-        borderColor: '$greyBorder',
-        color: '$greyText',
+        backgroundColor: '$grey2',
+        borderColor: '$grey7',
+        color: '$grey12',
       },
       warning: {
         backgroundColor: '$warningBackground',

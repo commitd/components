@@ -8,7 +8,7 @@ const StyledOverlay = styled(Overlay, {
   bottom: 0,
   top: 0,
   left: 0,
-  backgroundColor: '$transparency000',
+  backgroundColor: '$transparency1',
 })
 
 const StyledContent = styled(Content, {

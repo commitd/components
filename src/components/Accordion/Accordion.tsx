@@ -26,13 +26,13 @@ const Chevron = styled(ChevronDown, {
 })
 
 export const Accordion = styled(Root, {
-  borderTop: '1px solid $defaultHighlight',
+  borderTop: '1px solid $grey4',
   borderRadius: '$default',
   boxShadow: '$1',
 })
 
 export const AccordionItem = styled(Item, {
-  borderBottom: '1px solid $defaultHighlight',
+  borderBottom: '1px solid $grey4',
 })
 
 const AccordionButton = styled(Button, {
@@ -48,17 +48,12 @@ const AccordionButton = styled(Button, {
   color: '$text',
   width: '100%',
 
-  '@hover': {
-    '&:hover': {
-      backgroundColor: '$defaultHighlight',
-    },
+  '&:hover': {
+    backgroundColor: '$grey4',
   },
-
-  // TODO consider focus style
-  // '&:focus': {
-  //   outline: 'none',
-  //   boxShadow: 'inset 0 0 0 1px $colors$grey700, 0 0 0 1px $colors$grey700',
-  // },
+  '&:focus': {
+    backgroundColor: '$grey4',
+  },
 })
 
 export const AccordionPanel = styled(Panel, {

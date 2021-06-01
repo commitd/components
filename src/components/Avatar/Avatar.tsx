@@ -42,7 +42,7 @@ const StyledFallback = styled(Fallback, {
  */
 export const Avatar: React.FC<AvatarProps> = ({
   src,
-  backgroundColor = '$greyLine',
+  backgroundColor = '$grey5',
   color = '$text',
   alt = 'Avatar',
   children,

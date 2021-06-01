@@ -19,7 +19,7 @@ export const Card = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   textDecoration: 'none',
-  color: 'inherit',
+  color: '$text',
   flexShrink: 0,
   borderRadius: '$default',
   position: 'relative',
@@ -47,24 +47,24 @@ export const Card = styled('div', {
           boxShadow: '$1',
         },
         '&:hover': {
-          boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.2)',
+          boxShadow: 'inset 0 0 0 1px $colors$grey2',
         },
         '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$focus, 0 0 0 1px $colors$focus',
+          boxShadow: 'inset 0 0 0 1px $colors$grey2, 0 0 0 1px $colors$grey2',
         },
       },
       outline: {
         '&::before': {
-          boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.1)',
+          boxShadow: 'inset 0 0 0 1px $colors$grey3',
         },
         '&:hover': {
           '&::before': {
-            boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.2)',
+            boxShadow: 'inset 0 0 0 1px $colors$grey4',
           },
         },
         '&:focus': {
           '&::before': {
-            boxShadow: 'inset 0 0 0 1px $colors$focus, 0 0 0 1px $colors$focus',
+            boxShadow: 'inset 0 0 0 1px $colors$grey4, 0 0 0 1px $colors$grey4',
           },
         },
       },
@@ -96,7 +96,7 @@ export const Card = styled('div', {
           },
         },
         '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$focus, 0 0 0 1px $colors$focus',
+          boxShadow: 'inset 0 0 0 1px $colors$grey2, 0 0 0 1px $colors$grey2',
         },
       },
     },
