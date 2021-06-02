@@ -1,6 +1,6 @@
 import * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
+import { CSS, styled } from 'stitches.config'
 import {
   Root,
   Trigger,
@@ -8,21 +8,24 @@ import {
   Item,
   CheckboxItem,
   ItemIndicator,
+  Separator,
+  Label,
+  RadioItem,
+  RadioGroup,
 } from '@radix-ui/react-dropdown-menu'
 import { Slot } from '@radix-ui/react-slot'
-import { Check } from 'index'
+import { Check } from '../Icons'
 
 const itemStyles = {
-  fontSize: '$0',
-  padding: '$2 $3',
-  cursor: 'default',
   '&::before': {
     boxSizing: 'border-box',
   },
   '&::after': {
     boxSizing: 'border-box',
   },
-
+  fontSize: '$0',
+  padding: '$2 $3',
+  cursor: 'default',
   borderRadius: '$default',
   backgroundColor: 'transparent',
   border: 'none',
@@ -30,6 +33,9 @@ const itemStyles = {
   '&:focus': {
     background: '$grey4',
     cursor: 'pointer',
+  },
+  '&[data-disabled]': {
+    color: 'gainsboro',
   },
 }
 
@@ -43,39 +49,28 @@ const StyledContent = styled(Content, {
 
 const StyledItemIndicator = styled(ItemIndicator, {
   position: 'absolute',
-  left: 5,
+  left: '$2',
 })
 
-const DEFAULT_TAG = 'div'
+const checkboxItemStyles = {
+  ...itemStyles,
+  paddingLeft: '$6',
+}
+const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
+const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
 
-/**
- * StyledMenu base component
- */
-const StyledMenu = styled(Root, {})
-const StyledCheckboxItem = styled(CheckboxItem, itemStyles)
-
-const StyledItem = styled(Item, itemStyles)
-
-type MenuCSSProp = { css?: CSS }
-type MenuVariants = StitchesVariants<typeof StyledMenu>
-type MenuOwnProps = MenuCSSProp & MenuVariants
-
-type MenuComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  MenuOwnProps
->
+export const MenuItem = styled(Item, itemStyles)
 
 /**
  * Menu component
+ *
+ * Displays a menu to the user - usually triggered by clicking a button.
  */
-export const Menu = forwardRef(({ ...props }, ref) => (
-  <StyledMenu ref={ref} {...props} />
-)) as MenuComponent
-Menu.toString = () => `.${StyledMenu.className}`
+export const Menu = styled(Root, {})
 
 type MenuContentCSSProp = { css?: CSS }
 type MenuContentOwnProps = Polymorphic.OwnProps<typeof Content> &
-  MenuContentCSSProp & {}
+  MenuContentCSSProp
 
 type MenuContentComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Content>,
@@ -106,35 +101,51 @@ export const MenuTrigger = forwardRef(
   )
 ) as MenuTriggerComponent
 
-type MenuItemCSSProp = { css?: CSS }
-type MenuItemOwnProps = Polymorphic.OwnProps<typeof StyledItem> &
-  MenuItemCSSProp
-type MenuItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof StyledItem>,
-  MenuItemOwnProps
->
+const StyledCheckboxIndicator = () => (
+  <StyledItemIndicator>
+    <Check css={{ height: 16, width: 16 }} />
+  </StyledItemIndicator>
+)
 
-export const MenuItem = forwardRef(({ children, ...props }, forwardedRef) => (
-  <StyledItem {...props} ref={forwardedRef}>
-    {children}
-  </StyledItem>
-)) as MenuItemComponent
-
-type MenuItemCheckboxCSSProp = { css?: CSS }
-type MenuItemCheckboxOwnProps = Polymorphic.OwnProps<
-  typeof StyledCheckboxItem
-> &
-  MenuItemCheckboxCSSProp
 type MenuItemCheckboxComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof StyledCheckboxItem>,
-  MenuItemCheckboxOwnProps
+  Polymorphic.IntrinsicElement<typeof CheckboxItem>,
+  Polymorphic.OwnProps<typeof CheckboxItem>
 >
 
-export const MenuItemCheckbox = forwardRef(({ children, ...props }) => (
-  <StyledCheckboxItem {...props}>
-    <StyledItemIndicator>
-      <Check />
-    </StyledItemIndicator>
-    {children}
-  </StyledCheckboxItem>
-)) as MenuItemCheckboxComponent
+export const MenuItemCheckbox: MenuItemCheckboxComponent = forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <StyledCheckboxItem {...props} ref={forwardedRef}>
+      <StyledCheckboxIndicator />
+      {children}
+    </StyledCheckboxItem>
+  )
+)
+
+export const MenuItemSeparator = styled(Separator, {
+  height: 1,
+  backgroundColor: '$grey7',
+  margin: '$1',
+})
+
+export const MenuLabel = styled(Label, {
+  color: '$grey10',
+  fontSize: '$0',
+  padding: '$2 $3',
+  cursor: 'default',
+})
+
+export const MenuRadioGroup = RadioGroup
+
+type MenuItemRadioComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof RadioItem>,
+  Polymorphic.OwnProps<typeof RadioItem>
+>
+
+export const MenuRadioItem: MenuItemRadioComponent = forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <StyledRadioItem {...props} ref={forwardedRef}>
+      <StyledCheckboxIndicator />
+      {children}
+    </StyledRadioItem>
+  )
+)
