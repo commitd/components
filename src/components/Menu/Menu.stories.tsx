@@ -19,12 +19,19 @@ import { useBoolean } from '@committed/hooks'
 export default {
   title: 'Components/Menu',
   component: Menu,
+  subcomponents: {
+    MenuTrigger,
+    MenuContent,
+    MenuItem,
+    MenuItemCheckbox,
+    MenuItemSeparator,
+    MenuLabel,
+    MenuRadioGroup,
+  },
 } as Meta
 
-export const Default: Story = (args) => <Menu {...args} />
-
-export const Simple: React.FC = () => (
-  <Menu>
+export const Default: Story = (args) => (
+  <Menu {...args}>
     <MenuTrigger>
       <Button>Trigger</Button>
     </MenuTrigger>

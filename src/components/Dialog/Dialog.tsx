@@ -51,6 +51,7 @@ const StyledContent = styled(Content, {
   marginTop: '-5vh',
   borderRadius: '$default',
   backgroundColor: '$paper',
+  color: '$text',
 
   display: 'flex',
   flexDirection: 'column',
@@ -89,7 +90,7 @@ type DialogProps = React.ComponentProps<typeof Root> & {
  * This can be the basis for custom dialogs required in your application.
  * Some common use cases are covered with other Components.
  *
- * Base on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
+ * Based on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
  */
 export const Dialog: FC<DialogProps> = ({ children, overlayCss, ...props }) => {
   return (
