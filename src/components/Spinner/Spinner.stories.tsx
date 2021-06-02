@@ -51,6 +51,6 @@ export const All = () => (
     gridCss={{ gap: '$3', gridTemplateColumns: '1fr 1fr 1fr' }}
     component={Spinner}
     variant={['spin', 'draw', 'scale']}
-    css={[{ color: '$grey100' }, { color: '$brandYellow' }]}
+    css={[{ color: '$grey3' }, { color: '$brandYellow' }]}
   />
 )

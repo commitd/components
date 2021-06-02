@@ -1,24 +1,18 @@
 import { Meta } from '@storybook/addon-docs/blocks'
 import { version } from '../../package.json'
 
-
-
-
-
 <Meta title="Design System/Getting Started" />
 
 # Getting Started
 
 Install the design system and dependencies in your application
 
-<code>
-npm add @committed/components@{version}
-</code>
+<code>npm add @committed/components@{version}</code>
 
 Optionally, add the default fonts. This is done separately to keep down bundle size if they are not required.
 
 ```bash
-npm add @fontsource/inter @fontsource/dosis 
+npm add @fontsource/inter @fontsource/dosis
 ```
 
 ## ThemeProvider
@@ -32,7 +26,7 @@ import React from 'react'
 import { ThemeProvider } from '@committed/components'
 import AppRoot from './AppRoot'
 
-// If fonts used import in single place in your app.  
+// If fonts used import in single place in your app.
 // import '@fontsource/inter/300.css'
 // import '@fontsource/inter/400.css'
 // import '@fontsource/inter/700.css'
@@ -58,7 +52,7 @@ import React from 'react'
 import { Box, Typography } from '@committed/components'
 
 const AppRoot = (props) => (
-  <Box css={{p: '$3'}}>
+  <Box css={{ p: '$3' }}>
     <Text>Hello</Text>
   </Box>
 )

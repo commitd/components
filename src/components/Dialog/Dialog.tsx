@@ -30,7 +30,7 @@ const StyledOverlay = styled(Overlay, {
   bottom: 0,
   top: 0,
   left: 0,
-  backgroundColor: '$transparency1',
+  backgroundColor: '$transparency3',
   '&[data-state=open]': {
     animation: `${fadeIn} 200ms ease-out`,
   },

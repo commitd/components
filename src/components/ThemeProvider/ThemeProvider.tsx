@@ -1,6 +1,6 @@
 import { ThemeRule } from '@stitches/react'
 import React, { FC, useContext } from 'react'
-import { darkTheme, globalStyles, lightTheme } from 'stitches.config'
+import { darkTheme, globalStyles } from 'stitches.config'
 import { ThemeChoice, ThemeContext, ThemeController } from './ThemeController'
 export interface ThemeProviderProps {
   /**
@@ -27,7 +27,7 @@ export const useThemeController = (): [ThemeChoice, () => void] => {
 }
 
 const ControlledThemeProvider: FC<ThemeProviderProps> = ({
-  light = lightTheme,
+  light,
   dark = darkTheme,
   choice = null,
   children,
@@ -48,7 +48,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
       break
   }
 
-  const theme = darkMode ? dark.className : light.className
+  const theme = darkMode ? dark.className : light?.className || undefined
 
   return <div className={theme}>{children}</div>
 }

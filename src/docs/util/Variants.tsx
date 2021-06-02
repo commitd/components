@@ -17,7 +17,12 @@ const cartesianProduct = (props: { [x: string]: any }): { [x: string]: any } =>
       pairsArr.reduce((result, [k, v]) => ({ ...result, [k]: v }), {})
     )
 
-export const Variants = ({ gridCss = { gap: '$3', gridTemplateColumns: '1fr 1fr 1fr 1fr' }, component, container = Fragment, ...props }) => {
+export const Variants = ({
+  gridCss = { gap: '$3', gridTemplateColumns: '1fr 1fr 1fr 1fr' },
+  component,
+  container = Fragment,
+  ...props
+}) => {
   const combinations = cartesianProduct(props)
   const Component = component
   const Container = container
@@ -26,20 +31,24 @@ export const Variants = ({ gridCss = { gap: '$3', gridTemplateColumns: '1fr 1fr 
     <Grid css={gridCss}>
       {combinations.map((props, i: number) => {
         const { css, children, ...display } = props
-        return (<Container key={i}>
-          <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}>
-            <span><Component {...props} /></span>
-          </Tooltip>
-        </Container>
-      )})}
+        return (
+          <Container key={i}>
+            <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}>
+              <span>
+                <Component {...props} />
+              </span>
+            </Tooltip>
+          </Container>
+        )
+      })}
     </Grid>
   )
 }
 
-
 // TODO ADD Tooltip eg
 
-{/* 
+{
+  /* 
   props => {
   const {
     m,
@@ -48,4 +57,5 @@ export const Variants = ({ gridCss = { gap: '$3', gridTemplateColumns: '1fr 1fr 
   } = props;
   <Tooltip title={<Monospace>{JSON.stringify(display, null, 2)}</Monospace>}>
       <Button {...props} />
-  </Tooltip>; */}
+  </Tooltip>; */
+}

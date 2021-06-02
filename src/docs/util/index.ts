@@ -1,5 +1,6 @@
 export * from './Colors'
 export * from './Copy'
+export * from './SemanticColors'
 // export * from './docsutil'
 // export * from './palette'
 // export * from './surfaces'

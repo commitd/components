@@ -9,13 +9,13 @@ export default {
   component: Grid,
 } as Meta
 
-const keys = ['yellow', 'sand', 'blue', 'green', 'red', 'orange']
+const keys = ['primary', 'info', 'success', 'error', 'warning']
 const randomColor = (): CSS['backgroundColor'] => {
   const color = keys[Math.floor(Math.random() * keys.length)]
-  return `$${color}300`
+  return `$${color}6`
 }
 
-const border = '1px solid $greyLine'
+const border = '1px solid $grey3'
 
 type BoxProps = React.ComponentProps<typeof Box>
 type GridBoxProps = Omit<BoxProps, 'css'> & {
@@ -26,8 +26,8 @@ const GridBox: React.FC<GridBoxProps> = ({ css, ...props }) => (
   <Box
     css={
       {
-        minWidth: '25px',
-        minHeight: '25px',
+        minWidth: '$5',
+        minHeight: '$5',
         p: '$2',
         border,
         backgroundColor: randomColor(),
