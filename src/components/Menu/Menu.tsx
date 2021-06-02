@@ -35,7 +35,7 @@ const itemStyles = {
     cursor: 'pointer',
   },
   '&[data-disabled]': {
-    color: 'gainsboro',
+    color: '$grey9',
   },
 }
 
