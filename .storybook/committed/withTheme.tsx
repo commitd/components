@@ -15,6 +15,11 @@ import '@fontsource/dosis/300.css'
  */
 export const withTheme = (Story) => {
   const choice = useDarkMode() ? 'dark' : 'light'
+  if (choice === 'dark') {
+    document.body.classList.add('dark-theme')
+  } else {
+    document.body.classList.remove('dark-theme')
+  }
   return (
     <ThemeProvider choice={choice}>
       <Story />
