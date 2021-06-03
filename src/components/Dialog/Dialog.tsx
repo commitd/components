@@ -83,7 +83,7 @@ type DialogProps = React.ComponentProps<typeof Root> & {
  * The Dialog component can be used to isolate the user from the main window by overlaying
  * another window that requires the users attention.
  *
- * It's appearance is controlled with the `open` and `onOpenChange` props or by providing a
+ * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a
  * `DialogTrigger` and (optionally) a `DialogClose` inside the main `Dialog`.
  * The content should be wrapped in a `DialogContent`.
  *

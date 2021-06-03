@@ -131,8 +131,9 @@ export const MenuItemSeparator = styled(Separator, {
 
 export const MenuLabel = styled(Label, {
   color: '$grey10',
-  fontSize: '$0',
+  fontSize: '$-1',
   padding: '$2 $3',
+  paddingBottom: '$1',
   cursor: 'default',
 })
 
@@ -152,22 +153,14 @@ export const MenuRadioItem: MenuItemRadioComponent = forwardRef(
   )
 )
 
-type MenuCSSProp = { css?: CSS }
-type MenuOwnProps = React.ComponentProps<typeof Root> & MenuCSSProp
-
-type MenuComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
-  MenuOwnProps
->
-
 /**
  * Menu component
  *
  * Displays a menu to the user - usually triggered by clicking a button.
  *
- * It's appearance is controlled with the `open` and `onOpenChange` props or by providing a `MenuTrigger`.
+ * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a `MenuTrigger`.
  * The content should be wrapped in a `MenuContent` and should be made up of the other `MenuXxxx` components.
  *
  * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/dropdown-menu).
  */
-export const Menu = styled(Root, {}) as MenuComponent
+export const Menu = Root
