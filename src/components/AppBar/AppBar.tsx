@@ -88,21 +88,21 @@ export const AppBarMenu: React.FC = ({ children }) => (
       bottom: 0,
     }}
   >
-    <Box>
-      <Box
-        css={{
-          height: '100%',
-          display: 'flex',
-          gap: '$5',
-        }}
-      >
-        {children}
-      </Box>
+    <Box
+      css={{
+        height: '100%',
+        display: 'flex',
+        gap: '$5',
+      }}
+    >
+      {children}
     </Box>
   </Box>
 )
 
-export const AppBarMenuItem = styled(Link, {
+export const AppBarMenuItem: React.FC<
+  React.ComponentProps<typeof Link>
+> = styled(Link, {
   color: '$brandContrast',
   textDecoration: 'none',
   '&:hover': {
@@ -111,4 +111,4 @@ export const AppBarMenuItem = styled(Link, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-})
+}) as React.FC<React.ComponentProps<typeof Link>>
