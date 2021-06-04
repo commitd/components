@@ -617,6 +617,7 @@ export const globalStyles = globalCss({
   },
   body: {
     lineHeight: '1',
+    color: '$text',
   },
   'ol, ul': {
     listStyle: 'none',
