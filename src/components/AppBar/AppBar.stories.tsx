@@ -1,12 +1,28 @@
 import { Meta } from '@storybook/react'
 import React from 'react'
 import { Link as RouterLink, MemoryRouter } from 'react-router-dom'
-import { AppBar, AppBarActions, AppBarButton, AppBarHeading } from '.'
+import {
+  AppBar,
+  AppBarActions,
+  AppBarButton,
+  AppBarHeading,
+  AppBarMenu,
+  AppBarMenuItem,
+} from '.'
+import { Heading } from '../Heading'
+import { Link } from '../Link'
+import { Text } from '../Text'
 
 export default {
   title: 'Components/AppBar',
   component: AppBar,
-  subcomponents: { AppBarHeading, AppBarActions, AppBarButton },
+  subcomponents: {
+    AppBarHeading,
+    AppBarActions,
+    AppBarButton,
+    AppBarMenu,
+    AppBarMenuItem,
+  },
 } as Meta
 
 export const Default: React.FC = () => {
@@ -16,6 +32,36 @@ export const Default: React.FC = () => {
       <AppBarActions>
         <AppBarButton>Login</AppBarButton>
       </AppBarActions>
+    </AppBar>
+  )
+}
+
+/**
+ * AppBarMenuItem components extend Link and have all of the same props.
+ */
+export const WithMenu: React.FC = () => {
+  return (
+    <AppBar>
+      <AppBarHeading>Example</AppBarHeading>
+      <AppBarMenu>
+        <AppBarMenuItem href="/feed">Feed</AppBarMenuItem>
+        <AppBarMenuItem href="/browse">Browse</AppBarMenuItem>
+      </AppBarMenu>
+      <AppBarActions>
+        <AppBarButton>Login</AppBarButton>
+      </AppBarActions>
+    </AppBar>
+  )
+}
+
+export const WithMenuWithoutActions: React.FC = () => {
+  return (
+    <AppBar>
+      <AppBarHeading>Example</AppBarHeading>
+      <AppBarMenu>
+        <AppBarMenuItem href="/feed">Feed</AppBarMenuItem>
+        <AppBarMenuItem href="/browse">Browse</AppBarMenuItem>
+      </AppBarMenu>
     </AppBar>
   )
 }

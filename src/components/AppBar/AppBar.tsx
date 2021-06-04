@@ -1,8 +1,10 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { ComponentProps, forwardRef, PropsWithChildren } from 'react'
 import { CSS, styled } from 'stitches.config'
+import { Box } from '../Box'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
+import { Link } from '../Link'
 
 /**
  * The App Bar should the used for information and actions on the current screen.
@@ -15,10 +17,7 @@ export const AppBar = styled('header', {
   paddingLeft: '$4',
   paddingRight: '$4',
   alignItems: 'center',
-})
-
-const AppBarHeadingContainer = styled('div', {
-  flex: '1',
+  position: 'relative',
 })
 
 const HEADING_TAG = 'h1'
@@ -33,18 +32,21 @@ type AppBarHeadingComponent = Polymorphic.ForwardRefComponent<
 
 export const AppBarHeading = forwardRef(
   ({ children, css, ...props }, forwardedRef) => (
-    <AppBarHeadingContainer>
-      <Heading
-        variant={HEADING_TAG}
-        css={{ color: '$brandContrast', ...css } as CSS}
-        size={1}
-        weight="regular"
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </Heading>
-    </AppBarHeadingContainer>
+    <>
+      <div>
+        <Heading
+          variant={HEADING_TAG}
+          css={{ color: '$brandContrast', ...css } as CSS}
+          size={1}
+          weight="regular"
+          {...props}
+          ref={forwardedRef}
+        >
+          {children}
+        </Heading>
+      </div>
+      <Box css={{ flex: 1 }} />
+    </>
   )
 ) as AppBarHeadingComponent
 
@@ -71,3 +73,42 @@ export const AppBarButton = forwardRef<
     {children}
   </Button>
 )) as AppBarButtonComponent
+
+export const AppBarMenu: React.FC = ({ children }) => (
+  <Box
+    css={{
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignContent: 'center',
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+    }}
+  >
+    <Box>
+      <Box
+        css={{
+          height: '100%',
+          display: 'flex',
+          gap: '$5',
+        }}
+      >
+        {children}
+      </Box>
+    </Box>
+  </Box>
+)
+
+export const AppBarMenuItem = styled(Link, {
+  color: '$brandContrast',
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
