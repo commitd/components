@@ -12,7 +12,6 @@ const StyledSvg = styled(DEFAULT_TAG, {
   flexShrink: 0,
   userSelect: 'none',
   fill: 'currentColor',
-  stroke: 'currentColor',
   color: 'inherit',
 })
 
@@ -22,6 +21,8 @@ type SvgOwnProps = SvgCSSProp &
   SvgVariants & {
     /** Add a title to the svg */
     title?: string
+    /** Add the given svg path  */
+    path?: string
   }
 
 type SvgComponent = Polymorphic.ForwardRefComponent<
@@ -32,7 +33,7 @@ type SvgComponent = Polymorphic.ForwardRefComponent<
 /**
  * Svg is the base component for wrapping svg icon paths.
  */
-export const Svg = forwardRef(({ title, children, ...props }, ref) => (
+export const Svg = forwardRef(({ title, path, children, ...props }, ref) => (
   <StyledSvg
     focusable="false"
     width="24"
@@ -44,6 +45,7 @@ export const Svg = forwardRef(({ title, children, ...props }, ref) => (
     {...props}
   >
     {title ? <title>{title}</title> : null}
+    {path ? <path d={path} /> : null}
     {children}
   </StyledSvg>
 )) as SvgComponent
