@@ -1,4 +1,7 @@
+export * from './ConditionalWrapper'
+
 import { CSS } from 'stitches.config'
+
 
 const keys = ['yellow', 'grey', 'blue', 'green', 'red', 'orange']
 type Depth =

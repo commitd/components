@@ -6,6 +6,8 @@ import React, {
 } from 'react'
 import { styled } from 'stitches.config'
 import { Check } from '../Icons'
+import { Label } from '../Label'
+import { ConditionalWrapper } from '../../utils'
 
 const StyledRadio = styled('div', {
   // Reset
@@ -90,13 +92,6 @@ const StyledItem = styled(Item, {
   fontSize: '$0',
   cursor: 'pointer',
   backgroundColor: 'transparent',
-
-  '&[data-orientation=vertical]': {
-    '& ~ &': { marginTop: '$3' },
-  },
-  '&:not([data-orientation=vertical])': {
-    '& ~ &': { marginLeft: '$3' },
-  },
 
   '&:hover': {
     [`& ${StyledRadio}`]: {
@@ -185,18 +180,49 @@ export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
   RadioProps
 >(({ children, label, ...props }, forwardedRef) => {
   return (
-    <StyledItem {...props} ref={forwardedRef}>
-      <StyledRadio>
-        <StyledIndicator>
-          <Check />
-        </StyledIndicator>
-      </StyledRadio>
-      {label && <span>{label}</span>}
-      {children}
-    </StyledItem>
+    <ConditionalWrapper
+      condition={label}
+      wrapper={(children) => (
+        <Label variant="wrapping">
+          {children}
+          {label}
+        </Label>
+      )}
+    >
+      <StyledItem {...props} ref={forwardedRef}>
+        <StyledRadio>
+          <StyledIndicator>
+            <Check />
+          </StyledIndicator>
+        </StyledRadio>
+        {children}
+      </StyledItem>
+    </ConditionalWrapper>
   )
 }) as ForwardRefExoticComponent<RadioProps>
 Radio.displayName = 'Radio'
+
+// This should be all that is required but until next release of Radio group we add a fix to map the event to the value below
+const TempRadioGroup: React.FC<ComponentProps<typeof Root>> = styled(Root, {
+  display: 'flex',
+  '&[data-orientation=vertical]': {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    '& > *': { marginTop: '$3' },
+    ':first-child,& button:first-of-type': { marginTop: 0 },
+  },
+  '&:not([data-orientation=vertical])': {
+    '& > *': { marginLeft: '$3' },
+    ':first-child,& button:first-of-type': { marginLeft: 0 },
+  },
+}) as React.FC<ComponentProps<typeof Root>>
+
+type FixedRadioGroupProps = Omit<
+  ComponentProps<typeof Root>,
+  'onValueChange'
+> & {
+  onValueChange?: (value: string) => void
+}
 
 /**
  * Radios can be used to choose between a set of more than two options.
@@ -206,11 +232,13 @@ Radio.displayName = 'Radio'
  *
  * Based on [Radix Radio Group](https://radix-ui.com/primitives/docs/components/radio-group).
  */
-export const RadioGroup: React.FC<ComponentProps<typeof Root>> = styled(Root, {
-  display: 'flex',
-  '&[data-orientation=vertical]': {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-}) as React.FC<ComponentProps<typeof Root>>
+export const RadioGroup: ForwardRefExoticComponent<FixedRadioGroupProps> = forwardRef(
+  ({ onValueChange, ...props }, forwardedRef) => (
+    <TempRadioGroup
+      {...props}
+      onValueChange={(e) => onValueChange && onValueChange(e.target.value)}
+      ref={forwardedRef}
+    />
+  )
+)
 RadioGroup.displayName = 'RadioGroup'
