@@ -1,6 +1,8 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
 import { CSS, StitchesVariants, styled } from 'stitches.config'
+import { Label } from '../Label'
+import { useLabelContext } from '@radix-ui/react-label'
 
 const DEFAULT_TAG = 'input'
 
@@ -117,15 +119,33 @@ const StyledInput = styled(DEFAULT_TAG, {
 
 type InputCSSProp = { css?: CSS }
 type InputVariants = StitchesVariants<typeof StyledInput>
-type InputOwnProps = InputCSSProp & InputVariants
+type InputOwnProps = InputCSSProp &
+  InputVariants & {
+    /** Add a label to the Input */
+    label?: string
+  }
 
 type InputComponent = Polymorphic.ForwardRefComponent<
   typeof DEFAULT_TAG,
   InputOwnProps
 >
 
-export const Input = forwardRef((props, forwardedRef) => {
-  return <StyledInput {...props} ref={forwardedRef} />
+export const Input = forwardRef(({ label, id, ...props }, forwardedRef) => {
+  const labelId = useLabelContext()
+  return (
+    <>
+      {label && (
+        <Label variant="above" htmlFor={id || labelId}>
+          {label}
+        </Label>
+      )}
+      <StyledInput
+        aria-labelledby={labelId}
+        {...props}
+        id={id || label}
+        ref={forwardedRef}
+      />
+    </>
+  )
 }) as InputComponent
-
 Input.toString = () => `.${StyledInput.className}`
