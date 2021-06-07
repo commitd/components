@@ -168,6 +168,7 @@
     "@radix-ui/react-label": "^0.0.13",
     "@radix-ui/react-polymorphic": "^0.0.11",
     "@radix-ui/react-radio-group": "^0.0.16",
+    "@radix-ui/react-separator": "^0.0.13",
     "@radix-ui/react-slider": "^0.0.13",
     "@radix-ui/react-switch": "^0.0.13",
     "@radix-ui/react-tooltip": "^0.0.18",

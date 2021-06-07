@@ -9,6 +9,7 @@ export * from './Card'
 export * from './Checkbox'
 export * from './Container'
 export * from './Dialog'
+export * from './Divider'
 export * from './Flex'
 export * from './Grid'
 export * from './Heading'
@@ -29,5 +30,3 @@ export * from './Switch'
 export * from './Text'
 export * from './ThemeProvider'
 export * from './Tooltip'
-
-
