@@ -96,8 +96,8 @@ const StyledSwitch = styled(Root, {
   variants: {
     variant: {
       primary: {
-        $$background: '$colors$brand6',
-        $$backgroundDisabled: '$colors$brand4',
+        $$background: '$colors$brandYellow6',
+        $$backgroundDisabled: '$colors$brandYellow4',
         $$thumbBorder: '$colors$primary',
         $$thumbBorderDisabled: '$colors$primaryLowlight',
         $$thumbBackgroundChecked: '$$thumbBorder',

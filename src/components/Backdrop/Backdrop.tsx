@@ -8,11 +8,12 @@ const StyledOverlay = styled(Overlay, {
   bottom: 0,
   top: 0,
   left: 0,
-  backgroundColor: '$transparency1',
+  backgroundColor: '$transparency3',
 })
 
 const StyledContent = styled(Content, {
   position: 'fixed',
+  isolation: 'isolate',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',

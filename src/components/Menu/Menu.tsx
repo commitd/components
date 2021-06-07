@@ -30,6 +30,7 @@ const itemStyles = {
   backgroundColor: 'transparent',
   border: 'none',
   transition: 'background 0.5s',
+  color: '$text',
   '&:focus': {
     background: '$grey4',
     cursor: 'pointer',
@@ -59,14 +60,15 @@ const checkboxItemStyles = {
 const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
 
-export const MenuItem = styled(Item, itemStyles)
+type MenuItemCSSProp = { css?: CSS }
+type MenuItemOwnProps = React.ComponentProps<typeof Item> & MenuItemCSSProp
 
-/**
- * Menu component
- *
- * Displays a menu to the user - usually triggered by clicking a button.
- */
-export const Menu = styled(Root, {})
+type MenuItemComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Item>,
+  MenuItemOwnProps
+>
+
+export const MenuItem = styled(Item, itemStyles) as MenuItemComponent
 
 type MenuContentCSSProp = { css?: CSS }
 type MenuContentOwnProps = Polymorphic.OwnProps<typeof Content> &
@@ -129,8 +131,9 @@ export const MenuItemSeparator = styled(Separator, {
 
 export const MenuLabel = styled(Label, {
   color: '$grey10',
-  fontSize: '$0',
+  fontSize: '$-1',
   padding: '$2 $3',
+  paddingBottom: '$1',
   cursor: 'default',
 })
 
@@ -149,3 +152,15 @@ export const MenuRadioItem: MenuItemRadioComponent = forwardRef(
     </StyledRadioItem>
   )
 )
+
+/**
+ * Menu component
+ *
+ * Displays a menu to the user - usually triggered by clicking a button.
+ *
+ * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a `MenuTrigger`.
+ * The content should be wrapped in a `MenuContent` and should be made up of the other `MenuXxxx` components.
+ *
+ * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/dropdown-menu).
+ */
+export const Menu = Root

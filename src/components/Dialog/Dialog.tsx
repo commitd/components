@@ -30,7 +30,7 @@ const StyledOverlay = styled(Overlay, {
   bottom: 0,
   top: 0,
   left: 0,
-  backgroundColor: '$transparency1',
+  backgroundColor: '$transparency3',
   '&[data-state=open]': {
     animation: `${fadeIn} 200ms ease-out`,
   },
@@ -51,6 +51,7 @@ const StyledContent = styled(Content, {
   marginTop: '-5vh',
   borderRadius: '$default',
   backgroundColor: '$paper',
+  color: '$text',
 
   display: 'flex',
   flexDirection: 'column',
@@ -82,14 +83,14 @@ type DialogProps = React.ComponentProps<typeof Root> & {
  * The Dialog component can be used to isolate the user from the main window by overlaying
  * another window that requires the users attention.
  *
- * It's appearance is controlled with the `open` and `onOpenChange` props or by providing a
+ * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a
  * `DialogTrigger` and (optionally) a `DialogClose` inside the main `Dialog`.
  * The content should be wrapped in a `DialogContent`.
  *
  * This can be the basis for custom dialogs required in your application.
  * Some common use cases are covered with other Components.
  *
- * Base on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
+ * Based on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
  */
 export const Dialog: FC<DialogProps> = ({ children, overlayCss, ...props }) => {
   return (

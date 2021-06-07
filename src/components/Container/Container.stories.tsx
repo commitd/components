@@ -14,7 +14,7 @@ export const Nested: React.FC = () => (
   <Container
     maxWidth="xl"
     css={{
-      backgroundColor: '$red500',
+      backgroundColor: '$red5',
       py: '$3',
       px: '$0',
     }}
@@ -22,7 +22,7 @@ export const Nested: React.FC = () => (
     <Container
       maxWidth="lg"
       css={{
-        backgroundColor: '$green500',
+        backgroundColor: '$green5',
         py: '$3',
         px: '$0',
       }}
@@ -30,7 +30,7 @@ export const Nested: React.FC = () => (
       <Container
         maxWidth="md"
         css={{
-          backgroundColor: '$blue500',
+          backgroundColor: '$blue5',
           py: '$3',
           px: '$0',
         }}
@@ -38,7 +38,7 @@ export const Nested: React.FC = () => (
         <Container
           maxWidth="sm"
           css={{
-            backgroundColor: '$orange500',
+            backgroundColor: '$orange5',
             py: '$3',
             textAlign: 'center',
           }}
@@ -55,7 +55,7 @@ export const Responsive: React.FC = () => (
   <Container
     maxWidth={{ '@initial': 'sm', '@md': 'md', '@lg': 'lg', '@xl': 'xl' }}
     css={{
-      backgroundColor: '$greyBg',
+      backgroundColor: '$grey4',
       py: '$3',
       textAlign: 'center',
     }}

@@ -1,13 +1,13 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
+import { renderDark, renderLight } from 'test-utils'
 import { Default } from './Menu.stories'
 
-it('renders light without error', () => {
+it('renders light (closed) without error', () => {
   const { asFragment } = renderLight(<Default />)
   expect(asFragment()).toBeDefined()
 })
 
-it('renders dark without error', () => {
+it('renders dark (closed) without error', () => {
   const { asFragment } = renderDark(<Default />)
   expect(asFragment()).toBeDefined()
 })
