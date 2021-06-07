@@ -75,6 +75,14 @@ export const Indeterminate = () => {
   )
 }
 
+/**
+ * The check box has a `label` prop to support adding a standard label.
+ * If a custom label position or style is required use the `Label` component separately.
+ */
+export const WithLabel = () => (
+  <Checkbox onCheckedChange={action('checked')} label="Checkbox" />
+)
+
 export const All = () => (
   <Variants
     component={Checkbox}

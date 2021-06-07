@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react'
 import React from 'react'
 import { Input } from '.'
-import { Grid } from '../'
+import { Grid, Column, Label } from '../'
 
 export default {
   title: 'Components/Input',
@@ -9,6 +9,48 @@ export default {
 } as Meta
 
 export const Default: React.FC = () => <Input id="default" />
+
+/**
+ * Use the label props to add a standard label, automatically adds aria.
+ */
+export const WithLabel: React.FC = () => (
+  <Column>
+    <Input id="firstname" label="First name" />
+    <Input id="familyname" label="Family name" />
+  </Column>
+)
+
+/**
+ * If you want a single inline label you can wrap an input in a `Label` component and it will auto assign the
+ * `htmlFor` and `id` props.
+ */
+export const InlineLabel: React.FC = () => (
+  <Label variant="inline">
+    Email address
+    <Input type="email" />
+  </Label>
+)
+
+/**
+ * If you need to align multiple labels then better to layout yourself to control the width and apply the appropriate
+ * `htmlFor` and `id` props.
+ */
+export const MultipleInlineLabels: React.FC = () => (
+  <Grid css={{ gridTemplateColumns: '150px 1fr', gap: '$3' }}>
+    <Label variant="inline" htmlFor="mll-firstname">
+      First name
+    </Label>
+    <Input id="mll-firstname" />
+    <Label variant="inline" htmlFor="mll-familyname">
+      Family name
+    </Label>
+    <Input id="mll-familyname" />
+    <Label variant="inline" htmlFor="mll-email">
+      Email address
+    </Label>
+    <Input id="email" type="mll-email" />
+  </Grid>
+)
 
 export const States = () => (
   <Grid
