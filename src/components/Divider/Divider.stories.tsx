@@ -2,7 +2,6 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Divider } from '.'
 import { Text, Column, Row, Monospace } from '../'
-import { Monospace } from '../../../dist/committed-components.cjs.development'
 
 export default {
   title: 'Components/Divider',
