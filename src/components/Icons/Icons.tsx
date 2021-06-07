@@ -1,7 +1,12 @@
 import React, { FC, ComponentProps } from 'react'
 import { CSS } from 'stitches.config'
 import { Svg } from '../Svg'
-import { mdiChevronDown, mdiClose } from '@mdi/js'
+import {
+  mdiChevronDown,
+  mdiChevronLeft,
+  mdiChevronRight,
+  mdiClose,
+} from '@mdi/js'
 
 type IconType = FC<ComponentProps<typeof Svg>>
 
@@ -14,6 +19,14 @@ export const Check: IconType = (props) => (
 
 export const ChevronDown: IconType = (props) => (
   <Svg path={mdiChevronDown} {...props} />
+)
+
+export const ChevronLeft: IconType = (props) => (
+  <Svg path={mdiChevronLeft} {...props} />
+)
+
+export const ChevronRight: IconType = (props) => (
+  <Svg path={mdiChevronRight} {...props} />
 )
 
 export const Close: IconType = (props) => <Svg path={mdiClose} {...props} />

@@ -1,88 +1,95 @@
-import * as React from 'react'
-import usePagination from './usePagination'
-import { PaginationItem, UsePaginationProps, UsePaginationItem } from '.'
-import { styled } from 'stitches.config'
+import * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { forwardRef } from 'react'
+import { CSS, StitchesVariants, styled } from 'stitches.config'
+import { Box } from '../Box'
+import { Button } from '../Button'
+import { ChevronLeft, ChevronRight } from '../Icons'
 
-export interface PaginationRenderItemParams extends UsePaginationItem {}
-
-export interface PaginationProps extends UsePaginationProps {
-  /**
-   * Accepts a function which returns a string value that provides a user-friendly name for the current page.
-   *
-   * For localization purposes, you can use the provided [translations](/guides/localization/).
-   *
-   * @param {string} type The link or button type to format ('page' | 'first' | 'last' | 'next' | 'previous'). Defaults to 'page'.
-   * @param {number} page The page number to format.
-   * @param {bool} selected If true, the current page is selected.
-   * @returns {string}
-   */
-  getItemAriaLabel?: (
-    type: 'page' | 'first' | 'last' | 'next' | 'previous',
-    page: number,
-    selected: boolean
-  ) => string
-  /**
-   * Render the item.
-   *
-   * @param {PaginationRenderItemParams} params The props to spread on a PaginationItem.
-   * @returns {ReactNode}
-   */
-  renderItem?: (params: PaginationRenderItemParams) => React.ReactNode
+const commonButton: CSS = {
+  width: '1em',
 }
 
-const StyledList = styled('ul', {
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  padding: 0,
-  margin: 0,
-  listStyle: 'none',
-})
+export interface PaginationProps {
+  /*
+    The total number of pages
+  */
+  count: number
+  /*
+    Callback fired when the page is changed
+  */
+  onChange?: (event: React.MouseEvent, page: number) => void
+  /*
+    The current page
+  */
+  page?: number
+}
 
-function defaultGetAriaLabel(type: string, page: number, selected: boolean) {
-  if (type === 'page') {
-    return `${selected ? '' : 'Go to '}page ${page}`
+export const Pagination: React.FC<PaginationProps> = ({
+  count,
+  onChange = () => {},
+  page = 1,
+}) => {
+  const items: React.ReactElement[] = []
+  for (let currentPage: number = 1; currentPage < count + 1; currentPage++) {
+    if (currentPage === page) {
+      items.push(<SelectedPage page={currentPage} />)
+    } else {
+      items.push(
+        <PageButton
+          page={currentPage}
+          onClick={(e) => onChange(e, currentPage)}
+        />
+      )
+    }
   }
-  return `Go to ${type} page`
-}
-
-/**
- * Loosely based on [Material UI Pagination](https://material-ui.com/components/pagination/)
- */
-export const Pagination = React.forwardRef(function Pagination(
-  props: PaginationProps,
-  ref
-) {
-  const {
-    boundaryCount,
-    count,
-    defaultPage,
-    disabled,
-    getItemAriaLabel = defaultGetAriaLabel,
-    hideNextButton,
-    hidePrevButton,
-    onChange,
-    page,
-    renderItem = (item) => <PaginationItem {...item} />,
-    showFirstButton,
-    showLastButton,
-    siblingCount,
-    ...other
-  } = props
-
-  const { items } = usePagination({ ...props, componentName: 'Pagination' })
 
   return (
-    <nav aria-label="pagination navigation" {...other}>
-      <StyledList>
-        {items.map((item, index) => (
-          <li key={index}>
-            {renderItem({
-              ...item,
-            })}
-          </li>
-        ))}
-      </StyledList>
-    </nav>
+    <Box css={{ display: 'flex', justifyContent: 'flex-start', gap: '$3' }}>
+      <ControlButton onClick={(e) => onChange(e, Math.max(0, page - 1))}>
+        <ChevronLeft />
+      </ControlButton>
+      {items}
+      <ControlButton onClick={(e) => onChange(e, Math.min(count, page + 1))}>
+        <ChevronRight />
+      </ControlButton>
+    </Box>
   )
-})
+}
+
+const PageButton: React.FC<
+  {
+    page: number
+  } & React.ComponentProps<typeof Button>
+> = ({ page, ...props }) => {
+  return (
+    <Button css={{ ...commonButton }} {...props}>
+      {page}
+    </Button>
+  )
+}
+
+const SelectedPage: React.FC<{ page: number }> = ({ page }) => {
+  return (
+    <Button
+      variant="primary"
+      css={{
+        ...commonButton,
+        // background: '$primaryActive',
+        border: '2px solid transparent',
+      }}
+    >
+      {page}
+    </Button>
+  )
+}
+
+const ControlButton: React.FC<React.ComponentProps<typeof Button>> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Button css={{ ...commonButton }} {...props}>
+      {children}
+    </Button>
+  )
+}

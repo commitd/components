@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Story, Meta } from '@storybook/react'
-import { Pagination, PaginationItem } from '.'
+import { Pagination } from '.'
 
 export default {
   title: 'Components/Pagination',
   component: Pagination,
-  subcomponents: { PaginationItem },
 } as Meta
 
-const Template: Story = (args) => <Pagination {...args} />
+export const Default: Story = (args) => <Pagination count={10} {...args} />
 
-export const Default = Template.bind({})
-Default.args = { count: 10 }
+const Template: Story = (args) => <Pagination count={10} {...args} />
+export const Primary = Template.bind({})
+Primary.args = {
+  count: 10,
+  page: 1,
+}
+
+export const Controlled: Story = (args) => {
+  const [page, setPage] = useState(1)
+  return <Pagination count={10} page={page} onChange={(_, p) => setPage(p)} />
+}
