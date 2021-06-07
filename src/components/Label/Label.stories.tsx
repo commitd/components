@@ -1,7 +1,7 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Label } from '.'
-import { Input, Checkbox, Radio, Flex, RadioGroup } from '../'
+import { Checkbox, Input } from '../'
 
 export default {
   title: 'Components/Label',

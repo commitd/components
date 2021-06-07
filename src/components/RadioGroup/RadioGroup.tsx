@@ -182,9 +182,9 @@ export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
   return (
     <ConditionalWrapper
       condition={label}
-      wrapper={(children) => (
+      wrapper={(child) => (
         <Label variant="wrapping">
-          {children}
+          {child}
           {label}
         </Label>
       )}

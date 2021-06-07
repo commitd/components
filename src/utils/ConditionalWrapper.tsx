@@ -5,7 +5,7 @@ import React from 'react'
  */
 export const ConditionalWrapper: React.FC<{
   condition: unknown
-  wrapper: (children: React.ReactElement) => React.ReactElement
-  children: React.ReactElement
+  wrapper: (children: React.ReactChildren) => React.ReactElement
+  children: React.ReactChildren
 }> = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children
+  condition ? wrapper(children) : <>{children}</>
