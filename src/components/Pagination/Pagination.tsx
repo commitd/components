@@ -89,7 +89,6 @@ export const Pagination: React.FC<PaginationProps> = ({
                 key={i}
                 page={currentPage}
                 onClick={() => {
-                  console.log('page clicked')
                   handlePageChange(currentPage)
                 }}
               />
