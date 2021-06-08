@@ -171,6 +171,7 @@
     "@radix-ui/react-separator": "^0.0.13",
     "@radix-ui/react-slider": "^0.0.13",
     "@radix-ui/react-switch": "^0.0.13",
+    "@radix-ui/react-tabs": "^0.0.13",
     "@radix-ui/react-tooltip": "^0.0.18",
     "@stitches/react": "^0.1.9"
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StitchesVariants, styled } from 'stitches.config'
+import { StitchesVariants, styled, CSS } from 'stitches.config'
 
 const DEFAULT_TAG = 'button'
 
@@ -16,7 +16,7 @@ const active = {
   transition: 'background 0s',
 }
 
-const StyledButton = styled(DEFAULT_TAG, {
+export const buttonBaseStyle = {
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -67,7 +67,6 @@ const StyledButton = styled(DEFAULT_TAG, {
     $$main: '$$lowlight',
     $$default: '$$lowlight',
   },
-
   variants: {
     variant: {
       brand: {
@@ -137,7 +136,10 @@ const StyledButton = styled(DEFAULT_TAG, {
     destructive: 'false',
     size: 'default',
   },
-})
+}
+
+// @ts-ignore
+const StyledButton = styled(DEFAULT_TAG, buttonBaseStyle)
 
 type ButtonVariants = StitchesVariants<typeof StyledButton>
 type ButtonOwnProps = React.ComponentProps<typeof StyledButton>
