@@ -151,8 +151,8 @@ type IconButtonComponent = Polymorphic.ForwardRefComponent<
  * IconButton can be used to wrap custom `Svg` icons or use the `path` prop to supply a standard mdi icon.
  */
 export const IconButton = forwardRef(
-  ({ title, path, children, ...props }, forwardRef) => (
-    <StyledIconButton {...props} ref={forwardRef}>
+  ({ title, path, children, ...props }, forwardedRef) => (
+    <StyledIconButton {...props} ref={forwardedRef}>
       {path ? <Svg path={path} title={title} /> : children}
     </StyledIconButton>
   )
