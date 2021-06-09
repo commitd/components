@@ -3,17 +3,76 @@ import { StitchesVariants, styled, CSS } from 'stitches.config'
 
 const DEFAULT_TAG = 'button'
 
-const hover = {
+export const hover = {
   background:
     '$$hover radial-gradient(circle, transparent 1%, $$hover 1%) center/15000%',
 }
 
 const focus = hover
 
-const active = {
+export const active = {
   backgroundColor: '$$active',
   backgroundSize: '100%',
   transition: 'background 0s',
+}
+
+export const mainVariants = {
+  brand: {
+    $$active: '$colors$brandActive',
+    $$lowlight: '$colors$brandLowlight',
+    $$hover: '$colors$brandHighlight',
+    backgroundColor: '$colors$brand',
+    color: '$colors$brandContrast',
+  },
+  primary: {
+    $$active: '$colors$primaryActive',
+    $$lowlight: '$colors$primaryLowlight',
+    $$hover: '$$mainHover',
+    backgroundColor: '$$main',
+    color: '$$contrast',
+  },
+  secondary: {
+    borderColor: '$$default',
+    border: 'solid 2px',
+    color: '$$default',
+    $$hover: '$$defaultHover',
+  },
+  tertiary: {
+    color: '$$default',
+    $$hover: '$$defaultHover',
+  },
+}
+
+export const destructiveVariants = {
+  false: {},
+  true: {
+    $$main: '$colors$error',
+    $$mainHover: '$colors$errorHighlight',
+    $$contrast: '$colors$errorContrast',
+    $$active: '$colors$errorActive',
+    $$default: '$colors$error',
+    $$defaultHover: '$colors$errorBackground',
+    $$lowlight: '$colors$errorLowlight',
+  },
+}
+
+export const sizeVariants = {
+  small: {
+    paddingLeft: '$3',
+    paddingRight: '$3',
+    height: '$5',
+    fontSize: '$-1',
+  },
+  default: {
+    paddingLeft: '$4',
+    paddingRight: '$4',
+    height: '$6',
+  },
+  large: {
+    paddingLeft: '$6',
+    paddingRight: '$6',
+    height: '$7',
+  },
 }
 
 export const buttonBaseStyle = {
@@ -67,79 +126,30 @@ export const buttonBaseStyle = {
     $$main: '$$lowlight',
     $$default: '$$lowlight',
   },
-  variants: {
-    variant: {
-      brand: {
-        $$active: '$colors$brandActive',
-        $$lowlight: '$colors$brandLowlight',
-        $$hover: '$colors$brandHighlight',
-        backgroundColor: '$colors$brand',
-        color: '$colors$brandContrast',
-      },
-      primary: {
-        $$active: '$colors$primaryActive',
-        $$lowlight: '$colors$primaryLowlight',
-        $$hover: '$$mainHover',
-        backgroundColor: '$$main',
-        color: '$$contrast',
-      },
-      secondary: {
-        borderColor: '$$default',
-        border: 'solid 2px',
-        color: '$$default',
-        $$hover: '$$defaultHover',
-      },
-      tertiary: {
-        color: '$$default',
-        $$hover: '$$defaultHover',
-      },
-    },
-    destructive: {
-      false: {},
-      true: {
-        $$main: '$colors$error',
-        $$mainHover: '$colors$errorHighlight',
-        $$contrast: '$colors$errorContrast',
-        $$active: '$colors$errorActive',
-        $$default: '$colors$error',
-        $$defaultHover: '$colors$errorBackground',
-        $$lowlight: '$colors$errorLowlight',
-      },
-    },
-    size: {
-      small: {
-        paddingLeft: '$3',
-        paddingRight: '$3',
-        height: '$5',
-        fontSize: '$-1',
-      },
-      default: {
-        paddingLeft: '$4',
-        paddingRight: '$4',
-        height: '$6',
-      },
-      large: {
-        paddingLeft: '$6',
-        paddingRight: '$6',
-        height: '$7',
-      },
-    },
-    force: {
-      hover,
-      focus,
-      active,
-    },
-  },
+}
 
+const buttonVariants = {
+  variant: mainVariants,
+  destructive: destructiveVariants,
+  size: sizeVariants,
+  force: {
+    hover,
+    focus,
+    active,
+  },
+}
+
+const StyledButton = styled(DEFAULT_TAG, {
+  ...buttonBaseStyle,
+  variants: buttonVariants,
   defaultVariants: {
     variant: 'secondary',
     destructive: 'false',
     size: 'default',
   },
-}
-
-// @ts-ignore
-const StyledButton = styled(DEFAULT_TAG, buttonBaseStyle)
+} as Parameters<typeof styled>[1] & {
+  variants: typeof buttonVariants
+})
 
 type ButtonVariants = StitchesVariants<typeof StyledButton>
 type ButtonOwnProps = React.ComponentProps<typeof StyledButton>
