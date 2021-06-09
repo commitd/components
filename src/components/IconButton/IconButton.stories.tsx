@@ -1,3 +1,4 @@
+import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
 import { Meta } from '@storybook/react'
 import React from 'react'
@@ -10,10 +11,15 @@ export default {
 } as Meta
 
 export const Default: React.FC = () => (
+  <IconButton path={mdiThumbUp} onClick={action('click')} aria-label="label" />
+)
+
+export const WithCustomSvg: React.FC = () => (
   <IconButton onClick={action('click')} aria-label="label">
     <Check />
   </IconButton>
 )
+
 export const Variants = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton variant="primary">
@@ -49,38 +55,18 @@ export const Sizes = () => (
 export const States = () => (
   <Column css={{ gap: '$3' }}>
     <Row css={{ gap: '$3' }}>
-      <IconButton variant="primary">
-        <Check />
-      </IconButton>
-      <IconButton variant="primary" force="hover">
-        <Check />
-      </IconButton>
-      <IconButton variant="primary" force="focus">
-        <Check />
-      </IconButton>
-      <IconButton variant="primary" force="active">
-        <Check />
-      </IconButton>
-      <IconButton variant="primary" disabled>
-        <Check />
-      </IconButton>
+      <IconButton path={mdiPencil} variant="primary" />
+      <IconButton path={mdiPencil} variant="primary" force="hover" />
+      <IconButton path={mdiPencil} variant="primary" force="focus" />
+      <IconButton path={mdiPencil} variant="primary" force="active" />
+      <IconButton path={mdiPencil} variant="primary" disabled />
     </Row>
     <Row css={{ gap: '$3' }}>
-      <IconButton variant="secondary">
-        <Check />
-      </IconButton>
-      <IconButton variant="secondary" force="hover">
-        <Check />
-      </IconButton>
-      <IconButton variant="secondary" force="focus">
-        <Check />
-      </IconButton>
-      <IconButton variant="secondary" force="active">
-        <Check />
-      </IconButton>
-      <IconButton variant="secondary" disabled>
-        <Check />
-      </IconButton>
+      <IconButton path={mdiComment} variant="secondary" />
+      <IconButton path={mdiComment} variant="secondary" force="hover" />
+      <IconButton path={mdiComment} variant="secondary" force="focus" />
+      <IconButton path={mdiComment} variant="secondary" force="active" />
+      <IconButton path={mdiComment} variant="secondary" disabled />
     </Row>
     <Row css={{ gap: '$3' }}>
       <IconButton variant="tertiary">
@@ -105,38 +91,48 @@ export const States = () => (
 export const Destructive = () => (
   <Column css={{ gap: '$3' }}>
     <Row css={{ gap: '$3' }}>
-      <IconButton destructive variant="primary">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="primary" force="hover">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="primary" force="focus">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="primary" force="active">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="primary" disabled>
-        <Check />
-      </IconButton>
+      <IconButton path={mdiOpenInNew} destructive variant="primary" />
+      <IconButton
+        path={mdiOpenInNew}
+        destructive
+        variant="primary"
+        force="hover"
+      />
+      <IconButton
+        path={mdiOpenInNew}
+        destructive
+        variant="primary"
+        force="focus"
+      />
+      <IconButton
+        path={mdiOpenInNew}
+        destructive
+        variant="primary"
+        force="active"
+      />
+      <IconButton path={mdiOpenInNew} destructive variant="primary" disabled />
     </Row>
     <Row css={{ gap: '$3' }}>
-      <IconButton destructive variant="secondary">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="secondary" force="hover">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="secondary" force="focus">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="secondary" force="active">
-        <Check />
-      </IconButton>
-      <IconButton destructive variant="secondary" disabled>
-        <Check />
-      </IconButton>
+      <IconButton path={mdiThumbUp} destructive variant="secondary" />
+      <IconButton
+        path={mdiThumbUp}
+        destructive
+        variant="secondary"
+        force="hover"
+      />
+      <IconButton
+        path={mdiThumbUp}
+        destructive
+        variant="secondary"
+        force="focus"
+      />
+      <IconButton
+        path={mdiThumbUp}
+        destructive
+        variant="secondary"
+        force="active"
+      />
+      <IconButton path={mdiThumbUp} destructive variant="secondary" disabled />
     </Row>
     <Row css={{ gap: '$3' }}>
       <IconButton destructive variant="tertiary">
@@ -169,11 +165,11 @@ export const Variations = () => (
     <IconButton variant="secondary">
       <CheckIndeterminate />
     </IconButton>
-    <IconButton variant="primary">
-      <Check />
-    </IconButton>
-    <IconButton css={{ color: '$success' }} variant="tertiary">
-      <Check />
-    </IconButton>
+    <IconButton path={mdiPencil} variant="primary" />
+    <IconButton
+      path={mdiThumbUp}
+      css={{ color: '$success' }}
+      variant="tertiary"
+    />
   </Row>
 )
