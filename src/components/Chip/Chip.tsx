@@ -202,7 +202,7 @@ export const Chip = forwardRef(
       <StyledChip {...props} ref={forwardedRef}>
         {children}
         {onClose && (
-          <IconButton variant="tertiary" onClick={handleClose}>
+          <IconButton aria-label="close" variant="tertiary" onClick={handleClose}>
             <Close />
           </IconButton>
         )}
