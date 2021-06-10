@@ -42,18 +42,3 @@ export const Variants = ({
     </Grid>
   )
 }
-
-// TODO ADD Tooltip eg
-
-{
-  /* 
-  props => {
-  const {
-    m,
-    children,
-    ...display
-  } = props;
-  <Tooltip title={<Monospace>{JSON.stringify(display, null, 2)}</Monospace>}>
-      <Button {...props} />
-  </Tooltip>; */
-}

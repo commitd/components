@@ -111,7 +111,7 @@ export const buttonBaseStyle = {
   cursor: 'pointer',
   backgroundColor: 'transparent',
   border: 'none',
-  width: 'fit-content',
+  width: 'fit-content; width: -moz-fit-content',
 
   // Actions
   transition: 'background 0.5s',
