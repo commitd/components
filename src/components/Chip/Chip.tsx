@@ -47,7 +47,7 @@ const StyledChip = styled(DEFAULT_TAG, {
   borderRadius: '$pill',
   whiteSpace: 'nowrap',
   fontVariantNumeric: 'tabular-nums',
-  width: 'fit-content',
+  width: 'fit-content; width: -moz-fit-content',
   backgroundColor: '$$background',
   color: '$$main',
 
@@ -202,7 +202,11 @@ export const Chip = forwardRef(
       <StyledChip {...props} ref={forwardedRef}>
         {children}
         {onClose && (
-          <IconButton aria-label="close" variant="tertiary" onClick={handleClose}>
+          <IconButton
+            aria-label="close"
+            variant="tertiary"
+            onClick={handleClose}
+          >
             <Close />
           </IconButton>
         )}
