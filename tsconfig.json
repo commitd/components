@@ -6,5 +6,6 @@
       "stitches.config": ["./utils/stitches.config"],
       "test-utils": ["./utils/test-utils"]
     }
-  }
+  },
+  "include": ["src"]
 }
