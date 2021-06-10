@@ -105,10 +105,10 @@ export const Badge = forwardRef(({ children, content, max, ...props }, ref) => (
 Badge.toString = () => `.${StyledBadge.className}`
 
 const DotBadgeContainer = styled(StyledBadge, {
-  height: '8px',
+  height: '$2',
   padding: '0',
-  minWidth: '8px',
-  borderRadius: '4px',
+  minWidth: '$2',
+  borderRadius: '$1',
 })
 
 type DotBadgeCSSProp = { css?: CSS }
