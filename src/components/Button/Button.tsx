@@ -1,5 +1,5 @@
 import React from 'react'
-import { StitchesVariants, styled, CSS } from 'stitches.config'
+import { StitchesVariants, styled } from 'stitches.config'
 
 const DEFAULT_TAG = 'button'
 
@@ -8,7 +8,7 @@ export const hover = {
     '$$hover radial-gradient(circle, transparent 1%, $$hover 1%) center/15000%',
 }
 
-const focus = hover
+export const focus = hover
 
 export const active = {
   backgroundColor: '$$active',
