@@ -1,7 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { Badge, DotBadge } from '.'
-import { Button } from '../Button'
+import { Badge, Status } from '.'
 import { Heading } from '../Heading'
 import { Box } from '../Box'
 import { Check } from '../Icons'
@@ -63,54 +62,54 @@ export const Icons: Story = (args) => (
   </Box>
 )
 
-export const Dotted: Story = (args) => (
+export const StatusBadge: Story = (args) => (
   <Box css={{ display: 'flex', gap: '$6', flexWrap: 'wrap' }}>
-    <DotBadge>
+    <Status>
       <Heading variant="h5">Default</Heading>
-    </DotBadge>
-    <DotBadge variant="primary">
+    </Status>
+    <Status variant="primary">
       <Heading variant="h5">Primary</Heading>
-    </DotBadge>
-    <DotBadge variant="ghost">
+    </Status>
+    <Status variant="ghost">
       <Heading variant="h5">Ghost</Heading>
-    </DotBadge>
-    <DotBadge variant="brand">
+    </Status>
+    <Status variant="brand">
       <Heading variant="h5">Brand</Heading>
-    </DotBadge>
-    <DotBadge variant="error">
+    </Status>
+    <Status variant="error">
       <Heading variant="h5">Error</Heading>
-    </DotBadge>
-    <DotBadge variant="success">
+    </Status>
+    <Status variant="success">
       <Heading variant="h5">Success</Heading>
-    </DotBadge>
-    <DotBadge variant="info">
+    </Status>
+    <Status variant="info">
       <Heading variant="h5">Warning</Heading>
-    </DotBadge>
+    </Status>
   </Box>
 )
 
 export const DottedIcons: Story = (args) => (
   <Box css={{ display: 'flex', gap: '$6', flexWrap: 'wrap' }}>
-    <DotBadge>
+    <Status>
       <Check />
-    </DotBadge>
-    <DotBadge variant="primary">
+    </Status>
+    <Status variant="primary">
       <Check />
-    </DotBadge>
-    <DotBadge variant="ghost">
+    </Status>
+    <Status variant="ghost">
       <Check />
-    </DotBadge>
-    <DotBadge variant="brand">
+    </Status>
+    <Status variant="brand">
       <Check />
-    </DotBadge>
-    <DotBadge variant="error">
+    </Status>
+    <Status variant="error">
       <Check />
-    </DotBadge>
-    <DotBadge variant="success">
+    </Status>
+    <Status variant="success">
       <Check />
-    </DotBadge>
-    <DotBadge variant="info">
+    </Status>
+    <Status variant="info">
       <Check />
-    </DotBadge>
+    </Status>
   </Box>
 )

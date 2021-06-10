@@ -104,29 +104,29 @@ export const Badge = forwardRef(({ children, content, max, ...props }, ref) => (
 )) as BadgeComponent
 Badge.toString = () => `.${StyledBadge.className}`
 
-const DotBadgeContainer = styled(StyledBadge, {
+const StatusContainer = styled(StyledBadge, {
   height: '$2',
   padding: '0',
   minWidth: '$2',
   borderRadius: '$1',
 })
 
-type DotBadgeCSSProp = { css?: CSS }
-type DotBadgeVariants = StitchesVariants<typeof StyledBadge>
-type DotBadgeOwnProps = DotBadgeCSSProp & DotBadgeVariants
+type StatusCSSProp = { css?: CSS }
+type StatusVariants = StitchesVariants<typeof StyledBadge>
+type StatusOwnProps = StatusCSSProp & StatusVariants
 
-type DotBadgeComponent = Polymorphic.ForwardRefComponent<
+type StatusComponent = Polymorphic.ForwardRefComponent<
   typeof DEFAULT_TAG,
-  DotBadgeOwnProps
+  StatusOwnProps
 >
 
 /**
- * DotBadge component
+ * Status component
  */
-export const DotBadge = forwardRef(({ children, ...props }, ref) => (
+export const Status = forwardRef(({ children, ...props }, ref) => (
   <BadgeRoot>
     {children}
-    <DotBadgeContainer ref={ref} {...props} />
+    <StatusContainer ref={ref} {...props} />
   </BadgeRoot>
-)) as DotBadgeComponent
-DotBadge.toString = () => `.${DotBadgeContainer.className}`
+)) as StatusComponent
+Status.toString = () => `.${StatusContainer.className}`
