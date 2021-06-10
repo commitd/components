@@ -8,6 +8,7 @@ import {
   sizeVariants,
   hover,
   active,
+  focus,
 } from '../Button/Button'
 
 export const TabsRoot = styled(Root, {})
@@ -39,6 +40,7 @@ const StyledTab = styled(RadixTab, {
 
   '&[data-state="active"]': {
     boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
+    cursor: 'none',
   },
   variants: tabVariants,
   defaultVariants: {
@@ -50,7 +52,7 @@ const StyledTab = styled(RadixTab, {
 type TabVariants = StitchesVariants<typeof StyledTab>
 type TabOwnProps = Polymorphic.OwnProps<typeof RadixTab> & {
   css?: CSS
-} & TabVariants
+} & TabVariants & { variant?: 'brand' | 'primary' | 'secondary' | 'tertiary' }
 
 type TabComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof RadixTab>,
