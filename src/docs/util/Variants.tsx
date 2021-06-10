@@ -34,9 +34,7 @@ export const Variants = ({
         return (
           <Container key={i}>
             <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}>
-              <span>
-                <Component {...props} />
-              </span>
+              <Component {...props} />
             </Tooltip>
           </Container>
         )

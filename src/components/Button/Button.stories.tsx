@@ -1,8 +1,8 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Button } from './Button'
+import { Grid, Row } from '../'
 import { Variants } from '../../docs/util'
-import { Row, Grid } from '../'
+import { Button } from './Button'
 
 export default {
   title: 'Components/Button',
