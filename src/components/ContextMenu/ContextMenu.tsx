@@ -13,7 +13,7 @@ import {
   ItemIndicator,
   RadioGroup,
 } from '@radix-ui/react-context-menu'
-import { Check } from 'components/Icons'
+import { Check } from '../Icons'
 
 const StyledContent = styled(Content, {
   minWidth: '$10',
