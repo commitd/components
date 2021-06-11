@@ -29,7 +29,7 @@ const StyledBadge = styled(DEFAULT_TAG, {
   fontWeight: 500,
   lineHeight: 1,
   alignContent: 'center',
-  borderRadius: 10,
+  borderRadius: '$pill',
   flexDirection: 'row',
   justifyContent: 'center',
   backgroundColor: '$$background',
@@ -108,7 +108,7 @@ const StatusContainer = styled(StyledBadge, {
   height: '$2',
   padding: '0',
   minWidth: '$2',
-  borderRadius: '$1',
+  borderRadius: '$round',
 })
 
 type StatusCSSProp = { css?: CSS }

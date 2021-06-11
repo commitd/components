@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Badge, Status } from '.'
 import { Heading } from '../Heading'
-import { Box } from '../Box'
+import { Flex } from '../Flex'
 import { Check } from '../Icons'
 
 export default {
@@ -11,7 +11,7 @@ export default {
 } as Meta
 
 export const Default: Story = (args) => (
-  <Box css={{ display: 'flex', gap: '$6', flexWrap: 'wrap' }}>
+  <Flex css={{ gap: '$6', flexWrap: 'wrap' }}>
     <Badge content={'text'}>
       <Heading variant="h5">Default</Heading>
     </Badge>
@@ -33,11 +33,11 @@ export const Default: Story = (args) => (
     <Badge variant="info" content={999999} max={99}>
       <Heading variant="h5">Warning</Heading>
     </Badge>
-  </Box>
+  </Flex>
 )
 
 export const Icons: Story = (args) => (
-  <Box css={{ display: 'flex', gap: '$6', flexWrap: 'wrap' }}>
+  <Flex css={{ gap: '$6', flexWrap: 'wrap' }}>
     <Badge content={'text'}>
       <Check />
     </Badge>
@@ -59,11 +59,11 @@ export const Icons: Story = (args) => (
     <Badge variant="info" content={4}>
       <Check />
     </Badge>
-  </Box>
+  </Flex>
 )
 
 export const StatusBadge: Story = (args) => (
-  <Box css={{ display: 'flex', gap: '$6', flexWrap: 'wrap' }}>
+  <Flex css={{ gap: '$6', flexWrap: 'wrap' }}>
     <Status>
       <Heading variant="h5">Default</Heading>
     </Status>
@@ -85,11 +85,11 @@ export const StatusBadge: Story = (args) => (
     <Status variant="info">
       <Heading variant="h5">Warning</Heading>
     </Status>
-  </Box>
+  </Flex>
 )
 
 export const DottedIcons: Story = (args) => (
-  <Box css={{ display: 'flex', gap: '$6', flexWrap: 'wrap' }}>
+  <Flex css={{ gap: '$6', flexWrap: 'wrap' }}>
     <Status>
       <Check />
     </Status>
@@ -111,5 +111,5 @@ export const DottedIcons: Story = (args) => (
     <Status variant="info">
       <Check />
     </Status>
-  </Box>
+  </Flex>
 )
