@@ -1,18 +1,18 @@
-import React, { forwardRef } from 'react'
-import { StitchesVariants, styled, CSS } from 'stitches.config'
-import * as Polymorphic from '@radix-ui/react-polymorphic'
-
 import {
-  Root,
-  Trigger,
+  CheckboxItem,
   Content,
   Item,
-  Separator,
-  CheckboxItem,
-  RadioItem,
   ItemIndicator,
+  Label,
   RadioGroup,
+  RadioItem,
+  Root,
+  Separator,
+  Trigger,
 } from '@radix-ui/react-context-menu'
+import * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { ComponentProps, FC, forwardRef } from 'react'
+import { CSS, styled } from 'stitches.config'
 import { Check } from '../Icons'
 
 const StyledContent = styled(Content, {
@@ -42,44 +42,51 @@ const itemStyles = {
 
 const StyledItem = styled(Item, itemStyles)
 
-/**
- * The `ContextMenu` displays a pop up menu when right clicking the Trigger.
- */
-export const ContextMenuRoot = Root
-export const ContextMenuTrigger = Trigger
-export const ContextMenuItem = StyledItem
-export const ContextMenuContent = StyledContent
-export const ContextMenuSeparator = styled(Separator, {
+const StyledSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey8',
   margin: '$1',
 })
-export const ContextMenuLabel = styled(Separator, {
+
+const StyledLabel = styled(Label, {
   color: '$grey10',
   fontSize: '$-1',
   padding: '$1 $3',
   cursor: 'default',
 })
 
+/**
+ * The `ContextMenu` displays a pop up menu when right clicking the `ContextMenuTrigger`.
+ */
+export const ContextMenu = Root
+export const ContextMenuTrigger = Trigger
+export const ContextMenuItem: FC<ComponentProps<typeof Item>> = StyledItem
+export const ContextMenuContent: FC<
+  ComponentProps<typeof Content>
+> = StyledContent
+export const ContextMenuSeparator: FC<
+  ComponentProps<typeof Separator>
+> = StyledSeparator
+export const ContextMenuLabel: FC<ComponentProps<typeof Label>> = StyledLabel
+
 const StyledItemIndicator = styled(ItemIndicator, {
   position: 'absolute',
   left: '$2',
 })
 
-export const StyledContextMenuCheckboxItem = styled(CheckboxItem, {
+const StyledContextMenuCheckboxItem = styled(CheckboxItem, {
   ...itemStyles,
   padding: '$1 $2 $1 $5',
 })
 
 type ContextMenuCheckboxItemCSSProp = { css?: CSS }
-type ContextMenuCheckboxItemVariants = StitchesVariants<
-  typeof StyledContextMenuCheckboxItem
->
-type ContextMenuCheckboxItemOwnProps = ContextMenuCheckboxItemCSSProp &
-  ContextMenuCheckboxItemVariants
+type ContextMenuCheckboxItemOwnProps = Polymorphic.OwnProps<
+  typeof CheckboxItem
+> &
+  ContextMenuCheckboxItemCSSProp
 
 type ContextMenuCheckboxItemComponent = Polymorphic.ForwardRefComponent<
-  typeof StyledContextMenuCheckboxItem,
+  Polymorphic.IntrinsicElement<typeof CheckboxItem>,
   ContextMenuCheckboxItemOwnProps
 >
 
@@ -96,20 +103,17 @@ export const ContextMenuCheckboxItem = forwardRef(
   }
 ) as ContextMenuCheckboxItemComponent
 
-export const StyledContextMenuRadioItem = styled(RadioItem, {
+const StyledContextMenuRadioItem = styled(RadioItem, {
   ...itemStyles,
   padding: '$1 $2 $1 $5',
 })
 
 type ContextMenuRadioItemCSSProp = { css?: CSS }
-type ContextMenuRadioItemVariants = StitchesVariants<
-  typeof StyledContextMenuRadioItem
->
-type ContextMenuRadioItemOwnProps = ContextMenuRadioItemCSSProp &
-  ContextMenuRadioItemVariants
+type ContextMenuRadioItemOwnProps = Polymorphic.OwnProps<typeof RadioItem> &
+  ContextMenuRadioItemCSSProp
 
 type ContextMenuRadioItemComponent = Polymorphic.ForwardRefComponent<
-  typeof StyledContextMenuRadioItem,
+  Polymorphic.IntrinsicElement<typeof RadioItem>,
   ContextMenuRadioItemOwnProps
 >
 
