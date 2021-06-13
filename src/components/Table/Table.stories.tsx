@@ -75,7 +75,6 @@ function createStatus() {
 }
 
 function buildUser(): User {
-  const statusChance = faker.datatype.float(1)
   return {
     id: faker.datatype.uuid(),
     avatar: faker.internet.avatar(),
