@@ -1,17 +1,20 @@
 import { Content, Overlay, Root } from '@radix-ui/react-dialog'
 import React, { FC } from 'react'
 import { CSS, styled } from 'stitches.config'
+import { overlayStyles, overlayAnimationStyles } from '../Overlay'
 
 const StyledOverlay = styled(Overlay, {
+  ...overlayStyles,
+  ...overlayAnimationStyles,
   position: 'fixed',
   right: 0,
   bottom: 0,
   top: 0,
   left: 0,
-  backgroundColor: '$transparency3',
 })
 
 const StyledContent = styled(Content, {
+  ...overlayAnimationStyles,
   position: 'fixed',
   isolation: 'isolate',
   top: '50%',

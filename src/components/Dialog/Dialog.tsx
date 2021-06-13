@@ -2,44 +2,24 @@ import { Close, Content, Overlay, Root, Trigger } from '@radix-ui/react-dialog'
 import * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
 import React, { FC, forwardRef } from 'react'
-import { CSS, styled, keyframes } from 'stitches.config'
+import { CSS, styled } from 'stitches.config'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
-
-const fadeIn = keyframes({
-  from: {
-    opacity: 0,
-  },
-  to: {
-    opacity: 1,
-  },
-})
-
-const fadeOut = keyframes({
-  from: {
-    opacity: 1,
-  },
-  to: {
-    opacity: 0,
-  },
-})
+import { overlayStyles, overlayAnimationStyles } from '../Overlay'
+import { paperStyles } from '../Paper'
 
 const StyledOverlay = styled(Overlay, {
+  ...overlayStyles,
+  ...overlayAnimationStyles,
   position: 'fixed',
   right: 0,
   bottom: 0,
   top: 0,
   left: 0,
-  backgroundColor: '$transparency3',
-  '&[data-state=open]': {
-    animation: `${fadeIn} 200ms ease-out`,
-  },
-  '&[data-state=closed]': {
-    animation: `${fadeOut} 200ms ease-out`,
-  },
 })
 
 const StyledContent = styled(Content, {
+  ...paperStyles,
   position: 'fixed',
   top: '50%',
   left: '50%',
@@ -49,9 +29,6 @@ const StyledContent = styled(Content, {
   maxHeight: '85vh',
   padding: 20,
   marginTop: '-5vh',
-  borderRadius: '$default',
-  backgroundColor: '$paper',
-  color: '$text',
 
   display: 'flex',
   flexDirection: 'column',
@@ -60,12 +37,7 @@ const StyledContent = styled(Content, {
     outline: 'none',
   },
 
-  '&[data-state=open]': {
-    animation: `${fadeIn} 200ms ease-out`,
-  },
-  '&[data-state=closed]': {
-    animation: `${fadeOut} 200ms ease-out`,
-  },
+  ...overlayAnimationStyles,
 })
 
 const StyledIconButton = styled(IconButton, {
