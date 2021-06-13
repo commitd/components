@@ -88,7 +88,6 @@ function buildUser(): User {
 }
 
 const users = new Array(5).fill(0).map(buildUser)
-const reactTableUsers = new Array(100).fill(0).map(buildUser)
 
 export const Default: Story<React.ComponentProps<typeof Table>> = (args) => {
   return (
