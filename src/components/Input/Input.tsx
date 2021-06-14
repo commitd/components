@@ -123,6 +123,12 @@ type InputOwnProps = InputCSSProp &
   InputVariants & {
     /** Add a label to the Input */
     label?: string
+    // Should not be required but type is missing.
+    /** Called on input change with full event */
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
+    // Should not be required but type is missing.
+    /** Called on input change with new value */
+    onValueChange?: (value: string) => void
   }
 
 type InputComponent = Polymorphic.ForwardRefComponent<
@@ -130,22 +136,25 @@ type InputComponent = Polymorphic.ForwardRefComponent<
   InputOwnProps
 >
 
-export const Input = forwardRef(({ label, id, ...props }, forwardedRef) => {
-  const labelId = useLabelContext()
-  return (
-    <>
-      {label && (
-        <Label variant="above" htmlFor={id || labelId}>
-          {label}
-        </Label>
-      )}
-      <StyledInput
-        aria-labelledby={labelId}
-        {...props}
-        id={id || label}
-        ref={forwardedRef}
-      />
-    </>
-  )
-}) as InputComponent
+export const Input = forwardRef(
+  ({ label, id, onValueChange, ...props }, forwardedRef) => {
+    const labelId = useLabelContext()
+    return (
+      <>
+        {label && (
+          <Label variant="above" htmlFor={id || labelId}>
+            {label}
+          </Label>
+        )}
+        <StyledInput
+          aria-labelledby={labelId}
+          onChange={(e) => onValueChange && onValueChange(e.target.value)}
+          {...props}
+          id={id || label}
+          ref={forwardedRef}
+        />
+      </>
+    )
+  }
+) as InputComponent
 Input.toString = () => `.${StyledInput.className}`
