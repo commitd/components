@@ -174,6 +174,7 @@ type ConfirmDialogActionsProps = {
   onCancel?: () => void
   confirm: string
   onConfirm: () => void
+  destructive?: boolean
 }
 
 export const ConfirmDialogActions: FC<ConfirmDialogActionsProps> = ({
@@ -181,9 +182,12 @@ export const ConfirmDialogActions: FC<ConfirmDialogActionsProps> = ({
   confirm,
   onCancel,
   onConfirm,
+  destructive,
 }) => (
   <ConfirmDialogActionsWrapper>
     <ConfirmDialogCancel onClick={onCancel}>{cancel}</ConfirmDialogCancel>
-    <ConfirmDialogAction onClick={onConfirm}>{confirm}</ConfirmDialogAction>
+    <ConfirmDialogAction onClick={onConfirm} destructive={destructive}>
+      {confirm}
+    </ConfirmDialogAction>
   </ConfirmDialogActionsWrapper>
 )

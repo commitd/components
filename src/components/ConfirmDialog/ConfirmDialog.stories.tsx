@@ -68,3 +68,24 @@ export const Parts: Story = (args) => (
     </ConfirmDialogContent>
   </ConfirmDialog>
 )
+
+/*
+ * For destructive actions use a destructive button
+ */
+export const Destructive: Story = (args) => (
+  <ConfirmDialog {...args}>
+    <ConfirmDialogTrigger>
+      <Button>Show Dialog</Button>
+    </ConfirmDialogTrigger>
+    <ConfirmDialogContent
+      title="Confirm Delete"
+      description="Are you sure, this can not be undone?"
+    >
+      <ConfirmDialogActions
+        confirm="Delete"
+        onConfirm={action('delete')}
+        destructive
+      />
+    </ConfirmDialogContent>
+  </ConfirmDialog>
+)
