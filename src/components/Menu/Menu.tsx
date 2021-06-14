@@ -107,7 +107,7 @@ export const MenuTrigger = forwardRef(
 
 const StyledCheckboxIndicator = () => (
   <StyledItemIndicator>
-    <Check css={{ height: 16, width: 16 }} />
+    <Check css={{ height: '$4', width: '$4' }} />
   </StyledItemIndicator>
 )
 
