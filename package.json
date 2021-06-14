@@ -163,6 +163,7 @@
     "@mdi/js": "^5.9.55",
     "@radix-ui/colors": "^0.1.7",
     "@radix-ui/react-accordion": "^0.0.15",
+    "@radix-ui/react-alert-dialog": "^0.0.17",
     "@radix-ui/react-avatar": "^0.0.13",
     "@radix-ui/react-checkbox": "^0.0.15",
     "@radix-ui/react-context-menu": "^0.0.19",
