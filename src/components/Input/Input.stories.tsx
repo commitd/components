@@ -11,6 +11,30 @@ export default {
 export const Default: React.FC = () => <Input id="default" />
 
 /**
+ * Supplying a `value` will make the component controlled. The changes can be handled by the standard `onChange`
+ * prop or use the convenience `onValueChange` that passes just the new value.
+ */
+export const Controlled: React.FC = () => {
+  const [name, setName] = React.useState('test')
+  return (
+    <Column>
+      <Input
+        id="name-event"
+        label="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <Input
+        id="name-value"
+        label="Name"
+        value={name}
+        onValueChange={setName}
+      />
+    </Column>
+  )
+}
+
+/**
  * Use the label props to add a standard label, automatically adds aria.
  */
 export const WithLabel: React.FC = () => (
