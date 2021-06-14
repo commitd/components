@@ -5,10 +5,10 @@ import React, { FC, forwardRef } from 'react'
 import { CSS, styled } from 'stitches.config'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
-import { overlayStyles, overlayAnimationStyles } from '../Overlay'
+import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 import { paperStyles } from '../Paper'
 
-const StyledOverlay = styled(Overlay, {
+export const StyledOverlay = styled(Overlay, {
   ...overlayStyles,
   ...overlayAnimationStyles,
   position: 'fixed',
@@ -18,7 +18,7 @@ const StyledOverlay = styled(Overlay, {
   left: 0,
 })
 
-const StyledContent = styled(Content, {
+export const StyledContent = styled(Content, {
   ...paperStyles,
   position: 'fixed',
   top: '50%',
@@ -40,7 +40,8 @@ const StyledContent = styled(Content, {
   ...overlayAnimationStyles,
 })
 
-const StyledIconButton = styled(IconButton, {
+// Could be exported for reuse but currently causes typing issue
+export const StyledIconButton = styled(IconButton, {
   position: 'fixed',
   right: '$1',
   top: '$1',
@@ -89,7 +90,7 @@ export const DialogContent = forwardRef(
   ({ children, defaultClose = true, css, ...props }, forwardedRef) => (
     <StyledContent css={css as CSS} {...props} ref={forwardedRef}>
       {defaultClose && (
-        <Close as={StyledIconButton} variant="tertiary">
+        <Close as={StyledIconButton} aria-label="close" variant="tertiary">
           <Icon title="Close" />
         </Close>
       )}
@@ -102,7 +103,7 @@ type DialogTriggerCSSProp = { css?: CSS }
 type DialogTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> &
   DialogTriggerCSSProp
 
-type DialogTriggerComponent = Polymorphic.ForwardRefComponent<
+export type DialogTriggerComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Trigger>,
   DialogTriggerOwnProps
 >
