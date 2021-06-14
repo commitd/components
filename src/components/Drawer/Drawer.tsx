@@ -2,12 +2,7 @@ import { Close, Content, Root } from '@radix-ui/react-dialog'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
 import { CSS, keyframes, StitchesVariants, styled } from 'stitches.config'
-import {
-  DialogClose,
-  DialogTrigger,
-  DialogTriggerComponent,
-  StyledOverlay,
-} from '../Dialog/Dialog'
+import { DialogClose, DialogTrigger, StyledOverlay } from '../Dialog/Dialog'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
 import { paperStyles } from '../Paper'
@@ -106,8 +101,7 @@ export const DrawerContent = forwardRef(
   )
 ) as DrawerContentComponent
 
-type DrawerTriggerComponent = DialogTriggerComponent
-export const DrawerTrigger = DialogTrigger as DrawerTriggerComponent
+export const DrawerTrigger = DialogTrigger
 export const DrawerClose = DialogClose
 
 type DrawerProps = React.ComponentProps<typeof Root> & {

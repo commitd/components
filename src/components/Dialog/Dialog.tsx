@@ -41,7 +41,7 @@ export const StyledContent = styled(Content, {
 })
 
 // Could be exported for reuse but currently causes typing issue
-export const StyledIconButton = styled(IconButton, {
+const StyledIconButton = styled(IconButton, {
   position: 'fixed',
   right: '$1',
   top: '$1',
