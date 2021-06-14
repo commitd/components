@@ -6,6 +6,7 @@ import React, {
 } from 'react'
 import { keyframes, styled } from 'stitches.config'
 import { ChevronDown } from '../Icons'
+import { paperStyles } from '../Paper'
 
 const slideDown = keyframes({
   from: { height: 0 },
@@ -26,9 +27,9 @@ const Chevron = styled(ChevronDown, {
 })
 
 export const Accordion = styled(Root, {
-  borderTop: '1px solid $grey4',
-  borderRadius: '$default',
+  ...paperStyles,
   boxShadow: '$1',
+  borderTop: '1px solid $grey4',
 })
 
 export const AccordionItem = styled(Item, {
@@ -47,9 +48,10 @@ const AccordionButton = styled(Button, {
   justifyContent: 'space-between',
   color: '$text',
   width: '100%',
+  outline: 'none',
 
   '&:hover': {
-    backgroundColor: '$grey4',
+    backgroundColor: '$grey3',
   },
   '&:focus': {
     backgroundColor: '$grey4',

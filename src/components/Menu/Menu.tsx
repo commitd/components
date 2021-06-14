@@ -15,6 +15,7 @@ import {
 } from '@radix-ui/react-dropdown-menu'
 import { Slot } from '@radix-ui/react-slot'
 import { Check } from '../Icons'
+import { paperStyles } from '../Paper'
 
 const itemStyles = {
   '&::before': {
@@ -31,8 +32,10 @@ const itemStyles = {
   border: 'none',
   transition: 'background 0.5s',
   color: '$text',
+  outline: 'none',
+
   '&:focus': {
-    background: '$grey4',
+    background: '$selection',
     cursor: 'pointer',
   },
   '&[data-disabled]': {
@@ -41,9 +44,8 @@ const itemStyles = {
 }
 
 const StyledContent = styled(Content, {
+  ...paperStyles,
   minWidth: 130,
-  backgroundColor: '$paper',
-  borderRadius: '$default',
   padding: '$1',
   boxShadow: '$2',
 })

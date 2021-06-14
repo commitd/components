@@ -3,52 +3,23 @@ import React, { forwardRef } from 'react'
 import { CSS, StitchesVariants, styled } from 'stitches.config'
 import { IconButton } from '../IconButton'
 import { StyledText } from '../Text/Text'
+import { Paper } from '../Paper'
 
 /**
  * Use Card component to group elements onto a card.
  */
-export const Card = styled('div', {
-  appearance: 'none',
-  border: 'none',
-  boxSizing: 'border-box',
-  font: 'inherit',
-  lineHeight: '$none',
-  outline: 'none',
-  textAlign: 'inherit',
-  verticalAlign: 'middle',
-  WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
-
-  backgroundColor: '$paper',
+export const Card = styled(Paper, {
   textDecoration: 'none',
-  color: '$text',
   flexShrink: 0,
-  borderRadius: '$default',
   position: 'relative',
-
   display: 'flex',
   flexDirection: 'column',
 
   width: 'fit-content',
 
-  '&::before': {
-    boxSizing: 'border-box',
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    borderRadius: '$default',
-    pointerEvents: 'none',
-  },
-
   variants: {
     variant: {
-      default: {
-        '&::before': {
-          boxShadow: '$1',
-        },
-      },
+      default: {},
       outline: {
         '&::before': {
           boxShadow: 'inset 0 0 0 1px $colors$grey4',
@@ -60,7 +31,6 @@ export const Card = styled('div', {
           'transform 200ms cubic-bezier(0.22, 1, 0.36, 1), background-color 25ms linear',
         willChange: 'transform',
         '&::before': {
-          boxShadow: '$1',
           opacity: '0',
           transition: 'all 200ms cubic-bezier(0.22, 1, 0.36, 1)',
         },
@@ -81,10 +51,10 @@ export const Card = styled('div', {
       variant: 'default',
       css: {
         '&:hover': {
-          boxShadow: 'inset 0 0 0 1px $colors$grey4',
+          boxShadow: '$hover',
         },
         '&:focus': {
-          boxShadow: 'inset 0 0 0 1px $colors$grey4, 0 0 0 1px $colors$grey4',
+          boxShadow: '$focus',
         },
       },
     },
