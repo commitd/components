@@ -483,6 +483,14 @@ export const {
   config,
 } = stitches
 
+/**
+ * A utility type for use when extracting common styles.
+ *
+ * The generic parameter should be the `typeof` the variants, this is required to infer the correct props on the component.
+ * This API/Typing may change with stitches versions, so only use when required.
+ */
+export type StyledConfig<T> = Parameters<typeof styled>[1] & { variants: T }
+
 export const lightTheme = theme
 
 export const darkTheme = theme(DARK_THEME, {
