@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
+import { CSS, StitchesVariants, styled, StyledConfig } from 'stitches.config'
 import { Label } from '../Label'
 import { useLabelContext } from '@radix-ui/react-label'
 
@@ -21,7 +21,37 @@ const focus = {
   },
 }
 
-const StyledInput = styled(DEFAULT_TAG, {
+const inputVariants = {
+  // Not for general use
+  force: {
+    hover,
+    focus,
+  },
+  state: {
+    invalid: {
+      backgroundColor: '$errorBackground',
+      $$inactive: '$colors$errorLowlight',
+      $$active: '$colors$error',
+    },
+    valid: {
+      $$inactive: '$colors$successLowlight',
+      $$active: '$colors$success',
+    },
+  },
+  cursor: {
+    default: {
+      cursor: 'default',
+      '&:focus': {
+        cursor: 'text',
+      },
+    },
+    text: {
+      cursor: 'text',
+    },
+  },
+}
+
+export const inputStyles: StyledConfig<typeof inputVariants> = {
   $$inactive: '$colors$grey7',
   $$active: '$colors$primary',
 
@@ -85,37 +115,10 @@ const StyledInput = styled(DEFAULT_TAG, {
       boxShadow: 'inset 0px 0px 0px 1px $colors$grey7',
     },
   },
+  variants: inputVariants,
+}
 
-  variants: {
-    // Not for general use
-    force: {
-      hover,
-      focus,
-    },
-    state: {
-      invalid: {
-        backgroundColor: '$errorBackground',
-        $$inactive: '$colors$errorLowlight',
-        $$active: '$colors$error',
-      },
-      valid: {
-        $$inactive: '$colors$successLowlight',
-        $$active: '$colors$success',
-      },
-    },
-    cursor: {
-      default: {
-        cursor: 'default',
-        '&:focus': {
-          cursor: 'text',
-        },
-      },
-      text: {
-        cursor: 'text',
-      },
-    },
-  },
-})
+const StyledInput = styled(DEFAULT_TAG, inputStyles)
 
 type InputCSSProp = { css?: CSS }
 type InputVariants = StitchesVariants<typeof StyledInput>
