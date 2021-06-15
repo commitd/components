@@ -1,5 +1,5 @@
 import React from 'react'
-import { StitchesVariants, styled } from 'stitches.config'
+import { StitchesVariants, styled, StyledConfig } from 'stitches.config'
 
 const DEFAULT_TAG = 'button'
 
@@ -147,9 +147,7 @@ const StyledButton = styled(DEFAULT_TAG, {
     destructive: 'false',
     size: 'default',
   },
-} as Parameters<typeof styled>[1] & {
-  variants: typeof buttonVariants
-})
+} as StyledConfig<typeof buttonVariants>)
 
 type ButtonVariants = StitchesVariants<typeof StyledButton>
 type ButtonOwnProps = React.ComponentProps<typeof StyledButton>
