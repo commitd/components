@@ -21,6 +21,7 @@ import {
   blackA,
 } from '@radix-ui/colors'
 
+const LIGHT_THEME = 'light-theme'
 const DARK_THEME = 'dark-theme'
 
 const semanticColors = {
@@ -491,8 +492,7 @@ export const {
  */
 export type StyledConfig<T> = Parameters<typeof styled>[1] & { variants: T }
 
-export const lightTheme = theme
-
+export const lightTheme = theme(LIGHT_THEME, {})
 export const darkTheme = theme(DARK_THEME, {
   shadows: {
     1: '0px 2px 1px -1px rgb(0 0 0 / 40%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 30%)',
@@ -635,6 +635,8 @@ export const globalStyles = globalCss({
   body: {
     lineHeight: '1',
     color: '$text',
+    textSizeAdjust: '100%',
+    textRendering: 'optimizeLegibility',
   },
   'ol, ul': {
     listStyle: 'none',
@@ -647,10 +649,6 @@ export const globalStyles = globalCss({
   },
   table: {
     borderSpacing: '0',
-  },
-  '@global': {
-    textSizeAdjust: '100%',
-    textRendering: 'optimizeLegibility',
   },
   html: {
     overflowX: 'hidden',
