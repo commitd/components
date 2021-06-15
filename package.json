@@ -1,5 +1,5 @@
 {
-  "version": "5.0.0-beta.3",
+  "version": "5.0.0-beta.4",
   "name": "@committed/components",
   "description": "Committed Component Library",
   "author": "Committed",
@@ -93,6 +93,9 @@
   },
   "jest": {
     "preset": "rollpkg",
+    "setupFiles": [
+      "./jest.patch-cssom.js"
+    ],
     "snapshotSerializers": [
       "jest-stitches"
     ],
@@ -177,6 +180,6 @@
     "@radix-ui/react-switch": "^0.0.13",
     "@radix-ui/react-tabs": "^0.0.13",
     "@radix-ui/react-tooltip": "^0.0.18",
-    "@stitches/react": "^0.1.9"
+    "@stitches/react": "^0.2.0"
   }
 }

@@ -38,7 +38,7 @@ export const globalTypes = {
     name: 'Portalled',
     description:
       'Switch control the use of react portals for overlay components e.g Tooltip',
-    defaultValue: 'false',
+    defaultValue: 'true',
     toolbar: {
       icon: 'circlehollow',
       items: [
