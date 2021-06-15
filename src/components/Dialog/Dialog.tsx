@@ -30,6 +30,8 @@ export const StyledContent = styled(Content, {
   padding: 20,
   marginTop: '-5vh',
 
+  boxShadow: '$2',
+
   display: 'flex',
   flexDirection: 'column',
 
