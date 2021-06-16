@@ -86,6 +86,7 @@ export const AppBarMenu: React.FC = ({ children }) => (
       top: 0,
       right: 0,
       bottom: 0,
+      pointerEvents: 'none',
     }}
   >
     <Box
@@ -93,6 +94,7 @@ export const AppBarMenu: React.FC = ({ children }) => (
         height: '100%',
         display: 'flex',
         gap: '$5',
+        pointerEvents: 'auto',
       }}
     >
       {children}
