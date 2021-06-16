@@ -1,9 +1,10 @@
+import { useLabelContext } from '@radix-ui/react-label'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
-import { Label } from '../Label'
-import { useLabelContext } from '@radix-ui/react-label'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { styled } from 'stitches.config'
 import { inputStyles } from '../Input/Input'
+import { Label } from '../Label'
 
 const DEFAULT_TAG = 'textarea'
 
@@ -13,9 +14,8 @@ const StyledTextArea = styled(DEFAULT_TAG, {
   height: '$8',
 })
 
-type TextAreaCSSProp = { css?: CSS }
 type TextAreaVariants = StitchesVariants<typeof StyledTextArea>
-type TextAreaOwnProps = TextAreaCSSProp &
+type TextAreaOwnProps = CSSProps &
   TextAreaVariants & {
     /** Add a label to the TextArea */
     label?: string

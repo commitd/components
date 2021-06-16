@@ -1,35 +1,42 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '.'
+import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from '.'
 
 export default {
   title: 'Components/Accordion',
   component: Accordion,
-  subcomponents: { AccordionItem, AccordionHeader, AccordionPanel },
+  subcomponents: { AccordionItem, AccordionHeader, AccordionContent },
+  argTypes: {
+    type: {
+      defaultValue: 'single',
+    },
+  },
 } as Meta
 
-export const Default: React.FC = () => {
+export const Default: Story<React.ComponentProps<typeof Accordion>> = ({
+  ...args
+}) => {
   return (
-    <Accordion type="single">
+    <Accordion {...args}>
       <AccordionItem value="item-1">
         <AccordionHeader>Item 1</AccordionHeader>
-        <AccordionPanel>
+        <AccordionContent>
           Here goes the content for the accordion item 1.
-        </AccordionPanel>
+        </AccordionContent>
       </AccordionItem>
 
       <AccordionItem value="item-2">
         <AccordionHeader>Item 2</AccordionHeader>
-        <AccordionPanel>
+        <AccordionContent>
           Here goes the content for the accordion item 2.
-        </AccordionPanel>
+        </AccordionContent>
       </AccordionItem>
 
       <AccordionItem value="item-3">
         <AccordionHeader>Item 3</AccordionHeader>
-        <AccordionPanel>
+        <AccordionContent>
           Here goes the content for the accordion item 3.
-        </AccordionPanel>
+        </AccordionContent>
       </AccordionItem>
     </Accordion>
   )

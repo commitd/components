@@ -1,5 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { ComponentProps, forwardRef, PropsWithChildren } from 'react'
+import type { CSSProps } from 'stitches.config'
 import { CSS, styled } from 'stitches.config'
 import { Box } from '../Box'
 import { Button } from '../Button'
@@ -21,9 +22,8 @@ export const AppBar = styled('header', {
 })
 
 const HEADING_TAG = 'h1'
-type AppBarHeadingCSSProp = { css?: CSS }
-type AppBarHeadingOwnProps = AppBarHeadingCSSProp &
-  ComponentProps<typeof Heading>
+
+type AppBarHeadingOwnProps = CSSProps & ComponentProps<typeof Heading>
 
 type AppBarHeadingComponent = Polymorphic.ForwardRefComponent<
   typeof HEADING_TAG,
@@ -57,9 +57,9 @@ export const AppBarActions = styled('div', {
 })
 
 const BUTTON_TAG = 'button'
-type AppBarButtonCSSProp = { css?: CSS }
+
 type AppBarButtonVariants = ComponentProps<typeof Button>
-type AppBarButtonOwnProps = AppBarButtonCSSProp & AppBarButtonVariants
+type AppBarButtonOwnProps = CSSProps & AppBarButtonVariants
 
 type AppBarButtonComponent = Polymorphic.ForwardRefComponent<
   typeof BUTTON_TAG,

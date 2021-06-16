@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Grid } from '.'
 import { Box, Row } from '../'
-import { CSS } from 'stitches.config'
+import type { CSS } from 'stitches.config'
 
 export default {
   title: 'Components/Grid',

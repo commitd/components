@@ -1,11 +1,11 @@
+import { Meta } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { TabsRoot, TabsList, Tab, TabPanel } from '.'
+import { Tab, TabContent, TabsList, TabsRoot } from '.'
 
 export default {
   title: 'Components/Tabs',
   component: TabsRoot,
-  subcomponents: { TabsList, Tab, TabPanel },
+  subcomponents: { TabsList, Tab, TabContent },
 } as Meta
 
 export const Default: React.FC = () => (
@@ -15,9 +15,9 @@ export const Default: React.FC = () => (
       <Tab value="tab2">Two</Tab>
       <Tab value="tab3">Three</Tab>
     </TabsList>
-    <TabPanel value="tab1">Tab one content</TabPanel>
-    <TabPanel value="tab2">Tab two content</TabPanel>
-    <TabPanel value="tab3">Tab three content</TabPanel>
+    <TabContent value="tab1">Tab one content</TabContent>
+    <TabContent value="tab2">Tab two content</TabContent>
+    <TabContent value="tab3">Tab three content</TabContent>
   </TabsRoot>
 )
 
@@ -34,9 +34,9 @@ export const Primary: React.FC = () => (
         Three
       </Tab>
     </TabsList>
-    <TabPanel value="tab1">Tab one content</TabPanel>
-    <TabPanel value="tab2">Tab two content</TabPanel>
-    <TabPanel value="tab3">Tab three content</TabPanel>
+    <TabContent value="tab1">Tab one content</TabContent>
+    <TabContent value="tab2">Tab two content</TabContent>
+    <TabContent value="tab3">Tab three content</TabContent>
   </TabsRoot>
 )
 
@@ -53,9 +53,9 @@ export const Secondary: React.FC = () => (
         Three
       </Tab>
     </TabsList>
-    <TabPanel value="tab1">Tab one content</TabPanel>
-    <TabPanel value="tab2">Tab two content</TabPanel>
-    <TabPanel value="tab3">Tab three content</TabPanel>
+    <TabContent value="tab1">Tab one content</TabContent>
+    <TabContent value="tab2">Tab two content</TabContent>
+    <TabContent value="tab3">Tab three content</TabContent>
   </TabsRoot>
 )
 
@@ -72,8 +72,8 @@ export const Tertiary: React.FC = () => (
         Three
       </Tab>
     </TabsList>
-    <TabPanel value="tab1">Tab one content</TabPanel>
-    <TabPanel value="tab2">Tab two content</TabPanel>
-    <TabPanel value="tab3">Tab three content</TabPanel>
+    <TabContent value="tab1">Tab one content</TabContent>
+    <TabContent value="tab2">Tab two content</TabContent>
+    <TabContent value="tab3">Tab three content</TabContent>
   </TabsRoot>
 )

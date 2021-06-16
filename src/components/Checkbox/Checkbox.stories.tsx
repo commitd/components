@@ -1,15 +1,14 @@
-import React, { useState, ChangeEventHandler } from 'react'
-import { Story, Meta } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { Checkbox } from '.'
-import { Variants } from '../../docs/util'
+import { Meta } from '@storybook/react'
+import React, { useState } from 'react'
+import { Checkbox, CheckedState } from '.'
 import { Flex } from '../'
+import { Variants } from '../../docs/util'
 
 export default {
   title: 'Components/Checkbox',
   component: Checkbox,
 } as Meta
-const click = action('clicked')
 
 export const Default = () => <Checkbox onCheckedChange={action('checked')} />
 
@@ -17,19 +16,17 @@ export const Default = () => <Checkbox onCheckedChange={action('checked')} />
  * A primary version for if the check is the main action.
  * (This probably doesn't happen very often.)
  *
- *  Example with state - __Note__ the use of `onCheckedChange` to get the change notification from all triggering actions.
+ * Example with state - __Note__ the use of `onCheckedChange` to get the change notification from all triggering actions.
+ * You can import the `CheckedState` to get the correct typing.
  */
 export const Primary = () => {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState<CheckedState>(false)
   return (
     <Checkbox
       css={{ m: '$3' }}
       checked={checked}
       variant="primary"
-      onCheckedChange={(event) => {
-        click(event)
-        setChecked(!checked)
-      }}
+      onCheckedChange={setChecked}
     />
   )
 }
@@ -48,12 +45,9 @@ export const Destructive = () => {
  * This can only be used in a controlled behaviour.
  */
 export const Indeterminate = () => {
-  const [checked, setChecked] = useState<boolean | 'indeterminate'>(
-    'indeterminate'
-  )
+  const [checked, setChecked] = useState<CheckedState>('indeterminate')
 
-  const rotate: ChangeEventHandler<HTMLInputElement> = (e) => {
-    click(e)
+  const rotate = () => {
     if (checked === 'indeterminate') {
       setChecked(true)
     } else if (checked) {

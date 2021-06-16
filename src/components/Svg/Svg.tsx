@@ -1,6 +1,7 @@
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { styled } from 'stitches.config'
 
 const DEFAULT_TAG = 'svg'
 
@@ -15,9 +16,8 @@ const StyledSvg = styled(DEFAULT_TAG, {
   color: 'inherit',
 })
 
-type SvgCSSProp = { css?: CSS }
 type SvgVariants = StitchesVariants<typeof StyledSvg>
-type SvgOwnProps = SvgCSSProp &
+type SvgOwnProps = CSSProps &
   SvgVariants & {
     /** Add a title to the svg */
     title?: string

@@ -1,4 +1,5 @@
-import { styled, CSS } from 'stitches.config'
+import type { CSS } from 'stitches.config'
+import { styled } from 'stitches.config'
 
 export const paperStyles: CSS = {
   appearance: 'none',

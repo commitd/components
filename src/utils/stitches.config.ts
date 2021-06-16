@@ -1,4 +1,5 @@
-import { createCss, StitchesCss } from '@stitches/react'
+import { createCss } from '@stitches/react'
+import type { StitchesCss } from '@stitches/react'
 export type { StitchesVariants } from '@stitches/react'
 import {
   gray,
@@ -473,7 +474,6 @@ const stitches = createCss({
   },
 })
 
-export type CSS = StitchesCss<typeof stitches>
 export const {
   styled,
   css,
@@ -483,6 +483,9 @@ export const {
   theme,
   config,
 } = stitches
+
+export type CSS = StitchesCss<typeof stitches>
+export type CSSProps = { css?: CSS }
 
 /**
  * A utility type for use when extracting common styles.

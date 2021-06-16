@@ -1,6 +1,7 @@
+import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import React from 'react'
-import { styled, CSS } from 'stitches.config'
-import { Root, Image, Fallback } from '@radix-ui/react-avatar'
+import type { CSS } from 'stitches.config'
+import { styled } from 'stitches.config'
 
 interface AvatarProps {
   src?: string

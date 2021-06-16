@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import { Grid, Row } from '../'
 import { Variants } from '../../docs/util'
 import { Button } from './Button'
@@ -22,11 +22,41 @@ export default {
       description:
         'Can be any HTML element, but can also be any component. Typically only used with "button" or "a".',
     },
+    destructive: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: 'false',
+      description:
+        'Add the destructive flag for actions that are destructive, such as delete actions.',
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: ['primary', 'secondary', 'tertiary', 'brand'],
+      },
+      description:
+        'The button is available in different variants. For the primary action on the view use the `primary` variant, most others should be `secondary` which is the default. Use `tertiary` for paired no-action buttons and `brand` is for use in the AppBar.',
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'default', 'large'],
+      },
+      description: 'The button is available in 3 different sizes.',
+    },
+    force: {
+      control: {
+        type: 'select',
+        options: ['hover', 'focus', 'active'],
+      },
+      description: 'For internal use - to check button states by forcing them.',
+    },
   },
 } as Meta
 
-export const Default = () => {
-  return <Button>Button</Button>
+export const Default: Story<ComponentProps<typeof Button>> = (args) => {
+  return <Button {...args}>Button</Button>
 }
 
 const Template: Story = (args) => <Button {...args} />

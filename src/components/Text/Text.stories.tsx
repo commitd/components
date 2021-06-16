@@ -1,7 +1,8 @@
 import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import { Caption, Monospace, Paragraph, Span, Text, Strike } from '.'
+import { Caption, Monospace, Paragraph, Span, Strike, Text } from '.'
 import { Column, Row } from '../'
+
 export default {
   title: 'Components/Text',
   component: Text,

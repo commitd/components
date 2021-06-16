@@ -1,9 +1,10 @@
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { CSS, styled } from 'stitches.config'
 import { IconButton } from '../IconButton'
-import { StyledText } from '../Text/Text'
 import { Paper } from '../Paper'
+import { StyledText } from '../Text/Text'
 
 /**
  * Use Card component to group elements onto a card.
@@ -112,9 +113,9 @@ export const CardBody = styled('div', {
 })
 
 const CARD_HEADING_TAG = 'div'
-type CardHeadingCSSProp = { css?: CSS }
+
 type CardHeadingVariants = StitchesVariants<typeof StyledText>
-type CardHeadingOwnProps = CardHeadingCSSProp & CardHeadingVariants
+type CardHeadingOwnProps = CSSProps & CardHeadingVariants
 
 type CardHeadingComponent = Polymorphic.ForwardRefComponent<
   typeof CARD_HEADING_TAG,
@@ -156,9 +157,9 @@ export const CardHeading = forwardRef(
 ) as CardHeadingComponent
 
 const CARD_SUBHEADING_TAG = 'div'
-type CardSubheadingCSSProp = { css?: CSS }
+
 type CardSubheadingVariants = StitchesVariants<typeof StyledText>
-type CardSubheadingOwnProps = CardSubheadingCSSProp & CardSubheadingVariants
+type CardSubheadingOwnProps = CSSProps & CardSubheadingVariants
 
 type CardSubheadingComponent = Polymorphic.ForwardRefComponent<
   typeof CARD_SUBHEADING_TAG,
@@ -192,9 +193,9 @@ export const CardSubheading = forwardRef(
 ) as CardSubheadingComponent
 
 const CARD_LEAD_IN_TAG = 'div'
-type CardLeadInCSSProp = { css?: CSS }
+
 type CardLeadInVariants = StitchesVariants<typeof StyledText>
-type CardLeadInOwnProps = CardLeadInCSSProp & CardLeadInVariants
+type CardLeadInOwnProps = CSSProps & CardLeadInVariants
 
 type CardLeadInComponent = Polymorphic.ForwardRefComponent<
   typeof CARD_LEAD_IN_TAG,

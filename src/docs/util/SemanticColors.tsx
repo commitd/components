@@ -1,8 +1,7 @@
 import React from 'react'
-
-import { Color } from './Colors'
+import type { CSS } from 'stitches.config'
 import { Grid, Heading } from '../../components'
-import { CSS } from 'stitches.config'
+import { Color } from './Colors'
 
 interface SemanticColorsProps {
   name: string

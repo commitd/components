@@ -1,9 +1,7 @@
-import { Button, Header, Item, Panel, Root } from '@radix-ui/react-accordion'
-import React, {
-  ComponentProps,
-  forwardRef,
-  ForwardRefExoticComponent,
-} from 'react'
+import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import React, { forwardRef } from 'react'
+import type { CSSProps } from 'stitches.config'
 import { keyframes, styled } from 'stitches.config'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
@@ -26,17 +24,21 @@ const Chevron = styled(ChevronDown, {
   },
 })
 
-export const Accordion = styled(Root, {
+export const Accordion = (styled(Root, {
   ...paperStyles,
   boxShadow: '$1',
-  borderTop: '1px solid $grey4',
-})
+  borderTop: '1px solid $colors$grey4',
+}) as unknown) as Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Root>,
+  Polymorphic.OwnProps<typeof Root> & CSSProps
+>
+// Typed explicitly to get props in storybook
 
 export const AccordionItem = styled(Item, {
-  borderBottom: '1px solid $grey4',
+  borderBottom: '1px solid $colors$grey4',
 })
 
-const AccordionButton = styled(Button, {
+const AccordionTrigger = styled(Trigger, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: '$4',
@@ -58,7 +60,7 @@ const AccordionButton = styled(Button, {
   },
 })
 
-export const AccordionPanel = styled(Panel, {
+export const AccordionContent = styled(Content, {
   padding: '$4',
   color: '$text',
   '&[data-state="open"]': {
@@ -69,16 +71,19 @@ export const AccordionPanel = styled(Panel, {
   },
 })
 
-export const AccordionHeader: ForwardRefExoticComponent<
-  ComponentProps<typeof AccordionButton>
-> = forwardRef<HTMLButtonElement, ComponentProps<typeof AccordionButton>>(
+type PolymorphicAccordionHeader = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Trigger>,
+  Polymorphic.OwnProps<typeof AccordionTrigger> & CSSProps
+>
+
+export const AccordionHeader = forwardRef(
   ({ children, ...props }, forwardedRef) => (
     <Header>
-      <AccordionButton {...props} ref={forwardedRef}>
+      <AccordionTrigger {...props} ref={forwardedRef}>
         {children}
         <Chevron />
-      </AccordionButton>
+      </AccordionTrigger>
     </Header>
   )
-)
-AccordionHeader.displayName = 'Accordion.Header'
+) as PolymorphicAccordionHeader
+AccordionHeader.displayName = 'AccordionHeader'

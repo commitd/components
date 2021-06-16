@@ -9,9 +9,6 @@ import {
   AppBarMenu,
   AppBarMenuItem,
 } from '.'
-import { Heading } from '../Heading'
-import { Link } from '../Link'
-import { Text } from '../Text'
 
 export default {
   title: 'Components/AppBar',

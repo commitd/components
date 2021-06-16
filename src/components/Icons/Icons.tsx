@@ -6,7 +6,7 @@ import {
   mdiClose,
 } from '@mdi/js'
 import React, { ComponentProps, FC } from 'react'
-import { CSS } from 'stitches.config'
+import type { CSS } from 'stitches.config'
 import { Svg } from '../Svg'
 
 type IconType = FC<ComponentProps<typeof Svg>>
