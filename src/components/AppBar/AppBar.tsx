@@ -78,25 +78,23 @@ export const AppBarMenu: React.FC = ({ children }) => (
   <Box
     css={{
       width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignContent: 'center',
+      height: '100%',
       position: 'absolute',
       left: 0,
       top: 0,
       right: 0,
       bottom: 0,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '$5',
+      pointerEvents: 'none',
+      '& > *': {
+        pointerEvents: 'auto',
+      },
     }}
   >
-    <Box
-      css={{
-        height: '100%',
-        display: 'flex',
-        gap: '$5',
-      }}
-    >
-      {children}
-    </Box>
+    {children}
   </Box>
 )
 
@@ -108,7 +106,4 @@ export const AppBarMenuItem: React.FC<
   '&:hover': {
     textDecoration: 'underline',
   },
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
 }) as React.FC<React.ComponentProps<typeof Link>>
