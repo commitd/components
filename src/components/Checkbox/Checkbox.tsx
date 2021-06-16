@@ -1,10 +1,12 @@
 import { Indicator, Root } from '@radix-ui/react-checkbox'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef, ForwardRefExoticComponent } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { CSS, styled } from 'stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { Check, CheckIndeterminate } from '../Icons'
 import { Label } from '../Label'
-import { ConditionalWrapper } from '../../utils'
+export type { CheckedState } from '@radix-ui/react-checkbox'
 
 const StyledRoot = styled(Root, {
   $$main: '$colors$primary',
@@ -128,11 +130,10 @@ const StyledIndicator = styled(Indicator, {
   width: '100%',
 })
 
-type CheckboxCSSProp = { css?: CSS }
 type CheckboxVariants = StitchesVariants<typeof StyledRoot>
 type CheckboxProps = Polymorphic.OwnProps<typeof Root> &
   CheckboxVariants &
-  CheckboxCSSProp & {
+  CSSProps & {
     /** Add a label to the checkbox */
     label?: string
   }
@@ -148,7 +149,7 @@ type CheckboxProps = Polymorphic.OwnProps<typeof Root> &
 export const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef<
   HTMLButtonElement,
   CheckboxProps
->(({ label, ...props }, forwardedRef) => {
+>(({ css, label, ...props }, forwardedRef) => {
   return (
     <ConditionalWrapper
       condition={label}
@@ -159,7 +160,7 @@ export const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef<
         </Label>
       )}
     >
-      <StyledRoot {...props} ref={forwardedRef}>
+      <StyledRoot css={css as CSS} {...props} ref={forwardedRef}>
         <StyledIndicator>
           {props.checked === 'indeterminate' && <CheckIndeterminate />}
           {props.checked !== 'indeterminate' && <Check />}

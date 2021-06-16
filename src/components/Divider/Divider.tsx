@@ -1,7 +1,8 @@
-import React, { forwardRef } from 'react'
-import { styled, StitchesVariants, CSS } from 'stitches.config'
-import { Root } from '@radix-ui/react-separator'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import { Root } from '@radix-ui/react-separator'
+import React, { forwardRef } from 'react'
+import type { CSSProps } from 'stitches.config'
+import { StitchesVariants, styled } from 'stitches.config'
 
 const StyledDivider = styled(Root, {
   border: 'none',
@@ -24,10 +25,9 @@ const StyledDivider = styled(Root, {
   },
 })
 
-type ButtonCSSProp = { css?: CSS }
 type DividerVariants = StitchesVariants<typeof StyledDivider>
 type DividerOwnProps = Polymorphic.OwnProps<typeof Root> &
-  ButtonCSSProp &
+  CSSProps &
   DividerVariants
 
 type DividerComponent = Polymorphic.ForwardRefComponent<

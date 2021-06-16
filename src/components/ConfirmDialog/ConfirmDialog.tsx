@@ -1,21 +1,22 @@
 import {
-  Title,
-  Description,
-  Cancel,
   Action,
+  Cancel,
   Content,
+  Description,
   Overlay,
   Root,
+  Title,
   Trigger,
 } from '@radix-ui/react-alert-dialog'
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
-import React, { FC, forwardRef, ComponentProps } from 'react'
+import React, { ComponentProps, FC, forwardRef } from 'react'
+import type { CSSProps } from 'stitches.config'
 import { CSS, styled } from 'stitches.config'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay'
-import { paperStyles } from '../Paper'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
+import { overlayAnimationStyles, overlayStyles } from '../Overlay'
+import { paperStyles } from '../Paper'
 import { Text } from '../Text'
 
 export const StyledOverlay = styled(Overlay, {
@@ -89,9 +90,8 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = ({
   )
 }
 
-type ConfirmDialogContentCSSProp = { css?: CSS }
 type ConfirmDialogContentOwnProps = Polymorphic.OwnProps<typeof Content> &
-  ConfirmDialogContentCSSProp & {
+  CSSProps & {
     /** Add a title to the content. */
     title?: string
     /** Add a description to the content. */
@@ -115,9 +115,8 @@ export const ConfirmDialogContent = forwardRef(
   )
 ) as ConfirmDialogContentComponent
 
-type ConfirmDialogTriggerCSSProp = { css?: CSS }
 type ConfirmDialogTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> &
-  ConfirmDialogTriggerCSSProp
+  CSSProps
 
 export type ConfirmDialogTriggerComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Trigger>,

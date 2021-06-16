@@ -2,15 +2,15 @@ import React from 'react'
 import { renderLight, renderDark, screen, waitFor } from 'test-utils'
 import userEvent from '@testing-library/user-event'
 import { Default } from './Accordion.stories'
-import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from './'
+import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from './'
 
 it('renders light without error', () => {
-  const { asFragment } = renderLight(<Default />)
+  const { asFragment } = renderLight(<Default type="single" />)
   expect(asFragment()).toBeDefined()
 })
 
 it('renders dark without error', () => {
-  const { asFragment } = renderDark(<Default />)
+  const { asFragment } = renderDark(<Default type="multiple" />)
   expect(asFragment()).toBeDefined()
 })
 
@@ -19,7 +19,7 @@ it('starts closed', () => {
     <Accordion type="single">
       <AccordionItem value="item-1">
         <AccordionHeader>Item 1</AccordionHeader>
-        <AccordionPanel>Panel 1</AccordionPanel>
+        <AccordionContent>Panel 1</AccordionContent>
       </AccordionItem>
     </Accordion>
   )
@@ -32,7 +32,7 @@ it('Can open panel', async () => {
     <Accordion type="single">
       <AccordionItem value="item-1">
         <AccordionHeader>Item 1</AccordionHeader>
-        <AccordionPanel>Panel 1</AccordionPanel>
+        <AccordionContent>Panel 1</AccordionContent>
       </AccordionItem>
     </Accordion>
   )

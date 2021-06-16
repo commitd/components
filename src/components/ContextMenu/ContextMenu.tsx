@@ -10,9 +10,10 @@ import {
   Separator,
   Trigger,
 } from '@radix-ui/react-context-menu'
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { ComponentProps, FC, forwardRef } from 'react'
-import { CSS, styled } from 'stitches.config'
+import type { CSSProps } from 'stitches.config'
+import { styled } from 'stitches.config'
 import { Check } from '../Icons'
 
 const StyledContent = styled(Content, {
@@ -79,11 +80,10 @@ const StyledContextMenuCheckboxItem = styled(CheckboxItem, {
   padding: '$1 $2 $1 $5',
 })
 
-type ContextMenuCheckboxItemCSSProp = { css?: CSS }
 type ContextMenuCheckboxItemOwnProps = Polymorphic.OwnProps<
   typeof CheckboxItem
 > &
-  ContextMenuCheckboxItemCSSProp
+  CSSProps
 
 type ContextMenuCheckboxItemComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof CheckboxItem>,
@@ -108,9 +108,8 @@ const StyledContextMenuRadioItem = styled(RadioItem, {
   padding: '$1 $2 $1 $5',
 })
 
-type ContextMenuRadioItemCSSProp = { css?: CSS }
 type ContextMenuRadioItemOwnProps = Polymorphic.OwnProps<typeof RadioItem> &
-  ContextMenuRadioItemCSSProp
+  CSSProps
 
 type ContextMenuRadioItemComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof RadioItem>,

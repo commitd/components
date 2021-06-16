@@ -1,7 +1,8 @@
 import { Close, Content, Root } from '@radix-ui/react-dialog'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, keyframes, StitchesVariants, styled } from 'stitches.config'
+import type { CSS, CSSProps, StitchesVariants } from 'stitches.config'
+import { keyframes, styled } from 'stitches.config'
 import { DialogClose, DialogTrigger, StyledOverlay } from '../Dialog/Dialog'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
@@ -76,9 +77,9 @@ const StyledContent = styled(Content, {
 })
 
 type DrawerContentVariants = StitchesVariants<typeof StyledContent>
-type DrawerContentCSSProp = { css?: CSS }
+
 type DrawerContentOwnProps = Polymorphic.OwnProps<typeof Content> &
-  DrawerContentCSSProp &
+  CSSProps &
   DrawerContentVariants & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean

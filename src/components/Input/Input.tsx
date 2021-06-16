@@ -1,8 +1,9 @@
+import { useLabelContext } from '@radix-ui/react-label'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled, StyledConfig } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { styled, StyledConfig } from 'stitches.config'
 import { Label } from '../Label'
-import { useLabelContext } from '@radix-ui/react-label'
 
 const DEFAULT_TAG = 'input'
 
@@ -120,9 +121,8 @@ export const inputStyles: StyledConfig<typeof inputVariants> = {
 
 const StyledInput = styled(DEFAULT_TAG, inputStyles)
 
-type InputCSSProp = { css?: CSS }
 type InputVariants = StitchesVariants<typeof StyledInput>
-type InputOwnProps = InputCSSProp &
+type InputOwnProps = CSSProps &
   InputVariants & {
     /** Add a label to the Input */
     label?: string

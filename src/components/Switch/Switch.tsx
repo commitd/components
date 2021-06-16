@@ -1,7 +1,8 @@
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import { Root, Thumb } from '@radix-ui/react-switch'
 import React, { forwardRef } from 'react'
-import { styled, StitchesVariants, CSS } from 'stitches.config'
-import { Thumb, Root } from '@radix-ui/react-switch'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { styled } from 'stitches.config'
 
 const StyledThumb = styled(Thumb, {
   $$border: '$colors$default',
@@ -126,10 +127,9 @@ const StyledSwitch = styled(Root, {
   },
 })
 
-type ButtonCSSProp = { css?: CSS }
 type SwitchVariants = StitchesVariants<typeof StyledSwitch>
 type SwitchOwnProps = Polymorphic.OwnProps<typeof Root> &
-  ButtonCSSProp &
+  CSSProps &
   SwitchVariants
 type SwitchComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Root>,

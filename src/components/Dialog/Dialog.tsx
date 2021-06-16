@@ -1,7 +1,8 @@
 import { Close, Content, Overlay, Root, Trigger } from '@radix-ui/react-dialog'
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
 import React, { FC, forwardRef } from 'react'
+import type { CSSProps } from 'stitches.config'
 import { CSS, styled } from 'stitches.config'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
@@ -76,9 +77,8 @@ export const Dialog: FC<DialogProps> = ({ children, overlayCss, ...props }) => {
   )
 }
 
-type DialogContentCSSProp = { css?: CSS }
 type DialogContentOwnProps = Polymorphic.OwnProps<typeof Content> &
-  DialogContentCSSProp & {
+  CSSProps & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
   }
@@ -101,9 +101,7 @@ export const DialogContent = forwardRef(
   )
 ) as DialogContentComponent
 
-type DialogTriggerCSSProp = { css?: CSS }
-type DialogTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> &
-  DialogTriggerCSSProp
+type DialogTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> & CSSProps
 
 export type DialogTriggerComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Trigger>,

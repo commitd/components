@@ -1,19 +1,20 @@
-import * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import { CSS, styled } from 'stitches.config'
 import {
-  Root,
-  Trigger,
+  CheckboxItem,
   Content,
   Item,
-  CheckboxItem,
   ItemIndicator,
-  Separator,
   Label,
-  RadioItem,
   RadioGroup,
+  RadioItem,
+  Root,
+  Separator,
+  Trigger,
 } from '@radix-ui/react-dropdown-menu'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
+import React, { forwardRef } from 'react'
+import type { CSS, CSSProps } from 'stitches.config'
+import { styled } from 'stitches.config'
 import { Check } from '../Icons'
 import { paperStyles } from '../Paper'
 
@@ -62,8 +63,7 @@ const checkboxItemStyles = {
 const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
 
-type MenuItemCSSProp = { css?: CSS }
-type MenuItemOwnProps = React.ComponentProps<typeof Item> & MenuItemCSSProp
+type MenuItemOwnProps = React.ComponentProps<typeof Item> & CSSProps
 
 type MenuItemComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Item>,
@@ -72,9 +72,7 @@ type MenuItemComponent = Polymorphic.ForwardRefComponent<
 
 export const MenuItem = styled(Item, itemStyles) as MenuItemComponent
 
-type MenuContentCSSProp = { css?: CSS }
-type MenuContentOwnProps = Polymorphic.OwnProps<typeof Content> &
-  MenuContentCSSProp
+type MenuContentOwnProps = Polymorphic.OwnProps<typeof Content> & CSSProps
 
 type MenuContentComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Content>,
@@ -89,9 +87,7 @@ export const MenuContent = forwardRef(
   )
 ) as MenuContentComponent
 
-type MenuTriggerCSSProp = { css?: CSS }
-type MenuTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> &
-  MenuTriggerCSSProp
+type MenuTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> & CSSProps
 type MenuTriggerComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Trigger>,
   MenuTriggerOwnProps

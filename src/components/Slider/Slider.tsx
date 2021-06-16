@@ -10,7 +10,8 @@ import React, {
   useMemo,
   useRef,
 } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { styled } from 'stitches.config'
 import { Tooltip } from '../Tooltip'
 
 type LabelStyle = 'always' | 'hover' | 'none'
@@ -165,11 +166,10 @@ export const SliderThumb: FC<SliderThumbProps> = ({
   )
 }
 
-type SliderCSSProp = { css?: CSS }
 type SliderVariants = StitchesVariants<typeof StyledSlider>
 type SliderOwnProps = Polymorphic.OwnProps<typeof Root> &
   SliderVariants &
-  SliderCSSProp & {
+  CSSProps & {
     /** Add labels to the markers, permanently, on hover or none */
     labelStyle?: LabelStyle
     /** Move the label location */

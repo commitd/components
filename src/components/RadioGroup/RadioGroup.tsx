@@ -1,13 +1,15 @@
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
 import React, {
   ComponentProps,
   forwardRef,
   ForwardRefExoticComponent,
 } from 'react'
+import type { CSSProps } from 'stitches.config'
 import { styled } from 'stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { Check } from '../Icons'
 import { Label } from '../Label'
-import { ConditionalWrapper } from '../../utils'
 
 const StyledRadio = styled('div', {
   // Reset
@@ -202,8 +204,16 @@ export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
 }) as ForwardRefExoticComponent<RadioProps>
 Radio.displayName = 'Radio'
 
-// This should be all that is required but until next release of Radio group we add a fix to map the event to the value below
-const TempRadioGroup: React.FC<ComponentProps<typeof Root>> = styled(Root, {
+/**
+ * Radios can be used to choose between a set of more than two options.
+ *
+ * Use a checkbox or on/off switch when single select/deselect option,
+ * use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
+ * Radios should always be used with a `RadioGroup` to handle the state control and layout.
+ *
+ * Based on [Radix Radio Group](https://radix-ui.com/primitives/docs/components/radio-group).
+ */
+export const RadioGroup = (styled(Root, {
   display: 'flex',
   '&[data-orientation=vertical]': {
     flexDirection: 'column',
@@ -215,30 +225,8 @@ const TempRadioGroup: React.FC<ComponentProps<typeof Root>> = styled(Root, {
     '& > *': { marginLeft: '$3' },
     ':first-child,& button:first-of-type': { marginLeft: 0 },
   },
-}) as React.FC<ComponentProps<typeof Root>>
-
-type FixedRadioGroupProps = Omit<
-  ComponentProps<typeof Root>,
-  'onValueChange'
-> & {
-  onValueChange?: (value: string) => void
-}
-
-/**
- * Radios can be used to choose between a set of more than two options.
- *
- * Use a checkbox or on/off switch when single select/deselect option,
- * use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/). * * Radios should always be used with a `RadioGroup` to handle the state control and layout.
- *
- * Based on [Radix Radio Group](https://radix-ui.com/primitives/docs/components/radio-group).
- */
-export const RadioGroup: ForwardRefExoticComponent<FixedRadioGroupProps> = forwardRef(
-  ({ onValueChange, ...props }, forwardedRef) => (
-    <TempRadioGroup
-      {...props}
-      onValueChange={(e) => onValueChange && onValueChange(e.target.value)}
-      ref={forwardedRef}
-    />
-  )
-)
-RadioGroup.displayName = 'RadioGroup'
+}) as unknown) as Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Root>,
+  Polymorphic.OwnProps<typeof Root> & CSSProps
+>
+// Typed explicitly to get props in storybook

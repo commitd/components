@@ -1,5 +1,6 @@
 import React, { ElementRef, forwardRef } from 'react'
-import { CSS, keyframes, StitchesVariants, styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from 'stitches.config'
+import { keyframes, styled } from 'stitches.config'
 import { Logo } from '../Logo'
 
 const strokeKeyframes = keyframes({
@@ -80,9 +81,8 @@ const StyledSpinner = styled(Logo, {
   },
 })
 
-type SpinnerCSSProp = { css?: CSS }
 type SpinnerVariants = StitchesVariants<typeof StyledSpinner>
-type SpinnerOwnProps = SpinnerCSSProp & SpinnerVariants
+type SpinnerOwnProps = CSSProps & SpinnerVariants
 
 /**
  * Spinner component

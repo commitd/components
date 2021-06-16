@@ -1,14 +1,15 @@
-import * as Polymorphic from '@radix-ui/react-polymorphic'
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
 import React, { forwardRef } from 'react'
-import { CSS, StitchesVariants, styled } from 'stitches.config'
-import { Root, List, Tab as RadixTab, Panel } from '@radix-ui/react-tabs'
+import type { CSSProps, StitchesVariants, StyledConfig } from 'stitches.config'
+import { styled } from 'stitches.config'
 import {
+  active,
   buttonBaseStyle,
+  focus,
+  hover,
   mainVariants,
   sizeVariants,
-  hover,
-  active,
-  focus,
 } from '../Button/Button'
 
 export const TabsRoot = styled(Root, {})
@@ -31,7 +32,7 @@ const tabVariants = {
   },
 }
 
-const StyledTab = styled(RadixTab, {
+const StyledTab = styled(Trigger, {
   ...buttonBaseStyle,
   cursor: 'pointer',
   minWidth: '160px',
@@ -47,15 +48,15 @@ const StyledTab = styled(RadixTab, {
     destructive: 'false',
     size: 'default',
   },
-} as Parameters<typeof styled>[1])
+} as StyledConfig<typeof tabVariants>)
 
 type TabVariants = StitchesVariants<typeof StyledTab>
-type TabOwnProps = Polymorphic.OwnProps<typeof RadixTab> & {
-  css?: CSS
-} & TabVariants & { variant?: 'brand' | 'primary' | 'secondary' | 'tertiary' }
+type TabOwnProps = Polymorphic.OwnProps<typeof Trigger> &
+  CSSProps &
+  TabVariants & { variant?: 'brand' | 'primary' | 'secondary' | 'tertiary' }
 
 type TabComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof RadixTab>,
+  Polymorphic.IntrinsicElement<typeof Trigger>,
   TabOwnProps
 >
 
@@ -63,4 +64,4 @@ export const Tab = forwardRef((props, forwardedRef) => (
   <StyledTab {...props} ref={forwardedRef} />
 )) as TabComponent
 
-export const TabPanel = styled(Panel, { padding: '$3' })
+export const TabContent = styled(Content, { padding: '$3' })

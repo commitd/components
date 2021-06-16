@@ -1,14 +1,12 @@
+import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
+import type { CSS, CSSProps, StitchesVariants } from 'stitches.config'
 import { Text } from '../Text'
-import { StitchesVariants, CSS } from 'stitches.config'
-
-import * as Polymorphic from '@radix-ui/react-polymorphic'
 
 const DEFAULT_TAG = 'h3'
 
-type SubheadingCSSProp = { css?: CSS }
 type SubheadingVariants = StitchesVariants<typeof Text>
-type SubheadingOwnProps = SubheadingCSSProp &
+type SubheadingOwnProps = CSSProps &
   SubheadingVariants & {
     variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   }
@@ -20,7 +18,7 @@ type SubheadingComponent = Polymorphic.ForwardRefComponent<
 
 export const Subheading = forwardRef(
   ({ variant = DEFAULT_TAG, css, ...props }, forwardedRef) => {
-    let subheadingProps: Partial<SubheadingVariants> = { size: 1 }
+    let subheadingProps: Partial<SubheadingVariants>
     const subheadingCss: CSS = {
       color: '$textSecondary',
       marginTop: '$1',
