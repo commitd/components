@@ -61,7 +61,7 @@ type User = {
 }
 
 function createStatus() {
-  const statusChance = faker.datatype.float(1)
+  const statusChance = faker.datatype.float({ min: 0, max: 1 })
   if (statusChance > 0.75) {
     return <Chip variant="success">active</Chip>
   }
@@ -254,8 +254,6 @@ export const UtilityClasses: Story<React.ComponentProps<typeof Table>> = (
         ))}
       </TableBody>
       <TableFoot
-        as={Link}
-        href="#"
         css={{
           backgroundColor: '$black',
           color: '$white',
@@ -263,7 +261,11 @@ export const UtilityClasses: Story<React.ComponentProps<typeof Table>> = (
         }}
       >
         <TableRow>
-          <TableCell colSpan={8}>Documentation</TableCell>
+          <TableCell colSpan={8}>
+            <Link as={Link} href="#">
+              Documentation
+            </Link>
+          </TableCell>
         </TableRow>
       </TableFoot>
     </Table>

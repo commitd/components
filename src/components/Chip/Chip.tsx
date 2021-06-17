@@ -203,6 +203,8 @@ export const Chip = forwardRef(
         {children}
         {onClose && (
           <IconButton
+            as="span"
+            role="button"
             aria-label="close"
             variant="tertiary"
             onClick={handleClose}
