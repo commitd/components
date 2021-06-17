@@ -40,7 +40,8 @@
     "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "prettier": {
     "semi": false,
@@ -48,12 +49,12 @@
   },
   "size-limit": [
     {
-      "path": "dist/components.cjs.production.min.js",
-      "limit": "40 KB"
+      "path": "dist/committed-components.cjs.production.js",
+      "limit": "730 KB"
     },
     {
-      "path": "dist/components.esm.js",
-      "limit": "40 KB"
+      "path": "dist/committed-components.esm.js",
+      "limit": "60 KB"
     }
   ],
   "eslintConfig": {
@@ -137,6 +138,7 @@
     "@types/react-router-dom": "^5.1.7",
     "danger": "^10.5.4",
     "danger-plugin-spellcheck": "^1.2.3",
+    "eslint": "^7.28.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "faker": "^5.5.3",
@@ -155,7 +157,7 @@
     "react-virtual": "^2.7.1",
     "resize-observer-polyfill": "^1.5.1",
     "rollpkg": "^0.5.7",
-    "size-limit": "^4.10.2",
+    "size-limit": "^4.12.0",
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.7",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
@@ -181,7 +183,6 @@
     "@radix-ui/react-switch": "0.0.14",
     "@radix-ui/react-tabs": "0.0.14",
     "@radix-ui/react-tooltip": "0.0.19",
-    "@stitches/react": "0.2.0",
-    "eslint": "^7.28.0"
+    "@stitches/react": "0.2.0"
   }
 }
