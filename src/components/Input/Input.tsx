@@ -129,7 +129,6 @@ type InputOwnProps = CSSProps &
     // Should not be required but type is missing.
     /** Called on input change with full event */
     onChange?: React.ChangeEventHandler<HTMLInputElement>
-    // Should not be required but type is missing.
     /** Called on input change with new value */
     onValueChange?: (value: string) => void
   }

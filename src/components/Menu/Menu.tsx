@@ -87,7 +87,7 @@ export const MenuContent = forwardRef(
   )
 ) as MenuContentComponent
 
-type MenuTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> & CSSProps
+type MenuTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger>
 type MenuTriggerComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Trigger>,
   MenuTriggerOwnProps
