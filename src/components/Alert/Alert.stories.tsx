@@ -28,9 +28,10 @@ const Template: Story = (args) => (
     </AlertContent>
   </Alert>
 )
-export const Default = Template.bind({
+export const Default = Template.bind({})
+Default.args = {
   severity: 'error',
-})
+}
 
 export const Severity = () => (
   <Column css={{ gap: '$3' }}>

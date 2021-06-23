@@ -1,4 +1,6 @@
 import {
+  mdiBrightness3,
+  mdiBrightness5,
   mdiChevronDown,
   mdiChevronLeft,
   mdiChevronRight,
@@ -38,4 +40,12 @@ export const Close: IconType = (props) => <Svg path={mdiClose} {...props} />
 
 export const CheckIndeterminate: IconType = ({ css, ...props }) => (
   <Svg path="M6,11 h12 v4 h-12 Z" css={{ ...css } as CSS} {...props} />
+)
+
+export const LightMode: IconType = (props) => (
+  <Svg path={mdiBrightness5} {...props} />
+)
+
+export const DarkMode: IconType = (props) => (
+  <Svg path={mdiBrightness3} {...props} />
 )
