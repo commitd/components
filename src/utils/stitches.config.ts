@@ -495,8 +495,7 @@ export type CSSProps = { css?: CSS }
  */
 export type StyledConfig<T> = Parameters<typeof styled>[1] & { variants: T }
 
-export const lightTheme = theme(LIGHT_THEME, {})
-export const darkTheme = theme(DARK_THEME, {
+export const darkThemeConfig = {
   shadows: {
     1: '0px 2px 1px -1px rgb(0 0 0 / 40%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 30%)',
     2: '0px 3px 3px -2px rgba(0,0,0,0.4), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.3)',
@@ -618,7 +617,10 @@ export const darkTheme = theme(DARK_THEME, {
     infoContrast: '$paper',
     infoActive: '#info1',
   },
-})
+}
+
+export const lightTheme = theme(LIGHT_THEME, { ...config.theme })
+export const darkTheme = theme(DARK_THEME, darkThemeConfig)
 
 export const globalStyles = globalCss({
   'html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video': {
