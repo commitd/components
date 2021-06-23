@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Tab, TabContent, TabsList, TabsRoot } from '.'
 
@@ -6,11 +6,28 @@ export default {
   title: 'Components/Tabs',
   component: TabsRoot,
   subcomponents: { TabsList, Tab, TabContent },
+  argTypes: {
+    variant: {
+      control: {
+        type: 'select',
+        options: ['primary', 'secondary', 'tertiary', 'brand'],
+      },
+      description:
+        'The button is available in different variants. For the primary action on the view use the `primary` variant, most others should be `secondary` which is the default. Use `tertiary` for paired no-action buttons and `brand` is for use in the AppBar.',
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'default', 'large'],
+      },
+      description: 'The button is available in 3 different sizes.',
+    },
+  },
 } as Meta
 
-export const Default: React.FC = () => (
-  <TabsRoot>
-    <TabsList aria-label="tabs example">
+const Template: Story = (args) => (
+  <TabsRoot {...args}>
+    <TabsList>
       <Tab value="tab1">One</Tab>
       <Tab value="tab2">Two</Tab>
       <Tab value="tab3">Three</Tab>
@@ -21,59 +38,49 @@ export const Default: React.FC = () => (
   </TabsRoot>
 )
 
-export const Primary: React.FC = () => (
-  <TabsRoot>
-    <TabsList aria-label="tabs example">
-      <Tab value="tab1" variant="primary">
-        One
-      </Tab>
-      <Tab value="tab2" variant="primary">
-        Two
-      </Tab>
-      <Tab value="tab3" variant="primary">
-        Three
-      </Tab>
-    </TabsList>
-    <TabContent value="tab1">Tab one content</TabContent>
-    <TabContent value="tab2">Tab two content</TabContent>
-    <TabContent value="tab3">Tab three content</TabContent>
-  </TabsRoot>
-)
+export const Default = Template.bind({})
+Default.args = {
+  defaultValue: 'tab1',
+}
 
-export const Secondary: React.FC = () => (
-  <TabsRoot>
-    <TabsList aria-label="tabs example">
-      <Tab value="tab1" variant="secondary">
-        One
-      </Tab>
-      <Tab value="tab2" variant="secondary">
-        Two
-      </Tab>
-      <Tab value="tab3" variant="secondary">
-        Three
-      </Tab>
-    </TabsList>
-    <TabContent value="tab1">Tab one content</TabContent>
-    <TabContent value="tab2">Tab two content</TabContent>
-    <TabContent value="tab3">Tab three content</TabContent>
-  </TabsRoot>
-)
+export const Primary = Template.bind({})
+Primary.args = {
+  defaultValue: 'tab1',
+  variant: 'primary',
+}
 
-export const Tertiary: React.FC = () => (
-  <TabsRoot>
-    <TabsList aria-label="tabs example">
-      <Tab value="tab1" variant="tertiary">
-        One
-      </Tab>
-      <Tab value="tab2" variant="tertiary">
-        Two
-      </Tab>
-      <Tab value="tab3" variant="tertiary">
-        Three
-      </Tab>
-    </TabsList>
-    <TabContent value="tab1">Tab one content</TabContent>
-    <TabContent value="tab2">Tab two content</TabContent>
-    <TabContent value="tab3">Tab three content</TabContent>
-  </TabsRoot>
-)
+export const Secondary = Template.bind({})
+Secondary.args = {
+  defaultValue: 'tab2',
+  variant: 'secondary',
+}
+
+export const Tertiary = Template.bind({})
+Tertiary.args = {
+  defaultValue: 'tab3',
+  variant: 'tertiary',
+}
+
+/**
+ * By default content is shown when the tab is focused. Use `activationMode` `manual` to require a click to change tabs.
+ */
+export const Manual = Template.bind({})
+Manual.args = {
+  defaultValue: 'tab1',
+  variant: 'tertiary',
+  activationMode: 'manual',
+}
+
+/* Tabs can have `size` small */
+export const Small = Template.bind({})
+Small.args = {
+  defaultValue: 'tab2',
+  size: 'small',
+}
+
+/* Tabs can have `size` large */
+export const Large = Template.bind({})
+Large.args = {
+  defaultValue: 'tab3',
+  size: 'large',
+}
