@@ -16,6 +16,12 @@ export const active = {
   transition: 'background 0s',
 }
 
+export const disabled = {
+  pointerEvents: 'none',
+  $$main: '$$lowlight',
+  opacity: 0.4,
+}
+
 export const mainVariants = {
   brand: {
     $$active: '$colors$brandActive',
@@ -120,12 +126,7 @@ export const buttonBaseStyle = {
   '&:hover': hover,
   '&:focus': focus,
   '&:active': active,
-
-  '&:disabled': {
-    pointerEvents: 'none',
-    $$main: '$$lowlight',
-    $$default: '$$lowlight',
-  },
+  '&:disabled': disabled,
 }
 
 const buttonVariants = {
