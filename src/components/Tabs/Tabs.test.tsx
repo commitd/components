@@ -1,13 +1,14 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
+import { renderLight, renderDark, screen, userEvent } from 'test-utils'
 import { Default } from './Tabs.stories'
 
 it('renders light without error', () => {
-  const { asFragment } = renderLight(<Default />)
-  expect(asFragment()).toBeDefined()
+  renderLight(<Default {...Default.args} />)
+  expect(screen.getByText('Tab one content')).toBeInTheDocument()
 })
 
 it('renders dark without error', () => {
-  const { asFragment } = renderDark(<Default />)
-  expect(asFragment()).toBeDefined()
+  renderDark(<Default {...Default.args} />)
+  userEvent.click(screen.getByRole('tab', { name: /two/i }))
+  expect(screen.getByText('Tab two content')).toBeInTheDocument()
 })
