@@ -19,6 +19,12 @@ const active = {
   transition: 'background 0s',
 }
 
+export const disabled = {
+  pointerEvents: 'none',
+  $$main: '$$lowlight',
+  opacity: 0.4,
+}
+
 export const StyledIconButton = styled(DEFAULT_TAG, {
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
@@ -63,12 +69,7 @@ export const StyledIconButton = styled(DEFAULT_TAG, {
   '&:hover': hover,
   '&:focus': focus,
   '&:active': active,
-
-  '&:disabled': {
-    pointerEvents: 'none',
-    $$main: '$$lowlight',
-    $$default: '$$lowlight',
-  },
+  '&:disabled': disabled,
 
   variants: {
     variant: {
