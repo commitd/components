@@ -8,11 +8,14 @@ import { inputStyles } from '../Input/Input'
 import {
   Menu,
   MenuContent,
+  MenuItem,
   MenuRadioGroup,
   MenuRadioItem,
   MenuTrigger,
 } from '../Menu'
 import { Svg } from '../Svg'
+import { useLabelContext } from '@radix-ui/react-label'
+import { Label } from '../Label'
 
 const DEFAULT_TAG = 'input'
 const StyledSelect = styled(DEFAULT_TAG, {
@@ -31,6 +34,8 @@ type SelectOwnProps = CSSProps &
     value?: string
     /** Supply a starting value for uncontrolled instance */
     defaultValue?: string
+    /** Supply a starting placeholder value for uncontrolled instance */
+    placeholder?: string
     /** Called on Select change with new value */
     onValueChange?: (value: string) => void
   }
@@ -48,8 +53,15 @@ const Root = styled('div', {
   alignItems: 'center',
   width: '100%',
   [`& ${Svg}`]: {
-    position: 'relative',
-    right: '$6',
+    position: 'absolute',
+    right: '$4',
+  },
+  variants: {
+    disabled: {
+      true: {
+        pointerEvents: 'none',
+      },
+    },
   },
 })
 
@@ -61,27 +73,58 @@ const Root = styled('div', {
  *
  */
 export const Select = forwardRef(
-  ({ value, onValueChange, defaultValue, children, ...props }, ref) => {
+  (
+    {
+      label,
+      id,
+      value,
+      onValueChange,
+      defaultValue,
+      children,
+      placeholder,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     const [internalValue, setValue] = useControllableState({
       prop: value,
-      defaultProp: defaultValue,
+      defaultProp: defaultValue || placeholder,
       onChange: onValueChange,
     })
+    const labelId = useLabelContext()
 
     return (
-      <Menu>
-        <MenuTrigger>
-          <Root>
-            <StyledSelect {...props} ref={ref} value={internalValue} />
-            <ChevronDown />
-          </Root>
-        </MenuTrigger>
-        <MenuContent align="start" sideOffset={4} alignOffset={4}>
-          <MenuRadioGroup value={internalValue} onValueChange={setValue}>
-            {children}
-          </MenuRadioGroup>
-        </MenuContent>
-      </Menu>
+      <>
+        {label && (
+          <Label variant="above" htmlFor={id || labelId}>
+            {label}
+          </Label>
+        )}
+        <Menu>
+          <MenuTrigger>
+            <Root disabled={disabled}>
+              <StyledSelect
+                id={id}
+                aria-labelledby={labelId}
+                disabled={disabled}
+                {...props}
+                ref={ref}
+                value={internalValue}
+                // Just there to suppress warning
+                onChange={() => null}
+              />
+              <ChevronDown />
+            </Root>
+          </MenuTrigger>
+          <MenuContent align="start" sideOffset={4} alignOffset={4}>
+            {placeholder && <MenuItem disabled>{placeholder}</MenuItem>}
+            <MenuRadioGroup value={internalValue} onValueChange={setValue}>
+              {children}
+            </MenuRadioGroup>
+          </MenuContent>
+        </Menu>
+      </>
     )
   }
 ) as SelectComponent
