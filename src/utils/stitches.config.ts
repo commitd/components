@@ -493,7 +493,14 @@ export type CSSProps = { css?: CSS }
  * The generic parameter should be the `typeof` the variants, this is required to infer the correct props on the component.
  * This API/Typing may change with stitches versions, so only use when required.
  */
-export type StyledConfig<T> = Parameters<typeof styled>[1] & { variants: T }
+export type StyledConfig<T = undefined> = Parameters<typeof styled>[1] & {
+  variants: T
+}
+// export type StyledConfig<T = void> = T extends Record<string, unknown>
+//   ? Parameters<typeof styled>[1] & {
+//       variants: T
+//     }
+//   : Parameters<typeof styled>[1]
 
 export const darkThemeConfig = {
   shadows: {

@@ -1,20 +1,22 @@
+import { useBoolean } from '@committed/hooks'
+import { action } from '@storybook/addon-actions'
+import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
 import {
   Menu,
-  MenuTrigger,
   MenuContent,
   MenuItem,
   MenuItemCheckbox,
+  MenuItemGroup,
   MenuItemSeparator,
+  MenuItemShortcut,
   MenuLabel,
   MenuRadioGroup,
   MenuRadioItem,
+  MenuTrigger,
+  MenuTriggerItem,
 } from '.'
-import { action } from '@storybook/addon-actions'
-
 import { Button } from '../Button'
-import { useBoolean } from '@committed/hooks'
 
 export default {
   title: 'Components/Menu',
@@ -25,8 +27,11 @@ export default {
     MenuItem,
     MenuItemCheckbox,
     MenuItemSeparator,
+    MenuItemShortcut,
     MenuLabel,
+    MenuItemGroup,
     MenuRadioGroup,
+    MenuTriggerItem,
   },
 } as Meta
 
@@ -56,6 +61,7 @@ export const WithDisabledItems: React.FC = () => (
   </Menu>
 )
 
+/* Separators and Groups can be used to arrange items in vertical and horizontal sections */
 export const WithSeparators: React.FC = () => (
   <Menu>
     <MenuTrigger>
@@ -63,10 +69,20 @@ export const WithSeparators: React.FC = () => (
     </MenuTrigger>
     <MenuContent>
       <MenuItem>Cut</MenuItem>
-      <MenuItemSeparator />
       <MenuItem>Copy</MenuItem>
-      <MenuItemSeparator />
       <MenuItem>Paste</MenuItem>
+      <MenuItemSeparator />
+      <MenuItemGroup>
+        <MenuLabel>Edit</MenuLabel>
+        <MenuItemSeparator orientation="vertical" />
+        <MenuItem>Cut</MenuItem>
+        <MenuItemSeparator orientation="vertical" />
+        <MenuItem>Copy</MenuItem>
+        <MenuItemSeparator orientation="vertical" />
+        <MenuItem>Paste</MenuItem>
+      </MenuItemGroup>
+      <MenuItemSeparator />
+      <MenuItem>Item</MenuItem>
     </MenuContent>
   </Menu>
 )
@@ -101,6 +117,7 @@ export const Controlled = () => {
   )
 }
 
+/* A `MenuItemCheckbox` are items with an indicated boolean state */
 export const WithCheckbox = () => {
   const [checked, setChecked] = useState(true)
   return (
@@ -118,6 +135,7 @@ export const WithCheckbox = () => {
   )
 }
 
+/* `MenuItemRadioGroup` can be used to make sub `MenuRadioItem`s single select */
 export const WithRadioItems = () => {
   const [color, setColor] = React.useState('blue')
   return (
@@ -131,6 +149,60 @@ export const WithRadioItems = () => {
           <MenuRadioItem value="green">Green</MenuRadioItem>
           <MenuRadioItem value="blue">Blue</MenuRadioItem>
         </MenuRadioGroup>
+      </MenuContent>
+    </Menu>
+  )
+}
+
+/** Add shortcut indicators using the `MenuItemShortcut` */
+export const Shortcuts = () => {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Trigger</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>
+          New Tab <MenuItemShortcut>⌘+T</MenuItemShortcut>
+        </MenuItem>
+        <MenuItem>
+          New Window <MenuItemShortcut>⌘+N</MenuItemShortcut>
+        </MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}
+
+/** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
+export const Nested = () => {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Trigger</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>
+          New Tab <MenuItemShortcut>⌘+T</MenuItemShortcut>
+        </MenuItem>
+        <MenuItem>
+          New Window <MenuItemShortcut>⌘+N</MenuItemShortcut>
+        </MenuItem>
+        <Menu>
+          <MenuTriggerItem>Developer</MenuTriggerItem>
+          <MenuContent sideOffset={8}>
+            <MenuItem>Test</MenuItem>
+            <MenuItem>Build</MenuItem>
+            <MenuItem>Start</MenuItem>
+            <Menu>
+              <MenuTriggerItem>More</MenuTriggerItem>
+              <MenuContent sideOffset={8}>
+                <MenuItem>Test</MenuItem>
+                <MenuItem>Build</MenuItem>
+                <MenuItem>Start</MenuItem>
+              </MenuContent>
+            </Menu>
+          </MenuContent>
+        </Menu>
       </MenuContent>
     </Menu>
   )
