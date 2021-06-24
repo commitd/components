@@ -40,8 +40,8 @@
     "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0"
   },
   "prettier": {
     "semi": false,
@@ -183,6 +183,6 @@
     "@radix-ui/react-switch": "0.0.14",
     "@radix-ui/react-tabs": "0.0.14",
     "@radix-ui/react-tooltip": "0.0.19",
-    "@stitches/react": "0.2.0"
+    "@stitches/react": "^0.2.2"
   }
 }
