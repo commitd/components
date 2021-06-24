@@ -1,13 +1,13 @@
 import {
   CheckboxItem,
   Content,
+  Group,
   Item,
   ItemIndicator,
   Label,
   RadioGroup,
   RadioItem,
   Root,
-  Group,
   Separator,
   Trigger,
   TriggerItem,
@@ -15,17 +15,12 @@ import {
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
 import React, { forwardRef } from 'react'
-import type {
-  CSS,
-  CSSProps,
-  StyledConfig,
-  StitchesVariant,
-} from 'stitches.config'
+import type { CSS, CSSProps } from 'stitches.config'
 import { styled } from 'stitches.config'
 import { Check, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper'
 
-const itemStyles = ({
+const itemStyles = {
   '&::before': {
     boxSizing: 'border-box',
   },
@@ -44,7 +39,6 @@ const itemStyles = ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  position: 'relative',
 
   '&:focus': {
     background: '$selection',
@@ -53,7 +47,7 @@ const itemStyles = ({
   '&[data-disabled]': {
     color: '$grey9',
   },
-} as unknown) as StyledConfig
+}
 
 const StyledContent = styled(Content, {
   ...paperStyles,
@@ -67,10 +61,10 @@ const StyledItemIndicator = styled(ItemIndicator, {
   left: '$2',
 })
 
-const checkboxItemStyles = ({
+const checkboxItemStyles = {
   ...itemStyles,
   paddingLeft: '$6',
-} as unknown) as StyledConfig
+}
 
 const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
@@ -89,7 +83,7 @@ const StyledMenuTriggerItem = styled(TriggerItem, {
   '&[data-state="open"]': {
     background: '$selection',
   },
-} as StyledConfig)
+})
 
 type MenuTriggerItemOwnProps = React.ComponentProps<typeof TriggerItem> &
   CSSProps
@@ -119,7 +113,12 @@ type MenuContentComponent = Polymorphic.ForwardRefComponent<
 
 export const MenuContent = forwardRef(
   ({ children, css, ...props }, forwardedRef) => (
-    <StyledContent css={css as CSS} {...props} ref={forwardedRef}>
+    <StyledContent
+      css={css as CSS}
+      alignOffset={8}
+      {...props}
+      ref={forwardedRef}
+    >
       {children}
     </StyledContent>
   )
@@ -159,14 +158,14 @@ export const MenuItemCheckbox: MenuItemCheckboxComponent = forwardRef(
   )
 )
 
-type MenuItemSeparatorComponent = Polymorphic.ForwardRefComponent<
+type MenuSeparatorComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof CheckboxItem>,
   CSSProps & { orientation?: 'horizontal' | 'vertical' } & Polymorphic.OwnProps<
       typeof Separator
     >
 >
 
-export const MenuItemSeparator = styled(Separator, {
+export const MenuSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey7',
 
@@ -187,7 +186,7 @@ export const MenuItemSeparator = styled(Separator, {
   defaultVariants: {
     orientation: 'horizontal',
   },
-}) as MenuItemSeparatorComponent
+}) as MenuSeparatorComponent
 
 export const MenuLabel = styled(Label, {
   color: '$grey10',

@@ -8,7 +8,7 @@ import {
   MenuItem,
   MenuItemCheckbox,
   MenuItemGroup,
-  MenuItemSeparator,
+  MenuSeparator,
   MenuItemShortcut,
   MenuLabel,
   MenuRadioGroup,
@@ -26,7 +26,7 @@ export default {
     MenuContent,
     MenuItem,
     MenuItemCheckbox,
-    MenuItemSeparator,
+    MenuSeparator,
     MenuItemShortcut,
     MenuLabel,
     MenuItemGroup,
@@ -71,17 +71,17 @@ export const WithSeparators: React.FC = () => (
       <MenuItem>Cut</MenuItem>
       <MenuItem>Copy</MenuItem>
       <MenuItem>Paste</MenuItem>
-      <MenuItemSeparator />
+      <MenuSeparator />
       <MenuItemGroup>
         <MenuLabel>Edit</MenuLabel>
-        <MenuItemSeparator orientation="vertical" />
+        <MenuSeparator orientation="vertical" />
         <MenuItem>Cut</MenuItem>
-        <MenuItemSeparator orientation="vertical" />
+        <MenuSeparator orientation="vertical" />
         <MenuItem>Copy</MenuItem>
-        <MenuItemSeparator orientation="vertical" />
+        <MenuSeparator orientation="vertical" />
         <MenuItem>Paste</MenuItem>
       </MenuItemGroup>
-      <MenuItemSeparator />
+      <MenuSeparator />
       <MenuItem>Item</MenuItem>
     </MenuContent>
   </Menu>
