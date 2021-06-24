@@ -1,6 +1,7 @@
 import {
   CheckboxItem,
   Content,
+  Group,
   Item,
   ItemIndicator,
   Label,
@@ -9,13 +10,14 @@ import {
   Root,
   Separator,
   Trigger,
+  TriggerItem,
 } from '@radix-ui/react-dropdown-menu'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
 import React, { forwardRef } from 'react'
 import type { CSS, CSSProps } from 'stitches.config'
 import { styled } from 'stitches.config'
-import { Check } from '../Icons'
+import { Check, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper'
 
 const itemStyles = {
@@ -31,9 +33,12 @@ const itemStyles = {
   borderRadius: '$default',
   backgroundColor: 'transparent',
   border: 'none',
-  transition: 'background 0.5s',
   color: '$text',
   outline: 'none',
+  transition: 'all 50ms',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 
   '&:focus': {
     background: '$selection',
@@ -60,6 +65,7 @@ const checkboxItemStyles = {
   ...itemStyles,
   paddingLeft: '$6',
 }
+
 const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
 
@@ -72,6 +78,32 @@ type MenuItemComponent = Polymorphic.ForwardRefComponent<
 
 export const MenuItem = styled(Item, itemStyles) as MenuItemComponent
 
+const StyledMenuTriggerItem = styled(TriggerItem, {
+  ...itemStyles,
+  '&[data-state="open"]': {
+    background: '$selection',
+  },
+})
+
+type MenuTriggerItemOwnProps = React.ComponentProps<typeof TriggerItem> &
+  CSSProps
+
+type MenuTriggerItemComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof TriggerItem>,
+  MenuTriggerItemOwnProps
+>
+
+export const MenuTriggerItem = forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <StyledMenuTriggerItem {...props} ref={forwardedRef}>
+        {children}
+        <ChevronRight css={{ size: '$4' }} />
+      </StyledMenuTriggerItem>
+    )
+  }
+) as MenuTriggerItemComponent
+
 type MenuContentOwnProps = Polymorphic.OwnProps<typeof Content> & CSSProps
 
 type MenuContentComponent = Polymorphic.ForwardRefComponent<
@@ -81,7 +113,12 @@ type MenuContentComponent = Polymorphic.ForwardRefComponent<
 
 export const MenuContent = forwardRef(
   ({ children, css, ...props }, forwardedRef) => (
-    <StyledContent css={css as CSS} {...props} ref={forwardedRef}>
+    <StyledContent
+      css={css as CSS}
+      alignOffset={8}
+      {...props}
+      ref={forwardedRef}
+    >
       {children}
     </StyledContent>
   )
@@ -103,7 +140,7 @@ export const MenuTrigger = forwardRef(
 
 const StyledCheckboxIndicator = () => (
   <StyledItemIndicator>
-    <Check css={{ height: '$4', width: '$4' }} />
+    <Check css={{ size: '$4' }} />
   </StyledItemIndicator>
 )
 
@@ -121,11 +158,35 @@ export const MenuItemCheckbox: MenuItemCheckboxComponent = forwardRef(
   )
 )
 
-export const MenuItemSeparator = styled(Separator, {
+type MenuSeparatorComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof CheckboxItem>,
+  CSSProps & { orientation?: 'horizontal' | 'vertical' } & Polymorphic.OwnProps<
+      typeof Separator
+    >
+>
+
+export const MenuSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey7',
-  margin: '$1',
-})
+
+  variants: {
+    orientation: {
+      horizontal: {
+        height: 1,
+        margin: '$1 0',
+      },
+      vertical: {
+        width: 1,
+        height: 'auto',
+        margin: '0 $1',
+        flex: '1 1 100%',
+      },
+    },
+  },
+  defaultVariants: {
+    orientation: 'horizontal',
+  },
+}) as MenuSeparatorComponent
 
 export const MenuLabel = styled(Label, {
   color: '$grey10',
@@ -133,6 +194,16 @@ export const MenuLabel = styled(Label, {
   padding: '$2 $3',
   paddingBottom: '$1',
   cursor: 'default',
+})
+
+export const MenuItemGroup = styled(Group, {
+  display: 'flex',
+  marginLeft: '$3',
+  marginRight: '$1',
+
+  [`& ${MenuItem}`]: {
+    paddingLeft: '$2',
+  },
 })
 
 export const MenuRadioGroup = RadioGroup
@@ -150,6 +221,13 @@ export const MenuRadioItem: MenuItemRadioComponent = forwardRef(
     </StyledRadioItem>
   )
 )
+
+export const MenuItemShortcut = styled('span', {
+  fontFamily: '$monospace',
+  lineHeight: '$body',
+  color: '$textSecondary',
+  marginLeft: '$3',
+})
 
 /**
  * Menu component

@@ -1,6 +1,7 @@
 import {
   CheckboxItem,
   Content,
+  Group,
   Item,
   ItemIndicator,
   Label,
@@ -9,12 +10,13 @@ import {
   Root,
   Separator,
   Trigger,
+  TriggerItem,
 } from '@radix-ui/react-context-menu'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { ComponentProps, FC, forwardRef } from 'react'
 import type { CSSProps } from 'stitches.config'
 import { styled } from 'stitches.config'
-import { Check } from '../Icons'
+import { Check, ChevronRight } from '../Icons'
 
 const StyledContent = styled(Content, {
   minWidth: '$10',
@@ -29,6 +31,10 @@ const itemStyles = {
   padding: '$1 $3',
   borderRadius: '$default',
   cursor: 'default',
+  transition: 'all 50ms',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 
   '&:focus': {
     outline: 'none',
@@ -46,7 +52,24 @@ const StyledItem = styled(Item, itemStyles)
 const StyledSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey8',
-  margin: '$1',
+
+  variants: {
+    orientation: {
+      horizontal: {
+        height: 1,
+        margin: '$1 0',
+      },
+      vertical: {
+        width: 1,
+        height: 'auto',
+        margin: '0 $1',
+        flex: '1 1 100%',
+      },
+    },
+  },
+  defaultVariants: {
+    orientation: 'horizontal',
+  },
 })
 
 const StyledLabel = styled(Label, {
@@ -54,6 +77,49 @@ const StyledLabel = styled(Label, {
   fontSize: '$-1',
   padding: '$1 $3',
   cursor: 'default',
+})
+
+const StyledContextMenuTriggerItem = styled(TriggerItem, {
+  ...itemStyles,
+  '&[data-state="open"]': {
+    background: '$selection',
+  },
+})
+
+type ContextMenuTriggerItemOwnProps = React.ComponentProps<typeof TriggerItem> &
+  CSSProps
+
+type ContextMenuTriggerItemComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof TriggerItem>,
+  ContextMenuTriggerItemOwnProps
+>
+
+export const ContextMenuTriggerItem = forwardRef(
+  ({ children, ...props }, forwardedRef) => {
+    return (
+      <StyledContextMenuTriggerItem {...props} ref={forwardedRef}>
+        {children}
+        <ChevronRight css={{ size: '$4' }} />
+      </StyledContextMenuTriggerItem>
+    )
+  }
+) as ContextMenuTriggerItemComponent
+
+export const ContextMenuItemGroup = styled(Group, {
+  display: 'flex',
+  marginLeft: '$3',
+  marginRight: '$1',
+
+  [`& ${StyledItem}`]: {
+    paddingLeft: '$2',
+  },
+})
+
+export const ContextMenuItemShortcut = styled('span', {
+  fontFamily: '$monospace',
+  lineHeight: '$body',
+  color: '$textSecondary',
+  marginLeft: '$3',
 })
 
 /**
@@ -66,7 +132,7 @@ export const ContextMenuContent: FC<
   ComponentProps<typeof Content>
 > = StyledContent
 export const ContextMenuSeparator: FC<
-  ComponentProps<typeof Separator>
+  ComponentProps<typeof StyledSeparator>
 > = StyledSeparator
 export const ContextMenuLabel: FC<ComponentProps<typeof Label>> = StyledLabel
 

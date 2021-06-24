@@ -7,11 +7,14 @@ import {
   ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuItem,
+  ContextMenuItemGroup,
+  ContextMenuItemShortcut,
   ContextMenuLabel,
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuTrigger,
+  ContextMenuTriggerItem,
 } from '.'
 import { Flex } from '../Flex'
 
@@ -23,11 +26,14 @@ export default {
     ContextMenuTrigger,
     ContextMenuContent,
     ContextMenuItem,
+    ContextMenuItemGroup,
+    ContextMenuItemShortcut,
     ContextMenuSeparator,
     ContextMenuLabel,
     ContextMenuCheckboxItem,
     ContextMenuRadioItem,
     ContextMenuRadioGroup,
+    ContextMenuTriggerItem,
   },
 } as Meta
 
@@ -75,7 +81,7 @@ export const WithDisabledItems: Story = (args) => (
   </ContextMenu>
 )
 
-/** ContextMenuSeparator adds a separator between other items  */
+/** ContextMenuSeparator adds a separator between other items and can be used with Groups to create horizontal sections */
 export const WithSeparators: Story = (args) => (
   <ContextMenu>
     <ContextMenuTrigger>
@@ -83,9 +89,20 @@ export const WithSeparators: Story = (args) => (
     </ContextMenuTrigger>
     <ContextMenuContent>
       <ContextMenuItem onSelect={action('cut')}>Cut</ContextMenuItem>
-      <ContextMenuSeparator />
       <ContextMenuItem onSelect={action('copy')}>Copy</ContextMenuItem>
       <ContextMenuItem onSelect={action('paste')}>Paste</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItemGroup>
+        <ContextMenuLabel>Edit</ContextMenuLabel>
+        <ContextMenuSeparator orientation="vertical" />
+        <ContextMenuItem>Cut</ContextMenuItem>
+        <ContextMenuSeparator orientation="vertical" />
+        <ContextMenuItem>Copy</ContextMenuItem>
+        <ContextMenuSeparator orientation="vertical" />
+        <ContextMenuItem>Paste</ContextMenuItem>
+      </ContextMenuItemGroup>
+      <ContextMenuSeparator />
+      <ContextMenuItem>Item</ContextMenuItem>
     </ContextMenuContent>
   </ContextMenu>
 )
@@ -104,6 +121,25 @@ export const WithLabels: Story = (args) => (
     </ContextMenuContent>
   </ContextMenu>
 )
+
+/** Add shortcut indicators using the `ContextMenuItemShortcut` */
+export const Shortcuts = () => {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <ClickTarget />
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>
+          New Tab <ContextMenuItemShortcut>⌘+T</ContextMenuItemShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem>
+          New Window <ContextMenuItemShortcut>⌘+N</ContextMenuItemShortcut>
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
+}
 
 /** ContextMenuCheckboxItem adds an item that can be checked */
 export const WithCheckboxItems: Story = (args) => {
@@ -140,6 +176,41 @@ export const WithRadioItems: Story = (args) => {
           <ContextMenuRadioItem value="blue">Blue</ContextMenuRadioItem>
           <ContextMenuRadioItem value="green">Green</ContextMenuRadioItem>
         </ContextMenuRadioGroup>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
+}
+
+/** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
+export const Nested = () => {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <ClickTarget />
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>
+          New Tab <ContextMenuItemShortcut>⌘+T</ContextMenuItemShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem>
+          New Window <ContextMenuItemShortcut>⌘+N</ContextMenuItemShortcut>
+        </ContextMenuItem>
+        <ContextMenu>
+          <ContextMenuTriggerItem>Developer</ContextMenuTriggerItem>
+          <ContextMenuContent sideOffset={8}>
+            <ContextMenuItem>Test</ContextMenuItem>
+            <ContextMenuItem>Build</ContextMenuItem>
+            <ContextMenuItem>Start</ContextMenuItem>
+            <ContextMenu>
+              <ContextMenuTriggerItem>More</ContextMenuTriggerItem>
+              <ContextMenuContent sideOffset={8}>
+                <ContextMenuItem>Test</ContextMenuItem>
+                <ContextMenuItem>Build</ContextMenuItem>
+                <ContextMenuItem>Start</ContextMenuItem>
+              </ContextMenuContent>
+            </ContextMenu>
+          </ContextMenuContent>
+        </ContextMenu>
       </ContextMenuContent>
     </ContextMenu>
   )
