@@ -2,7 +2,6 @@ import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
 import { Slider } from '.'
 import { Column, Row } from '../'
-import { usePortalled } from '../../docs/util'
 
 export default {
   title: 'Components/Slider',
@@ -12,135 +11,82 @@ export default {
 export const Default: React.FC = () => <Slider />
 
 /** A primary and secondary variant can be used. Secondary, is the default. */
-export const Variants: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Column css={{ mt: '$7', gap: '$5' }}>
-      <Slider variant="primary" portalled={portalled} />
-      <Slider variant="secondary" portalled={portalled} />
+export const Variants = () => (
+  <Column css={{ mt: '$7', gap: '$5' }}>
+    <Slider variant="primary" />
+    <Slider variant="secondary" />
+  </Column>
+)
+
+export const Disabled = () => (
+  <Column css={{ mt: '$7', gap: '$5' }}>
+    <Slider disabled variant="primary" defaultValue={[50]} />
+    <Slider disabled variant="secondary" value={[50]} />
+  </Column>
+)
+
+export const Vertical = () => (
+  <Row css={{ gap: '$5' }}>
+    <Column css={{ height: '$10' }}>
+      <Slider orientation="vertical" variant="primary" labelSide="left" />
     </Column>
-  )
-}
-
-/**
- * By default the `Slider` labels are rendered using a react portal. However, this can cause issues. For example, in storybook rendering with a portal puts the label outside of the theme decorator
- * so portalled label remains in the light theme.
- * If we switch to un-portalled, then they are rendered inside the theme decorator but due to storybook again they may not appear in the right place in the docs.
- *
- * You can toggle the portalled state in the toolbar to see how they function in the docs and canvas, but in most situations they should work correctly with the default.
- *
- * The use of `usePortalled` in these stories facilitates this switch, you can ignore it in normal use.
- */
-export const Portalled: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Slider
-      labelStyle="always"
-      labelFunction={(value) =>
-        `Currently${portalled ? ' ' : ' not '}portalled `
-      }
-      portalled={portalled}
-    />
-  )
-}
-
-export const Disabled: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Column css={{ mt: '$7', gap: '$5' }}>
-      <Slider
-        disabled
-        variant="primary"
-        defaultValue={[50]}
-        portalled={portalled}
-      />
-      <Slider disabled variant="secondary" value={[50]} portalled={portalled} />
+    <Column css={{ height: '$10' }}>
+      <Slider orientation="vertical" variant="secondary" labelSide="right" />
     </Column>
-  )
-}
-
-export const Vertical: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Row css={{ gap: '$5' }}>
-      <Column css={{ height: '$10' }}>
-        <Slider
-          orientation="vertical"
-          variant="primary"
-          labelSide="left"
-          portalled={portalled}
-        />
-      </Column>
-      <Column css={{ height: '$10' }}>
-        <Slider
-          orientation="vertical"
-          variant="secondary"
-          labelSide="right"
-          portalled={portalled}
-        />
-      </Column>
-    </Row>
-  )
-}
+  </Row>
+)
 
 /**
  * Passing an array as the `defaultValue` or `value` will add multiple markers  on the track.
  */
-export const Contained: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Column css={{ mt: '$7', gap: '$5' }}>
-      <Slider defaultValue={[25, 75]} variant="primary" portalled={portalled} />
-      <Slider
-        defaultValue={[10, 50, 90]}
-        variant="secondary"
-        portalled={portalled}
-      />
-    </Column>
-  )
-}
+export const Contained = () => (
+  <Column css={{ mt: '$7', gap: '$5' }}>
+    <Slider defaultValue={[25, 75]} variant="primary" />
+    <Slider defaultValue={[10, 50, 90]} variant="secondary" />
+  </Column>
+)
 
 /**
  * Use `onValueChange` to update the controlled value array.
  */
-export const Controlled: Story = (_args, context) => {
-  const portalled = usePortalled(context)
+export const Controlled = () => {
   const [value, setValue] = useState([50])
-  return <Slider value={value} onValueChange={setValue} portalled={portalled} />
+  return <Slider value={value} onValueChange={setValue} />
 }
 
 /**
  * The Slider labels can be shown, `always`, on `hover`, or `none`. Using the `labelStyle` prop.
  */
-export const LabelMarkers: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Column css={{ mt: '$7', gap: '$5' }}>
-      <Slider labelStyle="always" portalled={portalled} />
-      <Slider labelStyle="hover" portalled={portalled} />
-      <Slider labelStyle="none" portalled={portalled} />
-    </Column>
-  )
-}
+export const LabelMarkers = () => (
+  <Column css={{ mt: '$7', gap: '$5' }}>
+    <Slider labelStyle="always" />
+    <Slider labelStyle="hover" />
+    <Slider labelStyle="none" />
+  </Column>
+)
 
 /**
  * A custom label function can be provided to format the label
  */
-export const LabelContent: Story = (args, context) => {
-  const portalled = usePortalled(context)
-  return (
-    <Slider
-      labelFunction={(value) => `Current value is ${value}`}
-      portalled={portalled}
-      {...args}
-    />
-  )
-}
+export const LabelContent = () => (
+  <Slider labelFunction={(value) => `Current value is ${value}`} />
+)
 
 /**
  * The props `min`, `max` and `step` can be used to control the range.
  */
-export const RangeValues: Story = (_args, context) => {
-  const portalled = usePortalled(context)
-  return <Slider min={0} max={10} step={1} portalled={portalled} />
-}
+export const RangeValues: Story = () => <Slider min={0} max={10} step={1} />
+
+/**
+ * By default the `Slider` labels are rendered using a react portal. However, this can cause issues.
+ * If we switch to un-portalled, then they are in the dom tree by the trigger.
+ *
+ * You can toggle the portalled state using the `portalled` prop.
+ */
+export const Portalled = () => (
+  <Slider
+    labelStyle="always"
+    labelFunction={(value) => `Currently portalled (${value})`}
+    portalled
+  />
+)
