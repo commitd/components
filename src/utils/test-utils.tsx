@@ -7,6 +7,7 @@
  */
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
+import './domrect-polyfill'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
