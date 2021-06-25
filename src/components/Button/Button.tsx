@@ -150,15 +150,10 @@ const StyledButton = styled(DEFAULT_TAG, {
   },
 } as StyledConfig<typeof buttonVariants>)
 
-type ButtonVariants = StitchesVariants<typeof StyledButton>
-type ButtonOwnProps = React.ComponentProps<typeof StyledButton>
-export type ButtonProps = ButtonOwnProps & {
-  /**  This is a test of the docs process */
-  variant?: ButtonVariants['variant']
-}
-
 /**
  * Button component
  */
-export const Button: React.FC<ButtonProps> = StyledButton
+export const Button: React.FC<
+  React.ComponentProps<typeof StyledButton>
+> = StyledButton
 Button.toString = () => `.${StyledButton.className}`
