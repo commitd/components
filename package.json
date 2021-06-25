@@ -161,7 +161,7 @@
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.8",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "4.2.2"
+    "typescript": "^4.3.4"
   },
   "dependencies": {
     "@committed/hooks": "^0.4.0",
