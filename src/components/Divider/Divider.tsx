@@ -1,8 +1,8 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Root } from '@radix-ui/react-separator'
 import React, { forwardRef } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { StitchesVariants, styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { StitchesVariants, styled } from '../../stitches.config'
 
 const StyledDivider = styled(Root, {
   border: 'none',

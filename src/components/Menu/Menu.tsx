@@ -15,8 +15,8 @@ import {
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
 import React, { forwardRef } from 'react'
-import type { CSS, CSSProps } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSS, CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { Check, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper'
 

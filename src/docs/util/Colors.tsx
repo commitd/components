@@ -1,7 +1,7 @@
 import convertColor from 'parse-color'
 import React from 'react'
 import { Flex, Text } from '../../components'
-import type { CSS } from '../../utils/stitches.config'
+import type { CSS } from '../../stitches.config'
 import { Copy } from './Copy'
 
 const paletteWeights = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]

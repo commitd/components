@@ -9,8 +9,8 @@ import {
 } from '@radix-ui/react-popover'
 import { Slot } from '@radix-ui/react-slot'
 import React, { FC, forwardRef } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { paperStyles } from '../Paper'
 
 const StyledContent = styled(Content, {

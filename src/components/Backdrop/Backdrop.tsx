@@ -1,6 +1,6 @@
 import { Content, Overlay, Root } from '@radix-ui/react-dialog'
 import React, { FC } from 'react'
-import { CSS, styled } from 'stitches.config'
+import { CSS, styled } from '../../stitches.config'
 import { overlayStyles, overlayAnimationStyles } from '../Overlay'
 
 const StyledOverlay = styled(Overlay, {

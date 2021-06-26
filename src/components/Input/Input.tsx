@@ -1,8 +1,8 @@
 import { useLabelContext } from '@radix-ui/react-label'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from 'stitches.config'
-import { styled, StyledConfig } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import { styled, StyledConfig } from '../../stitches.config'
 import { Label } from '../Label'
 
 const DEFAULT_TAG = 'input'

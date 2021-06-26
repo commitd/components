@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import { Arrow, Content, Root, Trigger } from '@radix-ui/react-tooltip'
 import React, { FC } from 'react'
-import { styled } from 'stitches.config'
+import { styled } from '../../stitches.config'
 import { Text } from '../Text'
 
 type TooltipProps = React.ComponentProps<typeof Root> &

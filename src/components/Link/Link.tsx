@@ -1,7 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'a'
 

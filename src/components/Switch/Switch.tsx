@@ -1,8 +1,8 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Root, Thumb } from '@radix-ui/react-switch'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 
 const StyledThumb = styled(Thumb, {
   $$border: '$colors$default',

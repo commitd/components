@@ -14,8 +14,8 @@ import {
 } from '@radix-ui/react-context-menu'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { ComponentProps, FC, forwardRef } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { Check, ChevronRight } from '../Icons'
 
 const StyledContent = styled(Content, {

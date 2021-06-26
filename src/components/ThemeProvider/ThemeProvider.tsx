@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react'
-import { darkTheme, globalStyles } from 'stitches.config'
+import { darkTheme, globalStyles } from '../../stitches.config'
 import { ThemeChoice, ThemeContext, ThemeController } from './ThemeController'
 export interface ThemeProviderProps {
   /**

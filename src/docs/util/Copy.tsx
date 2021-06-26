@@ -1,6 +1,6 @@
 import { useBoolean, useTimeout } from '@committed/hooks'
 import React, { ComponentProps, FC } from 'react'
-import type { CSS } from 'stitches.config'
+import type { CSS } from '../../stitches.config'
 import { Box, Tooltip } from '../../'
 
 const copyToClipboard = (text: string) => {
