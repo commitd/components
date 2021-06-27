@@ -1,13 +1,23 @@
-import { Close, Content, Overlay, Root, Trigger } from '@radix-ui/react-dialog'
+import {
+  Close,
+  Content,
+  Description,
+  Overlay,
+  Root,
+  Title,
+  Trigger,
+} from '@radix-ui/react-dialog'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Slot } from '@radix-ui/react-slot'
-import React, { FC, forwardRef } from 'react'
+import React, { ComponentProps, FC, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
+import { Heading } from '../Heading'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
 import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 import { paperStyles } from '../Paper'
+import { Text } from '../Text'
 
 export const StyledOverlay = styled(Overlay, {
   ...overlayStyles,
@@ -117,3 +127,23 @@ export const DialogTrigger = forwardRef(
 ) as DialogTriggerComponent
 
 export const DialogClose = Close
+
+export const DialogTitle: FC<ComponentProps<typeof Heading>> = ({
+  css,
+  ...props
+}) => (
+  <Title>
+    <Heading
+      as="div"
+      variant="h6"
+      css={{ mb: '$4', ...css } as CSS}
+      {...props}
+    />
+  </Title>
+)
+
+export const DialogDescription: FC<ComponentProps<typeof Text>> = (props) => (
+  <Description>
+    <Text {...props} />
+  </Description>
+)

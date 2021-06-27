@@ -130,9 +130,9 @@ const stitches = createCss({
     light: '(prefers-color-scheme: light)',
   },
   utils: {
-    p: (config) => (
+    p: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingTop: value,
@@ -140,54 +140,54 @@ const stitches = createCss({
       paddingLeft: value,
       paddingRight: value,
     }),
-    pt: (config) => (
+    pt: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingTop: value,
     }),
-    pr: (config) => (
+    pr: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingRight: value,
     }),
-    pb: (config) => (
+    pb: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingBottom: value,
     }),
-    pl: (config) => (
+    pl: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingLeft: value,
     }),
-    px: (config) => (
+    px: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (config) => (
+    py: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
 
-    m: (config) => (
+    m: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginTop: value,
@@ -195,64 +195,64 @@ const stitches = createCss({
       marginLeft: value,
       marginRight: value,
     }),
-    mt: (config) => (
+    mt: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginTop: value,
     }),
-    mr: (config) => (
+    mr: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginRight: value,
     }),
-    mb: (config) => (
+    mb: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginBottom: value,
     }),
-    ml: (config) => (
+    ml: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginLeft: value,
     }),
-    mx: (config) => (
+    mx: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (config) => (
+    my: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['space']
+        | keyof typeof conf['theme']['space']
         | (string & Record<string, unknown>)}`
     ) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
-    size: (config) => (
+    size: (conf) => (
       value: `$${
-        | keyof typeof config['theme']['sizes']
+        | keyof typeof conf['theme']['sizes']
         | (string & Record<string, unknown>)}`
     ) => ({
       width: value,
       height: value,
     }),
-    '@dark': (config) => (
+    '@dark': (conf) => (
       // Should not need the Record but causes TS errors without it.
       // May be fixes in later version of Stitches
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: StitchesCss<typeof config> | Record<string, any>
+      value: StitchesCss<typeof conf> | Record<string, any>
     ) => ({
       [`.${DARK_THEME} &`]: value,
     }),
