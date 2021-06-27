@@ -1,5 +1,5 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { ComponentProps, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import type { CSSProps, StitchesVariants } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Svg } from '../Svg'

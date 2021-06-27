@@ -2,14 +2,27 @@ import { useBoolean } from '@committed/hooks'
 import { action } from '@storybook/addon-actions'
 import { Meta } from '@storybook/react'
 import React from 'react'
-import { Dialog, DialogClose, DialogContent, DialogTrigger } from '.'
-import { Button, Heading, IconButton, Link, Row, Text } from '../'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from '.'
+import { Button, IconButton, Link, Row, Text } from '../'
 import { Close as CloseIcon } from '../Icons'
 
 export default {
   title: 'Components/Dialog',
   component: Dialog,
-  subcomponents: { DialogContent, DialogTrigger, DialogClose },
+  subcomponents: {
+    DialogContent,
+    DialogTrigger,
+    DialogClose,
+    DialogTitle,
+    DialogDescription,
+  },
 } as Meta
 
 export const Default = () => (
@@ -33,10 +46,10 @@ export const Controllable = () => {
       <Button onClick={setTrue}>Show Dialog</Button>
       <Dialog open={open} onOpenChange={setFalse}>
         <DialogContent defaultClose={false}>
-          <Heading variant="h3">This is a controlled dialog</Heading>
-          <Text css={{ mt: '$3' }}>
+          <DialogTitle>This is a controlled dialog</DialogTitle>
+          <DialogDescription>
             It can be closed by a click outside the dialog or using the esc key
-          </Text>
+          </DialogDescription>
         </DialogContent>
       </Dialog>
     </>
