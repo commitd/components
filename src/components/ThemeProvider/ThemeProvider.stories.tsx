@@ -6,7 +6,7 @@ import {
   theme,
   config,
   darkThemeConfig,
-} from 'stitches.config'
+} from '../../stitches.config'
 import { ThemeProvider, ThemeProviderProps } from '.'
 import { Paper } from '../Paper'
 import { Monospace } from '../Text'

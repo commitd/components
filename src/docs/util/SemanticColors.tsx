@@ -1,5 +1,5 @@
 import React from 'react'
-import type { CSS } from 'stitches.config'
+import type { CSS } from '../../stitches.config'
 import { Grid, Heading } from '../../components'
 import { Color } from './Colors'
 

@@ -5,8 +5,8 @@ import React, {
   forwardRef,
   ForwardRefExoticComponent,
 } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
 import { Check } from '../Icons'
 import { Label } from '../Label'

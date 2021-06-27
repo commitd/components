@@ -1,5 +1,5 @@
-import type { CSS } from 'stitches.config'
-import { keyframes, styled } from 'stitches.config'
+import type { CSS } from '../../stitches.config'
+import { keyframes, styled } from '../../stitches.config'
 
 const fadeIn = keyframes({
   from: {

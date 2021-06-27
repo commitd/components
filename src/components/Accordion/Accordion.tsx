@@ -1,8 +1,8 @@
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { keyframes, styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { keyframes, styled } from '../../stitches.config'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
 

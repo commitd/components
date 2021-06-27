@@ -1,6 +1,6 @@
 import React, { ElementRef, forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from 'stitches.config'
-import { keyframes, styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import { keyframes, styled } from '../../stitches.config'
 import { Logo } from '../Logo'
 
 const strokeKeyframes = keyframes({

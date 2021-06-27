@@ -1,8 +1,8 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
 import React, { forwardRef } from 'react'
-import type { CSSProps } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import {
   buttonBaseStyle,
   mainVariants as buttonVariants,

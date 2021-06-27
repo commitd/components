@@ -1,8 +1,8 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { ChevronDown } from '../Icons'
 import { inputStyles } from '../Input/Input'
 import {

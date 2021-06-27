@@ -10,8 +10,8 @@ import React, {
   useMemo,
   useRef,
 } from 'react'
-import type { CSSProps, StitchesVariants } from 'stitches.config'
-import { styled } from 'stitches.config'
+import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { Tooltip } from '../Tooltip'
 
 type LabelStyle = 'always' | 'hover' | 'none'

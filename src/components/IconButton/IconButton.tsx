@@ -1,7 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from 'stitches.config'
-import { styled } from 'stitches.config'
+import React, { ComponentProps, forwardRef } from 'react'
+import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { Svg } from '../Svg'
 
 const DEFAULT_TAG = 'button'
@@ -146,7 +146,8 @@ type IconButtonOwnProps = CSSProps &
 type IconButtonComponent = Polymorphic.ForwardRefComponent<
   typeof DEFAULT_TAG,
   IconButtonOwnProps
->
+> &
+  JSX.IntrinsicElements[typeof DEFAULT_TAG]
 
 /**
  * IconButton can be used to wrap custom `Svg` icons or use the `path` prop to supply a standard mdi icon.

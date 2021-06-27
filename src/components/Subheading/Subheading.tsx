@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSS, CSSProps, StitchesVariants } from 'stitches.config'
+import type { CSS, CSSProps, StitchesVariants } from '../../stitches.config'
 import { Text } from '../Text'
 
 const DEFAULT_TAG = 'h3'
