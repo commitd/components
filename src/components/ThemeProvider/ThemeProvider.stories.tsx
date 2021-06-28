@@ -7,9 +7,22 @@ import {
   config,
   darkThemeConfig,
 } from '../../stitches.config'
-import { ThemeProvider, ThemeProviderProps } from '.'
+import {
+  ThemeProvider,
+  ThemeProviderProps,
+  useThemeController,
+  useTheme,
+} from '.'
 import { Paper } from '../Paper'
-import { Monospace } from '../Text'
+import { Monospace, Paragraph } from '../Text'
+import { Switch } from '../Switch'
+import { Card } from '../Card'
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionContent,
+  AccordionItem,
+} from '../Accordion'
 
 export default {
   title: 'Components/ThemeProvider',
@@ -80,6 +93,64 @@ Light.parameters = {
 `,
     },
   },
+}
+
+/**
+ * The `useThemeController` hook can be used to get the theme choice state and a toggle function.
+ * This can be used to build a custom theme switch.
+ */
+export const UtilityUseThemeController = () => {
+  const CustomSwitch = () => {
+    const [choice, toggleChoice] = useThemeController()
+    return <Switch checked={choice == 'dark'} onCheckedChange={toggleChoice} />
+  }
+  return (
+    <ThemeProvider>
+      <Card css={{ padding: '$6', margin: '$2' }}>
+        <CustomSwitch />
+      </Card>
+    </ThemeProvider>
+  )
+}
+
+/** The `useTheme` hook can be used to get the full details of the current theme. */
+export const UtilityUseTheme = () => {
+  const [theme] = useTheme()
+  return (
+    <Accordion type="single">
+      <AccordionItem value="item-1">
+        <AccordionHeader>
+          <Monospace>Show theme</Monospace>
+        </AccordionHeader>
+        <AccordionContent>
+          <Monospace>{JSON.stringify(theme, null, 2)}</Monospace>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+
+/**
+ * The `useTheme` hook also provides a utility function to dereference theme tokens.
+ * This can be used in case the theme details are required outside of the normal css landscape.*/
+export const UtilityUseThemeResolve = () => {
+  const [theme, resolve] = useTheme()
+  return (
+    <>
+      <Paragraph>
+        The token <Monospace>$colors$background</Monospace> resolves to{' '}
+        <Monospace>{resolve('$colors$background')}</Monospace>{' '}
+      </Paragraph>
+      <Paragraph>
+        The token <Monospace>$space$3</Monospace> resolves to{' '}
+        <Monospace>{resolve('$space$3')}</Monospace>{' '}
+      </Paragraph>
+      <Paragraph>
+        The token <Monospace>$colors$success</Monospace> resolves to{' '}
+        <Monospace>{resolve('$colors$success')}</Monospace>{' '}
+      </Paragraph>
+    </>
+  )
 }
 
 /**

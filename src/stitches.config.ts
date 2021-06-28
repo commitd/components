@@ -1,5 +1,5 @@
 import { createCss } from '@stitches/react'
-import type { StitchesCss } from '@stitches/react'
+import type { StitchesCss, ThemeRule } from '@stitches/react'
 export type { StitchesVariants } from '@stitches/react'
 import {
   gray,
@@ -496,11 +496,6 @@ export type CSSProps = { css?: CSS }
 export type StyledConfig<T = undefined> = Parameters<typeof styled>[1] & {
   variants: T
 }
-// export type StyledConfig<T = void> = T extends Record<string, unknown>
-//   ? Parameters<typeof styled>[1] & {
-//       variants: T
-//     }
-//   : Parameters<typeof styled>[1]
 
 export const darkThemeConfig = {
   shadows: {
@@ -626,8 +621,10 @@ export const darkThemeConfig = {
   },
 }
 
-export const lightTheme = theme(LIGHT_THEME, { ...config.theme })
-export const darkTheme = theme(DARK_THEME, darkThemeConfig)
+export type Theme = ThemeRule & string
+
+export const lightTheme: Theme = theme(LIGHT_THEME, { ...config.theme })
+export const darkTheme: Theme = theme(DARK_THEME, darkThemeConfig)
 
 export const globalStyles = globalCss({
   'html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video': {
