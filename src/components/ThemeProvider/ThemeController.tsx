@@ -94,6 +94,8 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
       window.matchMedia('(prefers-color-scheme: dark)').matches
     ) {
       setThemeValues('dark')
+    } else {
+      setThemeValues('light')
     }
   }, [setThemeValues])
 

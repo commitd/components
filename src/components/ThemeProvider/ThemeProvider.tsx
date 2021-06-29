@@ -70,6 +70,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
   useEffect(() => {
     prevThemeRef.current = theme
   })
+
   if (local) {
     return <div className={theme}>{children}</div>
   } else {
