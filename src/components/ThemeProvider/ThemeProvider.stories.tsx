@@ -149,6 +149,10 @@ export const UtilityUseThemeResolve = () => {
         The token <Monospace>$colors$success</Monospace> resolves to{' '}
         <Monospace>{resolve('$colors$success')}</Monospace>{' '}
       </Paragraph>
+      <Paragraph>
+        The value <Monospace>`#123456</Monospace> resolves to{' '}
+        <Monospace>{resolve('#123456')}</Monospace>{' '}
+      </Paragraph>
     </>
   )
 }
