@@ -36,7 +36,7 @@ const Example = styled(Paper, {
 })
 
 const Template: Story<ThemeProviderProps> = (args) => (
-  <ThemeProvider {...args}>
+  <ThemeProvider local={true} {...args}>
     <Example>Example</Example>
   </ThemeProvider>
 )
@@ -105,7 +105,7 @@ export const UtilityUseThemeController = () => {
     return <Switch checked={choice == 'dark'} onCheckedChange={toggleChoice} />
   }
   return (
-    <ThemeProvider>
+    <ThemeProvider local={true}>
       <Card css={{ padding: '$6', margin: '$2' }}>
         <CustomSwitch />
       </Card>

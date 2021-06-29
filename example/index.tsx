@@ -12,7 +12,18 @@ const Header = () => (
     </C.AppBarHeading>
     <C.AppBarActions>
       <C.ThemeSwitch />
-      <C.AppBarButton>Logout</C.AppBarButton>
+
+      <C.ConfirmDialog>
+        <C.ConfirmDialogTrigger>
+          <C.AppBarButton>Logout</C.AppBarButton>
+        </C.ConfirmDialogTrigger>
+        <C.ConfirmDialogContent
+          description="Are you sure you want to logout?"
+          title="Confirm Dialog"
+        >
+          <C.ConfirmDialogActions confirm="Yes" />
+        </C.ConfirmDialogContent>
+      </C.ConfirmDialog>
     </C.AppBarActions>
   </C.AppBar>
 )
