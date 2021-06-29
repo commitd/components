@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useRef, useEffect } from 'react'
 import { globalStyles, Theme } from '../../stitches.config'
 import {
   ThemeChoice,
@@ -8,10 +8,14 @@ import {
 } from './ThemeController'
 export interface ThemeProviderProps extends ThemeControllerProps {
   /**
-   * Elements to be themed
+   * By default the theme is applied globally, using the `body` element.
+   *
+   * Set `local` to `true` to only apply the theme locally. This can be used in cases where a nested them is required.
    */
-  children?: React.ReactNode
+  local?: boolean
 }
+
+//------------------------ Utility hooks -----------------------------//
 
 export const useThemeController = (): [ThemeChoice, () => void] => {
   const { choice, toggle } = useContext(ThemeContext)
@@ -53,12 +57,31 @@ export const useTheme = (): [Theme | undefined, (token: string) => string] => {
   return [context.theme, resolveValue]
 }
 
+//--------------------------- main components ----------------------------------------//
+
 const ControlledThemeProvider: FC<ThemeProviderProps> = ({
+  local = false,
   children,
 }: ThemeProviderProps) => {
   globalStyles()
+  const prevThemeRef = useRef<Theme>()
   const [theme] = useTheme()
-  return <div className={theme}>{children}</div>
+
+  useEffect(() => {
+    prevThemeRef.current = theme
+  })
+  if (local) {
+    return <div className={theme}>{children}</div>
+  } else {
+    const prevTheme = prevThemeRef.current
+    if (prevTheme) {
+      document.body.classList.remove(prevTheme)
+    }
+    if (theme) {
+      document.body.classList.add(theme)
+    }
+    return <>{children}</>
+  }
 }
 
 /**
