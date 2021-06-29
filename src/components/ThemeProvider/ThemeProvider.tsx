@@ -1,25 +1,12 @@
 import React, { FC, useContext } from 'react'
-import { darkTheme, globalStyles } from '../../stitches.config'
-import { ThemeChoice, ThemeContext, ThemeController } from './ThemeController'
-export interface ThemeProviderProps {
-  /**
-   * The light theme
-   *
-   * This defaults to the empty string, as by default the light theme is applied.
-   * If your theme provider might be nested inside another theme provider then this
-   * should force the light theme by setting this to the exported `lightTheme` or
-   * you own light theme.
-   *
-   */
-  light?: string
-  /**
-   * The dark theme
-   */
-  dark?: string
-  /**
-   * Force the theme choice, if null use browser preference
-   */
-  choice?: null | ThemeChoice
+import { globalStyles, Theme } from '../../stitches.config'
+import {
+  ThemeChoice,
+  ThemeContext,
+  ThemeController,
+  ThemeControllerProps,
+} from './ThemeController'
+export interface ThemeProviderProps extends ThemeControllerProps {
   /**
    * Elements to be themed
    */
@@ -28,33 +15,47 @@ export interface ThemeProviderProps {
 
 export const useThemeController = (): [ThemeChoice, () => void] => {
   const { choice, toggle } = useContext(ThemeContext)
+  if (!toggle) {
+    throw new Error('useThemeController must be used within a ThemeProvider')
+  }
   return [choice, toggle]
 }
 
+export const useTheme = (): [Theme | undefined, (token: string) => string] => {
+  const context = useContext(ThemeContext)
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider')
+  }
+
+  const resolveValue = (token: string): string => {
+    const reference = token.split('$')
+    const theme = context.theme
+    const type = reference[1]
+    const instance = reference[2]
+    if (type === undefined || instance === undefined) {
+      throw new Error('Token must be fully referenced')
+    }
+    if (theme === undefined) {
+      return token
+    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const value: string = (theme[type][instance]?.value || '') as string
+    if (value.startsWith('var')) {
+      return resolveValue(value.replace(/var\(--(\w*)-(\w*)\)/, '$$$1$$$2'))
+    } else {
+      return value
+    }
+  }
+
+  return [context.theme, resolveValue]
+}
+
 const ControlledThemeProvider: FC<ThemeProviderProps> = ({
-  light = '',
-  dark = darkTheme,
-  choice = null,
   children,
 }: ThemeProviderProps) => {
   globalStyles()
-  const [controllerChoice] = useThemeController()
-
-  let darkMode = false
-  switch (choice) {
-    case 'light':
-      darkMode = false
-      break
-    case 'dark':
-      darkMode = true
-      break
-    default:
-      darkMode = controllerChoice === 'dark'
-      break
-  }
-
-  const theme = darkMode ? dark : light || undefined
-
+  const [theme] = useTheme()
   return <div className={theme}>{children}</div>
 }
 
@@ -68,8 +69,13 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
  *
  * The `ThemeSwitch` component can also be used to switch the theme.
  */
-export const ThemeProvider: FC<ThemeProviderProps> = (props) => (
-  <ThemeController>
+export const ThemeProvider: FC<ThemeProviderProps> = ({
+  light,
+  dark,
+  choice,
+  ...props
+}) => (
+  <ThemeController light={light} dark={dark} choice={choice}>
     <ControlledThemeProvider {...props} />
   </ThemeController>
 )

@@ -23,5 +23,6 @@ export const committedLight = create({
 export const committedDark = create({
   ...overrides,
   base: 'dark',
+  appBg: '#000000',
   brandImage: 'https://committed.software/Committed_Dark.svg',
 })
