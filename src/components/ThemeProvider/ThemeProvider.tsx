@@ -28,24 +28,26 @@ export const useTheme = (): [Theme | undefined, (token: string) => string] => {
   }
 
   const resolveValue = (token: string): string => {
-    const reference = token.split('$')
-    const theme = context.theme
-    const type = reference[1]
-    const instance = reference[2]
-    if (type === undefined || instance === undefined) {
-      throw new Error('Token must be fully referenced')
+    if (token.startsWith('$')) {
+      const theme = context.theme
+      if (theme === undefined) {
+        return token
+      }
+      const reference = token.split('$')
+      const type = reference[1]
+      const instance = reference[2]
+      if (type === undefined || instance === undefined) {
+        throw new Error('Token must be fully referenced')
+      }
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      return resolveValue(theme[type][instance]?.value)
     }
-    if (theme === undefined) {
-      return token
+    if (token.startsWith('var')) {
+      return resolveValue(token.replace(/var\(--(\w*)-(\w*)\)/, '$$$1$$$2'))
     }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const value: string = (theme[type][instance]?.value || '') as string
-    if (value.startsWith('var')) {
-      return resolveValue(value.replace(/var\(--(\w*)-(\w*)\)/, '$$$1$$$2'))
-    } else {
-      return value
-    }
+    return token
   }
 
   return [context.theme, resolveValue]
