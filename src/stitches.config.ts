@@ -661,6 +661,7 @@ export const globalStyles = globalCss({
   },
   body: {
     lineHeight: '1',
+    backgroundColor: '$background',
     color: '$text',
     textSizeAdjust: '100%',
     textRendering: 'optimizeLegibility',
