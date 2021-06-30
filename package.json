@@ -120,6 +120,14 @@
       ".*.stories.tsx"
     ]
   },
+  "lint-staged": {
+    "*.{ts,tsx,md,json,mdx}": "prettier --write",
+    "*.{ts,tsx}": [
+      "eslint --cache --fix",
+      "git add",
+      "jest --bail --findRelatedTests"
+    ]
+  },
   "devDependencies": {
     "@fontsource/dosis": "^4.4.5",
     "@fontsource/inter": "^4.4.5",
