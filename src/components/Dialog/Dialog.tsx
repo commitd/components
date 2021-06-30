@@ -126,7 +126,20 @@ export const DialogTrigger = forwardRef(
   )
 ) as DialogTriggerComponent
 
-export const DialogClose = Close
+type DialogCloseOwnProps = Polymorphic.OwnProps<typeof Close> & CSSProps
+
+export type DialogCloseComponent = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Close>,
+  DialogCloseOwnProps
+>
+
+export const DialogClose = forwardRef(
+  ({ children, ...props }, forwardedRef) => (
+    <Close as={Slot} {...props} ref={forwardedRef}>
+      {children}
+    </Close>
+  )
+) as DialogCloseComponent
 
 export const DialogTitle: FC<ComponentProps<typeof Heading>> = ({
   css,

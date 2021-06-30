@@ -72,21 +72,21 @@ export const CloseButton = () => {
         >
           <Text>
             This dialog has it's own close operations, such as{' '}
-            <DialogClose as={Link} onClick={action('CloseLink')}>
-              Close Link
+            <DialogClose>
+              <Link onClick={action('CloseLink')}>Close Link</Link>
             </DialogClose>
             .
           </Text>
           <Row css={{ justifyContent: 'space-between' }}>
-            <DialogClose as={IconButton} onClick={action('CloseIcon')}>
-              <CloseIcon />
+            <DialogClose>
+              <IconButton onClick={action('CloseIcon')}>
+                <CloseIcon />
+              </IconButton>
             </DialogClose>
-            <DialogClose
-              as={Button}
-              variant="primary"
-              onClick={action('CloseButton')}
-            >
-              Close Button
+            <DialogClose>
+              <Button variant="primary" onClick={action('CloseButton')}>
+                Close Button
+              </Button>
             </DialogClose>
           </Row>
         </DialogContent>
