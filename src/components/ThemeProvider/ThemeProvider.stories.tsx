@@ -1,28 +1,28 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import {
+  ThemeProvider,
+  ThemeProviderProps,
+  useTheme,
+  useThemeController,
+} from '.'
+import {
+  config,
+  darkThemeConfig,
   lightTheme,
   styled,
   theme,
-  config,
-  darkThemeConfig,
 } from '../../stitches.config'
 import {
-  ThemeProvider,
-  ThemeProviderProps,
-  useThemeController,
-  useTheme,
-} from '.'
-import { Paper } from '../Paper'
-import { Monospace, Paragraph } from '../Text'
-import { Switch } from '../Switch'
-import { Card } from '../Card'
-import {
   Accordion,
-  AccordionHeader,
   AccordionContent,
+  AccordionHeader,
   AccordionItem,
 } from '../Accordion'
+import { Card } from '../Card'
+import { Paper } from '../Paper'
+import { Switch } from '../Switch'
+import { Monospace, Paragraph, Span } from '../Text'
 
 export default {
   title: 'Components/ThemeProvider',
@@ -138,20 +138,20 @@ export const UtilityUseThemeResolve = () => {
   return (
     <>
       <Paragraph>
-        The token <Monospace>$colors$background</Monospace> resolves to{' '}
-        <Monospace>{resolve('$colors$background')}</Monospace>{' '}
+        The token <Span font="monospace">$colors$background</Span> resolves to{' '}
+        <Span font="monospace">{resolve('$colors$background')}</Span>{' '}
       </Paragraph>
       <Paragraph>
-        The token <Monospace>$space$3</Monospace> resolves to{' '}
-        <Monospace>{resolve('$space$3')}</Monospace>{' '}
+        The token <Span font="monospace">$space$3</Span> resolves to{' '}
+        <Span font="monospace">{resolve('$space$3')}</Span>{' '}
       </Paragraph>
       <Paragraph>
-        The token <Monospace>$colors$success</Monospace> resolves to{' '}
-        <Monospace>{resolve('$colors$success')}</Monospace>{' '}
+        The token <Span font="monospace">$colors$success</Span> resolves to{' '}
+        <Span font="monospace">{resolve('$colors$success')}</Span>{' '}
       </Paragraph>
       <Paragraph>
-        The value <Monospace>`#123456</Monospace> resolves to{' '}
-        <Monospace>{resolve('#123456')}</Monospace>{' '}
+        The value <Span font="monospace">`#123456</Span> resolves to{' '}
+        <Span>{resolve('#123456')}</Span>{' '}
       </Paragraph>
     </>
   )

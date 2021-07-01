@@ -44,9 +44,11 @@ export const useTheme = (): [Theme | undefined, (token: string) => string] => {
         throw new Error('Token must be fully referenced')
       }
 
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       return resolveValue(theme[type][instance]?.value)
+      /* eslint-enable @typescript-eslint/no-unsafe-member-access */
     }
     if (token.startsWith('var')) {
       return resolveValue(token.replace(/var\(--(\w*)-(\w*)\)/, '$$$1$$$2'))
@@ -69,6 +71,12 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
 
   useEffect(() => {
     prevThemeRef.current = theme
+
+    return () => {
+      if (theme) {
+        document.body.classList.remove(theme)
+      }
+    }
   })
 
   if (local) {

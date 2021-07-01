@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDark, renderLight, screen, userEvent } from 'test-utils'
+import { renderDark, renderLight, screen, userEvent, act } from 'test-utils'
 import {
   ConfirmDialog,
   ConfirmDialogActions,
@@ -58,6 +58,7 @@ it('calls onCancel when cancelled', async () => {
   )
   userEvent.click(screen.getByRole('button'))
   userEvent.click(await screen.findByRole('button', { name: /cancel/i }))
+
   expect(onCancel).toHaveBeenCalled()
   expect(onConfirm).not.toHaveBeenCalled()
   expect(screen.queryByText('Confirm Dialog')).not.toBeInTheDocument()
@@ -70,7 +71,9 @@ it('calls onCancel on esc', () => {
     <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={jest.fn()} />
   )
   userEvent.click(screen.getByRole('button'))
-  userEvent.type(screen.getByText('Confirm Dialog'), '{esc}')
+  act(() => {
+    userEvent.type(screen.getByText('Confirm Dialog'), '{esc}')
+  })
   expect(onCancel).toHaveBeenCalled()
   expect(onConfirm).not.toHaveBeenCalled()
   expect(screen.queryByText('Confirm Dialog')).not.toBeInTheDocument()

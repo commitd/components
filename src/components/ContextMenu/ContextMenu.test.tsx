@@ -1,5 +1,12 @@
 import React from 'react'
-import { renderDark, renderLight, screen, userEvent } from 'test-utils'
+import {
+  renderDark,
+  renderLight,
+  screen,
+  userEvent,
+  fireEvent,
+  act,
+} from 'test-utils'
 import { Default, Nested } from './ContextMenu.stories'
 
 it('renders light without error', () => {
@@ -14,13 +21,17 @@ it('renders dark without error', () => {
 
 it('renders dark when opened without error', () => {
   renderDark(<Default />)
-  userEvent.click(screen.getByText('Right click anywhere'), { button: 2 })
+  act(() => {
+    fireEvent.contextMenu(screen.getByText('Right click anywhere'))
+  })
   expect(screen.getByText('Cut')).toBeInTheDocument()
 })
 
 it('renders items with role menuitem', () => {
   renderDark(<Default />)
-  userEvent.click(screen.getByText('Right click anywhere'), { button: 2 })
+  act(() => {
+    fireEvent.contextMenu(screen.getByText('Right click anywhere'))
+  })
   expect(screen.getByRole('menuitem', { name: /copy/i })).toBeInTheDocument()
 })
 
@@ -29,7 +40,9 @@ it('can render nested menus', () => {
   expect(
     screen.queryByRole('menuitem', { name: /test/i })
   ).not.toBeInTheDocument()
-  userEvent.click(screen.getByText('Right click anywhere'), { button: 2 })
+  act(() => {
+    fireEvent.contextMenu(screen.getByText('Right click anywhere'))
+  })
   expect(
     screen.queryByRole('menuitem', { name: /test/i })
   ).not.toBeInTheDocument()
