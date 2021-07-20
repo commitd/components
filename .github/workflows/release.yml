@@ -1,17 +1,23 @@
 name: release
 
+name: build
+
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+      - beta
 
 jobs:
-  release:
-    name: Build and publish
+  build:
+    name: Full CI
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v1
@@ -29,10 +35,29 @@ jobs:
         if: ${{ env.ACT }}
         run: npm install
 
-      - name: Publish Package
-        run: npm publish --access=public
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test -- --ci --coverage --maxWorkers=2
+
+      - name: Build
+        run: npm run build
+
+      - name: Build Storybook
+        run: npm run build-storybook -- --quiet
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
 
       - name: Publish Docs
         run: npm run deploy-storybook -- --ci

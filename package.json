@@ -1,5 +1,5 @@
 {
-  "version": "5.0.0-beta.9",
+  "version": "0.0.0-development",
   "name": "@committed/components",
   "description": "Committed Component Library",
   "author": "Committed",
@@ -38,7 +38,8 @@
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
     "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "react": ">= 16.8.0",
@@ -128,6 +129,15 @@
       "jest --bail --findRelatedTests"
     ]
   },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ]
+  },
   "devDependencies": {
     "@fontsource/dosis": "^4.4.5",
     "@fontsource/inter": "^4.4.5",
@@ -167,6 +177,7 @@
     "react-virtual": "^2.7.1",
     "resize-observer-polyfill": "^1.5.1",
     "rollpkg": "^0.5.7",
+    "semantic-release": "^17.4.4",
     "size-limit": "^5.0.1",
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.8",
