@@ -1,6 +1,5 @@
+permissions: write-all
 name: release
-
-name: build
 
 on:
   push:
