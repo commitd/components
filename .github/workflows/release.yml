@@ -1,7 +1,5 @@
 name: release
 
-name: build
-
 on:
   push:
     branches:
