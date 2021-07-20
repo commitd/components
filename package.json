@@ -29,6 +29,7 @@
     "test:ci": "jest --coverage",
     "test:watch": "jest --watchAll",
     "coverage": "npx live-server coverage/lcov-report",
+    "commit": "cz",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "generate": "plop --plopfile ./generators/plopfile.js",
@@ -138,7 +139,14 @@
       }
     ]
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@fontsource/dosis": "^4.4.5",
     "@fontsource/inter": "^4.4.5",
     "@size-limit/preset-small-lib": "^5.0.1",
@@ -155,6 +163,8 @@
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.8",
     "@types/react-router-dom": "^5.1.7",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.2.0",
     "danger": "^10.6.6",
     "danger-plugin-spellcheck": "^1.2.3",
     "eslint": "^7.29.0",
@@ -206,5 +216,10 @@
     "@radix-ui/react-tabs": "0.0.15",
     "@radix-ui/react-tooltip": "0.0.20",
     "@stitches/react": "^0.2.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
