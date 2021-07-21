@@ -1,116 +1,120 @@
-// import React from 'react'
-// import {
-//   Alert,
-//   AlertTitle,
-//   Autocomplete,
-//   Box,
-//   Button,
-//   Card,
-//   CardActions,
-//   CardContent,
-//   CardHeader,
-//   Checkbox,
-//   Form,
-//   FormControlLabel,
-//   Monospace,
-//   Typography,
-//   TextField,
-//   RadioGroup,
-//   Radio,
-// } from '../../src'
-// import { listOfCountries } from '../util/data'
+import React, { FormEvent, useState } from 'react'
+import {
+  Alert,
+  AlertTitle,
+  Button,
+  Card,
+  CardBody,
+  CardHeading,
+  Checkbox,
+  Column,
+  Flex,
+  Input,
+  Monospace,
+  Radio,
+  RadioGroup,
+  Select,
+  SelectItem,
+  Text,
+  CheckedState,
+} from '../../components'
+import { listOfCountries } from '../util/data'
 
-// export default {
-//   title: 'Examples/Form',
-// }
+export default {
+  title: 'Examples/Form',
+}
 
-// export const Example = () => {
-//   const [submitted, setSubmitted] = React.useState(null)
-
-//   const handleSubmit = (e) => {
-//     const elements = e.target.elements
-//     e.preventDefault()
-//     setSubmitted({
-//       name: elements.name.value,
-//       email: elements.email.value,
-//       country: elements.country.value,
-//       notify_email: elements.notify_email.checked,
-//       notify_txt: elements.notify_txt.checked,
-//       notify_browser: elements.notify_browser.checked,
-//       role: elements.role.value,
-//     })
-//   }
-
-//   return (
-//     <Box bgcolor="background.paper">
-//       {submitted && (
-//         <Alert severity="info">
-//           <AlertTitle>Form Submitted</AlertTitle>
-//           <Monospace>{JSON.stringify(submitted, null, 2)}</Monospace>
-//         </Alert>
-//       )}
-//       <Form onSubmit={handleSubmit}>
-//         <Card m={3}>
-//           <CardHeader>Form</CardHeader>
-//           <CardContent>
-//             <TextField my={2} id="name" label="Name" />
-//             <TextField my={2} id="email" label="Email" />
-//             <Autocomplete
-//               id="country"
-//               options={listOfCountries}
-//               getOptionLabel={(option) => option?.title}
-//               renderInput={(params) => (
-//                 <TextField my={2} {...params} label="Country" />
-//               )}
-//             />
-//             <Typography>Get notifications by:</Typography>
-//             <FormControlLabel
-//               control={<Checkbox id="notify_email" color="primary" />}
-//               label="Email"
-//               labelPlacement="end"
-//             />
-//             <FormControlLabel
-//               control={<Checkbox id="notify_txt" color="primary" />}
-//               label="Txt"
-//               labelPlacement="end"
-//             />
-//             <FormControlLabel
-//               control={<Checkbox id="notify_browser" color="primary" />}
-//               label="Browser"
-//               labelPlacement="end"
-//             />
-//             <Typography>Please Specify your role:</Typography>
-//             <RadioGroup aria-label="role" name="role">
-//               <FormControlLabel
-//                 value="director"
-//                 color="primary"
-//                 control={<Radio color="primary" />}
-//                 label="Director"
-//               />
-//               <FormControlLabel
-//                 value="developer"
-//                 control={<Radio color="primary" />}
-//                 label="Developer"
-//               />
-//               <FormControlLabel
-//                 value="tester"
-//                 control={<Radio color="primary" />}
-//                 label="Tester"
-//               />
-//               <FormControlLabel
-//                 value="other"
-//                 control={<Radio color="primary" />}
-//                 label="Other"
-//               />
-//             </RadioGroup>
-//           </CardContent>
-//           <CardActions>
-//             <Button type="submit" color={'primary'}>
-//               Submit
-//             </Button>
-//           </CardActions>
-//         </Card>
-//       </Form>
-//     </Box>
-//   )
-// }
+export const Form = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [country, setCountry] = useState('')
+  const [role, setRole] = useState('')
+  const [notifyEmail, setNotifyEmail] = useState<CheckedState>(true)
+  const [notifyTxt, setNotifyTxt] = useState<CheckedState>(true)
+  const [notifyBrowser, setNotifyBrowser] = useState<CheckedState>(true)
+  const [submitted, setSubmitted] = React.useState<{}>()
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSubmitted({
+      name,
+      country,
+      email,
+      notifyEmail,
+      notifyTxt,
+      notifyBrowser,
+      role,
+    })
+  }
+  return (
+    <Column css={{ width: '100%', padding: '$3', gap: '$3' }}>
+      {submitted && (
+        <Alert severity="info">
+          <AlertTitle>Form Submitted</AlertTitle>
+          <Monospace>{JSON.stringify(submitted, null, 2)}</Monospace>
+        </Alert>
+      )}
+      <Card
+        as="form"
+        onSubmit={handleSubmit}
+        css={{ width: '100%', padding: '$3' }}
+      >
+        <CardHeading>Form</CardHeading>
+        <CardBody>
+          <Flex css={{ flexDirection: 'column', gap: '$3' }}>
+            <Input
+              id="name"
+              label="Name"
+              name="name"
+              onValueChange={(value) => setName(value)}
+              value={name}
+            />
+            <Input
+              id="email"
+              label="Email"
+              type="email"
+              onValueChange={(value) => setEmail(value)}
+            />
+            <Select
+              id="country"
+              label="Country"
+              onValueChange={(value) => setCountry(value)}
+            >
+              {listOfCountries.map((country) => (
+                <SelectItem value={country.title}>{country.title}</SelectItem>
+              ))}
+            </Select>
+            <Text>Get notifications by:</Text>
+            <Checkbox
+              label="Email"
+              id="notify_email"
+              onCheckedChange={(checked) => setNotifyEmail(checked)}
+              checked={notifyEmail}
+            />
+            <Checkbox
+              label="Txt"
+              id="notify_txt"
+              onCheckedChange={(checked) => setNotifyTxt(checked)}
+              checked={notifyTxt}
+            />
+            <Checkbox
+              label="Browser"
+              id="notify_browser"
+              color="primary"
+              onCheckedChange={(checked) => setNotifyBrowser(checked)}
+              checked={notifyBrowser}
+            />
+            <Text>Please Specify your role:</Text>
+            <RadioGroup value={role} onValueChange={(v) => setRole(v)}>
+              <Radio value="director" label="Director" />
+              <Radio value="developer" label="Developer" />
+              <Radio value="tester" label="Tester" />
+            </RadioGroup>
+            <Button css={{ mt: '$4' }} type="submit" variant="primary">
+              Submit
+            </Button>
+          </Flex>
+        </CardBody>
+      </Card>
+    </Column>
+  )
+}
