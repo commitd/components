@@ -1,5 +1,6 @@
 export * from './Colors'
 export * from './Copy'
+export * from './randomColor'
 export * from './SemanticColors'
 // export * from './Overview'
 export * from './Variants'

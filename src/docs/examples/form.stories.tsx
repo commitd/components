@@ -80,7 +80,9 @@ export const Form = () => {
               onValueChange={(value) => setCountry(value)}
             >
               {listOfCountries.map((country) => (
-                <SelectItem value={country.title}>{country.title}</SelectItem>
+                <SelectItem key={country.title} value={country.title}>
+                  {country.title}
+                </SelectItem>
               ))}
             </Select>
             <Text>Get notifications by:</Text>
