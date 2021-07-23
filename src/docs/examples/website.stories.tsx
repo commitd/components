@@ -9,21 +9,19 @@ import {
   Box,
   Card,
   CardBody,
-  CardHeading,
   Column,
-  Paragraph,
   Container,
   Divider,
   Flex,
   Heading,
   Link,
+  Paragraph,
   Row,
   Spinner,
   Svg,
   Text,
   ThemeProvider,
   ThemeSwitch,
-  useThemeController,
 } from '../../'
 
 const Email: React.FC<React.ComponentProps<typeof Svg>> = (props) => (

@@ -1,39 +1,28 @@
-import {
-  mdiDelete,
-  mdiEmail,
-  mdiFastForward,
-  mdiReply,
-  mdiReplyAll,
-} from '@mdi/js'
+import { mdiDelete, mdiFastForward, mdiReply, mdiReplyAll } from '@mdi/js'
 import React from 'react'
 import {
   AppBar,
-  AppBarHeading,
   AppBarActions,
+  AppBarHeading,
   Avatar,
   Box,
   Card,
   CardBody,
-  Heading,
+  darkTheme,
   IconButton,
+  lightTheme,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Paragraph,
   Row,
   Svg,
-  Text,
-  Paragraph,
   ThemeProvider,
-  lightTheme,
-  darkTheme,
   ThemeSwitch,
 } from '../../'
 import { randomColor } from '../util'
 
-const Email: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
-  <Svg path={mdiEmail} {...props} />
-)
 const Delete: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
   <Svg path={mdiDelete} {...props} />
 )

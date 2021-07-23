@@ -1,28 +1,20 @@
-import React from 'react'
-import * as C from '../../index'
 import {
-  mdiDelete,
+  mdiAbTesting,
   mdiAlarm,
   mdiCart,
-  mdiEmail,
-  mdiFolder,
-  mdiAbTesting,
+  mdiChat,
   mdiClipboardAccount,
-  mdiFace,
-  mdiInbox,
+  mdiDelete,
+  mdiEmail,
   mdiEmailEdit,
-  mdiAccountCircle,
-  mdiHeartOutline,
-  mdiHeart,
-  mdiBookmarkOutline,
-  mdiBookmark,
-  mdiShareVariant,
+  mdiFolder,
+  mdiInbox,
+  mdiPlay,
   mdiSkipNext,
   mdiSkipPrevious,
-  mdiPlay,
-  mdiChat,
 } from '@mdi/js'
-import commmitImage from '../../public/images/Avatar1-YellowTrans-32px.png'
+import React from 'react'
+import * as C from '../../index'
 
 export default {
   title: 'Examples/Overview',

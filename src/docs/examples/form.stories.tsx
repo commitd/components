@@ -7,6 +7,7 @@ import {
   CardBody,
   CardHeading,
   Checkbox,
+  CheckedState,
   Column,
   Flex,
   Input,
@@ -16,7 +17,6 @@ import {
   Select,
   SelectItem,
   Text,
-  CheckedState,
 } from '../../components'
 import { listOfCountries } from '../util/data'
 
@@ -79,9 +79,9 @@ export const Form = () => {
               label="Country"
               onValueChange={(value) => setCountry(value)}
             >
-              {listOfCountries.map((country) => (
-                <SelectItem key={country.title} value={country.title}>
-                  {country.title}
+              {listOfCountries.map((c) => (
+                <SelectItem key={c.title} value={c.title}>
+                  {c.title}
                 </SelectItem>
               ))}
             </Select>
