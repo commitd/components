@@ -16,7 +16,7 @@ import { SemanticColors, Swatch, Colors, Surfaces } from './util'
 
 ### Light
 
-<ThemeProvider choice="light">
+<ThemeProvider local light={lightTheme} choice="light">
   <Grid
     css={{
       gridTemplateColumns: '1fr 1fr 1fr',
@@ -43,7 +43,7 @@ import { SemanticColors, Swatch, Colors, Surfaces } from './util'
 
 ### Dark
 
-<ThemeProvider choice="dark">
+<ThemeProvider local darkTheme={darkTheme} choice="dark">
   <Grid
     css={{
       gridTemplateColumns: '1fr 1fr 1fr',
@@ -75,7 +75,7 @@ These are themed and rand from 1-12, with 9 being the pure color from which the 
 
 ### Light
 
-<ThemeProvider choice="light">
+<ThemeProvider local light={lightTheme} choice="light">
   <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
     <Colors key="primary" theme={lightTheme} name="primary" />
     <Colors key="grey" theme={lightTheme} name="grey" />
@@ -89,7 +89,7 @@ These are themed and rand from 1-12, with 9 being the pure color from which the 
 
 ### Dark
 
-<ThemeProvider choice="dark">
+<ThemeProvider local dark={darkTheme} choice="dark">
   <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
     <Colors key="primary" theme={darkTheme} name="primary" />
     <Colors key="grey" theme={darkTheme} name="grey" />
@@ -107,13 +107,13 @@ We use the brand colours within our main color sets differently for light and da
 themes.
 
 <>
-  <ThemeProvider choice="light">
+  <ThemeProvider local light={lightTheme} choice="light">
     <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
       <Colors key="brandYellow" theme={lightTheme} name="brandYellow" />
       <Colors key="brandGrey" theme={lightTheme} name="brandGrey" />
     </Column>
   </ThemeProvider>
-  <ThemeProvider choice="dark">
+  <ThemeProvider local dark={darkTheme} choice="dark">
     <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
       <Colors key="brandYellow" theme={darkTheme} name="brandYellow" />
       <Colors key="brandGrey" theme={darkTheme} name="brandGrey" />

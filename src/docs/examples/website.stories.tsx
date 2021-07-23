@@ -1,162 +1,178 @@
-// import CallSharp from '@material-ui/icons/CallSharp'
-// import EmailSharp from '@material-ui/icons/EmailSharp'
-// import React from 'react'
-// import {
-//   AppBar,
-//   Avatar,
-//   Box,
-//   Button,
-//   Card,
-//   CardActionArea,
-//   Column,
-//   Container,
-//   Display,
-//   Divider,
-//   Flex,
-//   Heading,
-//   Link,
-//   Loader,
-//   Row,
-//   Text,
-//   ThemeProvider,
-//   ThemeSwitch,
-//   Toolbar,
-//   useThemeController,
-// } from '../../src'
+import { mdiEmail, mdiPhone } from '@mdi/js'
+import React from 'react'
+import {
+  AppBar,
+  AppBarActions,
+  AppBarButton,
+  AppBarHeading,
+  Avatar,
+  Box,
+  Card,
+  CardBody,
+  Column,
+  Container,
+  Divider,
+  Flex,
+  Heading,
+  Link,
+  Paragraph,
+  Row,
+  Spinner,
+  Svg,
+  Text,
+  ThemeProvider,
+  ThemeSwitch,
+} from '../../'
 
-// export default {
-//   title: 'Examples/Website',
-// }
+const Email: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiEmail} {...props} />
+)
 
-// const footerHeight = '200px'
+const Call: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiPhone} {...props} />
+)
 
-// export const Example = () => {
-//   const Header = () => (
-//     <AppBar position="relative">
-//       <Toolbar>
-//         <Box flexGrow={1}>
-//           <Heading.h1>Website</Heading.h1>
-//         </Box>
-//         <Avatar src="https://i.pravatar.cc/40" />
-//         <ThemeSwitch variant="celestial" />
-//         <Button color="inherit" variant="text">
-//           Logout
-//         </Button>
-//       </Toolbar>
-//     </AppBar>
-//   )
+export default {
+  title: 'Examples/Website',
+}
 
-//   const Post = ({ name, index }: { name: string; index: number }) => (
-//     <Card m={5} p={0}>
-//       <Flex
-//         flexDirection="column"
-//         bgcolor="primary.main"
-//         color="secondary.dark"
-//       >
-//         <img src={`https://picsum.photos/300/200?random=${index}`} />
-//         <CardActionArea>
-//           <Box mt={0} p={2} pb={3}>
-//             <Text bold upper>
-//               {name}
-//             </Text>
-//           </Box>
-//         </CardActionArea>
-//       </Flex>
-//     </Card>
-//   )
+const footerHeight = '200px'
 
-//   const Content = () => (
-//     <Container>
-//       <Display.d1 p={4} align="center">
-//         Our work and Open Source
-//       </Display.d1>
-//       <Text align="center">
-//         We believe we can all move forward faster by being open. Learn more
-//         about our contributions.
-//       </Text>
-//       <Divider my={3} />
-//       <Flex justifyContent="center" alignContent="center" flexWrap="wrap">
-//         {[
-//           'Speedy Spotless',
-//           'ARGA',
-//           'Eastern Galaxy',
-//           'Pribox',
-//           'Rejux',
-//           'Baleen',
-//         ].map((name, index) => (
-//           <Post key={name} name={name} index={index} />
-//         ))}
-//       </Flex>
-//       <Box mb={5}>
-//         <Loader size={128} />
-//       </Box>
-//     </Container>
-//   )
+export const Website = () => {
+  const Header = () => (
+    <AppBar css={{ position: 'relative' }}>
+      <AppBarHeading>Website</AppBarHeading>
+      <AppBarActions>
+        <Avatar src="https://i.pravatar.cc/40" />
+        <ThemeSwitch css={{ my: 'auto', mx: '$3' }} />
+        <AppBarButton>Logout</AppBarButton>
+      </AppBarActions>
+    </AppBar>
+  )
 
-//   const Logo = () => {
-//     const [choice] = useThemeController()
-//     const logo =
-//       choice == 'light'
-//         ? 'https://committed.software/Committed_Dark.svg'
-//         : 'https://committed.software/Committed_Light.svg'
-//     return <img width="128px" src={logo} alt="Committed Logo" />
-//   }
+  const Post = ({ name, index }: { name: string; index: number }) => (
+    <Card
+      css={{
+        m: '$5',
+        backgroundColor: '$primary !important',
+        color: '$primaryContrast !important',
+      }}
+      variant="ghost"
+      interactive
+    >
+      <img src={`https://picsum.photos/300/200?random=${index}`} />
+      <CardBody>{name}</CardBody>
+    </Card>
+  )
 
-//   const Footer = () => (
-//     <Row
-//       p={3}
-//       position="absolute"
-//       bottom="0"
-//       width="100%"
-//       height={footerHeight}
-//       justifyContent="space-around"
-//       bgcolor="primary.main"
-//       color="primary.contrastText"
-//     >
-//       <Column justifyContent="center" alignItems="center">
-//         <Logo />
-//       </Column>
-//       <Column>
-//         <Heading.h5 mb={0}>Links</Heading.h5>
-//         <Link color="inherit">Work</Link>
-//         <Link color="inherit">Blog</Link>
-//         <Link color="inherit">Careers</Link>
-//         <Link color="inherit">Contact</Link>
-//       </Column>
-//       <Column>
-//         <Flex p={3}>
-//           <Box p={1} color="secondary.dark">
-//             <CallSharp />
-//           </Box>
-//           <Text p={1}>(+44) 01242 220 347</Text>
-//         </Flex>
-//         <Flex p={3}>
-//           <Box p={1} color="secondary.dark">
-//             <EmailSharp />
-//           </Box>
-//           <Text p={1}>contct@committed.io</Text>
-//         </Flex>
-//       </Column>
-//       <Column>
-//         <Heading.h5 mb={0}>Address</Heading.h5>
-//         <Text>3 Strand Court</Text>
-//         <Text>Bath Road</Text>
-//         <Text>Cheltenham</Text>
-//         <Text>Gloucestershire</Text>
-//         <Text>GL53 7LW</Text>
-//       </Column>
-//     </Row>
-//   )
+  const Content = () => (
+    <Container>
+      <Heading
+        font="display"
+        css={{ m: '$6', display: 'block', textAlign: 'center' }}
+      >
+        Our work and Open Source
+      </Heading>
+      <Paragraph css={{ m: '$3', textAlign: 'center' }}>
+        We believe we can all move forward faster by being open. Learn more
+        about our contributions.
+      </Paragraph>
+      <Divider css={{ my: '$3' }} />
+      <Flex
+        css={{
+          justifyContent: 'center',
+          alignContent: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        {[
+          'Speedy Spotless',
+          'ARGA',
+          'Eastern Galaxy',
+          'Pribox',
+          'Rejux',
+          'Baleen',
+        ].map((name, index) => (
+          <Post key={name} name={name} index={index} />
+        ))}
+      </Flex>
+      <Box css={{ mb: '$5' }}>
+        <Spinner
+          css={{ size: '$8', display: 'block', mx: 'auto', color: '$grey4' }}
+        />
+      </Box>
+    </Container>
+  )
 
-//   return (
-//     <ThemeProvider>
-//       <Box position="relative" maxHeight="80vh" bgcolor="background.paper">
-//         <Box pb={footerHeight} maxHeight="80vh" overflow={'scroll'}>
-//           <Header />
-//           <Content />
-//         </Box>
-//         <Footer />
-//       </Box>
-//     </ThemeProvider>
-//   )
-// }
+  const Logo = () => (
+    <img
+      width="128px"
+      src="https://committed.software/Committed_Dark.svg"
+      alt="Committed Logo"
+    />
+  )
+
+  const Footer = () => (
+    <Row
+      css={{
+        p: '$5',
+        position: 'absolute',
+        bottom: '0',
+        width: '100%',
+        height: footerHeight,
+        justifyContent: 'space-around',
+        backgroundColor: '$brand',
+        color: '$brandContrast',
+      }}
+    >
+      <Column css={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Logo />
+      </Column>
+      <Column css={{ gap: '$3', color: '$white' }}>
+        <Link>Work</Link>
+        <Link>Blog</Link>
+        <Link>Careers</Link>
+        <Link>Contact</Link>
+      </Column>
+      <Column>
+        <Flex css={{ p: '$3' }}>
+          <Box css={{ p: '$1' }}>
+            <Call />
+          </Box>
+          <Text css={{ color: '$white', p: '$1' }}>(+44) 01242 220 347</Text>
+        </Flex>
+        <Flex css={{ p: '$3' }}>
+          <Box css={{ p: '$1' }}>
+            <Email />
+          </Box>
+          <Text css={{ color: '$white', p: '$1' }}>contct@committed.io</Text>
+        </Flex>
+      </Column>
+      <Column>
+        <Text css={{ color: '$white' }}>3 Strand Court</Text>
+        <Text css={{ color: '$white' }}>Bath Road</Text>
+        <Text css={{ color: '$white' }}>Cheltenham</Text>
+        <Text css={{ color: '$white' }}>Gloucestershire</Text>
+        <Text css={{ color: '$white' }}>GL53 7LW</Text>
+      </Column>
+    </Row>
+  )
+
+  return (
+    <ThemeProvider>
+      <Box
+        css={{
+          position: 'relative',
+          maxHeight: '80vh',
+          backgroundColor: '$paper',
+        }}
+      >
+        <Box css={{ pb: footerHeight, maxHeight: '80vh', overflow: 'scroll' }}>
+          <Header />
+          <Content />
+        </Box>
+        <Footer />
+      </Box>
+    </ThemeProvider>
+  )
+}

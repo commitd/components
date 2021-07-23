@@ -2,18 +2,13 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Grid } from '.'
 import { Box, Row } from '../'
+import { randomColor } from '../../docs/util'
 import type { CSS } from '../../stitches.config'
 
 export default {
   title: 'Components/Grid',
   component: Grid,
 } as Meta
-
-const keys = ['primary', 'info', 'success', 'error', 'warning']
-const randomColor = (): CSS['backgroundColor'] => {
-  const color = keys[Math.floor(Math.random() * keys.length)]
-  return `$${color}6`
-}
 
 const border = '1px solid $grey3'
 

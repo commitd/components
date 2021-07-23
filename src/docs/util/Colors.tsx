@@ -13,14 +13,19 @@ export interface ColorsProps {
 
 const resolveColor = (theme: any, name: string): string => {
   try {
+    if (name.startsWith('$')) {
+      return resolveColor(theme, name.substring(1))
+    }
     const value = theme.colors[name].value as string
     if (value.startsWith('$')) {
       return resolveColor(theme, value.substring(8))
+    } else if (value.startsWith('var')) {
+      return resolveColor(theme, value.substring(13, value.length - 1))
     } else {
       return value
     }
   } catch (e) {
-    console.warn(`Missing color reference $${name}`)
+    console.warn(`Missing color reference ${name}`)
     console.log({ theme })
   }
   return 'red'
@@ -74,7 +79,7 @@ export const Color = ({
   const key = `${name}${weight}`
   const colorKey = `$colors$${key}`
   const rawValue = theme.colors[key].value
-  const rawColor = resolveColor(theme, key)
+  const rawColor = resolveColor(theme, `$${key}`)
   const col = parseColor(rawColor)
 
   return (
