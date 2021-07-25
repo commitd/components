@@ -1,5 +1,7 @@
 {
-  "name": "Node.js",
+  "name": "committed-component-devcontainer",
+  "runArgs": ["--init", "--privileged"],
+  "overrideCommand": false,
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
@@ -7,7 +9,24 @@
     }
   },
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    // Default to ZSH
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.osx": "/usr/bin/zsh",
+    // Setup formatting to save with prettier
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Look throughout the project to auto set up eslint
+    "eslint.workingDirectories": [
+      {
+        "mode": "auto"
+      }
+    ],
+    // Our eslint can be very heavy, so we perform it on save not on type
+    "eslint.run": "onSave",
+    // Ignore uncommon words
+    "cSpell.userWords": ["commitd"],
+    // Prefer relative imports
+    "typescript.preferences.importModuleSpecifier": "relative"
   },
   "extensions": [
     "dbaeumer.vscode-eslint",
@@ -15,9 +34,7 @@
     "github.vscode-pull-request-github",
     "ms-vsliveshare.vsliveshare",
     "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker",
-    "ryanluker.vscode-coverage-gutters"
+    "streetsidesoftware.code-spell-checker"
   ],
-  "postCreateCommand": "yarn install",
   "remoteUser": "node"
 }

@@ -6,6 +6,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=commitd_components&metric=coverage&token=aa002ca75e2f3a6d028af9074bceeda1ffa2f9f7)](https://sonarcloud.io/dashboard?id=commitd_components)
 ![GitHub repo size](https://img.shields.io/github/repo-size/commitd/components)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://committed.software/components)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 For documentation see https://committed.software/components
 
@@ -31,16 +32,28 @@ class Example extends React.Component {
 
 ## Development
 
-The main build is performed using Rollup:
+We are using npm v7, and due to issues with peer dependencies we are currently required to do
 
 ```bash
-yarn build
+npm install --force
+```
+
+The main build is performed using tsdx:
+
+```bash
+npm run build
 ```
 
 We use storybook to develop and document the components, this is run in development using
 
 ```bash
-yarn storybook
+npm run storybook
+```
+
+The tests can be run with
+
+```bash
+npm test
 ```
 
 ## Dev Containers
@@ -59,4 +72,4 @@ Pull requests go through CI checks using Github Actions. Releases update the dep
 
 ## License
 
-[MIT](/LICENSE) - © Committed Software 2019-2020 https://committed.io
+[MIT](/LICENSE) - © Committed Software 2019-2021 https://committed.io

@@ -13,14 +13,16 @@ const allFiles = [...modifiedFiles, ...newFiles]
 
 // Keep lockfile up to date
 const packageChanged = includes(modifiedFiles, 'package.json')
-const lockfileChanged = includes(modifiedFiles, 'yarn.lock')
+const lockfileChanged = includes(modifiedFiles, 'package-lock.json')
 if (packageChanged && !lockfileChanged) {
-  const message = 'Changes were made to package.json, but not to yarn.lock'
+  const message =
+    'Changes were made to package.json, but not to package-lock.json'
   const idea = 'Perhaps you need to run `yarn install` or commit the lockfile?'
   warn(`${message} - <i>${idea}</i>`)
 }
 if (!packageChanged && lockfileChanged) {
-  const message = 'Changes were made to yarn.lock, but not to package.json'
+  const message =
+    'Changes were made to package-lock.json, but not to package.json'
   const idea = 'Perhaps you need to commit the package.json?'
   warn(`${message} - <i>${idea}</i>`)
 }
@@ -35,7 +37,7 @@ if (hasSrcChanges && !hasStoriesChanges) {
   )
 }
 
-const storiesFolderPath = 'stories/components'
+const storiesFolderPath = 'src/components'
 const hasStories = (folderName) =>
   fs
     .readdirSync(path.join(storiesFolderPath, folderName))

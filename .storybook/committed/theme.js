@@ -6,9 +6,9 @@ const overrides = {
 
   // Typography
   fontBase:
-    '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"', // fonts.defaultFonts.typography.fontFamily,
+    'Inter, -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
   fontCode:
-    '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace', // fonts.defaultFonts.monospace.fontFamily,
+    '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace',
 
   brandTitle: 'Committed Components',
   brandUrl: '/',
@@ -23,5 +23,6 @@ export const committedLight = create({
 export const committedDark = create({
   ...overrides,
   base: 'dark',
+  appBg: '#000000',
   brandImage: 'https://committed.software/Committed_Dark.svg',
 })

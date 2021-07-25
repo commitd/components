@@ -6,5 +6,6 @@ addons.setConfig({
     dark: committedDark,
     light: committedLight,
   },
+  theme: committedLight,
   showPanel: false,
 })

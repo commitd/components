@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  ThemeProvider,
+  lightTheme,
+  darkTheme,
+  Flex,
+  Box,
+  Column,
+  Grid,
+} from '../'
+import { SemanticColors, Swatch, Colors, Surfaces } from './util'
+
+<Meta title="Design System/Colour" />
+
+## Semantic
+
+### Light
+
+<ThemeProvider local light={lightTheme} choice="light">
+  <Grid
+    css={{
+      gridTemplateColumns: '1fr 1fr 1fr',
+      gap: '$3',
+      p: '$3',
+      py: '$6',
+      backgroundColor: '$paper',
+    }}
+  >
+    <SemanticColors
+      css={{ gridColumnEnd: 'span 3' }}
+      key="primary"
+      theme={lightTheme}
+      name="primary"
+    />
+    <SemanticColors key="brand" theme={lightTheme} name="brand" />
+    <SemanticColors key="grey" theme={lightTheme} name="default" />
+    <SemanticColors key="error" theme={lightTheme} name="error" />
+    <SemanticColors key="warning" theme={lightTheme} name="warning" />
+    <SemanticColors key="success" theme={lightTheme} name="success" />
+    <SemanticColors key="info" theme={lightTheme} name="info" />
+  </Grid>
+</ThemeProvider>
+
+### Dark
+
+<ThemeProvider local darkTheme={darkTheme} choice="dark">
+  <Grid
+    css={{
+      gridTemplateColumns: '1fr 1fr 1fr',
+      gap: '$3',
+      p: '$3',
+      py: '$6',
+      backgroundColor: '$paper',
+    }}
+  >
+    <SemanticColors
+      css={{ gridColumnEnd: 'span 3' }}
+      key="primary"
+      theme={darkTheme}
+      name="primary"
+    />
+    <SemanticColors key="brand" theme={darkTheme} name="brand" />
+    <SemanticColors key="grey" theme={darkTheme} name="default" />
+    <SemanticColors key="error" theme={darkTheme} name="error" />
+    <SemanticColors key="warning" theme={darkTheme} name="warning" />
+    <SemanticColors key="success" theme={darkTheme} name="success" />
+    <SemanticColors key="info" theme={darkTheme} name="info" />
+  </Grid>
+</ThemeProvider>
+
+## Palettes
+
+Generally, the semantically names colours should be suitable for most circumstances, but if further shades are required you can go to the palettes.
+These are themed and rand from 1-12, with 9 being the pure color from which the palette is derived.
+
+### Light
+
+<ThemeProvider local light={lightTheme} choice="light">
+  <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
+    <Colors key="primary" theme={lightTheme} name="primary" />
+    <Colors key="grey" theme={lightTheme} name="grey" />
+    <Colors key="error" theme={lightTheme} name="error" />
+    <Colors key="warning" theme={lightTheme} name="warning" />
+    <Colors key="success" theme={lightTheme} name="success" />
+    <Colors key="info" theme={lightTheme} name="info" />
+    <Colors key="transparency" theme={lightTheme} name="transparency" />
+  </Column>
+</ThemeProvider>
+
+### Dark
+
+<ThemeProvider local dark={darkTheme} choice="dark">
+  <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
+    <Colors key="primary" theme={darkTheme} name="primary" />
+    <Colors key="grey" theme={darkTheme} name="grey" />
+    <Colors key="error" theme={darkTheme} name="error" />
+    <Colors key="warning" theme={darkTheme} name="warning" />
+    <Colors key="success" theme={darkTheme} name="success" />
+    <Colors key="info" theme={darkTheme} name="info" />
+    <Colors key="transparency" theme={darkTheme} name="transparency" />
+  </Column>
+</ThemeProvider>
+
+## Brand Colors
+
+We use the brand colours within our main color sets differently for light and dark themes but full palettes are provided in both
+themes.
+
+<>
+  <ThemeProvider local light={lightTheme} choice="light">
+    <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
+      <Colors key="brandYellow" theme={lightTheme} name="brandYellow" />
+      <Colors key="brandGrey" theme={lightTheme} name="brandGrey" />
+    </Column>
+  </ThemeProvider>
+  <ThemeProvider local dark={darkTheme} choice="dark">
+    <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
+      <Colors key="brandYellow" theme={darkTheme} name="brandYellow" />
+      <Colors key="brandGrey" theme={darkTheme} name="brandGrey" />
+    </Column>
+  </ThemeProvider>
+</>

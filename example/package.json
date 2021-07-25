@@ -9,25 +9,22 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "react-app-polyfill": "^1.0.0",
-    "typeface-lato": "^0.0.75"
+    "@fontsource/dosis": "^4.4.5",
+    "@fontsource/inter": "^4.4.5"
   },
   "alias": {
     "react": "../node_modules/react",
     "react-dom": "../node_modules/react-dom/profiling",
     "scheduler/tracing": "../node_modules/scheduler/tracing-profiling",
-    "@material-ui/core": "../node_modules/@material-ui/core",
-    "@material-ui/icons": "../node_modules/@material-ui/icons",
-    "@material-ui/styles": "../node_modules/@material-ui/styles",
-    "@material-ui/system": "../node_modules/@material-ui/system",
-    "@material-ui/utils": "../node_modules/@material-ui/utils"
+    "@committed/components": "~/dist"
   },
   "devDependencies": {
-    "@types/react": "^16.8.15",
-    "@types/react-dom": "^16.8.4",
-    "parcel": "^1.12.4",
+    "@parcel/transformer-image": "^2.0.0-beta.2",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "parcel": "^2.0.0-beta.2",
     "shx": "^0.3.2",
-    "typescript": "^4.0.5"
+    "typescript": "^4.3.4"
   },
   "resolutions": {
     "node-forge": "^0.10.0"

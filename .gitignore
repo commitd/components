@@ -11,7 +11,6 @@ dist
 lib
 lib-esm
 _bundles
-docs
 coverage
 test-report.xml
 
@@ -23,7 +22,9 @@ test-report.xml
 .env.development.local
 .env.test.local
 .env.production.local
+.parcel-cache
 example/.parcel-cache
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

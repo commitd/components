@@ -1,6 +1,0 @@
-export * from './wrappers'
-export * from './noopener'
-export { gridcontainer } from './gridcontainer'
-export { griditem } from './griditem'
-export type { GridcontinerProps } from './gridcontainer'
-export type { GriditemProps } from './griditem'
