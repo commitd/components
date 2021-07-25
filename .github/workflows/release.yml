@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Full CI
+    name: Release
     runs-on: ubuntu-latest
 
     steps:
@@ -34,18 +34,6 @@ jobs:
         if: ${{ env.ACT }}
         run: npm install
 
-      - name: Lint
-        run: npm run lint
-
-      - name: Test
-        run: npm test -- --ci --coverage --maxWorkers=2
-
-      - name: Build
-        run: npm run build
-
-      - name: Build Storybook
-        run: npm run build-storybook -- --quiet
-
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -60,6 +48,7 @@ jobs:
         run: npx semantic-release
 
       - name: Publish Docs
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: npm run deploy-storybook -- --ci
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
