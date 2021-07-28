@@ -199,7 +199,7 @@ const lightThemeConfig = {
     tooltip: '$black',
     selection: '#ffbb00aa',
     text: '#3b3b3b',
-    textSecondary: '$grey9',
+    textSecondary: '$grey11',
     textTooltip: '$white',
 
     primary: '$primary9',
@@ -320,7 +320,7 @@ export const darkThemeConfig = {
 
     background: '#000000',
     text: '#f7f7f7',
-    textSecondary: '$grey9',
+    textSecondary: '$grey11',
     textTooltip: '$black',
     paper: '#222222',
     tooltip: '$white',

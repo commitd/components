@@ -10,3 +10,7 @@ declare module '*.woff'
 declare module '*.woff2'
 declare module '*.ttf'
 declare module '*.eot'
+
+export type PartialPick<T, K extends keyof T> = {
+  [P in K]?: T[P]
+}
