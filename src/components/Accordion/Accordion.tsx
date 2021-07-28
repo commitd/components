@@ -5,6 +5,8 @@ import type { CSSProps } from '../../stitches.config'
 import { keyframes, styled } from '../../stitches.config'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
+import { buttonInteractionStyles } from '../Button/Button'
+import { PartialPick } from '../../typings'
 
 const slideDown = keyframes({
   from: { height: 0 },
@@ -24,13 +26,32 @@ const Chevron = styled(ChevronDown, {
   },
 })
 
-export const Accordion = (styled(Root, {
+const StyledRoot = styled(Root, {
   ...paperStyles,
   boxShadow: '$1',
   borderTop: '1px solid $colors$grey4',
-}) as unknown) as Polymorphic.ForwardRefComponent<
+})
+
+type AccordionProps = Partial<Polymorphic.OwnProps<typeof Root>> &
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore This type is allowed when type single.
+  PartialPick<Polymorphic.OwnProps<typeof Root>, 'collapsible'> &
+  CSSProps
+
+export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
+  ({ collapsible = true, type = 'single', ...props }, forwardedRef) => (
+    <StyledRoot
+      type={type}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore This type is allowed when type single.
+      collapsible={collapsible}
+      ref={forwardedRef}
+      {...props}
+    />
+  )
+) as Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Root>,
-  Polymorphic.OwnProps<typeof Root> & CSSProps
+  AccordionProps
 >
 // Typed explicitly to get props in storybook
 
@@ -44,7 +65,6 @@ const AccordionTrigger = styled(Trigger, {
   padding: '$4',
   flex: 1,
   textAlign: 'left',
-  cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -52,11 +72,13 @@ const AccordionTrigger = styled(Trigger, {
   width: '100%',
   outline: 'none',
 
-  '&:hover': {
-    backgroundColor: '$grey3',
-  },
-  '&:focus': {
-    backgroundColor: '$grey4',
+  ...buttonInteractionStyles,
+
+  pointerEvents: 'auto',
+
+  '&[aria-disabled="true"]': {
+    cursor: 'auto',
+    pointerEvents: 'none',
   },
 })
 

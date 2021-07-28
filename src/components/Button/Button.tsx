@@ -27,6 +27,21 @@ export const disabled = {
   opacity: 0.4,
 }
 
+export const buttonInteractionStyles = {
+  cursor: 'pointer',
+  transition: 'background 0.5s',
+  backgroundPosition: 'center',
+
+  $$active: '$colors$defaultActive',
+  $$lowlight: '$colors$defaultLowlight',
+  $$hover: '$colors$defaultHighlight',
+
+  '&:hover': hover,
+  '&:focus': focus,
+  '&:active': active,
+  '&:disabled': disabled,
+}
+
 export const mainVariants = {
   brand: {
     $$active: '$colors$brandActive',
@@ -90,10 +105,8 @@ export const buttonBaseStyle = {
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
-  $$active: '$colors$defaultActive',
   $$default: '$colors$default',
   $$defaultHover: '$colors$defaultHighlight',
-  $$lowlight: '$colors$defaultLowlight',
 
   // Reset
   alignItems: 'center',
@@ -119,19 +132,11 @@ export const buttonBaseStyle = {
   // Defaults
   fontSize: '$0',
   borderRadius: '$default',
-  cursor: 'pointer',
   backgroundColor: 'transparent',
   border: 'none',
   width: 'fit-content; width: -moz-fit-content',
 
-  // Actions
-  transition: 'background 0.5s',
-  backgroundPosition: 'center',
-
-  '&:hover': hover,
-  '&:focus': focus,
-  '&:active': active,
-  '&:disabled': disabled,
+  ...buttonInteractionStyles,
 }
 
 const buttonVariants = {

@@ -41,3 +41,17 @@ export const Default: Story<React.ComponentProps<typeof Accordion>> = ({
     </Accordion>
   )
 }
+
+/** By setting `type` to multiple the accordion can have multiple sections open at once. */
+export const Multiple = Default.bind({})
+Multiple.args = {
+  type: 'multiple',
+}
+
+/** By setting `collapsible` to `false` and provided a `defaultValue` we can create an always one open accordion. */
+export const OneOpen = Default.bind({})
+OneOpen.args = {
+  type: 'single',
+  collapsible: false,
+  defaultValue: 'item-1',
+}
