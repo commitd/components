@@ -36,6 +36,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "format": "prettier --write 'src/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
+    "format:check": "prettier --check '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
     "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}",

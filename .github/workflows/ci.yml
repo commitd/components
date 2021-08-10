@@ -215,7 +215,6 @@ jobs:
           path: dist
       - name: Release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
@@ -226,6 +225,7 @@ jobs:
       - name: Checkout Commit
         uses: actions/checkout@v2
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Use Node.js
         uses: actions/setup-node@v1
