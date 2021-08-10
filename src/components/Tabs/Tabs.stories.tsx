@@ -84,3 +84,28 @@ Large.args = {
   defaultValue: 'tab3',
   size: 'large',
 }
+
+export const Left = Template.bind({})
+Left.args = {
+  defaultValue: 'tab1',
+  variant: 'primary',
+  position: 'left',
+}
+export const Right = Template.bind({})
+Right.args = {
+  defaultValue: 'tab1',
+  variant: 'secondary',
+  position: 'right',
+}
+export const Top = Template.bind({})
+Top.args = {
+  defaultValue: 'tab1',
+  variant: 'tertiary',
+  position: 'top',
+}
+export const Bottom = Template.bind({})
+Bottom.args = {
+  defaultValue: 'tab1',
+  variant: 'brand',
+  position: 'bottom',
+}
