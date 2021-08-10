@@ -23,7 +23,6 @@
     "postinstall": "rimraf node_modules/@emotion/core/types",
     "build": "rollpkg build --tsconfig ./tsconfig.build.json",
     "watch": "rollpkg watch",
-    "prepublishOnly": "npm run lint && npm test && npm run build",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "test": "jest",
     "test:ci": "jest --coverage",
@@ -36,6 +35,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "format": "prettier --write 'src/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
+    "format:check": "prettier --check '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
     "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}",
@@ -126,7 +126,6 @@
     "*.{ts,tsx,md,json,mdx}": "prettier --write",
     "*.{ts,tsx}": [
       "eslint --cache --fix",
-      "git add",
       "jest --bail --findRelatedTests"
     ]
   },

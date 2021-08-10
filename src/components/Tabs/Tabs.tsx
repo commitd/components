@@ -23,8 +23,18 @@ export const Tab = forwardRef((props, forwardedRef) => (
 )) as TabComponent
 Tab.toString = () => `.${StyledTab.className}`
 
+export const TabsList = styled(List, {
+  display: 'flex',
+  gridArea: 'tabs',
+  borderBottom: '1px solid $grey4',
+})
+
 export const TabsRoot = styled(Root, {
   $$indicatorSize: '2px',
+
+  display: 'grid',
+  gap: '0px 0px',
+
   [`& ${Tab}`]: {
     ...buttonBaseStyle,
     cursor: 'pointer',
@@ -33,32 +43,10 @@ export const TabsRoot = styled(Root, {
     border: 'none',
 
     '&[data-state="active"]': {
-      boxShadow: 'inset 0 -$$indicatorSize 0 0 currentColor',
       cursor: 'auto',
     },
   },
   variants: {
-    variant: {
-      brand: {
-        [`& ${Tab}`]: buttonVariants.brand,
-      },
-      primary: {
-        [`& ${Tab}`]: buttonVariants.primary,
-      },
-      secondary: {
-        [`& ${Tab}`]: {
-          ...buttonVariants.secondary,
-          '&[data-state="active"]': {
-            boxShadow: 'none',
-            backgroundColor: '$$active',
-            textDecoration: 'underline',
-          },
-        },
-      },
-      tertiary: {
-        [`& ${Tab}`]: buttonVariants.tertiary,
-      },
-    },
     size: {
       small: {
         $$indicatorSize: '1px',
@@ -73,19 +61,96 @@ export const TabsRoot = styled(Root, {
         [`& ${Tab}`]: sizeVariants.large,
       },
     },
+    position: {
+      top: {
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'auto 1fr',
+        gridTemplateAreas: `"tabs" "content"`,
+        [`& ${Tab}`]: {
+          '&[data-state="active"]': {
+            boxShadow: 'inset 0 -$$indicatorSize 0 0 currentColor',
+          },
+        },
+        [`& ${TabsList}`]: {
+          flexDirection: 'row',
+        },
+      },
+      bottom: {
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: '1fr auto',
+        gridTemplateAreas: `"content" "tabs"`,
+        [`& ${Tab}`]: {
+          '&[data-state="active"]': {
+            boxShadow: 'inset 0 $$indicatorSize 0 0 currentColor',
+          },
+        },
+        [`& ${TabsList}`]: {
+          flexDirection: 'row',
+        },
+      },
+      left: {
+        gridTemplateColumns: 'auto 1fr',
+        gridTemplateRows: '1fr',
+        gridTemplateAreas: `"tabs content"`,
+        [`& ${Tab}`]: {
+          '&[data-state="active"]': {
+            boxShadow: 'inset -$$indicatorSize 0 0 0 currentColor',
+          },
+        },
+        [`& ${TabsList}`]: {
+          flexDirection: 'column',
+        },
+      },
+      right: {
+        gridTemplateColumns: '1fr auto',
+        gridTemplateRows: '1fr',
+        gridTemplateAreas: `"content tabs"`,
+        [`& ${Tab}`]: {
+          '&[data-state="active"]': {
+            boxShadow: 'inset $$indicatorSize 0 0 0 currentColor',
+          },
+        },
+        [`& ${TabsList}`]: {
+          flexDirection: 'column',
+        },
+      },
+    },
+    variant: {
+      brand: {
+        [`& ${Tab}`]: buttonVariants.brand,
+        [`& ${TabsList}`]: {
+          backgroundColor: '$brand',
+        },
+      },
+      primary: {
+        [`& ${Tab}`]: buttonVariants.primary,
+        [`& ${TabsList}`]: {
+          backgroundColor: '$primary',
+        },
+      },
+      secondary: {
+        [`& ${Tab}`]: {
+          ...buttonVariants.secondary,
+          '&[data-state="active"]': {
+            boxShadow: 'none !important',
+            backgroundColor: '$$active',
+            textDecoration: 'underline',
+          },
+        },
+      },
+      tertiary: {
+        [`& ${Tab}`]: buttonVariants.tertiary,
+      },
+    },
   },
   defaultVariants: {
     variant: 'tertiary',
     size: 'default',
+    position: 'top',
   },
 })
 
-export const TabsList = styled(List, {
-  display: 'flex',
-  borderBottom: '1px solid $grey4',
-  '& *:not(:first-child)': {
-    borderLeft: 'none!important',
-  },
+export const TabContent = styled(Content, {
+  padding: '$3',
+  gridArea: 'content',
 })
-
-export const TabContent = styled(Content, { padding: '$3' })
