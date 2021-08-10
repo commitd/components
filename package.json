@@ -23,7 +23,6 @@
     "postinstall": "rimraf node_modules/@emotion/core/types",
     "build": "rollpkg build --tsconfig ./tsconfig.build.json",
     "watch": "rollpkg watch",
-    "prepublishOnly": "npm run lint && npm test && npm run build",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "test": "jest",
     "test:ci": "jest --coverage",
