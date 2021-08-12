@@ -201,7 +201,7 @@ jobs:
       - name: Checkout Commit
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          token: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
@@ -223,7 +223,11 @@ jobs:
           path: dist
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: commitd-bot
+          GIT_AUTHOR_EMAIL: 56758001+committed-bot@users.noreply.github.com
+          GIT_COMMITTER_NAME: commitd-bot
+          GIT_COMMITTER_EMAIL: 56758001+commitd-bot@users.noreply.github.com
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
   publish-storybook:
@@ -233,7 +237,7 @@ jobs:
       - name: Checkout Commit
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          token: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
           fetch-depth: 0
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -253,4 +257,4 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: npm run deploy-storybook -- --ci
         env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: commitd-bot:${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
