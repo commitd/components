@@ -32,7 +32,8 @@ export const TabsList = styled(List, {
 /**
  * Tabs can be used to switch between different views.
  * 
- * Support positioning, `top`, `bottom`, `left` and `right`, and out standard variants, `primary`, `secondary`, `tertiary` and `brand`.
+ * Support positioning, `top`, `bottom`, `left` and `right`, and out standard variants, 
+ * `primary`, `secondary`, `tertiary` and `brand`.
  */
 export const TabsRoot = styled(Root, {
   $$indicatorSize: '2px',
