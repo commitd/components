@@ -109,3 +109,24 @@ Bottom.args = {
   variant: 'brand',
   position: 'bottom',
 }
+
+export const TertiaryLeft = Template.bind({})
+TertiaryLeft.args = {
+  defaultValue: 'tab1',
+  variant: 'tertiary',
+  position: 'left',
+}
+
+export const TertiaryTop = Template.bind({})
+TertiaryTop.args = {
+  defaultValue: 'tab1',
+  variant: 'tertiary',
+  position: 'top',
+}
+
+export const TertiaryRight = Template.bind({})
+TertiaryRight.args = {
+  defaultValue: 'tab1',
+  variant: 'tertiary',
+  position: 'right',
+}

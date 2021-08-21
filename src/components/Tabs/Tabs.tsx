@@ -26,7 +26,6 @@ Tab.toString = () => `.${StyledTab.className}`
 export const TabsList = styled(List, {
   display: 'flex',
   gridArea: 'tabs',
-  borderBottom: '1px solid $grey4',
 })
 
 /**
@@ -148,6 +147,44 @@ export const TabsRoot = styled(Root, {
       },
     },
   },
+  compoundVariants: [
+    {
+      variant: 'tertiary',
+      position: 'top',
+      css: {
+        [`& ${TabsList}`]: {
+          borderBottom: '1px solid $grey4',
+        },
+      },
+    },
+    {
+      variant: 'tertiary',
+      position: 'bottom',
+      css: {
+        [`& ${TabsList}`]: {
+          borderTop: '1px solid $grey4',
+        },
+      },
+    },
+    {
+      variant: 'tertiary',
+      position: 'left',
+      css: {
+        [`& ${TabsList}`]: {
+          borderRight: '1px solid $grey4',
+        },
+      },
+    },
+    {
+      variant: 'tertiary',
+      position: 'right',
+      css: {
+        [`& ${TabsList}`]: {
+          borderLeft: '1px solid $grey4',
+        },
+      },
+    },
+  ],
   defaultVariants: {
     variant: 'tertiary',
     size: 'default',
