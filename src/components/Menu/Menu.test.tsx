@@ -12,15 +12,18 @@ it('renders dark (closed) without error', () => {
   expect(asFragment()).toBeDefined()
 })
 
-it('renders dark when opened without error', () => {
+it('renders dark when opened without error', async () => {
   renderDark(<Default />)
-  userEvent.click(screen.getByRole('button'))
-  expect(screen.getByText('Cut')).toBeInTheDocument()
+  userEvent.tab()
+  expect(screen.getByRole('button')).toHaveFocus()
+  userEvent.keyboard('{enter}')
+  expect(await screen.findByText('Cut')).toBeInTheDocument()
 })
 
 it('renders items with role menuitem', () => {
   renderDark(<Default />)
-  userEvent.click(screen.getByRole('button'))
+  userEvent.tab()
+  userEvent.keyboard('{enter}')
   expect(screen.getByRole('menuitem', { name: /copy/i })).toBeInTheDocument()
 })
 
@@ -29,7 +32,9 @@ it('can render nested menus', () => {
   expect(
     screen.queryByRole('menuitem', { name: /test/i })
   ).not.toBeInTheDocument()
-  userEvent.click(screen.getByRole('button'))
+  userEvent.tab()
+  expect(screen.getByRole('button')).toHaveFocus()
+  userEvent.keyboard('{enter}')
   expect(
     screen.queryByRole('menuitem', { name: /test/i })
   ).not.toBeInTheDocument()
