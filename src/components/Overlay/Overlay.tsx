@@ -20,7 +20,7 @@ const fadeOut = keyframes({
 })
 
 export const overlayStyles: CSS = {
-  backgroundColor: '$transparency3',
+  backgroundColor: '$transparency7',
 }
 
 export const overlayAnimationStyles: CSS = {
