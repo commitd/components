@@ -15,13 +15,52 @@ const StyledDivider = styled(Root, {
     height: '1px',
     mx: 'auto',
     my: '$4',
-    width: '90%',
   },
 
   '&[data-orientation="vertical"]': {
     width: '1px',
-    height: 'auto',
+    my: 'auto',
     mx: '$2',
+  },
+
+  variants: {
+    size: {
+      full: {
+        '&:not([data-orientation=vertical])': {
+          width: '100%',
+        },
+        '&[data-orientation="vertical"]': {
+          height: '100%',
+        },
+      },
+      most: {
+        '&:not([data-orientation=vertical])': {
+          width: '90%',
+        },
+        '&[data-orientation="vertical"]': {
+          height: '90%',
+        },
+      },
+      medium: {
+        '&:not([data-orientation=vertical])': {
+          width: '$12',
+        },
+        '&[data-orientation="vertical"]': {
+          height: '$12',
+        },
+      },
+      small: {
+        '&:not([data-orientation=vertical])': {
+          width: '$4',
+        },
+        '&[data-orientation="vertical"]': {
+          height: '$4',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'full',
   },
 })
 
