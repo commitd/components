@@ -50,10 +50,10 @@ export const Nested: React.FC = () => (
   </Container>
 )
 
-// Switch according to breakpoint
+// Switch according to breakpoint automatically
 export const Responsive: React.FC = () => (
   <Container
-    maxWidth={{ '@initial': 'sm', '@md': 'md', '@lg': 'lg', '@xl': 'xl' }}
+    maxWidth="responsive"
     css={{
       backgroundColor: '$grey4',
       py: '$3',

@@ -22,6 +22,7 @@ test-report.xml
 .env.development.local
 .env.test.local
 .env.production.local
+.eslintcache
 .parcel-cache
 example/.parcel-cache
 

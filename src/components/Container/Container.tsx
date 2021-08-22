@@ -29,6 +29,20 @@ export const Container = styled('div', {
       xl: {
         maxWidth: 'calc($sizes$xl - $sizes$11)',
       },
+      responsive: {
+        '@sm': {
+          maxWidth: 'calc($sizes$sm - $sizes$8)',
+        },
+        '@md': {
+          maxWidth: 'calc($sizes$md - $sizes$9)',
+        },
+        '@lg': {
+          maxWidth: 'calc($sizes$lg - $sizes$10)',
+        },
+        '@xl': {
+          maxWidth: 'calc($sizes$xl - $sizes$11)',
+        },
+      },
     },
   },
   defaultVariants: {
