@@ -23,8 +23,7 @@ export const active = {
 
 export const disabled = {
   pointerEvents: 'none',
-  $$main: '$$lowlight',
-  opacity: 0.4,
+  opacity: 0.3,
 }
 
 export const buttonInteractionStyles = {
@@ -99,6 +98,12 @@ export const sizeVariants = {
     paddingRight: '$6',
     height: '$7',
   },
+  full: {
+    width: '100%',
+    paddingLeft: '$6',
+    paddingRight: '$6',
+    height: '$7',
+  },
 }
 
 export const buttonBaseStyle = {
@@ -143,6 +148,11 @@ const buttonVariants = {
   variant: mainVariants,
   destructive: destructiveVariants,
   size: sizeVariants,
+  ['full-width']: {
+    true: {
+      width: '100%',
+    },
+  },
   force: {
     hover,
     focus,

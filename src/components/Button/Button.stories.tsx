@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import { Grid, Row } from '../'
+import { Grid, Row, Column } from '../'
 import { Variants } from '../../docs/util'
 import { Button } from './Button'
 
@@ -59,19 +59,36 @@ export const Default: Story<ComponentProps<typeof Button>> = (args) => {
   return <Button {...args}>Button</Button>
 }
 
-const Template: Story = (args) => <Button {...args} />
-
-export const Primary = Template.bind({})
-Primary.args = { children: 'Button' }
-
+/* Three size options are available */
 export const Size = () => (
-  <Row css={{ gap: '$3' }}>
+  <Row css={{ gap: '$3', mb: '$3' }}>
     <Button size="small">Small</Button>
     <Button size="default">Default</Button>
     <Button size="large">Large</Button>
   </Row>
 )
 
+/* Add `full-width` to make the button grow to take the full width */
+export const FullWidth = () => (
+  <Column css={{ gap: '$3' }}>
+    <Button full-width size="small">
+      Small
+    </Button>
+    <Button full-width size="default">
+      Default
+    </Button>
+    <Button full-width size="large">
+      Large
+    </Button>
+  </Column>
+)
+
+/* Three variants are supported,
+ *
+ * - `primary` use for the main action, try to only use one per page
+ * - `secondary` use for other actions on the page
+ * - `tertiary` use to pair with others as cancel or for icon buttons
+ */
 export const Variant = () => (
   <Row css={{ gap: '$3' }}>
     <Button variant="primary">Primary</Button>
@@ -80,6 +97,7 @@ export const Variant = () => (
   </Row>
 )
 
+/** If the action is destructive, say a delete or an action that cannot be undone, add the `destructive` flag */
 export const Destructive = () => (
   <Row css={{ gap: '$3' }}>
     <Button destructive variant="primary">
@@ -94,6 +112,7 @@ export const Destructive = () => (
   </Row>
 )
 
+/** The `disabled` state is controlled in the standard way */
 export const Disabled = () => (
   <Row css={{ gap: '$3' }}>
     <Button disabled variant="primary">
