@@ -98,12 +98,6 @@ export const sizeVariants = {
     paddingRight: '$6',
     height: '$7',
   },
-  full: {
-    width: '100%',
-    paddingLeft: '$6',
-    paddingRight: '$6',
-    height: '$7',
-  },
 }
 
 export const buttonBaseStyle = {
