@@ -40,15 +40,14 @@ export const Anchored: Story = (args) => (
   <Popover>
     <Text>
       You can use a{' '}
-      <PopoverAnchor as="span">
-        <Monospace
-          css={{
-            backgroundColor: '$blue3',
-          }}
-        >
-          PopoverAnchor
-        </Monospace>
-      </PopoverAnchor>
+      <PopoverAnchor
+        as="span"
+        css={{
+          backgroundColor: '$blue3',
+        }}
+      >
+        <Monospace>PopoverAnchor</Monospace>
+      </PopoverAnchor>{' '}
       to anchor the popover to a different element{' '}
       <PopoverTrigger>
         <Svg
@@ -69,25 +68,24 @@ export const Anchored: Story = (args) => (
 
 export const NestedAnchored: Story = (args) => (
   <Popover>
-    <PopoverAnchor>
-      <Flex
-        css={{
-          padding: '$4',
-          backgroundColor: '$blue3',
-          justifyContent: 'center',
-        }}
-      >
-        <Text>
-          The <Monospace>PopoverAnchor</Monospace> can have the trigger{' '}
-          <PopoverTrigger>
-            <Svg
-              css={{ color: '$textSecondary', cursor: 'pointer', mt: '$3' }}
-              path={mdiAlertCircleOutline}
-            />
-          </PopoverTrigger>{' '}
-          nested inside
-        </Text>
-      </Flex>
+    <PopoverAnchor
+      css={{
+        display: 'flex',
+        padding: '$4',
+        backgroundColor: '$blue3',
+        justifyContent: 'center',
+      }}
+    >
+      <Text>
+        The <Monospace>PopoverAnchor</Monospace> can have the trigger{' '}
+        <PopoverTrigger>
+          <Svg
+            css={{ color: '$textSecondary', cursor: 'pointer', mt: '$3' }}
+            path={mdiAlertCircleOutline}
+          />
+        </PopoverTrigger>{' '}
+        nested inside
+      </Text>
     </PopoverAnchor>
     <PopoverContent>
       <Heading variant="h5">Popover content</Heading>
