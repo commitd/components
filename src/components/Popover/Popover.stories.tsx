@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '.'
-import { Button, Flex, Heading, Monospace, Paragraph, Svg, Text } from '../'
+import { Button, Heading, Monospace, Paragraph, Svg, Text } from '../'
 
 export default {
   title: 'Components/Popover',
