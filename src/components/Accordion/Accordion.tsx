@@ -39,16 +39,20 @@ type AccordionProps = Partial<Polymorphic.OwnProps<typeof Root>> &
   CSSProps
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ collapsible = true, type = 'single', ...props }, forwardedRef) => (
-    <StyledRoot
-      type={type}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore This type is allowed when type single.
-      collapsible={collapsible}
-      ref={forwardedRef}
-      {...props}
-    />
-  )
+  ({ collapsible = true, type = 'single', ...props }, forwardedRef) => {
+    let additionalProps = {}
+    if (type == 'single' && collapsible) {
+      additionalProps = { collapsible: true }
+    }
+    return (
+      <StyledRoot
+        type={type}
+        {...additionalProps}
+        ref={forwardedRef}
+        {...props}
+      />
+    )
+  }
 ) as Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof Root>,
   AccordionProps

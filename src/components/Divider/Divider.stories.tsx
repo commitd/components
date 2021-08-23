@@ -73,3 +73,78 @@ export const Decorative = () => (
     <Text>And will be ignored by assistive technologies</Text>
   </Column>
 )
+
+export const Sizes = () => (
+  <Column css={{ maxWidth: '100%' }}>
+    <Text>
+      Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
+      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
+      velit voluptas hic velit sint. Et iusto modi ea dolorem exercitationem et
+      molestiae perferendis ut voluptatum cumque rem accusamus harum.
+    </Text>
+    <Divider size="full" />
+    <Text>
+      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+      assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
+    </Text>
+    <Text>
+      Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
+      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
+      velit voluptas hic velit sint. Et iusto modi ea dolorem exercitationem et
+      molestiae perferendis ut voluptatum cumque rem accusamus harum.
+    </Text>
+    <Divider size="most" />
+    <Text>
+      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+      assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
+    </Text>
+    <Divider size="medium" />
+    <Text>
+      Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
+      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
+      velit voluptas hic velit sint. Et iusto modi ea dolorem exercitationem et
+      molestiae perferendis ut voluptatum cumque rem accusamus harum.
+    </Text>
+    <Divider size="small" />
+    <Text>
+      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+      assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
+    </Text>
+  </Column>
+)
+
+export const SizesHorizontal = () => (
+  <Row css={{ height: '300px' }}>
+    <Text>
+      Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
+      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est Rem
+      architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+    </Text>
+    <Divider orientation="vertical" size="full" />
+    <Text>
+      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
+    </Text>
+    <Divider orientation="vertical" size="most" />
+    <Text>
+      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+      assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
+    </Text>
+    <Divider orientation="vertical" size="medium" />
+    <Text>
+      Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
+      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
+    </Text>
+    <Divider orientation="vertical" size="small" />
+    <Text>
+      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
+      voluptatem temporibus et autem consequatur. Est assumenda totam id
+    </Text>
+  </Row>
+)

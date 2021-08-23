@@ -86,4 +86,4 @@ export const PopoverClose = forwardRef(
  * Built using [Radix Popover](https://radix-ui.com/primitives/docs/components/popover)
  */
 export const Popover: FC<React.ComponentProps<typeof Root>> = Root
-export const PopoverAnchor = Anchor
+export const PopoverAnchor = styled(Anchor, {})

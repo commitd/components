@@ -149,14 +149,14 @@ type MenuItemCheckboxComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.OwnProps<typeof CheckboxItem>
 >
 
-export const MenuItemCheckbox: MenuItemCheckboxComponent = forwardRef(
+export const MenuItemCheckbox = forwardRef(
   ({ children, ...props }, forwardedRef) => (
     <StyledCheckboxItem {...props} ref={forwardedRef}>
       <StyledCheckboxIndicator />
       {children}
     </StyledCheckboxItem>
   )
-)
+) as MenuItemCheckboxComponent
 
 type MenuSeparatorComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.IntrinsicElement<typeof CheckboxItem>,
@@ -213,14 +213,14 @@ type MenuItemRadioComponent = Polymorphic.ForwardRefComponent<
   Polymorphic.OwnProps<typeof RadioItem>
 >
 
-export const MenuRadioItem: MenuItemRadioComponent = forwardRef(
+export const MenuRadioItem = forwardRef(
   ({ children, ...props }, forwardedRef) => (
     <StyledRadioItem {...props} ref={forwardedRef}>
       <StyledCheckboxIndicator />
       {children}
     </StyledRadioItem>
   )
-)
+) as MenuItemRadioComponent
 
 export const MenuItemShortcut = styled('span', {
   fontFamily: '$monospace',

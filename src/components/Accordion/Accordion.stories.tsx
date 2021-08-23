@@ -9,13 +9,23 @@ export default {
   argTypes: {
     type: {
       defaultValue: 'single',
+      control: {
+        type: 'select',
+      },
+      options: ['single', 'multiple'],
+      description: 'Defines the policy for how many items can be open',
+    },
+    collapsible: {
+      defaultValue: true,
+      control: {
+        type: 'boolean',
+      },
+      description: 'In single mode only, declares that they can all be closed.',
     },
   },
 } as Meta
 
-export const Default: Story<React.ComponentProps<typeof Accordion>> = ({
-  ...args
-}) => {
+export const Default: Story = ({ ...args }) => {
   return (
     <Accordion {...args}>
       <AccordionItem value="item-1">
