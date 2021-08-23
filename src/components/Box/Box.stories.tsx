@@ -5,18 +5,52 @@ import { Box } from '.'
 export default {
   title: 'Components/Box',
   component: Box,
+  argTypes: {
+    onClick: { action: 'clicked' },
+    container: {
+      control: {
+        type: 'select',
+      },
+      options: ['flex', 'block'],
+      defaultValue: 'block',
+      description:
+        'Change the display type of the container to see the effect on the variants of the box.',
+    },
+    variant: {
+      control: {
+        type: 'select',
+      },
+      options: ['grow', 'max', 'high', 'wide', 'fullscreen'],
+      description:
+        'Some commonly styles are provided as variants for convenience (and improved performance).',
+    },
+  },
 } as Meta
 
-export const Default: React.FC = () => (
+export const Default: React.FC<{ container?: 'block' | 'flex' }> = ({
+  container,
+  ...args
+}) => (
   <Box
     css={{
-      backgroundColor: '$paper',
-      color: '$text',
+      display: container,
+      backgroundColor: '$default',
       border: '$colors$red500 solid $sizes$3',
-      padding: '$4',
+      width: '100%',
+      height: '300px',
     }}
   >
-    Box
+    <Box
+      {...args}
+      css={{
+        backgroundColor: '$paper',
+        color: '$text',
+        border: '$colors$red500 solid $sizes$3',
+        padding: '$4',
+      }}
+    >
+      Box
+    </Box>
   </Box>
 )
 
