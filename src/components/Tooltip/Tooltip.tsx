@@ -45,13 +45,21 @@ export const Tooltip: FC<TooltipProps> = ({
   content,
   open,
   defaultOpen,
+  delayDuration,
+  skipDelayDuration,
   onOpenChange,
   multiline,
   side = 'top',
   align = 'center',
   ...props
 }) => (
-  <Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
+  <Root
+    open={open}
+    defaultOpen={defaultOpen}
+    delayDuration={delayDuration}
+    skipDelayDuration={skipDelayDuration}
+    onOpenChange={onOpenChange}
+  >
     <Trigger as={Slot}>{children}</Trigger>
     <StyledContent
       side={side}
