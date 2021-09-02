@@ -63,7 +63,7 @@ export const AccordionItem = styled(Item, {
   borderBottom: '1px solid $colors$grey4',
 })
 
-const AccordionTrigger = styled(Trigger, {
+const AccordionTrigger = styled(Trigger, buttonInteractionStyles, {
   backgroundColor: 'transparent',
   border: 'none',
   padding: '$4',
@@ -75,8 +75,6 @@ const AccordionTrigger = styled(Trigger, {
   color: '$text',
   width: '100%',
   outline: 'none',
-
-  ...buttonInteractionStyles,
 
   pointerEvents: 'auto',
 

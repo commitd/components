@@ -1,7 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { ComponentProps, forwardRef, PropsWithChildren } from 'react'
-import type { CSSProps } from '../../stitches.config'
-import { CSS, styled } from '../../stitches.config'
+import type { CSS, CSSProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { Box } from '../Box'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
@@ -98,12 +98,10 @@ export const AppBarMenu: React.FC = ({ children }) => (
   </Box>
 )
 
-export const AppBarMenuItem: React.FC<
-  React.ComponentProps<typeof Link>
-> = styled(Link, {
+export const AppBarMenuItem = styled(Link, {
   color: '$brandContrast',
   textDecoration: 'none',
   '&:hover': {
     textDecoration: 'underline',
   },
-}) as React.FC<React.ComponentProps<typeof Link>>
+})

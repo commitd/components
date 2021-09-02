@@ -1,10 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import type {
-  CSSProps,
-  StitchesVariants,
-  StyledConfig,
-} from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
+import { css, styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'button'
 
@@ -26,7 +22,7 @@ export const disabled = {
   opacity: 0.3,
 }
 
-export const buttonInteractionStyles = {
+export const buttonInteractionStyles = css({
   cursor: 'pointer',
   transition: 'background 0.5s',
   backgroundPosition: 'center',
@@ -39,7 +35,7 @@ export const buttonInteractionStyles = {
   '&:focus': focus,
   '&:active': active,
   '&:disabled': disabled,
-}
+})
 
 export const mainVariants = {
   brand: {
@@ -100,7 +96,7 @@ export const sizeVariants = {
   },
 }
 
-export const buttonBaseStyle = {
+export const buttonBaseStyle = css({
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -134,37 +130,41 @@ export const buttonBaseStyle = {
   backgroundColor: 'transparent',
   border: 'none',
   width: 'fit-content; width: -moz-fit-content',
+})
 
-  ...buttonInteractionStyles,
-}
-
-const buttonVariants = {
-  variant: mainVariants,
-  destructive: destructiveVariants,
-  size: sizeVariants,
-  ['full-width']: {
-    true: {
-      width: '100%',
+const buttonVariants = css({
+  variants: {
+    variant: mainVariants,
+    destructive: destructiveVariants,
+    size: sizeVariants,
+    ['full-width']: {
+      true: {
+        width: '100%',
+      },
+    },
+    force: {
+      hover,
+      focus,
+      active,
     },
   },
-  force: {
-    hover,
-    focus,
-    active,
-  },
-}
+})
 
-const StyledButton = styled(DEFAULT_TAG, {
-  ...buttonBaseStyle,
-  variants: buttonVariants,
-  defaultVariants: {
-    variant: 'secondary',
-    destructive: 'false',
-    size: 'default',
-  },
-} as StyledConfig<typeof buttonVariants>)
+const StyledButton = styled(
+  DEFAULT_TAG,
+  buttonBaseStyle,
+  buttonInteractionStyles,
+  buttonVariants,
+  {
+    defaultVariants: {
+      variant: 'secondary',
+      destructive: 'false',
+      size: 'default',
+    },
+  }
+)
 
-type ButtonOwnProps = StitchesVariants<typeof StyledButton> & CSSProps
+type ButtonOwnProps = VariantProps<typeof StyledButton> & CSSProps
 type ButtonComponent = Polymorphic.ForwardRefComponent<
   typeof DEFAULT_TAG,
   ButtonOwnProps

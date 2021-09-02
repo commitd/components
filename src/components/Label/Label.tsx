@@ -1,7 +1,7 @@
 import { Root } from '@radix-ui/react-label'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { StyledText } from '../Text/Text'
 
@@ -31,8 +31,8 @@ const StyledLabel = styled(Root, {
   },
 })
 
-type LabelVariants = StitchesVariants<typeof StyledLabel> &
-  StitchesVariants<typeof StyledText>
+type LabelVariants = VariantProps<typeof StyledLabel> &
+  VariantProps<typeof StyledText>
 type LabelOwnProps = Polymorphic.OwnProps<typeof Root> &
   CSSProps &
   LabelVariants

@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
 import { Paper } from '../Paper'
@@ -114,7 +114,7 @@ export const CardBody = styled('div', {
 
 const CARD_HEADING_TAG = 'div'
 
-type CardHeadingVariants = StitchesVariants<typeof StyledText>
+type CardHeadingVariants = VariantProps<typeof StyledText>
 type CardHeadingOwnProps = CSSProps & CardHeadingVariants
 
 type CardHeadingComponent = Polymorphic.ForwardRefComponent<
@@ -158,7 +158,7 @@ export const CardHeading = forwardRef(
 
 const CARD_SUBHEADING_TAG = 'div'
 
-type CardSubheadingVariants = StitchesVariants<typeof StyledText>
+type CardSubheadingVariants = VariantProps<typeof StyledText>
 type CardSubheadingOwnProps = CSSProps & CardSubheadingVariants
 
 type CardSubheadingComponent = Polymorphic.ForwardRefComponent<
@@ -194,7 +194,7 @@ export const CardSubheading = forwardRef(
 
 const CARD_LEAD_IN_TAG = 'div'
 
-type CardLeadInVariants = StitchesVariants<typeof StyledText>
+type CardLeadInVariants = VariantProps<typeof StyledText>
 type CardLeadInOwnProps = CSSProps & CardLeadInVariants
 
 type CardLeadInComponent = Polymorphic.ForwardRefComponent<

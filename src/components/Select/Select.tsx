@@ -1,7 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { ChevronDown } from '../Icons'
 import { inputStyles } from '../Input/Input'
@@ -18,14 +18,13 @@ import { useLabelContext } from '@radix-ui/react-label'
 import { Label } from '../Label'
 
 const DEFAULT_TAG = 'input'
-const StyledSelect = styled(DEFAULT_TAG, {
-  ...inputStyles,
+const StyledSelect = styled(DEFAULT_TAG, inputStyles, {
   cursor: 'pointer',
   textAlign: 'left',
 })
 export const SelectItem = MenuRadioItem
 
-type SelectVariants = StitchesVariants<typeof StyledSelect>
+type SelectVariants = VariantProps<typeof StyledSelect>
 type SelectOwnProps = CSSProps &
   SelectVariants & {
     /** Add a label to the Select */

@@ -117,6 +117,7 @@
     "coveragePathIgnorePatterns": [
       "/src/typings.d.ts",
       "setupTests.tsx",
+      "/src/docs/*",
       ".*/index.ts",
       ".*.test.ts",
       ".*.stories.tsx"
@@ -219,6 +220,6 @@
     "@radix-ui/react-switch": "0.0.15",
     "@radix-ui/react-tabs": "0.0.16",
     "@radix-ui/react-tooltip": "0.0.21",
-    "@stitches/react": "^0.2.5"
+    "@stitches/react": "^1.0.0"
   }
 }

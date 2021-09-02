@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
+import { blue, blueDark } from '@radix-ui/colors'
 import {
   ThemeProvider,
   ThemeProviderProps,
@@ -8,10 +9,10 @@ import {
 } from '.'
 import {
   config,
-  darkThemeConfig,
   lightTheme,
   styled,
-  theme,
+  createTheme,
+  createDarkTheme,
 } from '../../stitches.config'
 import {
   Accordion,
@@ -150,7 +151,7 @@ export const UtilityUseThemeResolve = () => {
         <Span font="monospace">{resolve('$colors$success')}</Span>{' '}
       </Paragraph>
       <Paragraph>
-        The value <Span font="monospace">`#123456</Span> resolves to{' '}
+        The value <Span font="monospace">#123456</Span> resolves to{' '}
         <Span>{resolve('#123456')}</Span>{' '}
       </Paragraph>
     </>
@@ -166,12 +167,10 @@ export const UtilityUseThemeResolve = () => {
 export const CustomLight = Template.bind({})
 CustomLight.args = {
   choice: 'light',
-  light: theme({
-    ...config.theme,
+  light: createTheme({
     colors: {
-      ...config.theme.colors,
-      text: '$blue10',
-      paper: '$blue3',
+      text: blue.blue10,
+      paper: blue.blue3,
     },
   }),
 }
@@ -181,10 +180,10 @@ CustomLight.parameters = {
       code: `
 import { theme, ThemeProvider, Paper } from '@committed/components'
 
-const customTheme = theme({
+const customTheme = createTheme({
   colors: {
-    text: '$blue10',
-    paper: '$blue3',
+    text: 'hsl(208 100% 47.3%)',
+    paper: 'hsl(209 100% 96.5%)',
   }
 })
 
@@ -205,12 +204,10 @@ export const CustomThemeProvider = () => (
 export const CustomDark = Template.bind({})
 CustomDark.args = {
   choice: 'dark',
-  dark: theme({
-    ...darkThemeConfig,
+  dark: createDarkTheme({
     colors: {
-      ...darkThemeConfig.colors,
-      text: '$blue10',
-      paper: '$blue3',
+      text: blueDark.blue10,
+      paper: blueDark.blue3,
     },
   }),
 }
@@ -220,17 +217,15 @@ CustomDark.parameters = {
       code: `
  import { theme, ThemeProvider, Paper, darkThemeConfig } from '@committed/components'
  
- const customTheme = theme({
-  ...darkThemeConfig,
+ const customTheme = createDarkTheme({
   colors: {
-    ...darkThemeConfig.colors,
-    text: '$blue10',
-    paper: '$blue3',
+    text: 'hsl(209 100% 60.6%)',
+    paper: 'hsl(214 59.4% 15.3%)',
   },
  })
  
  export const CustomThemeProvider = () => (
-   <ThemeProvider choice='light', light={customTheme}>
+   <ThemeProvider choice='dark', dark={customTheme}>
      <Paper>Example</Paper>
    </ThemeProvider>
  )

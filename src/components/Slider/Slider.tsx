@@ -10,7 +10,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Tooltip } from '../Tooltip'
 
@@ -166,7 +166,7 @@ export const SliderThumb: FC<SliderThumbProps> = ({
   )
 }
 
-type SliderVariants = StitchesVariants<typeof StyledSlider>
+type SliderVariants = VariantProps<typeof StyledSlider>
 type SliderOwnProps = Polymorphic.OwnProps<typeof Root> &
   SliderVariants &
   CSSProps & {

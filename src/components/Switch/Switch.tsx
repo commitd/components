@@ -1,7 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Root, Thumb } from '@radix-ui/react-switch'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
 const StyledThumb = styled(Thumb, {
@@ -127,7 +127,7 @@ const StyledSwitch = styled(Root, {
   },
 })
 
-type SwitchVariants = StitchesVariants<typeof StyledSwitch>
+type SwitchVariants = VariantProps<typeof StyledSwitch>
 type SwitchOwnProps = Polymorphic.OwnProps<typeof Root> &
   CSSProps &
   SwitchVariants

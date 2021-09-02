@@ -2,6 +2,9 @@ import { Meta } from '@storybook/addon-docs/blocks'
 import { version } from '../../package.json'
 import { mdiImage } from '@mdi/js'
 import { Svg, Text } from '../'
+import { DocWrapper } from './util/DocWrapper'
+
+<DocWrapper>
 
 <Meta title="Design System/Getting Started" />
 
@@ -12,7 +15,7 @@ Install the design system and dependencies in your application
 <!--  Omitted due to Storybook v6.3 bug https://github.com/storybookjs/storybook/issues/15359
 <code>npm add @committed/components@{version}</code> -->
 
-<code>npm add @committed/components@5.x.x</code>
+<code>npm add @committed/components</code>
 
 Optionally, add the default fonts. This is done separately to keep down bundle size if they are not required.
 
@@ -68,7 +71,7 @@ Import the icon paths from `@mdi/js` and use in `Svg` or `IconButton` components
 For example, we suggest you create semantic icon components for use in your application.
 This will make it easier to understand the usage of the icon and simpler to update and maintain.
 
-<Svg path={mdiImage} />
+<Svg css={{ color: '$text' }} path={mdiImage} />
 
 ```jsx
 import { mdiImage } from '@mdi/js'
@@ -156,3 +159,5 @@ My article
 This would create an `article` element in the html rather than this components standard `div`
 but would still support the `css` props and other styles already applied to the component.
 This makes for a cleaner html, that is semantically correct and reduced unnecessary elements.
+
+</DocWrapper>

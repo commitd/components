@@ -1,7 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
-import { StitchesVariants, styled } from '../../stitches.config'
+import { VariantProps, styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'span'
 
@@ -77,7 +77,7 @@ const StyledBadge = styled(DEFAULT_TAG, {
   },
 })
 
-type BadgeVariants = StitchesVariants<typeof StyledBadge>
+type BadgeVariants = VariantProps<typeof StyledBadge>
 type BadgeOwnProps = CSSProps &
   BadgeVariants & {
     content: React.ReactNode
@@ -111,7 +111,7 @@ const StatusContainer = styled(StyledBadge, {
   borderRadius: '$round',
 })
 
-type StatusVariants = StitchesVariants<typeof StyledBadge>
+type StatusVariants = VariantProps<typeof StyledBadge>
 type StatusOwnProps = CSSProps & StatusVariants
 
 type StatusComponent = Polymorphic.ForwardRefComponent<
