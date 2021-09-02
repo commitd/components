@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled, keyframes } from '../../stitches.config'
 import { Root, Indicator } from '@radix-ui/react-progress'
 
@@ -87,7 +87,7 @@ const ProgressIndicator = styled(Indicator, {
   transition: 'transform 150ms cubic-bezier(0.65, 0, 0.35, 1)',
 })
 
-type ProgressVariants = StitchesVariants<typeof StyledProgress>
+type ProgressVariants = VariantProps<typeof StyledProgress>
 type ProgressOwnProps = Polymorphic.OwnProps<typeof Root> &
   CSSProps &
   ProgressVariants

@@ -1,7 +1,7 @@
 import { Indicator, Root } from '@radix-ui/react-checkbox'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef, ForwardRefExoticComponent } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
 import { Check, CheckIndeterminate } from '../Icons'
@@ -130,7 +130,7 @@ const StyledIndicator = styled(Indicator, {
   width: '100%',
 })
 
-type CheckboxVariants = StitchesVariants<typeof StyledRoot>
+type CheckboxVariants = VariantProps<typeof StyledRoot>
 type CheckboxProps = Polymorphic.OwnProps<typeof Root> &
   CheckboxVariants &
   CSSProps & {

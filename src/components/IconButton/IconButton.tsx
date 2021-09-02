@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Svg } from '../Svg'
 
@@ -134,7 +134,7 @@ export const StyledIconButton = styled(DEFAULT_TAG, {
   },
 })
 
-type IconButtonVariants = StitchesVariants<typeof StyledIconButton>
+type IconButtonVariants = VariantProps<typeof StyledIconButton>
 type IconButtonOwnProps = CSSProps &
   IconButtonVariants & {
     /** Add a title */

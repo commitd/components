@@ -1,11 +1,11 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSS, CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
 import { Text } from '../Text'
 
 const DEFAULT_TAG = 'h3'
 
-type SubheadingVariants = StitchesVariants<typeof Text>
+type SubheadingVariants = VariantProps<typeof Text>
 type SubheadingOwnProps = CSSProps &
   SubheadingVariants & {
     variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'

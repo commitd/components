@@ -9,7 +9,16 @@ import {
   sizeVariants,
 } from '../Button/Button'
 
-const StyledTab = styled(Trigger, {})
+const StyledTab = styled(Trigger, buttonBaseStyle, {
+  cursor: 'pointer',
+  minWidth: '160px',
+  borderRadius: '0',
+  border: 'none',
+
+  '&[data-state="active"]': {
+    cursor: 'auto',
+  },
+})
 
 type TabOwnProps = Polymorphic.OwnProps<typeof Trigger> & CSSProps
 
@@ -39,17 +48,6 @@ export const TabsRoot = styled(Root, {
   display: 'grid',
   gap: '0px 0px',
 
-  [`& ${Tab}`]: {
-    ...buttonBaseStyle,
-    cursor: 'pointer',
-    minWidth: '160px',
-    borderRadius: '0',
-    border: 'none',
-
-    '&[data-state="active"]': {
-      cursor: 'auto',
-    },
-  },
   variants: {
     size: {
       small: {

@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
 import { Close } from '../Icons'
@@ -175,7 +175,7 @@ const StyledChip = styled(DEFAULT_TAG, {
   },
 })
 
-type ChipVariants = StitchesVariants<typeof StyledChip>
+type ChipVariants = VariantProps<typeof StyledChip>
 type ChipOwnProps = CSSProps & ChipVariants & { onClose?: () => void }
 
 type ChipComponent = Polymorphic.ForwardRefComponent<

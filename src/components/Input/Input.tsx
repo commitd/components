@@ -1,8 +1,8 @@
 import { useLabelContext } from '@radix-ui/react-label'
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
-import { styled, StyledConfig } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
+import { css, styled } from '../../stitches.config'
 import { Label } from '../Label'
 
 const DEFAULT_TAG = 'input'
@@ -22,37 +22,7 @@ const focus = {
   },
 }
 
-const inputVariants = {
-  // Not for general use
-  force: {
-    hover,
-    focus,
-  },
-  state: {
-    invalid: {
-      backgroundColor: '$errorBackground',
-      $$inactive: '$colors$errorLowlight',
-      $$active: '$colors$error',
-    },
-    valid: {
-      $$inactive: '$colors$successLowlight',
-      $$active: '$colors$success',
-    },
-  },
-  cursor: {
-    default: {
-      cursor: 'default',
-      '&:focus': {
-        cursor: 'text',
-      },
-    },
-    text: {
-      cursor: 'text',
-    },
-  },
-}
-
-export const inputStyles: StyledConfig<typeof inputVariants> = {
+export const inputStyles = css({
   $$inactive: '$colors$grey7',
   $$active: '$colors$primary',
 
@@ -116,12 +86,40 @@ export const inputStyles: StyledConfig<typeof inputVariants> = {
       boxShadow: 'inset 0px 0px 0px 1px $colors$grey7',
     },
   },
-  variants: inputVariants,
-}
+  variants: {
+    // Not for general use
+    force: {
+      hover,
+      focus,
+    },
+    state: {
+      invalid: {
+        backgroundColor: '$errorBackground',
+        $$inactive: '$colors$errorLowlight',
+        $$active: '$colors$error',
+      },
+      valid: {
+        $$inactive: '$colors$successLowlight',
+        $$active: '$colors$success',
+      },
+    },
+    cursor: {
+      default: {
+        cursor: 'default',
+        '&:focus': {
+          cursor: 'text',
+        },
+      },
+      text: {
+        cursor: 'text',
+      },
+    },
+  },
+})
 
 const StyledInput = styled(DEFAULT_TAG, inputStyles)
 
-type InputVariants = StitchesVariants<typeof StyledInput>
+type InputVariants = VariantProps<typeof StyledInput>
 type InputOwnProps = CSSProps &
   InputVariants & {
     /** Add a label to the Input */
@@ -150,7 +148,9 @@ export const Input = forwardRef(
         )}
         <StyledInput
           aria-labelledby={labelId}
-          onChange={(e) => onValueChange && onValueChange(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onValueChange && onValueChange(e.target.value)
+          }
           {...props}
           id={id || label}
           ref={forwardedRef}

@@ -69,14 +69,7 @@ const checkboxItemStyles = {
 const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
 
-type MenuItemOwnProps = React.ComponentProps<typeof Item> & CSSProps
-
-type MenuItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Item>,
-  MenuItemOwnProps
->
-
-export const MenuItem = styled(Item, itemStyles) as MenuItemComponent
+export const MenuItem = styled(Item, itemStyles)
 
 const StyledMenuTriggerItem = styled(TriggerItem, {
   ...itemStyles,
@@ -158,13 +151,6 @@ export const MenuItemCheckbox = forwardRef(
   )
 ) as MenuItemCheckboxComponent
 
-type MenuSeparatorComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof CheckboxItem>,
-  CSSProps & { orientation?: 'horizontal' | 'vertical' } & Polymorphic.OwnProps<
-      typeof Separator
-    >
->
-
 export const MenuSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey7',
@@ -186,7 +172,7 @@ export const MenuSeparator = styled(Separator, {
   defaultVariants: {
     orientation: 'horizontal',
   },
-}) as MenuSeparatorComponent
+})
 
 export const MenuLabel = styled(Label, {
   color: '$grey10',

@@ -1,7 +1,7 @@
+import { Meta } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Tooltip } from '.'
-import { Button, Box, Flex } from '../../'
+import { Box, Button, Flex } from '../../'
 import { Check } from '../Icons'
 
 export default {
@@ -94,6 +94,23 @@ export const Multiline = () => (
       <Check />
     </Button>
   </Tooltip>
+)
+
+/**
+ * The delay duration can be controlled
+ *
+ * - `delayDuration` - The duration from when the mouse enters the trigger until the tooltip opens.
+ * - `skipDelayDuration` - How much time a user has to enter another trigger without incurring a delay again.
+ */
+export const Delay = () => (
+  <>
+    <Tooltip delayDuration={500} skipDelayDuration={0} content="OK">
+      <Button>Delay 500ms</Button>
+    </Tooltip>
+    <Tooltip delayDuration={2000} skipDelayDuration={0} content="OK">
+      <Button css={{ ml: '$3' }}>Delay 2s</Button>
+    </Tooltip>
+  </>
 )
 
 /**

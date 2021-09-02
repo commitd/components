@@ -1,5 +1,5 @@
 import React, { ElementRef, forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { keyframes, styled } from '../../stitches.config'
 import { Logo } from '../Logo'
 
@@ -81,7 +81,7 @@ const StyledSpinner = styled(Logo, {
   },
 })
 
-type SpinnerVariants = StitchesVariants<typeof StyledSpinner>
+type SpinnerVariants = VariantProps<typeof StyledSpinner>
 type SpinnerOwnProps = CSSProps & SpinnerVariants
 
 /**

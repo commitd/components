@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { forwardRef, PropsWithChildren } from 'react'
-import type { CSS, CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'span'
@@ -97,7 +97,7 @@ export const StyledText = styled(DEFAULT_TAG, {
   },
 })
 
-type TextVariants = StitchesVariants<typeof StyledText>
+type TextVariants = VariantProps<typeof StyledText>
 type TextOwnProps = CSSProps & TextVariants
 
 type TextComponent = Polymorphic.ForwardRefComponent<

@@ -1,6 +1,6 @@
 import React, { FC, ComponentProps, forwardRef, ForwardedRef } from 'react'
 import type { CSS, CSSProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import { styled, css } from '../../stitches.config'
 import { buttonInteractionStyles } from '../Button/Button'
 import { IconButton } from '../IconButton'
 import { paperStyles } from '../Paper'
@@ -38,7 +38,7 @@ List.toString = () => `.${StyledList.className}`
  * List Item
  ***********************************************************/
 
-const styles = {
+const styles = css({
   $$selectionColor: '$colors$selection',
   ...paperStyles,
   border: 'none',
@@ -59,15 +59,16 @@ const styles = {
       },
     },
   },
-}
+})
 
 export const StyledListItem = styled('div', styles)
 
-export const StyledInteractiveListItem = styled('button', {
-  ...styles,
-  ...buttonInteractionStyles,
-  width: '100%',
-})
+export const StyledInteractiveListItem = styled(
+  'button',
+  styles,
+  buttonInteractionStyles,
+  { width: '100%' }
+)
 
 type InteractiveProps = {
   /* Set true to make the list item interactive */

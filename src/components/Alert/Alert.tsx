@@ -1,6 +1,6 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import React, { FC, forwardRef } from 'react'
-import type { CSSProps, StitchesVariants } from '../../stitches.config'
+import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Heading } from '../Heading'
 import { Text } from '../Text'
@@ -69,7 +69,7 @@ export const AlertContent: FC = ({ children }) => (
   </Text>
 )
 
-type AlertVariants = StitchesVariants<typeof StyledAlert>
+type AlertVariants = VariantProps<typeof StyledAlert>
 type AlertOwnProps = CSSProps & AlertVariants
 
 type AlertComponent = Polymorphic.ForwardRefComponent<

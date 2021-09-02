@@ -1,122 +1,128 @@
-import { createCss } from '@stitches/react'
-import type { StitchesCss, ThemeRule } from '@stitches/react'
-export type { StitchesVariants } from '@stitches/react'
 import {
-  gray,
-  grayDark,
-  sand,
-  sandDark,
-  yellow,
-  yellowDark,
-  blue,
-  blueDark,
   amber,
   amberDark,
-  red,
-  redDark,
+  blackA,
+  blue,
+  blueDark,
   grass,
   grassDark,
+  gray,
+  grayDark,
   orange,
   orangeDark,
+  red,
+  redDark,
+  sand,
+  sandDark,
   whiteA,
-  blackA,
 } from '@radix-ui/colors'
+import type * as Stitches from '@stitches/react'
+import { createStitches } from '@stitches/react'
+import { ThemeConfig } from './components/ThemeProvider/ThemeProvider.stories'
 
 const LIGHT_THEME = 'light-theme'
 const DARK_THEME = 'dark-theme'
 
-const semanticColors = {
-  grey1: '$sand1',
-  grey2: '$sand2',
-  grey3: '$sand3',
-  grey4: '$sand4',
-  grey5: '$sand5',
-  grey6: '$sand6',
-  grey7: '$sand7',
-  grey8: '$sand8',
-  grey9: '$sand9',
-  grey10: '$sand10',
-  grey11: '$sand11',
-  grey12: '$sand12',
+const semanticColors = (
+  sandType: typeof sand,
+  amberType: typeof amber,
+  grayType: typeof gray,
+  redType: typeof red,
+  blueType: typeof blue,
+  orangeType: typeof orange,
+  grassType: typeof grass
+) => ({
+  grey1: sandType.sand1,
+  grey2: sandType.sand2,
+  grey3: sandType.sand3,
+  grey4: sandType.sand4,
+  grey5: sandType.sand5,
+  grey6: sandType.sand6,
+  grey7: sandType.sand7,
+  grey8: sandType.sand8,
+  grey9: sandType.sand9,
+  grey10: sandType.sand10,
+  grey11: sandType.sand11,
+  grey12: sandType.sand12,
 
-  brandYellow1: '$amber1',
-  brandYellow2: '$amber2',
-  brandYellow3: '$amber3',
-  brandYellow4: '$amber4',
-  brandYellow5: '$amber5',
-  brandYellow6: '$amber6',
-  brandYellow7: '$amber7',
-  brandYellow8: '$amber8',
-  brandYellow9: '$amber9',
-  brandYellow10: '$amber10',
-  brandYellow11: '$amber11',
-  brandYellow12: '$amber12',
+  brandYellow1: amberType.amber1,
+  brandYellow2: amberType.amber2,
+  brandYellow3: amberType.amber3,
+  brandYellow4: amberType.amber4,
+  brandYellow5: amberType.amber5,
+  brandYellow6: amberType.amber6,
+  brandYellow7: amberType.amber7,
+  brandYellow8: amberType.amber8,
+  brandYellow9: amberType.amber9,
+  brandYellow10: amberType.amber10,
+  brandYellow11: amberType.amber11,
+  brandYellow12: amberType.amber12,
 
-  brandGrey1: '$gray1',
-  brandGrey2: '$gray2',
-  brandGrey3: '$gray3',
-  brandGrey4: '$gray4',
-  brandGrey5: '$gray5',
-  brandGrey6: '$gray6',
-  brandGrey7: '$gray7',
-  brandGrey8: '$gray8',
-  brandGrey9: '$gray9',
-  brandGrey10: '$gray10',
-  brandGrey11: '$gray11',
-  brandGrey12: '$gray12',
+  brandGrey1: grayType.gray1,
+  brandGrey2: grayType.gray2,
+  brandGrey3: grayType.gray3,
+  brandGrey4: grayType.gray4,
+  brandGrey5: grayType.gray5,
+  brandGrey6: grayType.gray6,
+  brandGrey7: grayType.gray7,
+  brandGrey8: grayType.gray8,
+  brandGrey9: grayType.gray9,
+  brandGrey10: grayType.gray10,
+  brandGrey11: grayType.gray11,
+  brandGrey12: grayType.gray12,
 
-  error1: '$red1',
-  error2: '$red2',
-  error3: '$red3',
-  error4: '$red4',
-  error5: '$red5',
-  error6: '$red6',
-  error7: '$red7',
-  error8: '$red8',
-  error9: '$red9',
-  error10: '$red10',
-  error11: '$red11',
-  error12: '$red12',
+  error1: redType.red1,
+  error2: redType.red2,
+  error3: redType.red3,
+  error4: redType.red4,
+  error5: redType.red5,
+  error6: redType.red6,
+  error7: redType.red7,
+  error8: redType.red8,
+  error9: redType.red9,
+  error10: redType.red10,
+  error11: redType.red11,
+  error12: redType.red12,
 
-  info1: '$blue1',
-  info2: '$blue2',
-  info3: '$blue3',
-  info4: '$blue4',
-  info5: '$blue5',
-  info6: '$blue6',
-  info7: '$blue7',
-  info8: '$blue8',
-  info9: '$blue9',
-  info10: '$blue10',
-  info11: '$blue11',
-  info12: '$blue12',
+  info1: blueType.blue1,
+  info2: blueType.blue2,
+  info3: blueType.blue3,
+  info4: blueType.blue4,
+  info5: blueType.blue5,
+  info6: blueType.blue6,
+  info7: blueType.blue7,
+  info8: blueType.blue8,
+  info9: blueType.blue9,
+  info10: blueType.blue10,
+  info11: blueType.blue11,
+  info12: blueType.blue12,
 
-  warning1: '$orange1',
-  warning2: '$orange2',
-  warning3: '$orange3',
-  warning4: '$orange4',
-  warning5: '$orange5',
-  warning6: '$orange6',
-  warning7: '$orange7',
-  warning8: '$orange8',
-  warning9: '$orange9',
-  warning10: '$orange10',
-  warning11: '$orange11',
-  warning12: '$orange12',
+  warning1: orangeType.orange1,
+  warning2: orangeType.orange2,
+  warning3: orangeType.orange3,
+  warning4: orangeType.orange4,
+  warning5: orangeType.orange5,
+  warning6: orangeType.orange6,
+  warning7: orangeType.orange7,
+  warning8: orangeType.orange8,
+  warning9: orangeType.orange9,
+  warning10: orangeType.orange10,
+  warning11: orangeType.orange11,
+  warning12: orangeType.orange12,
 
-  success1: '$grass1',
-  success2: '$grass2',
-  success3: '$grass3',
-  success4: '$grass4',
-  success5: '$grass5',
-  success6: '$grass6',
-  success7: '$grass7',
-  success8: '$grass8',
-  success9: '$grass9',
-  success10: '$grass10',
-  success11: '$grass11',
-  success12: '$grass12',
-}
+  success1: grassType.grass1,
+  success2: grassType.grass2,
+  success3: grassType.grass3,
+  success4: grassType.grass4,
+  success5: grassType.grass5,
+  success6: grassType.grass6,
+  success7: grassType.grass7,
+  success8: grassType.grass8,
+  success9: grassType.grass9,
+  success10: grassType.grass10,
+  success11: grassType.grass11,
+  success12: grassType.grass12,
+})
 
 const lightThemeConfig = {
   shadows: {
@@ -131,21 +137,9 @@ const lightThemeConfig = {
     white: '#FFFFFF',
     black: '#000000',
 
-    // Imports
-
-    ...gray,
-    ...sand,
-    ...yellow,
-    ...blue,
-    ...amber,
-    ...red,
-    ...grass,
-    ...orange,
-    ...blackA,
-
     // Palettes
 
-    ...semanticColors,
+    ...semanticColors(sand, amber, gray, red, blue, orange, grass),
 
     // Overrides
 
@@ -172,18 +166,18 @@ const lightThemeConfig = {
     primary11: '$brandGrey11',
     primary12: '$brandGrey12',
 
-    transparency1: '$blackA1',
-    transparency2: '$blackA2',
-    transparency3: '$blackA3',
-    transparency4: '$blackA4',
-    transparency5: '$blackA5',
-    transparency6: '$blackA6',
-    transparency7: '$blackA7',
-    transparency8: '$blackA8',
-    transparency9: '$blackA9',
-    transparency10: '$blackA10',
-    transparency11: '$blackA11',
-    transparency12: '$blackA12',
+    transparency1: blackA.blackA1,
+    transparency2: blackA.blackA2,
+    transparency3: blackA.blackA3,
+    transparency4: blackA.blackA4,
+    transparency5: blackA.blackA5,
+    transparency6: blackA.blackA6,
+    transparency7: blackA.blackA7,
+    transparency8: blackA.blackA8,
+    transparency9: blackA.blackA9,
+    transparency10: blackA.blackA10,
+    transparency11: blackA.blackA11,
+    transparency12: blackA.blackA12,
 
     brandYellow: '$brandYellow9',
     brandGrey: '$brandGrey8',
@@ -254,21 +248,17 @@ export const darkThemeConfig = {
     white: '#FFFFFF',
     black: '#000000',
 
-    // Imports
-
-    ...grayDark,
-    ...sandDark,
-    ...yellowDark,
-    ...blueDark,
-    ...amberDark,
-    ...redDark,
-    ...grassDark,
-    ...orangeDark,
-    ...whiteA,
-
     // Palettes
 
-    ...semanticColors,
+    ...semanticColors(
+      sandDark,
+      amberDark,
+      grayDark,
+      redDark,
+      blueDark,
+      orangeDark,
+      grassDark
+    ),
 
     // Overrides
 
@@ -296,18 +286,18 @@ export const darkThemeConfig = {
     primary11: '$brandYellow11',
     primary12: '$brandYellow12',
 
-    transparency1: '$whiteA1',
-    transparency2: '$whiteA2',
-    transparency3: '$whiteA3',
-    transparency4: '$whiteA4',
-    transparency5: '$whiteA5',
-    transparency6: '$whiteA6',
-    transparency7: '$whiteA7',
-    transparency8: '$whiteA8',
-    transparency9: '$whiteA9',
-    transparency10: '$whiteA10',
-    transparency11: '$whiteA11',
-    transparency12: '$whiteA12',
+    transparency1: whiteA.whiteA1,
+    transparency2: whiteA.whiteA2,
+    transparency3: whiteA.whiteA3,
+    transparency4: whiteA.whiteA4,
+    transparency5: whiteA.whiteA5,
+    transparency6: whiteA.whiteA6,
+    transparency7: whiteA.whiteA7,
+    transparency8: whiteA.whiteA8,
+    transparency9: whiteA.whiteA9,
+    transparency10: whiteA.whiteA10,
+    transparency11: whiteA.whiteA11,
+    transparency12: whiteA.whiteA12,
 
     brandYellow: '$brandYellow9',
     brandGrey: '$brandGrey8',
@@ -365,7 +355,7 @@ export const darkThemeConfig = {
   },
 }
 
-const stitches = createCss({
+const stitches = createStitches({
   media: {
     sm: '(min-width: 600px)',
     md: '(min-width: 960px)',
@@ -377,130 +367,110 @@ const stitches = createCss({
     light: '(prefers-color-scheme: light)',
   },
   utils: {
-    p: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    p: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'paddingTop'>
     ) => ({
       paddingTop: value,
       paddingBottom: value,
       paddingLeft: value,
       paddingRight: value,
     }),
-    pt: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    pt: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'paddingTop'>
     ) => ({
       paddingTop: value,
     }),
-    pr: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    pr: (
+      value:
+        | Stitches.ScaleValue<'space'>
+        | Stitches.PropertyValue<'paddingRight'>
     ) => ({
       paddingRight: value,
     }),
-    pb: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    pb: (
+      value:
+        | Stitches.ScaleValue<'space'>
+        | Stitches.PropertyValue<'paddingBottom'>
     ) => ({
       paddingBottom: value,
     }),
-    pl: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    pl: (
+      value:
+        | Stitches.ScaleValue<'space'>
+        | Stitches.PropertyValue<'paddingLeft'>
     ) => ({
       paddingLeft: value,
     }),
-    px: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    px: (
+      value:
+        | Stitches.ScaleValue<'space'>
+        | Stitches.PropertyValue<'paddingLeft'>
     ) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    py: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'paddingTop'>
     ) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
 
-    m: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    m: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginTop'>
     ) => ({
       marginTop: value,
       marginBottom: value,
       marginLeft: value,
       marginRight: value,
     }),
-    mt: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    mt: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginTop'>
     ) => ({
       marginTop: value,
     }),
-    mr: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    mr: (
+      value:
+        | Stitches.ScaleValue<'space'>
+        | Stitches.PropertyValue<'marginRight'>
     ) => ({
       marginRight: value,
     }),
-    mb: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    mb: (
+      value:
+        | Stitches.ScaleValue<'space'>
+        | Stitches.PropertyValue<'marginBottom'>
     ) => ({
       marginBottom: value,
     }),
-    ml: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    ml: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginLeft'>
     ) => ({
       marginLeft: value,
     }),
-    mx: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    mx: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginLeft'>
     ) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['space']
-        | (string & Record<string, unknown>)}`
+    my: (
+      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginTop'>
     ) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
-    size: (conf) => (
-      value: `$${
-        | keyof typeof conf['theme']['sizes']
-        | (string & Record<string, unknown>)}`
+    size: (
+      value:
+        | Stitches.ScaleValue<'sizes'>
+        | Stitches.PropertyValue<'width'>
+        | Stitches.PropertyValue<'height'>
     ) => ({
       width: value,
       height: value,
     }),
-    '@dark': (conf) => (
-      // Should not need the Record but causes TS errors without it.
-      // May be fixes in later version of Stitches
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: StitchesCss<typeof conf> | Record<string, any>
-    ) => ({
+    '@dark': (value: Stitches.CSS) => ({
       [`.${DARK_THEME} &`]: value,
     }),
   },
@@ -606,27 +576,45 @@ const stitches = createCss({
 export const {
   styled,
   css,
-  global: globalCss,
+  globalCss,
   keyframes,
-  getCssString,
+  getCssText,
   theme,
+  createTheme,
   config,
 } = stitches
 
-export type CSS = StitchesCss<typeof stitches>
+export type CSS = Stitches.CSS<typeof config>
+export type { VariantProps } from '@stitches/react'
 export type CSSProps = { css?: CSS }
 
-/**
- * A utility type for use when extracting common styles.
- *
- * The generic parameter should be the `typeof` the variants, this is required to infer the correct props on the component.
- * This API/Typing may change with stitches versions, so only use when required.
- */
-export type StyledConfig<T = undefined> = Parameters<typeof styled>[1] & {
-  variants: T
-}
+type ThemeType = typeof theme
+type ThemeKeys = Exclude<keyof ThemeType, keyof string>
+type ThemeConfig = Partial<{ [Property in ThemeKeys]: ThemeType[Property] }>
 
-export type Theme = ThemeRule & string
+export type Theme = ReturnType<typeof createTheme>
+
+/**
+ * Utility function for the creation of a dark theme based on top of our default dark theme.
+ *
+ */
+export function createDarkTheme(
+  ...args: Parameters<typeof createTheme>
+): Theme {
+  const className = typeof args[0] === 'string' ? args[0] : ''
+  const style = ((typeof args[0] === 'object' && args[0]) ||
+    args[1]) as ThemeConfig
+
+  const mergedStyles = Object.assign({}, style, {
+    shadows: { ...darkThemeConfig.shadows, ...style.shadows },
+    colors: { ...darkThemeConfig.colors, ...style.colors },
+  }) as ThemeConfig
+
+  // Attempted to correctly match the types but doesn't quite work
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return createTheme(className, mergedStyles)
+}
 
 // We create fully populated theme objects so we can use them to dereference
 // theme values.
@@ -636,12 +624,12 @@ export type Theme = ThemeRule & string
 export const lightTheme: Theme = Object.assign(
   {},
   theme,
-  theme(LIGHT_THEME, lightThemeConfig)
+  createTheme(LIGHT_THEME, lightThemeConfig)
 )
 export const darkTheme: Theme = Object.assign(
   {},
   theme,
-  theme(DARK_THEME, darkThemeConfig)
+  createTheme(DARK_THEME, darkThemeConfig)
 )
 
 export const globalStyles = globalCss({
