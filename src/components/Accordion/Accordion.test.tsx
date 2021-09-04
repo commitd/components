@@ -1,8 +1,10 @@
-import React from 'react'
-import { renderLight, renderDark, screen, waitFor } from 'test-utils'
+import { composeStories } from '@storybook/testing-react'
 import userEvent from '@testing-library/user-event'
-import { Default } from './Accordion.stories'
-import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from './'
+import React from 'react'
+import { renderDark, renderLight, screen, waitFor } from 'test-utils'
+import * as stories from './Accordion.stories'
+
+const { Default, Multiple, OneOpen } = composeStories(stories)
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default type="single" />)
@@ -15,29 +17,31 @@ it('renders dark without error', () => {
 })
 
 it('starts closed', () => {
-  renderLight(
-    <Accordion type="single">
-      <AccordionItem value="item-1">
-        <AccordionHeader>Item 1</AccordionHeader>
-        <AccordionContent>Panel 1</AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
+  renderLight(<Multiple />)
   expect(screen.getByLabelText(/Item 1/i)).toBeInTheDocument()
-  expect(screen.queryByText(/Panel 1/i)).not.toBeInTheDocument()
+  expect(
+    screen.queryByText(/Here goes the content for the accordion item 1./i)
+  ).not.toBeInTheDocument()
 })
 
-it('Can open panel', async () => {
-  renderLight(
-    <Accordion type="single">
-      <AccordionItem value="item-1">
-        <AccordionHeader>Item 1</AccordionHeader>
-        <AccordionContent>Panel 1</AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
+it('can open panel', async () => {
+  renderLight(<Multiple />)
+  expect(screen.getByLabelText(/Item 1/i)).toBeInTheDocument()
+  expect(
+    screen.queryByText(/Here goes the content for the accordion item 1./i)
+  ).not.toBeInTheDocument()
   userEvent.click(screen.getByRole('button', { name: /Item 1/i }))
   await waitFor(() => {
-    expect(screen.getByText(/Panel 1/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Here goes the content for the accordion item 1./i)
+    ).toBeInTheDocument()
   })
+})
+
+it('starts open with defaultValue set', () => {
+  renderLight(<OneOpen />)
+  expect(screen.getByLabelText(/Item 1/i)).toBeInTheDocument()
+  expect(
+    screen.queryByText(/Here goes the content for the accordion item 1./i)
+  ).toBeInTheDocument()
 })

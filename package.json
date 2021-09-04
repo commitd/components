@@ -159,6 +159,7 @@
     "@storybook/addon-essentials": "^6.3.2",
     "@storybook/react": "^6.3.2",
     "@storybook/storybook-deployer": "^2.8.10",
+    "@storybook/testing-react": "^0.0.22",
     "@storybook/theming": "^6.3.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -197,7 +198,7 @@
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.8",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "^4.3.4"
+    "typescript": "^4.4.2"
   },
   "dependencies": {
     "@committed/hooks": "^0.4.0",
