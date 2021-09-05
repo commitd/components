@@ -1,21 +1,22 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
-import { styled, keyframes } from '../../stitches.config'
+import { keyframes, styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'div'
 
+const BASE_COLOR = '$grey5'
+const HIGHLIGHT_COLOR = '$grey7'
+
 export const ripple = keyframes({
   '0%': {
-    backgroundPosition: '-200px 0',
+    backgroundPosition: '-1000px 0',
   },
   '100%': {
-    backgroundPosition: 'calc(200px + 100%) 0',
+    backgroundPosition: '1000px 0',
   },
 })
 
 export const pulse = keyframes({
   '0%': { opacity: 0 },
+  '50%': { opacity: '100%' },
   '100%': { opacity: '100%' },
 })
 
@@ -23,18 +24,11 @@ export const pulse = keyframes({
  * StyledSkeleton base component
  */
 export const Skeleton = styled(DEFAULT_TAG, {
-  backgroundColor: '$grey4',
+  backgroundColor: BASE_COLOR,
   position: 'relative',
   overflow: 'hidden',
 
   '&::after': {
-    animationName: `${pulse}`,
-    animationDuration: '500ms',
-    animationDirection: 'alternate',
-    animationIterationCount: 'infinite',
-    animationTimingFunction: 'ease-in-out',
-    backgroundColor: '$slate6',
-    borderRadius: 'inherit',
     bottom: 0,
     content: '""',
     left: 0,
@@ -42,7 +36,6 @@ export const Skeleton = styled(DEFAULT_TAG, {
     right: 0,
     top: 0,
   },
-
   variants: {
     variant: {
       avatar: {
@@ -50,13 +43,13 @@ export const Skeleton = styled(DEFAULT_TAG, {
         size: '$7',
       },
       text: {
-        height: '$1',
+        height: '$4',
       },
       title: {
         height: '$5',
       },
       heading: {
-        height: '$3',
+        height: '$7',
       },
       button: {
         borderRadius: '$default',
@@ -68,6 +61,38 @@ export const Skeleton = styled(DEFAULT_TAG, {
       small: {},
       default: {},
       large: {},
+    },
+    animation: {
+      ripple: {
+        '&::after': {
+          animationName: `${ripple}`,
+          animationDuration: '2s',
+          animationDirection: 'normal',
+          animationIterationCount: 'infinite',
+          animationTimingFunction: 'ease-in-out',
+          backgroundImage: `linear-gradient(
+            to right,
+            ${BASE_COLOR} 4%,
+            ${HIGHLIGHT_COLOR} 25%,
+            ${BASE_COLOR} 35%
+          )`,
+          backgroundSize: '1000px 100%',
+          backgroundRepeat: 'no-repeat',
+          borderRadius: 'inherit',
+          lineHeight: '$default',
+          width: '100%',
+        },
+      },
+      pulse: {
+        '&::after': {
+          animationName: `${pulse}`,
+          animationDuration: '1s',
+          animationDirection: 'alternate',
+          animationIterationCount: 'infinite',
+          animationTimingFunction: 'ease-in-out',
+          backgroundColor: HIGHLIGHT_COLOR,
+        },
+      },
     },
   },
   compoundVariants: [
@@ -87,8 +112,23 @@ export const Skeleton = styled(DEFAULT_TAG, {
         width: '$9',
       },
     },
+    {
+      variant: 'avatar',
+      size: 'small',
+      css: {
+        size: '$5',
+      },
+    },
+    {
+      variant: 'avatar',
+      size: 'large',
+      css: {
+        size: '$9',
+      },
+    },
   ],
   defaultVariants: {
     variant: 'text',
+    animation: 'ripple',
   },
 })

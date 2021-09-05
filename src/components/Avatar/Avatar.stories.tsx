@@ -14,21 +14,13 @@ export const Default = () => (
 )
 
 /**
- * Size can be controlled through the `css` prop, the default is `$7`.
+ * Size can be controlled through the `size` prop, with values `small`, `medium` (default) and `large`.
  */
 export const Size = () => (
-  <Flex>
-    <Avatar
-      css={{ m: '$3', size: '$6' }}
-      alt="John Smith"
-      src="https://i.pravatar.cc"
-    />
-    <Avatar css={{ m: '$3' }} alt="John Smith" src="https://i.pravatar.cc" />
-    <Avatar
-      css={{ m: '$3', size: '$8' }}
-      alt="John Smith"
-      src="https://i.pravatar.cc"
-    />
+  <Flex css={{ gap: '$3' }}>
+    <Avatar size="small" alt="John Smith" src="https://i.pravatar.cc" />
+    <Avatar alt="John Smith" src="https://i.pravatar.cc" />
+    <Avatar size="large" alt="John Smith" src="https://i.pravatar.cc" />
   </Flex>
 )
 

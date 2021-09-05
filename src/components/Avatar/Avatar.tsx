@@ -1,15 +1,8 @@
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
+import { VariantProps } from '@stitches/react'
 import React from 'react'
 import type { CSS } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-
-interface AvatarProps {
-  src?: string
-  alt?: string
-  css?: CSS
-  color?: CSS['color']
-  backgroundColor?: CSS['backgroundColor']
-}
 
 const StyledRoot = styled(Root, {
   display: 'inline-flex',
@@ -20,8 +13,16 @@ const StyledRoot = styled(Root, {
   userSelect: 'none',
   borderRadius: '$round',
 
-  width: '$7',
-  height: '$7',
+  variants: {
+    size: {
+      small: { size: '$5' },
+      medium: { size: '$7' },
+      large: { size: '$9' },
+    },
+  },
+  defaultVariants: {
+    size: 'medium',
+  },
 })
 
 const StyledImage = styled(Image, {
@@ -37,6 +38,14 @@ const StyledFallback = styled(Fallback, {
   alignItems: 'center',
   justifyContent: 'center',
 })
+
+interface AvatarProps extends VariantProps<typeof StyledRoot> {
+  src?: string
+  alt?: string
+  css?: CSS
+  color?: CSS['color']
+  backgroundColor?: CSS['backgroundColor']
+}
 
 /**
  * The Avatar should be used for profile images. If an image is not available initials can be used.
