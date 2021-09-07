@@ -7,8 +7,6 @@ import { styled } from '../../stitches.config'
 const StyledThumb = styled(Thumb, {
   $$border: '$colors$default',
   $$background: '$colors$paper',
-  $$borderDisabled: '$colors$defaultLowlight',
-  $$backgroundDisabled: '$colors$grey3',
 
   position: 'absolute',
   left: 0,
@@ -25,11 +23,6 @@ const StyledThumb = styled(Thumb, {
   '&[data-state="checked"]': {
     transform: 'translateX(14px)',
   },
-
-  '&[data-disabled]': {
-    borderColor: '$$borderDisabled',
-    backgroundColor: '$$backgroundDisabled',
-  },
 })
 
 const hover = {
@@ -42,11 +35,8 @@ const focus = hover
 
 const StyledSwitch = styled(Root, {
   $$background: '$colors$grey4',
-  $$backgroundDisabled: '$colors$grey3',
   $$thumbBorder: '$colors$default',
-  $$thumbBorderDisabled: '$colors$defaultLowlight',
   $$thumbBackgroundChecked: '$colors$paper',
-  $$thumbBackgroundCheckedDisabled: '$colors$3',
   $$thumbBackgroundHighlight: '$colors$grey4',
 
   // Reset
@@ -78,11 +68,9 @@ const StyledSwitch = styled(Root, {
 
   [`& ${StyledThumb}`]: {
     $$border: '$$thumbBorder',
-    $$borderDisabled: '$$thumbBorderDisabled',
 
     '&[data-state="checked"]': {
       $$background: '$$thumbBackgroundChecked',
-      $$backgroundDisabled: '$$thumbBackgroundCheckedDisabled',
     },
   },
 
@@ -91,29 +79,38 @@ const StyledSwitch = styled(Root, {
 
   '&:disabled': {
     pointerEvents: 'none',
-    $$background: '  $$backgroundDisabled',
+    opacity: 0.3,
   },
 
   variants: {
     variant: {
       primary: {
         $$background: '$colors$brandYellow6',
-        $$backgroundDisabled: '$colors$brandYellow4',
         $$thumbBorder: '$colors$primary',
-        $$thumbBorderDisabled: '$colors$primaryLowlight',
         $$thumbBackgroundChecked: '$$thumbBorder',
-        $$thumbBackgroundCheckedDisabled: ' $$thumbBorderDisabled',
         $$thumbBackgroundHighlight: '$colors$primaryHighlight',
       },
       secondary: {},
+      brand: {
+        $$background: '$colors$brandLowlight',
+        $$thumbBorder: '$colors$brandYellow',
+        $$thumbBackgroundChecked: '$colors$brandYellow',
+        $$thumbBackgroundHighlight: '$colors$brandYellow',
+        [`& ${StyledThumb}`]: {
+          $$border: '$$thumbBorder',
+          $$background: '$colors$brand',
+
+          '&[data-state="checked"]': {
+            $$background: '$$thumbBackgroundChecked',
+          },
+        },
+      },
     },
     destructive: {
       false: {},
       true: {
         $$background: '$colors$errorBackground',
-        $$backgroundDisabled: '$colors$errorBackground',
         $$thumbBorder: '$colors$error',
-        $$thumbBorderDisabled: '$colors$errorLowlight',
         $$thumbBackgroundHighlight: '$colors$errorLowlight',
       },
     },
