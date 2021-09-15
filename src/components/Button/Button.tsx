@@ -1,5 +1,3 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import type { CSSProps, VariantProps } from '../../stitches.config'
 import { css, styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'button'
@@ -150,7 +148,10 @@ const buttonVariants = css({
   },
 })
 
-const StyledButton = styled(
+/**
+ * Button component
+ */
+export const Button = styled(
   DEFAULT_TAG,
   buttonBaseStyle,
   buttonInteractionStyles,
@@ -163,15 +164,3 @@ const StyledButton = styled(
     },
   }
 )
-
-type ButtonOwnProps = VariantProps<typeof StyledButton> & CSSProps
-type ButtonComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  ButtonOwnProps
->
-
-/**
- * Button component
- */
-export const Button: ButtonComponent = StyledButton
-Button.toString = () => `.${StyledButton.className}`

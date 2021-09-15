@@ -1,8 +1,7 @@
 import { Indicator, Root } from '@radix-ui/react-checkbox'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef, ForwardRefExoticComponent } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
-import { CSS, styled } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
 import { Check, CheckIndeterminate } from '../Icons'
 import { Label } from '../Label'
@@ -131,7 +130,8 @@ const StyledIndicator = styled(Indicator, {
 })
 
 type CheckboxVariants = VariantProps<typeof StyledRoot>
-type CheckboxProps = Polymorphic.OwnProps<typeof Root> &
+type CheckboxRootProps = ComponentProps<typeof Root>
+type CheckboxProps = CheckboxRootProps &
   CheckboxVariants &
   CSSProps & {
     /** Add a label to the checkbox */
@@ -146,10 +146,10 @@ type CheckboxProps = Polymorphic.OwnProps<typeof Root> &
  *
  * Based on [Radix Checkbox](https://radix-ui.com/primitives/docs/components/checkbox).
  */
-export const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef<
-  HTMLButtonElement,
+export const Checkbox = forwardRef<
+  ElementRef<typeof StyledRoot>,
   CheckboxProps
->(({ css, label, ...props }, forwardedRef) => {
+>(({ label, ...props }, forwardedRef) => {
   return (
     <ConditionalWrapper
       condition={label}
@@ -160,7 +160,7 @@ export const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef<
         </Label>
       )}
     >
-      <StyledRoot css={css as CSS} {...props} ref={forwardedRef}>
+      <StyledRoot {...props} ref={forwardedRef}>
         <StyledIndicator>
           {props.checked === 'indeterminate' && <CheckIndeterminate />}
           {props.checked !== 'indeterminate' && <Check />}
@@ -169,4 +169,4 @@ export const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef<
     </ConditionalWrapper>
   )
 })
-Checkbox.displayName = 'Checkbox'
+Checkbox.toString = () => `.${StyledRoot.className}`

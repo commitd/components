@@ -1,5 +1,4 @@
-import type { CSS } from '../../stitches.config'
-import { keyframes, styled } from '../../stitches.config'
+import { css, keyframes, styled } from '../../stitches.config'
 
 const fadeIn = keyframes({
   from: {
@@ -19,18 +18,18 @@ const fadeOut = keyframes({
   },
 })
 
-export const overlayStyles: CSS = {
+export const overlayStyles = css({
   backgroundColor: '$transparency7',
-}
+})
 
-export const overlayAnimationStyles: CSS = {
+export const overlayAnimationStyles = css({
   '&[data-state=open]': {
     animation: `${fadeIn} 200ms ease-out`,
   },
   '&[data-state=closed]': {
     animation: `${fadeOut} 200ms ease-out`,
   },
-}
+})
 
 /**
  * An `Overlay` is used in other components to overlay on the normal content and

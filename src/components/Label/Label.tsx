@@ -1,9 +1,8 @@
 import { Root } from '@radix-ui/react-label'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-import { StyledText } from '../Text/Text'
+import { Text } from '../Text'
 
 const StyledLabel = styled(Root, {
   cursor: 'default',
@@ -32,17 +31,12 @@ const StyledLabel = styled(Root, {
 })
 
 type LabelVariants = VariantProps<typeof StyledLabel> &
-  VariantProps<typeof StyledText>
-type LabelOwnProps = Polymorphic.OwnProps<typeof Root> &
-  CSSProps &
-  LabelVariants
+  VariantProps<typeof Text>
+type LabelProps = ComponentProps<typeof Root> & CSSProps & LabelVariants
 
-type LabelComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
-  LabelOwnProps
->
-
-export const Label = forwardRef((props, forwardedRef) => {
-  return <StyledText as={StyledLabel} nowrap {...props} ref={forwardedRef} />
-}) as LabelComponent
-Label.toString = () => `.${StyledLabel.className}`
+export const Label = forwardRef<ElementRef<typeof StyledLabel>, LabelProps>(
+  (props, forwardedRef) => {
+    return <Text as={StyledLabel} nowrap {...props} ref={forwardedRef} />
+  }
+)
+Label.toString = () => `.${Text.className}`

@@ -45,7 +45,7 @@ export const Letters = () => (
     <Avatar css={{ m: '$2' }} backgroundColor="$warning">
       OP
     </Avatar>
-    <Avatar css={{ m: '$2' }} backgroundColor="$red9" color="$red1">
+    <Avatar css={{ m: '$2' }} backgroundColor="$error9" color="$error1">
       H
     </Avatar>
     <Avatar css={{ m: '$2' }} backgroundColor="#AB34FA" color="$white">
@@ -54,7 +54,7 @@ export const Letters = () => (
     <Avatar
       css={{ m: '$2' }}
       backgroundColor={randomColor()}
-      color={randomColor('100')}
+      color={randomColor(1)}
     >
       RC
     </Avatar>

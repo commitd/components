@@ -1,12 +1,10 @@
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { keyframes, styled } from '../../stitches.config'
+import { buttonInteractionStyles } from '../Button/Button'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
-import { buttonInteractionStyles } from '../Button/Button'
-import { PartialPick } from '../../typings'
 
 const slideDown = keyframes({
   from: { height: 0 },
@@ -26,37 +24,43 @@ const Chevron = styled(ChevronDown, {
   },
 })
 
-const StyledRoot = styled(Root, {
-  ...paperStyles,
+const StyledRoot = styled(Root, paperStyles, {
   boxShadow: '$1',
   borderTop: '1px solid $colors$grey4',
 })
 
-type AccordionProps = Partial<Polymorphic.OwnProps<typeof Root>> &
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore This type is allowed when type single.
-  PartialPick<Polymorphic.OwnProps<typeof Root>, 'collapsible'> &
-  CSSProps
+type AccordionRootProps = Omit<ComponentProps<typeof Root>, 'type'> & {
+  /**
+   * Allow `single` or `multiple` sections to be open, defaults to 'single'
+   */
+  type?: ComponentProps<typeof Root>['type']
+  /**
+   * Allow all elements to be collapsed.
+   * This is only relevant when type single.
+   * */
+  collapsible?: boolean
+}
+type AccordionProps = AccordionRootProps & CSSProps
 
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ collapsible = true, type = 'single', ...props }, forwardedRef) => {
-    let additionalProps = {}
-    if (type == 'single' && collapsible) {
-      additionalProps = { collapsible: true }
-    }
-    return (
-      <StyledRoot
-        type={type}
-        {...additionalProps}
-        ref={forwardedRef}
-        {...props}
-      />
-    )
-  }
-) as Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
+export const Accordion = forwardRef<
+  ElementRef<typeof StyledRoot>,
   AccordionProps
->
+>(({ collapsible = true, type = 'single', ...props }, forwardedRef) => {
+  let additionalProps = {}
+  if (type == 'single' && collapsible) {
+    additionalProps = { collapsible: true }
+  }
+  return (
+    <StyledRoot
+      type={type}
+      {...additionalProps}
+      ref={forwardedRef}
+      {...props}
+    />
+  )
+})
+Accordion.toString = () => `.${StyledRoot.className}`
+
 // Typed explicitly to get props in storybook
 
 export const AccordionItem = styled(Item, {
@@ -95,19 +99,17 @@ export const AccordionContent = styled(Content, {
   },
 })
 
-type PolymorphicAccordionHeader = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Trigger>,
-  Polymorphic.OwnProps<typeof AccordionTrigger> & CSSProps
->
+type AccordionTriggerProps = ComponentProps<typeof AccordionTrigger>
+type AccordionHeaderProps = AccordionTriggerProps & CSSProps
 
-export const AccordionHeader = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Header>
-      <AccordionTrigger {...props} ref={forwardedRef}>
-        {children}
-        <Chevron />
-      </AccordionTrigger>
-    </Header>
-  )
-) as PolymorphicAccordionHeader
-AccordionHeader.displayName = 'AccordionHeader'
+export const AccordionHeader = forwardRef<
+  ElementRef<typeof AccordionTrigger>,
+  AccordionHeaderProps
+>(({ children, ...props }, forwardedRef) => (
+  <Header>
+    <AccordionTrigger {...props} ref={forwardedRef}>
+      {children}
+      <Chevron />
+    </AccordionTrigger>
+  </Header>
+))

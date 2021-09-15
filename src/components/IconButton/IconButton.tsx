@@ -1,6 +1,5 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Svg } from '../Svg'
 
@@ -135,7 +134,10 @@ export const StyledIconButton = styled(DEFAULT_TAG, {
 })
 
 type IconButtonVariants = VariantProps<typeof StyledIconButton>
-type IconButtonOwnProps = CSSProps &
+type ButtonProps = ComponentProps<typeof DEFAULT_TAG>
+type IconButtonProps = ButtonProps &
+  AsProps &
+  CSSProps &
   IconButtonVariants & {
     /** Add a title */
     title?: string
@@ -143,20 +145,15 @@ type IconButtonOwnProps = CSSProps &
     path?: string
   }
 
-type IconButtonComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  IconButtonOwnProps
-> &
-  JSX.IntrinsicElements[typeof DEFAULT_TAG]
-
 /**
  * IconButton can be used to wrap custom `Svg` icons or use the `path` prop to supply a standard mdi icon.
  */
-export const IconButton = forwardRef(
-  ({ title, path, children, ...props }, forwardedRef) => (
-    <StyledIconButton {...props} ref={forwardedRef}>
-      {path ? <Svg path={path} title={title} /> : children}
-    </StyledIconButton>
-  )
-) as IconButtonComponent
+export const IconButton = forwardRef<
+  ElementRef<typeof StyledIconButton>,
+  IconButtonProps
+>(({ title, path, children, ...props }, forwardedRef) => (
+  <StyledIconButton {...props} ref={forwardedRef}>
+    {path ? <Svg path={path} title={title} /> : children}
+  </StyledIconButton>
+))
 IconButton.toString = () => `.${StyledIconButton.className}`

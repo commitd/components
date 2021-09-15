@@ -1,7 +1,6 @@
-import type { CSS } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import { css, styled } from '../../stitches.config'
 
-export const paperStyles: CSS = {
+export const paperStyles = css({
   appearance: 'none',
   border: 'none',
   boxSizing: 'border-box',
@@ -28,7 +27,7 @@ export const paperStyles: CSS = {
     pointerEvents: 'none',
     boxShadow: '$1',
   },
-}
+})
 
 /**
  * `Paper` is used in other components for use as the standard layer for content panels,

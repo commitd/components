@@ -1,7 +1,6 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
-import { VariantProps, styled } from '../../stitches.config'
+import { styled, VariantProps } from '../../stitches.config'
 
 const DEFAULT_TAG = 'span'
 
@@ -13,6 +12,7 @@ const BadgeRoot = styled(DEFAULT_TAG, {
   flexShrink: 0,
   verticalAlign: 'middle',
 })
+
 const StyledBadge = styled(DEFAULT_TAG, {
   top: '0',
   right: '0',
@@ -44,7 +44,7 @@ const StyledBadge = styled(DEFAULT_TAG, {
       },
       ghost: {
         $$main: '$colors$text',
-        $$background: '$colors$transparency2',
+        $$background: '$colors$transparency3',
       },
       brand: {
         $$main: '$colors$brand',
@@ -78,30 +78,27 @@ const StyledBadge = styled(DEFAULT_TAG, {
 })
 
 type BadgeVariants = VariantProps<typeof StyledBadge>
-type BadgeOwnProps = CSSProps &
+type BadgeProps = CSSProps &
   BadgeVariants & {
     content: React.ReactNode
     max?: number
-  }
-
-type BadgeComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  BadgeOwnProps
->
+  } & ComponentProps<typeof DEFAULT_TAG>
 
 /**
  * Badge component
  */
-export const Badge = forwardRef(({ children, content, max, ...props }, ref) => (
-  <BadgeRoot>
-    {children}
-    <StyledBadge ref={ref} {...props}>
-      {typeof content === 'number' && max != null && content > max
-        ? `${max}+`
-        : content}
-    </StyledBadge>
-  </BadgeRoot>
-)) as BadgeComponent
+export const Badge = forwardRef<ElementRef<typeof DEFAULT_TAG>, BadgeProps>(
+  ({ children, content, max, ...props }, forwardedRef) => (
+    <BadgeRoot>
+      {children}
+      <StyledBadge {...props} ref={forwardedRef}>
+        {typeof content === 'number' && max != null && content > max
+          ? `${max}+`
+          : content}
+      </StyledBadge>
+    </BadgeRoot>
+  )
+)
 Badge.toString = () => `.${StyledBadge.className}`
 
 const StatusContainer = styled(StyledBadge, {
@@ -112,20 +109,20 @@ const StatusContainer = styled(StyledBadge, {
 })
 
 type StatusVariants = VariantProps<typeof StyledBadge>
-type StatusOwnProps = CSSProps & StatusVariants
-
-type StatusComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  StatusOwnProps
->
+type StatusProps = CSSProps &
+  StatusVariants &
+  ComponentProps<typeof DEFAULT_TAG>
 
 /**
  * Status component
  */
-export const Status = forwardRef(({ children, ...props }, ref) => (
+export const Status = forwardRef<
+  ElementRef<typeof StatusContainer>,
+  StatusProps
+>(({ children, ...props }, forwardedRef) => (
   <BadgeRoot>
     {children}
-    <StatusContainer ref={ref} {...props} />
+    <StatusContainer {...props} ref={forwardedRef} />
   </BadgeRoot>
-)) as StatusComponent
+))
 Status.toString = () => `.${StatusContainer.className}`

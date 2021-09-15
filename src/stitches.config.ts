@@ -19,6 +19,7 @@ import {
 import type * as Stitches from '@stitches/react'
 import { createStitches } from '@stitches/react'
 import { ThemeConfig } from './components/ThemeProvider/ThemeProvider.stories'
+import { ReactNode } from 'react'
 
 const LIGHT_THEME = 'light-theme'
 const DARK_THEME = 'dark-theme'
@@ -587,6 +588,13 @@ export const {
 export type CSS = Stitches.CSS<typeof config>
 export type { VariantProps } from '@stitches/react'
 export type CSSProps = { css?: CSS }
+export type As = React.ElementType
+export type AsProps = {
+  as?: As
+}
+export type ChildProps = {
+  children?: ReactNode
+}
 
 type ThemeType = typeof theme
 type ThemeKeys = Exclude<keyof ThemeType, keyof string>

@@ -1,7 +1,4 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
-import React, { forwardRef } from 'react'
-import type { CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import {
   buttonBaseStyle,
@@ -9,7 +6,7 @@ import {
   sizeVariants,
 } from '../Button/Button'
 
-const StyledTab = styled(Trigger, buttonBaseStyle, {
+export const Tab = styled(Trigger, buttonBaseStyle, {
   cursor: 'pointer',
   minWidth: '160px',
   borderRadius: '0',
@@ -19,18 +16,6 @@ const StyledTab = styled(Trigger, buttonBaseStyle, {
     cursor: 'auto',
   },
 })
-
-type TabOwnProps = Polymorphic.OwnProps<typeof Trigger> & CSSProps
-
-type TabComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Trigger>,
-  TabOwnProps
->
-
-export const Tab = forwardRef((props, forwardedRef) => (
-  <StyledTab {...props} ref={forwardedRef} />
-)) as TabComponent
-Tab.toString = () => `.${StyledTab.className}`
 
 export const TabsList = styled(List, {
   display: 'flex',

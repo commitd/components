@@ -1,11 +1,9 @@
 import { Content, Overlay, Root } from '@radix-ui/react-dialog'
 import React, { FC } from 'react'
 import { CSS, styled } from '../../stitches.config'
-import { overlayStyles, overlayAnimationStyles } from '../Overlay'
+import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 
-const StyledOverlay = styled(Overlay, {
-  ...overlayStyles,
-  ...overlayAnimationStyles,
+const StyledOverlay = styled(Overlay, overlayStyles, overlayAnimationStyles, {
   position: 'fixed',
   right: 0,
   bottom: 0,
@@ -13,8 +11,7 @@ const StyledOverlay = styled(Overlay, {
   left: 0,
 })
 
-const StyledContent = styled(Content, {
-  ...overlayAnimationStyles,
+const StyledContent = styled(Content, overlayAnimationStyles, {
   position: 'fixed',
   isolation: 'isolate',
   top: '50%',
@@ -41,7 +38,7 @@ type BackdropProps = React.ComponentProps<typeof Root> & {
 /**
  * The Backdrop component can be used to isolate the user from the UI while a longer running action is taking place.
  *
- * It's appearance is controlled with the `open` prop, and any content should be children.
+ * Its appearance is controlled with the `open` prop, and any content should be children.
  *
  * Base on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
  */

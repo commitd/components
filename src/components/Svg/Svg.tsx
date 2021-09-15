@@ -1,5 +1,4 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
@@ -17,7 +16,8 @@ const StyledSvg = styled(DEFAULT_TAG, {
 })
 
 type SvgVariants = VariantProps<typeof StyledSvg>
-type SvgOwnProps = CSSProps &
+type SvgProps = ComponentProps<typeof DEFAULT_TAG> &
+  CSSProps &
   SvgVariants & {
     /** Add a title to the svg */
     title?: string
@@ -25,28 +25,26 @@ type SvgOwnProps = CSSProps &
     path?: string
   }
 
-type SvgComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  SvgOwnProps
->
-
 /**
  * Svg is the base component for wrapping svg icon paths.
  */
-export const Svg = forwardRef(({ title, path, children, ...props }, ref) => (
-  <StyledSvg
-    focusable="false"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    ref={ref}
-    {...props}
-  >
-    {title ? <title>{title}</title> : null}
-    {path ? <path d={path} /> : null}
-    {children}
-  </StyledSvg>
-)) as SvgComponent
+export const Svg = forwardRef<ElementRef<typeof DEFAULT_TAG>, SvgProps>(
+  ({ title, path, children, ...props }, forwardedRef) => (
+    <StyledSvg
+      focusable="false"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      ref={forwardedRef}
+    >
+      {title ? <title>{title}</title> : null}
+      {path ? <path d={path} /> : null}
+      {children}
+    </StyledSvg>
+  )
+)
+Svg.displayName = 'Svg'
 Svg.toString = () => `.${StyledSvg.className}`

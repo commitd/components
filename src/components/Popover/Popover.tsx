@@ -1,4 +1,3 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import {
   Anchor,
   Arrow,
@@ -7,14 +6,12 @@ import {
   Root,
   Trigger,
 } from '@radix-ui/react-popover'
-import { Slot } from '@radix-ui/react-slot'
-import React, { FC, forwardRef } from 'react'
-import type { CSSProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import type { AsProps, CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { paperStyles } from '../Paper'
 
-const StyledContent = styled(Content, {
-  ...paperStyles,
+const StyledContent = styled(Content, paperStyles, {
   borderRadius: '$default',
   padding: '$4',
 
@@ -33,49 +30,52 @@ const StyledArrow = styled(Arrow, {
   fill: '$paper',
 })
 
-type PopoverContentOwnProps = Polymorphic.OwnProps<typeof Content> & CSSProps
+type PopoverContentProps = CSSProps & AsProps & ComponentProps<typeof Content>
 
-type PopoverContentComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Content>,
-  PopoverContentOwnProps
->
+export const PopoverContent = forwardRef<
+  ElementRef<typeof StyledContent>,
+  PopoverContentProps
+>(({ children, ...props }, forwardedRef) => (
+  <StyledContent {...props} ref={forwardedRef}>
+    <StyledArrow offset={-1} />
+    {children}
+  </StyledContent>
+))
+PopoverContent.toString = () => `.${StyledContent.className}`
 
-export const PopoverContent = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <StyledContent {...props} ref={forwardedRef}>
-      <StyledArrow offset={-1} />
-      {children}
-    </StyledContent>
-  )
-) as PopoverContentComponent
+const POPOVER_TRIGGER_CLASS_NAME = 'c-popover-trigger'
 
-type PopoverTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger>
-type PopoverTriggerComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Trigger>,
-  PopoverTriggerOwnProps
->
+export const PopoverTrigger = forwardRef<
+  ElementRef<typeof Trigger>,
+  ComponentProps<typeof Trigger>
+>(({ children, ...props }, forwardedRef) => (
+  <Trigger
+    className={POPOVER_TRIGGER_CLASS_NAME}
+    asChild
+    {...props}
+    ref={forwardedRef}
+  >
+    {children}
+  </Trigger>
+))
+PopoverTrigger.toString = () => `.${POPOVER_TRIGGER_CLASS_NAME}`
 
-export const PopoverTrigger = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Trigger as={Slot} {...props} ref={forwardedRef}>
-      {children}
-    </Trigger>
-  )
-) as PopoverTriggerComponent
+const POPOVER_CLOSE_CLASS_NAME = 'c-popover-close'
 
-type PopoverCloseOwnProps = Polymorphic.OwnProps<typeof Close>
-type PopoverCloseComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Close>,
-  PopoverCloseOwnProps
->
-
-export const PopoverClose = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Close as={Slot} {...props} ref={forwardedRef}>
-      {children}
-    </Close>
-  )
-) as PopoverCloseComponent
+export const PopoverClose = forwardRef<
+  ElementRef<typeof Close>,
+  ComponentProps<typeof Close>
+>(({ children, ...props }, forwardedRef) => (
+  <Close
+    asChild
+    className={POPOVER_CLOSE_CLASS_NAME}
+    {...props}
+    ref={forwardedRef}
+  >
+    {children}
+  </Close>
+))
+PopoverClose.toString = () => `.${POPOVER_CLOSE_CLASS_NAME}`
 
 /**
  *

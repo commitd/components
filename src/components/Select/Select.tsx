@@ -1,10 +1,11 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
+import { useLabelContext } from '@radix-ui/react-label'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { ChevronDown } from '../Icons'
 import { inputStyles } from '../Input/Input'
+import { Label } from '../Label'
 import {
   Menu,
   MenuContent,
@@ -14,8 +15,6 @@ import {
   MenuTrigger,
 } from '../Menu'
 import { Svg } from '../Svg'
-import { useLabelContext } from '@radix-ui/react-label'
-import { Label } from '../Label'
 
 const DEFAULT_TAG = 'input'
 const StyledSelect = styled(DEFAULT_TAG, inputStyles, {
@@ -23,26 +22,6 @@ const StyledSelect = styled(DEFAULT_TAG, inputStyles, {
   textAlign: 'left',
 })
 export const SelectItem = MenuRadioItem
-
-type SelectVariants = VariantProps<typeof StyledSelect>
-type SelectOwnProps = CSSProps &
-  SelectVariants & {
-    /** Add a label to the Select */
-    label?: string
-    /** To supply a controlled value */
-    value?: string
-    /** Supply a starting value for uncontrolled instance */
-    defaultValue?: string
-    /** Supply a starting placeholder value for uncontrolled instance */
-    placeholder?: string
-    /** Called on Select change with new value */
-    onValueChange?: (value: string) => void
-  }
-
-type SelectComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  SelectOwnProps
->
 
 const Root = styled('div', {
   boxSizing: 'border-box',
@@ -64,6 +43,23 @@ const Root = styled('div', {
   },
 })
 
+type SelectVariants = VariantProps<typeof StyledSelect>
+type SelectProps = CSSProps &
+  SelectVariants & {
+    /** Add a label to the Select */
+    label?: string
+    /** To supply a controlled value */
+    value?: string
+    /** Supply a starting value for uncontrolled instance */
+    defaultValue?: string
+    /** Supply a starting placeholder value for uncontrolled instance */
+    placeholder?: string
+    /** Called on Select change with new value */
+    onValueChange?: (value: string) => void
+  } & ComponentProps<typeof DEFAULT_TAG>
+
+const SELECT_CLASS_NAME = 'c-select'
+
 /**
  * Select component
  *
@@ -71,7 +67,7 @@ const Root = styled('div', {
  *
  *
  */
-export const Select = forwardRef(
+export const Select = forwardRef<ElementRef<typeof StyledSelect>, SelectProps>(
   (
     {
       label,
@@ -102,7 +98,7 @@ export const Select = forwardRef(
         )}
         <Menu>
           <MenuTrigger>
-            <Root disabled={disabled}>
+            <Root disabled={disabled} className={SELECT_CLASS_NAME}>
               <StyledSelect
                 id={id}
                 aria-labelledby={labelId}
@@ -126,5 +122,5 @@ export const Select = forwardRef(
       </>
     )
   }
-) as SelectComponent
-Select.toString = () => 'Select'
+)
+Select.toString = () => `.${SELECT_CLASS_NAME}`

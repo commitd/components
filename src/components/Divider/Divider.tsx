@@ -1,8 +1,7 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Root } from '@radix-ui/react-separator'
-import React, { forwardRef } from 'react'
-import type { CSSProps } from '../../stitches.config'
-import { VariantProps, styled } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps } from '../../stitches.config'
+import { styled, VariantProps } from '../../stitches.config'
 
 const StyledDivider = styled(Root, {
   border: 'none',
@@ -65,14 +64,10 @@ const StyledDivider = styled(Root, {
 })
 
 type DividerVariants = VariantProps<typeof StyledDivider>
-type DividerOwnProps = Polymorphic.OwnProps<typeof Root> &
+type DividerProps = ComponentProps<typeof Root> &
   CSSProps &
+  AsProps &
   DividerVariants
-
-type DividerComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
-  DividerOwnProps
->
 
 /**
  * Use a divider to separate different groups of content.
@@ -82,6 +77,8 @@ type DividerComponent = Polymorphic.ForwardRefComponent<
  *
  * Based on [Radix Separator](https://radix-ui.com/primitives/docs/components/separator).
  */
-export const Divider = forwardRef((props, forwardedRef) => (
-  <StyledDivider {...props} ref={forwardedRef} />
-)) as DividerComponent
+export const Divider = forwardRef<
+  ElementRef<typeof StyledDivider>,
+  DividerProps
+>((props, forwardedRef) => <StyledDivider {...props} ref={forwardedRef} />)
+Divider.toString = () => `.${StyledDivider.className}`

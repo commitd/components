@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
 import { Caption, Monospace, Paragraph, Span, Strike, Text } from '.'
 import { Column, Row } from '../'
+import { styled } from '../../stitches.config'
 
 export default {
   title: 'Components/Text',
@@ -152,7 +153,7 @@ export const Inline = () => (
       This is <Span italic>Italic</Span> text
     </Text>
     <Text>
-      This is <Span font="monospace">monospaced</Span> text
+      This is <Monospace inline>monospaced</Monospace> text
     </Text>
     <Text>
       This is <Span css={{ color: '$primary' }}>Primary</Span> text
@@ -269,4 +270,49 @@ export const MonospaceStory = () => (
 )
 MonospaceStory.parameters = {
   title: 'Monospace',
+}
+
+const Wrapper = styled(Column, {
+  [`& ${Paragraph}`]: {
+    color: '$success9',
+  },
+  [`& ${Caption}`]: {
+    color: '$error9',
+  },
+})
+
+/**
+ * Testing toString on components
+ */
+export const NestingClassNameTest = () => (
+  <Wrapper>
+    <Text>This Text should NOT be styled</Text>
+    <Paragraph>This Paragraph should be styled</Paragraph>
+    <Caption>This Caption should be styled differently</Caption>
+  </Wrapper>
+)
+
+NestingClassNameTest.parameters = {
+  docs: {
+    source: {
+      code: `
+const Wrapper = styled(Column, {
+  [\`& \${Paragraph}\`]: {
+    color: '$success9',
+  },
+  [\`& \${Caption}\`]: {
+    color: '$error9',
+  },
+})
+
+export const NestingClassNameTest = () => (
+  <Wrapper>
+    <Text>This Text should NOT be styled</Text>
+    <Paragraph>This Paragraph should be styled</Paragraph>
+    <Caption>This Caption should be styled differently</Caption>
+  </Wrapper>
+)
+  `,
+    },
+  },
 }

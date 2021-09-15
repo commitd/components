@@ -1,12 +1,12 @@
 import { useHover } from '@committed/hooks'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider'
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
 import React, {
+  ComponentProps,
+  ElementRef,
   FC,
   forwardRef,
-  ForwardRefExoticComponent,
   useMemo,
   useRef,
 } from 'react'
@@ -127,7 +127,7 @@ export const StyledSlider = styled(Root, {
   },
 })
 
-type SliderThumbProps = Polymorphic.OwnProps<typeof Thumb> & {
+type SliderThumbProps = ComponentProps<typeof Thumb> & {
   labelStyle: LabelStyle
   value: number | string
   labelSide: LabelSide
@@ -167,7 +167,7 @@ export const SliderThumb: FC<SliderThumbProps> = ({
 }
 
 type SliderVariants = VariantProps<typeof StyledSlider>
-type SliderOwnProps = Polymorphic.OwnProps<typeof Root> &
+type SliderProps = ComponentProps<typeof Root> &
   SliderVariants &
   CSSProps & {
     /** Add labels to the markers, permanently, on hover or none */
@@ -185,10 +185,7 @@ type SliderOwnProps = Polymorphic.OwnProps<typeof Root> &
  *
  * Based on [Radix Slider](https://radix-ui.com/primitives/docs/components/slider).
  */
-export const Slider: ForwardRefExoticComponent<SliderOwnProps> = forwardRef<
-  HTMLSpanElement,
-  SliderOwnProps
->(
+export const Slider = forwardRef<ElementRef<typeof StyledSlider>, SliderProps>(
   (
     {
       min = 0,
@@ -244,3 +241,4 @@ export const Slider: ForwardRefExoticComponent<SliderOwnProps> = forwardRef<
     )
   }
 )
+Slider.toString = () => `.${StyledSlider.className}`

@@ -1,11 +1,17 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef, PropsWithChildren } from 'react'
+import React, { ElementRef, forwardRef } from 'react'
 import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'span'
 
-export const StyledText = styled(DEFAULT_TAG, {
+/**
+ * Text component covers all text use in the components.
+ *
+ * Prefer styling using the supplied props options, but the standard css is also available if required.
+ *
+ * A set of pre-configured components are also supplied for common use cases. These all use the same underlying Text component.
+ */
+export const Text = styled(DEFAULT_TAG, {
   // Reset
   lineHeight: '1',
   margin: '0',
@@ -97,79 +103,103 @@ export const StyledText = styled(DEFAULT_TAG, {
   },
 })
 
-type TextVariants = VariantProps<typeof StyledText>
-type TextOwnProps = CSSProps & TextVariants
+type ParagraphProps = CSSProps &
+  VariantProps<typeof Text> & { children?: React.ReactNode }
 
-type TextComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG | 'a',
-  TextOwnProps
->
+const PARAGRAPH_CLASS_NAME = 'c-paragraph'
+const SPAN_CLASS_NAME = 'c-span'
+const STRIKE_CLASS_NAME = 'c-strike'
+const MONOSPACE_CLASS_NAME = 'c-monospace'
+const CAPTION_CLASS_NAME = 'c-caption'
 
-/**
- * Text component covers all text use in the components.
- *
- * Prefer styling using the supplied props options, but the standard css is also available if required.
- *
- * A set of pre-configured components are also supplied for common use cases. These all use the same underlying Text component.
- */
-export const Text = forwardRef((props, forwardedRef) => {
-  return <StyledText {...props} ref={forwardedRef} />
-}) as TextComponent
+export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ css, ...props }, forwardedRef) => {
+    return (
+      <Text
+        css={{ display: 'block', mb: '$3', ...css } as CSS}
+        as="p"
+        className={PARAGRAPH_CLASS_NAME}
+        {...props}
+        ref={forwardedRef}
+      />
+    )
+  }
+)
+Paragraph.toString = () => `.${PARAGRAPH_CLASS_NAME}`
 
-Text.toString = () => `.${StyledText.className}`
-
-export const Paragraph = forwardRef<
-  HTMLParagraphElement,
-  PropsWithChildren<TextOwnProps>
->(({ css, ...props }, forwardedRef) => {
-  return (
-    <Text
-      css={{ display: 'block', mb: '$3', ...css } as CSS}
-      as="p"
-      {...props}
-      ref={forwardedRef}
-    />
-  )
-})
+type SpanProps = CSSProps &
+  VariantProps<typeof Text> & { children?: React.ReactNode }
 
 /**
  * Convenience export of text with the `span` tag
  */
-export const Span = forwardRef<
-  HTMLSpanElement,
-  PropsWithChildren<TextOwnProps>
->((props, forwardedRef) => {
-  return <Text {...props} ref={forwardedRef} />
-})
+export const Span = forwardRef<HTMLSpanElement, SpanProps>(
+  (props, forwardedRef) => {
+    return <Text className={SPAN_CLASS_NAME} {...props} ref={forwardedRef} />
+  }
+)
+Span.toString = () => `.${SPAN_CLASS_NAME}`
+
+type StrikeProps = CSSProps &
+  VariantProps<typeof Text> & { children?: React.ReactNode }
 
 /**
  * Convenience export of text with the `strikethrough` tag
  */
-export const Strike = forwardRef<
-  HTMLSpanElement,
-  PropsWithChildren<TextOwnProps>
->((props, forwardedRef) => {
-  return <Text as="s" {...props} ref={forwardedRef} />
-})
+export const Strike = forwardRef<HTMLSpanElement, StrikeProps>(
+  (props, forwardedRef) => {
+    return (
+      <Text
+        as="s"
+        className={STRIKE_CLASS_NAME}
+        {...props}
+        ref={forwardedRef}
+      />
+    )
+  }
+)
+Span.toString = () => `.${STRIKE_CLASS_NAME}`
+
+type MonospaceProps = CSSProps &
+  VariantProps<typeof Text> & {
+    inline?: boolean
+    children?: React.ReactNode
+  }
 
 /**
- * Convenience export of text with the monospace font and `pre` tag
+ * Convenience export of text with the monospace font and `pre` tag (or 'span' if marked `inline`)
  */
-export const Monospace = forwardRef<
-  HTMLPreElement,
-  PropsWithChildren<TextOwnProps>
->((props, forwardedRef) => {
-  return <Text as="pre" font="monospace" {...props} ref={forwardedRef} />
-})
+export const Monospace = forwardRef<HTMLPreElement, MonospaceProps>(
+  ({ inline = false, ...props }, forwardedRef) => {
+    return (
+      <Text
+        as={inline ? 'pre' : 'span'}
+        className={MONOSPACE_CLASS_NAME}
+        font="monospace"
+        {...props}
+        ref={forwardedRef}
+      />
+    )
+  }
+)
+Monospace.toString = () => `.${MONOSPACE_CLASS_NAME}`
 
-type CaptionComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  TextOwnProps
->
+type CaptionProps = CSSProps &
+  VariantProps<typeof Text> & { children?: React.ReactNode }
 
 /**
  * Captions styles the text for use in a caption. This remain polymorphic, so the component type can be set to `caption` or `figcaption` if required.
  */
-export const Caption = forwardRef((props, forwardedRef) => {
-  return <Text size={-2} {...props} ref={forwardedRef} />
-}) as CaptionComponent
+export const Caption = forwardRef<ElementRef<typeof Text>, CaptionProps>(
+  (props, forwardedRef) => {
+    return (
+      <Text
+        size={-2}
+        className={CAPTION_CLASS_NAME}
+        {...props}
+        ref={forwardedRef}
+      />
+    )
+  }
+)
+Caption.toString = () => `.${CAPTION_CLASS_NAME}`

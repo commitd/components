@@ -12,10 +12,8 @@ import {
   Trigger,
   TriggerItem,
 } from '@radix-ui/react-dropdown-menu'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import { Slot } from '@radix-ui/react-slot'
-import React, { forwardRef } from 'react'
-import type { CSS, CSSProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Check, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper'
@@ -49,8 +47,7 @@ const itemStyles = {
   },
 }
 
-const StyledContent = styled(Content, {
-  ...paperStyles,
+const StyledContent = styled(Content, paperStyles, {
   minWidth: 130,
   padding: '$1',
   boxShadow: '$2',
@@ -78,78 +75,77 @@ const StyledMenuTriggerItem = styled(TriggerItem, {
   },
 })
 
-type MenuTriggerItemOwnProps = React.ComponentProps<typeof TriggerItem> &
-  CSSProps
+type MenuTriggerItemProps = ComponentProps<typeof TriggerItem> & CSSProps
 
-type MenuTriggerItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof TriggerItem>,
-  MenuTriggerItemOwnProps
->
-
-export const MenuTriggerItem = forwardRef(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <StyledMenuTriggerItem {...props} ref={forwardedRef}>
-        {children}
-        <ChevronRight css={{ size: '$4' }} />
-      </StyledMenuTriggerItem>
-    )
-  }
-) as MenuTriggerItemComponent
-
-type MenuContentOwnProps = Polymorphic.OwnProps<typeof Content> & CSSProps
-
-type MenuContentComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Content>,
-  MenuContentOwnProps
->
-
-export const MenuContent = forwardRef(
-  ({ children, css, ...props }, forwardedRef) => (
-    <StyledContent
-      css={css as CSS}
-      alignOffset={8}
-      {...props}
-      ref={forwardedRef}
-    >
+export const MenuTriggerItem = forwardRef<
+  ElementRef<typeof StyledMenuTriggerItem>,
+  MenuTriggerItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledMenuTriggerItem {...props} ref={forwardedRef}>
       {children}
-    </StyledContent>
+      <ChevronRight css={{ size: '$4' }} />
+    </StyledMenuTriggerItem>
   )
-) as MenuContentComponent
+})
+MenuTriggerItem.toString = () => `.${StyledMenuTriggerItem.className}`
 
-type MenuTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger>
-type MenuTriggerComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Trigger>,
-  MenuTriggerOwnProps
->
+type MenuContentProps = ComponentProps<typeof Content> & CSSProps
 
-export const MenuTrigger = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Trigger as={Slot} {...props} ref={forwardedRef}>
-      {children}
-    </Trigger>
-  )
-) as MenuTriggerComponent
+export const MenuContent = forwardRef<
+  ElementRef<typeof StyledContent>,
+  MenuContentProps
+>(({ children, ...props }, forwardedRef) => (
+  <StyledContent alignOffset={8} {...props} ref={forwardedRef}>
+    {children}
+  </StyledContent>
+))
+MenuContent.toString = () => `.${StyledContent.className}`
 
-const StyledCheckboxIndicator = () => (
-  <StyledItemIndicator>
+type MenuTriggerProps = ComponentProps<typeof Trigger>
+
+const MENU_TRIGGER_CLASS_NAME = 'c-menu-trigger'
+
+export const MenuTrigger = forwardRef<
+  ElementRef<typeof Trigger>,
+  MenuTriggerProps
+>(({ children, ...props }, forwardedRef) => (
+  <Trigger
+    className={MENU_TRIGGER_CLASS_NAME}
+    asChild
+    {...props}
+    ref={forwardedRef}
+  >
+    {children}
+  </Trigger>
+))
+MenuTrigger.toString = () => `.${MENU_TRIGGER_CLASS_NAME}`
+
+const StyledCheckboxIndicator = forwardRef<
+  ElementRef<typeof StyledItemIndicator>,
+  ComponentProps<typeof StyledItemIndicator>
+>((props, forwardedRef) => (
+  <StyledItemIndicator {...props} ref={forwardedRef}>
     <Check css={{ size: '$4' }} />
   </StyledItemIndicator>
-)
+))
+StyledCheckboxIndicator.toString = () => `.${StyledItemIndicator.className}`
 
-type MenuItemCheckboxComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof CheckboxItem>,
-  Polymorphic.OwnProps<typeof CheckboxItem>
->
+type MenuCheckboxItemProps = ComponentProps<typeof CheckboxItem>
 
-export const MenuItemCheckbox = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <StyledCheckboxItem {...props} ref={forwardedRef}>
-      <StyledCheckboxIndicator />
-      {children}
-    </StyledCheckboxItem>
-  )
-) as MenuItemCheckboxComponent
+export const MenuCheckboxItem = forwardRef<
+  ElementRef<typeof StyledCheckboxItem>,
+  MenuCheckboxItemProps
+>(({ children, ...props }, forwardedRef) => (
+  <StyledCheckboxItem {...props} ref={forwardedRef}>
+    <StyledCheckboxIndicator />
+    {children}
+  </StyledCheckboxItem>
+))
+MenuCheckboxItem.toString = () => `.${StyledCheckboxItem.className}`
+
+// @deprecated
+export { MenuCheckboxItem as MenuItemCheckbox }
 
 export const MenuSeparator = styled(Separator, {
   height: 1,
@@ -194,19 +190,18 @@ export const MenuItemGroup = styled(Group, {
 
 export const MenuRadioGroup = RadioGroup
 
-type MenuItemRadioComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof RadioItem>,
-  Polymorphic.OwnProps<typeof RadioItem>
->
+type MenuRadioItemProps = ComponentProps<typeof RadioItem>
 
-export const MenuRadioItem = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <StyledRadioItem {...props} ref={forwardedRef}>
-      <StyledCheckboxIndicator />
-      {children}
-    </StyledRadioItem>
-  )
-) as MenuItemRadioComponent
+export const MenuRadioItem = forwardRef<
+  ElementRef<typeof StyledRadioItem>,
+  MenuRadioItemProps
+>(({ children, ...props }, forwardedRef) => (
+  <StyledRadioItem {...props} ref={forwardedRef}>
+    <StyledCheckboxIndicator />
+    {children}
+  </StyledRadioItem>
+))
+MenuRadioItem.toString = () => `.${StyledRadioItem.className}`
 
 export const MenuItemShortcut = styled('span', {
   fontFamily: '$monospace',

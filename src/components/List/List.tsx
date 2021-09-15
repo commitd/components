@@ -1,14 +1,25 @@
-import React, { FC, ComponentProps, forwardRef, ForwardedRef } from 'react'
+import React, {
+  ComponentProps,
+  ElementRef,
+  FC,
+  ForwardedRef,
+  forwardRef,
+} from 'react'
 import type { CSS, CSSProps } from '../../stitches.config'
-import { styled, css } from '../../stitches.config'
+import { css, styled } from '../../stitches.config'
 import { buttonInteractionStyles } from '../Button/Button'
 import { IconButton } from '../IconButton'
 import { paperStyles } from '../Paper'
 import { Svg } from '../Svg'
 import { Text } from '../Text'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 
-export const StyledList = styled('div', {
+/**
+ * List component can be used to display a list of items, options, or actions, such as navigation.
+ *
+ * Items can contain the main text and optionally subtext. They can be made interactive to preform an action and/or can
+ * have interactive elements are the start or end of the item.
+ */
+export const List = styled('div', {
   borderTop: '1px solid $colors$grey4',
   variants: {
     border: {
@@ -20,27 +31,12 @@ export const StyledList = styled('div', {
   },
 })
 
-type StyledListProps = ComponentProps<typeof StyledList>
-export type ListProps = StyledListProps & {
-  as?: string
-}
-
-/**
- * List component can be used to display a list of items, options, or actions, such as navigation.
- *
- * Items can contain the main text and optionally subtext. They can be made interactive to preform an action and/or can
- * have interactive elements are the start or end of the item.
- */
-export const List: FC<ListProps> = StyledList
-List.toString = () => `.${StyledList.className}`
-
 /***********************************************************
  * List Item
  ***********************************************************/
 
 const styles = css({
   $$selectionColor: '$colors$selection',
-  ...paperStyles,
   border: 'none',
   padding: '$4',
   flex: 1,
@@ -61,10 +57,11 @@ const styles = css({
   },
 })
 
-export const StyledListItem = styled('div', styles)
+export const StyledListItem = styled('div', paperStyles, styles)
 
 export const StyledInteractiveListItem = styled(
   'button',
+  paperStyles,
   styles,
   buttonInteractionStyles,
   { width: '100%' }
@@ -73,27 +70,22 @@ export const StyledInteractiveListItem = styled(
 type InteractiveProps = {
   /* Set true to make the list item interactive */
   interactive: true
-} & Polymorphic.OwnProps<typeof StyledInteractiveListItem>
+} & ComponentProps<typeof StyledInteractiveListItem>
 
-type UninteractiveProps = { interactive?: false } & Polymorphic.OwnProps<
+type UninteractiveProps = { interactive?: false } & ComponentProps<
   typeof StyledListItem
 >
 
+type ConditionalListItemProps = InteractiveProps | UninteractiveProps
+
 type ListItemProps = CSSProps & {
-  /* Set true to make the list item interactive */
-  interactive?: boolean
   /* When interactive an item can also be disabled */
   disabled?: boolean
   /* An item can also be highlighted as selected */
   selected?: boolean
-}
+} & ConditionalListItemProps
 
-type PolymorphicListItem = Polymorphic.ForwardRefComponent<
-  'button',
-  ListItemProps
->
-
-export const ListItem = forwardRef(
+export const ListItem = forwardRef<unknown, ListItemProps>(
   ({ interactive, ...props }, forwardedRef) => {
     if (interactive) {
       const buttonProps = props as Omit<InteractiveProps, 'interactive'>
@@ -113,8 +105,9 @@ export const ListItem = forwardRef(
       )
     }
   }
-) as PolymorphicListItem
-ListItem.toString = () => `.${StyledListItem.className}`
+)
+ListItem.toString = () =>
+  `.${StyledInteractiveListItem.className} .${StyledListItem.className}`
 
 /***********************************************************
  * List Item Icon
@@ -134,21 +127,28 @@ export const ListItemIcon = styled(Svg, {
  * List Item Secondary Action
  ***********************************************************/
 
+// NB Not done as styled due to color getting overridden by variant
+const LIST_ITEM_SECONDARY_ACTION_CLASS_NAME = 'c-list-item-secondary-action'
+
 /**
  * ListItemSecondaryAction component
  *
  * Is a light wrapper around IconButton component for standard styling by default that can be overridden.
  */
-export const ListItemSecondaryAction: FC<ComponentProps<typeof IconButton>> = ({
-  css = {},
-  ...props
-}) => (
+export const ListItemSecondaryAction = forwardRef<
+  ElementRef<typeof IconButton>,
+  ComponentProps<typeof IconButton>
+>(({ css = {}, ...props }, forwardedRef) => (
   <IconButton
     css={{ color: '$textSecondary', ...css } as CSS}
+    className={LIST_ITEM_SECONDARY_ACTION_CLASS_NAME}
     variant="tertiary"
     {...props}
+    ref={forwardedRef}
   />
-)
+))
+ListItemSecondaryAction.toString = () =>
+  `.${LIST_ITEM_SECONDARY_ACTION_CLASS_NAME}`
 
 /***********************************************************
  * List Item Text
