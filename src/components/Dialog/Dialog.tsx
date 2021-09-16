@@ -8,6 +8,7 @@ import {
   Trigger,
 } from '@radix-ui/react-dialog'
 import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import { AsProps } from '../..'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
 import { Heading } from '../Heading'
@@ -90,7 +91,7 @@ export const Dialog: FC<DialogProps> = ({ children, overlayCss, ...props }) => {
   )
 }
 
-type DialogContentProps = ComponentProps<typeof Content> &
+type DialogContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> &
   CSSProps & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
@@ -115,7 +116,7 @@ DialogContent.toString = () => `.${StyledContent.className}`
 
 export const DialogTrigger = forwardRef<
   ElementRef<typeof Trigger>,
-  ComponentProps<typeof Trigger>
+  Omit<ComponentProps<typeof Trigger>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Trigger asChild {...props} ref={forwardedRef}>
     {children}
@@ -124,7 +125,7 @@ export const DialogTrigger = forwardRef<
 
 export const DialogClose = forwardRef<
   ElementRef<typeof Close>,
-  ComponentProps<typeof Close>
+  Omit<ComponentProps<typeof Close>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Close asChild {...props} ref={forwardedRef}>
     {children}

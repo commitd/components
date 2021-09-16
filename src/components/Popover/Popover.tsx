@@ -47,7 +47,7 @@ const POPOVER_TRIGGER_CLASS_NAME = 'c-popover-trigger'
 
 export const PopoverTrigger = forwardRef<
   ElementRef<typeof Trigger>,
-  ComponentProps<typeof Trigger>
+  Omit<ComponentProps<typeof Trigger>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Trigger
     className={POPOVER_TRIGGER_CLASS_NAME}
@@ -60,11 +60,28 @@ export const PopoverTrigger = forwardRef<
 ))
 PopoverTrigger.toString = () => `.${POPOVER_TRIGGER_CLASS_NAME}`
 
+const POPOVER_ANCHOR_CLASS_NAME = 'c-popover-anchor'
+
+export const PopoverAnchor = forwardRef<
+  ElementRef<typeof Anchor>,
+  Omit<ComponentProps<typeof Anchor>, 'asChild'>
+>(({ children, ...props }, forwardedRef) => (
+  <Anchor
+    className={POPOVER_ANCHOR_CLASS_NAME}
+    asChild
+    {...props}
+    ref={forwardedRef}
+  >
+    {children}
+  </Anchor>
+))
+PopoverAnchor.toString = () => `.${POPOVER_ANCHOR_CLASS_NAME}`
+
 const POPOVER_CLOSE_CLASS_NAME = 'c-popover-close'
 
 export const PopoverClose = forwardRef<
   ElementRef<typeof Close>,
-  ComponentProps<typeof Close>
+  Omit<ComponentProps<typeof Close>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Close
     asChild
@@ -86,4 +103,3 @@ PopoverClose.toString = () => `.${POPOVER_CLOSE_CLASS_NAME}`
  * Built using [Radix Popover](https://radix-ui.com/primitives/docs/components/popover)
  */
 export const Popover: FC<React.ComponentProps<typeof Root>> = Root
-export const PopoverAnchor = styled(Anchor, {})

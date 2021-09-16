@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '.'
-import { Button, Heading, Monospace, Paragraph, Svg, Text } from '../'
+import { Box, Button, Heading, Monospace, Paragraph, Svg, Text } from '../'
 
 export default {
   title: 'Components/Popover',
@@ -40,13 +40,15 @@ export const Anchored: Story = (args) => (
   <Popover>
     <Text>
       You can use a{' '}
-      <PopoverAnchor
-        as="span"
-        css={{
-          backgroundColor: '$blue3',
-        }}
-      >
-        <Monospace>PopoverAnchor</Monospace>
+      <PopoverAnchor>
+        <Monospace
+          inline
+          css={{
+            backgroundColor: '$info3',
+          }}
+        >
+          PopoverAnchor
+        </Monospace>
       </PopoverAnchor>{' '}
       to anchor the popover to a different element{' '}
       <PopoverTrigger>
@@ -68,24 +70,26 @@ export const Anchored: Story = (args) => (
 
 export const NestedAnchored: Story = (args) => (
   <Popover>
-    <PopoverAnchor
-      css={{
-        display: 'flex',
-        padding: '$4',
-        backgroundColor: '$blue3',
-        justifyContent: 'center',
-      }}
-    >
-      <Text>
-        The <Monospace>PopoverAnchor</Monospace> can have the trigger{' '}
-        <PopoverTrigger>
-          <Svg
-            css={{ color: '$textSecondary', cursor: 'pointer', mt: '$3' }}
-            path={mdiAlertCircleOutline}
-          />
-        </PopoverTrigger>{' '}
-        nested inside
-      </Text>
+    <PopoverAnchor>
+      <Box
+        css={{
+          display: 'flex',
+          padding: '$4',
+          backgroundColor: '$info3',
+          justifyContent: 'center',
+        }}
+      >
+        <Text>
+          The <Monospace>PopoverAnchor</Monospace> can have the trigger{' '}
+          <PopoverTrigger>
+            <Svg
+              css={{ color: '$textSecondary', cursor: 'pointer', mt: '$3' }}
+              path={mdiAlertCircleOutline}
+            />
+          </PopoverTrigger>{' '}
+          nested inside
+        </Text>
+      </Box>
     </PopoverAnchor>
     <PopoverContent>
       <Heading variant="h5">Popover content</Heading>

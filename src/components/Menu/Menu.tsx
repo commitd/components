@@ -102,7 +102,7 @@ export const MenuContent = forwardRef<
 ))
 MenuContent.toString = () => `.${StyledContent.className}`
 
-type MenuTriggerProps = ComponentProps<typeof Trigger>
+type MenuTriggerProps = Omit<ComponentProps<typeof Trigger>, 'asChild'>
 
 const MENU_TRIGGER_CLASS_NAME = 'c-menu-trigger'
 
