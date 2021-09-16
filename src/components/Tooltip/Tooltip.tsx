@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot'
 import { Arrow, Content, Root, Trigger } from '@radix-ui/react-tooltip'
 import React, { FC } from 'react'
 import { styled } from '../../stitches.config'
@@ -60,7 +59,7 @@ export const Tooltip: FC<TooltipProps> = ({
     skipDelayDuration={skipDelayDuration}
     onOpenChange={onOpenChange}
   >
-    <Trigger as={Slot}>{children}</Trigger>
+    <Trigger asChild>{children}</Trigger>
     <StyledContent
       side={side}
       align={align}

@@ -1,6 +1,5 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
 const DEFAULT_TAG = 'a'
@@ -59,23 +58,20 @@ export const StyledLink = styled(DEFAULT_TAG, {
   },
 })
 
-type LinkVariants = Polymorphic.OwnProps<typeof StyledLink>
-type LinkOwnProps = CSSProps & Omit<LinkVariants, 'external'>
+type LinkVariants = VariantProps<typeof StyledLink>
+type AProps = ComponentProps<typeof DEFAULT_TAG>
+type LinkProps = Omit<LinkVariants, 'external'> & AProps & CSSProps & AsProps
 
-type LinkComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  LinkOwnProps
->
-
-export const Link = forwardRef(({ href, ...props }, forwardedRef) => {
-  return (
-    <StyledLink
-      href={href}
-      external={isExternal(href)}
-      {...props}
-      ref={forwardedRef}
-    />
-  )
-}) as LinkComponent
-
+export const Link = forwardRef<ElementRef<typeof StyledLink>, LinkProps>(
+  ({ href, ...props }, forwardedRef) => {
+    return (
+      <StyledLink
+        href={href}
+        external={isExternal(href)}
+        {...props}
+        ref={forwardedRef}
+      />
+    )
+  }
+)
 Link.toString = () => `.${StyledLink.className}`

@@ -1,6 +1,5 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
 import { Close } from '../Icons'
@@ -53,7 +52,8 @@ const StyledChip = styled(DEFAULT_TAG, {
   color: '$$main',
 
   [`& ${IconButton}`]: {
-    color: 'inherit',
+    color: 'inherit !important',
+    borderRadius: '$pill',
   },
 
   variants: {
@@ -64,7 +64,6 @@ const StyledChip = styled(DEFAULT_TAG, {
         fontSize: '$-2',
 
         [`& ${IconButton}`]: {
-          borderRadius: '$pill',
           size: '$4',
           mr: '-$2',
           [`& > svg`]: {
@@ -77,7 +76,6 @@ const StyledChip = styled(DEFAULT_TAG, {
         px: '$3',
         fontSize: '$1',
         [`& ${IconButton}`]: {
-          borderRadius: '$pill',
           mr: '-$3',
           size: '$6',
           [`& > svg`]: {
@@ -176,19 +174,20 @@ const StyledChip = styled(DEFAULT_TAG, {
 })
 
 type ChipVariants = VariantProps<typeof StyledChip>
-type ChipOwnProps = CSSProps & ChipVariants & { onClose?: () => void }
-
-type ChipComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  ChipOwnProps
->
+type ChipProps = ComponentProps<typeof DEFAULT_TAG> &
+  AsProps &
+  CSSProps &
+  ChipVariants & {
+    disabled?: boolean
+    onClose?: () => void
+  }
 
 /**
  * The `Chip` component can be used for small bits of information such as labels or attributes and can
  * optionally add actions to, say edit and delete.
  */
-export const Chip = forwardRef(
-  ({ onClose, children, ...props }, forwardedRef) => {
+export const Chip = forwardRef<ElementRef<typeof StyledChip>, ChipProps>(
+  ({ onClose, children, size, ...props }, forwardedRef) => {
     const handleClose = (event: React.MouseEvent) => {
       // This seems overkill but with out all three the event
       // seems to get through to the chip.
@@ -199,11 +198,12 @@ export const Chip = forwardRef(
     }
 
     return (
-      <StyledChip {...props} ref={forwardedRef}>
+      <StyledChip size={size} {...props} ref={forwardedRef}>
         {children}
         {onClose && (
           <IconButton
             as="span"
+            size={size}
             role="button"
             aria-label="close"
             variant="tertiary"
@@ -215,4 +215,5 @@ export const Chip = forwardRef(
       </StyledChip>
     )
   }
-) as ChipComponent
+)
+Chip.toString = () => `.${StyledChip.className}`

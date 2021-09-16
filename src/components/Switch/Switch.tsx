@@ -1,6 +1,5 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Root, Thumb } from '@radix-ui/react-switch'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
@@ -125,16 +124,14 @@ const StyledSwitch = styled(Root, {
 })
 
 type SwitchVariants = VariantProps<typeof StyledSwitch>
-type SwitchOwnProps = Polymorphic.OwnProps<typeof Root> &
-  CSSProps &
-  SwitchVariants
-type SwitchComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
-  SwitchOwnProps
->
+type SwitchRootProps = ComponentProps<typeof Root>
+type SwitchProps = SwitchRootProps & SwitchVariants & CSSProps
 
-export const Switch = forwardRef((props, forwardedRef) => (
-  <StyledSwitch {...props} ref={forwardedRef}>
-    <StyledThumb />
-  </StyledSwitch>
-)) as SwitchComponent
+export const Switch = forwardRef<ElementRef<typeof StyledSwitch>, SwitchProps>(
+  (props, forwardedRef) => (
+    <StyledSwitch {...props} ref={forwardedRef}>
+      <StyledThumb />
+    </StyledSwitch>
+  )
+)
+Switch.toString = () => `.${StyledSwitch.className}`

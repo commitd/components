@@ -1,10 +1,9 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
-import { CSS, styled } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
 import { Paper } from '../Paper'
-import { StyledText } from '../Text/Text'
+import { Text } from '../Text'
 
 /**
  * Use Card component to group elements onto a card.
@@ -107,132 +106,127 @@ export const Card = styled(Paper, {
   },
 })
 
+// CARD_BODY *************************************************************
+
 export const CardBody = styled('div', {
   padding: '$4',
   flex: 1,
 })
 
+// CARD_HEADING *************************************************************
+
+export const StyledHeading = styled(Text, {
+  px: '$4',
+  position: 'relative',
+  width: '100%',
+  mt: '$4',
+  mb: '-$1',
+  display: 'flex',
+  justifyContent: 'space-between',
+
+  [`& ${IconButton}`]: {
+    color: '$textSecondary',
+    right: '0',
+  },
+})
+
 const CARD_HEADING_TAG = 'div'
 
-type CardHeadingVariants = VariantProps<typeof StyledText>
-type CardHeadingOwnProps = CSSProps & CardHeadingVariants
+type CardHeadingProps = ComponentProps<typeof CARD_HEADING_TAG> &
+  VariantProps<typeof Text> &
+  CSSProps &
+  AsProps
 
-type CardHeadingComponent = Polymorphic.ForwardRefComponent<
-  typeof CARD_HEADING_TAG,
-  CardHeadingOwnProps
->
+export const CardHeading = forwardRef<
+  ElementRef<typeof CARD_HEADING_TAG>,
+  CardHeadingProps
+>((props, forwardedRef) => {
+  return (
+    <StyledHeading
+      as={CARD_HEADING_TAG}
+      size={1}
+      weight={'bold'}
+      {...props}
+      ref={forwardedRef}
+    />
+  )
+})
+CardHeading.toString = () => `.${StyledHeading.className}`
 
-export const CardHeading = forwardRef(
-  (
-    { as = CARD_HEADING_TAG, size = 1, weight = 'bold', css, ...props },
-    forwardedRef
-  ) => {
-    return (
-      <StyledText
-        as={as}
-        css={
-          {
-            px: '$4',
-            position: 'relative',
-            width: '100%',
-            mt: '$4',
-            mb: '-$1',
-            display: 'flex',
-            justifyContent: 'space-between',
+// CARD_SUBHEADING *************************************************************
 
-            [`& ${IconButton}`]: {
-              color: '$textSecondary',
-              right: '0',
-            },
-            ...css,
-          } as CSS
-        }
-        size={size}
-        weight={weight}
-        {...props}
-        ref={forwardedRef}
-      />
-    )
-  }
-) as CardHeadingComponent
+export const StyledSubheading = styled(Text, {
+  px: '$4',
+  color: '$textSecondary',
+  mt: '$1',
+  mb: '-$1',
+})
 
 const CARD_SUBHEADING_TAG = 'div'
 
-type CardSubheadingVariants = VariantProps<typeof StyledText>
-type CardSubheadingOwnProps = CSSProps & CardSubheadingVariants
+type CardSubheadingProps = ComponentProps<typeof CARD_SUBHEADING_TAG> &
+  VariantProps<typeof Text> &
+  CSSProps &
+  AsProps
 
-type CardSubheadingComponent = Polymorphic.ForwardRefComponent<
-  typeof CARD_SUBHEADING_TAG,
-  CardSubheadingOwnProps
->
+export const CardSubheading = forwardRef<
+  ElementRef<typeof CARD_SUBHEADING_TAG>,
+  CardSubheadingProps
+>((props, forwardedRef) => {
+  return (
+    <StyledSubheading
+      as={CARD_SUBHEADING_TAG}
+      size={-1}
+      weight="light"
+      {...props}
+      ref={forwardedRef}
+    />
+  )
+})
+CardSubheading.toString = () => `.${StyledSubheading.className}`
 
-export const CardSubheading = forwardRef(
-  (
-    { as = CARD_SUBHEADING_TAG, size = -1, weight = 'light', css, ...props },
-    forwardedRef
-  ) => {
-    return (
-      <StyledText
-        as={as}
-        css={
-          {
-            px: '$4',
-            color: '$textSecondary',
-            mt: '$1',
-            mb: '-$1',
-            ...css,
-          } as CSS
-        }
-        size={size}
-        weight={weight}
-        {...props}
-        ref={forwardedRef}
-      />
-    )
-  }
-) as CardSubheadingComponent
+// CARD_LEADING ****************************************************************
+
+export const StyledLeadIn = styled(Text, {
+  px: '$4',
+  position: 'relative',
+  width: '100%',
+  color: '$textSecondary',
+  textTransform: 'uppercase',
+  mt: '$4',
+  mb: '-$3',
+
+  [`& ${IconButton}`]: {
+    position: 'absolute',
+    color: '$textSecondary',
+    right: '0',
+    top: '0',
+  },
+})
 
 const CARD_LEAD_IN_TAG = 'div'
 
-type CardLeadInVariants = VariantProps<typeof StyledText>
-type CardLeadInOwnProps = CSSProps & CardLeadInVariants
+type CardLeadInProps = ComponentProps<typeof CARD_LEAD_IN_TAG> &
+  VariantProps<typeof Text> &
+  CSSProps &
+  AsProps
 
-type CardLeadInComponent = Polymorphic.ForwardRefComponent<
-  typeof CARD_LEAD_IN_TAG,
-  CardLeadInOwnProps
->
+export const CardLeadIn = forwardRef<
+  ElementRef<typeof CARD_LEAD_IN_TAG>,
+  CardLeadInProps
+>((props, forwardedRef) => {
+  return (
+    <StyledLeadIn
+      as={CARD_LEAD_IN_TAG}
+      size={-2}
+      {...props}
+      ref={forwardedRef}
+    />
+  )
+})
+CardLeadIn.toString = () => `.${StyledLeadIn.className}`
 
-export const CardLeadIn = forwardRef(
-  ({ as = CARD_LEAD_IN_TAG, size = -2, css, ...props }, forwardedRef) => {
-    return (
-      <StyledText
-        as={as}
-        css={
-          {
-            px: '$4',
-            position: 'relative',
-            width: '100%',
-            color: '$textSecondary',
-            textTransform: 'uppercase',
-            mt: '$4',
-            mb: '-$3',
-
-            [`& ${IconButton}`]: {
-              position: 'absolute',
-              color: '$textSecondary',
-              right: '0',
-              top: '0',
-            },
-            ...css,
-          } as CSS
-        }
-        size={size}
-        {...props}
-        ref={forwardedRef}
-      />
-    )
-  }
-) as CardLeadInComponent
+// CARD_ACTIONS ****************************************************************
 
 export const CardActions = styled('div', {
   display: 'flex',

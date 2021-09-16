@@ -1,11 +1,5 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
-import React, {
-  ComponentProps,
-  forwardRef,
-  ForwardRefExoticComponent,
-} from 'react'
-import type { CSSProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
 import { Check } from '../Icons'
@@ -177,32 +171,32 @@ type RadioProps = ComponentProps<typeof StyledItem> & {
   label?: string
 }
 
-export const Radio: ForwardRefExoticComponent<RadioProps> = forwardRef<
-  HTMLButtonElement,
-  RadioProps
->(({ children, label, ...props }, forwardedRef) => {
-  return (
-    <ConditionalWrapper
-      condition={label}
-      wrapper={(child) => (
-        <Label variant="wrapping">
-          {child}
-          {label}
-        </Label>
-      )}
-    >
-      <StyledItem {...props} ref={forwardedRef}>
-        <StyledRadio>
-          <StyledIndicator>
-            <Check />
-          </StyledIndicator>
-        </StyledRadio>
-        {children}
-      </StyledItem>
-    </ConditionalWrapper>
-  )
-}) as ForwardRefExoticComponent<RadioProps>
+export const Radio = forwardRef<ElementRef<typeof StyledItem>, RadioProps>(
+  ({ children, label, ...props }, forwardedRef) => {
+    return (
+      <ConditionalWrapper
+        condition={label}
+        wrapper={(child) => (
+          <Label variant="wrapping">
+            {child}
+            {label}
+          </Label>
+        )}
+      >
+        <StyledItem {...props} ref={forwardedRef}>
+          <StyledRadio>
+            <StyledIndicator>
+              <Check />
+            </StyledIndicator>
+          </StyledRadio>
+          {children}
+        </StyledItem>
+      </ConditionalWrapper>
+    )
+  }
+)
 Radio.displayName = 'Radio'
+Radio.toString = () => `.${StyledItem.className}`
 
 /**
  * Radios can be used to choose between a set of more than two options.
@@ -213,7 +207,7 @@ Radio.displayName = 'Radio'
  *
  * Based on [Radix Radio Group](https://radix-ui.com/primitives/docs/components/radio-group).
  */
-export const RadioGroup = (styled(Root, {
+export const RadioGroup = styled(Root, {
   display: 'flex',
   '&[data-orientation=vertical]': {
     flexDirection: 'column',
@@ -225,8 +219,5 @@ export const RadioGroup = (styled(Root, {
     '& > *': { marginLeft: '$3' },
     ':first-child,& button:first-of-type': { marginLeft: 0 },
   },
-}) as unknown) as Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
-  Polymorphic.OwnProps<typeof Root> & CSSProps
->
+})
 // Typed explicitly to get props in storybook

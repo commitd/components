@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "clean": "shx rm -rf dist",
-    "start": "parcel serve index.html",
+    "clean": "shx rm -rf dist .parcel-cache",
+    "start": "parcel serve index.html --host 0.0.0.0",
     "build": "parcel build index.html"
   },
   "dependencies": {

@@ -8,9 +8,7 @@ import {
   Title,
   Trigger,
 } from '@radix-ui/react-alert-dialog'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import { Slot } from '@radix-ui/react-slot'
-import React, { ComponentProps, FC, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
 import { Button } from '../Button'
@@ -19,39 +17,44 @@ import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 import { paperStyles } from '../Paper'
 import { Text } from '../Text'
 
-export const StyledOverlay = styled(Overlay, {
-  ...overlayStyles,
-  ...overlayAnimationStyles,
-  position: 'fixed',
-  right: 0,
-  bottom: 0,
-  top: 0,
-  left: 0,
-})
+export const StyledOverlay = styled(
+  Overlay,
+  overlayStyles,
+  overlayAnimationStyles,
+  {
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    top: 0,
+    left: 0,
+  }
+)
 
-export const StyledContent = styled(Content, {
-  ...paperStyles,
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  minWidth: 200,
-  maxWidth: 'fit-content',
-  maxHeight: '85vh',
-  padding: '$4',
-  marginTop: '-5vh',
+export const StyledContent = styled(
+  Content,
+  paperStyles,
+  {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    minWidth: 200,
+    maxWidth: 'fit-content',
+    maxHeight: '85vh',
+    padding: '$4',
+    marginTop: '-5vh',
 
-  boxShadow: '$2',
+    boxShadow: '$2',
 
-  display: 'flex',
-  flexDirection: 'column',
+    display: 'flex',
+    flexDirection: 'column',
 
-  '&:focus': {
-    outline: 'none',
+    '&:focus': {
+      outline: 'none',
+    },
   },
-
-  ...overlayAnimationStyles,
-})
+  overlayAnimationStyles
+)
 
 type ConfirmDialogProps = ComponentProps<typeof Root> & {
   /** Modify the default styling of the overlay */
@@ -90,7 +93,7 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = ({
   )
 }
 
-type ConfirmDialogContentOwnProps = Polymorphic.OwnProps<typeof Content> &
+type ConfirmDialogContentProps = ComponentProps<typeof StyledContent> &
   CSSProps & {
     /** Add a title to the content. */
     title?: string
@@ -98,38 +101,28 @@ type ConfirmDialogContentOwnProps = Polymorphic.OwnProps<typeof Content> &
     description?: string
   }
 
-type ConfirmDialogContentComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Content>,
-  ConfirmDialogContentOwnProps
->
+export const ConfirmDialogContent = forwardRef<
+  ElementRef<typeof StyledContent>,
+  ConfirmDialogContentProps
+>(({ title, description, children, ...props }, forwardedRef) => (
+  <StyledContent {...props} ref={forwardedRef}>
+    {title && <ConfirmDialogTitle>{title}</ConfirmDialogTitle>}
+    {description && (
+      <ConfirmDialogDescription>{description}</ConfirmDialogDescription>
+    )}
+    {children}
+  </StyledContent>
+))
+ConfirmDialogContent.toString = () => `.${StyledContent.className}`
 
-export const ConfirmDialogContent = forwardRef(
-  ({ title, description, children, css, ...props }, forwardedRef) => (
-    <StyledContent css={css as CSS} {...props} ref={forwardedRef}>
-      {title && <ConfirmDialogTitle>{title}</ConfirmDialogTitle>}
-      {description && (
-        <ConfirmDialogDescription>{description}</ConfirmDialogDescription>
-      )}
-      {children}
-    </StyledContent>
-  )
-) as ConfirmDialogContentComponent
-
-type ConfirmDialogTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> &
-  CSSProps
-
-export type ConfirmDialogTriggerComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Trigger>,
-  ConfirmDialogTriggerOwnProps
->
-
-export const ConfirmDialogTrigger = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Trigger as={Slot} {...props} ref={forwardedRef}>
-      {children}
-    </Trigger>
-  )
-) as ConfirmDialogTriggerComponent
+export const ConfirmDialogTrigger = forwardRef<
+  ElementRef<typeof Trigger>,
+  ComponentProps<typeof Trigger>
+>(({ children, ...props }, forwardedRef) => (
+  <Trigger asChild {...props} ref={forwardedRef}>
+    {children}
+  </Trigger>
+))
 
 export const ConfirmDialogTitle: FC<ComponentProps<typeof Heading>> = ({
   css,
@@ -155,11 +148,19 @@ export const ConfirmDialogDescription: FC<ComponentProps<typeof Text>> = (
 
 export const ConfirmDialogAction: FC<ComponentProps<typeof Button>> = (
   props
-) => <Action as={Button} variant="primary" {...props} />
+) => (
+  <Action asChild>
+    <Button variant="primary" {...props} />
+  </Action>
+)
 
 export const ConfirmDialogCancel: FC<ComponentProps<typeof Button>> = (
   props
-) => <Cancel as={Button} variant="tertiary" {...props} />
+) => (
+  <Cancel asChild>
+    <Button variant="tertiary" {...props} />
+  </Cancel>
+)
 
 export const ConfirmDialogActionsWrapper = styled('div', {
   display: 'flex',

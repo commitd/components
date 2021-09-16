@@ -1,16 +1,17 @@
 import React from 'react'
+import { styled } from '../../stitches.config'
 import { Box } from '../Box'
 import { Button } from '../Button'
 import { ChevronLeft, ChevronRight } from '../Icons'
 
-const commonButton: React.ComponentProps<typeof Button>['css'] = {
+const CommonButton = styled(Button, {
   width: '1em',
-}
+})
 
-const unclickableButton: React.ComponentProps<typeof Button>['css'] = {
+const UnclickableButton = styled(Button, {
   width: '1em',
   pointerEvents: 'none',
-}
+})
 
 export interface PaginationProps {
   /**
@@ -115,23 +116,17 @@ const PageButton: React.FC<
   } & React.ComponentProps<typeof Button>
 > = ({ page, ...props }) => {
   return (
-    <Button variant="tertiary" css={commonButton} {...props}>
+    <CommonButton variant="tertiary" {...props}>
       {page}
-    </Button>
+    </CommonButton>
   )
 }
 
 const SelectedPage: React.FC<{ page: number }> = ({ page }) => {
   return (
-    <Button
-      variant="primary"
-      css={{
-        unclickableButton,
-      }}
-      tabIndex={-1}
-    >
+    <UnclickableButton variant="primary" tabIndex={-1}>
       {page}
-    </Button>
+    </UnclickableButton>
   )
 }
 
@@ -140,14 +135,14 @@ const ControlButton: React.FC<React.ComponentProps<typeof Button>> = ({
   ...props
 }) => {
   return (
-    <Button variant="tertiary" css={commonButton} {...props}>
+    <CommonButton variant="tertiary" {...props}>
       {children}
-    </Button>
+    </CommonButton>
   )
 }
 
 const Ellipsis = () => (
-  <Button variant="tertiary" css={unclickableButton} tabIndex={-1}>
+  <UnclickableButton variant="tertiary" tabIndex={-1}>
     …
-  </Button>
+  </UnclickableButton>
 )

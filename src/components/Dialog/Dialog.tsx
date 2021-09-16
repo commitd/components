@@ -7,9 +7,7 @@ import {
   Title,
   Trigger,
 } from '@radix-ui/react-dialog'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import { Slot } from '@radix-ui/react-slot'
-import React, { ComponentProps, FC, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
 import { Heading } from '../Heading'
@@ -19,39 +17,44 @@ import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 import { paperStyles } from '../Paper'
 import { Text } from '../Text'
 
-export const StyledOverlay = styled(Overlay, {
-  ...overlayStyles,
-  ...overlayAnimationStyles,
-  position: 'fixed',
-  right: 0,
-  bottom: 0,
-  top: 0,
-  left: 0,
-})
+export const StyledOverlay = styled(
+  Overlay,
+  overlayStyles,
+  overlayAnimationStyles,
+  {
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    top: 0,
+    left: 0,
+  }
+)
 
-export const StyledContent = styled(Content, {
-  ...paperStyles,
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  minWidth: 200,
-  maxWidth: 'fit-content',
-  maxHeight: '85vh',
-  padding: 20,
-  marginTop: '-5vh',
+export const StyledContent = styled(
+  Content,
+  paperStyles,
+  {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    minWidth: 200,
+    maxWidth: 'fit-content',
+    maxHeight: '85vh',
+    padding: 20,
+    marginTop: '-5vh',
 
-  boxShadow: '$2',
+    boxShadow: '$2',
 
-  display: 'flex',
-  flexDirection: 'column',
+    display: 'flex',
+    flexDirection: 'column',
 
-  '&:focus': {
-    outline: 'none',
+    '&:focus': {
+      outline: 'none',
+    },
   },
-
-  ...overlayAnimationStyles,
-})
+  overlayAnimationStyles
+)
 
 // Could be exported for reuse but currently causes typing issue
 const StyledIconButton = styled(IconButton, {
@@ -87,59 +90,46 @@ export const Dialog: FC<DialogProps> = ({ children, overlayCss, ...props }) => {
   )
 }
 
-type DialogContentOwnProps = Polymorphic.OwnProps<typeof Content> &
+type DialogContentProps = ComponentProps<typeof Content> &
   CSSProps & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
   }
 
-type DialogContentComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Content>,
-  DialogContentOwnProps
->
-
-export const DialogContent = forwardRef(
-  ({ children, defaultClose = true, css, ...props }, forwardedRef) => (
-    <StyledContent css={css as CSS} {...props} ref={forwardedRef}>
-      {defaultClose && (
-        <Close as={StyledIconButton} aria-label="close" variant="tertiary">
+export const DialogContent = forwardRef<
+  ElementRef<typeof StyledContent>,
+  DialogContentProps
+>(({ children, defaultClose = true, ...props }, forwardedRef) => (
+  <StyledContent {...props} ref={forwardedRef}>
+    {defaultClose && (
+      <Close asChild>
+        <StyledIconButton aria-label="close" variant="tertiary">
           <Icon title="Close" />
-        </Close>
-      )}
-      {children}
-    </StyledContent>
-  )
-) as DialogContentComponent
+        </StyledIconButton>
+      </Close>
+    )}
+    {children}
+  </StyledContent>
+))
+DialogContent.toString = () => `.${StyledContent.className}`
 
-type DialogTriggerOwnProps = Polymorphic.OwnProps<typeof Trigger> & CSSProps
+export const DialogTrigger = forwardRef<
+  ElementRef<typeof Trigger>,
+  ComponentProps<typeof Trigger>
+>(({ children, ...props }, forwardedRef) => (
+  <Trigger asChild {...props} ref={forwardedRef}>
+    {children}
+  </Trigger>
+))
 
-export type DialogTriggerComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Trigger>,
-  DialogTriggerOwnProps
->
-
-export const DialogTrigger = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Trigger as={Slot} {...props} ref={forwardedRef}>
-      {children}
-    </Trigger>
-  )
-) as DialogTriggerComponent
-
-type DialogCloseOwnProps = Polymorphic.OwnProps<typeof Close> & CSSProps
-
-export type DialogCloseComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Close>,
-  DialogCloseOwnProps
->
-
-export const DialogClose = forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <Close as={Slot} {...props} ref={forwardedRef}>
-      {children}
-    </Close>
-  )
-) as DialogCloseComponent
+export const DialogClose = forwardRef<
+  ElementRef<typeof Close>,
+  ComponentProps<typeof Close>
+>(({ children, ...props }, forwardedRef) => (
+  <Close asChild {...props} ref={forwardedRef}>
+    {children}
+  </Close>
+))
 
 export const DialogTitle: FC<ComponentProps<typeof Heading>> = ({
   css,

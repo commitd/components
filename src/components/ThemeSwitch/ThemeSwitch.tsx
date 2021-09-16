@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { IconButton } from '../IconButton'
 import { DarkMode, LightMode } from '../Icons'
 import { useThemeController } from '../ThemeProvider'
@@ -16,15 +16,24 @@ type ThemeSwitchProps = ComponentProps<typeof IconButton> & {
   darkColor?: string
 }
 
+const THEME_SWITCH_CLASS_NAME = 'c-theme-switch'
 /**
  * The theme switch component can be used to switch from light to dark mode explicitly.
  *
  * Use the underlying hook `useThemeController` to create your own theme switch.
  */
-export const ThemeSwitch = forwardRef<HTMLButtonElement, ThemeSwitchProps>(
+export const ThemeSwitch = forwardRef<
+  ElementRef<typeof IconButton>,
+  ThemeSwitchProps
+>(
   (
-    { lightColor = '$brandContrast', darkColor = '$brandContrast', ...props },
-    ref
+    {
+      lightColor = '$brandContrast',
+      darkColor = '$brandContrast',
+      className,
+      ...props
+    },
+    forwardedRef
   ) => {
     const [choice, toggle] = useThemeController()
 
@@ -34,7 +43,8 @@ export const ThemeSwitch = forwardRef<HTMLButtonElement, ThemeSwitchProps>(
 
     return (
       <IconButton
-        ref={ref}
+        ref={forwardedRef}
+        className={`${THEME_SWITCH_CLASS_NAME} ${className}`}
         onClick={toggle}
         title={title}
         aria-label="switch-theme"
@@ -47,3 +57,4 @@ export const ThemeSwitch = forwardRef<HTMLButtonElement, ThemeSwitchProps>(
     )
   }
 )
+ThemeSwitch.toString = () => `.${THEME_SWITCH_CLASS_NAME}`

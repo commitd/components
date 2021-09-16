@@ -1,63 +1,48 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
-import { StyledText, Text } from '../Text/Text'
+import React, { ElementRef, forwardRef } from 'react'
+import type {
+  As,
+  AsProps,
+  ChildProps,
+  CSSProps,
+  VariantProps,
+} from '../../stitches.config'
+import { styled } from '../../stitches.config'
+import { Text } from '../Text'
 
 const DEFAULT_TAG = 'h3'
 
-type HeadingVariants = VariantProps<typeof StyledText>
-type HeadingOwnProps = CSSProps &
-  HeadingVariants & {
-    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  }
+const StyledHeading = styled(Text, {
+  fontWight: '$bold',
+  variants: {
+    variant: {
+      h1: { fontSize: '$7' },
+      h2: { fontSize: '$6' },
+      h3: { fontSize: '$5' },
+      h4: { fontSize: '$4' },
+      h5: { fontSize: '$3' },
+      h6: { fontSize: '$2' },
+    },
+  },
+})
 
-type HeadingComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  HeadingOwnProps
->
+type TextVariants = VariantProps<typeof Text>
+type HeadingVariants = VariantProps<typeof StyledHeading>
+type HeadingProps = CSSProps &
+  AsProps &
+  ChildProps &
+  HeadingVariants &
+  TextVariants
 
-export const Heading = forwardRef(
-  ({ variant = DEFAULT_TAG, css, ...props }, forwardedRef) => {
-    let headingProps: Partial<HeadingVariants>
-    const headingCss: CSS = {}
-    switch (variant) {
-      case 'h1': {
-        headingProps = { size: 7, weight: 'bold' }
-        break
-      }
-      case 'h2': {
-        headingProps = { size: 6, weight: 'bold' }
-        break
-      }
-      case 'h3': {
-        headingProps = { size: 5, weight: 'bold' }
-        break
-      }
-      case 'h4': {
-        headingProps = { size: 4, weight: 'bold' }
-        break
-      }
-      case 'h5': {
-        headingProps = { size: 3, weight: 'bold' }
-        break
-      }
-      case 'h6': {
-        headingProps = { size: 2, weight: 'bold' }
-        break
-      }
-      default: {
-        throw new Error(`unknown variant ${variant}`)
-      }
-    }
-
+export const Heading = forwardRef<ElementRef<typeof DEFAULT_TAG>, HeadingProps>(
+  ({ variant = DEFAULT_TAG, as, ...props }, forwardedRef) => {
     return (
-      <Text
-        as={variant}
-        css={{ ...headingCss, ...css } as CSS}
-        {...headingProps}
+      <StyledHeading
+        as={as ?? (variant as As)}
+        variant={variant}
         {...props}
         ref={forwardedRef}
       />
     )
   }
-) as HeadingComponent
+)
+Heading.toString = () => `.${StyledHeading.className}`

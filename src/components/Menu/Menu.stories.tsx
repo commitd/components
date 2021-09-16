@@ -6,7 +6,7 @@ import {
   Menu,
   MenuContent,
   MenuItem,
-  MenuItemCheckbox,
+  MenuCheckboxItem,
   MenuItemGroup,
   MenuSeparator,
   MenuItemShortcut,
@@ -25,7 +25,8 @@ export default {
     MenuTrigger,
     MenuContent,
     MenuItem,
-    MenuItemCheckbox,
+    MenuCheckboxItem,
+    MenuRadioItem,
     MenuSeparator,
     MenuItemShortcut,
     MenuLabel,
@@ -117,7 +118,7 @@ export const Controlled = () => {
   )
 }
 
-/* A `MenuItemCheckbox` are items with an indicated boolean state */
+/* A `MenuCheckboxItem` are items with an indicated boolean state */
 export const WithCheckbox = () => {
   const [checked, setChecked] = useState(true)
   return (
@@ -126,10 +127,10 @@ export const WithCheckbox = () => {
         <Button>Trigger</Button>
       </MenuTrigger>
       <MenuContent>
-        <MenuItemCheckbox checked={checked} onCheckedChange={setChecked}>
+        <MenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
           Cut
-        </MenuItemCheckbox>
-        <MenuItemCheckbox checked={false}>Paste</MenuItemCheckbox>
+        </MenuCheckboxItem>
+        <MenuCheckboxItem checked={false}>Paste</MenuCheckboxItem>
       </MenuContent>
     </Menu>
   )

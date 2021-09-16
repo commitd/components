@@ -1,6 +1,5 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { ComponentProps, forwardRef, PropsWithChildren } from 'react'
-import type { CSS, CSSProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Box } from '../Box'
 import { Button } from '../Button'
@@ -21,34 +20,31 @@ export const AppBar = styled('header', {
   position: 'relative',
 })
 
+const StyledHeading = styled(Heading, {
+  color: '$brandContrast',
+  fontSize: '$1',
+  fontWeight: 'regular',
+})
+
 const HEADING_TAG = 'h1'
 
-type AppBarHeadingOwnProps = CSSProps & ComponentProps<typeof Heading>
+type AppBarHeadingRootProps = ComponentProps<typeof Heading>
+type AppBarHeadingProps = AppBarHeadingRootProps & CSSProps & AsProps
 
-type AppBarHeadingComponent = Polymorphic.ForwardRefComponent<
-  typeof HEADING_TAG,
-  AppBarHeadingOwnProps
->
-
-export const AppBarHeading = forwardRef(
-  ({ children, css, ...props }, forwardedRef) => (
-    <>
-      <div>
-        <Heading
-          variant={HEADING_TAG}
-          css={{ color: '$brandContrast', ...css } as CSS}
-          size={1}
-          weight="regular"
-          {...props}
-          ref={forwardedRef}
-        >
-          {children}
-        </Heading>
-      </div>
-      <Box css={{ flex: 1 }} />
-    </>
-  )
-) as AppBarHeadingComponent
+export const AppBarHeading = forwardRef<
+  ElementRef<typeof Heading>,
+  AppBarHeadingProps
+>(({ children, ...props }, forwardedRef) => (
+  <>
+    <div>
+      <StyledHeading as={HEADING_TAG} {...props} ref={forwardedRef}>
+        {children}
+      </StyledHeading>
+    </div>
+    <Box variant="grow" />
+  </>
+))
+AppBarHeading.toString = () => `.${StyledHeading.className}`
 
 export const AppBarActions = styled('div', {
   '> *': {
@@ -56,23 +52,22 @@ export const AppBarActions = styled('div', {
   },
 })
 
-const BUTTON_TAG = 'button'
+const APP_BAR_BUTTON_CLASS_NAME = 'c-app-bar-button'
 
-type AppBarButtonVariants = ComponentProps<typeof Button>
-type AppBarButtonOwnProps = CSSProps & AppBarButtonVariants
-
-type AppBarButtonComponent = Polymorphic.ForwardRefComponent<
-  typeof BUTTON_TAG,
-  AppBarButtonOwnProps
->
 export const AppBarButton = forwardRef<
   HTMLButtonElement,
-  PropsWithChildren<typeof Button>
+  React.ComponentPropsWithRef<typeof Button>
 >(({ children, ...props }, forwardedRef) => (
-  <Button variant="brand" {...props} ref={forwardedRef}>
+  <Button
+    className={APP_BAR_BUTTON_CLASS_NAME}
+    variant="brand"
+    {...props}
+    ref={forwardedRef}
+  >
     {children}
   </Button>
-)) as AppBarButtonComponent
+))
+AppBarButton.toString = () => `.${APP_BAR_BUTTON_CLASS_NAME}`
 
 export const AppBarMenu: React.FC = ({ children }) => (
   <Box

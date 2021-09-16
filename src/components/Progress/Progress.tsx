@@ -1,8 +1,7 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
-import { styled, keyframes } from '../../stitches.config'
-import { Root, Indicator } from '@radix-ui/react-progress'
+import { Indicator, Root } from '@radix-ui/react-progress'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
+import { keyframes, styled } from '../../stitches.config'
 
 const indeterminateProgress = keyframes({
   '0%': {
@@ -87,30 +86,26 @@ const ProgressIndicator = styled(Indicator, {
   transition: 'transform 150ms cubic-bezier(0.65, 0, 0.35, 1)',
 })
 
-type ProgressVariants = VariantProps<typeof StyledProgress>
-type ProgressOwnProps = Polymorphic.OwnProps<typeof Root> &
+type ProgressProps = ComponentProps<typeof Root> &
   CSSProps &
-  ProgressVariants
-type ProgressComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Root>,
-  ProgressOwnProps
->
+  AsProps &
+  VariantProps<typeof StyledProgress>
 
 /**
  * Use a progress bar to indicate progress to the user.
  *
  * Based on [Radix Progress](https://radix-ui.com/primitives/docs/components/progress).
  */
-export const Progress = forwardRef(
-  ({ value, max = 100, ...props }, forwardedRef) => {
-    const percentage = value != null ? Math.round((value / max) * 100) : null
+export const Progress = forwardRef<
+  ElementRef<typeof StyledProgress>,
+  ProgressProps
+>(({ value, max = 100, ...props }, forwardedRef) => {
+  const percentage = value != null ? Math.round((value / max) * 100) : null
 
-    return (
-      <StyledProgress {...props} ref={forwardedRef} value={value} max={max}>
-        <ProgressIndicator
-          style={{ transform: `translateX(${percentage}%)` }}
-        />
-      </StyledProgress>
-    )
-  }
-) as ProgressComponent
+  return (
+    <StyledProgress {...props} ref={forwardedRef} value={value} max={max}>
+      <ProgressIndicator style={{ transform: `translateX(${percentage}%)` }} />
+    </StyledProgress>
+  )
+})
+Progress.toString = () => `.${StyledProgress.className}`

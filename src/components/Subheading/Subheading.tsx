@@ -1,68 +1,53 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
+import React, { ElementRef, forwardRef } from 'react'
+import type {
+  As,
+  AsProps,
+  ChildProps,
+  CSSProps,
+  VariantProps,
+} from '../../stitches.config'
+import { styled } from '../../stitches.config'
 import { Text } from '../Text'
 
 const DEFAULT_TAG = 'h3'
 
-type SubheadingVariants = VariantProps<typeof Text>
-type SubheadingOwnProps = CSSProps &
-  SubheadingVariants & {
-    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  }
+const StyledSubheading = styled(Text, {
+  fontWight: '$regular',
+  color: '$textSecondary',
+  marginTop: '$1',
+  marginBottom: '$4',
+  variants: {
+    variant: {
+      h1: { fontSize: '$3' },
+      h2: { fontSize: '$3' },
+      h3: { fontSize: '$2' },
+      h4: { fontSize: '$2' },
+      h5: { fontSize: '$1' },
+      h6: { fontSize: '$1' },
+    },
+  },
+})
 
-type SubheadingComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  SubheadingOwnProps
->
+type TextVariants = VariantProps<typeof Text>
+type SubheadingVariants = VariantProps<typeof StyledSubheading>
+type SubheadingProps = CSSProps &
+  AsProps &
+  ChildProps &
+  SubheadingVariants &
+  TextVariants
 
-export const Subheading = forwardRef(
-  ({ variant = DEFAULT_TAG, css, ...props }, forwardedRef) => {
-    let subheadingProps: Partial<SubheadingVariants>
-    const subheadingCss: CSS = {
-      color: '$textSecondary',
-      marginTop: '$1',
-      marginBottom: '$4',
-    }
-    switch (variant) {
-      case 'h1': {
-        subheadingProps = { size: 3, weight: 'regular' }
-        break
-      }
-      case 'h2': {
-        subheadingProps = { size: 3, weight: 'regular' }
-        break
-      }
-      case 'h3': {
-        subheadingProps = { size: 2, weight: 'regular' }
-        break
-      }
-      case 'h4': {
-        subheadingProps = { size: 2, weight: 'regular' }
-        break
-      }
-      case 'h5': {
-        subheadingProps = { size: 1, weight: 'regular' }
-        break
-      }
-      case 'h6': {
-        subheadingProps = { size: 1, weight: 'regular' }
-        break
-      }
-      default: {
-        throw new Error(`unknown variant ${variant}`)
-      }
-    }
-
-    return (
-      <Text
-        as="div"
-        role="doc-subtitle"
-        css={{ ...subheadingCss, ...css } as CSS}
-        {...subheadingProps}
-        {...props}
-        ref={forwardedRef}
-      />
-    )
-  }
-) as SubheadingComponent
+export const Subheading = forwardRef<
+  ElementRef<typeof DEFAULT_TAG>,
+  SubheadingProps
+>(({ variant = DEFAULT_TAG, as = 'div', ...props }, forwardedRef) => {
+  return (
+    <StyledSubheading
+      as={as ?? (variant as As)}
+      variant={variant}
+      role="doc-subtitle"
+      {...props}
+      ref={forwardedRef}
+    />
+  )
+})
+Subheading.toString = () => `.${StyledSubheading.className}`

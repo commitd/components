@@ -70,3 +70,4 @@ export const Avatar: React.FC<AvatarProps> = ({
     </StyledFallback>
   </StyledRoot>
 )
+Avatar.toString = () => `.${StyledRoot.className}`

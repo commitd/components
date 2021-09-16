@@ -12,8 +12,7 @@ import {
   Trigger,
   TriggerItem,
 } from '@radix-ui/react-context-menu'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { ComponentProps, FC, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Check, ChevronRight } from '../Icons'
@@ -86,24 +85,21 @@ const StyledContextMenuTriggerItem = styled(TriggerItem, {
   },
 })
 
-type ContextMenuTriggerItemOwnProps = React.ComponentProps<typeof TriggerItem> &
-  CSSProps
+type ContextMenuTriggerItemProps = ComponentProps<typeof TriggerItem> & CSSProps
 
-type ContextMenuTriggerItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof TriggerItem>,
-  ContextMenuTriggerItemOwnProps
->
-
-export const ContextMenuTriggerItem = forwardRef(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <StyledContextMenuTriggerItem {...props} ref={forwardedRef}>
-        {children}
-        <ChevronRight css={{ size: '$4' }} />
-      </StyledContextMenuTriggerItem>
-    )
-  }
-) as ContextMenuTriggerItemComponent
+export const ContextMenuTriggerItem = forwardRef<
+  ElementRef<typeof StyledContextMenuTriggerItem>,
+  ContextMenuTriggerItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledContextMenuTriggerItem {...props} ref={forwardedRef}>
+      {children}
+      <ChevronRight css={{ size: '$4' }} />
+    </StyledContextMenuTriggerItem>
+  )
+})
+ContextMenuTriggerItem.toString = () =>
+  `.${StyledContextMenuTriggerItem.className}`
 
 export const ContextMenuItemGroup = styled(Group, {
   display: 'flex',
@@ -146,53 +142,45 @@ const StyledContextMenuCheckboxItem = styled(CheckboxItem, {
   padding: '$1 $2 $1 $5',
 })
 
-type ContextMenuCheckboxItemOwnProps = Polymorphic.OwnProps<
-  typeof CheckboxItem
-> &
+type ContextMenuCheckboxItemProps = ComponentProps<typeof CheckboxItem> &
   CSSProps
 
-type ContextMenuCheckboxItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof CheckboxItem>,
-  ContextMenuCheckboxItemOwnProps
->
-
-export const ContextMenuCheckboxItem = forwardRef(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <StyledContextMenuCheckboxItem {...props} ref={forwardedRef}>
-        <StyledItemIndicator>
-          <Check css={{ height: 16, width: 16 }} />
-        </StyledItemIndicator>
-        {children}
-      </StyledContextMenuCheckboxItem>
-    )
-  }
-) as ContextMenuCheckboxItemComponent
+export const ContextMenuCheckboxItem = forwardRef<
+  ElementRef<typeof StyledContextMenuCheckboxItem>,
+  ContextMenuCheckboxItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledContextMenuCheckboxItem {...props} ref={forwardedRef}>
+      <StyledItemIndicator>
+        <Check css={{ height: 16, width: 16 }} />
+      </StyledItemIndicator>
+      {children}
+    </StyledContextMenuCheckboxItem>
+  )
+})
+ContextMenuCheckboxItem.toString = () =>
+  `.${StyledContextMenuCheckboxItem.className}`
 
 const StyledContextMenuRadioItem = styled(RadioItem, {
   ...itemStyles,
   padding: '$1 $2 $1 $5',
 })
 
-type ContextMenuRadioItemOwnProps = Polymorphic.OwnProps<typeof RadioItem> &
-  CSSProps
+type ContextMenuRadioItemProps = ComponentProps<typeof RadioItem> & CSSProps
 
-type ContextMenuRadioItemComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof RadioItem>,
-  ContextMenuRadioItemOwnProps
->
-
-export const ContextMenuRadioItem = forwardRef(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <StyledContextMenuRadioItem {...props} ref={forwardedRef}>
-        <StyledItemIndicator>
-          <Check css={{ height: 16, width: 16 }} />
-        </StyledItemIndicator>
-        {children}
-      </StyledContextMenuRadioItem>
-    )
-  }
-) as ContextMenuRadioItemComponent
+export const ContextMenuRadioItem = forwardRef<
+  ElementRef<typeof StyledContextMenuRadioItem>,
+  ContextMenuRadioItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledContextMenuRadioItem {...props} ref={forwardedRef}>
+      <StyledItemIndicator>
+        <Check css={{ height: 16, width: 16 }} />
+      </StyledItemIndicator>
+      {children}
+    </StyledContextMenuRadioItem>
+  )
+})
+ContextMenuRadioItem.toString = () => `.${StyledContextMenuRadioItem.className}`
 
 export const ContextMenuRadioGroup = RadioGroup

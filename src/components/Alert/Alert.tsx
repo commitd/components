@@ -1,5 +1,4 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { FC, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { Heading } from '../Heading'
@@ -70,15 +69,11 @@ export const AlertContent: FC = ({ children }) => (
 )
 
 type AlertVariants = VariantProps<typeof StyledAlert>
-type AlertOwnProps = CSSProps & AlertVariants
+type AlertProps = AlertVariants & CSSProps & ComponentProps<typeof DEFAULT_TAG>
 
-type AlertComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  AlertOwnProps
->
-
-export const Alert = forwardRef((props, forwardedRef) => {
-  return <StyledAlert {...props} ref={forwardedRef} />
-}) as AlertComponent
-
+export const Alert = forwardRef<ElementRef<typeof StyledAlert>, AlertProps>(
+  (props, forwardedRef) => {
+    return <StyledAlert {...props} ref={forwardedRef} />
+  }
+)
 Alert.toString = () => `.${StyledAlert.className}`

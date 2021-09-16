@@ -1,7 +1,11 @@
 import { Close, Content, Root } from '@radix-ui/react-dialog'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
-import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type {
+  ChildProps,
+  CSS,
+  CSSProps,
+  VariantProps,
+} from '../../stitches.config'
 import { keyframes, styled } from '../../stitches.config'
 import { DialogClose, DialogTrigger, StyledOverlay } from '../Dialog/Dialog'
 import { IconButton } from '../IconButton'
@@ -27,8 +31,7 @@ const slideOut = keyframes({
   to: { transform: '$$transformValue' },
 })
 
-const StyledContent = styled(Content, {
-  ...paperStyles,
+const StyledContent = styled(Content, paperStyles, {
   position: 'fixed',
   top: 0,
   bottom: 0,
@@ -78,39 +81,38 @@ const StyledContent = styled(Content, {
 
 type DrawerContentVariants = VariantProps<typeof StyledContent>
 
-type DrawerContentOwnProps = Polymorphic.OwnProps<typeof Content> &
+type DrawerContentProps = ComponentProps<typeof Content> &
   CSSProps &
   DrawerContentVariants & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
   }
 
-type DrawerContentComponent = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Content>,
-  DrawerContentOwnProps
->
-
-export const DrawerContent = forwardRef(
-  ({ defaultClose, children, ...props }, forwardedRef) => (
-    <StyledContent {...props} ref={forwardedRef}>
-      {children}
-      {defaultClose && (
-        <Close as={StyledIconButton} aria-label="close" variant="tertiary">
+export const DrawerContent = forwardRef<
+  ElementRef<typeof StyledContent>,
+  DrawerContentProps
+>(({ defaultClose, children, ...props }, forwardedRef) => (
+  <StyledContent {...props} ref={forwardedRef}>
+    {children}
+    {defaultClose && (
+      <Close asChild>
+        <StyledIconButton aria-label="close" variant="tertiary">
           <Icon title="Close" />
-        </Close>
-      )}
-    </StyledContent>
-  )
-) as DrawerContentComponent
+        </StyledIconButton>
+      </Close>
+    )}
+  </StyledContent>
+))
+DrawerContent.toString = () => `.${StyledContent.className}`
 
 export const DrawerTrigger = DialogTrigger
 export const DrawerClose = DialogClose
 
-type DrawerProps = React.ComponentProps<typeof Root> & {
-  children: React.ReactNode
-  /** Modify the default styling of the overlay */
-  overlayCss?: CSS
-}
+type DrawerProps = React.ComponentProps<typeof Root> &
+  ChildProps & {
+    /** Modify the default styling of the overlay */
+    overlayCss?: CSS
+  }
 
 /**
  * The Drawer component can be used to overlay a panel from any side.

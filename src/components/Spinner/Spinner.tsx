@@ -82,13 +82,13 @@ const StyledSpinner = styled(Logo, {
 })
 
 type SpinnerVariants = VariantProps<typeof StyledSpinner>
-type SpinnerOwnProps = CSSProps & SpinnerVariants
+type SpinnerProps = CSSProps & SpinnerVariants
 
 /**
  * Spinner component
  */
 export const Spinner = forwardRef<
   ElementRef<typeof StyledSpinner>,
-  SpinnerOwnProps
+  SpinnerProps
 >(({ ...props }, ref) => <StyledSpinner ref={ref} {...props} />)
 Spinner.toString = () => `.${StyledSpinner.className}`

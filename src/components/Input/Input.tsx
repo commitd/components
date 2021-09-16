@@ -1,6 +1,5 @@
 import { useLabelContext } from '@radix-ui/react-label'
-import type * as Polymorphic from '@radix-ui/react-polymorphic'
-import React, { forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { css, styled } from '../../stitches.config'
 import { Label } from '../Label'
@@ -120,23 +119,16 @@ export const inputStyles = css({
 const StyledInput = styled(DEFAULT_TAG, inputStyles)
 
 type InputVariants = VariantProps<typeof StyledInput>
-type InputOwnProps = CSSProps &
+type InputProps = ComponentProps<typeof StyledInput> &
+  CSSProps &
   InputVariants & {
     /** Add a label to the Input */
     label?: string
-    // Should not be required but type is missing.
-    /** Called on input change with full event */
-    onChange?: React.ChangeEventHandler<HTMLInputElement>
     /** Called on input change with new value */
     onValueChange?: (value: string) => void
   }
 
-type InputComponent = Polymorphic.ForwardRefComponent<
-  typeof DEFAULT_TAG,
-  InputOwnProps
->
-
-export const Input = forwardRef(
+export const Input = forwardRef<ElementRef<typeof DEFAULT_TAG>, InputProps>(
   ({ label, id, onValueChange, ...props }, forwardedRef) => {
     const labelId = useLabelContext()
     return (
@@ -158,5 +150,5 @@ export const Input = forwardRef(
       </>
     )
   }
-) as InputComponent
+)
 Input.toString = () => `.${StyledInput.className}`
