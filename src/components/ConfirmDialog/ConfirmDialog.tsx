@@ -117,7 +117,7 @@ ConfirmDialogContent.toString = () => `.${StyledContent.className}`
 
 export const ConfirmDialogTrigger = forwardRef<
   ElementRef<typeof Trigger>,
-  ComponentProps<typeof Trigger>
+  Omit<ComponentProps<typeof Trigger>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Trigger asChild {...props} ref={forwardedRef}>
     {children}

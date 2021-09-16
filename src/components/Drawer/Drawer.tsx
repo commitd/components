@@ -81,7 +81,7 @@ const StyledContent = styled(Content, paperStyles, {
 
 type DrawerContentVariants = VariantProps<typeof StyledContent>
 
-type DrawerContentProps = ComponentProps<typeof Content> &
+type DrawerContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> &
   CSSProps &
   DrawerContentVariants & {
     /** Closable, add a standard close icon. */
