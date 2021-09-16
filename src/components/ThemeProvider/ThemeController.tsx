@@ -83,6 +83,18 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
     }
   }
 
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', (e) => {
+      setThemeValues(e.matches ? 'dark' : 'light')
+    })
+
+  window
+    .matchMedia('(prefers-color-scheme: light)')
+    .addEventListener('change', (e) => {
+      setThemeValues(e.matches ? 'light' : 'dark')
+    })
+
   // paints the app before it renders elements
   useLayoutEffect(() => {
     const localTheme = window.localStorage.getItem('themeChoice') as ThemeChoice

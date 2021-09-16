@@ -8,7 +8,6 @@ import {
   Trigger,
 } from '@radix-ui/react-dialog'
 import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
-import { AsProps } from '../..'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
 import { Heading } from '../Heading'
