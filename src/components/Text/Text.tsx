@@ -173,7 +173,7 @@ export const Monospace = forwardRef<HTMLPreElement, MonospaceProps>(
   ({ inline = false, ...props }, forwardedRef) => {
     return (
       <Text
-        as={inline ? 'pre' : 'span'}
+        as={inline ? 'span' : 'pre'}
         className={MONOSPACE_CLASS_NAME}
         font="monospace"
         {...props}
