@@ -19,21 +19,6 @@ import ResizeObserver from 'resize-observer-polyfill'
 // This is used in some components.
 global.ResizeObserver = ResizeObserver
 
-// Official way to supply missing window method https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation((query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // Deprecated
-    removeListener: jest.fn(), // Deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-})
-
 const LightTheme: React.FC = ({ children }) => (
   <ThemeProvider choice="light">{children}</ThemeProvider>
 )
