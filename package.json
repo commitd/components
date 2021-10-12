@@ -32,7 +32,7 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "generate": "plop --plopfile ./generators/plopfile.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -h 0.0.0.0",
     "build-storybook": "build-storybook",
     "format": "prettier --write 'src/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "format:check": "prettier --check '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
