@@ -24,44 +24,10 @@ const Chevron = styled(ChevronDown, {
   },
 })
 
-const StyledRoot = styled(Root, paperStyles, {
+export const Accordion = styled(Root, paperStyles, {
   boxShadow: '$1',
   borderTop: '1px solid $colors$grey4',
 })
-
-type AccordionRootProps = Omit<ComponentProps<typeof Root>, 'type'> & {
-  /**
-   * Allow `single` or `multiple` sections to be open, defaults to 'single'
-   */
-  type?: ComponentProps<typeof Root>['type']
-  /**
-   * Allow all elements to be collapsed.
-   * This is only relevant when type single.
-   * */
-  collapsible?: boolean
-}
-type AccordionProps = AccordionRootProps & CSSProps
-
-export const Accordion = forwardRef<
-  ElementRef<typeof StyledRoot>,
-  AccordionProps
->(({ collapsible = true, type = 'single', ...props }, forwardedRef) => {
-  let additionalProps = {}
-  if (type == 'single' && collapsible) {
-    additionalProps = { collapsible: true }
-  }
-  return (
-    <StyledRoot
-      type={type}
-      {...additionalProps}
-      ref={forwardedRef}
-      {...props}
-    />
-  )
-})
-Accordion.toString = () => `.${StyledRoot.className}`
-
-// Typed explicitly to get props in storybook
 
 export const AccordionItem = styled(Item, {
   borderBottom: '1px solid $colors$grey4',
