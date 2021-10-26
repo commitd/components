@@ -25,7 +25,9 @@ export default {
   },
 } as Meta
 
-export const Default: Story = ({ ...args }) => {
+export const Default: Story<React.ComponentProps<typeof Accordion>> = ({
+  ...args
+}) => {
   return (
     <Accordion {...args}>
       <AccordionItem value="item-1">

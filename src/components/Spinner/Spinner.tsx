@@ -57,6 +57,7 @@ const StyledSpinner = styled(Logo, {
       active: true,
       variant: 'draw',
       css: {
+        stroke: 'currentColor',
         animation: `${strokeKeyframes} 3s cubic-bezier(.24,0,.37,1) alternate infinite, ${fillKeyframes} 3s cubic-bezier(1, 0, .5, 0) alternate infinite`,
       },
     },
