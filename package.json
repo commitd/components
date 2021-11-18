@@ -152,8 +152,8 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@fontsource/dosis": "^4.5.0",
-    "@fontsource/inter": "^4.5.0",
+    "@fontsource/dosis": "^4.5.1",
+    "@fontsource/inter": "^4.5.1",
     "@size-limit/preset-small-lib": "^5.0.1",
     "@storybook/addon-docs": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
@@ -202,7 +202,7 @@
   },
   "dependencies": {
     "@committed/hooks": "^0.4.0",
-    "@mdi/js": "^6.4.95",
+    "@mdi/js": "^6.5.95",
     "@radix-ui/colors": "^0.1.7",
     "@radix-ui/react-accordion": "0.1.1",
     "@radix-ui/react-alert-dialog": "0.1.1",
@@ -221,6 +221,7 @@
     "@radix-ui/react-switch": "0.1.1",
     "@radix-ui/react-tabs": "0.1.1",
     "@radix-ui/react-tooltip": "0.1.1",
+    "@radix-ui/react-visually-hidden": "^0.1.1",
     "@stitches/react": "^1.2.5"
   }
 }
