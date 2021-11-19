@@ -37,6 +37,10 @@ export const Placeholder = Template.bind({})
 Placeholder.args = {
   placeholder: '--Select an option--',
 }
+export const Header = Template.bind({})
+Header.args = {
+  header: '--Select an option--',
+}
 export const Disabled = Template.bind({})
 Disabled.args = {
   disabled: true,
@@ -72,7 +76,7 @@ export const ConfirmDialogSelect = () => (
   <Box variant="fullscreen">
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">
-        <Select label="Label" placeholder="Placeholder">
+        <Select label="Label" placeholder="Placeholder" header="Pick a number">
           <SelectItem value="one">One</SelectItem>
           <SelectItem value="two">Two</SelectItem>
           <SelectItem value="three">Three</SelectItem>
@@ -80,6 +84,15 @@ export const ConfirmDialogSelect = () => (
           <SelectItem value="five">Five</SelectItem>
           <SelectItem value="six">Six</SelectItem>
           <SelectItem value="seven">Seven</SelectItem>
+        </Select>
+        <Select label="Label" placeholder="Placeholder">
+          <SelectItem value="one">A</SelectItem>
+          <SelectItem value="two">B</SelectItem>
+          <SelectItem value="three">C</SelectItem>
+          <SelectItem value="four">D</SelectItem>
+          <SelectItem value="five">E</SelectItem>
+          <SelectItem value="six">F</SelectItem>
+          <SelectItem value="seven">G</SelectItem>
         </Select>
         <ConfirmDialogActions confirm="Confirm" onConfirm={action('Confirm')} />
       </ConfirmDialogContent>
