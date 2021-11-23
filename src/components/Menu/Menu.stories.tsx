@@ -208,3 +208,36 @@ export const Nested = () => {
     </Menu>
   )
 }
+
+/* A `MenuCheckboxItem` are items with an indicated boolean state */
+export const MultipleMenus = () => {
+  const [checked, setChecked] = useState(true)
+  const [color, setColor] = React.useState('blue')
+  return (
+    <>
+      <Menu>
+        <MenuTrigger>
+          <Button>Trigger</Button>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
+            Cut
+          </MenuCheckboxItem>
+          <MenuCheckboxItem checked={false}>Paste</MenuCheckboxItem>
+        </MenuContent>
+      </Menu>
+      <Menu>
+        <MenuTrigger>
+          <Button>Trigger</Button>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuRadioGroup value={color} onValueChange={setColor}>
+            <MenuRadioItem value="red">Red</MenuRadioItem>
+            <MenuRadioItem value="green">Green</MenuRadioItem>
+            <MenuRadioItem value="blue">Blue</MenuRadioItem>
+          </MenuRadioGroup>
+        </MenuContent>
+      </Menu>
+    </>
+  )
+}
