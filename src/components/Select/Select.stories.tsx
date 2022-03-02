@@ -1,7 +1,17 @@
 import { Meta, Story } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import React from 'react'
-import { Select, SelectItem } from '.'
+import {
+  Select,
+  SelectContent,
+  SelectIcon,
+  SelectItem,
+  SelectItemText,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport
+} from '.'
+import { ChevronDown } from '../Icons'
 import { Button } from '../Button'
 import { Box } from '../Box'
 import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
@@ -9,41 +19,61 @@ import {
   ConfirmDialog,
   ConfirmDialogContent,
   ConfirmDialogTrigger,
-  ConfirmDialogActions,
+  ConfirmDialogActions
 } from '../ConfirmDialog'
 
 export default {
   title: 'Components/Select',
   component: Select,
   subcomponents: {
+    SelectContent,
+    SelectTrigger,
     SelectItem,
-  },
+    SelectItemText,
+    SelectValue,
+    SelectIcon,
+    SelectViewport
+  }
 } as Meta
 
-const Template: Story = (args) => (
+const Template: Story = args => (
   <Select {...args}>
-    <SelectItem value="one">One</SelectItem>
-    <SelectItem value="two">Two</SelectItem>
-    <SelectItem value="three">Three</SelectItem>
+    <SelectContent>
+      <SelectTrigger>
+        <SelectValue />
+        <SelectIcon>{/* <ChevronDown /> */}</SelectIcon>
+      </SelectTrigger>
+      <SelectViewport>
+        <SelectItem value="one">
+          <SelectItemText>One</SelectItemText>
+        </SelectItem>
+        <SelectItem value="two">
+          <SelectItemText>Two</SelectItemText>
+        </SelectItem>
+        <SelectItem value="three">
+          <SelectItemText>Three</SelectItemText>
+        </SelectItem>
+      </SelectViewport>
+    </SelectContent>
   </Select>
 )
 
 export const Default = Template.bind({})
 export const Label = Template.bind({})
 Label.args = {
-  label: 'Select',
+  label: 'Select'
 }
 export const Placeholder = Template.bind({})
 Placeholder.args = {
-  placeholder: '--Select an option--',
+  placeholder: '--Select an option--'
 }
 export const Header = Template.bind({})
 Header.args = {
-  header: '--Select an option--',
+  header: '--Select an option--'
 }
 export const Disabled = Template.bind({})
 Disabled.args = {
-  disabled: true,
+  disabled: true
 }
 
 /**
@@ -76,7 +106,7 @@ export const ConfirmDialogSelect = () => (
   <Box variant="fullscreen">
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">
-        <Select label="Label" placeholder="Placeholder" header="Pick a number">
+        <Select>
           <SelectItem value="one">One</SelectItem>
           <SelectItem value="two">Two</SelectItem>
           <SelectItem value="three">Three</SelectItem>
@@ -85,7 +115,7 @@ export const ConfirmDialogSelect = () => (
           <SelectItem value="six">Six</SelectItem>
           <SelectItem value="seven">Seven</SelectItem>
         </Select>
-        <Select label="Label" placeholder="Placeholder">
+        <Select>
           <SelectItem value="one">A</SelectItem>
           <SelectItem value="two">B</SelectItem>
           <SelectItem value="three">C</SelectItem>
