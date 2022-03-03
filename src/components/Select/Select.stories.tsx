@@ -4,14 +4,18 @@ import React from 'react'
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectIcon,
   SelectItem,
+  SelectItemIndicator,
   SelectItemText,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
   SelectTrigger,
   SelectValue,
   SelectViewport
 } from '.'
-import { ChevronDown } from '../Icons'
 import { Button } from '../Button'
 import { Box } from '../Box'
 import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
@@ -21,39 +25,63 @@ import {
   ConfirmDialogTrigger,
   ConfirmDialogActions
 } from '../ConfirmDialog'
+import { ChevronDown, ChevronUp, Check } from '../Icons'
 
 export default {
   title: 'Components/Select',
   component: Select,
   subcomponents: {
     SelectContent,
-    SelectTrigger,
-    SelectItem,
-    SelectItemText,
-    SelectValue,
+    SelectGroup,
     SelectIcon,
+    SelectItem,
+    SelectItemIndicator,
+    SelectItemText,
+    SelectLabel,
+    SelectScrollDownButton,
+    SelectScrollUpButton,
+    SelectTrigger,
+    SelectValue,
     SelectViewport
   }
 } as Meta
 
 const Template: Story = args => (
-  <Select {...args}>
+  <Select defaultValue="one">
+    <SelectTrigger aria-label="Food">
+      <SelectValue />
+      <SelectIcon>
+        <ChevronDown />
+      </SelectIcon>
+    </SelectTrigger>
     <SelectContent>
-      <SelectTrigger>
-        <SelectValue />
-        <SelectIcon>{/* <ChevronDown /> */}</SelectIcon>
-      </SelectTrigger>
+      <SelectScrollUpButton>
+        <ChevronUp />
+      </SelectScrollUpButton>
       <SelectViewport>
+        {/* <SelectLabel>Fruits</SelectLabel> */}
         <SelectItem value="one">
           <SelectItemText>One</SelectItemText>
+          <SelectItemIndicator>
+            <Check />
+          </SelectItemIndicator>
         </SelectItem>
         <SelectItem value="two">
           <SelectItemText>Two</SelectItemText>
+          <SelectItemIndicator>
+            <Check />
+          </SelectItemIndicator>
         </SelectItem>
         <SelectItem value="three">
           <SelectItemText>Three</SelectItemText>
+          <SelectItemIndicator>
+            <Check />
+          </SelectItemIndicator>
         </SelectItem>
       </SelectViewport>
+      <SelectScrollDownButton>
+        <ChevronDown />
+      </SelectScrollDownButton>
     </SelectContent>
   </Select>
 )
@@ -88,9 +116,19 @@ export const DialogSelect = () => (
     </DialogTrigger>
     <DialogContent>
       <Select>
-        <SelectItem value="one">One</SelectItem>
-        <SelectItem value="two">Two</SelectItem>
-        <SelectItem value="three">Three</SelectItem>
+        <SelectContent>
+          <SelectTrigger>
+            <SelectValue />
+            <SelectIcon>
+              <ChevronDown />
+            </SelectIcon>
+          </SelectTrigger>
+          <SelectViewport>
+            <SelectItem value="one">One</SelectItem>
+            <SelectItem value="two">Two</SelectItem>
+            <SelectItem value="three">Three</SelectItem>
+          </SelectViewport>
+        </SelectContent>
       </Select>
     </DialogContent>
   </Dialog>
@@ -107,22 +145,42 @@ export const ConfirmDialogSelect = () => (
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">
         <Select>
-          <SelectItem value="one">One</SelectItem>
-          <SelectItem value="two">Two</SelectItem>
-          <SelectItem value="three">Three</SelectItem>
-          <SelectItem value="four">Four</SelectItem>
-          <SelectItem value="five">Five</SelectItem>
-          <SelectItem value="six">Six</SelectItem>
-          <SelectItem value="seven">Seven</SelectItem>
+          <SelectContent>
+            <SelectTrigger>
+              <SelectValue />
+              <SelectIcon>
+                <ChevronDown />
+              </SelectIcon>
+            </SelectTrigger>
+            <SelectViewport>
+              <SelectItem value="one">One</SelectItem>
+              <SelectItem value="two">Two</SelectItem>
+              <SelectItem value="three">Three</SelectItem>
+              <SelectItem value="four">Four</SelectItem>
+              <SelectItem value="five">Five</SelectItem>
+              <SelectItem value="six">Six</SelectItem>
+              <SelectItem value="seven">Seven</SelectItem>
+            </SelectViewport>
+          </SelectContent>
         </Select>
         <Select>
-          <SelectItem value="one">A</SelectItem>
-          <SelectItem value="two">B</SelectItem>
-          <SelectItem value="three">C</SelectItem>
-          <SelectItem value="four">D</SelectItem>
-          <SelectItem value="five">E</SelectItem>
-          <SelectItem value="six">F</SelectItem>
-          <SelectItem value="seven">G</SelectItem>
+          <SelectContent>
+            <SelectTrigger>
+              <SelectValue />
+              <SelectIcon>
+                <ChevronDown />
+              </SelectIcon>
+            </SelectTrigger>
+            <SelectViewport>
+              <SelectItem value="one">A</SelectItem>
+              <SelectItem value="two">B</SelectItem>
+              <SelectItem value="three">C</SelectItem>
+              <SelectItem value="four">D</SelectItem>
+              <SelectItem value="five">E</SelectItem>
+              <SelectItem value="six">F</SelectItem>
+              <SelectItem value="seven">G</SelectItem>
+            </SelectViewport>
+          </SelectContent>
         </Select>
         <ConfirmDialogActions confirm="Confirm" onConfirm={action('Confirm')} />
       </ConfirmDialogContent>
