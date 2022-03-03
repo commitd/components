@@ -10,6 +10,8 @@ import {
   SelectItemIndicator,
   SelectItemText,
   SelectLabel,
+  SelectRoot,
+  SelectRootItem,
   SelectScrollDownButton,
   SelectScrollUpButton,
   SelectTrigger,
@@ -46,8 +48,16 @@ export default {
   }
 } as Meta
 
+const SimpleSelect = () => (
+  <Select defaultValue="1">
+    <SelectItem value="1">Item 1</SelectItem>
+    <SelectItem value="2">Item 2</SelectItem>
+    <SelectItem value="3">Item 3</SelectItem>
+  </Select>
+)
+
 const Template: Story = args => (
-  <Select defaultValue="one">
+  <SelectRoot defaultValue="one">
     <SelectTrigger aria-label="Food">
       <SelectValue />
       <SelectIcon>
@@ -60,33 +70,34 @@ const Template: Story = args => (
       </SelectScrollUpButton>
       <SelectViewport>
         {/* <SelectLabel>Fruits</SelectLabel> */}
-        <SelectItem value="one">
+        <SelectRootItem value="one">
           <SelectItemText>One</SelectItemText>
           <SelectItemIndicator>
             <Check />
           </SelectItemIndicator>
-        </SelectItem>
-        <SelectItem value="two">
+        </SelectRootItem>
+        <SelectRootItem value="two">
           <SelectItemText>Two</SelectItemText>
           <SelectItemIndicator>
             <Check />
           </SelectItemIndicator>
-        </SelectItem>
-        <SelectItem value="three">
+        </SelectRootItem>
+        <SelectRootItem value="three">
           <SelectItemText>Three</SelectItemText>
           <SelectItemIndicator>
             <Check />
           </SelectItemIndicator>
-        </SelectItem>
+        </SelectRootItem>
       </SelectViewport>
       <SelectScrollDownButton>
         <ChevronDown />
       </SelectScrollDownButton>
     </SelectContent>
-  </Select>
+  </SelectRoot>
 )
 
-export const Default = Template.bind({})
+export const Default = SimpleSelect
+
 export const Label = Template.bind({})
 Label.args = {
   label: 'Select'

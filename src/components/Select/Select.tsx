@@ -1,6 +1,6 @@
 // import { useLabelContext } from '@radix-ui/react-label'
 // import { useControllableState } from '@radix-ui/react-use-controllable-state'
-import { blackA, mauve, violet } from '@radix-ui/colors'
+import { mauve, violet } from '@radix-ui/colors'
 import {
   Root,
   Trigger,
@@ -17,10 +17,11 @@ import {
   ScrollDownButton,
   Label
 } from '@radix-ui/react-select'
-import React from 'react'
+import React, { ComponentProps, ElementRef } from 'react'
+import { CSSProps , styled } from '../../stitches.config'
+
 import { ChevronDown, ChevronUp, Check } from '../Icons'
 // import type { CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
 // import { inputStyles } from '../Input/Input'
 // import { Label } from '../Label'
 // import { useId } from '@radix-ui/react-id'
@@ -44,7 +45,7 @@ const StyledTrigger = styled(Trigger, {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '$0',
-  padding: '$2 $3 $2 $5',
+  padding: '$2 $3 $2 $6',
   cursor: 'default',
   borderRadius: '$default',
   backgroundColor: 'transparent',
@@ -54,23 +55,12 @@ const StyledTrigger = styled(Trigger, {
   '&:hover': { backgroundColor: '$selection' }
   // '&:focus': { boxShadow: `0 0 0 2px black` },
 })
-// export const SelectTrigger = StyledTrigger
-// export const SelectValue = Value
-// export const SelectIcon = Icon
-// export const SelectScrollUpButton = ScrollUpButton
-// export const SelectViewport = Viewport
-// export const SelectItemText = ItemText
-// export const SelectItemIndicator = ItemIndicator
-// export const SelectGroup = Group
-// export const SelectSeparator = Separator
-// export const SelectScrollDownButton = ScrollDownButton
 
 const StyledContent = styled(Content, {
   overflow: 'hidden',
   backgroundColor: 'white',
-  borderRadius: 6
-  // boxShadow:
-  //   '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+  borderRadius: '$default',
+  boxShadow: '$2'
 })
 
 const StyledViewport = styled(Viewport, {
@@ -84,7 +74,7 @@ const StyledItem = styled(Item, {
   // alignItems: 'center',
   // height: 25,
   fontSize: '$0',
-  padding: '$2 $3 $2 $5',
+  padding: '$2 $3 $2 $6',
   cursor: 'default',
   borderRadius: '$default',
   backgroundColor: 'transparent',
@@ -131,7 +121,7 @@ const StyledSeparator = styled(Separator, {
 
 const StyledItemIndicator = styled(ItemIndicator, {
   position: 'absolute',
-  left: '$1',
+  left: '$2',
   width: '$4',
   display: 'inline-flex',
   alignItems: 'center',
@@ -152,21 +142,73 @@ const StyledScrollUpButton = styled(ScrollUpButton, scrollButtonStyles)
 
 const StyledScrollDownButton = styled(ScrollDownButton, scrollButtonStyles)
 
-// Exports
-export const Select = Root
+type AbstractSelectProps = ComponentProps<typeof Root> & CSSProps
+
+const AbstractedSelect = React.forwardRef<
+  ElementRef<typeof Root>,
+  AbstractSelectProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <Root {...props}>
+      <StyledTrigger ref={forwardedRef}>
+        <Value />
+        <ChevronDown />
+      </StyledTrigger>
+      <StyledContent>
+        <ScrollUpButton>
+          <ChevronUp />
+        </ScrollUpButton>
+        <StyledViewport>{children}</StyledViewport>
+        <ScrollDownButton>
+          <ChevronDown />
+        </ScrollDownButton>
+      </StyledContent>
+    </Root>
+  )
+})
+
+type AbstractSelectItemProps = ComponentProps<typeof Item>
+
+const AbstractedSelectItem = React.forwardRef<
+  ElementRef<typeof StyledItem>,
+  AbstractSelectItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledItem {...props} ref={forwardedRef}>
+      <ItemText>{children}</ItemText>
+      <StyledItemIndicator>
+        <Check />
+      </StyledItemIndicator>
+    </StyledItem>
+  )
+})
+
+/**
+ * Select component
+ *
+ * Displays a dropdown list of options to the user - usually triggered by clicking a button.
+ *
+ *
+ * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
+ */
+export const Select = AbstractedSelect
 export const SelectTrigger = StyledTrigger
 export const SelectValue = Value
 export const SelectIcon = Icon
 export const SelectContent = StyledContent
 export const SelectViewport = StyledViewport
 export const SelectGroup = Group
-export const SelectItem = StyledItem
+export const SelectItem = AbstractedSelectItem
 export const SelectItemText = ItemText
 export const SelectItemIndicator = StyledItemIndicator
 export const SelectLabel = StyledLabel
 export const SelectSeparator = StyledSeparator
 export const SelectScrollUpButton = StyledScrollUpButton
 export const SelectScrollDownButton = StyledScrollDownButton
+
+// Included as exports to allow non-abstracted access to a Styled Radix-based Select
+export const SelectRoot = Root
+export const SelectRootItem = StyledItem
 
 // export const SelectDemo = () => (
 //   <Box>
@@ -413,14 +455,4 @@ export const SelectScrollDownButton = StyledScrollDownButton
 // )
 // Select.toString = () => `.${SELECT_CLASS_NAME}`
 
-/**
- * Select component
- *
- * Displays a dropdown list of options to the user - usually triggered by clicking a button.
- *
-//  * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a `MenuTrigger`.
-//  * The content should be wrapped in a `MenuContent` and should be made up of the other `MenuXxxx` components.
- *
- * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
- */
 // export const Select = Root
