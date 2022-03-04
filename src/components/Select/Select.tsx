@@ -17,24 +17,29 @@ import {
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { CSSProps, styled } from '../../stitches.config'
 import { ChevronDown, ChevronUp, Check } from '../Icons'
+import { inputStyles } from '../Input/Input'
 
-const StyledTrigger = styled(Trigger, {
-  all: 'unset',
-  display: 'inline-flex',
+const StyledTrigger = styled(Trigger, inputStyles, {
+  // all: 'unset',
+  display: 'flex-inline',
   alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '$0',
-  padding: '$2 $3 $2 $6',
-  cursor: 'default',
-  borderRadius: '$default',
-  backgroundColor: 'transparent',
-  border: 'none',
-  color: '$colors$primary',
-  '&:hover': { backgroundColor: '$selection' },
-  '&[data-disabled]': {
-    color: '$grey9',
-    pointerEvents: 'none'
-  }
+  justifyContent: 'space-between',
+  // fontSize: '$0',
+  // padding: '$2 $3 $2 $6',
+  cursor: 'pointer'
+  // borderRadius: '$default',
+  // backgroundColor: 'transparent',
+  // border: 'none',
+  // color: '$colors$primary',
+  // '&:hover': { backgroundColor: '$selection' },
+  // '&[data-disabled]': {
+  //   color: '$grey9',
+  //   pointerEvents: 'none',
+  // },
+})
+
+const StyledValue = styled(Value, {
+  // flexGrow: 1,
 })
 
 const StyledContent = styled(Content, {
@@ -120,7 +125,7 @@ const AbstractedSelect = forwardRef<
   return (
     <Root {...props}>
       <SelectTrigger ref={forwardedRef}>
-        <Value />
+        <StyledValue />
         <ChevronDown />
       </SelectTrigger>
       <StyledContent>
@@ -162,7 +167,7 @@ const AbstractedSelectItem = forwardRef<
  */
 export const Select = AbstractedSelect
 export const SelectTrigger = StyledTrigger
-export const SelectValue = Value
+export const SelectValue = StyledValue
 export const SelectIcon = Icon
 export const SelectContent = StyledContent
 export const SelectViewport = StyledViewport

@@ -98,6 +98,7 @@ const Template: Story = args => (
 
 export const Default = SimpleSelect
 
+/** This shows how to group items in the select popover */
 export const Grouped = () => (
   <Select defaultValue="grapes">
     <SelectGroup>
