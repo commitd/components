@@ -14,6 +14,7 @@ import {
   SelectRootItem,
   SelectScrollDownButton,
   SelectScrollUpButton,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
   SelectViewport
@@ -57,8 +58,8 @@ const SimpleSelect = () => (
 )
 
 const Template: Story = args => (
-  <SelectRoot defaultValue="one">
-    <SelectTrigger aria-label="Food">
+  <SelectRoot defaultValue="1">
+    <SelectTrigger>
       <SelectValue />
       <SelectIcon>
         <ChevronDown />
@@ -69,21 +70,20 @@ const Template: Story = args => (
         <ChevronUp />
       </SelectScrollUpButton>
       <SelectViewport>
-        {/* <SelectLabel>Fruits</SelectLabel> */}
-        <SelectRootItem value="one">
-          <SelectItemText>One</SelectItemText>
+        <SelectRootItem value="1">
+          <SelectItemText>Item 1</SelectItemText>
           <SelectItemIndicator>
             <Check />
           </SelectItemIndicator>
         </SelectRootItem>
-        <SelectRootItem value="two">
-          <SelectItemText>Two</SelectItemText>
+        <SelectRootItem value="2">
+          <SelectItemText>Item 2</SelectItemText>
           <SelectItemIndicator>
             <Check />
           </SelectItemIndicator>
         </SelectRootItem>
-        <SelectRootItem value="three">
-          <SelectItemText>Three</SelectItemText>
+        <SelectRootItem value="3">
+          <SelectItemText>Item 3</SelectItemText>
           <SelectItemIndicator>
             <Check />
           </SelectItemIndicator>
@@ -98,101 +98,85 @@ const Template: Story = args => (
 
 export const Default = SimpleSelect
 
-export const Label = Template.bind({})
-Label.args = {
-  label: 'Select'
-}
-export const Placeholder = Template.bind({})
-Placeholder.args = {
-  placeholder: '--Select an option--'
-}
-export const Header = Template.bind({})
-Header.args = {
-  header: '--Select an option--'
-}
-export const Disabled = Template.bind({})
-Disabled.args = {
-  disabled: true
-}
+export const Grouped = () => (
+  <Select defaultValue="grapes">
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="blueberry">Blueberry</SelectItem>
+      <SelectItem value="grapes">Grapes</SelectItem>
+      <SelectItem value="pineapple">Pineapple</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Vegetables</SelectLabel>
+      <SelectItem value="aubergine">Aubergine</SelectItem>
+      <SelectItem value="broccoli">Broccoli</SelectItem>
+      <SelectItem value="carrot">Carrot</SelectItem>
+      <SelectItem value="courgette">Courgette</SelectItem>
+      <SelectItem value="leek">Leek</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Meats</SelectLabel>
+      <SelectItem value="chicken">Chicken</SelectItem>
+      <SelectItem value="pork">Pork</SelectItem>
+      <SelectItem value="beef">Beef</SelectItem>
+    </SelectGroup>
+  </Select>
+)
 
-/**
- * This dialog tests currently fail in storybook canvas
- *
- * The menu seems to be confined to the bounds of the iframe, even though the dialog isn't.
- */
+export const WithDisabledItems = () => (
+  <Select defaultValue="1">
+    <SelectItem value="1">Item 1</SelectItem>
+    <SelectItem value="2">Item 2</SelectItem>
+    <SelectItem disabled value="3">
+      Item 3
+    </SelectItem>
+    <SelectItem disabled value="4">
+      Item 4
+    </SelectItem>
+    <SelectItem value="5">Item 5</SelectItem>
+  </Select>
+)
+
+// export const Disabled = () => (
+//   <Select defaultValue="1" disabled>
+//     <SelectItem value="1">Item 1</SelectItem>
+//     <SelectItem value="2">Item 2</SelectItem>
+//     <SelectItem value="3">Item 3</SelectItem>
+//   </Select>
+// )
+
+export const Scrollable = () => (
+  <Select defaultValue="1">
+    {[...Array(25)].map((x, i) => (
+      <SelectItem value={i.toString()}>Item {i}</SelectItem>
+    ))}
+  </Select>
+)
+
 export const DialogSelect = () => (
   <Dialog>
     <DialogTrigger>
       <Button>Show Dialog</Button>
     </DialogTrigger>
     <DialogContent>
-      <Select>
-        <SelectContent>
-          <SelectTrigger>
-            <SelectValue />
-            <SelectIcon>
-              <ChevronDown />
-            </SelectIcon>
-          </SelectTrigger>
-          <SelectViewport>
-            <SelectItem value="one">One</SelectItem>
-            <SelectItem value="two">Two</SelectItem>
-            <SelectItem value="three">Three</SelectItem>
-          </SelectViewport>
-        </SelectContent>
-      </Select>
+      <SimpleSelect />
     </DialogContent>
   </Dialog>
 )
 
 /**
- * In this version, we add a `fullscreen` Box - here the Select works properly.
- *
- * As this is likely to be the case generally we leave this as a known issue and will check if radix-ui Select fixes it on release.
- * <https://github.com/commitd/components/issues/230>
+ * In this version, we add a `fullscreen` Box
  * */
 export const ConfirmDialogSelect = () => (
   <Box variant="fullscreen">
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">
-        <Select>
-          <SelectContent>
-            <SelectTrigger>
-              <SelectValue />
-              <SelectIcon>
-                <ChevronDown />
-              </SelectIcon>
-            </SelectTrigger>
-            <SelectViewport>
-              <SelectItem value="one">One</SelectItem>
-              <SelectItem value="two">Two</SelectItem>
-              <SelectItem value="three">Three</SelectItem>
-              <SelectItem value="four">Four</SelectItem>
-              <SelectItem value="five">Five</SelectItem>
-              <SelectItem value="six">Six</SelectItem>
-              <SelectItem value="seven">Seven</SelectItem>
-            </SelectViewport>
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectContent>
-            <SelectTrigger>
-              <SelectValue />
-              <SelectIcon>
-                <ChevronDown />
-              </SelectIcon>
-            </SelectTrigger>
-            <SelectViewport>
-              <SelectItem value="one">A</SelectItem>
-              <SelectItem value="two">B</SelectItem>
-              <SelectItem value="three">C</SelectItem>
-              <SelectItem value="four">D</SelectItem>
-              <SelectItem value="five">E</SelectItem>
-              <SelectItem value="six">F</SelectItem>
-              <SelectItem value="seven">G</SelectItem>
-            </SelectViewport>
-          </SelectContent>
-        </Select>
+        <SimpleSelect />
+        <SimpleSelect />
         <ConfirmDialogActions confirm="Confirm" onConfirm={action('Confirm')} />
       </ConfirmDialogContent>
       <ConfirmDialogTrigger>
