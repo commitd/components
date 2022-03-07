@@ -19,14 +19,15 @@ import { CSSProps, styled } from '../../stitches.config'
 import { ChevronDown, ChevronUp, Check } from '../Icons'
 import { inputStyles } from '../Input/Input'
 
-const StyledTrigger = styled(Trigger, inputStyles, {
+const StyledTrigger = styled(Trigger, {
+  ...inputStyles,
   // all: 'unset',
-  display: 'flex-inline',
-  alignItems: 'center',
+  display: 'flex',
+  alignItems: 'flex-end',
   justifyContent: 'space-between',
-  // fontSize: '$0',
   // padding: '$2 $3 $2 $6',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  alignContent: 'center'
   // borderRadius: '$default',
   // backgroundColor: 'transparent',
   // border: 'none',
@@ -124,10 +125,10 @@ const AbstractedSelect = forwardRef<
 >(({ children, ...props }, forwardedRef) => {
   return (
     <Root {...props}>
-      <SelectTrigger ref={forwardedRef}>
+      <StyledTrigger ref={forwardedRef}>
         <StyledValue />
         <ChevronDown />
-      </SelectTrigger>
+      </StyledTrigger>
       <StyledContent>
         <ScrollUpButton>
           <ChevronUp />
