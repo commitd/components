@@ -28,7 +28,12 @@ import {
   ConfirmDialogTrigger,
   ConfirmDialogActions
 } from '../ConfirmDialog'
-import { ChevronDown, ChevronUp, Check } from '../Icons'
+import {
+  mdiArrowUpDropCircleOutline,
+  mdiArrowDownDropCircleOutline,
+  mdiThumbUp
+} from '@mdi/js'
+import { Svg } from '../Svg'
 
 export default {
   title: 'Components/Select',
@@ -45,7 +50,9 @@ export default {
     SelectScrollUpButton,
     SelectTrigger,
     SelectValue,
-    SelectViewport
+    SelectViewport,
+    SelectRoot,
+    SelectRootItem
   }
 } as Meta
 
@@ -55,45 +62,6 @@ const SimpleSelect = () => (
     <SelectItem value="2">Item 2</SelectItem>
     <SelectItem value="3">Item 3</SelectItem>
   </Select>
-)
-
-const Template: Story = args => (
-  <SelectRoot defaultValue="1">
-    <SelectTrigger>
-      <SelectValue />
-      <SelectIcon>
-        <ChevronDown />
-      </SelectIcon>
-    </SelectTrigger>
-    <SelectContent>
-      <SelectScrollUpButton>
-        <ChevronUp />
-      </SelectScrollUpButton>
-      <SelectViewport>
-        <SelectRootItem value="1">
-          <SelectItemText>Item 1</SelectItemText>
-          <SelectItemIndicator>
-            <Check />
-          </SelectItemIndicator>
-        </SelectRootItem>
-        <SelectRootItem value="2">
-          <SelectItemText>Item 2</SelectItemText>
-          <SelectItemIndicator>
-            <Check />
-          </SelectItemIndicator>
-        </SelectRootItem>
-        <SelectRootItem value="3">
-          <SelectItemText>Item 3</SelectItemText>
-          <SelectItemIndicator>
-            <Check />
-          </SelectItemIndicator>
-        </SelectRootItem>
-      </SelectViewport>
-      <SelectScrollDownButton>
-        <ChevronDown />
-      </SelectScrollDownButton>
-    </SelectContent>
-  </SelectRoot>
 )
 
 export const Default = SimpleSelect
@@ -142,20 +110,52 @@ export const WithDisabledItems = () => (
   </Select>
 )
 
-// export const Disabled = () => (
-//   <Select defaultValue="1" disabled>
-//     <SelectItem value="1">Item 1</SelectItem>
-//     <SelectItem value="2">Item 2</SelectItem>
-//     <SelectItem value="3">Item 3</SelectItem>
-//   </Select>
-// )
-
 export const Scrollable = () => (
   <Select defaultValue="1">
     {[...Array(25)].map((x, i) => (
       <SelectItem value={i.toString()}>Item {i}</SelectItem>
     ))}
   </Select>
+)
+
+/** Using `<SelectRoot>` and `<SelectRootItem>` gives further access to the underlying Radix implementation, allowing for more customization */
+export const Full = () => (
+  <SelectRoot defaultValue="1">
+    <SelectTrigger>
+      <SelectValue />
+      <SelectIcon>
+        <Svg path={mdiArrowDownDropCircleOutline} />
+      </SelectIcon>
+    </SelectTrigger>
+    <SelectContent>
+      <SelectScrollUpButton>
+        <Svg path={mdiArrowUpDropCircleOutline} />
+      </SelectScrollUpButton>
+      <SelectViewport>
+        <SelectRootItem value="1">
+          <SelectItemText>Item 1</SelectItemText>
+          <SelectItemIndicator>
+            <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
+          </SelectItemIndicator>
+        </SelectRootItem>
+        <SelectRootItem value="2">
+          <SelectItemText>Item 2</SelectItemText>
+          <SelectItemIndicator>
+            <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
+          </SelectItemIndicator>
+        </SelectRootItem>
+        <SelectRootItem value="3">
+          <SelectItemText>Item 3</SelectItemText>
+          <SelectItemIndicator>
+            <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
+          </SelectItemIndicator>
+        </SelectRootItem>
+      </SelectViewport>
+      <SelectScrollDownButton>
+        <Svg path={mdiArrowDownDropCircleOutline} />
+      </SelectScrollDownButton>
+    </SelectContent>
+  </SelectRoot>
 )
 
 export const DialogSelect = () => (
