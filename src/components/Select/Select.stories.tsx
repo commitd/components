@@ -111,8 +111,8 @@ export const WithDisabledItems = () => (
 )
 
 export const Scrollable = () => (
-  <Select defaultValue="1">
-    {[...Array(25)].map((x, i) => (
+  <Select defaultValue="19">
+    {[...Array(50)].map((x, i) => (
       <SelectItem value={i.toString()}>Item {i}</SelectItem>
     ))}
   </Select>
@@ -120,7 +120,7 @@ export const Scrollable = () => (
 
 /** Using `<SelectRoot>` and `<SelectRootItem>` gives further access to the underlying Radix implementation, allowing for more customization */
 export const Full = () => (
-  <SelectRoot defaultValue="1">
+  <SelectRoot defaultValue="19">
     <SelectTrigger>
       <SelectValue />
       <SelectIcon>
@@ -132,24 +132,14 @@ export const Full = () => (
         <Svg path={mdiArrowUpDropCircleOutline} />
       </SelectScrollUpButton>
       <SelectViewport>
-        <SelectRootItem value="1">
-          <SelectItemText>Item 1</SelectItemText>
-          <SelectItemIndicator>
-            <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
-          </SelectItemIndicator>
-        </SelectRootItem>
-        <SelectRootItem value="2">
-          <SelectItemText>Item 2</SelectItemText>
-          <SelectItemIndicator>
-            <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
-          </SelectItemIndicator>
-        </SelectRootItem>
-        <SelectRootItem value="3">
-          <SelectItemText>Item 3</SelectItemText>
-          <SelectItemIndicator>
-            <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
-          </SelectItemIndicator>
-        </SelectRootItem>
+        {[...Array(50)].map((x, i) => (
+          <SelectRootItem value={i.toString()}>
+            <SelectItemText>Item {i}</SelectItemText>
+            <SelectItemIndicator>
+              <Svg css={{ color: '$success9' }} path={mdiThumbUp} />
+            </SelectItemIndicator>
+          </SelectRootItem>
+        ))}
       </SelectViewport>
       <SelectScrollDownButton>
         <Svg path={mdiArrowDownDropCircleOutline} />

@@ -19,28 +19,18 @@ import { CSSProps, styled } from '../../stitches.config'
 import { ChevronDown, ChevronUp, Check } from '../Icons'
 import { inputStyles } from '../Input/Input'
 
-const StyledTrigger = styled(Trigger, {
-  ...inputStyles,
+const StyledTrigger = styled(Trigger, inputStyles, {
   // all: 'unset',
-  display: 'flex',
-  alignItems: 'flex-end',
+  display: 'inline-flex',
+  alignItems: 'center',
   justifyContent: 'space-between',
   // padding: '$2 $3 $2 $6',
   cursor: 'pointer',
   alignContent: 'center'
-  // borderRadius: '$default',
-  // backgroundColor: 'transparent',
-  // border: 'none',
-  // color: '$colors$primary',
-  // '&:hover': { backgroundColor: '$selection' },
-  // '&[data-disabled]': {
-  //   color: '$grey9',
-  //   pointerEvents: 'none',
-  // },
 })
 
 const StyledValue = styled(Value, {
-  // flexGrow: 1,
+  flexGrow: 1
 })
 
 const StyledContent = styled(Content, {
@@ -107,8 +97,7 @@ const scrollButtonStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '$2',
-  backgroundColor: 'white',
+  height: '$5',
   color: '$grey7',
   cursor: 'default'
 }
@@ -130,13 +119,13 @@ const AbstractedSelect = forwardRef<
         <ChevronDown />
       </StyledTrigger>
       <StyledContent>
-        <ScrollUpButton>
+        <StyledScrollUpButton>
           <ChevronUp />
-        </ScrollUpButton>
+        </StyledScrollUpButton>
         <StyledViewport>{children}</StyledViewport>
-        <ScrollDownButton>
+        <StyledScrollDownButton>
           <ChevronDown />
-        </ScrollDownButton>
+        </StyledScrollDownButton>
       </StyledContent>
     </Root>
   )
