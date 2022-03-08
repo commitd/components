@@ -77,6 +77,7 @@ export const Form = () => {
             <Select
               id="country"
               label="Country"
+              defaultValue={listOfCountries[0].title}
               onValueChange={(value) => setCountry(value)}
             >
               {listOfCountries.map((c) => (

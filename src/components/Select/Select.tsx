@@ -1,3 +1,4 @@
+import { useLabelContext } from '@radix-ui/react-label'
 import {
   Root,
   Trigger,
@@ -12,36 +13,34 @@ import {
   Group,
   Separator,
   ScrollDownButton,
-  Label
 } from '@radix-ui/react-select'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { CSSProps, styled } from '../../stitches.config'
 import { ChevronDown, ChevronUp, Check } from '../Icons'
 import { inputStyles } from '../Input/Input'
+import { Label } from '../Label'
 
 const StyledTrigger = styled(Trigger, inputStyles, {
-  // all: 'unset',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  // padding: '$2 $3 $2 $6',
   cursor: 'pointer',
-  alignContent: 'center'
+  alignContent: 'center',
 })
 
 const StyledValue = styled(Value, {
-  flexGrow: 1
+  flexGrow: 1,
 })
 
 const StyledContent = styled(Content, {
   overflow: 'hidden',
   backgroundColor: '$colors$brandBackground',
   borderRadius: '$default',
-  boxShadow: '$2'
+  boxShadow: '$2',
 })
 
 const StyledViewport = styled(Viewport, {
-  padding: 5
+  padding: 5,
 })
 
 const StyledItem = styled(Item, {
@@ -63,25 +62,25 @@ const StyledItem = styled(Item, {
 
   '&:focus': {
     background: '$selection',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   '&[data-disabled]': {
     color: '$grey9',
-    pointerEvents: 'none'
-  }
+    pointerEvents: 'none',
+  },
 })
 
 const StyledLabel = styled(Label, {
   padding: '$0 $2',
   fontSize: '$0',
   lineHeight: '$2',
-  color: '$grey10'
+  color: '$grey10',
 })
 
 const StyledSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey7',
-  margin: '$1'
+  margin: '$1',
 })
 
 const StyledItemIndicator = styled(ItemIndicator, {
@@ -90,7 +89,7 @@ const StyledItemIndicator = styled(ItemIndicator, {
   width: '$4',
   display: 'inline-flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 })
 
 const scrollButtonStyles = {
@@ -99,50 +98,67 @@ const scrollButtonStyles = {
   justifyContent: 'center',
   height: '$5',
   color: '$grey7',
-  cursor: 'default'
+  cursor: 'default',
 }
 
 const StyledScrollUpButton = styled(ScrollUpButton, scrollButtonStyles)
 
 const StyledScrollDownButton = styled(ScrollDownButton, scrollButtonStyles)
 
-type AbstractSelectProps = ComponentProps<typeof Root> & CSSProps
+type SelectProps = ComponentProps<typeof Root> &
+  CSSProps & {
+    /** Add a label to the select */
+    label?: string
+    /** Add id to the select */
+    id?: string
+  }
 
-const AbstractedSelect = forwardRef<
-  ElementRef<typeof Root>,
-  AbstractSelectProps
->(({ children, ...props }, forwardedRef) => {
-  return (
-    <Root {...props}>
-      <StyledTrigger ref={forwardedRef}>
-        <StyledValue />
-        <ChevronDown />
-      </StyledTrigger>
-      <StyledContent>
-        <StyledScrollUpButton>
-          <ChevronUp />
-        </StyledScrollUpButton>
-        <StyledViewport>{children}</StyledViewport>
-        <StyledScrollDownButton>
-          <ChevronDown />
-        </StyledScrollDownButton>
-      </StyledContent>
-    </Root>
-  )
-})
+export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
+  ({ label, id, children, ...props }, forwardedRef) => {
+    const labelId = useLabelContext()
+    return (
+      <>
+        {label && (
+          <Label variant="above" htmlFor={id || labelId}>
+            {label}
+          </Label>
+        )}
+        <Root {...props}>
+          <StyledTrigger
+            aria-labelledby={labelId}
+            id={id || label}
+            ref={forwardedRef}
+          >
+            <StyledValue />
+            <ChevronDown />
+          </StyledTrigger>
+          <StyledContent>
+            <StyledScrollUpButton>
+              <ChevronUp />
+            </StyledScrollUpButton>
+            <StyledViewport>{children}</StyledViewport>
+            <StyledScrollDownButton>
+              <ChevronDown />
+            </StyledScrollDownButton>
+          </StyledContent>
+        </Root>
+      </>
+    )
+  }
+)
 
-type AbstractSelectItemProps = ComponentProps<typeof Item>
+type SelectItemProps = ComponentProps<typeof Item>
 
-const AbstractedSelectItem = forwardRef<
+export const SelectItem = forwardRef<
   ElementRef<typeof StyledItem>,
-  AbstractSelectItemProps
+  SelectItemProps
 >(({ children, ...props }, forwardedRef) => {
   return (
     <StyledItem {...props} ref={forwardedRef}>
-      <ItemText>{children}</ItemText>
       <StyledItemIndicator>
         <Check />
       </StyledItemIndicator>
+      <ItemText>{children}</ItemText>
     </StyledItem>
   )
 })
@@ -155,14 +171,12 @@ const AbstractedSelectItem = forwardRef<
  *
  * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
  */
-export const Select = AbstractedSelect
 export const SelectTrigger = StyledTrigger
 export const SelectValue = StyledValue
 export const SelectIcon = Icon
 export const SelectContent = StyledContent
 export const SelectViewport = StyledViewport
 export const SelectGroup = Group
-export const SelectItem = AbstractedSelectItem
 export const SelectItemText = ItemText
 export const SelectItemIndicator = StyledItemIndicator
 export const SelectLabel = StyledLabel
