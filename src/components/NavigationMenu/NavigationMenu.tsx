@@ -66,11 +66,23 @@ const StyledList = styled(List, {
   all: 'unset',
   display: 'flex',
   justifyContent: 'center',
-  backgroundColor: 'white',
+  //   backgroundColor: 'white',
   padding: 4,
-  borderRadius: 6,
+  //   borderRadius: 6,
   listStyle: 'none',
-  boxShadow: `0 2px 10px $colors$brandGrey12`
+  //   boxShadow: `0 2px 10px $colors$brandGrey12`
+
+  $$main: '$colors$primary',
+  $$mainHover: '$colors$primaryHighlight',
+  $$contrast: '$colors$primaryContrast',
+  $$default: '$colors$default',
+  $$defaultHover: '$colors$defaultHighlight',
+
+  fontSize: '$0',
+  borderRadius: '$default',
+  backgroundColor: '$paper',
+  border: 'none',
+  width: 'fit-content; width: -moz-fit-content'
 })
 
 const itemStyles = {
@@ -81,9 +93,9 @@ const itemStyles = {
   lineHeight: 1,
   borderRadius: 4,
   fontSize: 15,
-  color: '$colors$primary',
-  '&:focus': { position: 'relative', boxShadow: `0 0 0 2px $colors$primary` },
-  '&:hover': { backgroundColor: '$colors$primary' }
+  color: '$paper',
+  '&:focus': { position: 'relative', boxShadow: `0 0 0 $0 $colors$primary` },
+  '&:hover': { backgroundColor: '$colors$primary7' }
 }
 
 const StyledTrigger = styled(Trigger, {
@@ -183,7 +195,7 @@ const StyledIndicator = styled(Indicator, {
 const StyledArrow = styled('div', {
   position: 'relative',
   top: '70%',
-  backgroundColor: 'white',
+  backgroundColor: '$paper',
   width: 10,
   height: 10,
   transform: 'rotate(45deg)',
@@ -203,7 +215,7 @@ const StyledViewport = styled(Viewport, {
   transformOrigin: 'top center',
   marginTop: 10,
   width: '100%',
-  backgroundColor: 'white',
+  backgroundColor: '$paper',
   borderRadius: 6,
   overflow: 'hidden',
   boxShadow:
