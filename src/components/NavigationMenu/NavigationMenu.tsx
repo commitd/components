@@ -10,7 +10,7 @@ import {
   Item,
   List
 } from '@radix-ui/react-navigation-menu'
-import { mauve, violet } from '@radix-ui/colors'
+// import { mauve, violet } from '@radix-ui/colors'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
 
@@ -118,9 +118,15 @@ const StyledCaret = styled(ChevronDown, {
 })
 
 const NAV_MENU_TRIGGER_CLASS_NAME = 'c-popover-trigger'
-export type NavigationMenuTriggerProps = Omit<
-  ComponentProps<typeof StyledTrigger>,
-  'asChild'
+// export type NavigationMenuTriggerProps = Omit<
+//   ComponentProps<typeof StyledTrigger>,
+//   'asChild'
+// > & {
+//   caret?: boolean
+// }
+
+export type NavigationMenuTriggerProps = ComponentProps<
+  typeof StyledTrigger
 > & {
   caret?: boolean
 }
@@ -130,12 +136,13 @@ export const NavigationMenuTrigger = forwardRef<
 >(({ children, caret = false, ...props }, forwardedRef) => (
   <StyledTrigger
     className={NAV_MENU_TRIGGER_CLASS_NAME}
-    asChild
     {...props}
     ref={forwardedRef}
   >
-    {children}
-    {caret && <StyledCaret aria-hidden />}
+    <>
+      {children}
+      {caret && <StyledCaret aria-hidden />}
+    </>
   </StyledTrigger>
 ))
 NavigationMenuTrigger.toString = () => `.${NAV_MENU_TRIGGER_CLASS_NAME}`
@@ -196,8 +203,8 @@ const StyledArrow = styled('div', {
   position: 'relative',
   top: '70%',
   backgroundColor: '$paper',
-  width: 10,
-  height: 10,
+  width: '$3',
+  height: '$3',
   transform: 'rotate(45deg)',
   borderTopLeftRadius: 2
 })
@@ -234,9 +241,9 @@ const StyledViewport = styled(Viewport, {
 
 const ContentList = styled('ul', {
   display: 'grid',
-  padding: 22,
-  margin: 0,
-  columnGap: 10,
+  padding: '$5',
+  margin: '$0',
+  columnGap: '$3',
   listStyle: 'none',
 
   variants: {
@@ -262,17 +269,18 @@ const ListItem = styled('li', {})
 
 // TODO: Replace/Match up with CC Links
 const LinkTitle = styled('div', {
-  fontWeight: 500,
-  lineHeight: 1.2,
-  marginBottom: 5,
-  color: violet.violet12
+  fontWeight: '$bold',
+  fontSize: '$0',
+  lineHeight: '$body',
+  marginBottom: '$2',
+  color: '$text'
 })
 
 const LinkText = styled('p', {
   all: 'unset',
-  color: mauve.mauve11,
-  lineHeight: 1.4,
-  fontWeight: 'initial'
+  color: '$textSecondary',
+  lineHeight: '$body',
+  fontWeight: '$regular'
 })
 
 type ContentListItemProps = ComponentProps<typeof StyledLink> & {
@@ -291,7 +299,7 @@ const ContentListItem = forwardRef<
       css={{
         padding: 12,
         borderRadius: 6,
-        '&:hover': { backgroundColor: mauve.mauve3 }
+        '&:hover': { backgroundColor: '$colors$primary7' }
       }}
     >
       <>
