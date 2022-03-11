@@ -38,7 +38,6 @@ const ViewportPosition = styled('div', {
   width: '100%',
   top: '100%',
   left: 0
-  // perspective: '2000px',
 })
 
 const Template: Story = args => (
@@ -49,7 +48,7 @@ const Template: Story = args => (
           <Text>Learn</Text>
         </NavigationMenuTrigger>
         <NavigationMenuContent>
-          <NavigationMenuContentList layout="one">
+          <NavigationMenuContentList layout="column">
             <NavigationMenuContentListItem
               href="https://stitches.dev/"
               title="Stitches"
@@ -65,6 +64,21 @@ const Template: Story = args => (
             >
               <Text>A crisp set of 15x15 icons, balanced and consistent.</Text>
             </NavigationMenuContentListItem>
+            {/* <NavigationMenuContentListItem
+              href="https://stitches.dev/"
+              title="Stitches"
+            >
+              <Text>CSS-in-JS with best-in-class developer experience.</Text>
+            </NavigationMenuContentListItem>
+            <NavigationMenuContentListItem href="/colors" title="Colors">
+              <Text>Beautiful, thought-out palettes with auto dark mode.</Text>
+            </NavigationMenuContentListItem>
+            <NavigationMenuContentListItem
+              href="https://icons.modulz.app/"
+              title="Icons"
+            >
+              <Text>A crisp set of 15x15 icons, balanced and consistent.</Text>
+            </NavigationMenuContentListItem> */}
           </NavigationMenuContentList>
         </NavigationMenuContent>
       </NavigationMenuItem>

@@ -2,7 +2,6 @@ import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { styled, keyframes } from '@stitches/react'
 import {
   Root,
-  Link,
   Trigger,
   Content,
   Indicator,
@@ -10,7 +9,7 @@ import {
   Item,
   List
 } from '@radix-ui/react-navigation-menu'
-// import { mauve, violet } from '@radix-ui/colors'
+import { Link } from '../Link'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
 
@@ -89,11 +88,7 @@ const itemStyles = {
   padding: '8px 12px',
   outline: 'none',
   userSelect: 'none',
-  fontWeight: 500,
-  lineHeight: 1,
   borderRadius: 4,
-  fontSize: 15,
-  color: '$paper',
   '&:focus': { position: 'relative', boxShadow: `0 0 0 $0 $colors$primary` },
   '&:hover': { backgroundColor: '$colors$primary7' }
 }
@@ -104,6 +99,7 @@ const StyledTrigger = styled(Trigger, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  // textDecoration: 'underline',
   gap: 2
 })
 
@@ -118,12 +114,6 @@ const StyledCaret = styled(ChevronDown, {
 })
 
 const NAV_MENU_TRIGGER_CLASS_NAME = 'c-popover-trigger'
-// export type NavigationMenuTriggerProps = Omit<
-//   ComponentProps<typeof StyledTrigger>,
-//   'asChild'
-// > & {
-//   caret?: boolean
-// }
 
 export type NavigationMenuTriggerProps = ComponentProps<
   typeof StyledTrigger
@@ -168,7 +158,7 @@ const StyledContent = styled(Content, paperStyles, {
   },
   filter:
     'drop-shadow(0px 3px 2.5px rgba(0,0,0,0.2)) drop-shadow(0px 6px 5px rgba(0,0,0,0.14)) drop-shadow(0px 1px 9px rgba(0,0,0,0.12))',
-  position: 'absolute',
+  position: 'relative',
   top: 0,
   left: 0,
   width: '100%',
@@ -220,10 +210,10 @@ const StyledIndicatorWithArrow = forwardRef<ElementRef<typeof StyledIndicator>>(
 const StyledViewport = styled(Viewport, {
   position: 'relative',
   transformOrigin: 'top center',
-  marginTop: 10,
+  marginTop: '$2',
   width: '100%',
   backgroundColor: '$paper',
-  borderRadius: 6,
+  borderRadius: '$3',
   overflow: 'hidden',
   boxShadow:
     'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
@@ -241,22 +231,23 @@ const StyledViewport = styled(Viewport, {
 
 const ContentList = styled('ul', {
   display: 'grid',
-  padding: '$5',
+  padding: '$2',
   margin: '$0',
   columnGap: '$3',
+  rowGap: '$2',
   listStyle: 'none',
 
   variants: {
     layout: {
       one: {
         '@media only screen and (min-width: 600px)': {
-          width: 500,
+          width: '100%',
           gridTemplateColumns: '.75fr 1fr'
         }
       },
-      two: {
+      column: {
         '@media only screen and (min-width: 600px)': {
-          width: 600,
+          width: '100%',
           gridAutoFlow: 'column',
           gridTemplateRows: 'repeat(3, 1fr)'
         }
@@ -267,7 +258,6 @@ const ContentList = styled('ul', {
 
 const ListItem = styled('li', {})
 
-// TODO: Replace/Match up with CC Links
 const LinkTitle = styled('div', {
   fontWeight: '$bold',
   fontSize: '$0',
@@ -297,8 +287,8 @@ const ContentListItem = forwardRef<
       {...props}
       ref={forwardedRef}
       css={{
-        padding: 12,
-        borderRadius: 6,
+        padding: '$3',
+        borderRadius: '$3',
         '&:hover': { backgroundColor: '$colors$primary7' }
       }}
     >
