@@ -1,6 +1,5 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { styled } from '../../stitches.config'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
+  NavigationViewportPosition,
   NavigationMenuContentList,
   NavigationMenuContentListItem
 } from '.'
@@ -31,54 +31,37 @@ export default {
   }
 } as Meta
 
-const ViewportPosition = styled('div', {
-  position: 'absolute',
-  display: 'flex',
-  justifyContent: 'center',
-  width: '100%',
-  top: '100%',
-  left: 0
-})
-
 const Template: Story = args => (
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
         <NavigationMenuTrigger caret={true}>
-          <Text>Learn</Text>
+          <Text>Components</Text>
         </NavigationMenuTrigger>
         <NavigationMenuContent>
-          <NavigationMenuContentList layout="column">
+          <NavigationMenuContentList layout="row">
             <NavigationMenuContentListItem
-              href="https://stitches.dev/"
-              title="Stitches"
+              href="https://components.committed.software"
+              title="Storybook"
             >
-              <Text>CSS-in-JS with best-in-class developer experience.</Text>
+              <Text>
+                A live storybook version of the current committed components.
+              </Text>
             </NavigationMenuContentListItem>
-            <NavigationMenuContentListItem href="/colors" title="Colors">
+            <NavigationMenuContentListItem
+              href="/design-system-colour--page"
+              title="Colors"
+            >
               <Text>Beautiful, thought-out palettes with auto dark mode.</Text>
             </NavigationMenuContentListItem>
             <NavigationMenuContentListItem
-              href="https://icons.modulz.app/"
+              href="/components-icons--icon-grid"
               title="Icons"
             >
-              <Text>A crisp set of 15x15 icons, balanced and consistent.</Text>
+              <Text>
+                A collection of available icons based on material designs.
+              </Text>
             </NavigationMenuContentListItem>
-            {/* <NavigationMenuContentListItem
-              href="https://stitches.dev/"
-              title="Stitches"
-            >
-              <Text>CSS-in-JS with best-in-class developer experience.</Text>
-            </NavigationMenuContentListItem>
-            <NavigationMenuContentListItem href="/colors" title="Colors">
-              <Text>Beautiful, thought-out palettes with auto dark mode.</Text>
-            </NavigationMenuContentListItem>
-            <NavigationMenuContentListItem
-              href="https://icons.modulz.app/"
-              title="Icons"
-            >
-              <Text>A crisp set of 15x15 icons, balanced and consistent.</Text>
-            </NavigationMenuContentListItem> */}
           </NavigationMenuContentList>
         </NavigationMenuContent>
       </NavigationMenuItem>
@@ -88,19 +71,38 @@ const Template: Story = args => (
           <Text>Github</Text>
         </NavigationMenuLink>
       </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuLink href="https://components.committed.software">
-          <Text>Storybook</Text>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
 
       <NavigationMenuIndicator />
     </NavigationMenuList>
 
-    <ViewportPosition>
+    <NavigationViewportPosition>
       <NavigationMenuViewport />
-    </ViewportPosition>
+    </NavigationViewportPosition>
   </NavigationMenu>
 )
 
 export const Default = Template.bind({})
+
+export const SimpleLinks = () => {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink href="https://github.com/commitd/components">
+            <Text>Github</Text>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink href="https://components.committed.software">
+            <Text>Storybook</Text>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuIndicator />
+      </NavigationMenuList>
+
+      <NavigationViewportPosition>
+        <NavigationMenuViewport />
+      </NavigationViewportPosition>
+    </NavigationMenu>
+  )
+}

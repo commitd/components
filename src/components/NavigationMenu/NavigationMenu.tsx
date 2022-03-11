@@ -65,27 +65,18 @@ const StyledList = styled(List, {
   all: 'unset',
   display: 'flex',
   justifyContent: 'center',
-  //   backgroundColor: 'white',
   padding: 4,
-  //   borderRadius: 6,
   listStyle: 'none',
-  //   boxShadow: `0 2px 10px $colors$brandGrey12`
-
-  $$main: '$colors$primary',
-  $$mainHover: '$colors$primaryHighlight',
-  $$contrast: '$colors$primaryContrast',
-  $$default: '$colors$default',
-  $$defaultHover: '$colors$defaultHighlight',
 
   fontSize: '$0',
-  borderRadius: '$default',
+  borderRadius: '$3',
   backgroundColor: '$paper',
   border: 'none',
   width: 'fit-content; width: -moz-fit-content'
 })
 
 const itemStyles = {
-  padding: '8px 12px',
+  padding: '$2 $3',
   outline: 'none',
   userSelect: 'none',
   borderRadius: 4,
@@ -146,7 +137,7 @@ const StyledLink = styled(Link, {
 })
 
 const StyledContent = styled(Content, paperStyles, {
-  borderRadius: '$default',
+  borderRadius: '$3',
   padding: '$4',
 
   display: 'flex',
@@ -162,7 +153,7 @@ const StyledContent = styled(Content, paperStyles, {
   top: 0,
   left: 0,
   width: '100%',
-  '@media only screen and (min-width: 600px)': { width: 'auto' },
+  '@default': { width: 'auto' },
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '250ms',
     animationTimingFunction: 'ease',
@@ -213,15 +204,11 @@ const StyledViewport = styled(Viewport, {
   marginTop: '$2',
   width: '100%',
   backgroundColor: '$paper',
-  borderRadius: '$3',
+  borderRadius: 6,
   overflow: 'hidden',
-  boxShadow:
-    'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
+  boxShadow: '$2',
   height: 'var(--radix-navigation-menu-viewport-height)',
 
-  '@media only screen and (min-width: 600px)': {
-    width: 'var(--radix-navigation-menu-viewport-width)'
-  },
   '@media (prefers-reduced-motion: no-preference)': {
     transition: 'width, height, 300ms ease',
     '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
@@ -231,23 +218,21 @@ const StyledViewport = styled(Viewport, {
 
 const ContentList = styled('ul', {
   display: 'grid',
-  padding: '$2',
   margin: '$0',
-  columnGap: '$3',
+  columnGap: '$2',
   rowGap: '$2',
   listStyle: 'none',
 
   variants: {
     layout: {
-      one: {
-        '@media only screen and (min-width: 600px)': {
-          width: '100%',
-          gridTemplateColumns: '.75fr 1fr'
+      row: {
+        '@default': {
+          gridAutoFlow: 'row',
+          gridTemplateRows: 'repeat(3, 1fr)'
         }
       },
       column: {
-        '@media only screen and (min-width: 600px)': {
-          width: '100%',
+        '@default': {
           gridAutoFlow: 'column',
           gridTemplateRows: 'repeat(3, 1fr)'
         }
@@ -273,12 +258,20 @@ const LinkText = styled('p', {
   fontWeight: '$regular'
 })
 
+const ViewportPosition = styled('div', {
+  position: 'absolute',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  top: '100%',
+  left: 0
+})
+
 type ContentListItemProps = ComponentProps<typeof StyledLink> & {
   title: string
 }
 
 const ContentListItem = forwardRef<
-  //   ElementRef<typeof ListItem>,
   ElementRef<typeof StyledLink>,
   ContentListItemProps
 >(({ children, title, ...props }, forwardedRef) => (
@@ -287,8 +280,7 @@ const ContentListItem = forwardRef<
       {...props}
       ref={forwardedRef}
       css={{
-        padding: '$3',
-        borderRadius: '$3',
+        borderRadius: 3,
         '&:hover': { backgroundColor: '$colors$primary7' }
       }}
     >
@@ -302,12 +294,22 @@ const ContentListItem = forwardRef<
 
 const StyledItem = styled(Item, {})
 
-// Exports
+/**
+ * NavigationMenu component
+ *
+ * Displays a collection of links for navigation websites or apps.
+ *
+ * Navigation Menu Items can either be in the form of simply links (by using a NavigationMenuLink) or
+ * take the form of a extended menu, similar to a Popover, controlled by a NavigationMenuTrigger.
+ *
+ * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/navigation-menu).
+ */
 export const NavigationMenu = StyledMenu
 export const NavigationMenuList = StyledList
 export const NavigationMenuItem = StyledItem
 export const NavigationMenuLink = StyledLink
 export const NavigationMenuContent = StyledContent
+export const NavigationViewportPosition = ViewportPosition
 export const NavigationMenuViewport = StyledViewport
 export const NavigationMenuIndicator = StyledIndicatorWithArrow
 export const NavigationMenuContentList = ContentList
