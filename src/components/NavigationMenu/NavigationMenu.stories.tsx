@@ -11,9 +11,9 @@ import {
   NavigationMenuViewport,
   NavigationViewportPosition,
   NavigationMenuContentList,
-  NavigationMenuContentListItem
+  NavigationMenuContentListItem,
+  NavigationMenuContentListLink
 } from '.'
-import { Text } from '../Text'
 
 export default {
   title: 'Components/NavigationMenu',
@@ -27,7 +27,8 @@ export default {
     NavigationMenuTrigger,
     NavigationMenuViewport,
     NavigationMenuContentList,
-    NavigationMenuContentListItem
+    NavigationMenuContentListItem,
+    NavigationMenuContentListLink
   }
 } as Meta
 
@@ -35,32 +36,26 @@ const Template: Story = args => (
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuTrigger caret={true}>
-          <Text>Components</Text>
-        </NavigationMenuTrigger>
+        <NavigationMenuTrigger caret={true}>Components</NavigationMenuTrigger>
         <NavigationMenuContent>
           <NavigationMenuContentList layout="row">
-            <NavigationMenuContentListItem
-              href="https://components.committed.software"
-              title="Storybook"
-            >
-              <Text>
-                A live storybook version of the current committed components.
-              </Text>
+            <NavigationMenuContentListItem href="https://components.committed.software">
+              <NavigationMenuContentListLink
+                title="Storybook"
+                text="A live storybook version of the current committed components."
+              />
             </NavigationMenuContentListItem>
-            <NavigationMenuContentListItem
-              href="/design-system-colour--page"
-              title="Colors"
-            >
-              <Text>Beautiful, thought-out palettes with auto dark mode.</Text>
+            <NavigationMenuContentListItem href="/design-system-colour--page">
+              <NavigationMenuContentListLink
+                title="Colors"
+                text="Beautiful, thought-out palettes with auto dark mode."
+              />
             </NavigationMenuContentListItem>
-            <NavigationMenuContentListItem
-              href="/components-icons--icon-grid"
-              title="Icons"
-            >
-              <Text>
-                A collection of available icons based on material designs.
-              </Text>
+            <NavigationMenuContentListItem href="/components-icons--icon-grid">
+              <NavigationMenuContentListLink
+                title="Icons"
+                text="A collection of available icons based on material designs."
+              />
             </NavigationMenuContentListItem>
           </NavigationMenuContentList>
         </NavigationMenuContent>
@@ -68,7 +63,7 @@ const Template: Story = args => (
 
       <NavigationMenuItem>
         <NavigationMenuLink href="https://github.com/commitd/components">
-          <Text>Github</Text>
+          Github
         </NavigationMenuLink>
       </NavigationMenuItem>
 
@@ -83,26 +78,93 @@ const Template: Story = args => (
 
 export const Default = Template.bind({})
 
-export const SimpleLinks = () => {
+/** Links and triggers follow the same variant formats as Buttons, namely Primary, Secondary, Tertiary and Brand. By Default, Secondary is used*/
+export const Variants = () => {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="https://github.com/commitd/components">
-            <Text>Github</Text>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="https://components.committed.software">
-            <Text>Storybook</Text>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuIndicator />
-      </NavigationMenuList>
+    <>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/components-button--default#variant"
+              variant={'primary'}
+            >
+              Primary
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/components-button--default#variant"
+              variant={'secondary'}
+            >
+              Secondary
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/components-button--default#variant"
+              variant={'brand'}
+            >
+              Brand
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/components-button--default#variant"
+              variant={'tertiary'}
+            >
+              Tertiary
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuIndicator />
+        </NavigationMenuList>
 
-      <NavigationViewportPosition>
-        <NavigationMenuViewport />
-      </NavigationViewportPosition>
-    </NavigationMenu>
+        <NavigationViewportPosition>
+          <NavigationMenuViewport />
+        </NavigationViewportPosition>
+      </NavigationMenu>
+
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger caret={true} variant={'primary'}>
+              Primary
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuContentList layout="row"></NavigationMenuContentList>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger caret={true} variant={'secondary'}>
+              Secondary
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuContentList layout="row"></NavigationMenuContentList>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger caret={true} variant={'tertiary'}>
+              Tertiary
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuContentList layout="row"></NavigationMenuContentList>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger caret={true} variant={'brand'}>
+              Brand
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuContentList layout="row"></NavigationMenuContentList>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuIndicator />
+        </NavigationMenuList>
+
+        <NavigationViewportPosition>
+          <NavigationMenuViewport />
+        </NavigationViewportPosition>
+      </NavigationMenu>
+    </>
   )
 }

@@ -1,5 +1,5 @@
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import { styled, keyframes } from '@stitches/react'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import { styled, keyframes, css } from '../../stitches.config'
 import {
   Root,
   Trigger,
@@ -7,9 +7,10 @@ import {
   Indicator,
   Viewport,
   Item,
-  List
+  List,
+  Link
 } from '@radix-ui/react-navigation-menu'
-import { Link } from '../Link'
+import { mainVariants } from '../Button/Button'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
 
@@ -65,14 +66,13 @@ const StyledList = styled(List, {
   all: 'unset',
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'stretch',
   padding: 4,
   listStyle: 'none',
-
   fontSize: '$0',
   borderRadius: '$3',
   backgroundColor: '$paper',
-  border: 'none',
-  width: 'fit-content; width: -moz-fit-content'
+  border: 'none'
 })
 
 const itemStyles = {
@@ -81,17 +81,32 @@ const itemStyles = {
   userSelect: 'none',
   borderRadius: 4,
   '&:focus': { position: 'relative', boxShadow: `0 0 0 $0 $colors$primary` },
-  '&:hover': { backgroundColor: '$colors$primary7' }
+  '&:hover': { backgroundColor: '$colors$primary7' },
+  gap: 2
 }
 
-const StyledTrigger = styled(Trigger, {
+const menuVariants = css({
+  $$main: '$colors$primary',
+  $$mainHover: '$colors$primaryHighlight',
+  $$contrast: '$colors$primaryContrast',
+  $$default: '$colors$default',
+  $$defaultHover: '$colors$defaultHighlight',
+  boxSizing: 'border-box',
+  variants: {
+    variant: mainVariants
+  }
+})
+
+const StyledTrigger = styled(Trigger, menuVariants, {
   all: 'unset',
   ...itemStyles,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  // textDecoration: 'underline',
-  gap: 2
+
+  defaultVariants: {
+    variant: 'secondary'
+  }
 })
 
 const StyledCaret = styled(ChevronDown, {
@@ -128,13 +143,17 @@ export const NavigationMenuTrigger = forwardRef<
 ))
 NavigationMenuTrigger.toString = () => `.${NAV_MENU_TRIGGER_CLASS_NAME}`
 
-const StyledLink = styled(Link, {
+const StyledMenuLink = styled(Link, menuVariants, {
   ...itemStyles,
-  display: 'block',
-  textDecoration: 'none',
-  fontSize: 15,
-  lineHeight: 1
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  defaultVariants: {
+    variant: 'secondary'
+  }
 })
+
+export const NavigationMenuLink = StyledMenuLink
 
 const StyledContent = styled(Content, paperStyles, {
   borderRadius: '$3',
@@ -255,7 +274,8 @@ const LinkText = styled('p', {
   all: 'unset',
   color: '$textSecondary',
   lineHeight: '$body',
-  fontWeight: '$regular'
+  fontWeight: '$regular',
+  textDecoration: 'none'
 })
 
 const ViewportPosition = styled('div', {
@@ -267,16 +287,18 @@ const ViewportPosition = styled('div', {
   left: 0
 })
 
-type ContentListItemProps = ComponentProps<typeof StyledLink> & {
-  title: string
-}
+const StyledLink = styled(Link, {
+  ...itemStyles,
+  display: 'block',
+  textDecoration: 'none'
+})
 
 const ContentListItem = forwardRef<
   ElementRef<typeof StyledLink>,
-  ContentListItemProps
->(({ children, title, ...props }, forwardedRef) => (
+  ComponentProps<typeof StyledLink>
+>(({ children, ...props }, forwardedRef) => (
   <ListItem>
-    <NavigationMenuLink
+    <StyledLink
       {...props}
       ref={forwardedRef}
       css={{
@@ -284,13 +306,22 @@ const ContentListItem = forwardRef<
         '&:hover': { backgroundColor: '$colors$primary7' }
       }}
     >
-      <>
-        <LinkTitle>{title}</LinkTitle>
-        <LinkText>{children}</LinkText>
-      </>
-    </NavigationMenuLink>
+      {children}
+    </StyledLink>
   </ListItem>
 ))
+
+export type ContentListTextLinkProps = {
+  title: string
+  text?: string
+}
+
+const ContentListLink: FC<ContentListTextLinkProps> = ({ title, text }) => (
+  <>
+    <LinkTitle>{title}</LinkTitle>
+    {text && <LinkText>{text}</LinkText>}
+  </>
+)
 
 const StyledItem = styled(Item, {})
 
@@ -307,10 +338,10 @@ const StyledItem = styled(Item, {})
 export const NavigationMenu = StyledMenu
 export const NavigationMenuList = StyledList
 export const NavigationMenuItem = StyledItem
-export const NavigationMenuLink = StyledLink
 export const NavigationMenuContent = StyledContent
 export const NavigationViewportPosition = ViewportPosition
 export const NavigationMenuViewport = StyledViewport
 export const NavigationMenuIndicator = StyledIndicatorWithArrow
 export const NavigationMenuContentList = ContentList
 export const NavigationMenuContentListItem = ContentListItem
+export const NavigationMenuContentListLink = ContentListLink
