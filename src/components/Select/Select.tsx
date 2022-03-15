@@ -1,123 +1,121 @@
 import { useLabelContext } from '@radix-ui/react-label'
-import { useControllableState } from '@radix-ui/react-use-controllable-state'
-import React, {
-  ComponentProps,
-  ElementRef,
-  forwardRef,
-  useMemo,
-  Children,
-  isValidElement,
-} from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
-import { ChevronDown } from '../Icons'
+import {
+  Root,
+  Trigger,
+  Value,
+  Icon,
+  Content,
+  ScrollUpButton,
+  Viewport,
+  Item,
+  ItemText,
+  ItemIndicator,
+  Group,
+  Separator,
+  ScrollDownButton
+} from '@radix-ui/react-select'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import { CSSProps, styled } from '../../stitches.config'
+import { ChevronDown, ChevronUp, Check } from '../Icons'
 import { inputStyles } from '../Input/Input'
 import { Label } from '../Label'
-import { useId } from '@radix-ui/react-id'
-import {
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuTrigger,
-} from '../Menu'
-import { Svg } from '../Svg'
 
-const DEFAULT_TAG = 'input'
-const StyledSelect = styled(DEFAULT_TAG, inputStyles, {
-  cursor: 'pointer',
-  textAlign: 'left',
-  pointerEvents: 'none',
-})
-export const SelectItem = MenuRadioItem
-
-const Root = styled('div', {
-  boxSizing: 'border-box',
-  position: 'relative',
-  cursor: 'pointer',
+const StyledTrigger = styled(Trigger, inputStyles, {
   display: 'inline-flex',
   alignItems: 'center',
-  width: '100%',
-  [`& ${Svg}`]: {
-    position: 'absolute',
-    right: '$4',
-  },
-  variants: {
-    disabled: {
-      true: {
-        pointerEvents: 'none',
-      },
-    },
-  },
+  justifyContent: 'space-between',
+  cursor: 'pointer',
+  alignContent: 'center'
 })
 
-type SelectVariants = VariantProps<typeof StyledSelect>
-type SelectProps = CSSProps &
-  SelectVariants & {
-    /** Add a label to the Select */
+const StyledValue = styled(Value, {
+  flexGrow: 1
+})
+
+const StyledContent = styled(Content, {
+  overflow: 'hidden',
+  backgroundColor: '$colors$brandBackground',
+  borderRadius: '$default',
+  boxShadow: '$2'
+})
+
+const StyledViewport = styled(Viewport, {
+  padding: 5
+})
+
+const StyledItem = styled(Item, {
+  all: 'unset',
+  fontSize: '$0',
+  padding: '$2 $3 $2 $6',
+  cursor: 'default',
+  borderRadius: '$default',
+  backgroundColor: 'transparent',
+  border: 'none',
+  color: '$text',
+  outline: 'none',
+  transition: 'all 50ms',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  position: 'relative',
+  userSelect: 'none',
+
+  '&:focus': {
+    background: '$selection',
+    cursor: 'pointer'
+  },
+  '&[data-disabled]': {
+    color: '$grey9',
+    pointerEvents: 'none'
+  }
+})
+
+const StyledLabel = styled(Label, {
+  padding: '$0 $2',
+  fontSize: '$0',
+  lineHeight: '$2',
+  color: '$grey10'
+})
+
+const StyledSeparator = styled(Separator, {
+  height: 1,
+  backgroundColor: '$grey7',
+  margin: '$1'
+})
+
+const StyledItemIndicator = styled(ItemIndicator, {
+  position: 'absolute',
+  left: '$2',
+  width: '$4',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+})
+
+const scrollButtonStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '$5',
+  color: '$grey7',
+  cursor: 'default'
+}
+
+const StyledScrollUpButton = styled(ScrollUpButton, scrollButtonStyles)
+
+const StyledScrollDownButton = styled(ScrollDownButton, scrollButtonStyles)
+
+type SelectProps = ComponentProps<typeof Root> &
+  CSSProps & {
+    /** Add a label to the select */
     label?: string
-    /** To supply a controlled value */
-    value?: string
-    /** Supply a starting value for uncontrolled instance */
-    defaultValue?: string
-    /** Supply a starting placeholder value for uncontrolled instance */
-    placeholder?: string
-    /** Supply a header for the select menu  */
-    header?: string
-    /** Called on Select change with new value */
-    onValueChange?: (value: string) => void
-  } & ComponentProps<typeof DEFAULT_TAG>
+    /** Add id to the select */
+    id?: string
+  }
 
-const SELECT_CLASS_NAME = 'c-select'
-
-/**
- * Select component
- *
- * ___!! This is a temporary implementation, to be replaced on release of radix-ui select. !!___
- *
- *
- */
-export const Select = forwardRef<ElementRef<typeof StyledSelect>, SelectProps>(
-  (
-    {
-      label,
-      id: idProp,
-      value,
-      onValueChange,
-      defaultValue,
-      children,
-      placeholder,
-      header,
-      disabled,
-      ...props
-    },
-    ref
-  ) => {
-    const [internalValue, setValue] = useControllableState({
-      prop: value,
-      defaultProp: defaultValue || placeholder,
-      onChange: onValueChange,
-    })
-
-    const id = useId(idProp)
+export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
+  ({ label, id, children, ...props }, forwardedRef) => {
     const labelId = useLabelContext()
-
-    const valueToText = useMemo<Record<string, string>>(() => {
-      const mapped: Record<string, string> = {}
-      Children.forEach(Children.toArray(children), (child) => {
-        if (
-          isValidElement(child) &&
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          typeof child?.props?.children === 'string'
-        ) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
-          mapped[child.props.value] = child.props.children
-        }
-      })
-      return mapped
-    }, [children])
-
     return (
       <>
         {label && (
@@ -125,32 +123,67 @@ export const Select = forwardRef<ElementRef<typeof StyledSelect>, SelectProps>(
             {label}
           </Label>
         )}
-        <Menu>
-          <MenuTrigger>
-            <Root disabled={disabled} className={SELECT_CLASS_NAME}>
-              <StyledSelect
-                id={id}
-                aria-labelledby={labelId}
-                disabled={disabled}
-                {...props}
-                ref={ref}
-                placeholder={placeholder}
-                value={internalValue && valueToText[internalValue]}
-                // Just there to suppress warning
-                onChange={() => null}
-              />
+        <Root {...props}>
+          <StyledTrigger
+            aria-labelledby={labelId}
+            id={id || label}
+            ref={forwardedRef}
+          >
+            <StyledValue />
+            <ChevronDown />
+          </StyledTrigger>
+          <StyledContent>
+            <StyledScrollUpButton>
+              <ChevronUp />
+            </StyledScrollUpButton>
+            <StyledViewport>{children}</StyledViewport>
+            <StyledScrollDownButton>
               <ChevronDown />
-            </Root>
-          </MenuTrigger>
-          <MenuContent align="start" sideOffset={4} alignOffset={4}>
-            {header && <MenuItem disabled>{header}</MenuItem>}
-            <MenuRadioGroup value={internalValue} onValueChange={setValue}>
-              {children}
-            </MenuRadioGroup>
-          </MenuContent>
-        </Menu>
+            </StyledScrollDownButton>
+          </StyledContent>
+        </Root>
       </>
     )
   }
 )
-Select.toString = () => `.${SELECT_CLASS_NAME}`
+
+type SelectItemProps = ComponentProps<typeof Item>
+
+export const SelectItem = forwardRef<
+  ElementRef<typeof StyledItem>,
+  SelectItemProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledItem {...props} ref={forwardedRef}>
+      <StyledItemIndicator>
+        <Check />
+      </StyledItemIndicator>
+      <ItemText>{children}</ItemText>
+    </StyledItem>
+  )
+})
+
+/**
+ * Select component
+ *
+ * Displays a dropdown list of options to the user - usually triggered by clicking a button.
+ *
+ *
+ * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
+ */
+export const SelectTrigger = StyledTrigger
+export const SelectValue = StyledValue
+export const SelectIcon = Icon
+export const SelectContent = StyledContent
+export const SelectViewport = StyledViewport
+export const SelectGroup = Group
+export const SelectItemText = ItemText
+export const SelectItemIndicator = StyledItemIndicator
+export const SelectLabel = StyledLabel
+export const SelectSeparator = StyledSeparator
+export const SelectScrollUpButton = StyledScrollUpButton
+export const SelectScrollDownButton = StyledScrollDownButton
+
+// Included as exports to allow non-abstracted access to a Styled Radix-based Select
+export const SelectRoot = Root
+export const SelectRootItem = StyledItem
