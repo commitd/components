@@ -14,6 +14,7 @@ import {
   NavigationMenuContentListItem,
   NavigationMenuContentListLink
 } from '.'
+import { WrappedNavigationMenu } from './NavigationMenu'
 
 export default {
   title: 'Components/NavigationMenu',
@@ -78,7 +79,7 @@ const Template: Story = args => (
 
 export const Default = Template.bind({})
 
-/** Links and triggers follow the same variant formats as Buttons, namely Primary, Secondary, Tertiary and Brand. By Default, Secondary is used*/
+/** Links and triggers follow the same variant formats as Buttons, namely Primary, Secondary, Tertiary and Brand. By Default, Secondary is used.*/
 export const Variants = () => {
   return (
     <>
@@ -167,4 +168,36 @@ export const Variants = () => {
       </NavigationMenu>
     </>
   )
+}
+
+/** NavigationMenu also provides a wrapped version, aimed primary at use in [AppBar](TODO LINK) as show [here](TODO LINK), however can also be used elsewhere as a simplified version as shown in this example. */
+export const Wrapped = () => {
+  const list = {
+    trigger: 'Wrapped List',
+    links: [
+      {
+        href: '/design-system-colour--page',
+        content: {
+          title: 'Colors',
+          text: 'Beautiful, thought-out palettes with auto dark mode.'
+        }
+      },
+      {
+        href: '/components-icons--icon-grid',
+        content: {
+          title: 'Icons',
+          text: 'A collection of available icons based on material designs.'
+        }
+      }
+    ]
+  }
+  const storybookLink = {
+    href: 'https://components.committed.software',
+    text: 'Storybook'
+  }
+  const githubLink = {
+    href: 'https://github.com/commitd/components',
+    text: 'Github'
+  }
+  return <WrappedNavigationMenu items={[list, storybookLink, githubLink]} />
 }

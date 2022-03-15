@@ -148,6 +148,7 @@ const StyledMenuLink = styled(Link, menuVariants, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  height: '100%',
   defaultVariants: {
     variant: 'secondary'
   }
@@ -221,7 +222,7 @@ const StyledViewport = styled(Viewport, {
   position: 'relative',
   transformOrigin: 'top center',
   marginTop: '$2',
-  width: '100%',
+  width: '50%',
   backgroundColor: '$paper',
   borderRadius: 6,
   overflow: 'hidden',
@@ -324,6 +325,90 @@ const ContentListLink: FC<ContentListTextLinkProps> = ({ title, text }) => (
 )
 
 const StyledItem = styled(Item, {})
+
+export type MenuContentListItem = {
+  href: string
+  // content: ContentListTextLinkProps | React.ReactNode
+  content: ContentListTextLinkProps
+}
+
+export type MenuContentList = {
+  trigger: string
+  links: MenuContentListItem[]
+}
+
+export type MenuLink = {
+  href: string
+  text: string
+}
+
+export type WrappedNavigationMenuProps = {
+  items: Array<MenuContentList | MenuLink>
+}
+
+export type WrappedNavigationMenuItemProps = {
+  item: MenuContentList | MenuLink
+  key: number
+}
+
+//type guard for menu items
+function isContentList(
+  item: MenuContentList | MenuLink
+): item is MenuContentList {
+  return (item as MenuContentList).trigger !== undefined
+}
+
+export const WrappedNavigationMenuItem: FC<WrappedNavigationMenuItemProps> = ({
+  item,
+  key
+}) => {
+  if (isContentList(item)) {
+    return (
+      <NavigationMenuItem key={key}>
+        <NavigationMenuTrigger caret={true} variant={'brand'}>
+          {item.trigger}
+        </NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <NavigationMenuContentList layout="row">
+            {item.links.map((link, index) => (
+              <NavigationMenuContentListItem href={link.href} key={index}>
+                <NavigationMenuContentListLink
+                  title={link.content.title}
+                  text={link.content.text}
+                />
+              </NavigationMenuContentListItem>
+            ))}
+          </NavigationMenuContentList>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    )
+  } else {
+    return (
+      <NavigationMenuItem key={key}>
+        <NavigationMenuLink href={item.href} variant={'brand'}>
+          {item.text}
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    )
+  }
+}
+
+export const WrappedNavigationMenu: FC<WrappedNavigationMenuProps> = ({
+  items
+}) => (
+  <NavigationMenu>
+    <NavigationMenuList>
+      {items.map((item, index) => (
+        <WrappedNavigationMenuItem item={item} key={index} />
+      ))}
+      <NavigationMenuIndicator />
+    </NavigationMenuList>
+
+    <NavigationViewportPosition>
+      <NavigationMenuViewport />
+    </NavigationViewportPosition>
+  </NavigationMenu>
+)
 
 /**
  * NavigationMenu component
