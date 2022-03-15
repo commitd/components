@@ -71,7 +71,7 @@ const StyledList = styled(List, {
   listStyle: 'none',
   fontSize: '$0',
   borderRadius: '$3',
-  backgroundColor: '$paper',
+  backgroundColor: '$transparent',
   border: 'none'
 })
 

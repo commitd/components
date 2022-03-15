@@ -170,7 +170,7 @@ export const Variants = () => {
   )
 }
 
-/** NavigationMenu also provides a wrapped version, aimed primary at use in [AppBar](TODO LINK) as show [here](TODO LINK), however can also be used elsewhere as a simplified version as shown in this example. */
+/** NavigationMenu also provides a wrapped version, aimed primary at use in [AppBar](/docs/components-appbar--default) as show [here](/docs/components-appbar--with-navigation-menu), however can also be used elsewhere as a simplified version as shown in this example. */
 export const Wrapped = () => {
   const list = {
     trigger: 'Wrapped List',
