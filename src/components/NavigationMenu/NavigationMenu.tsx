@@ -328,7 +328,6 @@ const StyledItem = styled(Item, {})
 
 export type MenuContentListItem = {
   href: string
-  // content: ContentListTextLinkProps | React.ReactNode
   content: ContentListTextLinkProps
 }
 

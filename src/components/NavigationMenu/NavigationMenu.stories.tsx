@@ -14,6 +14,9 @@ import {
   NavigationMenuContentListItem,
   NavigationMenuContentListLink
 } from '.'
+import { Logo } from '../Logo'
+import { Text } from '../Text'
+import { Box } from '../Box'
 import { WrappedNavigationMenu } from './NavigationMenu'
 
 export default {
@@ -170,7 +173,8 @@ export const Variants = () => {
   )
 }
 
-/** NavigationMenu also provides a wrapped version, aimed primary at use in [AppBar](/docs/components-appbar--default) as show [here](/docs/components-appbar--with-navigation-menu), however can also be used elsewhere as a simplified version as shown in this example. */
+/** NavigationMenu also provides a wrapped version, aimed primary at use in [AppBar](/docs/components-appbar--default)
+ * as show [here](/docs/components-appbar--with-navigation-menu), however can also be used elsewhere as a simplified version as shown in this example. */
 export const Wrapped = () => {
   const list = {
     trigger: 'Wrapped List',
@@ -200,4 +204,70 @@ export const Wrapped = () => {
     text: 'Github'
   }
   return <WrappedNavigationMenu items={[list, storybookLink, githubLink]} />
+}
+
+/** Content does not need to be limited to simple text based links, such as NavigationMenuContentListLink,
+ * but instead can be any customised react node instead. */
+export const AlternativeContent = () => {
+  const MyAltContent = (
+    <NavigationMenuContentListItem
+      href="https://components.committed.software"
+      css={{ gridRow: 'span 3' }}
+    >
+      <Box
+        css={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          width: '100%',
+          height: '100%',
+          background: `linear-gradient(135deg, $colors$grey11 0%, $colors$grey8 100%);`,
+          borderRadius: 6,
+          padding: 25
+        }}
+      >
+        <Logo css={{ size: '$10' }} />
+        <Text
+          size={4}
+          weight={'bold'}
+          css={{
+            color: '$colors$brandYellow9',
+            marginTop: 16,
+            marginBottom: 7
+          }}
+        >
+          Components
+        </Text>
+      </Box>
+    </NavigationMenuContentListItem>
+  )
+
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger caret={true}>
+            Alternative Content
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <NavigationMenuContentList layout="row">
+              {MyAltContent}
+              <NavigationMenuContentListItem href="/design-system-colour--page">
+                <NavigationMenuContentListLink
+                  title="Colors"
+                  text="Beautiful, thought-out palettes with auto dark mode."
+                />
+              </NavigationMenuContentListItem>
+            </NavigationMenuContentList>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuIndicator />
+      </NavigationMenuList>
+
+      <NavigationViewportPosition>
+        <NavigationMenuViewport />
+      </NavigationViewportPosition>
+    </NavigationMenu>
+  )
 }
