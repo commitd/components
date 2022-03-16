@@ -12,7 +12,7 @@ import {
   NavigationViewportPosition,
   NavigationMenuContentList,
   NavigationMenuContentListItem,
-  NavigationMenuContentListLink
+  NavigationMenuContentListLink,
 } from '.'
 import { Logo } from '../Logo'
 import { Text } from '../Text'
@@ -32,11 +32,11 @@ export default {
     NavigationMenuViewport,
     NavigationMenuContentList,
     NavigationMenuContentListItem,
-    NavigationMenuContentListLink
-  }
+    NavigationMenuContentListLink,
+  },
 } as Meta
 
-const Template: Story = args => (
+const Template: Story = (args) => (
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
@@ -183,25 +183,25 @@ export const Wrapped = () => {
         href: '/design-system-colour--page',
         content: {
           title: 'Colors',
-          text: 'Beautiful, thought-out palettes with auto dark mode.'
-        }
+          text: 'Beautiful, thought-out palettes with auto dark mode.',
+        },
       },
       {
         href: '/components-icons--icon-grid',
         content: {
           title: 'Icons',
-          text: 'A collection of available icons based on material designs.'
-        }
-      }
-    ]
+          text: 'A collection of available icons based on material designs.',
+        },
+      },
+    ],
   }
   const storybookLink = {
     href: 'https://components.committed.software',
-    text: 'Storybook'
+    text: 'Storybook',
   }
   const githubLink = {
     href: 'https://github.com/commitd/components',
-    text: 'Github'
+    text: 'Github',
   }
   return <WrappedNavigationMenu items={[list, storybookLink, githubLink]} />
 }
@@ -223,7 +223,7 @@ export const AlternativeContent = () => {
           height: '100%',
           background: `linear-gradient(135deg, $colors$grey11 0%, $colors$grey8 100%);`,
           borderRadius: 6,
-          padding: 25
+          padding: 25,
         }}
       >
         <Logo css={{ size: '$10' }} />
@@ -233,7 +233,7 @@ export const AlternativeContent = () => {
           css={{
             color: '$colors$brandYellow9',
             marginTop: 16,
-            marginBottom: 7
+            marginBottom: 7,
           }}
         >
           Components
@@ -246,7 +246,7 @@ export const AlternativeContent = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger caret={true}>
+          <NavigationMenuTrigger caret={false}>
             Alternative Content
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -257,6 +257,9 @@ export const AlternativeContent = () => {
                   title="Colors"
                   text="Beautiful, thought-out palettes with auto dark mode."
                 />
+              </NavigationMenuContentListItem>
+              <NavigationMenuContentListItem href="/components-icons--icon-grid">
+                <NavigationMenuContentListLink title="Icons" />
               </NavigationMenuContentListItem>
             </NavigationMenuContentList>
           </NavigationMenuContent>

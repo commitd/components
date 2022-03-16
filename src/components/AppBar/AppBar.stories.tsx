@@ -7,7 +7,7 @@ import {
   AppBarButton,
   AppBarHeading,
   AppBarMenu,
-  AppBarMenuItem
+  AppBarMenuItem,
 } from '.'
 import { WrappedNavigationMenu } from '../NavigationMenu'
 
@@ -19,8 +19,8 @@ export default {
     AppBarActions,
     AppBarButton,
     AppBarMenu,
-    AppBarMenuItem
-  }
+    AppBarMenuItem,
+  },
 } as Meta
 
 export const Default: React.FC = () => {
@@ -76,25 +76,25 @@ export const WithNavigationMenu: React.FC = () => {
         href: '/design-system-colour--page',
         content: {
           title: 'Colors',
-          text: 'Beautiful, thought-out palettes with auto dark mode.'
-        }
+          text: 'Beautiful, thought-out palettes with auto dark mode.',
+        },
       },
       {
         href: '/components-icons--icon-grid',
         content: {
           title: 'Icons',
-          text: 'A collection of available icons based on material designs.'
-        }
-      }
-    ]
+          text: 'A collection of available icons based on material designs.',
+        },
+      },
+    ],
   }
   const storybookLink = {
     href: 'https://components.committed.software',
-    text: 'Storybook'
+    text: 'Storybook',
   }
   const githubLink = {
     href: 'https://github.com/commitd/components',
-    text: 'Github'
+    text: 'Github',
   }
 
   return (
@@ -123,7 +123,7 @@ export const WithReactRouter: React.FC = () => {
           // @ts-ignore
           css={{
             cursor: 'pointer',
-            textDecoration: 'none'
+            textDecoration: 'none',
           }}
         >
           Example

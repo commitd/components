@@ -17,7 +17,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-  SelectViewport
+  SelectViewport,
 } from '.'
 import { Button } from '../Button'
 import { Box } from '../Box'
@@ -26,12 +26,12 @@ import {
   ConfirmDialog,
   ConfirmDialogContent,
   ConfirmDialogTrigger,
-  ConfirmDialogActions
+  ConfirmDialogActions,
 } from '../ConfirmDialog'
 import {
   mdiArrowUpDropCircleOutline,
   mdiArrowDownDropCircleOutline,
-  mdiThumbUp
+  mdiThumbUp,
 } from '@mdi/js'
 import { Svg } from '../Svg'
 
@@ -52,11 +52,11 @@ export default {
     SelectValue,
     SelectViewport,
     SelectRoot,
-    SelectRootItem
-  }
+    SelectRootItem,
+  },
 } as Meta
 
-const SimpleSelect: Story = args => (
+const SimpleSelect: Story = (args) => (
   <Select defaultValue="1" {...args}>
     <SelectItem value="1">Item 1</SelectItem>
     <SelectItem value="2">Item 2</SelectItem>

@@ -16,12 +16,12 @@ import {
   RadioGroup,
   Select,
   SelectItem,
-  Text
+  Text,
 } from '../../components'
 import { listOfCountries } from '../util/data'
 
 export default {
-  title: 'Examples/Form'
+  title: 'Examples/Form',
 }
 
 export const Form = () => {
@@ -42,7 +42,7 @@ export const Form = () => {
       notifyEmail,
       notifyTxt,
       notifyBrowser,
-      role
+      role,
     })
   }
   return (
@@ -65,22 +65,22 @@ export const Form = () => {
               id="name"
               label="Name"
               name="name"
-              onValueChange={value => setName(value)}
+              onValueChange={(value) => setName(value)}
               value={name}
             />
             <Input
               id="email"
               label="Email"
               type="email"
-              onValueChange={value => setEmail(value)}
+              onValueChange={(value) => setEmail(value)}
             />
             <Select
               id="country"
               label="Country"
               defaultValue={listOfCountries[0].title}
-              onValueChange={value => setCountry(value)}
+              onValueChange={(value) => setCountry(value)}
             >
-              {listOfCountries.map(c => (
+              {listOfCountries.map((c) => (
                 <SelectItem key={c.title} value={c.title}>
                   {c.title}
                 </SelectItem>
@@ -90,24 +90,24 @@ export const Form = () => {
             <Checkbox
               label="Email"
               id="notify_email"
-              onCheckedChange={checked => setNotifyEmail(checked)}
+              onCheckedChange={(checked) => setNotifyEmail(checked)}
               checked={notifyEmail}
             />
             <Checkbox
               label="Txt"
               id="notify_txt"
-              onCheckedChange={checked => setNotifyTxt(checked)}
+              onCheckedChange={(checked) => setNotifyTxt(checked)}
               checked={notifyTxt}
             />
             <Checkbox
               label="Browser"
               id="notify_browser"
               color="primary"
-              onCheckedChange={checked => setNotifyBrowser(checked)}
+              onCheckedChange={(checked) => setNotifyBrowser(checked)}
               checked={notifyBrowser}
             />
             <Text>Please Specify your role:</Text>
-            <RadioGroup value={role} onValueChange={v => setRole(v)}>
+            <RadioGroup value={role} onValueChange={(v) => setRole(v)}>
               <Radio value="director" label="Director" />
               <Radio value="developer" label="Developer" />
               <Radio value="tester" label="Tester" />

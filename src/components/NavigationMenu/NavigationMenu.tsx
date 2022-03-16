@@ -8,7 +8,7 @@ import {
   Viewport,
   Item,
   List,
-  Link
+  Link,
 } from '@radix-ui/react-navigation-menu'
 import { mainVariants } from '../Button/Button'
 import { ChevronDown } from '../Icons'
@@ -16,42 +16,42 @@ import { paperStyles } from '../Paper'
 
 const enterFromRight = keyframes({
   from: { transform: 'translateX(200px)', opacity: 0 },
-  to: { transform: 'translateX(0)', opacity: 1 }
+  to: { transform: 'translateX(0)', opacity: 1 },
 })
 
 const enterFromLeft = keyframes({
   from: { transform: 'translateX(-200px)', opacity: 0 },
-  to: { transform: 'translateX(0)', opacity: 1 }
+  to: { transform: 'translateX(0)', opacity: 1 },
 })
 
 const exitToRight = keyframes({
   from: { transform: 'translateX(0)', opacity: 1 },
-  to: { transform: 'translateX(200px)', opacity: 0 }
+  to: { transform: 'translateX(200px)', opacity: 0 },
 })
 
 const exitToLeft = keyframes({
   from: { transform: 'translateX(0)', opacity: 1 },
-  to: { transform: 'translateX(-200px)', opacity: 0 }
+  to: { transform: 'translateX(-200px)', opacity: 0 },
 })
 
 const scaleIn = keyframes({
   from: { transform: 'rotateX(-30deg) scale(0.9)', opacity: 0 },
-  to: { transform: 'rotateX(0deg) scale(1)', opacity: 1 }
+  to: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
 })
 
 const scaleOut = keyframes({
   from: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
-  to: { transform: 'rotateX(-10deg) scale(0.95)', opacity: 0 }
+  to: { transform: 'rotateX(-10deg) scale(0.95)', opacity: 0 },
 })
 
 const fadeIn = keyframes({
   from: { opacity: 0 },
-  to: { opacity: 1 }
+  to: { opacity: 1 },
 })
 
 const fadeOut = keyframes({
   from: { opacity: 1 },
-  to: { opacity: 0 }
+  to: { opacity: 0 },
 })
 
 const StyledMenu = styled(Root, {
@@ -59,7 +59,7 @@ const StyledMenu = styled(Root, {
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
-  zIndex: 1
+  zIndex: 1,
 })
 
 const StyledList = styled(List, {
@@ -72,7 +72,7 @@ const StyledList = styled(List, {
   fontSize: '$0',
   borderRadius: '$3',
   backgroundColor: '$transparent',
-  border: 'none'
+  border: 'none',
 })
 
 const itemStyles = {
@@ -82,7 +82,7 @@ const itemStyles = {
   borderRadius: 4,
   '&:focus': { position: 'relative', boxShadow: `0 0 0 $0 $colors$primary` },
   '&:hover': { backgroundColor: '$colors$primary7' },
-  gap: 2
+  gap: 2,
 }
 
 const menuVariants = css({
@@ -93,8 +93,8 @@ const menuVariants = css({
   $$defaultHover: '$colors$defaultHighlight',
   boxSizing: 'border-box',
   variants: {
-    variant: mainVariants
-  }
+    variant: mainVariants,
+  },
 })
 
 const StyledTrigger = styled(Trigger, menuVariants, {
@@ -105,8 +105,8 @@ const StyledTrigger = styled(Trigger, menuVariants, {
   justifyContent: 'space-between',
 
   defaultVariants: {
-    variant: 'secondary'
-  }
+    variant: 'secondary',
+  },
 })
 
 const StyledCaret = styled(ChevronDown, {
@@ -115,8 +115,8 @@ const StyledCaret = styled(ChevronDown, {
   top: 1,
   '[data-state=open] &': { transform: 'rotate(-180deg)' },
   '@media (prefers-reduced-motion: no-preference)': {
-    transition: 'transform 250ms ease'
-  }
+    transition: 'transform 250ms ease',
+  },
 })
 
 const NAV_MENU_TRIGGER_CLASS_NAME = 'c-popover-trigger'
@@ -150,8 +150,8 @@ const StyledMenuLink = styled(Link, menuVariants, {
   justifyContent: 'space-between',
   height: '100%',
   defaultVariants: {
-    variant: 'secondary'
-  }
+    variant: 'secondary',
+  },
 })
 
 export const NavigationMenuLink = StyledMenuLink
@@ -165,7 +165,7 @@ const StyledContent = styled(Content, paperStyles, {
   gap: '$2',
 
   '&::before': {
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   filter:
     'drop-shadow(0px 3px 2.5px rgba(0,0,0,0.2)) drop-shadow(0px 6px 5px rgba(0,0,0,0.14)) drop-shadow(0px 1px 9px rgba(0,0,0,0.12))',
@@ -180,8 +180,8 @@ const StyledContent = styled(Content, paperStyles, {
     '&[data-motion="from-start"]': { animationName: enterFromLeft },
     '&[data-motion="from-end"]': { animationName: enterFromRight },
     '&[data-motion="to-start"]': { animationName: exitToLeft },
-    '&[data-motion="to-end"]': { animationName: exitToRight }
-  }
+    '&[data-motion="to-end"]': { animationName: exitToRight },
+  },
 })
 
 const StyledIndicator = styled(Indicator, {
@@ -196,8 +196,8 @@ const StyledIndicator = styled(Indicator, {
   '@media (prefers-reduced-motion: no-preference)': {
     transition: 'width, transform 250ms ease',
     '&[data-state="visible"]': { animation: `${fadeIn} 200ms ease` },
-    '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` }
-  }
+    '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` },
+  },
 })
 
 const StyledArrow = styled('div', {
@@ -207,7 +207,7 @@ const StyledArrow = styled('div', {
   width: '$3',
   height: '$3',
   transform: 'rotate(45deg)',
-  borderTopLeftRadius: 2
+  borderTopLeftRadius: 2,
 })
 
 const StyledIndicatorWithArrow = forwardRef<ElementRef<typeof StyledIndicator>>(
@@ -232,8 +232,8 @@ const StyledViewport = styled(Viewport, {
   '@media (prefers-reduced-motion: no-preference)': {
     transition: 'width, height, 300ms ease',
     '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
-    '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` }
-  }
+    '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` },
+  },
 })
 
 const ContentList = styled('ul', {
@@ -248,17 +248,17 @@ const ContentList = styled('ul', {
       row: {
         '@default': {
           gridAutoFlow: 'row',
-          gridTemplateRows: 'repeat(3, 1fr)'
-        }
+          gridTemplateRows: 'repeat(3, 1fr)',
+        },
       },
       column: {
         '@default': {
           gridAutoFlow: 'column',
-          gridTemplateRows: 'repeat(3, 1fr)'
-        }
-      }
-    }
-  }
+          gridTemplateRows: 'repeat(3, 1fr)',
+        },
+      },
+    },
+  },
 })
 
 const ListItem = styled('li', {})
@@ -268,7 +268,7 @@ const LinkTitle = styled('div', {
   fontSize: '$0',
   lineHeight: '$body',
   marginBottom: '$2',
-  color: '$text'
+  color: '$text',
 })
 
 const LinkText = styled('p', {
@@ -276,7 +276,7 @@ const LinkText = styled('p', {
   color: '$textSecondary',
   lineHeight: '$body',
   fontWeight: '$regular',
-  textDecoration: 'none'
+  textDecoration: 'none',
 })
 
 const ViewportPosition = styled('div', {
@@ -285,13 +285,13 @@ const ViewportPosition = styled('div', {
   justifyContent: 'center',
   width: '100%',
   top: '100%',
-  left: 0
+  left: 0,
 })
 
 const StyledLink = styled(Link, {
   ...itemStyles,
   display: 'block',
-  textDecoration: 'none'
+  textDecoration: 'none',
 })
 
 const ContentListItem = forwardRef<
@@ -304,7 +304,7 @@ const ContentListItem = forwardRef<
       ref={forwardedRef}
       css={{
         borderRadius: 3,
-        '&:hover': { backgroundColor: '$colors$primary7' }
+        '&:hover': { backgroundColor: '$colors$primary7' },
       }}
     >
       {children}
@@ -359,11 +359,10 @@ function isContentList(
 
 export const WrappedNavigationMenuItem: FC<WrappedNavigationMenuItemProps> = ({
   item,
-  key
 }) => {
   if (isContentList(item)) {
     return (
-      <NavigationMenuItem key={key}>
+      <NavigationMenuItem>
         <NavigationMenuTrigger caret={true} variant={'brand'}>
           {item.trigger}
         </NavigationMenuTrigger>
@@ -383,7 +382,7 @@ export const WrappedNavigationMenuItem: FC<WrappedNavigationMenuItemProps> = ({
     )
   } else {
     return (
-      <NavigationMenuItem key={key}>
+      <NavigationMenuItem>
         <NavigationMenuLink href={item.href} variant={'brand'}>
           {item.text}
         </NavigationMenuLink>
@@ -393,7 +392,7 @@ export const WrappedNavigationMenuItem: FC<WrappedNavigationMenuItemProps> = ({
 }
 
 export const WrappedNavigationMenu: FC<WrappedNavigationMenuProps> = ({
-  items
+  items,
 }) => (
   <NavigationMenu>
     <NavigationMenuList>

@@ -12,7 +12,7 @@ import {
   ItemIndicator,
   Group,
   Separator,
-  ScrollDownButton
+  ScrollDownButton,
 } from '@radix-ui/react-select'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { CSSProps, styled } from '../../stitches.config'
@@ -25,22 +25,22 @@ const StyledTrigger = styled(Trigger, inputStyles, {
   alignItems: 'center',
   justifyContent: 'space-between',
   cursor: 'pointer',
-  alignContent: 'center'
+  alignContent: 'center',
 })
 
 const StyledValue = styled(Value, {
-  flexGrow: 1
+  flexGrow: 1,
 })
 
 const StyledContent = styled(Content, {
   overflow: 'hidden',
   backgroundColor: '$colors$brandBackground',
   borderRadius: '$default',
-  boxShadow: '$2'
+  boxShadow: '$2',
 })
 
 const StyledViewport = styled(Viewport, {
-  padding: 5
+  padding: 5,
 })
 
 const StyledItem = styled(Item, {
@@ -62,25 +62,25 @@ const StyledItem = styled(Item, {
 
   '&:focus': {
     background: '$selection',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   '&[data-disabled]': {
     color: '$grey9',
-    pointerEvents: 'none'
-  }
+    pointerEvents: 'none',
+  },
 })
 
 const StyledLabel = styled(Label, {
   padding: '$0 $2',
   fontSize: '$0',
   lineHeight: '$2',
-  color: '$grey10'
+  color: '$grey10',
 })
 
 const StyledSeparator = styled(Separator, {
   height: 1,
   backgroundColor: '$grey7',
-  margin: '$1'
+  margin: '$1',
 })
 
 const StyledItemIndicator = styled(ItemIndicator, {
@@ -89,7 +89,7 @@ const StyledItemIndicator = styled(ItemIndicator, {
   width: '$4',
   display: 'inline-flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 })
 
 const scrollButtonStyles = {
@@ -98,7 +98,7 @@ const scrollButtonStyles = {
   justifyContent: 'center',
   height: '$5',
   color: '$grey7',
-  cursor: 'default'
+  cursor: 'default',
 }
 
 const StyledScrollUpButton = styled(ScrollUpButton, scrollButtonStyles)
