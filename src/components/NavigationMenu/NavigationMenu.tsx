@@ -166,8 +166,6 @@ const StyledContent = styled(Content, paperStyles, {
   '&::before': {
     boxShadow: 'none',
   },
-  filter:
-    'drop-shadow(0px 3px 2.5px rgba(0,0,0,0.2)) drop-shadow(0px 6px 5px rgba(0,0,0,0.14)) drop-shadow(0px 1px 9px rgba(0,0,0,0.12))',
   position: 'relative',
   top: 0,
   left: 0,
