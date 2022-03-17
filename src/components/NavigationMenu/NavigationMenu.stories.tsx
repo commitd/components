@@ -128,7 +128,7 @@ export const Variants = () => {
         </NavigationViewportPosition>
       </NavigationMenu>
 
-      <NavigationMenu>
+      <NavigationMenu css={{ paddingTop: '$2' }}>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger caret={true} variant={'primary'}>
