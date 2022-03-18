@@ -7,6 +7,7 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
+  ToastRoot,
 } from '.'
 import { Button } from '../Button'
 
@@ -35,6 +36,107 @@ export default {
 
 export const Default: Story = () => {
   const [open, setOpen] = React.useState(false)
+  const timerRef = React.useRef(0)
+
+  React.useEffect(() => {
+    return () => clearTimeout(timerRef.current)
+  }, [])
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setOpen(false)
+          window.clearTimeout(timerRef.current)
+          timerRef.current = window.setTimeout(() => {
+            setOpen(true)
+          }, 100)
+        }}
+      >
+        Open Toast
+      </Button>
+      <Toast
+        open={open}
+        onOpenChange={setOpen}
+        title="Upgrade available"
+        description="We've just released Radix 3.0!"
+        altText="Undo"
+      />
+    </>
+  )
+}
+
+export const WithClose: Story = () => {
+  const [open, setOpen] = React.useState(false)
+  const timerRef = React.useRef(0)
+
+  React.useEffect(() => {
+    return () => clearTimeout(timerRef.current)
+  }, [])
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setOpen(false)
+          window.clearTimeout(timerRef.current)
+          timerRef.current = window.setTimeout(() => {
+            setOpen(true)
+          }, 100)
+        }}
+      >
+        Open Toast
+      </Button>
+      <Toast
+        open={open}
+        onOpenChange={setOpen}
+        close
+        title="Upgrade available"
+        description="We've just released Radix 3.0!"
+        altText="Undo"
+      ></Toast>
+    </>
+  )
+}
+
+export const WithAction: Story = () => {
+  const [open, setOpen] = React.useState(false)
+  const timerRef = React.useRef(0)
+
+  React.useEffect(() => {
+    return () => clearTimeout(timerRef.current)
+  }, [])
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setOpen(false)
+          window.clearTimeout(timerRef.current)
+          timerRef.current = window.setTimeout(() => {
+            setOpen(true)
+          }, 100)
+        }}
+      >
+        Open Toast
+      </Button>
+      <Toast
+        open={open}
+        onOpenChange={setOpen}
+        title="Upgrade available"
+        description="We've just released Radix 3.0!"
+        altText="Undo"
+      >
+        <Button variant="primary" size="small">
+          Undo
+        </Button>
+      </Toast>
+    </>
+  )
+}
+
+export const Full: Story = () => {
+  const [open, setOpen] = React.useState(false)
   const eventDateRef = React.useRef(new Date())
   const timerRef = React.useRef(0)
 
@@ -62,8 +164,7 @@ export const Default: Story = () => {
       >
         Add to calendar
       </Button>
-
-      <Toast open={open} onOpenChange={setOpen}>
+      <ToastRoot open={open} onOpenChange={setOpen}>
         <ToastTitle>Scheduled: Catch up</ToastTitle>
         <ToastDescription asChild>
           <time dateTime={eventDateRef.current.toISOString()}>
@@ -75,22 +176,8 @@ export const Default: Story = () => {
             Undo
           </Button>
         </ToastAction>
-      </Toast>
+      </ToastRoot>
       <ToastViewport />
     </ToastProvider>
   )
 }
-
-export const Open = () => (
-  <ToastProvider swipeDirection="right">
-    <Toast open={true}>
-      <ToastTitle>Scheduled: Catch up</ToastTitle>
-      <ToastDescription asChild>Text goes here</ToastDescription>
-      <ToastAction asChild altText="Goto schedule to undo">
-        <Button variant="primary" size="small">
-          Undo
-        </Button>
-      </ToastAction>
-    </Toast>
-  </ToastProvider>
-)

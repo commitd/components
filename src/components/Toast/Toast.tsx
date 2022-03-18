@@ -3,8 +3,10 @@ import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled, keyframes } from '../../stitches.config'
 import { Heading } from '../Heading'
 import { Text } from '../Text'
+import { Close } from '../Icons'
 import { slate } from '@radix-ui/colors'
 import * as ToastPrimitive from '@radix-ui/react-toast'
+import { IconButton } from '../IconButton'
 
 const DEFAULT_TAG = 'div'
 
@@ -148,15 +150,71 @@ const StyledDescription = styled(ToastPrimitive.Description, {
   lineHeight: 1.3,
 })
 
+const StyledClose = styled(ToastPrimitive.Close, {
+  all: 'unset',
+})
+
 const StyledAction = styled(ToastPrimitive.Action, {
   gridArea: 'action',
+})
+
+export const ToastClose = forwardRef<ElementRef<typeof StyledClose>>(
+  (props, forwardedRef) => {
+    return (
+      <StyledClose {...props} ref={forwardedRef} aria-label="Close">
+        <IconButton variant="tertiary">
+          <Close />
+        </IconButton>
+      </StyledClose>
+    )
+  }
+)
+
+type AbstractToastProps = ComponentProps<typeof StyledToast> &
+  ComponentProps<typeof StyledAction> & {
+    title: string
+    description: string
+    close?: boolean
+  }
+
+/**
+ *  Toast component.
+ *
+ * Displays a toast with information and optionally an action in the bottom right of a page.
+ *
+ * Based on [Radix Dropdown Menu](https://www.radix-ui.com/docs/primitives/components/toast).
+ *
+ * Toast can be closed by a timeout or by swiping right by default (these can be changed by `duration` and `swipeDirection` respectively).
+ * Alternatively, they can be closed by an action button (implying addition effects) or by an close icon (`ToastClose`).
+ *
+ * Doesn't currently handle both close button and action button simultaneously instead separately.
+ */
+export const Toast = forwardRef<
+  ElementRef<typeof StyledToast>,
+  AbstractToastProps
+>(({ title, description, altText, close, children, ...props }) => {
+  return (
+    <ToastProvider swipeDirection="right">
+      <StyledToast {...props}>
+        {title && <StyledTitle>{title}</StyledTitle>}
+        <StyledDescription>{description}</StyledDescription>
+        {close && <ToastClose />}
+        {children && (
+          <StyledAction asChild altText={altText}>
+            {children}
+          </StyledAction>
+        )}
+      </StyledToast>
+      <StyledViewport />
+    </ToastProvider>
+  )
 })
 
 // Exports
 export const ToastProvider = ToastPrimitive.Provider
 export const ToastViewport = StyledViewport
-export const Toast = StyledToast
+export const ToastRoot = StyledToast
 export const ToastTitle = StyledTitle
 export const ToastDescription = StyledDescription
 export const ToastAction = StyledAction
-export const ToastClose = ToastPrimitive.Close
+export const ToastCloseRoot = StyledClose
