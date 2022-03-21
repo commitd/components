@@ -5,7 +5,7 @@ import { Close } from '../Icons'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import { IconButton } from '../IconButton'
 
-const VIEWPORT_PADDING = 25
+const VIEWPORT_PADDING = '$5'
 
 const hide = keyframes({
   '0%': { opacity: 1 },
@@ -24,15 +24,15 @@ const swipeOut = keyframes({
 
 const StyledViewport = styled(ToastPrimitive.Viewport, {
   position: 'fixed',
-  bottom: 0,
-  right: 0,
+  bottom: '$0',
+  right: '$0',
   display: 'flex',
   flexDirection: 'column',
   padding: VIEWPORT_PADDING,
   gap: 10,
-  width: 390,
+  width: '$13',
   maxWidth: '100vw',
-  margin: 0,
+  // margin: 0,
   listStyle: 'none',
   zIndex: 2147483647,
 })
@@ -43,7 +43,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
   borderRadius: '$default',
   boxShadow:
     'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
-  padding: 15,
+  padding: '$4',
   display: 'grid',
   gridTemplateAreas: '"title action" "description action"',
   gridTemplateColumns: 'auto max-content',
