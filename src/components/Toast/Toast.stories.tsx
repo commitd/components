@@ -10,6 +10,7 @@ import {
   ToastRoot,
 } from '.'
 import { Button } from '../Button'
+import { Box } from '../Box'
 
 export default {
   title: 'Components/Toast',
@@ -67,7 +68,7 @@ export const Default: Story = () => {
 }
 
 export const WithClose: Story = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(true)
   const timerRef = React.useRef(0)
 
   React.useEffect(() => {
@@ -94,13 +95,14 @@ export const WithClose: Story = () => {
         title="Upgrade available"
         description="We've just released Radix 3.0!"
         altText="Undo"
-      ></Toast>
+        duration={9999999}
+      />
     </>
   )
 }
 
 export const WithAction: Story = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(true)
   const timerRef = React.useRef(0)
 
   React.useEffect(() => {
@@ -126,6 +128,7 @@ export const WithAction: Story = () => {
         title="Upgrade available"
         description="We've just released Radix 3.0!"
         altText="Undo"
+        duration={9999999}
       >
         <Button variant="primary" size="small">
           Undo
@@ -133,6 +136,40 @@ export const WithAction: Story = () => {
       </Toast>
     </>
   )
+}
+
+const Template: Story = (args) => {
+  return (
+    <Box css={{ paddingTop: '$4' }}>
+      <Toast
+        open={true}
+        title="Upgrade available"
+        description="We've just released Radix 3.0!"
+        altText="Undo"
+        {...args}
+      />
+    </Box>
+  )
+}
+
+export const SuccessVariant = Template.bind({})
+SuccessVariant.args = {
+  severity: 'success',
+}
+
+export const InfoVariant = Template.bind({})
+InfoVariant.args = {
+  severity: 'info',
+}
+
+export const WarningVariant = Template.bind({})
+WarningVariant.args = {
+  severity: 'warning',
+}
+
+export const ErrorVariant = Template.bind({})
+ErrorVariant.args = {
+  severity: 'error',
 }
 
 export const Full: Story = () => {

@@ -1,74 +1,9 @@
-import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled, keyframes } from '../../stitches.config'
-import { Heading } from '../Heading'
-import { Text } from '../Text'
 import { Close } from '../Icons'
-import { slate } from '@radix-ui/colors'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import { IconButton } from '../IconButton'
-
-const DEFAULT_TAG = 'div'
-
-const StyledAlert = styled(DEFAULT_TAG, {
-  // Reset
-  boxSizing: 'border-box',
-  '&::before': {
-    boxSizing: 'border-box',
-  },
-  '&::after': {
-    boxSizing: 'border-box',
-  },
-
-  border: '1px solid',
-  borderRadius: '$default',
-
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '$2',
-
-  p: '$4',
-
-  variants: {
-    severity: {
-      ghost: {
-        backgroundColor: '$grey2',
-        borderColor: '$grey7',
-        color: '$grey12',
-      },
-      warning: {
-        backgroundColor: '$warningBackground',
-        borderColor: '$warningHighlight',
-        color: '$warningHighlight',
-      },
-      info: {
-        backgroundColor: '$infoBackground',
-        borderColor: '$infoHighlight',
-        color: '$infoHighlight',
-      },
-      success: {
-        backgroundColor: '$successBackground',
-        borderColor: '$successHighlight',
-        color: '$successHighlight',
-      },
-      error: {
-        backgroundColor: '$errorBackground',
-        borderColor: '$errorHighlight',
-        color: '$errorHighlight',
-      },
-    },
-  },
-})
-
-type AlertVariants = VariantProps<typeof StyledAlert>
-type AlertProps = AlertVariants & CSSProps & ComponentProps<typeof DEFAULT_TAG>
-
-const Alert = forwardRef<ElementRef<typeof StyledAlert>, AlertProps>(
-  (props, forwardedRef) => {
-    return <StyledAlert {...props} ref={forwardedRef} />
-  }
-)
-Alert.toString = () => `.${StyledAlert.className}`
 
 const VIEWPORT_PADDING = 25
 
@@ -103,8 +38,9 @@ const StyledViewport = styled(ToastPrimitive.Viewport, {
 })
 
 const StyledToast = styled(ToastPrimitive.Root, {
-  backgroundColor: 'white',
-  borderRadius: 6,
+  backgroundColor: '$paper',
+  border: '1px solid',
+  borderRadius: '$default',
   boxShadow:
     'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   padding: 15,
@@ -132,22 +68,52 @@ const StyledToast = styled(ToastPrimitive.Root, {
       animation: `${swipeOut} 100ms ease-out forwards`,
     },
   },
+
+  variants: {
+    severity: {
+      default: {
+        backgroundColor: '$paper',
+        borderColor: 'transparent',
+        color: '$grey12',
+      },
+      warning: {
+        backgroundColor: '$warningBackground',
+        borderColor: '$warningHighlight',
+        color: '$warningHighlight',
+      },
+      info: {
+        backgroundColor: '$infoBackground',
+        borderColor: '$infoHighlight',
+        color: '$infoHighlight',
+      },
+      success: {
+        backgroundColor: '$successBackground',
+        borderColor: '$successHighlight',
+        color: '$successHighlight',
+      },
+      error: {
+        backgroundColor: '$errorBackground',
+        borderColor: '$errorHighlight',
+        color: '$errorHighlight',
+      },
+    },
+  },
 })
 
 const StyledTitle = styled(ToastPrimitive.Title, {
   gridArea: 'title',
-  marginBottom: 5,
-  fontWeight: 500,
-  color: slate.slate12,
-  fontSize: 15,
+  marginBottom: '$2',
+  // fontWeight: 500,
+  color: 'inherit',
+  fontSize: '$1',
 })
 
 const StyledDescription = styled(ToastPrimitive.Description, {
   gridArea: 'description',
-  margin: 0,
-  color: slate.slate11,
-  fontSize: 13,
-  lineHeight: 1.3,
+  margin: '$0',
+  color: 'inherit',
+  fontSize: '$-1',
+  // lineHeight: 1.3,
 })
 
 const StyledClose = styled(ToastPrimitive.Close, {
@@ -170,7 +136,10 @@ export const ToastClose = forwardRef<ElementRef<typeof StyledClose>>(
   }
 )
 
-type AbstractToastProps = ComponentProps<typeof StyledToast> &
+type ToastVariants = VariantProps<typeof StyledToast>
+type ToastProps = ToastVariants & CSSProps & ComponentProps<typeof StyledToast>
+
+type AbstractToastProps = ToastProps &
   ComponentProps<typeof StyledAction> & {
     title: string
     description: string
@@ -187,28 +156,38 @@ type AbstractToastProps = ComponentProps<typeof StyledToast> &
  * Toast can be closed by a timeout or by swiping right by default (these can be changed by `duration` and `swipeDirection` respectively).
  * Alternatively, they can be closed by an action button (implying addition effects) or by an close icon (`ToastClose`).
  *
- * Doesn't currently handle both close button and action button simultaneously instead separately.
+ * Doesn't currently handle both close button and action button simultaneously, instead only separately.
  */
 export const Toast = forwardRef<
   ElementRef<typeof StyledToast>,
   AbstractToastProps
->(({ title, description, altText, close, children, ...props }) => {
-  return (
-    <ToastProvider swipeDirection="right">
-      <StyledToast {...props}>
-        {title && <StyledTitle>{title}</StyledTitle>}
-        <StyledDescription>{description}</StyledDescription>
-        {close && <ToastClose />}
-        {children && (
-          <StyledAction asChild altText={altText}>
-            {children}
-          </StyledAction>
-        )}
-      </StyledToast>
-      <StyledViewport />
-    </ToastProvider>
-  )
-})
+>(
+  ({
+    title,
+    description,
+    altText,
+    close,
+    severity = 'default',
+    children,
+    ...props
+  }) => {
+    return (
+      <ToastProvider swipeDirection="right">
+        <StyledToast severity={severity} {...props}>
+          {title && <StyledTitle>{title}</StyledTitle>}
+          <StyledDescription>{description}</StyledDescription>
+          {close && <ToastClose />}
+          {children && (
+            <StyledAction asChild altText={altText}>
+              {children}
+            </StyledAction>
+          )}
+        </StyledToast>
+        <StyledViewport />
+      </ToastProvider>
+    )
+  }
+)
 
 // Exports
 export const ToastProvider = ToastPrimitive.Provider
