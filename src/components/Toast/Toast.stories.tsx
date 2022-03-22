@@ -59,8 +59,9 @@ export const Default: Story = () => {
       <Toast
         open={open}
         onOpenChange={setOpen}
-        title="Upgrade available"
-        description="We've just released Radix 3.0!"
+        title="Toast Title"
+        description="This is the toast content, the content is optional but should usually give
+        further explanation about the toast and if any action is required."
         altText="Undo"
       />
     </>
@@ -92,8 +93,8 @@ export const WithClose: Story = () => {
         open={open}
         onOpenChange={setOpen}
         close
-        title="Upgrade available"
-        description="We've just released Radix 3.0!"
+        title="Toast Title"
+        description="This is the toast content"
         altText="Undo"
         duration={9999999}
       />
@@ -125,8 +126,8 @@ export const WithAction: Story = () => {
       <Toast
         open={open}
         onOpenChange={setOpen}
-        title="Upgrade available"
-        description="We've just released Radix 3.0!"
+        title="Deleted ID#1928"
+        description="Was this intentional?"
         altText="Undo"
         duration={9999999}
       >
@@ -143,8 +144,8 @@ const Template: Story = (args) => {
     <Box css={{ paddingTop: '$4' }}>
       <Toast
         open={true}
-        title="Upgrade available"
-        description="We've just released Radix 3.0!"
+        title="Variant Toast Title"
+        description="This is the toast content"
         altText="Undo"
         {...args}
       />
@@ -154,25 +155,33 @@ const Template: Story = (args) => {
 
 export const SuccessVariant = Template.bind({})
 SuccessVariant.args = {
+  title: 'Success Title',
   severity: 'success',
 }
 
 export const InfoVariant = Template.bind({})
 InfoVariant.args = {
+  title: 'Info Title',
   severity: 'info',
 }
 
 export const WarningVariant = Template.bind({})
 WarningVariant.args = {
+  title: 'Warning Title',
   severity: 'warning',
 }
 
 export const ErrorVariant = Template.bind({})
 ErrorVariant.args = {
+  title: 'Error Title',
   severity: 'error',
 }
 
-export const Full: Story = () => {
+/**
+ * While the Toast component is wrapped for ease of use, its underlying root components
+ * can still be accessed to allow for more customisation, such as the toast appearing in the bottom left.
+ */
+export const FullAccess: Story = () => {
   const [open, setOpen] = React.useState(false)
   const eventDateRef = React.useRef(new Date())
   const timerRef = React.useRef(0)
@@ -188,7 +197,7 @@ export const Full: Story = () => {
   }
 
   return (
-    <ToastProvider swipeDirection="right">
+    <ToastProvider swipeDirection="left">
       <Button
         onClick={() => {
           setOpen(false)
@@ -201,7 +210,7 @@ export const Full: Story = () => {
       >
         Add to calendar
       </Button>
-      <ToastRoot open={open} onOpenChange={setOpen}>
+      <ToastRoot open={open} onOpenChange={setOpen} severity="default">
         <ToastTitle>Scheduled: Catch up</ToastTitle>
         <ToastDescription asChild>
           <time dateTime={eventDateRef.current.toISOString()}>
@@ -214,7 +223,7 @@ export const Full: Story = () => {
           </Button>
         </ToastAction>
       </ToastRoot>
-      <ToastViewport />
+      <ToastViewport css={{ bottom: '$0', left: '$0' }} />
     </ToastProvider>
   )
 }

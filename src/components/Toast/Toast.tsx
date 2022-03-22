@@ -29,10 +29,8 @@ const StyledViewport = styled(ToastPrimitive.Viewport, {
   display: 'flex',
   flexDirection: 'column',
   padding: VIEWPORT_PADDING,
-  gap: 10,
+  gap: '$3',
   width: '$13',
-  maxWidth: '100vw',
-  // margin: 0,
   listStyle: 'none',
   zIndex: 2147483647,
 })
@@ -45,9 +43,9 @@ const StyledToast = styled(ToastPrimitive.Root, {
     'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
   padding: '$4',
   display: 'grid',
-  gridTemplateAreas: '"title action" "description action"',
+  gridTemplateAreas: '"title close" "description action"',
   gridTemplateColumns: 'auto max-content',
-  columnGap: 15,
+  columnGap: '$4',
   alignItems: 'center',
 
   '@media (prefers-reduced-motion: no-preference)': {
@@ -74,7 +72,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
       default: {
         backgroundColor: '$paper',
         borderColor: 'transparent',
-        color: '$grey12',
+        color: '$text',
       },
       warning: {
         backgroundColor: '$warningBackground',
@@ -103,7 +101,6 @@ const StyledToast = styled(ToastPrimitive.Root, {
 const StyledTitle = styled(ToastPrimitive.Title, {
   gridArea: 'title',
   marginBottom: '$2',
-  // fontWeight: 500,
   color: 'inherit',
   fontSize: '$1',
 })
@@ -113,11 +110,13 @@ const StyledDescription = styled(ToastPrimitive.Description, {
   margin: '$0',
   color: 'inherit',
   fontSize: '$-1',
-  // lineHeight: 1.3,
 })
 
 const StyledClose = styled(ToastPrimitive.Close, {
   all: 'unset',
+  gridArea: 'close',
+  marginRight: '-$4',
+  marginTop: '-$6',
 })
 
 const StyledAction = styled(ToastPrimitive.Action, {
@@ -128,7 +127,7 @@ export const ToastClose = forwardRef<ElementRef<typeof StyledClose>>(
   (props, forwardedRef) => {
     return (
       <StyledClose {...props} ref={forwardedRef} aria-label="Close">
-        <IconButton variant="tertiary">
+        <IconButton size="small" variant="tertiary">
           <Close />
         </IconButton>
       </StyledClose>
@@ -142,7 +141,7 @@ type ToastProps = ToastVariants & CSSProps & ComponentProps<typeof StyledToast>
 type AbstractToastProps = ToastProps &
   ComponentProps<typeof StyledAction> & {
     title: string
-    description: string
+    description?: string
     close?: boolean
   }
 
@@ -156,7 +155,7 @@ type AbstractToastProps = ToastProps &
  * Toast can be closed by a timeout or by swiping right by default (these can be changed by `duration` and `swipeDirection` respectively).
  * Alternatively, they can be closed by an action button (implying addition effects) or by an close icon (`ToastClose`).
  *
- * Doesn't currently handle both close button and action button simultaneously, instead only separately.
+ * Doesn't currently nicely handle both close button and action button simultaneously, instead only separately.
  */
 export const Toast = forwardRef<
   ElementRef<typeof StyledToast>,
@@ -174,8 +173,8 @@ export const Toast = forwardRef<
     return (
       <ToastProvider swipeDirection="right">
         <StyledToast severity={severity} {...props}>
-          {title && <StyledTitle>{title}</StyledTitle>}
-          <StyledDescription>{description}</StyledDescription>
+          <StyledTitle>{title}</StyledTitle>
+          {description && <StyledDescription>{description}</StyledDescription>}
           {close && <ToastClose />}
           {children && (
             <StyledAction asChild altText={altText}>
