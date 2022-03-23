@@ -32,7 +32,7 @@ const StyledViewport = styled(ToastPrimitive.Viewport, {
   gap: '$3',
   width: '$13',
   listStyle: 'none',
-  zIndex: 2147483647,
+  zIndex: '$toast',
 })
 
 const StyledToast = styled(ToastPrimitive.Root, {
