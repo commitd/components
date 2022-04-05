@@ -64,9 +64,8 @@ const StyledMenu = styled(Root, {
 const StyledList = styled(List, {
   all: 'unset',
   display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'stretch',
   padding: '$0',
+  gap: '$2',
   listStyle: 'none',
   fontSize: '$0',
   borderRadius: '$default',
@@ -90,7 +89,6 @@ const menuVariants = css({
   $$contrast: '$colors$primaryContrast',
   $$default: '$colors$default',
   $$defaultHover: '$colors$defaultHighlight',
-  boxSizing: 'border-box',
   variants: {
     variant: mainVariants,
   },
@@ -99,10 +97,24 @@ const menuVariants = css({
 const StyledTrigger = styled(Trigger, menuVariants, {
   all: 'unset',
   ...itemStyles,
+  padding: '$1 $3',
+  boxSizing: 'border-box',
+  border: 'solid 2px',
+  borderColor: 'transparent',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  defaultVariants: {
+    variant: 'secondary',
+  },
+})
 
+const StyledMenuLink = styled(Link, menuVariants, {
+  ...itemStyles,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  height: '100%',
   defaultVariants: {
     variant: 'secondary',
   },
@@ -141,17 +153,6 @@ export const NavigationMenuTrigger = forwardRef<
   </StyledTrigger>
 ))
 NavigationMenuTrigger.toString = () => `.${NAV_MENU_TRIGGER_CLASS_NAME}`
-
-const StyledMenuLink = styled(Link, menuVariants, {
-  ...itemStyles,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  height: '100%',
-  defaultVariants: {
-    variant: 'secondary',
-  },
-})
 
 export const NavigationMenuLink = StyledMenuLink
 

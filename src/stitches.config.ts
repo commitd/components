@@ -567,7 +567,9 @@ const stitches = createStitches({
       round: '50%',
       pill: '9999px',
     },
-    zIndices: {},
+    zIndices: {
+      toast: 2147483647,
+    },
     transitions: {},
 
     ...lightThemeConfig,
