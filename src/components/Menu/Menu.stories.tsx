@@ -102,7 +102,7 @@ export const WithLabel: React.FC = () => (
   </Menu>
 )
 
-export const Controlled = () => {
+export const Controlled: Story = () => {
   const [open, { setTrue, setFalse }] = useBoolean(false)
   return (
     <>
@@ -119,7 +119,7 @@ export const Controlled = () => {
 }
 
 /* A `MenuCheckboxItem` are items with an indicated boolean state */
-export const WithCheckbox = () => {
+export const WithCheckbox: Story = () => {
   const [checked, setChecked] = useState(true)
   return (
     <Menu>
@@ -137,7 +137,7 @@ export const WithCheckbox = () => {
 }
 
 /* `MenuItemRadioGroup` can be used to make sub `MenuRadioItem`s single select */
-export const WithRadioItems = () => {
+export const WithRadioItems: Story = () => {
   const [color, setColor] = React.useState('blue')
   return (
     <Menu>
@@ -156,7 +156,7 @@ export const WithRadioItems = () => {
 }
 
 /** Add shortcut indicators using the `MenuItemShortcut` */
-export const Shortcuts = () => {
+export const Shortcuts: Story = () => {
   return (
     <Menu>
       <MenuTrigger>
@@ -175,7 +175,7 @@ export const Shortcuts = () => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested = () => {
+export const Nested: Story = () => {
   return (
     <Menu>
       <MenuTrigger>
@@ -210,7 +210,7 @@ export const Nested = () => {
 }
 
 /* A `MenuCheckboxItem` are items with an indicated boolean state */
-export const MultipleMenus = () => {
+export const MultipleMenus: Story = () => {
   const [checked, setChecked] = useState(true)
   const [color, setColor] = React.useState('blue')
   return (

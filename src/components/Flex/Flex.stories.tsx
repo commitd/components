@@ -140,7 +140,7 @@ AlignBaseline.args = {
 /**
  * For convenience we also export `Row` and `Column` components as aliases for `flexDirection="row"` and `flexDirection="column"`.
  */
-export const FlexRow = () => (
+export const FlexRow: Story = () => (
   <Box
     css={{
       size: '$10',
@@ -170,7 +170,7 @@ export const FlexRow = () => (
   </Box>
 )
 
-export const FlexColumn = () => (
+export const FlexColumn: Story = () => (
   <Box
     css={{
       size: '$10',

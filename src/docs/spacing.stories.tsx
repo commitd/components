@@ -47,7 +47,7 @@ const Bar = styled(Box, {
 /**
  * Use the scale values for spacing and sizing where ever possible to create a more unified look.
  */
-export const exampleSpacing = () => (
+export const exampleSpacing: Story = () => (
   <Column>
     <CenteredRow>
       <Text>$0</Text>

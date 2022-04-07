@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Link as RouterLink, MemoryRouter } from 'react-router-dom'
 import { Link } from '.'
@@ -9,7 +9,7 @@ export default {
   component: Link,
 } as Meta
 
-export const Default: React.FC = () => {
+export const Default: Story = () => {
   return (
     <Column>
       <Box>
@@ -34,7 +34,7 @@ export const Default: React.FC = () => {
 /**
  * For when a link need to be applied to a separately styled element
  */
-export const Clear = () => (
+export const Clear: Story = () => (
   <Text>
     <Link variant="clear" href="#">
       Link
@@ -45,7 +45,7 @@ export const Clear = () => (
 /**
  * The styled variant is intended for use in articles such as blog posts.
  */
-export const Styled = () => (
+export const Styled: Story = () => (
   <Text>
     This is{' '}
     <Link variant="styled" href="#link">
@@ -58,13 +58,13 @@ export const Styled = () => (
   </Text>
 )
 
-export const WithReactRouter: React.FC = () => {
+export const WithReactRouter: Story = () => {
   return (
     <MemoryRouter>
       <Box>
         <Box>
           <RouterLink
-            component={Link}
+            // FIXME component={Link}
             to="./example-route"
             // props for component={Link} are passed on despite the error
             // @ts-ignore
@@ -81,7 +81,7 @@ export const WithReactRouter: React.FC = () => {
 /**
  * Links support substituting the rendered element for one supplied to the `as` prop.
  */
-export const As = () => (
+export const As: Story = () => (
   <ol>
     <Link as="li" href="test.com" css={{ color: '$text' }}>
       Test

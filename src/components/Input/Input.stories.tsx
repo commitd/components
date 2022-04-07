@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Input } from '.'
 import { Grid, Column, Label } from '../'
@@ -8,13 +8,13 @@ export default {
   component: Input,
 } as Meta
 
-export const Default: React.FC = () => <Input id="default" />
+export const Default: Story = () => <Input id="default" />
 
 /**
  * Supplying a `value` will make the component controlled. The changes can be handled by the standard `onChange`
  * prop or use the convenience `onValueChange` that passes just the new value.
  */
-export const Controlled: React.FC = () => {
+export const Controlled: Story = () => {
   const [name, setName] = React.useState('test')
   return (
     <Column>
@@ -37,7 +37,7 @@ export const Controlled: React.FC = () => {
 /**
  * Use the label props to add a standard label, automatically adds aria.
  */
-export const WithLabel: React.FC = () => (
+export const WithLabel: Story = () => (
   <Column>
     <Input id="firstname" label="First name" />
     <Input id="familyname" label="Family name" />
@@ -48,7 +48,7 @@ export const WithLabel: React.FC = () => (
  * If you want a single inline label you can wrap an input in a `Label` component and it will auto assign the
  * `htmlFor` and `id` props.
  */
-export const InlineLabel: React.FC = () => (
+export const InlineLabel: Story = () => (
   <Label variant="inline">
     Email address
     <Input type="email" />
@@ -59,7 +59,7 @@ export const InlineLabel: React.FC = () => (
  * If you need to align multiple labels then better to layout yourself to control the width and apply the appropriate
  * `htmlFor` and `id` props.
  */
-export const MultipleInlineLabels: React.FC = () => (
+export const MultipleInlineLabels: Story = () => (
   <Grid css={{ gridTemplateColumns: '150px 1fr', gap: '$3' }}>
     <Label variant="inline" htmlFor="mll-firstname">
       First name
@@ -76,7 +76,7 @@ export const MultipleInlineLabels: React.FC = () => (
   </Grid>
 )
 
-export const States = () => (
+export const States: Story = () => (
   <Grid
     css={{
       rowGap: '$3',

@@ -123,7 +123,7 @@ export const WithLabels: Story = (args) => (
 )
 
 /** Add shortcut indicators using the `ContextMenuItemShortcut` */
-export const Shortcuts = () => {
+export const Shortcuts: Story = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -182,7 +182,7 @@ export const WithRadioItems: Story = (args) => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested = () => {
+export const Nested: Story = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>

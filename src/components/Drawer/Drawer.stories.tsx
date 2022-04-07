@@ -1,5 +1,5 @@
 import { useBoolean } from '@committed/hooks'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import {
   Drawer,
@@ -31,7 +31,7 @@ export default {
   },
 } as Meta
 
-export const Default = () => (
+export const Default: Story = () => (
   <Drawer>
     <DrawerTrigger>
       <Button>Show Drawer</Button>
@@ -46,7 +46,7 @@ export const Default = () => (
  *
  * The position of the `DrawerContent` is controlled by the `side` prop and supports, `top`, `bottom`, `left` and `right`.
  */
-export const Controllable = () => {
+export const Controllable: Story = () => {
   const [open, { setTrue, setFalse }] = useBoolean(false)
   const [side, setSide] = React.useState<DrawerPosition>('left')
 

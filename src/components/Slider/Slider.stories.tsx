@@ -11,21 +11,21 @@ export default {
 export const Default: React.FC = () => <Slider />
 
 /** A primary and secondary variant can be used. Secondary, is the default. */
-export const Variants = () => (
+export const Variants: Story = () => (
   <Column css={{ mt: '$7', gap: '$5' }}>
     <Slider variant="primary" />
     <Slider variant="secondary" />
   </Column>
 )
 
-export const Disabled = () => (
+export const Disabled: Story = () => (
   <Column css={{ mt: '$7', gap: '$5' }}>
     <Slider disabled variant="primary" defaultValue={[50]} />
     <Slider disabled variant="secondary" value={[50]} />
   </Column>
 )
 
-export const Vertical = () => (
+export const Vertical: Story = () => (
   <Row css={{ gap: '$5' }}>
     <Column css={{ height: '$10' }}>
       <Slider orientation="vertical" variant="primary" labelSide="left" />
@@ -39,7 +39,7 @@ export const Vertical = () => (
 /**
  * Passing an array as the `defaultValue` or `value` will add multiple markers  on the track.
  */
-export const Contained = () => (
+export const Contained: Story = () => (
   <Column css={{ mt: '$7', gap: '$5' }}>
     <Slider defaultValue={[25, 75]} variant="primary" />
     <Slider defaultValue={[10, 50, 90]} variant="secondary" />
@@ -49,7 +49,7 @@ export const Contained = () => (
 /**
  * Use `onValueChange` to update the controlled value array.
  */
-export const Controlled = () => {
+export const Controlled: Story = () => {
   const [value, setValue] = useState([50])
   return <Slider value={value} onValueChange={setValue} />
 }
@@ -57,7 +57,7 @@ export const Controlled = () => {
 /**
  * The Slider labels can be shown, `always`, on `hover`, or `none`. Using the `labelStyle` prop.
  */
-export const LabelMarkers = () => (
+export const LabelMarkers: Story = () => (
   <Column css={{ mt: '$7', gap: '$5' }}>
     <Slider labelStyle="always" />
     <Slider labelStyle="hover" />
@@ -68,7 +68,7 @@ export const LabelMarkers = () => (
 /**
  * A custom label function can be provided to format the label
  */
-export const LabelContent = () => (
+export const LabelContent: Story = () => (
   <Slider labelFunction={(value) => `Current value is ${value}`} />
 )
 
@@ -83,7 +83,7 @@ export const RangeValues: Story = () => <Slider min={0} max={10} step={1} />
  *
  * You can toggle the portalled state using the `portalled` prop.
  */
-export const Portalled = () => (
+export const Portalled: Story = () => (
   <Slider
     labelStyle="always"
     labelFunction={(value) => `Currently portalled (${value})`}

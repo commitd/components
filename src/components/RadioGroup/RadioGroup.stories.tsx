@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Radio, RadioGroup } from '.'
 import { Column } from '../'
@@ -9,7 +9,7 @@ export default {
   subcomponents: { Radio },
 } as Meta
 
-export const Default = () => {
+export const Default: Story = () => {
   return (
     <RadioGroup>
       <Radio value="mobx" label="Mobx" />
@@ -20,7 +20,7 @@ export const Default = () => {
 }
 
 /** A primary variants is also available but should be used sparingly, e.g. when the only or most important control on the page. */
-export const Primary = () => {
+export const Primary: Story = () => {
   return (
     <RadioGroup>
       <Radio variant="primary" value="mobx" label="Mobx" />
@@ -33,7 +33,7 @@ export const Primary = () => {
 /**
  * The groups can be orientated horizontally (default) or vertically.
  */
-export const Orientation = () => {
+export const Orientation: Story = () => {
   return (
     <Column css={{ gap: '$3' }}>
       <RadioGroup orientation="vertical">
@@ -50,7 +50,7 @@ export const Orientation = () => {
   )
 }
 
-export const Controlled = () => {
+export const Controlled: Story = () => {
   const [value, setValue] = React.useState('redux')
   return (
     <RadioGroup value={value} onValueChange={(v) => setValue(v)}>
@@ -61,7 +61,7 @@ export const Controlled = () => {
   )
 }
 
-export const Disabled = () => {
+export const Disabled: Story = () => {
   return (
     <Column css={{ gap: '$3' }}>
       <RadioGroup value="redux">
@@ -78,7 +78,7 @@ export const Disabled = () => {
   )
 }
 
-export const Destructive = () => {
+export const Destructive: Story = () => {
   return (
     <Column css={{ gap: '$3' }}>
       <RadioGroup>
@@ -98,7 +98,7 @@ export const Destructive = () => {
 /**
  * This story just checks the spacing works without labels but this would be a rare requirement. Normally, you would have labels.
  */
-export const NoLabels = () => {
+export const NoLabels: Story = () => {
   return (
     <Column css={{ gap: '$3' }}>
       <RadioGroup orientation="vertical">

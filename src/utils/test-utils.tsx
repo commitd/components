@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Import setupTests for your unit tests and you can use `renderLight` and `renderDark` to render elements wrapped in a ThemeProvider.
+ * Import setupTests for your unit tests and you can use `renderLight` and `renderDark` to render elements wrapped in a ComponentsProvider.
  * To render without a theme provider use `renderPlain`.
  *
  * N.B. This adds a simple custom id generator so ids match between snapshots.
@@ -12,7 +12,7 @@ import './domrect-polyfill'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { ThemeProvider } from '..'
+import { ComponentsProvider } from '..'
 import ResizeObserver from 'resize-observer-polyfill'
 
 // Use the polyfill for the ResizeObserver.
@@ -20,11 +20,13 @@ import ResizeObserver from 'resize-observer-polyfill'
 global.ResizeObserver = ResizeObserver
 
 const LightTheme: React.FC = ({ children }) => (
-  <ThemeProvider choice="light">{children}</ThemeProvider>
+  <ComponentsProvider theme={{ choice: 'light' }}>
+    {children}
+  </ComponentsProvider>
 )
 
 const DarkTheme: React.FC = ({ children }) => (
-  <ThemeProvider choice="dark">{children}</ThemeProvider>
+  <ComponentsProvider theme={{ choice: 'dark' }}>{children}</ComponentsProvider>
 )
 
 export const renderPlain = render

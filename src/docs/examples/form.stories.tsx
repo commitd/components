@@ -24,7 +24,7 @@ export default {
   title: 'Examples/Form',
 }
 
-export const Form = () => {
+export const Form: Story = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')

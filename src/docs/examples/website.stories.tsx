@@ -38,7 +38,7 @@ export default {
 
 const footerHeight = '200px'
 
-export const Website = () => {
+export const Website: Story = () => {
   const Header = () => (
     <AppBar css={{ position: 'relative' }}>
       <AppBarHeading>Website</AppBarHeading>

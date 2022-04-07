@@ -67,7 +67,7 @@ const SimpleSelect: Story = (args) => (
 export const Default = SimpleSelect
 
 /** This shows how to group items in the select popover */
-export const Grouped = () => (
+export const Grouped: Story = () => (
   <Select defaultValue="grapes">
     <SelectGroup>
       <SelectLabel>Fruits</SelectLabel>
@@ -96,7 +96,7 @@ export const Grouped = () => (
   </Select>
 )
 
-export const WithDisabledItems = () => (
+export const WithDisabledItems: Story = () => (
   <Select defaultValue="1">
     <SelectItem value="1">Item 1</SelectItem>
     <SelectItem value="2">Item 2</SelectItem>
@@ -110,7 +110,7 @@ export const WithDisabledItems = () => (
   </Select>
 )
 
-export const Scrollable = () => (
+export const Scrollable: Story = () => (
   <Select defaultValue="19">
     {[...Array(50)].map((x, i) => (
       <SelectItem value={i.toString()}>Item {i}</SelectItem>
@@ -118,10 +118,10 @@ export const Scrollable = () => (
   </Select>
 )
 
-export const WithLabel = () => <SimpleSelect label="Label" />
+export const WithLabel: Story = () => <SimpleSelect label="Label" />
 
 /** Using `<SelectRoot>` and `<SelectRootItem>` gives further access to the underlying Radix implementation, allowing for more customization */
-export const Customization = () => (
+export const Customization: Story = () => (
   <SelectRoot defaultValue="19">
     <SelectTrigger>
       <SelectValue />
@@ -150,7 +150,7 @@ export const Customization = () => (
   </SelectRoot>
 )
 
-export const DialogSelect = () => (
+export const DialogSelect: Story = () => (
   <Dialog>
     <DialogTrigger>
       <Button>Show Dialog</Button>
@@ -164,7 +164,7 @@ export const DialogSelect = () => (
 /**
  * In this version, we add a `fullscreen` Box
  * */
-export const ConfirmDialogSelect = () => (
+export const ConfirmDialogSelect: Story = () => (
   <Box variant="fullscreen">
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">

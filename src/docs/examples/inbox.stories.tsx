@@ -40,7 +40,7 @@ export default {
   title: 'Examples/Inbox',
 }
 
-export const Inbox = () => {
+export const Inbox: Story = () => {
   const Header = () => (
     <AppBar css={{ position: 'relative' }}>
       <Avatar css={{ mr: '$3' }} src="https://i.pravatar.cc/40" />

@@ -23,15 +23,15 @@ Optionally, add the default fonts. This is done separately to keep down bundle s
 npm add @fontsource/inter @fontsource/dosis
 ```
 
-## ThemeProvider
+## ComponentsProvider
 
-Wrap the root of your application with the `ThemeProvider` component,
-which adds the Design System theme to the context for use in components.
+Wrap the root of your application with the `ComponentsProvider`,
+which adds the design system theme to the and other contexts for use in components.
 This should only be included once in your application.
 
 ```jsx
 import React from 'react'
-import { ThemeProvider } from '@committed/components'
+import { ComponentsProvider } from '@committed/components'
 import AppRoot from './AppRoot'
 
 // If fonts used, import once in your app e.g.
@@ -43,9 +43,9 @@ import AppRoot from './AppRoot'
 // import '@fontsource/dosis/700.css'
 
 const App = () => (
-  <ThemeProvider>
+  <ComponentsProvider>
     <AppRoot />
-  </ThemeProvider>
+  </ComponentsProvider>
 )
 ```
 

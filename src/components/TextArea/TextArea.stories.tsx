@@ -1,20 +1,20 @@
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { TextArea } from '.'
-import { Grid, Column, Label } from '../'
+import { Column, Grid, Label } from '../'
 
 export default {
   title: 'Components/TextArea',
   component: TextArea,
 } as Meta
 
-export const Default: React.FC = () => <TextArea id="default" />
+export const Default: Story = () => <TextArea id="default" />
 
 /**
  * Supplying a `value` will make the component controlled. The changes can be handled by the standard `onChange`
  * prop or use the convenience `onValueChange` that passes just the new value.
  */
-export const Controlled: React.FC = () => {
+export const Controlled: Story = () => {
   const [description, setDescription] = React.useState('test')
   return (
     <Column>
@@ -48,14 +48,14 @@ export const WithLabel: React.FC = () => (
  * If you want a single inline label you can wrap an TextArea in a `Label` component and it will auto assign the
  * `htmlFor` and `id` props.
  */
-export const InlineLabel: React.FC = () => (
+export const InlineLabel: Story = () => (
   <Label variant="inline">
     Inline
     <TextArea />
   </Label>
 )
 
-export const States = () => (
+export const States: Story = () => (
   <Grid
     css={{
       rowGap: '$3',

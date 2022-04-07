@@ -115,7 +115,7 @@ export const WithReactRouter: React.FC = () => {
     <MemoryRouter>
       <AppBar>
         <RouterLink
-          component={AppBarHeading}
+          // FIXME component={AppBarHeading}
           to="./"
           // props for component={Link} are passed on despite the error
           // @ts-ignore

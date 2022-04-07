@@ -34,7 +34,7 @@ const ComponentColumn = C.styled(C.Column, {
   gap: '$3',
 })
 
-export const Overview = () => (
+export const Overview: Story = () => (
   <C.Column>
     <C.Caption>
       <C.Link href="/components/?path=/docs/components-button--default-story">
@@ -281,20 +281,6 @@ export const Overview = () => (
                   </C.SelectItem>
                 ))}
               </C.Select>
-              <C.Input
-                id="standard-select-currency-native"
-                as="select"
-                label="Native select"
-                value={values.currency}
-                onValueChange={handleChange('currency')}
-              >
-                {currencies.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </C.Input>
-              <C.Text size={-1}>Please select your currency</C.Text>
             </C.Flex>
           </form>
         )
@@ -404,13 +390,7 @@ export const Overview = () => (
             (item, index) => (
               <C.ListItem key={index} role={undefined} interactive>
                 <C.ListItemIcon>
-                  <C.Checkbox
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{
-                      'aria-labelledby': '1',
-                    }}
-                  />
+                  <C.Checkbox tabIndex={-1} aria-labelledby={'1'} />
                 </C.ListItemIcon>
                 <C.ListItemText
                   id={'' + index}
@@ -418,7 +398,7 @@ export const Overview = () => (
                   subtext={item}
                 />
                 <C.ListItemSecondaryAction>
-                  <C.IconButton path={mdiChat} edge="end" />
+                  <C.IconButton path={mdiChat} />
                 </C.ListItemSecondaryAction>
               </C.ListItem>
             )
