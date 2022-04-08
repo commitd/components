@@ -215,3 +215,42 @@ export const Nested: Story = () => {
     </ContextMenu>
   )
 }
+
+/** use the `destructive flag to indicate the action triggered it destructive */
+export const Destructive: Story = (args) => {
+  const [checked, { toggle }] = useBoolean(true)
+  const [color, setColor] = React.useState('blue')
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <ClickTarget />
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>
+          Open <ContextMenuItemShortcut>⌘+O</ContextMenuItemShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem destructive>
+          Delete <ContextMenuItemShortcut>⌘+T</ContextMenuItemShortcut>
+        </ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuLabel>Actions</ContextMenuLabel>
+        <ContextMenuItem destructive onSelect={action('cut')}>
+          Cut
+        </ContextMenuItem>
+        <ContextMenuItem onSelect={action('copy')}>Copy</ContextMenuItem>
+        <ContextMenuCheckboxItem checked={checked} onSelect={toggle}>
+          Paste
+        </ContextMenuCheckboxItem>
+        <ContextMenuSeparator />
+        <ContextMenuLabel>Colours</ContextMenuLabel>
+        <ContextMenuRadioGroup value={color} onValueChange={setColor}>
+          <ContextMenuRadioItem destructive value="red">
+            Red
+          </ContextMenuRadioItem>
+          <ContextMenuRadioItem value="blue">Blue</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="green">Green</ContextMenuRadioItem>
+        </ContextMenuRadioGroup>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
+}

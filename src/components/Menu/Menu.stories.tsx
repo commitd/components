@@ -49,7 +49,7 @@ export const Default: Story = (args) => (
   </Menu>
 )
 
-export const WithDisabledItems: React.FC = () => (
+export const WithDisabledItems: Story = () => (
   <Menu>
     <MenuTrigger>
       <Button>Trigger</Button>
@@ -63,7 +63,7 @@ export const WithDisabledItems: React.FC = () => (
 )
 
 /* Separators and Groups can be used to arrange items in vertical and horizontal sections */
-export const WithSeparators: React.FC = () => (
+export const WithSeparators: Story = () => (
   <Menu>
     <MenuTrigger>
       <Button>Trigger</Button>
@@ -88,7 +88,7 @@ export const WithSeparators: React.FC = () => (
   </Menu>
 )
 
-export const WithLabel: React.FC = () => (
+export const WithLabel: Story = () => (
   <Menu>
     <MenuTrigger>
       <Button>Trigger</Button>
@@ -239,5 +239,42 @@ export const MultipleMenus: Story = () => {
         </MenuContent>
       </Menu>
     </>
+  )
+}
+
+/** use the `destructive` flag to show the item triggers a destructive action */
+export const Destructive: Story = () => {
+  const [color, setColor] = React.useState('blue')
+  const [checked, setChecked] = useState(true)
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Trigger</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>
+          Open <MenuItemShortcut>⌘+O</MenuItemShortcut>
+        </MenuItem>
+        <MenuItem destructive>
+          Delete <MenuItemShortcut>⌘+D</MenuItemShortcut>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuRadioGroup value={color} onValueChange={setColor}>
+          <MenuRadioItem destructive value="red">
+            Red
+          </MenuRadioItem>
+          <MenuRadioItem value="green">Green</MenuRadioItem>
+          <MenuRadioItem value="blue">Blue</MenuRadioItem>
+        </MenuRadioGroup>
+        <MenuSeparator />
+        <MenuCheckboxItem
+          destructive
+          checked={checked}
+          onCheckedChange={setChecked}
+        >
+          Mark
+        </MenuCheckboxItem>
+      </MenuContent>
+    </Menu>
   )
 }
