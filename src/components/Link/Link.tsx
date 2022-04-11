@@ -1,16 +1,66 @@
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import { Slot } from '@radix-ui/react-slot'
+import React, { ElementRef, forwardRef } from 'react'
+import {
+  AsChildProps,
+  css,
+  CSSProps,
+  styled,
+  VariantProps,
+} from '../../stitches.config'
 
 const DEFAULT_TAG = 'a'
 
-const isExternal = (url: string | undefined): boolean =>
-  !!(url && url.startsWith('http'))
+/**
+ * Can be used to test the href to determine if it is external to the application.
+ *
+ * Used inside `Link` but can be used separately to create custom links.
+ */
+export function isExternalUrl(url: string | undefined): boolean {
+  return !!(
+    url &&
+    /^((https?:|s?ftp:|file:\/|chrome:)?\/\/|mailto:|tel:)/.test(
+      url.toLowerCase()
+    )
+  )
+}
+
+type InternalLinkProps = React.ComponentPropsWithRef<typeof DEFAULT_TAG> &
+  AsChildProps
+
+const InternalLink: React.FC<InternalLinkProps> = ({ asChild, ...props }) => {
+  const Comp = asChild ? Slot : DEFAULT_TAG
+  return <Comp {...props} />
+}
 
 /**
- * Link component
- */
-export const StyledLink = styled(DEFAULT_TAG, {
+ * Used to provide link props derived from the href
+ *
+ * Used inside `Link` but can be used separately to create custom links.
+ * */
+export function linkProps(
+  href: string | undefined
+): {
+  href?: string | undefined
+  target?: string
+  rel?: string
+  external: boolean
+} {
+  return isExternalUrl(href)
+    ? {
+        href,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        external: true,
+      }
+    : { href, external: false }
+}
+
+/**
+ * Used to style `Link` component
+ *
+ * Can be used separately to create custom links.
+ * */
+export const linkStyles = css({
   $$linkBackground: '$colors$selection',
   // Reset
   lineHeight: '1',
@@ -58,20 +108,23 @@ export const StyledLink = styled(DEFAULT_TAG, {
   },
 })
 
-type LinkVariants = VariantProps<typeof StyledLink>
-type AProps = ComponentProps<typeof DEFAULT_TAG>
-type LinkProps = Omit<LinkVariants, 'external'> & AProps & CSSProps & AsProps
+export const StyledLink = styled(InternalLink, linkStyles)
 
+type LinkVariants = VariantProps<typeof StyledLink>
+export type LinkProps = Omit<LinkVariants, 'external'> &
+  InternalLinkProps &
+  CSSProps &
+  AsChildProps
+
+/**
+ * Link component
+ *
+ * Has standard anchor tag props. Uses the radix style `asChild` prop to render as the child component.
+ * This can be used to wrap other link providers, say for routing. Other the styles and utils are also available to build your own: `linkStyles`, `linkProps` `isExternalUrl`.
+ */
 export const Link = forwardRef<ElementRef<typeof StyledLink>, LinkProps>(
   ({ href, ...props }, forwardedRef) => {
-    return (
-      <StyledLink
-        href={href}
-        external={isExternal(href)}
-        {...props}
-        ref={forwardedRef}
-      />
-    )
+    return <StyledLink {...linkProps(href)} {...props} ref={forwardedRef} />
   }
 )
 Link.toString = () => `.${StyledLink.className}`

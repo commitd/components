@@ -1,6 +1,11 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Link as RouterLink, MemoryRouter } from 'react-router-dom'
+import {
+  Link as RouterLink,
+  MemoryRouter,
+  Route,
+  Routes,
+} from 'react-router-dom'
 import { Link } from '.'
 import { Box, Column, Text } from '../'
 
@@ -20,7 +25,7 @@ export const Default: Story = () => {
       </Box>
       <Box>
         <Text font="monospace">
-          <Link href="#"> font="monospace"</Link>
+          <Link href="/"> font="monospace"</Link>
         </Text>
       </Box>
       <Box>
@@ -61,17 +66,24 @@ export const Styled: Story = () => (
 export const WithReactRouter: Story = () => {
   return (
     <MemoryRouter>
+      <Routes>
+        <Route index element={<div>Hello Router</div>} />
+        <Route path="/one" element={<div>Route 1</div>} />
+        <Route path="/two" element={<div>Route 2</div>} />
+      </Routes>
       <Box>
         <Box>
-          <RouterLink
-            // FIXME component={Link}
-            to="./example-route"
-            // props for component={Link} are passed on despite the error
-            // @ts-ignore
-            css={{ color: '$text' }}
-          >
-            Click to change Router path
-          </RouterLink>
+          <RouterLink to="/one">Click to change Router path</RouterLink>
+        </Box>
+        <Box>
+          <Link asChild>
+            <RouterLink to="/two">Click to change Router path</RouterLink>
+          </Link>
+        </Box>
+        <Box>
+          <Link variant="styled" asChild>
+            <RouterLink to="./one">Click to change Router path</RouterLink>
+          </Link>
         </Box>
       </Box>
     </MemoryRouter>
@@ -79,12 +91,23 @@ export const WithReactRouter: Story = () => {
 }
 
 /**
- * Links support substituting the rendered element for one supplied to the `as` prop.
+ * Links support substituting the rendered element for one supplied to the `asChild` pattern prop.
  */
 export const As: Story = () => (
   <ol>
-    <Link as="li" href="test.com" css={{ color: '$text' }}>
-      Test
+    <Link asChild href="test.com" css={{ display: 'block' }}>
+      <li>Test</li>
+    </Link>
+    <Link
+      variant="styled"
+      asChild
+      href="test.com"
+      css={{ display: 'inline-block' }}
+    >
+      <li>Test</li>
+    </Link>
+    <Link variant="clear" asChild href="test.com" css={{ display: 'block' }}>
+      <li>Test</li>
     </Link>
   </ol>
 )
