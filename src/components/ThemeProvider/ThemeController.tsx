@@ -71,7 +71,7 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
   )
 
   const setMode = (mode: ThemeChoice) => {
-    window.localStorage.setItem('themeChoice', mode)
+    window?.localStorage.setItem('themeChoice', mode)
     setThemeValues(mode)
   }
 
@@ -97,13 +97,15 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
 
   // paints the app before it renders elements
   useLayoutEffect(() => {
-    const localTheme = window.localStorage.getItem('themeChoice') as ThemeChoice
+    const localTheme = window?.localStorage.getItem(
+      'themeChoice'
+    ) as ThemeChoice
 
     if (localTheme) {
       setThemeValues(localTheme)
     } else if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
+      window?.matchMedia &&
+      window?.matchMedia('(prefers-color-scheme: dark)').matches
     ) {
       setThemeValues('dark')
     } else {
