@@ -8,7 +8,7 @@ import { TooltipProvider as tooltip } from '../Tooltip'
 
 // For docs only
 export const theme: React.FC<ThemeProviderPropsWithoutChildren> = (
-  props: ThemeProviderPropsWithoutChildren
+  _props: ThemeProviderPropsWithoutChildren
 ) => null
 
 export default {
@@ -23,7 +23,9 @@ export default {
   excludeStories: ['theme'],
 } as Meta
 
-export const Default: Story = ({ theme, ...args }) => (
+export const Default: Story = (
+  { theme, ...args } // NOSONAR
+) => (
   <ComponentsProvider theme={{ ...theme, local: true }} {...args}>
     <Card>
       <CardBody>

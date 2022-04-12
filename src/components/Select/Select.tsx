@@ -1,26 +1,29 @@
-import { useLabelContext } from '@radix-ui/react-label'
 import {
+  Content,
+  Group,
+  Icon,
+  Item,
+  ItemIndicator,
+  ItemText,
   Root,
+  ScrollDownButton,
+  ScrollUpButton,
+  Separator,
   Trigger,
   Value,
-  Icon,
-  Content,
-  ScrollUpButton,
   Viewport,
-  Item,
-  ItemText,
-  ItemIndicator,
-  Group,
-  Separator,
-  ScrollDownButton,
 } from '@radix-ui/react-select'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { CSSProps, styled } from '../../stitches.config'
-import { ChevronDown, ChevronUp, Check } from '../Icons'
-import { inputStyles } from '../Input/Input'
-import { Label } from '../Label'
+import { ConditionalWrapper } from '../../utils'
+import { useFormControl, UseFormControlProps } from '../FormControl'
+import { Check, ChevronDown, ChevronUp } from '../Icons'
+import { defaultStyles, inputStyles } from '../Input'
+import { Label, LabelOptional } from '../Label'
+import { paperStyles } from '../Paper'
 
-const StyledTrigger = styled(Trigger, inputStyles, {
+const StyledTrigger = styled(Trigger, defaultStyles, inputStyles, {
+  readonly: {},
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -32,10 +35,8 @@ const StyledValue = styled(Value, {
   flexGrow: 1,
 })
 
-const StyledContent = styled(Content, {
+const StyledContent = styled(Content, paperStyles, {
   overflow: 'hidden',
-  backgroundColor: '$colors$brandBackground',
-  borderRadius: '$default',
   boxShadow: '$2',
 })
 
@@ -106,27 +107,35 @@ const StyledScrollUpButton = styled(ScrollUpButton, scrollButtonStyles)
 const StyledScrollDownButton = styled(ScrollDownButton, scrollButtonStyles)
 
 type SelectProps = ComponentProps<typeof Root> &
-  CSSProps & {
+  UseFormControlProps & {
     /** Add a label to the select */
     label?: string
-    /** Add id to the select */
-    id?: string
-  }
+  } & CSSProps
 
 export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
-  ({ label, id, children, ...props }, forwardedRef) => {
-    const labelId = useLabelContext()
+  ({ label, css, children, ...props }, forwardedRef) => {
+    const [id, { state, disabled, required }, remainingProps] = useFormControl(
+      props
+    )
     return (
-      <>
-        {label && (
-          <Label variant="above" htmlFor={id || labelId}>
-            {label}
+      <ConditionalWrapper
+        condition={label}
+        wrapper={(children) => (
+          <Label variant="wrapping">
+            <span>
+              {label}
+              {required === false && <LabelOptional />}
+            </span>
+            {children}
           </Label>
         )}
-        <Root {...props}>
+      >
+        <Root {...remainingProps}>
           <StyledTrigger
-            aria-labelledby={labelId}
-            id={id || label}
+            id={id}
+            disabled={disabled}
+            state={state}
+            css={css}
             ref={forwardedRef}
           >
             <StyledValue />
@@ -142,7 +151,7 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
             </StyledScrollDownButton>
           </StyledContent>
         </Root>
-      </>
+      </ConditionalWrapper>
     )
   }
 )

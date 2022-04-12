@@ -60,18 +60,20 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
 }) => (
   <ConditionalWrapper
     condition={toast}
-    wrapper={(children) => <ToastProvider {...toast}>{children}</ToastProvider>}
+    wrapper={(wrappedChildren) => (
+      <ToastProvider {...toast}>{wrappedChildren}</ToastProvider>
+    )}
   >
     <ConditionalWrapper
       condition={tooltip}
-      wrapper={(children) => (
-        <TooltipProvider {...tooltip}>{children}</TooltipProvider>
+      wrapper={(wrappedChildren) => (
+        <TooltipProvider {...tooltip}>{wrappedChildren}</TooltipProvider>
       )}
     >
       <ConditionalWrapper
         condition={theme}
-        wrapper={(children) => (
-          <ThemeProvider {...theme}>{children}</ThemeProvider>
+        wrapper={(wrappedChildren) => (
+          <ThemeProvider {...theme}>{wrappedChildren}</ThemeProvider>
         )}
       >
         <>

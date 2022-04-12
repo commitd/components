@@ -1,3 +1,4 @@
+import { Story } from '@storybook/react'
 import React from 'react'
 import { styled, Box, Column, Row, Text } from '../'
 

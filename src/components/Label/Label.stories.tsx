@@ -1,11 +1,12 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Label } from '.'
+import { Label, LabelOptional } from '.'
 import { Checkbox, Input } from '../'
 
 export default {
   title: 'Components/Label',
   component: Label,
+  subcomponents: { LabelOptional },
 } as Meta
 
 export const Default: Story = ({ children = 'Label', ...args }) => (
@@ -37,4 +38,17 @@ export const NestedComponent: React.FC = () => (
     <Checkbox />
     Label
   </Label>
+)
+
+/**
+ * A optional flag can be added - this is handled by default in forms.
+ */
+export const Optional: React.FC = () => (
+  <>
+    <Label htmlFor="firstName">
+      First name
+      <LabelOptional />
+    </Label>
+    <Input type="text" id="firstName" />
+  </>
 )

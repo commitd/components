@@ -262,9 +262,7 @@ export const UtilityClasses: Story<React.ComponentProps<typeof Table>> = (
       >
         <TableRow>
           <TableCell colSpan={8}>
-            <Link as={Link} href="#">
-              Documentation
-            </Link>
+            <Link href="#">Documentation</Link>
           </TableCell>
         </TableRow>
       </TableFoot>

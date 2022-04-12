@@ -25,7 +25,7 @@ it('renders disabled without role', async () => {
   renderDark(<Disabled />)
   const buttons = await screen.findAllByRole('button')
   buttons.forEach((b) => expect(b).toHaveAttribute('disabled'))
-  // FIXME should throw due to pointerEvents: 'none'
+  // NOTE should throw due to pointerEvents: 'none' but still allowed to force so this doesn't work.
   // expect(() => userEvent.click(buttons[0])).toThrow()
 })
 

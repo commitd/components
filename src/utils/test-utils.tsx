@@ -14,10 +14,14 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { ComponentsProvider } from '..'
 import ResizeObserver from 'resize-observer-polyfill'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as ___ from '@testing-library/react/node_modules/@testing-library/dom/types/queries' // NOSONAR
 
 // Use the polyfill for the ResizeObserver.
 // This is used in some components.
 global.ResizeObserver = ResizeObserver
+// releasePointerCapture called by some radix components but not in js-dom
+global.HTMLElement.prototype.releasePointerCapture = () => undefined
 
 const LightTheme: React.FC = ({ children }) => (
   <ComponentsProvider theme={{ choice: 'light' }}>
