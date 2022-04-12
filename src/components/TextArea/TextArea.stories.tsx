@@ -66,22 +66,22 @@ export const States: Story = () => (
     <TextArea id="1" />
     <TextArea id="2" placeholder="placeholder" />
     <TextArea id="3" value="Value" />
-    <TextArea id="4" state="valid" defaultValue="Valid" />
-    <TextArea id="5" state="invalid" defaultValue="Invalid" />
+    <TextArea id="4" valid defaultValue="Valid" />
+    <TextArea id="5" error defaultValue="Invalid" />
     <TextArea id="6" disabled />
 
     <TextArea id="h1" force="hover" />
     <TextArea id="h2" force="hover" placeholder="hovered" />
     <TextArea id="h3" force="hover" value="Value" />
-    <TextArea id="h4" force="hover" state="valid" defaultValue="Valid" />
-    <TextArea id="h5" force="hover" state="invalid" defaultValue="Invalid" />
+    <TextArea id="h4" force="hover" valid defaultValue="Valid" />
+    <TextArea id="h5" force="hover" error defaultValue="Invalid" />
     <TextArea id="h6" disabled value="disabled" />
 
     <TextArea id="f1" force="focus" />
     <TextArea id="f2" force="focus" placeholder="focussed" />
     <TextArea id="f3" force="focus" value="Value" />
-    <TextArea id="f4" force="focus" state="valid" defaultValue="Valid" />
-    <TextArea id="f5" force="focus" state="invalid" defaultValue="Invalid" />
+    <TextArea id="f4" force="focus" valid defaultValue="Valid" />
+    <TextArea id="f5" force="focus" error defaultValue="Invalid" />
     <TextArea id="f6" readOnly value="readonly" />
   </Grid>
 )

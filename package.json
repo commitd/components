@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": false,
   "repository": "git://github.com/commitd/components.git",
-  "main": "dist/committed-components.cjs.js",
-  "module": "dist/committed-components.esm.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -21,12 +21,10 @@
   },
   "scripts": {
     "postinstall": "rimraf node_modules/@emotion/core/types",
-    "build": "rollpkg build --tsconfig ./tsconfig.build.json",
-    "watch": "rollpkg watch",
-    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "clean": "rimraf dist",
+    "build": "npm run clean && node build.js && tsc --project tsconfig.build.json",
+    "lint": "tsc --noEmit && eslint './src/**/*.{ts,tsx}'",
     "test": "jest",
-    "test:ci": "jest --coverage",
-    "test:watch": "jest --watchAll",
     "coverage": "npx live-server coverage/lcov-report",
     "commit": "cz",
     "size": "size-limit",
@@ -34,7 +32,7 @@
     "generate": "plop --plopfile ./generators/plopfile.js",
     "storybook": "start-storybook -p 6006 -h 0.0.0.0",
     "build-storybook": "build-storybook",
-    "format": "prettier --write 'src/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
+    "format": "prettier --write 'src/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx *.js .*.js",
     "format:check": "prettier --check '**/{src,test,stories}/**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}' example/index.tsx",
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
@@ -52,78 +50,14 @@
   },
   "size-limit": [
     {
-      "path": "dist/committed-components.cjs.production.js",
-      "limit": "850 KB"
+      "path": "dist/index.cjs.js",
+      "limit": "85 KB"
     },
     {
-      "path": "dist/committed-components.esm.js",
-      "limit": "70 KB"
+      "path": "dist/index.esm.js",
+      "limit": "85 KB"
     }
   ],
-  "eslintConfig": {
-    "extends": [
-      "./node_modules/rollpkg/configs/eslint"
-    ],
-    "plugins": [
-      "import"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "settings": {
-      "import/parsers": {
-        "@typescript-eslint/parser": [
-          ".ts",
-          ".tsx"
-        ]
-      },
-      "import/resolver": {
-        "typescript": {
-          "alwaysTryTypes": true
-        }
-      }
-    },
-    "rules": {
-      "import/default": "off",
-      "import/no-default-export": "off",
-      "react/display-name": "off",
-      "import/no-named-as-default-member": "warn"
-    },
-    "ignorePatterns": [
-      "dist",
-      "node_modules",
-      "docs",
-      "**/*.stories.tsx",
-      "**/*.test.ts"
-    ]
-  },
-  "jest": {
-    "preset": "rollpkg",
-    "setupFiles": [
-      "./jest.patch-cssom.js"
-    ],
-    "watchPlugins": [],
-    "snapshotSerializers": [
-      "jest-stitches"
-    ],
-    "collectCoverage": true,
-    "testResultsProcessor": "jest-sonar-reporter",
-    "moduleDirectories": [
-      "node_modules",
-      "utils"
-    ],
-    "testRegex": "/src/.*(\\.|/)(test|spec)\\.[jt]sx?$",
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!src/types/**/*"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/src/typings.d.ts",
-      "setupTests.tsx",
-      "/src/docs/*",
-      ".*/index.ts",
-      ".*.test.ts",
-      ".*.stories.tsx"
-    ]
-  },
   "lint-staged": {
     "*.{ts,tsx,md,json,mdx}": "prettier --write",
     "*.{ts,tsx}": [
@@ -170,15 +104,24 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "danger": "^11.0.2",
     "danger-plugin-spellcheck": "^2.1.0",
+    "esbuild": "^0.14.36",
     "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.4",
+    "eslint-plugin-jest-dom": "^3.7.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "find-cache-dir": "^3.3.1",
     "husky": "^7.0.4",
-    "jest": "^26.6.3",
+    "jest": "^27.5.1",
     "jest-sonar-reporter": "^2.0.0",
     "jest-stitches": "^1.0.4",
     "lint-staged": "^12.3.7",
@@ -191,11 +134,11 @@
     "react-router-dom": "^6.3.0",
     "react-virtual": "^2.10.4",
     "resize-observer-polyfill": "^1.5.1",
-    "rollpkg": "^0.5.7",
     "semantic-release": "^19.0.2",
     "size-limit": "^7.0.8",
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.0.9",
+    "ts-jest": "^27.1.4",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.6.3"
   },

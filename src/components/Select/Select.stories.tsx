@@ -20,6 +20,7 @@ import {
   SelectViewport,
 } from '.'
 import { Button } from '../Button'
+import { Form, FormButton } from '../Form'
 import { Box } from '../Box'
 import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
 import {
@@ -34,6 +35,7 @@ import {
   mdiThumbUp,
 } from '@mdi/js'
 import { Svg } from '../Svg'
+import { withFormData } from '../../docs/util'
 
 export default {
   title: 'Components/Select',
@@ -56,7 +58,7 @@ export default {
   },
 } as Meta
 
-const SimpleSelect: Story = (args) => (
+const Template: Story = (args) => (
   <Select defaultValue="1" {...args}>
     <SelectItem value="1">Item 1</SelectItem>
     <SelectItem value="2">Item 2</SelectItem>
@@ -64,8 +66,11 @@ const SimpleSelect: Story = (args) => (
   </Select>
 )
 
-export const Default = SimpleSelect
-
+export const Default = Template.bind({})
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
 /** This shows how to group items in the select popover */
 export const Grouped: Story = () => (
   <Select defaultValue="grapes">
@@ -118,7 +123,8 @@ export const Scrollable: Story = () => (
   </Select>
 )
 
-export const WithLabel: Story = () => <SimpleSelect label="Label" />
+export const WithLabel = Template.bind({})
+WithLabel.args = { label: 'Label' }
 
 /** Using `<SelectRoot>` and `<SelectRootItem>` gives further access to the underlying Radix implementation, allowing for more customization */
 export const Customization: Story = () => (
@@ -150,13 +156,32 @@ export const Customization: Story = () => (
   </SelectRoot>
 )
 
+/**
+ * Demo of use in a `Form`
+ */
+export const InForm: Story = () => {
+  return (
+    <Form onSubmit={withFormData(alert)}>
+      <Select label="Demo" name="demo" defaultValue="1">
+        <SelectItem value="1">Item 1</SelectItem>
+        <SelectItem value="2">Item 2</SelectItem>
+        <SelectItem value="3">Item 3</SelectItem>
+      </Select>
+      <FormButton />
+    </Form>
+  )
+}
+
+/**
+ * Test case of a select in a `Dialog`
+ */
 export const DialogSelect: Story = () => (
   <Dialog>
     <DialogTrigger>
       <Button>Show Dialog</Button>
     </DialogTrigger>
     <DialogContent>
-      <SimpleSelect />
+      <Template />
     </DialogContent>
   </Dialog>
 )
@@ -168,8 +193,8 @@ export const ConfirmDialogSelect: Story = () => (
   <Box variant="fullscreen">
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">
-        <SimpleSelect />
-        <SimpleSelect />
+        <Template />
+        <Template />
         <ConfirmDialogActions confirm="Confirm" onConfirm={action('Confirm')} />
       </ConfirmDialogContent>
       <ConfirmDialogTrigger>

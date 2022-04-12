@@ -6,7 +6,6 @@ import { Container } from '../Container'
 import { Heading } from '../Heading'
 import { Paper } from '../Paper'
 import { ThemeProvider, useThemeController } from '../ThemeProvider'
-import { lightTheme } from '../../stitches.config'
 
 export default {
   title: 'Components/ThemeSwitch',

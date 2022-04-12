@@ -38,7 +38,7 @@ We are using npm v7, and due to issues with peer dependencies we are currently r
 npm install --force
 ```
 
-The main build is performed using tsdx:
+The main build is performed using esbuild:
 
 ```bash
 npm run build
@@ -72,4 +72,4 @@ Pull requests go through CI checks using Github Actions. Releases update the dep
 
 ## License
 
-[MIT](/LICENSE) - © Committed Software 2019-2021 https://committed.io
+[MIT](/LICENSE) - © Committed Software 2019-2022 https://committed.io

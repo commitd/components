@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as C from '../dist/committed-components.cjs.js'
+import * as C from '../dist/index.cjs.js'
 import { mdiPhone, mdiEmail } from '@mdi/js'
 
 const footerHeight = '200px'

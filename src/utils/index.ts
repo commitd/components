@@ -1,5 +1,4 @@
 export * from './ConditionalWrapper'
-
 import type { CSS } from '../stitches.config'
 
 const keys = ['brandYellow', 'brandGrey', 'info', 'success', 'error', 'warning']

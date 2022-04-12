@@ -53,7 +53,7 @@ const ClickTarget = () => (
 )
 
 export const Default: Story = (args) => (
-  <ContextMenu>
+  <ContextMenu {...args}>
     <ContextMenuTrigger>
       <ClickTarget />
     </ContextMenuTrigger>
@@ -66,7 +66,7 @@ export const Default: Story = (args) => (
 )
 
 /** The disabled prop greys out the item and makes it unselectable  */
-export const WithDisabledItems: Story = (args) => (
+export const WithDisabledItems: Story = () => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -82,7 +82,7 @@ export const WithDisabledItems: Story = (args) => (
 )
 
 /** ContextMenuSeparator adds a separator between other items and can be used with Groups to create horizontal sections */
-export const WithSeparators: Story = (args) => (
+export const WithSeparators: Story = () => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -108,7 +108,7 @@ export const WithSeparators: Story = (args) => (
 )
 
 /** Add a label with ContextMenuLabel */
-export const WithLabels: Story = (args) => (
+export const WithLabels: Story = () => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -142,7 +142,7 @@ export const Shortcuts: Story = () => {
 }
 
 /** ContextMenuCheckboxItem adds an item that can be checked */
-export const WithCheckboxItems: Story = (args) => {
+export const WithCheckboxItems: Story = () => {
   const [checked, { toggle }] = useBoolean(true)
   return (
     <ContextMenu>
@@ -163,7 +163,7 @@ export const WithCheckboxItems: Story = (args) => {
 }
 
 /** ContextMenuRadioItem when wrapped in a ContextMenuRadioGroup adds an item that can be checked with only one item in the group checked at once */
-export const WithRadioItems: Story = (args) => {
+export const WithRadioItems: Story = () => {
   const [color, setColor] = React.useState('blue')
   return (
     <ContextMenu>
@@ -217,7 +217,7 @@ export const Nested: Story = () => {
 }
 
 /** use the `destructive flag to indicate the action triggered it destructive */
-export const Destructive: Story = (args) => {
+export const Destructive: Story = () => {
   const [checked, { toggle }] = useBoolean(true)
   const [color, setColor] = React.useState('blue')
   return (

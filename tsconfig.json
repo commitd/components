@@ -1,7 +1,20 @@
 {
-  "extends": "rollpkg/configs/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "src",
+    "target": "ES2018",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "outDir": "dist",
     "paths": {
       "stitches.config": ["./utils/stitches.config"],
       "test-utils": ["./utils/test-utils"]

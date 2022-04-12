@@ -58,3 +58,5 @@ RUN echo 'source <(gh completion -s bash)' >> ~/.bashrc \
     # Install useful oh-my-* shell plugins
     && sed -i.bak 's/^plugins=(\(.*\)/plugins=(debian docker docker-compose node npm yarn vscode \1/' ~/.zshrc \
     && sed -i.bak 's/^plugins=(\(.*\)/plugins=(npm \1/' ~/.bashrc
+
+RUN npm i -g npm@7 --registry=https://registry.npmjs.org

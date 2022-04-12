@@ -40,7 +40,7 @@ const InternalLink: React.FC<InternalLinkProps> = ({ asChild, ...props }) => {
 export function linkProps(
   href: string | undefined
 ): {
-  href?: string | undefined
+  href: string | undefined
   target?: string
   rel?: string
   external: boolean
