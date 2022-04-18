@@ -15,60 +15,80 @@ import {
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-import {
-  checkboxItemStyles,
-  contentStyles,
-  groupStyles,
-  itemIndicatorStyles,
-  itemShortcutStyles,
-  itemStyles,
-  labelStyles,
-  separatorStyles,
-  StyledCheckIndicator,
-  StyledTriggerItemIndicator,
-  triggerItemStyles,
-} from '../../utils/menuStyles'
+import { Check, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper'
 
-/**
- * Menu component
- *
- * Displays a menu to the user - usually triggered by clicking a button.
- *
- * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a `MenuTrigger`.
- * The content should be wrapped in a `MenuContent` and should be made up of the other `MenuXxxx` components.
- *
- * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/dropdown-menu).
- */
-export const Menu = Root
+const itemStyles = {
+  '&::before': {
+    boxSizing: 'border-box',
+  },
+  '&::after': {
+    boxSizing: 'border-box',
+  },
+  fontSize: '$0',
+  padding: '$2 $3',
+  cursor: 'default',
+  borderRadius: '$default',
+  backgroundColor: 'transparent',
+  border: 'none',
+  color: '$text',
+  outline: 'none',
+  transition: 'all 50ms',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+
+  '&:focus': {
+    background: '$selection',
+    cursor: 'pointer',
+  },
+  '&[data-disabled]': {
+    color: '$grey9',
+  },
+}
+
+const StyledContent = styled(Content, paperStyles, {
+  minWidth: 130,
+  padding: '$1',
+  boxShadow: '$2',
+})
+
+const StyledItemIndicator = styled(ItemIndicator, {
+  position: 'absolute',
+  left: '$2',
+})
+
+const checkboxItemStyles = {
+  ...itemStyles,
+  paddingLeft: '$6',
+}
+
+const StyledCheckboxItem = styled(CheckboxItem, checkboxItemStyles)
+const StyledRadioItem = styled(RadioItem, checkboxItemStyles)
 
 export const MenuItem = styled(Item, itemStyles)
-export const MenuItemShortcut = styled('span', itemShortcutStyles)
-export const MenuSeparator = styled(Separator, separatorStyles)
-export const MenuLabel = styled(Label, labelStyles)
-export const MenuItemGroup = styled(Group, groupStyles(MenuItem))
-export const MenuRadioGroup = RadioGroup
 
-const StyledContent = styled(Content, paperStyles, contentStyles)
-const StyledItemIndicator = styled(ItemIndicator, itemIndicatorStyles)
-const StyledCheckboxItem = styled(CheckboxItem, itemStyles, checkboxItemStyles)
-const StyledRadioItem = styled(RadioItem, itemStyles, checkboxItemStyles)
-const StyledTriggerItem = styled(TriggerItem, itemStyles, triggerItemStyles)
+const StyledMenuTriggerItem = styled(TriggerItem, {
+  ...itemStyles,
+  '&[data-state="open"]': {
+    background: '$selection',
+  },
+})
 
 type MenuTriggerItemProps = ComponentProps<typeof TriggerItem> & CSSProps
 
 export const MenuTriggerItem = forwardRef<
-  ElementRef<typeof StyledTriggerItem>,
+  ElementRef<typeof StyledMenuTriggerItem>,
   MenuTriggerItemProps
 >(({ children, ...props }, forwardedRef) => {
   return (
-    <StyledTriggerItem {...props} ref={forwardedRef}>
+    <StyledMenuTriggerItem {...props} ref={forwardedRef}>
       {children}
-      <StyledTriggerItemIndicator />
-    </StyledTriggerItem>
+      <ChevronRight css={{ size: '$4' }} />
+    </StyledMenuTriggerItem>
   )
 })
-MenuTriggerItem.toString = () => `.${StyledTriggerItem.className}`
+MenuTriggerItem.toString = () => `.${StyledMenuTriggerItem.className}`
 
 type MenuContentProps = ComponentProps<typeof Content> & CSSProps
 
@@ -106,12 +126,12 @@ const StyledCheckboxIndicator = forwardRef<
   ComponentProps<typeof StyledItemIndicator>
 >((props, forwardedRef) => (
   <StyledItemIndicator {...props} ref={forwardedRef}>
-    <StyledCheckIndicator />
+    <Check css={{ size: '$4' }} />
   </StyledItemIndicator>
 ))
 StyledCheckboxIndicator.toString = () => `.${StyledItemIndicator.className}`
 
-type MenuCheckboxItemProps = ComponentProps<typeof StyledCheckboxItem>
+type MenuCheckboxItemProps = ComponentProps<typeof CheckboxItem>
 
 export const MenuCheckboxItem = forwardRef<
   ElementRef<typeof StyledCheckboxItem>,
@@ -124,7 +144,53 @@ export const MenuCheckboxItem = forwardRef<
 ))
 MenuCheckboxItem.toString = () => `.${StyledCheckboxItem.className}`
 
-type MenuRadioItemProps = ComponentProps<typeof StyledRadioItem>
+// @deprecated
+export { MenuCheckboxItem as MenuItemCheckbox }
+
+export const MenuSeparator = styled(Separator, {
+  height: 1,
+  backgroundColor: '$grey7',
+
+  variants: {
+    orientation: {
+      horizontal: {
+        height: 1,
+        margin: '$1 0',
+      },
+      vertical: {
+        width: 1,
+        height: 'auto',
+        margin: '0 $1',
+        flex: '1 1 100%',
+      },
+    },
+  },
+  defaultVariants: {
+    orientation: 'horizontal',
+  },
+})
+
+export const MenuLabel = styled(Label, {
+  color: '$grey10',
+  fontSize: '$-1',
+  padding: '$2 $3',
+  paddingBottom: '$1',
+  cursor: 'default',
+})
+
+export const MenuItemGroup = styled(Group, {
+  display: 'flex',
+  marginLeft: '$3',
+  marginRight: '$1',
+
+  [`& ${MenuItem}`]: {
+    paddingLeft: '$2',
+  },
+})
+
+export const MenuRadioGroup = RadioGroup
+
+type MenuRadioItemProps = ComponentProps<typeof RadioItem>
 
 export const MenuRadioItem = forwardRef<
   ElementRef<typeof StyledRadioItem>,
@@ -136,3 +202,22 @@ export const MenuRadioItem = forwardRef<
   </StyledRadioItem>
 ))
 MenuRadioItem.toString = () => `.${StyledRadioItem.className}`
+
+export const MenuItemShortcut = styled('span', {
+  fontFamily: '$monospace',
+  lineHeight: '$body',
+  color: '$textSecondary',
+  marginLeft: '$3',
+})
+
+/**
+ * Menu component
+ *
+ * Displays a menu to the user - usually triggered by clicking a button.
+ *
+ * Its appearance is controlled with the `open` and `onOpenChange` props or by providing a `MenuTrigger`.
+ * The content should be wrapped in a `MenuContent` and should be made up of the other `MenuXxxx` components.
+ *
+ * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/dropdown-menu).
+ */
+export const Menu = Root

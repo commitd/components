@@ -1,6 +1,6 @@
 import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import { IconButton } from '.'
 import { Check, CheckIndeterminate, ChevronDown, Column, Row } from '../'
@@ -10,17 +10,17 @@ export default {
   component: IconButton,
 } as Meta
 
-export const Default: Story = () => (
+export const Default: React.FC = () => (
   <IconButton path={mdiThumbUp} onClick={action('click')} aria-label="label" />
 )
 
-export const WithCustomSvg: Story = () => (
+export const WithCustomSvg: React.FC = () => (
   <IconButton onClick={action('click')} aria-label="label">
     <Check />
   </IconButton>
 )
 
-export const Variants: Story = () => (
+export const Variants = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton variant="primary">
       <Check />
@@ -34,7 +34,7 @@ export const Variants: Story = () => (
   </Row>
 )
 
-export const Sizes: Story = () => (
+export const Sizes = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton size="small">
       <Check />
@@ -52,7 +52,7 @@ export const Sizes: Story = () => (
  * This uses the force prop to simulate hover, focus and active states so they can be compared at the same time.
  * This prop is not intended for normal use and the buttons here will not interact normally.
  */
-export const States: Story = () => (
+export const States = () => (
   <Column css={{ gap: '$3' }}>
     <Row css={{ gap: '$3' }}>
       <IconButton path={mdiPencil} variant="primary" />
@@ -88,7 +88,7 @@ export const States: Story = () => (
   </Column>
 )
 
-export const Destructive: Story = () => (
+export const Destructive = () => (
   <Column css={{ gap: '$3' }}>
     <Row css={{ gap: '$3' }}>
       <IconButton path={mdiOpenInNew} destructive variant="primary" />
@@ -154,7 +154,7 @@ export const Destructive: Story = () => (
   </Column>
 )
 
-export const Variations: Story = () => (
+export const Variations = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton>
       <Check />

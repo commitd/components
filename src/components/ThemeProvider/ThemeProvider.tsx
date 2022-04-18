@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useRef } from 'react'
+import React, { FC, useContext, useRef, useEffect } from 'react'
 import { globalStyles, Theme } from '../../stitches.config'
 import {
   ThemeChoice,
@@ -6,12 +6,11 @@ import {
   ThemeController,
   ThemeControllerProps,
 } from './ThemeController'
-
 export interface ThemeProviderProps extends ThemeControllerProps {
   /**
    * By default the theme is applied globally, using the `body` element.
    *
-   * Set `local` to `true` to only apply the theme locally. This can be used in cases where a nested theme is required.
+   * Set `local` to `true` to only apply the theme locally. This can be used in cases where a nested them is required.
    */
   local?: boolean
 }
@@ -45,11 +44,11 @@ export const useTheme = (): [Theme | undefined, (token: string) => string] => {
         throw new Error('Token must be fully referenced')
       }
 
-      /* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument */
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       return resolveValue(theme[type][instance]?.value)
-      /* eslint-enable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument */
+      /* eslint-enable @typescript-eslint/no-unsafe-member-access */
     }
     if (token.startsWith('var')) {
       return resolveValue(token.replace(/var\(--(\w*)-(\w*)\)/, '$$$1$$$2'))
@@ -95,7 +94,7 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
 }
 
 /**
- * The `ComponentsProvider`should wrap you application, it includes the `ThemeProvider`.
+ * The `ThemeProvider` should wrap you application.
  *
  * By default it will switch from light to dark mode depending on the users preference determined by the
  * `prefers-color-scheme: dark` media query. You can fix the theme by setting the `choice` prop.

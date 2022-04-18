@@ -25,8 +25,6 @@ it('renders disabled without role', async () => {
   renderDark(<Disabled />)
   const buttons = await screen.findAllByRole('button')
   buttons.forEach((b) => expect(b).toHaveAttribute('disabled'))
-  // NOTE should throw due to pointerEvents: 'none' but still allowed to force so this doesn't work.
-  // expect(() => userEvent.click(buttons[0])).toThrow()
 })
 
 it('renders all variants without error', () => {

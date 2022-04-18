@@ -11,7 +11,7 @@ export default {
 
 export const Default: Story = (args) => <Switch {...args} />
 
-export const Variants: Story = () => {
+export const Variants = () => {
   const [value, { toggle }] = useBoolean(false)
 
   return (
@@ -22,7 +22,7 @@ export const Variants: Story = () => {
   )
 }
 
-export const Brand: Story = () => {
+export const Brand = () => {
   const [value, { toggle }] = useBoolean(false)
 
   return (
@@ -32,7 +32,7 @@ export const Brand: Story = () => {
   )
 }
 
-export const Destructive: Story = () => {
+export const Destructive = () => {
   const [value, { toggle }] = useBoolean(false)
 
   return (
@@ -53,7 +53,7 @@ export const Destructive: Story = () => {
   )
 }
 
-export const Disabled: Story = () => (
+export const Disabled = () => (
   <>
     <Row css={{ gap: '$4', mb: '$3' }}>
       <Switch variant="primary" checked={false} />
@@ -78,7 +78,7 @@ export const Disabled: Story = () => (
   </>
 )
 
-export const States: Story = () => {
+export const States = () => {
   return (
     <>
       <Grid css={{ p: '$4', gap: '$4', gridTemplateColumns: '$6 $6 $6' }}>

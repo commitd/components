@@ -12,57 +12,80 @@ import {
   Trigger,
   TriggerItem,
 } from '@radix-ui/react-context-menu'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import type { CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-import {
-  checkboxItemStyles,
-  contentStyles,
-  groupStyles,
-  itemIndicatorStyles,
-  itemShortcutStyles,
-  itemStyles,
-  labelStyles,
-  separatorStyles,
-  StyledCheckIndicator,
-  StyledTriggerItemIndicator,
-  triggerItemStyles,
-} from '../../utils/menuStyles'
-import { paperStyles } from '../Paper'
+import { Check, ChevronRight } from '../Icons'
 
-/**
- * ContextMenu component
- *
- * Displays a pop up menu when right clicking the `ContextMenuTrigger`.
- *
- * The content should be wrapped in a `ContextMenuContent` and should be made up of the other `ContextMenuXxxx` components.
- *
- * Based on [Radix Context Menu](https://radix-ui.com/primitives/docs/components/context-menu).
- */
-export const ContextMenu = Root
-export const ContextMenuTrigger = Trigger
-export const ContextMenuItem = styled(Item, itemStyles)
-export const ContextMenuItemShortcut = styled('span', itemShortcutStyles)
-export const ContextMenuSeparator = styled(Separator, separatorStyles)
-export const ContextMenuLabel = styled(Label, labelStyles)
-export const ContextMenuItemGroup = styled(Group, groupStyles(ContextMenuItem))
-export const ContextMenuRadioGroup = RadioGroup
+const StyledContent = styled(Content, {
+  minWidth: '$10',
+  backgroundColor: '$background',
+  borderRadius: '$default',
+  padding: '$1',
+  boxShadow: '$1',
+})
 
-export const ContextMenuContent = styled(Content, paperStyles, contentStyles)
+const itemStyles = {
+  fontSize: '$-1',
+  padding: '$1 $3',
+  borderRadius: '$default',
+  cursor: 'default',
+  transition: 'all 50ms',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 
-const StyledItemIndicator = styled(ItemIndicator, itemIndicatorStyles)
-const StyledCheckboxItem = styled(CheckboxItem, itemStyles, checkboxItemStyles)
-const StyledRadioItem = styled(RadioItem, itemStyles, checkboxItemStyles)
+  '&:focus': {
+    outline: 'none',
+    backgroundColor: '$selection',
+    color: '$text',
+  },
 
-const StyledContextMenuTriggerItem = styled(
-  TriggerItem,
-  itemStyles,
-  triggerItemStyles
-)
+  '&[data-disabled]': {
+    color: '$grey9',
+  },
+}
 
-type ContextMenuTriggerItemProps = ComponentProps<
-  typeof StyledContextMenuTriggerItem
->
+const StyledItem = styled(Item, itemStyles)
+
+const StyledSeparator = styled(Separator, {
+  height: 1,
+  backgroundColor: '$grey8',
+
+  variants: {
+    orientation: {
+      horizontal: {
+        height: 1,
+        margin: '$1 0',
+      },
+      vertical: {
+        width: 1,
+        height: 'auto',
+        margin: '0 $1',
+        flex: '1 1 100%',
+      },
+    },
+  },
+  defaultVariants: {
+    orientation: 'horizontal',
+  },
+})
+
+const StyledLabel = styled(Label, {
+  color: '$grey10',
+  fontSize: '$-1',
+  padding: '$1 $3',
+  cursor: 'default',
+})
+
+const StyledContextMenuTriggerItem = styled(TriggerItem, {
+  ...itemStyles,
+  '&[data-state="open"]': {
+    background: '$selection',
+  },
+})
+
+type ContextMenuTriggerItemProps = ComponentProps<typeof TriggerItem> & CSSProps
 
 export const ContextMenuTriggerItem = forwardRef<
   ElementRef<typeof StyledContextMenuTriggerItem>,
@@ -71,47 +94,93 @@ export const ContextMenuTriggerItem = forwardRef<
   return (
     <StyledContextMenuTriggerItem {...props} ref={forwardedRef}>
       {children}
-      <StyledTriggerItemIndicator />
+      <ChevronRight css={{ size: '$4' }} />
     </StyledContextMenuTriggerItem>
   )
 })
 ContextMenuTriggerItem.toString = () =>
   `.${StyledContextMenuTriggerItem.className}`
 
+export const ContextMenuItemGroup = styled(Group, {
+  display: 'flex',
+  marginLeft: '$3',
+  marginRight: '$1',
+
+  [`& ${StyledItem}`]: {
+    paddingLeft: '$2',
+  },
+})
+
+export const ContextMenuItemShortcut = styled('span', {
+  fontFamily: '$monospace',
+  lineHeight: '$body',
+  color: '$textSecondary',
+  marginLeft: '$3',
+})
+
+/**
+ * The `ContextMenu` displays a pop up menu when right clicking the `ContextMenuTrigger`.
+ */
+export const ContextMenu = Root
+export const ContextMenuTrigger = Trigger
+export const ContextMenuItem: FC<ComponentProps<typeof Item>> = StyledItem
+export const ContextMenuContent: FC<
+  ComponentProps<typeof Content>
+> = StyledContent
+export const ContextMenuSeparator: FC<
+  ComponentProps<typeof StyledSeparator>
+> = StyledSeparator
+export const ContextMenuLabel: FC<ComponentProps<typeof Label>> = StyledLabel
+
+const StyledItemIndicator = styled(ItemIndicator, {
+  position: 'absolute',
+  left: '$2',
+})
+
+const StyledContextMenuCheckboxItem = styled(CheckboxItem, {
+  ...itemStyles,
+  padding: '$1 $2 $1 $5',
+})
+
 type ContextMenuCheckboxItemProps = ComponentProps<typeof CheckboxItem> &
   CSSProps
 
 export const ContextMenuCheckboxItem = forwardRef<
-  ElementRef<typeof StyledCheckboxItem>,
+  ElementRef<typeof StyledContextMenuCheckboxItem>,
   ContextMenuCheckboxItemProps
 >(({ children, ...props }, forwardedRef) => {
   return (
-    <StyledCheckboxItem {...props} ref={forwardedRef}>
+    <StyledContextMenuCheckboxItem {...props} ref={forwardedRef}>
       <StyledItemIndicator>
-        <StyledCheckIndicator />
+        <Check css={{ height: 16, width: 16 }} />
       </StyledItemIndicator>
       {children}
-    </StyledCheckboxItem>
+    </StyledContextMenuCheckboxItem>
   )
 })
-ContextMenuCheckboxItem.toString = () => `.${StyledCheckboxItem.className}`
+ContextMenuCheckboxItem.toString = () =>
+  `.${StyledContextMenuCheckboxItem.className}`
 
-type RadioItemVariants = VariantProps<typeof StyledRadioItem>
-type ContextMenuRadioItemProps = ComponentProps<typeof RadioItem> &
-  RadioItemVariants &
-  CSSProps
+const StyledContextMenuRadioItem = styled(RadioItem, {
+  ...itemStyles,
+  padding: '$1 $2 $1 $5',
+})
+
+type ContextMenuRadioItemProps = ComponentProps<typeof RadioItem> & CSSProps
 
 export const ContextMenuRadioItem = forwardRef<
-  ElementRef<typeof StyledRadioItem>,
+  ElementRef<typeof StyledContextMenuRadioItem>,
   ContextMenuRadioItemProps
 >(({ children, ...props }, forwardedRef) => {
   return (
-    <StyledRadioItem {...props} ref={forwardedRef}>
+    <StyledContextMenuRadioItem {...props} ref={forwardedRef}>
       <StyledItemIndicator>
-        <StyledCheckIndicator />
+        <Check css={{ height: 16, width: 16 }} />
       </StyledItemIndicator>
       {children}
-    </StyledRadioItem>
+    </StyledContextMenuRadioItem>
   )
 })
-ContextMenuRadioItem.toString = () => `.${StyledRadioItem.className}`
+ContextMenuRadioItem.toString = () => `.${StyledContextMenuRadioItem.className}`
+
+export const ContextMenuRadioGroup = RadioGroup

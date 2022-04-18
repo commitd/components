@@ -40,77 +40,6 @@ export const Default: React.FC = () => (
   </Flex>
 )
 
-const Utils: Story = ({ box1 = {}, box2 = {}, box3, ...args }) => (
-  <Box
-    css={{
-      size: '$10',
-      border: 'solid',
-    }}
-  >
-    <Flex {...args}>
-      <Box
-        css={{
-          size: '$5',
-          backgroundColor: '$success',
-          ...box1,
-        }}
-      />
-      <Box
-        css={{
-          size: '$5',
-          backgroundColor: '$warning',
-          ...box2,
-        }}
-      />
-      <Box
-        css={{
-          size: '$5',
-          backgroundColor: '$error',
-          ...box3,
-        }}
-      />
-    </Flex>
-  </Box>
-)
-
-export const Gap = Utils.bind({})
-Gap.args = {
-  gap: true,
-}
-
-export const Wrap = Utils.bind({})
-Wrap.args = {
-  wrap: true,
-  box1: {
-    width: '$6',
-  },
-  box2: {
-    width: '$7',
-  },
-  box3: {
-    width: '$8',
-  },
-}
-
-export const Centered = Utils.bind({})
-Centered.args = {
-  centered: true,
-  box1: {
-    height: '$7',
-  },
-  box2: {
-    height: '$9',
-  },
-  box3: {
-    height: '$6',
-  },
-}
-
-export const Spaced = Utils.bind({})
-Spaced.args = {
-  spaced: true,
-}
-
 const Template: Story = ({ box1 = {}, box2 = {}, box3, ...args }) => (
   <Box
     css={{
@@ -211,7 +140,7 @@ AlignBaseline.args = {
 /**
  * For convenience we also export `Row` and `Column` components as aliases for `flexDirection="row"` and `flexDirection="column"`.
  */
-export const FlexRow: Story = () => (
+export const FlexRow = () => (
   <Box
     css={{
       size: '$10',
@@ -241,7 +170,7 @@ export const FlexRow: Story = () => (
   </Box>
 )
 
-export const FlexColumn: Story = () => (
+export const FlexColumn = () => (
   <Box
     css={{
       size: '$10',

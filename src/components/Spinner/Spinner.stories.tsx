@@ -31,7 +31,7 @@ export const Default: Story = (args) => <Spinner {...args} />
 /*
  * The active prop can be used to stop the animation, so it can, for example, be used as an always shown loading indicator.
  */
-export const Active: Story = () => {
+export const Active = () => {
   const [loading, setLoading] = React.useState(false)
   return (
     <Column>
@@ -46,7 +46,7 @@ export const Active: Story = () => {
 /*
  * Different animations variants are available.
  */
-export const All: Story = () => (
+export const All = () => (
   <Variants
     gridCss={{ gap: '$3', gridTemplateColumns: '1fr 1fr 1fr' }}
     component={Spinner}

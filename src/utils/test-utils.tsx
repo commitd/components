@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Import setupTests for your unit tests and you can use `renderLight` and `renderDark` to render elements wrapped in a ComponentsProvider.
+ * Import setupTests for your unit tests and you can use `renderLight` and `renderDark` to render elements wrapped in a ThemeProvider.
  * To render without a theme provider use `renderPlain`.
  *
  * N.B. This adds a simple custom id generator so ids match between snapshots.
@@ -12,25 +12,19 @@ import './domrect-polyfill'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { ComponentsProvider } from '..'
+import { ThemeProvider } from '..'
 import ResizeObserver from 'resize-observer-polyfill'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as ___ from '@testing-library/react/node_modules/@testing-library/dom/types/queries' // NOSONAR
 
 // Use the polyfill for the ResizeObserver.
 // This is used in some components.
 global.ResizeObserver = ResizeObserver
-// releasePointerCapture called by some radix components but not in js-dom
-global.HTMLElement.prototype.releasePointerCapture = () => undefined
 
 const LightTheme: React.FC = ({ children }) => (
-  <ComponentsProvider theme={{ choice: 'light' }}>
-    {children}
-  </ComponentsProvider>
+  <ThemeProvider choice="light">{children}</ThemeProvider>
 )
 
 const DarkTheme: React.FC = ({ children }) => (
-  <ComponentsProvider theme={{ choice: 'dark' }}>{children}</ComponentsProvider>
+  <ThemeProvider choice="dark">{children}</ThemeProvider>
 )
 
 export const renderPlain = render

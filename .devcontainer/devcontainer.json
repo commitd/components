@@ -10,12 +10,8 @@
   },
   "settings": {
     // Default to ZSH
-    "terminal.integrated.profiles.linux": {
-      "zsh": {
-        "path": "/bin/zsh"
-      }
-    },
-    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.osx": "/usr/bin/zsh",
     // Setup formatting to save with prettier
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -38,13 +34,7 @@
     "github.vscode-pull-request-github",
     "ms-vsliveshare.vsliveshare",
     "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker",
-    "sonarsource.sonarlint-vscode",
-    "github.copilot",
-    "bierner.markdown-preview-github-styles",
-    "me-dutour-mathieu.vscode-github-actions",
-    "christian-kohler.npm-intellisense",
-    "eg2.vscode-npm-script"
+    "streetsidesoftware.code-spell-checker"
   ],
   "remoteUser": "node"
 }

@@ -33,7 +33,7 @@ Default.args = {
   severity: 'error',
 }
 
-export const Severity: Story = () => (
+export const Severity = () => (
   <Column css={{ gap: '$3' }}>
     <Alert severity="error">
       <AlertTitle>This is an error alert</AlertTitle>
@@ -53,7 +53,7 @@ export const Severity: Story = () => (
   </Column>
 )
 
-export const WithContent: Story = () => (
+export const WithContent = () => (
   <Column css={{ gap: '$3' }}>
     <Alert severity="ghost">
       <AlertTitle>Ghost</AlertTitle>

@@ -1,11 +1,6 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
-import {
-  Link as RouterLink,
-  MemoryRouter,
-  Route,
-  Routes,
-} from 'react-router-dom'
+import { Link as RouterLink, MemoryRouter } from 'react-router-dom'
 import {
   AppBar,
   AppBarActions,
@@ -14,7 +9,6 @@ import {
   AppBarMenu,
   AppBarMenuItem,
 } from '.'
-import { Link } from '../Link'
 import { WrappedNavigationMenu } from '../NavigationMenu'
 
 export default {
@@ -29,7 +23,7 @@ export default {
   },
 } as Meta
 
-export const Default: Story = () => {
+export const Default: React.FC = () => {
   return (
     <AppBar>
       <AppBarHeading>Example</AppBarHeading>
@@ -43,7 +37,7 @@ export const Default: Story = () => {
 /**
  * AppBarMenuItem components extend Link and have all of the same props.
  */
-export const WithMenu: Story = () => {
+export const WithMenu: React.FC = () => {
   return (
     <AppBar>
       <AppBarHeading>Example</AppBarHeading>
@@ -58,7 +52,7 @@ export const WithMenu: Story = () => {
   )
 }
 
-export const WithMenuWithoutActions: Story = () => {
+export const WithMenuWithoutActions: React.FC = () => {
   return (
     <AppBar>
       <AppBarHeading>Example</AppBarHeading>
@@ -74,7 +68,7 @@ export const WithMenuWithoutActions: Story = () => {
  * The App Bar can also make use of a wrapped Navigation Menu in place of AppBarMenuItem for more expanded usage.
  * See [Navigation Menu](/docs/components-navigationmenu--default) for more details on it's use.
  */
-export const WithNavigationMenu: Story = () => {
+export const WithNavigationMenu: React.FC = () => {
   const list = {
     trigger: 'Wrapped List',
     links: [
@@ -116,27 +110,28 @@ export const WithNavigationMenu: Story = () => {
   )
 }
 
-export const WithReactRouter: Story = () => {
+export const WithReactRouter: React.FC = () => {
   return (
     <MemoryRouter>
       <AppBar>
-        <AppBarHeading>
-          <Link asChild variant="clear">
-            <RouterLink to="./">Example</RouterLink>
-          </Link>
-        </AppBarHeading>
+        <RouterLink
+          component={AppBarHeading}
+          to="./"
+          // props for component={Link} are passed on despite the error
+          // @ts-ignore
+          as="a"
+          // @ts-ignore
+          css={{
+            cursor: 'pointer',
+            textDecoration: 'none',
+          }}
+        >
+          Example
+        </RouterLink>
         <AppBarActions>
-          <Link asChild variant="clear">
-            <RouterLink to="/login">
-              <AppBarButton>Login</AppBarButton>
-            </RouterLink>
-          </Link>
+          <AppBarButton>Login</AppBarButton>
         </AppBarActions>
       </AppBar>
-      <Routes>
-        <Route index element={<div>Hello Router</div>} />
-        <Route path="/login" element={<div>Logon</div>} />
-      </Routes>
     </MemoryRouter>
   )
 }

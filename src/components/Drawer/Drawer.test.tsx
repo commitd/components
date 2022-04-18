@@ -2,12 +2,11 @@ import React from 'react'
 import {
   renderDark,
   renderLight,
-  renderPlain,
   screen,
   userEvent,
   waitForElementToBeRemoved,
 } from 'test-utils'
-import { Controllable, Default } from './Drawer.stories'
+import { Default, Controllable } from './Drawer.stories'
 
 const defaultDrawerText = 'This is a Drawer'
 const controlledDrawerText = 'This is a controlled drawer'
@@ -24,18 +23,6 @@ it('renders light panel without error', async () => {
   expect(panel).toBeInTheDocument()
 })
 
-it('renders default close button', async () => {
-  renderPlain(<Controllable />)
-  userEvent.click(screen.getByRole('button', { name: /show/i }))
-  const panel = await screen.findByText(controlledDrawerText)
-  expect(panel).toBeInTheDocument()
-  const waiting = waitForElementToBeRemoved(() =>
-    screen.queryByText(controlledDrawerText)
-  )
-  userEvent.click(screen.getByRole('button', { name: /close/i }))
-  await waiting
-})
-
 it('renders dark panel and closes', async () => {
   renderDark(<Default />)
   userEvent.click(screen.getByRole('button'))
@@ -45,5 +32,17 @@ it('renders dark panel and closes', async () => {
     screen.queryByText(defaultDrawerText)
   )
   userEvent.type(panel, '{esc}')
+  await waiting
+})
+
+it('renders default close button', async () => {
+  renderDark(<Controllable />)
+  userEvent.click(screen.getByRole('button', { name: /show/i }))
+  const panel = await screen.findByText(controlledDrawerText)
+  expect(panel).toBeInTheDocument()
+  const waiting = waitForElementToBeRemoved(() =>
+    screen.queryByText(controlledDrawerText)
+  )
+  userEvent.click(screen.getByRole('button', { name: /close/i }))
   await waiting
 })

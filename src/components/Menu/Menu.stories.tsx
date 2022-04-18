@@ -49,7 +49,7 @@ export const Default: Story = (args) => (
   </Menu>
 )
 
-export const WithDisabledItems: Story = () => (
+export const WithDisabledItems: React.FC = () => (
   <Menu>
     <MenuTrigger>
       <Button>Trigger</Button>
@@ -63,7 +63,7 @@ export const WithDisabledItems: Story = () => (
 )
 
 /* Separators and Groups can be used to arrange items in vertical and horizontal sections */
-export const WithSeparators: Story = () => (
+export const WithSeparators: React.FC = () => (
   <Menu>
     <MenuTrigger>
       <Button>Trigger</Button>
@@ -88,7 +88,7 @@ export const WithSeparators: Story = () => (
   </Menu>
 )
 
-export const WithLabel: Story = () => (
+export const WithLabel: React.FC = () => (
   <Menu>
     <MenuTrigger>
       <Button>Trigger</Button>
@@ -102,7 +102,7 @@ export const WithLabel: Story = () => (
   </Menu>
 )
 
-export const Controlled: Story = () => {
+export const Controlled = () => {
   const [open, { setTrue, setFalse }] = useBoolean(false)
   return (
     <>
@@ -119,7 +119,7 @@ export const Controlled: Story = () => {
 }
 
 /* A `MenuCheckboxItem` are items with an indicated boolean state */
-export const WithCheckbox: Story = () => {
+export const WithCheckbox = () => {
   const [checked, setChecked] = useState(true)
   return (
     <Menu>
@@ -137,7 +137,7 @@ export const WithCheckbox: Story = () => {
 }
 
 /* `MenuItemRadioGroup` can be used to make sub `MenuRadioItem`s single select */
-export const WithRadioItems: Story = () => {
+export const WithRadioItems = () => {
   const [color, setColor] = React.useState('blue')
   return (
     <Menu>
@@ -156,7 +156,7 @@ export const WithRadioItems: Story = () => {
 }
 
 /** Add shortcut indicators using the `MenuItemShortcut` */
-export const Shortcuts: Story = () => {
+export const Shortcuts = () => {
   return (
     <Menu>
       <MenuTrigger>
@@ -175,7 +175,7 @@ export const Shortcuts: Story = () => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested: Story = () => {
+export const Nested = () => {
   return (
     <Menu>
       <MenuTrigger>
@@ -210,7 +210,7 @@ export const Nested: Story = () => {
 }
 
 /* A `MenuCheckboxItem` are items with an indicated boolean state */
-export const MultipleMenus: Story = () => {
+export const MultipleMenus = () => {
   const [checked, setChecked] = useState(true)
   const [color, setColor] = React.useState('blue')
   return (
@@ -239,42 +239,5 @@ export const MultipleMenus: Story = () => {
         </MenuContent>
       </Menu>
     </>
-  )
-}
-
-/** use the `destructive` flag to show the item triggers a destructive action */
-export const Destructive: Story = () => {
-  const [color, setColor] = React.useState('blue')
-  const [checked, setChecked] = useState(true)
-  return (
-    <Menu>
-      <MenuTrigger>
-        <Button>Trigger</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem>
-          Open <MenuItemShortcut>⌘+O</MenuItemShortcut>
-        </MenuItem>
-        <MenuItem destructive>
-          Delete <MenuItemShortcut>⌘+D</MenuItemShortcut>
-        </MenuItem>
-        <MenuSeparator />
-        <MenuRadioGroup value={color} onValueChange={setColor}>
-          <MenuRadioItem destructive value="red">
-            Red
-          </MenuRadioItem>
-          <MenuRadioItem value="green">Green</MenuRadioItem>
-          <MenuRadioItem value="blue">Blue</MenuRadioItem>
-        </MenuRadioGroup>
-        <MenuSeparator />
-        <MenuCheckboxItem
-          destructive
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
-          Mark
-        </MenuCheckboxItem>
-      </MenuContent>
-    </Menu>
   )
 }

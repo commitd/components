@@ -30,7 +30,7 @@ Animation.args = {
 }
 
 /** The `avatar` variant also supports an additional size prop to reflect the sizing on the `Avatar` component.  */
-export const Avatar: Story = () => (
+export const Avatar = () => (
   <Flex css={{ gap: '$3' }}>
     <Skeleton variant="avatar" size="small" />
     <Skeleton variant="avatar" />
@@ -39,7 +39,7 @@ export const Avatar: Story = () => (
 )
 
 /** The `button` variant also supports an additional size prop to reflect the sizing on the `Button` component.  */
-export const Buttons: Story = () => (
+export const Buttons = () => (
   <Flex css={{ gap: '$3' }}>
     <Skeleton variant="button" size="small" />
     <Skeleton variant="button" />

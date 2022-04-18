@@ -1,6 +1,6 @@
 import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import {
   Card,
@@ -24,7 +24,7 @@ export default {
   },
 } as Meta
 
-export const Default: Story = () => {
+export const Default: React.FC = () => {
   return (
     <Card>
       <CardHeading>Default Card</CardHeading>
@@ -42,7 +42,7 @@ export const Default: Story = () => {
 /**
  * Use for the base component of most cards
  */
-export const Classic: Story = () => {
+export const Classic = () => {
   return (
     <Row css={{ gap: '$3' }}>
       <Card>
@@ -66,7 +66,7 @@ export const Classic: Story = () => {
  *
  * Add `tabIndex` if you want it to be focusable.
  */
-export const Outline: Story = () => {
+export const Outline = () => {
   return (
     <Row css={{ gap: '$3' }}>
       <Card variant="outline">
@@ -90,7 +90,7 @@ export const Outline: Story = () => {
  *
  * Make a `button` with the `as` prop to support actions
  */
-export const Ghost: Story = () => {
+export const Ghost = () => {
   return (
     <Row css={{ gap: '$3' }}>
       <Card variant="ghost">
@@ -114,7 +114,7 @@ export const Ghost: Story = () => {
  *
  * This adds the padding and column layout. Elements, like a header image, that go to the edge of the card should be outside this.
  */
-export const Body: Story = () => (
+export const Body = () => (
   <Card as="button">
     <CardBody>
       <Text>Lorem Ipsum is simply dummy text...</Text>
@@ -127,7 +127,7 @@ export const Body: Story = () => (
  *
  * By default headings are just `div`s, use the `as` prop if the heading should be semantic.
  */
-export const Headers: Story = () => (
+export const Headers = () => (
   <Row css={{ flexWrap: 'wrap', gap: '$3' }}>
     <Card>
       <CardHeading>Heading</CardHeading>
@@ -158,7 +158,7 @@ export const Headers: Story = () => (
  *
  * If a more complex layout is required you can create your own.
  */
-export const Actions: Story = () => (
+export const Actions = () => (
   <Row css={{ flexWrap: 'wrap', gap: '$3' }}>
     <Card>
       <CardHeading>

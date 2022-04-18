@@ -16,7 +16,7 @@ export const Default = Template.bind({})
 /**
  * The standard heading hX variants are supported, this, by default also adjusts the html tag
  */
-export const Variants: Story = () => (
+export const Variants = () => (
   <Column>
     <Subheading variant="h1">Subheading 1</Subheading>
     <Subheading variant="h2">Subheading 2</Subheading>
@@ -30,7 +30,7 @@ export const Variants: Story = () => (
 /**
  * The display font can be used when a different heading style is required, say for blog posts.
  */
-export const InUse: Story = () => (
+export const InUse = () => (
   <Column>
     <Heading variant="h1">Heading 1</Heading>
     <Subheading variant="h1">This is the subheading for h1</Subheading>

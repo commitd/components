@@ -21,7 +21,7 @@ export default {
 export const Default: Story = (args) => <Divider {...args} />
 
 /** Tag assigned with `as` prop */
-export const AsHr: Story = () => (
+export const AsHr = () => (
   <Column css={{ maxWidth: '300px' }}>
     <Text>
       Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
@@ -45,7 +45,7 @@ export const AsHr: Story = () => (
 /**
  * Decorators can have horizontal (default) and vertical orientation
  */
-export const Orientation: Story = () => (
+export const Orientation = () => (
   <Row>
     <Text css={{ textAlign: 'right' }}>
       Decorators can also be vertical. Aut aspernatur dolor sit voluptates
@@ -66,7 +66,7 @@ export const Orientation: Story = () => (
   </Row>
 )
 
-export const Decorative: Story = () => (
+export const Decorative = () => (
   <Column css={{ textAlign: 'center' }}>
     <Text>Decorators can be marked decorative</Text>
     <Divider decorative />
@@ -74,7 +74,7 @@ export const Decorative: Story = () => (
   </Column>
 )
 
-export const Sizes: Story = () => (
+export const Sizes = () => (
   <Column css={{ maxWidth: '100%' }}>
     <Text>
       Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
@@ -116,7 +116,7 @@ export const Sizes: Story = () => (
   </Column>
 )
 
-export const SizesHorizontal: Story = () => (
+export const SizesHorizontal = () => (
   <Row css={{ height: '300px' }}>
     <Text>
       Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates

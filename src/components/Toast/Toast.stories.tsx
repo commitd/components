@@ -1,15 +1,16 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+import { Story, Meta } from '@storybook/react'
 import {
   Toast,
   ToastAction,
   ToastDescription,
   ToastProvider,
-  ToastRoot,
   ToastTitle,
   ToastViewport,
+  ToastRoot,
 } from '.'
 import { Button } from '../Button'
+import { Box } from '../Box'
 
 export default {
   title: 'Components/Toast',
@@ -22,20 +23,19 @@ export default {
     ToastTitle,
     ToastViewport,
   },
-  excludeStories: ['ToastProvider', 'ToastViewport'],
   argTypes: {
     severity: {
-      options: ['error', 'warning', 'info', 'success', 'ghost', 'default'],
+      control: {
+        type: 'select',
+        options: ['error', 'warning', 'info', 'success', 'ghost'],
+      },
+      defaultValue: 'error',
       description: 'Set the severity of the alert',
     },
   },
-} as ComponentMeta<typeof Toast>
+} as Meta
 
-const Template: ComponentStory<typeof Toast> = ({
-  title = 'Toast Title',
-  altText = 'Undo',
-  ...args
-}) => {
+export const Default: Story = () => {
   const [open, setOpen] = React.useState(false)
   const timerRef = React.useRef(0)
 
@@ -59,21 +59,17 @@ const Template: ComponentStory<typeof Toast> = ({
       <Toast
         open={open}
         onOpenChange={setOpen}
-        title={title}
-        altText={altText}
+        title="Toast Title"
         description="This is the toast content, the content is optional but should usually give
         further explanation about the toast and if any action is required."
-        severity="default"
-        {...args}
+        altText="Undo"
       />
     </>
   )
 }
 
-export const Default = Template.bind({})
-
-export const WithClose: ComponentStory<typeof Toast> = () => {
-  const [open, setOpen] = React.useState(false)
+export const WithClose: Story = () => {
+  const [open, setOpen] = React.useState(true)
   const timerRef = React.useRef(0)
 
   React.useEffect(() => {
@@ -106,8 +102,8 @@ export const WithClose: ComponentStory<typeof Toast> = () => {
   )
 }
 
-export const WithAction: ComponentStory<typeof Toast> = () => {
-  const [open, setOpen] = React.useState(false)
+export const WithAction: Story = () => {
+  const [open, setOpen] = React.useState(true)
   const timerRef = React.useRef(0)
 
   React.useEffect(() => {
@@ -143,6 +139,20 @@ export const WithAction: ComponentStory<typeof Toast> = () => {
   )
 }
 
+const Template: Story = (args) => {
+  return (
+    <Box css={{ paddingTop: '$4' }}>
+      <Toast
+        open={true}
+        title="Variant Toast Title"
+        description="This is the toast content"
+        altText="Undo"
+        {...args}
+      />
+    </Box>
+  )
+}
+
 export const SuccessVariant = Template.bind({})
 SuccessVariant.args = {
   title: 'Success Title',
@@ -170,11 +180,8 @@ ErrorVariant.args = {
 /**
  * While the Toast component is wrapped for ease of use, its underlying root components
  * can still be accessed to allow for more customisation, such as the toast appearing in the bottom left.
- *
- * Each application should have a `ToastProvider` and a `ToastViewport`, these are provided by default in the
- * `ComponentsProvider`. they can be configured there or disabled and used separately.
  */
-export const FullAccess: ComponentStory<typeof Toast> = () => {
+export const FullAccess: Story = () => {
   const [open, setOpen] = React.useState(false)
   const eventDateRef = React.useRef(new Date())
   const timerRef = React.useRef(0)

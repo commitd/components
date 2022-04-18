@@ -13,7 +13,6 @@ import {
   mdiSkipNext,
   mdiSkipPrevious,
 } from '@mdi/js'
-import { Story } from '@storybook/react'
 import React from 'react'
 import * as C from '../../index'
 
@@ -35,7 +34,7 @@ const ComponentColumn = C.styled(C.Column, {
   gap: '$3',
 })
 
-export const Overview: Story = () => (
+export const Overview = () => (
   <C.Column>
     <C.Caption>
       <C.Link href="/components/?path=/docs/components-button--default-story">
@@ -245,7 +244,7 @@ export const Overview: Story = () => (
                 onValueChange={handleChange('multiline')}
               />
               <C.TextArea
-                valid
+                state="valid"
                 id="standard-multiline-static"
                 label="Valid Multiline"
                 defaultValue="Default Value"
@@ -274,17 +273,28 @@ export const Overview: Story = () => (
                 label="Select"
                 value={values.currency}
                 onValueChange={handleChange('currency')}
-                // placeholder="Please select your currency"
+                placeholder="Please select your currency"
               >
-                <C.SelectItem disabled value="null">
-                  Please select your currency
-                </C.SelectItem>
                 {currencies.map((option) => (
                   <C.SelectItem key={option.value} value={option.value}>
                     {option.label}
                   </C.SelectItem>
                 ))}
               </C.Select>
+              <C.Input
+                id="standard-select-currency-native"
+                as="select"
+                label="Native select"
+                value={values.currency}
+                onValueChange={handleChange('currency')}
+              >
+                {currencies.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </C.Input>
+              <C.Text size={-1}>Please select your currency</C.Text>
             </C.Flex>
           </form>
         )
@@ -394,7 +404,13 @@ export const Overview: Story = () => (
             (item, index) => (
               <C.ListItem key={index} role={undefined} interactive>
                 <C.ListItemIcon>
-                  <C.Checkbox tabIndex={-1} aria-labelledby={'1'} />
+                  <C.Checkbox
+                    tabIndex={-1}
+                    disableRipple
+                    inputProps={{
+                      'aria-labelledby': '1',
+                    }}
+                  />
                 </C.ListItemIcon>
                 <C.ListItemText
                   id={'' + index}
@@ -402,7 +418,7 @@ export const Overview: Story = () => (
                   subtext={item}
                 />
                 <C.ListItemSecondaryAction>
-                  <C.IconButton path={mdiChat} />
+                  <C.IconButton path={mdiChat} edge="end" />
                 </C.ListItemSecondaryAction>
               </C.ListItem>
             )
@@ -486,14 +502,14 @@ export const Overview: Story = () => (
               ['Cupcake', 305, 3.7, 67, 4.3],
               ['Gingerbread', 356, 16.0, 49, 3],
             ].map((row) => (
-              <C.TableRow key={row[0]}>
+              <C.TableRow key={row[0]} align="right">
                 <C.TableCell as="th" align="left" scope="row">
                   {row[0]}
                 </C.TableCell>
-                <C.TableCell align="right">{row[1]}</C.TableCell>
-                <C.TableCell align="right">{row[2]}</C.TableCell>
-                <C.TableCell align="right">{row[3]}</C.TableCell>
-                <C.TableCell align="right">{row[4]}</C.TableCell>
+                <C.TableCell>{row[1]}</C.TableCell>
+                <C.TableCell>{row[2]}</C.TableCell>
+                <C.TableCell>{row[3]}</C.TableCell>
+                <C.TableCell>{row[4]}</C.TableCell>
               </C.TableRow>
             ))}
           </C.TableBody>

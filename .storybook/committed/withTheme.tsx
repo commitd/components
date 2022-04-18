@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
-import { ComponentsProvider, darkTheme, lightTheme } from '../../src'
+import { ThemeProvider, darkTheme, lightTheme } from '../../src'
 import '@fontsource/inter/300.css'
 import '@fontsource/inter/400.css'
 import '@fontsource/inter/700.css'
@@ -20,8 +20,8 @@ export const withTheme = (Story) => {
 
   const choice = useDarkMode() ? 'dark' : 'light'
   return (
-    <ComponentsProvider theme={{ choice }}>
+    <ThemeProvider choice={choice}>
       <Story />
-    </ComponentsProvider>
+    </ThemeProvider>
   )
 }

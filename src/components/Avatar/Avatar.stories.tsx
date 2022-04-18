@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import { Avatar } from '.'
 import { Flex } from '../'
@@ -9,14 +9,14 @@ export default {
   component: Avatar,
 } as Meta
 
-export const Default: Story = () => (
+export const Default = () => (
   <Avatar css={{ m: '$3' }} alt="John Smith" src="https://i.pravatar.cc" />
 )
 
 /**
  * Size can be controlled through the `size` prop, with values `small`, `medium` (default) and `large`.
  */
-export const Size: Story = () => (
+export const Size = () => (
   <Flex css={{ gap: '$3' }}>
     <Avatar size="small" alt="John Smith" src="https://i.pravatar.cc" />
     <Avatar alt="John Smith" src="https://i.pravatar.cc" />
@@ -29,7 +29,7 @@ export const Size: Story = () => (
  *
  * Background color can be controlled through the `css` prop,
  */
-export const Letters: Story = () => (
+export const Letters = () => (
   <Flex>
     <Avatar
       src="Missing"

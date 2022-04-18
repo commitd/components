@@ -51,7 +51,7 @@ export const Default = Template.bind({})
 /**
  * The text is available in 11 size ranging from `-2` to `8` with 0 the default.
  */
-export const Size: Story = () => (
+export const Size = () => (
   <Column>
     <Text size={-2}>Size -2</Text>
     <Text size={-1}>Size -1</Text>
@@ -71,7 +71,7 @@ export const Size: Story = () => (
  * Light, regular and bold can be set with the weight prop. The fonts are supplied in these weights.
  * Other weights can be set through the css if required.
  */
-export const Weight: Story = () => (
+export const Weight = () => (
   <Row css={{ justifyContent: 'space-between' }}>
     <Text weight="light">Light text</Text>
     <Text weight="regular">Regular text</Text>
@@ -82,7 +82,7 @@ export const Weight: Story = () => (
 /**
  * A set of fonts for most use cases is supplied.
  */
-export const Fonts: Story = () => (
+export const Fonts = () => (
   <Column>
     <Text font="default">Default font is Inter</Text>
     <Text font="system">
@@ -103,7 +103,7 @@ export const Fonts: Story = () => (
 /**
  * Demonstration of how different styles can be achieved.
  */
-export const Variations: Story = () => (
+export const Variations = () => (
   <Row
     css={{
       justifyContent: 'space-around',
@@ -128,7 +128,7 @@ export const Variations: Story = () => (
 /**
  * Text components use span by default, but have display block. The Span component has the display set to inline so is better suited to nested bits of text.
  */
-export const Inline: Story = () => (
+export const Inline = () => (
   <Row
     css={{
       justifyContent: 'space-around',
@@ -175,7 +175,7 @@ export const Inline: Story = () => (
 )
 
 /** A `nowrap` prop adds style to truncate the text with elipsis. */
-export const NoWrap: Story = () => (
+export const NoWrap = () => (
   <Text nowrap>
     This long line should be truncated, consectetur adipiscing elit. Nam
     bibendum, nisl a fermentum viverra, diam urna efficitur ante, sit amet
@@ -257,9 +257,7 @@ ParagraphStory.parameters = {
 /**
  * Caption component uses a smaller font and the tag can still be configured using `as` so it can be set to `caption`, `figcaption` etc. as required.
  */
-export const CaptionStory: Story = () => (
-  <Caption>To be used for captions</Caption>
-)
+export const CaptionStory = () => <Caption>To be used for captions</Caption>
 CaptionStory.parameters = {
   title: 'Caption',
 }
@@ -267,7 +265,7 @@ CaptionStory.parameters = {
 /**
  * Monospace component uses the monospace font and `pre` tag
  */
-export const MonospaceStory: Story = () => (
+export const MonospaceStory = () => (
   <Monospace>To be used for pre components, uses the monospace font.</Monospace>
 )
 MonospaceStory.parameters = {
@@ -286,7 +284,7 @@ const Wrapper = styled(Column, {
 /**
  * Testing toString on components
  */
-export const NestingClassNameTest: Story = () => (
+export const NestingClassNameTest = () => (
   <Wrapper>
     <Text>This Text should NOT be styled</Text>
     <Paragraph>This Paragraph should be styled</Paragraph>
@@ -307,7 +305,7 @@ const Wrapper = styled(Column, {
   },
 })
 
-export const NestingClassNameTest: Story = () => (
+export const NestingClassNameTest = () => (
   <Wrapper>
     <Text>This Text should NOT be styled</Text>
     <Paragraph>This Paragraph should be styled</Paragraph>

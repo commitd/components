@@ -4,4 +4,3 @@
 npm test
 npm run lint
 npm run build
-npm run size

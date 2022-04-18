@@ -1,10 +1,4 @@
-import {
-  Arrow,
-  Content,
-  Root,
-  Trigger,
-  Provider,
-} from '@radix-ui/react-tooltip'
+import { Arrow, Content, Root, Trigger } from '@radix-ui/react-tooltip'
 import React, { FC } from 'react'
 import { styled } from '../../stitches.config'
 import { Text } from '../Text'
@@ -51,6 +45,7 @@ export const Tooltip: FC<TooltipProps> = ({
   open,
   defaultOpen,
   delayDuration,
+  skipDelayDuration,
   onOpenChange,
   multiline,
   side = 'top',
@@ -61,6 +56,7 @@ export const Tooltip: FC<TooltipProps> = ({
     open={open}
     defaultOpen={defaultOpen}
     delayDuration={delayDuration}
+    skipDelayDuration={skipDelayDuration}
     onOpenChange={onOpenChange}
   >
     <Trigger asChild>{children}</Trigger>
@@ -84,5 +80,3 @@ export const Tooltip: FC<TooltipProps> = ({
     </StyledContent>
   </Root>
 )
-
-export const TooltipProvider = Provider

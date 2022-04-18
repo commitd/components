@@ -1,4 +1,3 @@
-import { Story } from '@storybook/react'
 import React from 'react'
 import { styled, Box, Column, Row, Text } from '../'
 
@@ -48,7 +47,7 @@ const Bar = styled(Box, {
 /**
  * Use the scale values for spacing and sizing where ever possible to create a more unified look.
  */
-export const exampleSpacing: Story = () => (
+export const exampleSpacing = () => (
   <Column>
     <CenteredRow>
       <Text>$0</Text>

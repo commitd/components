@@ -67,7 +67,7 @@ export const Default: React.FC = () => (
  * - none - no grid areas are defined
  *
  */
-export const Areas: Story = () => (
+export const Areas = () => (
   <Grid
     css={{
       gridTemplateColumns: '100px 100px 100px 100px',
@@ -87,7 +87,7 @@ export const Areas: Story = () => (
  * `gridTemplate` and `grid` can be used as a shorthand notation, however, as in this example it can be difficult to follow.
  * For clarity, we recommend using the more verbose versions except for simple layouts.
  */
-export const AreasShorthand: Story = () => (
+export const AreasShorthand = () => (
   <Grid
     css={{
       gridTemplate: `'header header header header' 50px 'sidebar . main main' 100px 'footer footer footer footer' 50px / 100px 100px 100px 100px`,
@@ -109,7 +109,7 @@ export const AreasShorthand: Story = () => (
  * We use the spacing in the theme. `gap` only supports the case where both the row
  * and column spacing is the same.
  */
-export const Gaps: Story = () => (
+export const Gaps = () => (
   <Grid
     css={{
       rowGap: '$3',
@@ -130,7 +130,7 @@ export const Gaps: Story = () => (
   </Grid>
 )
 
-export const GapSame: Story = () => (
+export const GapSame = () => (
   <Grid
     css={{
       gap: '$2',
@@ -179,7 +179,7 @@ const Template: Story<{
  * - `stretch` - fills the whole width of the cell (this is the default)
  *
  */
-export const JustifyItems: Story = () => (
+export const JustifyItems = () => (
   <Row css={{ gap: '$3' }}>
     <Grid
       css={{
@@ -248,7 +248,7 @@ export const JustifyItems: Story = () => (
  * - `center` - aligns items in the center of their cell
  * - `stretch` - fills the whole height of the cell (this is the default)
  */
-export const AlignItems: Story = () => (
+export const AlignItems = () => (
   <Row css={{ gap: '$3' }}>
     <Grid
       css={{
@@ -334,7 +334,7 @@ export const AlignItems: Story = () => (
  * - `space-between` - places an even amount of space between each grid item, with no space at the far ends
  * - `space-evenly` - places an even amount of space between each grid item, including the far ends
  */
-export const JustifyContent: Story = () => (
+export const JustifyContent = () => (
   <Row css={{ gap: '$3', flexWrap: 'wrap' }}>
     <Grid
       css={{
@@ -451,7 +451,7 @@ export const JustifyContent: Story = () => (
  * - `space-between` - places an even amount of space between each grid item, with no space at the far ends
  * - `space-evenly` - places an even amount of space between each grid item, including the far ends
  */
-export const AlignContent: Story = () => (
+export const AlignContent = () => (
   <Row css={{ gap: '$3', flewWrap: 'wrap' }}>
     <Grid
       css={{
@@ -583,7 +583,7 @@ export const AlignContent: Story = () => (
  * - `column` - tells the auto-placement algorithm to fill in each column in turn, adding new columns as necessary
  * - `dense` - tells the auto-placement algorithm to attempt to fill in holes earlier in the grid if smaller items come up later
  */
-export const GridAutoFlow: Story = () => (
+export const GridAutoFlow = () => (
   <Row css={{ gap: '$3' }}>
     <Grid
       css={{
@@ -628,7 +628,7 @@ export const GridAutoFlow: Story = () => (
  * - `span <name>` - the item will span across until it hits the next line with the provided name
  * - `auto` - indicates auto-placement, an automatic span, or a default span of one
  */
-export const GridItems: Story = () => (
+export const GridItems = () => (
   <Grid
     css={{
       gridTemplateColumns: '$7 $7 $7 $7',
@@ -676,7 +676,7 @@ export const GridItems: Story = () => (
  * `name` - a name of your choosing
  * `row-start / column-start / row-end / column-end` - can be numbers or named lines
  */
-export const ItemArea: Story = () => (
+export const ItemArea = () => (
   <Grid
     css={{
       gridTemplateColumns: '$7 $7 $7 $7',
@@ -731,7 +731,7 @@ export const ItemArea: Story = () => (
  * - `center` - aligns the grid item in the center of the cell
  * - `stretch` - fills the whole height of the cell (this is the default)
  */
-export const Self: Story = () => (
+export const Self = () => (
   <Grid
     css={{
       border,
@@ -765,4 +765,4 @@ export const Self: Story = () => (
 )
 
 // Much of this is taken from [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/), see for further details.
-export const Credit: Story = () => <div />
+export const Credit = () => null

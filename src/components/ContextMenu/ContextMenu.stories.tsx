@@ -53,7 +53,7 @@ const ClickTarget = () => (
 )
 
 export const Default: Story = (args) => (
-  <ContextMenu {...args}>
+  <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
     </ContextMenuTrigger>
@@ -66,7 +66,7 @@ export const Default: Story = (args) => (
 )
 
 /** The disabled prop greys out the item and makes it unselectable  */
-export const WithDisabledItems: Story = () => (
+export const WithDisabledItems: Story = (args) => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -82,7 +82,7 @@ export const WithDisabledItems: Story = () => (
 )
 
 /** ContextMenuSeparator adds a separator between other items and can be used with Groups to create horizontal sections */
-export const WithSeparators: Story = () => (
+export const WithSeparators: Story = (args) => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -108,7 +108,7 @@ export const WithSeparators: Story = () => (
 )
 
 /** Add a label with ContextMenuLabel */
-export const WithLabels: Story = () => (
+export const WithLabels: Story = (args) => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -123,7 +123,7 @@ export const WithLabels: Story = () => (
 )
 
 /** Add shortcut indicators using the `ContextMenuItemShortcut` */
-export const Shortcuts: Story = () => {
+export const Shortcuts = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -142,7 +142,7 @@ export const Shortcuts: Story = () => {
 }
 
 /** ContextMenuCheckboxItem adds an item that can be checked */
-export const WithCheckboxItems: Story = () => {
+export const WithCheckboxItems: Story = (args) => {
   const [checked, { toggle }] = useBoolean(true)
   return (
     <ContextMenu>
@@ -163,7 +163,7 @@ export const WithCheckboxItems: Story = () => {
 }
 
 /** ContextMenuRadioItem when wrapped in a ContextMenuRadioGroup adds an item that can be checked with only one item in the group checked at once */
-export const WithRadioItems: Story = () => {
+export const WithRadioItems: Story = (args) => {
   const [color, setColor] = React.useState('blue')
   return (
     <ContextMenu>
@@ -182,7 +182,7 @@ export const WithRadioItems: Story = () => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested: Story = () => {
+export const Nested = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -211,45 +211,6 @@ export const Nested: Story = () => {
             </ContextMenu>
           </ContextMenuContent>
         </ContextMenu>
-      </ContextMenuContent>
-    </ContextMenu>
-  )
-}
-
-/** use the `destructive flag to indicate the action triggered it destructive */
-export const Destructive: Story = () => {
-  const [checked, { toggle }] = useBoolean(true)
-  const [color, setColor] = React.useState('blue')
-  return (
-    <ContextMenu>
-      <ContextMenuTrigger>
-        <ClickTarget />
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuItem>
-          Open <ContextMenuItemShortcut>⌘+O</ContextMenuItemShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem destructive>
-          Delete <ContextMenuItemShortcut>⌘+T</ContextMenuItemShortcut>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuLabel>Actions</ContextMenuLabel>
-        <ContextMenuItem destructive onSelect={action('cut')}>
-          Cut
-        </ContextMenuItem>
-        <ContextMenuItem onSelect={action('copy')}>Copy</ContextMenuItem>
-        <ContextMenuCheckboxItem checked={checked} onSelect={toggle}>
-          Paste
-        </ContextMenuCheckboxItem>
-        <ContextMenuSeparator />
-        <ContextMenuLabel>Colours</ContextMenuLabel>
-        <ContextMenuRadioGroup value={color} onValueChange={setColor}>
-          <ContextMenuRadioItem destructive value="red">
-            Red
-          </ContextMenuRadioItem>
-          <ContextMenuRadioItem value="blue">Blue</ContextMenuRadioItem>
-          <ContextMenuRadioItem value="green">Green</ContextMenuRadioItem>
-        </ContextMenuRadioGroup>
       </ContextMenuContent>
     </ContextMenu>
   )

@@ -2,7 +2,6 @@ import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { IconButton } from '../IconButton'
 import { DarkMode, LightMode } from '../Icons'
 import { useThemeController } from '../ThemeProvider'
-import { ThemeChoice } from '../ThemeProvider/ThemeController'
 
 type ThemeSwitchProps = ComponentProps<typeof IconButton> & {
   /**
@@ -17,31 +16,27 @@ type ThemeSwitchProps = ComponentProps<typeof IconButton> & {
   darkColor?: string
 }
 
-type ControlledThemeSwitchProps = ThemeSwitchProps & {
-  choice: ThemeChoice
-  toggle: () => void
-}
-
 const THEME_SWITCH_CLASS_NAME = 'c-theme-switch'
-
 /**
- * This theme switch component is UI only and can be used to make a theme switch in a SSR setting.
+ * The theme switch component can be used to switch from light to dark mode explicitly.
+ *
+ * Use the underlying hook `useThemeController` to create your own theme switch.
  */
-export const ControlledThemeSwitch = forwardRef<
+export const ThemeSwitch = forwardRef<
   ElementRef<typeof IconButton>,
-  ControlledThemeSwitchProps
+  ThemeSwitchProps
 >(
   (
     {
       lightColor = '$brandContrast',
       darkColor = '$brandContrast',
       className,
-      choice,
-      toggle,
       ...props
     },
     forwardedRef
   ) => {
+    const [choice, toggle] = useThemeController()
+
     const isLight = choice === 'light'
     const title = isLight ? 'Use dark theme' : 'Use light theme'
     const icon = isLight ? <LightMode /> : <DarkMode />
@@ -62,25 +57,4 @@ export const ControlledThemeSwitch = forwardRef<
     )
   }
 )
-ControlledThemeSwitch.toString = () => `.${THEME_SWITCH_CLASS_NAME}`
-
-/**
- * The theme switch component can be used to switch from light to dark mode explicitly.
- *
- * Use the underlying hook `useThemeController` to create your own theme switch.
- */
-export const ThemeSwitch = forwardRef<
-  ElementRef<typeof ControlledThemeSwitch>,
-  ThemeSwitchProps
->((props, forwardedRef) => {
-  const [choice, toggle] = useThemeController()
-  return (
-    <ControlledThemeSwitch
-      {...props}
-      ref={forwardedRef}
-      choice={choice}
-      toggle={toggle}
-    />
-  )
-})
 ThemeSwitch.toString = () => `.${THEME_SWITCH_CLASS_NAME}`

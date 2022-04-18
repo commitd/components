@@ -1,5 +1,4 @@
 import { mdiEmail, mdiPhone } from '@mdi/js'
-import { Story } from '@storybook/react'
 import React from 'react'
 import {
   AppBar,
@@ -39,7 +38,7 @@ export default {
 
 const footerHeight = '200px'
 
-export const Website: Story = () => {
+export const Website = () => {
   const Header = () => (
     <AppBar css={{ position: 'relative' }}>
       <AppBarHeading>Website</AppBarHeading>

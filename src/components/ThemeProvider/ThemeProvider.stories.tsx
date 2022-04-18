@@ -42,7 +42,7 @@ const Template: Story<ThemeProviderProps> = (args) => (
   </ThemeProvider>
 )
 
-export const Default: Story = () => <Example>Example</Example>
+export const Default = () => <Example>Example</Example>
 Default.parameters = {
   docs: {
     source: {
@@ -100,7 +100,7 @@ Light.parameters = {
  * The `useThemeController` hook can be used to get the theme choice state and a toggle function.
  * This can be used to build a custom theme switch.
  */
-export const UtilityUseThemeController: Story = () => {
+export const UtilityUseThemeController = () => {
   const CustomSwitch = () => {
     const [choice, toggleChoice] = useThemeController()
     return <Switch checked={choice == 'dark'} onCheckedChange={toggleChoice} />
@@ -115,7 +115,7 @@ export const UtilityUseThemeController: Story = () => {
 }
 
 /** The `useTheme` hook can be used to get the full details of the current theme. */
-export const UtilityUseTheme: Story = () => {
+export const UtilityUseTheme = () => {
   const [theme] = useTheme()
   return (
     <Accordion type="single">
@@ -134,7 +134,7 @@ export const UtilityUseTheme: Story = () => {
 /**
  * The `useTheme` hook also provides a utility function to dereference theme tokens.
  * This can be used in case the theme details are required outside of the normal css landscape.*/
-export const UtilityUseThemeResolve: Story = () => {
+export const UtilityUseThemeResolve = () => {
   const [theme, resolve] = useTheme()
   return (
     <>
@@ -187,7 +187,7 @@ const customTheme = createTheme({
   }
 })
 
-export const CustomThemeProvider: Story = () => (
+export const CustomThemeProvider = () => (
   <ThemeProvider choice='light', light={customTheme}>
     <Paper>Example</Paper>
   </ThemeProvider>
@@ -224,7 +224,7 @@ CustomDark.parameters = {
   },
  })
  
- export const CustomThemeProvider: Story = () => (
+ export const CustomThemeProvider = () => (
    <ThemeProvider choice='dark', dark={customTheme}>
      <Paper>Example</Paper>
    </ThemeProvider>
@@ -242,7 +242,7 @@ CustomDark.parameters = {
  *
  * For more information see https://stitches.dev/docs/theming
  */
-export const ThemeConfig: Story = () => (
+export const ThemeConfig = () => (
   <Paper>
     <Monospace>{JSON.stringify(config.theme, null, 2)}</Monospace>
   </Paper>

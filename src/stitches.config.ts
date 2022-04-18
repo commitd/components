@@ -594,9 +594,6 @@ export type As = React.ElementType
 export type AsProps = {
   as?: As
 }
-export type AsChildProps = {
-  asChild?: boolean
-}
 export type ChildProps = {
   children?: ReactNode
 }

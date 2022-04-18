@@ -1,16 +1,13 @@
-import { composeStories } from '@storybook/testing-react'
 import React from 'react'
 import {
-  act,
-  fireEvent,
   renderDark,
   renderLight,
   screen,
   userEvent,
+  fireEvent,
+  act,
 } from 'test-utils'
-import * as stories from './ContextMenu.stories'
-
-const { Default, Nested, Destructive } = composeStories(stories)
+import { Default, Nested } from './ContextMenu.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)
@@ -51,17 +48,4 @@ it('can render nested menus', () => {
   ).not.toBeInTheDocument()
   userEvent.click(screen.getByRole('menuitem', { name: /developer/i }))
   expect(screen.getByRole('menuitem', { name: /test/i })).toBeInTheDocument()
-})
-
-it('can render destructive menus', () => {
-  renderDark(<Destructive />)
-  expect(
-    screen.queryByRole('menuitem', { name: /delete/i })
-  ).not.toBeInTheDocument()
-  act(() => {
-    fireEvent.contextMenu(screen.getByText('Right click anywhere'))
-  })
-  expect(
-    screen.queryByRole('menuitem', { name: /delete/i })
-  ).toBeInTheDocument()
 })

@@ -13,7 +13,7 @@ export default {
 export const Default: Story = (args) => <Chip {...args}>Chip</Chip>
 
 /** Chips are available in 2 sizes, `default` and `small`  */
-export const Sizes: Story = () => (
+export const Sizes = () => (
   <>
     <Chip variant="info" size="small">
       New
@@ -23,7 +23,7 @@ export const Sizes: Story = () => (
 )
 
 /** If an `onClose` prop is provided a close button is added and clicking calls the onClose`  */
-export const Closable: Story = () => (
+export const Closable = () => (
   <Row css={{ gap: '$3', alignItems: 'center' }}>
     <Chip variant="info" size="small" onClose={action('close')}>
       Close
@@ -53,7 +53,7 @@ export const Closable: Story = () => (
   </Row>
 )
 
-export const All: Story = () => (
+export const All = () => (
   <Variants
     component={Chip}
     variant={[
@@ -74,7 +74,7 @@ All.storyName = 'Variants'
 /**
  * To make interactive add the `interactive` prop and delclare `as` `button` or `link` as required and use the relevant action prop `href` or `onClick`.
  */
-export const Interactive: Story = () => (
+export const Interactive = () => (
   <Variants
     as="button"
     component={Chip}
@@ -94,7 +94,7 @@ export const Interactive: Story = () => (
   />
 )
 
-export const Disabled: Story = () => (
+export const Disabled = () => (
   <Row css={{ gap: '$3', alignItems: 'center' }}>
     <Chip
       as="button"

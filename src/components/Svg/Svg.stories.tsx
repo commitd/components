@@ -15,7 +15,7 @@ export const Default: Story = (args) => (
 )
 
 /** The color (fill and stroke) is set to inherit by default but can also be controlled through the css */
-export const Colors: Story = () => (
+export const Colors = () => (
   <>
     <Box css={{ display: 'inline', color: '$error9' }}>
       <Svg css={{ size: '$8' }}>

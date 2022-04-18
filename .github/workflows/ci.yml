@@ -13,45 +13,56 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 14
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
+  install-cache:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v2
         with:
-          cache: 'npm'
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
           node-version: ${{ env.NODE_VERSION }}
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           npm install
-      - name: Run lint
-        run: |
-          npm run build
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-output
-          path: dist
-          retention-days: 1
   static-analysis:
-    runs-on: ubuntu-18.04
-    needs: build
+    runs-on: ubuntu-latest
+    needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v2
         with:
-          cache: 'npm'
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install Dependencies
-        run: |
-          npm install
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Run prettier
         run: |
           npm run format:check
@@ -65,21 +76,27 @@ jobs:
           PR: ${{ github.event.number }}
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   unit-test-scan:
-    runs-on: ubuntu-18.04
-    needs: build
+    runs-on: ubuntu-latest
+    needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          cache: 'npm'
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install Dependencies
-        run: |
-          npm install
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Run tests
         run: |
           npm run test
@@ -88,65 +105,119 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
-  build-example:
-    runs-on: ubuntu-18.04
-    needs: build
+  build:
+    runs-on: ubuntu-latest
+    needs: [static-analysis, unit-test-scan]
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v2
         with:
-          cache: 'npm'
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Run lint
+        run: |
+          npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
         with:
           name: build-output
           path: dist
-      - name: Install Dependencies
-        run: |
-          npm install
+          retention-days: 1
+  build-example:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-output
+          path: dist
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Check example
         run: |
+          npm install
           npm run build
         working-directory: ./example
   build-storybook:
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v2
         with:
-          cache: 'npm'
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install Dependencies
-        run: |
-          npm install
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Build Storybook
         run: npm run build-storybook --quiet
   release:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta'
-    runs-on: ubuntu-18.04
-    needs: [static-analysis, unit-test-scan, build-example, build-storybook]
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           token: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          cache: 'npm'
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install Dependencies
-        run: |
-          npm install
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: build-output
           path: dist
@@ -160,19 +231,28 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
   publish-storybook:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs: release
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v2
         with:
-          cache: 'npm'
+          token: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install Dependencies
-        run: |
-          npm install
+      - name: npm 7
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org
+      - name: Restore dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Publish Storybook
         if: github.ref == 'refs/heads/main'
         run: npm run deploy-storybook -- --ci

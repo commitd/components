@@ -1,26 +1,19 @@
+import { useLabelContext } from '@radix-ui/react-label'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-import { useFormControl, UseFormControlProps } from '../FormControl'
-import { defaultStyles, inputStyles, readonlyStyles } from '../Input/Input'
-import { Label, LabelOptional } from '../Label'
+import { inputStyles } from '../Input/Input'
+import { Label } from '../Label'
 
 const DEFAULT_TAG = 'textarea'
 
-const StyledTextArea = styled(
-  DEFAULT_TAG,
-  defaultStyles,
-  readonlyStyles,
-  inputStyles,
-  {
-    padding: '$2',
-    height: '$8',
-  }
-)
+const StyledTextArea = styled(DEFAULT_TAG, inputStyles, {
+  padding: '$2',
+  height: '$8',
+})
 
-type TextAreaVariants = Omit<VariantProps<typeof StyledTextArea>, 'state'>
+type TextAreaVariants = VariantProps<typeof StyledTextArea>
 type TextAreaProps = ComponentProps<typeof DEFAULT_TAG> &
-  UseFormControlProps &
   CSSProps &
   TextAreaVariants & {
     /** Add a label to the TextArea */
@@ -36,26 +29,22 @@ type TextAreaProps = ComponentProps<typeof DEFAULT_TAG> &
 export const TextArea = forwardRef<
   ElementRef<typeof DEFAULT_TAG>,
   TextAreaProps
->(({ label, onValueChange, ...props }, forwardedRef) => {
-  const [id, { state, disabled, required }, remainingProps] = useFormControl(
-    props
-  )
+>(({ label, id, onValueChange, ...props }, forwardedRef) => {
+  const labelId = useLabelContext()
   return (
     <>
       {label && (
-        <Label id={`label-${id}`} variant="above" htmlFor={id}>
-          {label} {required === false && <LabelOptional />}
+        <Label variant="above" htmlFor={id || labelId}>
+          {label}
         </Label>
       )}
       <StyledTextArea
+        aria-labelledby={labelId}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           onValueChange && onValueChange(e.target.value)
         }
-        {...remainingProps}
-        id={id}
-        state={state}
-        disabled={disabled}
-        required={required}
+        {...props}
+        id={id || label}
         ref={forwardedRef}
       />
     </>

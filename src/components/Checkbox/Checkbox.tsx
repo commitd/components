@@ -3,15 +3,122 @@ import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
-import { useFormControl, UseFormControlProps } from '../FormControl'
 import { Check, CheckIndeterminate } from '../Icons'
-import { checkStyles, defaultStyles } from '../Input/inputStyles'
-import { Label, LabelOptional } from '../Label'
+import { Label } from '../Label'
 export type { CheckedState } from '@radix-ui/react-checkbox'
 
-const StyledRoot = styled(Root, defaultStyles, checkStyles, {
+const StyledRoot = styled(Root, {
+  $$main: '$colors$primary',
+  $$mainHover: '$colors$primaryHighlight',
+  $$contrast: '$colors$primaryContrast',
+  $$active: '$colors$defaultActive',
+  $$default: '$colors$default',
+  $$defaultHover: '$colors$defaultHighlight',
+  $$lowlight: '$colors$defaultLowlight',
+
+  // Reset
+  alignItems: 'center',
+  appearance: 'none',
+  boxSizing: 'border-box',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  lineHeight: '$none',
+  margin: '0',
+  outline: 'none',
+  padding: '0',
+  textDecoration: 'none',
+  userSelect: 'none',
+  flexShrink: 0,
+  verticalAlign: 'middle',
+  WebkitTapHighlightColor: 'rgba(0,0,0,0)',
+  '&::before': {
+    boxSizing: 'border-box',
+  },
+  '&::after': {
+    boxSizing: 'border-box',
+  },
+
+  color: '$text',
+  overflow: 'hidden',
+  borderRadius: '$default',
   width: '28px',
   height: '28px',
+  fontSize: '$0',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+
+  transition: 'background 0.5s',
+  backgroundPosition: 'center',
+  border: 'solid 2px',
+
+  '&:hover': {
+    background:
+      '$$hover radial-gradient(circle, transparent 1%, $$hover 1%) center/15000%',
+  },
+
+  '&:active': {
+    backgroundColor: '$$active',
+    backgroundSize: '100%',
+    transition: 'background 0s',
+  },
+
+  '&:disabled': {
+    pointerEvents: 'none',
+    $$main: '$$lowlight',
+    $$default: '$$lowlight',
+  },
+
+  '&:focus': {
+    '&[data-state=unchecked]': {
+      backgroundColor: '$$defaultHover',
+    },
+    '&[data-state=checked]': {
+      backgroundColor: '$$defaultHover',
+      color: '$$default',
+    },
+    '&[data-state=indeterminate]': {
+      backgroundColor: '$$defaultHover',
+      color: '$$default',
+    },
+  },
+
+  variants: {
+    variant: {
+      primary: {
+        $$active: '$colors$primaryActive',
+        $$lowlight: '$colors$primaryLowlight',
+        $$hover: '$$defaultHover',
+        color: '$$contrast',
+        borderColor: '$$main',
+        '&[data-state=checked]': {
+          backgroundColor: '$$main',
+        },
+        '&[data-state=indeterminate]': {
+          backgroundColor: '$$main',
+        },
+      },
+      secondary: {
+        color: '$$default',
+        borderColor: '$$default',
+        $$hover: '$$defaultHover',
+      },
+    },
+    destructive: {
+      true: {
+        $$main: '$colors$error',
+        $$mainHover: '$colors$errorHighlight',
+        $$contrast: '$colors$errorContrast',
+        $$active: '$colors$errorActive',
+        $$default: '$colors$error',
+        $$defaultHover: '$colors$errorBackground',
+        $$lowlight: '$colors$errorLowlight',
+      },
+    },
+  },
+
+  defaultVariants: {
+    variant: 'secondary',
+  },
 })
 
 const StyledIndicator = styled(Indicator, {
@@ -22,18 +129,13 @@ const StyledIndicator = styled(Indicator, {
   width: '100%',
 })
 
-type CheckboxVariants = Omit<VariantProps<typeof StyledRoot>, 'state'>
+type CheckboxVariants = VariantProps<typeof StyledRoot>
 type CheckboxRootProps = ComponentProps<typeof Root>
-type CheckboxProps = Omit<CheckboxRootProps, 'onCheckedChange'> &
-  UseFormControlProps &
+type CheckboxProps = CheckboxRootProps &
   CheckboxVariants &
   CSSProps & {
     /** Add a label to the checkbox */
     label?: string
-
-    onCheckedChange?:
-      | CheckboxRootProps['onCheckedChange']
-      | ((checked: boolean) => void)
   }
 
 /**
@@ -48,28 +150,17 @@ export const Checkbox = forwardRef<
   ElementRef<typeof StyledRoot>,
   CheckboxProps
 >(({ label, ...props }, forwardedRef) => {
-  const [id, { state, disabled, required }, remainingProps] = useFormControl(
-    props
-  )
   return (
     <ConditionalWrapper
       condition={label}
       wrapper={(children) => (
-        <Label id={`label-${id}`} variant="inline">
+        <Label variant="wrapping">
           {children}
           {label}
-          {required === false && <LabelOptional />}
         </Label>
       )}
     >
-      <StyledRoot
-        id={id}
-        state={state}
-        disabled={disabled}
-        required={required}
-        {...remainingProps}
-        ref={forwardedRef}
-      >
+      <StyledRoot {...props} ref={forwardedRef}>
         <StyledIndicator>
           {props.checked === 'indeterminate' && <CheckIndeterminate />}
           {props.checked !== 'indeterminate' && <Check />}

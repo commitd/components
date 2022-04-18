@@ -1,8 +1,7 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import { Radio, RadioGroup } from '.'
-import { Form, FormButton, FormControl, Row } from '../'
-import { withFormData } from '../../docs/util'
+import { Column } from '../'
 
 export default {
   title: 'Components/Radio',
@@ -10,7 +9,7 @@ export default {
   subcomponents: { Radio },
 } as Meta
 
-export const Default: Story = () => {
+export const Default = () => {
   return (
     <RadioGroup>
       <Radio value="mobx" label="Mobx" />
@@ -21,7 +20,7 @@ export const Default: Story = () => {
 }
 
 /** A primary variants is also available but should be used sparingly, e.g. when the only or most important control on the page. */
-export const Primary: Story = () => {
+export const Primary = () => {
   return (
     <RadioGroup>
       <Radio variant="primary" value="mobx" label="Mobx" />
@@ -32,47 +31,42 @@ export const Primary: Story = () => {
 }
 
 /**
- * The groups can be orientated horizontally or vertically (default).
+ * The groups can be orientated horizontally (default) or vertically.
  */
-export const Orientation: Story = () => {
+export const Orientation = () => {
   return (
-    <Row gap>
+    <Column css={{ gap: '$3' }}>
       <RadioGroup orientation="vertical">
-        <Radio value="mobx" label="Mobx" />
-        <Radio value="redux" label="Redux" />
-        <Radio value="context" label="Context" />
+        <Radio variant="primary" value="mobx" label="Mobx" />
+        <Radio variant="primary" value="redux" label="Redux" />
+        <Radio variant="primary" value="context" label="Context" />
       </RadioGroup>
-      <RadioGroup orientation="horizontal">
-        <Radio value="mobx" label="Mobx" />
-        <Radio value="redux" label="Redux" />
-        <Radio value="context" label="Context" />
+      <RadioGroup>
+        <Radio variant="primary" value="mobx" label="Mobx" />
+        <Radio variant="primary" value="redux" label="Redux" />
+        <Radio variant="primary" value="context" label="Context" />
       </RadioGroup>
-    </Row>
+    </Column>
   )
 }
 
-export const Controlled: Story = () => {
+export const Controlled = () => {
   const [value, setValue] = React.useState('redux')
   return (
     <RadioGroup value={value} onValueChange={(v) => setValue(v)}>
-      <Radio value="mobx" label="Mobx" />
-      <Radio value="redux" label="Redux" />
-      <Radio value="context" label="Context" />
+      <Radio variant="primary" value="mobx" label="Mobx" />
+      <Radio variant="primary" value="redux" label="Redux" />
+      <Radio variant="primary" value="context" label="Context" />
     </RadioGroup>
   )
 }
 
-/**
- * Individual radio items can be disabled.
- *
- * The disabled prop on radio item can be used inside a FormControl.
- */
-export const Disabled: Story = () => {
+export const Disabled = () => {
   return (
-    <Row gap>
-      <RadioGroup defaultValue="redux">
-        <Radio value="mobx" label="Mobx" />
-        <Radio value="redux" label="Redux" />
+    <Column css={{ gap: '$3' }}>
+      <RadioGroup value="redux">
+        <Radio disabled value="mobx" label="Mobx" />
+        <Radio disabled value="redux" label="Redux" />
         <Radio disabled value="context" label="Context" />
       </RadioGroup>
       <RadioGroup defaultValue="context">
@@ -80,66 +74,43 @@ export const Disabled: Story = () => {
         <Radio variant="primary" disabled value="redux" label="Redux" />
         <Radio variant="primary" disabled value="context" label="Context" />
       </RadioGroup>
-      <FormControl>
-        <RadioGroup disabled defaultValue="context">
-          <Radio value="mobx" label="Mobx" />
-          <Radio value="redux" label="Redux" />
-          <Radio value="context" label="Context" />
-        </RadioGroup>
-      </FormControl>
-    </Row>
+    </Column>
   )
 }
 
-export const Destructive: Story = () => {
+export const Destructive = () => {
   return (
-    <Row gap>
-      <RadioGroup label="Choose">
+    <Column css={{ gap: '$3' }}>
+      <RadioGroup>
         <Radio destructive value="mobx" label="Mobx" />
         <Radio destructive value="redux" label="Redux" />
         <Radio destructive value="context" label="Context" />
       </RadioGroup>
-      <RadioGroup label="Choose">
+      <RadioGroup>
         <Radio destructive variant="primary" value="mobx" label="Mobx" />
         <Radio destructive variant="primary" value="redux" label="Redux" />
         <Radio destructive variant="primary" value="context" label="Context" />
       </RadioGroup>
-    </Row>
+    </Column>
   )
 }
 
 /**
  * This story just checks the spacing works without labels but this would be a rare requirement. Normally, you would have labels.
  */
-export const NoLabels: Story = () => {
+export const NoLabels = () => {
   return (
-    <Row gap>
+    <Column css={{ gap: '$3' }}>
       <RadioGroup orientation="vertical">
         <Radio value="mobx" />
         <Radio value="redux" />
         <Radio value="context" />
       </RadioGroup>
-      <RadioGroup orientation="horizontal" defaultValue="context">
+      <RadioGroup defaultValue="context">
         <Radio variant="primary" value="mobx" />
         <Radio variant="primary" value="redux" />
         <Radio variant="primary" value="context" />
       </RadioGroup>
-    </Row>
-  )
-}
-
-/**
- * Demo of use in a `Form`
- */
-export const InForm: Story = () => {
-  return (
-    <Form onSubmit={withFormData(alert)}>
-      <RadioGroup name="radio" id="radio-test" label="Radio">
-        <Radio value="mobx" label="Mobx" />
-        <Radio value="redux" label="Redux" />
-        <Radio value="context" label="Context" />
-      </RadioGroup>
-      <FormButton />
-    </Form>
+    </Column>
   )
 }
