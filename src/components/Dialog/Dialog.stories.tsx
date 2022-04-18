@@ -1,6 +1,6 @@
 import { useBoolean } from '@committed/hooks'
 import { action } from '@storybook/addon-actions'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import {
   Dialog,
@@ -25,7 +25,7 @@ export default {
   },
 } as Meta
 
-export const Default = () => (
+export const Default: Story = () => (
   <Dialog>
     <DialogTrigger>
       <Button>Show Dialog</Button>
@@ -38,7 +38,7 @@ export const Default = () => (
  * It is likely that the dialog will need to be controlled to support further actions and different closing behaviours.
  * This can be done using the `open` and `onOpenChange` props.
  */
-export const Controllable = () => {
+export const Controllable: Story = () => {
   const [open, { setTrue, setFalse }] = useBoolean(false)
 
   return (
@@ -59,7 +59,7 @@ export const Controllable = () => {
 /**
  * Additional close or custom actions that also close the dialog should use a `DialogClose`.
  */
-export const CloseButton = () => {
+export const CloseButton: Story = () => {
   const [open, { setTrue, setFalse }] = useBoolean(false)
 
   return (

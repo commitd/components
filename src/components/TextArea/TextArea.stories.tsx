@@ -1,20 +1,20 @@
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { TextArea } from '.'
-import { Grid, Column, Label } from '../'
+import { Column, Grid, Label } from '../'
 
 export default {
   title: 'Components/TextArea',
   component: TextArea,
 } as Meta
 
-export const Default: React.FC = () => <TextArea id="default" />
+export const Default: Story = () => <TextArea id="default" />
 
 /**
  * Supplying a `value` will make the component controlled. The changes can be handled by the standard `onChange`
  * prop or use the convenience `onValueChange` that passes just the new value.
  */
-export const Controlled: React.FC = () => {
+export const Controlled: Story = () => {
   const [description, setDescription] = React.useState('test')
   return (
     <Column>
@@ -48,14 +48,14 @@ export const WithLabel: React.FC = () => (
  * If you want a single inline label you can wrap an TextArea in a `Label` component and it will auto assign the
  * `htmlFor` and `id` props.
  */
-export const InlineLabel: React.FC = () => (
+export const InlineLabel: Story = () => (
   <Label variant="inline">
     Inline
     <TextArea />
   </Label>
 )
 
-export const States = () => (
+export const States: Story = () => (
   <Grid
     css={{
       rowGap: '$3',
@@ -66,22 +66,22 @@ export const States = () => (
     <TextArea id="1" />
     <TextArea id="2" placeholder="placeholder" />
     <TextArea id="3" value="Value" />
-    <TextArea id="4" state="valid" defaultValue="Valid" />
-    <TextArea id="5" state="invalid" defaultValue="Invalid" />
+    <TextArea id="4" valid defaultValue="Valid" />
+    <TextArea id="5" error defaultValue="Invalid" />
     <TextArea id="6" disabled />
 
     <TextArea id="h1" force="hover" />
     <TextArea id="h2" force="hover" placeholder="hovered" />
     <TextArea id="h3" force="hover" value="Value" />
-    <TextArea id="h4" force="hover" state="valid" defaultValue="Valid" />
-    <TextArea id="h5" force="hover" state="invalid" defaultValue="Invalid" />
+    <TextArea id="h4" force="hover" valid defaultValue="Valid" />
+    <TextArea id="h5" force="hover" error defaultValue="Invalid" />
     <TextArea id="h6" disabled value="disabled" />
 
     <TextArea id="f1" force="focus" />
     <TextArea id="f2" force="focus" placeholder="focussed" />
     <TextArea id="f3" force="focus" value="Value" />
-    <TextArea id="f4" force="focus" state="valid" defaultValue="Valid" />
-    <TextArea id="f5" force="focus" state="invalid" defaultValue="Invalid" />
+    <TextArea id="f4" force="focus" valid defaultValue="Valid" />
+    <TextArea id="f5" force="focus" error defaultValue="Invalid" />
     <TextArea id="f6" readOnly value="readonly" />
   </Grid>
 )

@@ -53,12 +53,12 @@ export const Default: Story<ComponentProps<typeof Progress>> = (args) => (
   <Progress {...args} />
 )
 
-export const Primary = () => <Progress variant="primary" value={50} />
-export const Brand = () => <Progress variant="brand" value={75} />
-export const Gradient = () => <Progress variant="gradient" value={100} />
-export const Destructive = () => <Progress destructive value={40} />
-export const Indeterminate = () => <Progress />
-export const Decorated = () => (
+export const Primary: Story = () => <Progress variant="primary" value={50} />
+export const Brand: Story = () => <Progress variant="brand" value={75} />
+export const Gradient: Story = () => <Progress variant="gradient" value={100} />
+export const Destructive: Story = () => <Progress destructive value={40} />
+export const Indeterminate: Story = () => <Progress />
+export const Decorated: Story = () => (
   <Box>
     <Text>Download 10% complete</Text>
     <Progress css={{ my: '$3' }} variant="primary" value={50} />
@@ -68,7 +68,7 @@ export const Decorated = () => (
   </Box>
 )
 
-export const Controlled = () => {
+export const Controlled: Story = () => {
   const [value, setValue] = useState([0])
   return (
     <Column css={{ gap: '$3' }}>

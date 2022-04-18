@@ -1,4 +1,14 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["**/*.test.tsx", "**/*.stories.tsx", "docs", "**/test-utils.tsx"]
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declaration": true
+  },
+  "exclude": [
+    "**/*.test.tsx",
+    "**/*.stories.tsx",
+    "**/docs/**/*.ts",
+    "**/docs/**/*.tsx",
+    "**/test-utils.tsx"
+  ]
 }

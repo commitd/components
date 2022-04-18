@@ -10,12 +10,18 @@ export const DocsContainer = ({ context, ...props }) => {
     <BaseContainer
       context={{
         ...context,
-        parameters: {
-          ...context.parameters,
-          docs: {
-            ...context.parameters.docs,
-            theme: dark ? themes.dark : themes.light,
-          },
+        storyById: (id) => {
+          const storyContext = context.storyById(id)
+          return {
+            ...storyContext,
+            parameters: {
+              ...storyContext?.parameters,
+              docs: {
+                ...storyContext?.parameters?.docs,
+                theme: dark ? themes.dark : themes.light,
+              },
+            },
+          }
         },
       }}
       {...props}
