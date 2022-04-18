@@ -1,9 +1,9 @@
+import * as ToastPrimitive from '@radix-ui/react-toast'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
-import { styled, keyframes } from '../../stitches.config'
-import { Close } from '../Icons'
-import * as ToastPrimitive from '@radix-ui/react-toast'
+import { keyframes, styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
+import { Close } from '../Icons'
 
 const VIEWPORT_PADDING = '$5'
 
@@ -39,8 +39,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
   backgroundColor: '$paper',
   border: '1px solid',
   borderRadius: '$default',
-  boxShadow:
-    'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
+  boxShadow: '$3',
   padding: '$4',
   display: 'grid',
   gridTemplateAreas: '"title close" "description action"',
@@ -96,6 +95,10 @@ const StyledToast = styled(ToastPrimitive.Root, {
       },
     },
   },
+
+  defaultVariants: {
+    severity: 'default',
+  },
 })
 
 const StyledTitle = styled(ToastPrimitive.Title, {
@@ -126,7 +129,7 @@ const StyledAction = styled(ToastPrimitive.Action, {
 export const ToastClose = forwardRef<ElementRef<typeof StyledClose>>(
   (props, forwardedRef) => {
     return (
-      <StyledClose {...props} ref={forwardedRef} aria-label="Close">
+      <StyledClose {...props} asChild ref={forwardedRef} aria-label="Close">
         <IconButton size="small" variant="tertiary">
           <Close />
         </IconButton>
@@ -146,13 +149,13 @@ type AbstractToastProps = ToastProps &
   }
 
 /**
- *  Toast component.
+ * Toast component.
  *
  * Displays a toast with information and optionally an action in the bottom right of a page.
  *
- * Based on [Radix Dropdown Menu](https://www.radix-ui.com/docs/primitives/components/toast).
+ * Based on [Radix Toast](https://www.radix-ui.com/docs/primitives/components/toast).
  *
- * Toast can be closed by a timeout or by swiping right by default (these can be changed by `duration` and `swipeDirection` respectively).
+ * Toast can be closed by a timeout or by swiping right by default (these can be changed by `duration` and `swipeDirection` respectively in the `ToastProvider` which is included in the `ComponentsProvider`).
  * Alternatively, they can be closed by an action button (implying addition effects) or by an close icon (`ToastClose`).
  *
  * Doesn't currently nicely handle both close button and action button simultaneously, instead only separately.
@@ -161,31 +164,29 @@ export const Toast = forwardRef<
   ElementRef<typeof StyledToast>,
   AbstractToastProps
 >(
-  ({
-    title,
-    description,
-    altText,
-    close,
-    severity = 'default',
-    children,
-    ...props
-  }) => {
-    return (
-      <ToastProvider swipeDirection="right">
-        <StyledToast severity={severity} {...props}>
-          <StyledTitle>{title}</StyledTitle>
-          {description && <StyledDescription>{description}</StyledDescription>}
-          {close && <ToastClose />}
-          {children && (
-            <StyledAction asChild altText={altText}>
-              {children}
-            </StyledAction>
-          )}
-        </StyledToast>
-        <StyledViewport />
-      </ToastProvider>
-    )
-  }
+  (
+    {
+      title,
+      description,
+      altText,
+      close,
+      severity = 'default',
+      children,
+      ...props
+    },
+    forwardedRef
+  ) => (
+    <StyledToast severity={severity} {...props} ref={forwardedRef}>
+      {title && <StyledTitle>{title}</StyledTitle>}
+      {description && <StyledDescription>{description}</StyledDescription>}
+      {close && <ToastClose />}
+      {children && (
+        <StyledAction asChild altText={altText}>
+          {children}
+        </StyledAction>
+      )}
+    </StyledToast>
+  )
 )
 
 // Exports

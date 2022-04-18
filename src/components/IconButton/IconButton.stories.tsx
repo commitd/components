@@ -1,6 +1,6 @@
 import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { IconButton } from '.'
 import { Check, CheckIndeterminate, ChevronDown, Column, Row } from '../'
@@ -10,17 +10,17 @@ export default {
   component: IconButton,
 } as Meta
 
-export const Default: React.FC = () => (
+export const Default: Story = () => (
   <IconButton path={mdiThumbUp} onClick={action('click')} aria-label="label" />
 )
 
-export const WithCustomSvg: React.FC = () => (
+export const WithCustomSvg: Story = () => (
   <IconButton onClick={action('click')} aria-label="label">
     <Check />
   </IconButton>
 )
 
-export const Variants = () => (
+export const Variants: Story = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton variant="primary">
       <Check />
@@ -34,7 +34,7 @@ export const Variants = () => (
   </Row>
 )
 
-export const Sizes = () => (
+export const Sizes: Story = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton size="small">
       <Check />
@@ -52,7 +52,7 @@ export const Sizes = () => (
  * This uses the force prop to simulate hover, focus and active states so they can be compared at the same time.
  * This prop is not intended for normal use and the buttons here will not interact normally.
  */
-export const States = () => (
+export const States: Story = () => (
   <Column css={{ gap: '$3' }}>
     <Row css={{ gap: '$3' }}>
       <IconButton path={mdiPencil} variant="primary" />
@@ -88,7 +88,7 @@ export const States = () => (
   </Column>
 )
 
-export const Destructive = () => (
+export const Destructive: Story = () => (
   <Column css={{ gap: '$3' }}>
     <Row css={{ gap: '$3' }}>
       <IconButton path={mdiOpenInNew} destructive variant="primary" />
@@ -154,7 +154,7 @@ export const Destructive = () => (
   </Column>
 )
 
-export const Variations = () => (
+export const Variations: Story = () => (
   <Row css={{ gap: '$3' }}>
     <IconButton>
       <Check />

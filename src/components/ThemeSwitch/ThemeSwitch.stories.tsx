@@ -1,12 +1,11 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { ThemeSwitch } from '.'
+import { ControlledThemeSwitch, ThemeSwitch } from '.'
 import { AppBar, AppBarActions, AppBarHeading } from '../AppBar'
 import { Container } from '../Container'
 import { Heading } from '../Heading'
 import { Paper } from '../Paper'
-import { ThemeProvider } from '../ThemeProvider'
-import { lightTheme } from '../../stitches.config'
+import { ThemeProvider, useThemeController } from '../ThemeProvider'
 
 export default {
   title: 'Components/ThemeSwitch',
@@ -14,7 +13,7 @@ export default {
 } as Meta
 
 export const Default: Story = (args) => (
-  <ThemeProvider light={lightTheme}>
+  <ThemeProvider local>
     <AppBar>
       <AppBarHeading>Example</AppBarHeading>
       <AppBarActions>
@@ -48,4 +47,30 @@ Default.parameters = {
   `,
     },
   },
+}
+
+/**
+ * A controllable version of the theme switch is provided which only has the UI.
+ *
+ * This an be used in situations where you need a different mechanism for theme switching such as Server Side Rendering.
+ *
+ * Here we just reuse the `useThemeController` hook as an example.
+ */
+export const SSR: Story = () => {
+  const [choice, toggle] = useThemeController()
+  return (
+    <ThemeProvider local choice={choice}>
+      <AppBar>
+        <AppBarHeading>Example</AppBarHeading>
+        <AppBarActions>
+          <ControlledThemeSwitch choice={choice} toggle={toggle} />
+        </AppBarActions>
+      </AppBar>
+      <Paper>
+        <Container css={{ height: '200px' }}>
+          <Heading variant="h4">Theme switch</Heading>
+        </Container>
+      </Paper>
+    </ThemeProvider>
+  )
 }

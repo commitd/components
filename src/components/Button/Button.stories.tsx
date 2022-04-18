@@ -60,7 +60,7 @@ export const Default: Story<ComponentProps<typeof Button>> = (args) => {
 }
 
 /* Three size options are available */
-export const Size = () => (
+export const Size: Story = () => (
   <Row css={{ gap: '$3', mb: '$3' }}>
     <Button size="small">Small</Button>
     <Button size="default">Default</Button>
@@ -69,7 +69,7 @@ export const Size = () => (
 )
 
 /* Add `full-width` to make the button grow to take the full width */
-export const FullWidth = () => (
+export const FullWidth: Story = () => (
   <Column css={{ gap: '$3' }}>
     <Button full-width size="small">
       Small
@@ -89,7 +89,7 @@ export const FullWidth = () => (
  * - `secondary` use for other actions on the page
  * - `tertiary` use to pair with others as cancel or for icon buttons
  */
-export const Variant = () => (
+export const Variant: Story = () => (
   <Row css={{ gap: '$3' }}>
     <Button variant="primary">Primary</Button>
     <Button variant="secondary">Secondary</Button>
@@ -98,7 +98,7 @@ export const Variant = () => (
 )
 
 /** If the action is destructive, say a delete or an action that cannot be undone, add the `destructive` flag */
-export const Destructive = () => (
+export const Destructive: Story = () => (
   <Row css={{ gap: '$3' }}>
     <Button destructive variant="primary">
       Primary
@@ -113,7 +113,7 @@ export const Destructive = () => (
 )
 
 /** The `disabled` state is controlled in the standard way */
-export const Disabled = () => (
+export const Disabled: Story = () => (
   <Row css={{ gap: '$3' }}>
     <Button disabled variant="primary">
       Primary
@@ -130,13 +130,13 @@ export const Disabled = () => (
 /**
  * A `brand` variant is also supplied for particular uses cases, like in the AppBar, where changing to the dark theme does not affect the coloring.
  */
-export const Brand = () => <Button variant="brand">Brand</Button>
+export const Brand: Story = () => <Button variant="brand">Brand</Button>
 
 /**
  * This uses the force prop to simulate hover, focus and active states so they can be compared at the same time.
  * This prop is not intended for normal use and the buttons here will not interact normally.
  */
-export const State = () => (
+export const State: Story = () => (
   <Grid css={{ gap: '$3', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
     <Button variant="primary">Button</Button>
     <Button variant="primary" force="hover">
@@ -171,7 +171,7 @@ export const State = () => (
   </Grid>
 )
 
-export const All = () => (
+export const All: Story = () => (
   <Variants
     component={Button}
     variant={['primary', 'secondary', 'tertiary']}

@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react'
-import faker from 'faker'
+import { faker } from '@faker-js/faker'
 import React from 'react'
 import {
   Table,
@@ -159,7 +159,7 @@ HighlightCells.args = { striped: true, hover: 'cell' }
  * This must be controlled.
  *
  */
-export const Selection = () => {
+export const Selection: Story = () => {
   const [selected, setSelected] = React.useState<string | null>(null)
   return (
     <Table hover="row" striped>
@@ -262,9 +262,7 @@ export const UtilityClasses: Story<React.ComponentProps<typeof Table>> = (
       >
         <TableRow>
           <TableCell colSpan={8}>
-            <Link as={Link} href="#">
-              Documentation
-            </Link>
+            <Link href="#">Documentation</Link>
           </TableCell>
         </TableRow>
       </TableFoot>

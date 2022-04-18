@@ -1,3 +1,4 @@
+import { Story } from '@storybook/react'
 import React, { FormEvent, useState } from 'react'
 import {
   Alert,
@@ -24,7 +25,7 @@ export default {
   title: 'Examples/Form',
 }
 
-export const Form = () => {
+export const Form: Story = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [country, setCountry] = useState('')
@@ -90,20 +91,20 @@ export const Form = () => {
             <Checkbox
               label="Email"
               id="notify_email"
-              onCheckedChange={(checked) => setNotifyEmail(checked)}
+              onCheckedChange={(checked: boolean) => setNotifyEmail(checked)}
               checked={notifyEmail}
             />
             <Checkbox
               label="Txt"
               id="notify_txt"
-              onCheckedChange={(checked) => setNotifyTxt(checked)}
+              onCheckedChange={(checked: boolean) => setNotifyTxt(checked)}
               checked={notifyTxt}
             />
             <Checkbox
               label="Browser"
               id="notify_browser"
               color="primary"
-              onCheckedChange={(checked) => setNotifyBrowser(checked)}
+              onCheckedChange={(checked: boolean) => setNotifyBrowser(checked)}
               checked={notifyBrowser}
             />
             <Text>Please Specify your role:</Text>

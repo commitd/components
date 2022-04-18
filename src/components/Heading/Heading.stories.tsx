@@ -16,7 +16,7 @@ export const Default = Template.bind({})
 /**
  * The standard heading hX variants are supported, this, by default also adjusts the html tag
  */
-export const Variants = () => (
+export const Variants: Story = () => (
   <Column>
     <Heading variant="h1">Heading 1</Heading>
     <Heading variant="h2">Heading 2</Heading>
@@ -30,7 +30,7 @@ export const Variants = () => (
 /**
  * The display font can be used when a different heading style is required, say for blog posts.
  */
-export const Display = () => (
+export const Display: Story = () => (
   <Column>
     <Heading variant="h1" font="display">
       Heading 1
@@ -57,7 +57,7 @@ export const Display = () => (
  * Heading will set the relevant tag by default, but this can still be overridden so a heading can be
  * given a different style but change the semantic tag so it's a better fit for the use on the page.
  */
-export const Polymorphic = () => (
+export const Polymorphic: Story = () => (
   <Heading as="h3" variant="h1">
     Really a h3
   </Heading>
@@ -66,7 +66,7 @@ export const Polymorphic = () => (
 /**
  * The underlying text component props are still available if the need to be used.
  */
-export const TextProps = () => (
+export const TextProps: Story = () => (
   <Heading variant="h1" size={3} css={{ color: '$primary' }} italic>
     Different h1
   </Heading>

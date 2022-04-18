@@ -83,7 +83,7 @@ const Template: Story = (args) => (
 export const Default = Template.bind({})
 
 /** Links and triggers follow the same variant formats as Buttons, namely Primary, Secondary, Tertiary and Brand. By Default, Secondary is used.*/
-export const Variants = () => {
+export const Variants: Story = () => {
   return (
     <>
       <NavigationMenu>
@@ -175,7 +175,7 @@ export const Variants = () => {
 
 /** NavigationMenu also provides a wrapped version, aimed primary at use in [AppBar](/docs/components-appbar--default)
  * as show [here](/docs/components-appbar--with-navigation-menu), however can also be used elsewhere as a simplified version as shown in this example. */
-export const Wrapped = () => {
+export const Wrapped: Story = () => {
   const list = {
     trigger: 'Wrapped List',
     links: [
@@ -208,7 +208,7 @@ export const Wrapped = () => {
 
 /** Content does not need to be limited to simple text based links, such as NavigationMenuContentListLink,
  * but instead can be any customised react node instead. */
-export const AlternativeContent = () => {
+export const AlternativeContent: Story = () => {
   const MyAltContent = (
     <NavigationMenuContentListItem
       href="https://components.committed.software"
