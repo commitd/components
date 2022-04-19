@@ -16,8 +16,10 @@
     "declaration": true,
     "outDir": "dist",
     "paths": {
-      "stitches.config": ["./utils/stitches.config"],
-      "test-utils": ["./utils/test-utils"]
+      "stitches.config": ["./stitches.config"],
+      "test-utils": ["./utils/test-utils"],
+      "@emotion/core": ["./typings.d.ts"],
+      "@storybook/theming": ["./typings.d.ts"]
     }
   },
   "include": ["src"]

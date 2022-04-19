@@ -32,3 +32,4 @@ yarn-error.log*
 
 .docz
 .vscode
+storybook-static
