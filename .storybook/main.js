@@ -4,7 +4,7 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.plugins = config.resolve.plugins || []
     config.module.rules = config.module.rules || []
-    config.resolve.plugins.push(new TsconfigPathsPlugin())
+    config.resolve.plugins.push(new TsconfigPathsPlugin({ configFile: 'tsconfig.storybook.json'}))
     config.module.rules.push({
       test: /\.stories\.tsx/,
       use: [{ loader: 'story-description-loader', options: { isTSX: true } }],
@@ -22,7 +22,7 @@ module.exports = {
     'storybook-dark-mode',
   ],
   typescript: {
-    check: false,
+    check: true,
     checkOptions: {},
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
