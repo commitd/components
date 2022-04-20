@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderLight, renderDark, screen } from 'test-utils'
-import { Default, AsHr, Decorative } from './Divider.stories'
+import { renderDark, renderLight, screen } from 'test-utils'
+import { AsHr, Decorative, Default } from './Divider.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

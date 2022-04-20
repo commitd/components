@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react'
 import React from 'react'
-import { styled, Box, Column, Row, Text } from '../'
+import { Box, Column, Row, styled, Text } from '../'
 
 export default {
   title: 'Design System/Spacing',

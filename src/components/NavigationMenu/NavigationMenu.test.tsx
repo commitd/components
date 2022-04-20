@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
+import { renderDark, renderLight } from 'test-utils'
 import { AlternativeContent, Default, Wrapped } from './NavigationMenu.stories'
 
 it('renders light without error', () => {

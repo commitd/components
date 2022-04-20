@@ -1,6 +1,6 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Accordion, AccordionItem, AccordionHeader, AccordionContent } from '.'
+import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from '.'
 
 export default {
   title: 'Components/Accordion',

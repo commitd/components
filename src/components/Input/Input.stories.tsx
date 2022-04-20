@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Input } from '.'
-import { Grid, Column, Label, Form, FormButton } from '../'
+import { Column, Form, FormButton, Grid, Label } from '../'
 import { withFormData } from '../../docs/util'
 
 export default {

@@ -1,7 +1,7 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
+import { renderDark, renderLight } from 'test-utils'
+import { Caption, Monospace, Span, Strike } from './'
 import { Default } from './Text.stories'
-import { Caption, Strike, Span, Monospace } from './'
 
 it('renders Text light without error', () => {
   const { asFragment } = renderLight(<Default />)

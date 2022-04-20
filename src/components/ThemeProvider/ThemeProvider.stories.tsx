@@ -1,6 +1,6 @@
+import { blue, blueDark } from '@radix-ui/colors'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { blue, blueDark } from '@radix-ui/colors'
 import {
   ThemeProvider,
   ThemeProviderProps,
@@ -9,10 +9,10 @@ import {
 } from '.'
 import {
   config,
+  createDarkTheme,
+  createTheme,
   lightTheme,
   styled,
-  createTheme,
-  createDarkTheme,
 } from '../../stitches.config'
 import {
   Accordion,

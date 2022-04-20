@@ -1,6 +1,6 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Flex, Row, Column } from '.'
+import { Column, Flex, Row } from '.'
 import { Box } from '../'
 
 export default {

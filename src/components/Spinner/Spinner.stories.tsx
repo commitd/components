@@ -1,5 +1,5 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Spinner } from '.'
 import { Button, Column } from '../'
 import { Variants } from '../../docs/util'

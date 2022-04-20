@@ -2,7 +2,7 @@ import { useBoolean } from '@committed/hooks'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Switch } from '.'
-import { Row, Grid } from '../'
+import { Grid, Row } from '../'
 
 export default {
   title: 'Components/Switch',

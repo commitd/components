@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderLight, renderDark, userEvent, screen } from 'test-utils'
+import { renderDark, renderLight, screen, userEvent } from 'test-utils'
 import { Default as Switch, States } from './Switch.stories'
 
 it('renders light without error', () => {

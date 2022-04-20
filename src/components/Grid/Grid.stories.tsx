@@ -1,5 +1,5 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Grid } from '.'
 import { Box, Row } from '../'
 import { randomColor } from '../../docs/util'

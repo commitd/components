@@ -1,7 +1,7 @@
 import { useBoolean, useTimeout } from '@committed/hooks'
 import React, { ComponentProps, FC } from 'react'
-import type { CSS } from '../../stitches.config'
 import { Box, Tooltip } from '../../'
+import type { CSS } from '../../stitches.config'
 
 const copyToClipboard = (text: string) => {
   navigator.clipboard.writeText(text)

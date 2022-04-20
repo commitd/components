@@ -1,4 +1,4 @@
-import { FormEvent, Dispatch, SetStateAction } from 'react'
+import { Dispatch, FormEvent, SetStateAction } from 'react'
 import { CheckedState } from '../../components/Checkbox'
 
 export * from './Colors'

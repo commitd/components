@@ -1,8 +1,7 @@
 import React from 'react'
-
-import { renderLight, renderDark, screen, userEvent } from 'test-utils'
-import { Default, All } from './Chip.stories'
+import { renderDark, renderLight, screen, userEvent } from 'test-utils'
 import { Chip } from '.'
+import { All, Default } from './Chip.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

@@ -18,8 +18,8 @@ import {
 } from '@radix-ui/colors'
 import type * as Stitches from '@stitches/react'
 import { createStitches } from '@stitches/react'
-import { ThemeConfig } from './components/ThemeProvider/ThemeProvider.stories'
 import { ReactNode } from 'react'
+import { ThemeConfig } from './components/ThemeProvider/ThemeProvider.stories'
 
 const LIGHT_THEME = 'light-theme'
 const DARK_THEME = 'dark-theme'

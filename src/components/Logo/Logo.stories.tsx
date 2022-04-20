@@ -1,5 +1,5 @@
+import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps, FC } from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Logo } from '.'
 
 export default {

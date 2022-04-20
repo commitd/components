@@ -1,9 +1,9 @@
 import * as Icons from '@mdi/js'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
+import { useVirtual } from 'react-virtual'
 import { Box, Svg } from '..'
 import { Copy } from '../../docs/util'
-import { useVirtual } from 'react-virtual'
 
 export default {
   title: 'Components/Icons',

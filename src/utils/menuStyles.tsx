@@ -1,6 +1,6 @@
 import React from 'react'
-import { css, styled } from '../stitches.config'
 import { Check, ChevronRight } from '../components/Icons'
+import { css, styled } from '../stitches.config'
 
 export const itemStyles = css({
   '&::before': {

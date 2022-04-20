@@ -1,11 +1,11 @@
 import React, {
   createContext,
-  useState,
-  useLayoutEffect,
   useCallback,
+  useLayoutEffect,
+  useState,
 } from 'react'
 import type { Theme } from '../../stitches.config'
-import { lightTheme, darkTheme } from '../../stitches.config'
+import { darkTheme, lightTheme } from '../../stitches.config'
 
 export type ThemeChoice = 'light' | 'dark'
 

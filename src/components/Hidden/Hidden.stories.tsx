@@ -1,8 +1,8 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Close } from '../Icons'
-import { Button } from '../Button'
 import { Hidden } from '.'
+import { Button } from '../Button'
+import { Close } from '../Icons'
 
 export default {
   title: 'Components/Hidden',

@@ -1,5 +1,5 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
 import { ControlledThemeSwitch, ThemeSwitch } from '.'
 import { AppBar, AppBarActions, AppBarHeading } from '../AppBar'
 import { Container } from '../Container'
