@@ -1,9 +1,9 @@
+import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Form, FormButton } from '.'
+import { withFormData } from '../../docs/util'
 import { FormControl, FormControlHelp } from '../FormControl'
 import { Input } from '../Input'
-import { withFormData } from '../../docs/util'
 
 export default {
   title: 'Components/Form',

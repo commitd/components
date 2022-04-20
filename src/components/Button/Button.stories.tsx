@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import { Grid, Row, Column } from '../'
+import { Column, Grid, Row } from '../'
 import { Variants } from '../../docs/util'
 import { Button } from './Button'
 

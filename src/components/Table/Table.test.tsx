@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderLight, renderDark } from 'test-utils'
-import { Default, UtilityClasses, Sticky, Striped } from './Table.stories'
+import { renderDark, renderLight } from 'test-utils'
+import { Default, Sticky, Striped, UtilityClasses } from './Table.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

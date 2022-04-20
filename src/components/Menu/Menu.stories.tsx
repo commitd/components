@@ -4,15 +4,15 @@ import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
 import {
   Menu,
+  MenuCheckboxItem,
   MenuContent,
   MenuItem,
-  MenuCheckboxItem,
   MenuItemGroup,
-  MenuSeparator,
   MenuItemShortcut,
   MenuLabel,
   MenuRadioGroup,
   MenuRadioItem,
+  MenuSeparator,
   MenuTrigger,
   MenuTriggerItem,
 } from '.'

@@ -1,5 +1,5 @@
+import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Pagination } from '.'
 
 export default {

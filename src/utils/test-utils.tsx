@@ -8,12 +8,13 @@
  */
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
-import './domrect-polyfill'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { ComponentsProvider } from '..'
 import ResizeObserver from 'resize-observer-polyfill'
+import { ComponentsProvider } from '..'
+import './domrect-polyfill'
+// organize-imports-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as ___ from '@testing-library/react/node_modules/@testing-library/dom/types/queries' // NOSONAR
 

@@ -1,7 +1,7 @@
+import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps, useState } from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Progress } from '.'
-import { Text, Box, Slider, Column } from '../'
+import { Box, Column, Slider, Text } from '../'
 
 export default {
   title: 'Components/Progress',

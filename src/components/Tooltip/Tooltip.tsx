@@ -1,9 +1,9 @@
 import {
   Arrow,
   Content,
+  Provider,
   Root,
   Trigger,
-  Provider,
 } from '@radix-ui/react-tooltip'
 import React, { FC } from 'react'
 import { styled } from '../../stitches.config'

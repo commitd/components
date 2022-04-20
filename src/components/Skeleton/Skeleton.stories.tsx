@@ -1,7 +1,7 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Flex } from '../Flex'
-import { Story, Meta } from '@storybook/react'
 import { Skeleton } from '.'
+import { Flex } from '../Flex'
 
 export default {
   title: 'Components/Skeleton',

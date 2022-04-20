@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderDark, renderLight, screen, userEvent } from 'test-utils'
-import { Default } from './Input.stories'
 import { Input } from '.'
+import { Default } from './Input.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

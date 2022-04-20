@@ -3,6 +3,9 @@ import React from 'react'
 import {
   NavigationMenu,
   NavigationMenuContent,
+  NavigationMenuContentList,
+  NavigationMenuContentListItem,
+  NavigationMenuContentListLink,
   NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
@@ -10,13 +13,10 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
   NavigationViewportPosition,
-  NavigationMenuContentList,
-  NavigationMenuContentListItem,
-  NavigationMenuContentListLink,
 } from '.'
+import { Box } from '../Box'
 import { Logo } from '../Logo'
 import { Text } from '../Text'
-import { Box } from '../Box'
 import { WrappedNavigationMenu } from './NavigationMenu'
 
 export default {

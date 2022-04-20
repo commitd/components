@@ -1,5 +1,10 @@
-import { Meta, Story } from '@storybook/react'
+import {
+  mdiArrowDownDropCircleOutline,
+  mdiArrowUpDropCircleOutline,
+  mdiThumbUp,
+} from '@mdi/js'
 import { action } from '@storybook/addon-actions'
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import {
   Select,
@@ -19,23 +24,18 @@ import {
   SelectValue,
   SelectViewport,
 } from '.'
-import { Button } from '../Button'
-import { Form, FormButton } from '../Form'
+import { withFormData } from '../../docs/util'
 import { Box } from '../Box'
-import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
+import { Button } from '../Button'
 import {
   ConfirmDialog,
+  ConfirmDialogActions,
   ConfirmDialogContent,
   ConfirmDialogTrigger,
-  ConfirmDialogActions,
 } from '../ConfirmDialog'
-import {
-  mdiArrowUpDropCircleOutline,
-  mdiArrowDownDropCircleOutline,
-  mdiThumbUp,
-} from '@mdi/js'
+import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
+import { Form, FormButton } from '../Form'
 import { Svg } from '../Svg'
-import { withFormData } from '../../docs/util'
 
 export default {
   title: 'Components/Select',

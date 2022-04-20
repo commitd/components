@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDark, renderLight, screen, userEvent, act } from 'test-utils'
+import { act, renderDark, renderLight, screen, userEvent } from 'test-utils'
 import {
   ConfirmDialog,
   ConfirmDialogActions,

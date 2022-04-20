@@ -1,8 +1,8 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
 import { Badge, Status } from '.'
-import { Heading } from '../Heading'
 import { Flex } from '../Flex'
+import { Heading } from '../Heading'
 import { Check } from '../Icons'
 
 export default {

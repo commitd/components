@@ -1,16 +1,16 @@
-import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
-import { styled, keyframes, css } from '../../stitches.config'
 import {
-  Root,
-  Trigger,
   Content,
   Indicator,
-  Viewport,
   Item,
-  List,
   Link,
+  List,
+  Root,
+  Trigger,
+  Viewport,
 } from '@radix-ui/react-navigation-menu'
-import { mainVariants, hover, focus } from '../Button/Button'
+import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import { css, keyframes, styled } from '../../stitches.config'
+import { focus, hover, mainVariants } from '../Button/Button'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
 

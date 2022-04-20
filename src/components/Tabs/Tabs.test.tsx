@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderLight, renderDark, screen, userEvent } from 'test-utils'
+import { renderDark, renderLight, screen, userEvent } from 'test-utils'
 import { Default } from './Tabs.stories'
 
 it('renders light without error', () => {

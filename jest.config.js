@@ -22,7 +22,11 @@ module.exports = {
   snapshotSerializers: ['jest-stitches'],
   moduleDirectories: ['node_modules', 'utils'],
   testRegex: '/src/.*(\\.|/)(test|spec)\\.[jt]sx?$',
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}', '!src/types/**/*', '!src/utils/*-polyfill.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.{ts,tsx}',
+    '!src/types/**/*',
+    '!src/utils/*-polyfill.ts',
+  ],
   coveragePathIgnorePatterns: [
     '/src/typings.d.ts',
     'setupTests.tsx',

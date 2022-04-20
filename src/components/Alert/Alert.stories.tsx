@@ -1,6 +1,6 @@
+import { Meta, Story } from '@storybook/react'
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Alert, AlertTitle, AlertContent } from '.'
+import { Alert, AlertContent, AlertTitle } from '.'
 import { Column } from '../'
 
 export default {
