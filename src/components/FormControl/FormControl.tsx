@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { styled } from '../../stitches.config'
+import { CSSProps, styled } from '../../stitches.config'
 import { Text } from '../Text'
 import {
   DEFAULT_FORM_STATE,
@@ -21,11 +21,11 @@ const Root = styled(DEFAULT_TAG, {
   boxSizing: 'border-box',
   outline: 'none',
 
-  display: 'inline-flex',
+  display: 'flex',
   flexDirection: 'column',
 })
 
-type FormControlProps = {
+type FormControlProps = CSSProps & {
   children: React.ReactNode
 }
 
