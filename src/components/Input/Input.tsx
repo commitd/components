@@ -18,7 +18,10 @@ const StyledInput = styled(
 
 type InputVariants = Omit<VariantProps<typeof StyledInput>, 'state'>
 
-type InputProps = ComponentProps<typeof StyledInput> &
+// Required due to ts error forcing the enterKeyHint props. Likely can be removed in later version.
+type StyledInputProps = Omit<ComponentProps<typeof StyledInput>, 'enterKeyHint'>
+
+type InputProps = StyledInputProps &
   UseFormControlProps &
   InputVariants & {
     /** Add a label to the Input */
@@ -27,6 +30,16 @@ type InputProps = ComponentProps<typeof StyledInput> &
     required?: boolean
     /** Called on input change with new value */
     onValueChange?: (value: string) => void
+    /* Added directly to correct ts error */
+    enterKeyHint?:
+      | 'enter'
+      | 'done'
+      | 'go'
+      | 'next'
+      | 'previous'
+      | 'search'
+      | 'send'
+      | undefined
   } & CSSProps
 
 export const Input = forwardRef<ElementRef<typeof DEFAULT_TAG>, InputProps>(
