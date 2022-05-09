@@ -8,7 +8,7 @@ export default {
   component: TextArea,
 } as Meta
 
-export const Default: Story = () => <TextArea id="default" />
+export const Default: Story = (args) => <TextArea {...args} />
 
 /**
  * Supplying a `value` will make the component controlled. The changes can be handled by the standard `onChange`
@@ -19,13 +19,11 @@ export const Controlled: Story = () => {
   return (
     <Column>
       <TextArea
-        id="description-event"
         label="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
       <TextArea
-        id="description-value"
         label="Description"
         value={description}
         onValueChange={setDescription}
@@ -39,8 +37,8 @@ export const Controlled: Story = () => {
  */
 export const WithLabel: React.FC = () => (
   <Column>
-    <TextArea id="firstname" label="Description" />
-    <TextArea id="familyname" label="Family name" />
+    <TextArea name="firstname" label="First name" />
+    <TextArea name="familyname" label="Family name" />
   </Column>
 )
 
@@ -53,6 +51,30 @@ export const InlineLabel: Story = () => (
     Inline
     <TextArea />
   </Label>
+)
+
+/**
+ * A variant can be used to restrict the resize options or constrain it to the parent.
+ */
+export const Constrain: React.FC = () => (
+  <Column>
+    <TextArea
+      label="Horizontal"
+      placeholder="Can be resized horizontally"
+      resize="horizontal"
+    />
+    <TextArea
+      label="Vertical"
+      placeholder="Can be resized vertically"
+      resize="vertical"
+    />
+    <TextArea
+      label="Constrain"
+      placeholder="Can be resized but constrained by partent"
+      constrain
+    />
+    <TextArea label="None" placeholder="Can't be resized" resize="none" />
+  </Column>
 )
 
 export const States: Story = () => (
