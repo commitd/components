@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
 import {
   Menu,
+  MenuButton,
   MenuCheckboxItem,
   MenuContent,
   MenuItem,
@@ -33,6 +34,7 @@ export default {
     MenuItemGroup,
     MenuRadioGroup,
     MenuTriggerItem,
+    MenuButton,
   },
 } as Meta
 
@@ -169,6 +171,20 @@ export const Shortcuts: Story = () => {
         <MenuItem>
           New Window <MenuItemShortcut>⌘+N</MenuItemShortcut>
         </MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}
+
+/** Use the `MenuButton` component instead of `MenuTrigger` for an animated chevron indiciating the open state */
+export const WithMenuButton: Story = () => {
+  return (
+    <Menu>
+      <MenuButton>Button</MenuButton>
+      <MenuContent>
+        <MenuItem onSelect={action('cut')}>Cut</MenuItem>
+        <MenuItem onSelect={action('copy')}>Copy</MenuItem>
+        <MenuItem onSelect={action('paste')}>Paste</MenuItem>
       </MenuContent>
     </Menu>
   )
