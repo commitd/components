@@ -15,6 +15,26 @@ const StyledTextArea = styled(
   {
     padding: '$2',
     height: '$8',
+
+    variants: {
+      resize: {
+        none: {
+          resize: 'none',
+        },
+        vertical: {
+          resize: 'vertical',
+        },
+        horizontal: {
+          resize: 'horizontal',
+        },
+      },
+      constrain: {
+        true: {
+          maxWidth: '100%',
+          maxHeight: '100%',
+        },
+      },
+    },
   }
 )
 
