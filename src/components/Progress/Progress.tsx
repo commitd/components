@@ -5,15 +5,15 @@ import { keyframes, styled } from '../../stitches.config'
 
 const indeterminateProgress = keyframes({
   '0%': {
-    transform: 'scaleX(1) translateX(-100%)',
+    transform: 'translateX(-100%)',
     transformOrigin: 'left',
   },
   '50%': {
-    transform: 'scaleX(1) translateX(1000%)',
+    transform: 'translateX(950%)',
     transformOrigin: 'left',
   },
   '100%': {
-    transform: 'scaleX(1) translateX(2000%)',
+    transform: 'translateX(2000%)',
     transformOrigin: 'left',
   },
 })
@@ -32,9 +32,6 @@ const StyledProgress = styled(Root, {
     backgroundColor: '$grey3',
     '&::after': {
       animationName: indeterminateProgress,
-      animationDuration: '1500ms',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: 'cubic-bezier(0.65, 0, 0.35, 1)',
       backgroundColor: '$$main',
       boxSizing: 'border-box',
       borderRadius: '$pill',
@@ -44,6 +41,14 @@ const StyledProgress = styled(Root, {
       bottom: 0,
       left: 0,
       width: '5%',
+      '@motion': {
+        animationDuration: '1500ms',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'cubic-bezier(0.65, 0, 0.35, 1)',
+      },
+      '@reducedmotion': {
+        left: '47.5%',
+      },
     },
   },
 
@@ -83,7 +88,9 @@ const ProgressIndicator = styled(Indicator, {
   left: 0,
   width: '100%',
   backgroundColor: '$grey3',
-  transition: 'transform 150ms cubic-bezier(0.65, 0, 0.35, 1)',
+  '@motion': {
+    transition: 'transform 150ms cubic-bezier(0.65, 0, 0.35, 1)',
+  },
 })
 
 type ProgressProps = ComponentProps<typeof Root> &

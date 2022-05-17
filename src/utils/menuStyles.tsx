@@ -17,10 +17,13 @@ export const itemStyles = css({
   border: 'none',
   color: '$text',
   outline: 'none',
-  transition: 'all 50ms',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+
+  '@motion': {
+    transition: 'all 50ms',
+  },
 
   '&:focus': {
     background: '$selection',

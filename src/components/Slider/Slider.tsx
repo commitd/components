@@ -62,7 +62,9 @@ const StyledThumb = styled(Thumb, {
     backgroundColor: '$transparency1',
     transform: 'scale(1)',
     borderRadius: '$round',
-    transition: 'transform 200ms cubic-bezier(0.22, 1, 0.36, 1)',
+    '@motion': {
+      transition: 'transform 200ms cubic-bezier(0.22, 1, 0.36, 1)',
+    },
   },
 
   '&:focus': {

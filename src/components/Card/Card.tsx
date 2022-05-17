@@ -27,12 +27,16 @@ export const Card = styled(Paper, {
       },
       ghost: {
         backgroundColor: 'transparent',
-        transition:
-          'transform 200ms cubic-bezier(0.22, 1, 0.36, 1), background-color 25ms linear',
+        '@motion': {
+          transition:
+            'transform 200ms cubic-bezier(0.22, 1, 0.36, 1), background-color 25ms linear',
+        },
         willChange: 'transform',
         '&::before': {
           opacity: '0',
-          transition: 'all 200ms cubic-bezier(0.22, 1, 0.36, 1)',
+          '@motion': {
+            transition: 'all 200ms cubic-bezier(0.22, 1, 0.36, 1)',
+          },
         },
       },
     },

@@ -23,11 +23,13 @@ export const overlayStyles = css({
 })
 
 export const overlayAnimationStyles = css({
-  '&[data-state=open]': {
-    animation: `${fadeIn} 200ms ease-out`,
-  },
-  '&[data-state=closed]': {
-    animation: `${fadeOut} 200ms ease-out`,
+  '@motion': {
+    '&[data-state=open]': {
+      animation: `${fadeIn} 200ms ease-out`,
+    },
+    '&[data-state=closed]': {
+      animation: `${fadeOut} 200ms ease-out`,
+    },
   },
 })
 

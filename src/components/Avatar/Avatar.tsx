@@ -1,6 +1,6 @@
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import { VariantProps } from '@stitches/react'
-import React from 'react'
+import React, { ElementRef, forwardRef } from 'react'
 import type { CSS } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 
@@ -45,29 +45,35 @@ interface AvatarProps extends VariantProps<typeof StyledRoot> {
   css?: CSS
   color?: CSS['color']
   backgroundColor?: CSS['backgroundColor']
+  children?: React.ReactNode
 }
 
 /**
  * The Avatar should be used for profile images. If an image is not available initials can be used.
  */
-export const Avatar: React.FC<AvatarProps> = ({
-  src,
-  backgroundColor = '$grey5',
-  color = '$text',
-  alt = 'Avatar',
-  children,
-  ...props
-}) => (
-  <StyledRoot {...props}>
-    {src && <StyledImage alt={alt} src={src} />}
-    <StyledFallback
-      css={{
-        backgroundColor,
-        color,
-      }}
-    >
-      {children}
-    </StyledFallback>
-  </StyledRoot>
+export const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
+  (
+    {
+      src,
+      backgroundColor = '$grey5',
+      color = '$text',
+      alt = 'Avatar',
+      children,
+      ...props
+    },
+    forwardedRef
+  ) => (
+    <StyledRoot {...props} ref={forwardedRef}>
+      {src && <StyledImage alt={alt} src={src} />}
+      <StyledFallback
+        css={{
+          backgroundColor,
+          color,
+        }}
+      >
+        {children}
+      </StyledFallback>
+    </StyledRoot>
+  )
 )
 Avatar.toString = () => `.${StyledRoot.className}`

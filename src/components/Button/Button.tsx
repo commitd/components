@@ -12,7 +12,9 @@ export const focus = hover
 export const active = {
   backgroundColor: '$$active',
   backgroundSize: '100%',
-  transition: 'background 0s',
+  '@motion': {
+    transition: 'background 0s',
+  },
 }
 
 export const disabled = {
@@ -22,7 +24,9 @@ export const disabled = {
 
 export const buttonInteractionStyles = css({
   cursor: 'pointer',
-  transition: 'background 0.5s',
+  '@motion': {
+    transition: 'background 0.5s',
+  },
   backgroundPosition: 'center',
 
   $$active: '$colors$defaultActive',
