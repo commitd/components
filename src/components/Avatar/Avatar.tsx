@@ -61,9 +61,9 @@ export const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
       children,
       ...props
     },
-    forwardRef
+    forwardedRef
   ) => (
-    <StyledRoot {...props} ref={forwardRef}>
+    <StyledRoot {...props} ref={forwardedRef}>
       {src && <StyledImage alt={alt} src={src} />}
       <StyledFallback
         css={{
