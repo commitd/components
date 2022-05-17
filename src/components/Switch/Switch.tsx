@@ -14,10 +14,12 @@ const StyledThumb = styled(Thumb, {
   backgroundColor: '$$background',
   borderRadius: '$round',
   boxShadow: '$1',
-  transition: 'transform 100ms cubic-bezier(0.22, 1, 0.36, 1)',
   willChange: 'transform',
   border: 'solid 2px',
   borderColor: '$$border',
+  '@motion': {
+    transition: 'transform 100ms cubic-bezier(0.22, 1, 0.36, 1)',
+  },
 
   '&[data-state="checked"]': {
     transform: 'translateX(14px)',

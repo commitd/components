@@ -41,11 +41,15 @@ const StyledContent = styled(Content, paperStyles, {
   boxShadow: '$2',
 
   '&[data-state="open"]': {
-    animation: `${slideIn} 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
+    '@motion': {
+      animation: `${slideIn} 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
+    },
   },
 
   '&[data-state="closed"]': {
-    animation: `${slideOut} 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
+    '@motion': {
+      animation: `${slideOut} 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
+    },
   },
 
   variants: {

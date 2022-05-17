@@ -15,7 +15,9 @@ const focus = hover
 const active = {
   backgroundColor: '$$active',
   backgroundSize: '100%',
-  transition: 'background 0s',
+  '@motion': {
+    transition: 'background 0s',
+  },
 }
 
 export const disabled = {
@@ -62,7 +64,9 @@ export const StyledIconButton = styled(DEFAULT_TAG, {
   border: 'none',
 
   // Actions
-  transition: 'background 0.5s',
+  '@motion': {
+    transition: 'background 0.5s',
+  },
   backgroundPosition: 'center',
 
   '&:hover': hover,

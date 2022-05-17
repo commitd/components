@@ -54,12 +54,15 @@ const StyledItem = styled(Item, {
   border: 'none',
   color: '$text',
   outline: 'none',
-  transition: 'all 50ms',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   position: 'relative',
   userSelect: 'none',
+
+  '@motion': {
+    transition: 'all 50ms',
+  },
 
   '&:focus': {
     background: '$selection',

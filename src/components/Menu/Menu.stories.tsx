@@ -240,14 +240,14 @@ export const Nested: Story = () => {
   )
 }
 
-/* A `MenuCheckboxItem` are items with an indicated boolean state */
+/* Visual test for different size menu buttons and potential menu overlap */
 export const MultipleMenus: Story = () => {
   const [checked, setChecked] = useState(true)
   const [color, setColor] = React.useState('blue')
   return (
     <Row gap>
       <Menu>
-        <MenuButton>Menu 1</MenuButton>
+        <MenuButton size="large">Menu 1</MenuButton>
         <MenuContent>
           <MenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
             Cut
@@ -257,6 +257,16 @@ export const MultipleMenus: Story = () => {
       </Menu>
       <Menu>
         <MenuButton>Menu 2</MenuButton>
+        <MenuContent>
+          <MenuRadioGroup value={color} onValueChange={setColor}>
+            <MenuRadioItem value="red">Red</MenuRadioItem>
+            <MenuRadioItem value="green">Green</MenuRadioItem>
+            <MenuRadioItem value="blue">Blue</MenuRadioItem>
+          </MenuRadioGroup>
+        </MenuContent>
+      </Menu>
+      <Menu>
+        <MenuButton size="small">Menu 3</MenuButton>
         <MenuContent>
           <MenuRadioGroup value={color} onValueChange={setColor}>
             <MenuRadioItem value="red">Red</MenuRadioItem>

@@ -11,7 +11,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['draw', 'spin', 'scale'],
+        options: ['draw', 'spin', 'scale', 'pulse'],
       },
       defaultValue: 'draw',
       description: ' Change to the animation of the spinner',
@@ -44,13 +44,22 @@ export const Active: Story = () => {
 }
 
 /*
+ * When `@media (prefers-reduced-motion: reduce)` all annitations are changed to the `pulse` variant.
+ */
+export const ReducedMotion: Story = Default.bind({})
+ReducedMotion.args = {
+  variant: 'pluse',
+  active: true,
+}
+
+/*
  * Different animations variants are available.
  */
 export const All: Story = () => (
   <Variants
     gridCss={{ gap: '$3', gridTemplateColumns: '1fr 1fr 1fr' }}
     component={Spinner}
-    variant={['spin', 'draw', 'scale']}
+    variant={['spin', 'draw', 'scale', 'pulse']}
     css={[{ color: '$grey3' }, { color: '$brandYellow' }]}
   />
 )

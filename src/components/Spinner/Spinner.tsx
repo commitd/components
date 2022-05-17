@@ -32,6 +32,11 @@ const scaleKeyframes = keyframes({
     transform: 'scale(1)',
   },
 })
+export const pulseKeyframes = keyframes({
+  '0%': { opacity: 0.8 },
+  '50%': { opacity: 1 },
+  '100%': { opacity: 0.8 },
+})
 
 const StyledSpinner = styled(Logo, {
   transformOrigin: 'center center',
@@ -45,11 +50,16 @@ const StyledSpinner = styled(Logo, {
       draw: {},
       spin: {},
       scale: {},
+      pulse: {},
     },
     active: {
       false: {},
       true: {},
     },
+  },
+
+  '@reducedmotion': {
+    animation: `${pulseKeyframes} 2s ease infinite`,
   },
 
   compoundVariants: [
@@ -58,21 +68,43 @@ const StyledSpinner = styled(Logo, {
       variant: 'draw',
       css: {
         stroke: 'currentColor',
-        animation: `${strokeKeyframes} 3s cubic-bezier(.24,0,.37,1) alternate infinite, ${fillKeyframes} 3s cubic-bezier(1, 0, .5, 0) alternate infinite`,
+        '@motion': {
+          animation: `${strokeKeyframes} 3s cubic-bezier(.24,0,.37,1) alternate infinite, ${fillKeyframes} 3s cubic-bezier(1, 0, .5, 0) alternate infinite`,
+        },
+        '@reducedmotion': {
+          animation: `${pulseKeyframes} 2s ease infinite`,
+        },
       },
     },
     {
       active: true,
       variant: 'spin',
       css: {
-        animation: `${spinKeyframes} 1.5s ease infinite`,
+        '@motion': {
+          animation: `${spinKeyframes} 1.5s ease infinite`,
+        },
+        '@reducedmotion': {
+          animation: `${pulseKeyframes} 2s ease infinite`,
+        },
       },
     },
     {
       active: true,
       variant: 'scale',
       css: {
-        animation: `${scaleKeyframes} 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) infinite alternate both;`,
+        '@motion': {
+          animation: `${scaleKeyframes} 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) infinite alternate both;`,
+        },
+        '@reducedmotion': {
+          animation: `${pulseKeyframes} 2s ease infinite`,
+        },
+      },
+    },
+    {
+      active: true,
+      variant: 'pulse',
+      css: {
+        animation: `${pulseKeyframes} 2s ease infinite`,
       },
     },
   ],
