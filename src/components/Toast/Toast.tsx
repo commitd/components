@@ -5,7 +5,7 @@ import { keyframes, styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
 import { Close } from '../Icons'
 
-const VIEWPORT_PADDING = '$5'
+const VIEWPORT_PADDING = '$space$5'
 
 const hide = keyframes({
   '0%': { opacity: 1 },
@@ -13,13 +13,13 @@ const hide = keyframes({
 })
 
 const slideIn = keyframes({
-  from: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` },
+  from: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}))` },
   to: { transform: 'translateX(0)' },
 })
 
 const swipeOut = keyframes({
   from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
-  to: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` },
+  to: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}))` },
 })
 
 const StyledViewport = styled(ToastPrimitive.Viewport, {
@@ -47,7 +47,7 @@ const StyledToast = styled(ToastPrimitive.Root, {
   columnGap: '$4',
   alignItems: 'center',
 
-  '@media (prefers-reduced-motion: no-preference)': {
+  '@motion': {
     '&[data-state="open"]': {
       animation: `${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
     },

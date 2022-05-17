@@ -71,7 +71,9 @@ export const inputStyles = css({
   $$inactive: '$colors$grey7',
   $$active: '$colors$primary',
 
-  transition: 'background 0.5s',
+  '@motion': {
+    transition: 'background 0.5s',
+  },
   backgroundPosition: 'center',
 
   boxShadow: 'inset 0 0 0 1px $$inactive',
@@ -153,7 +155,9 @@ export const checkStyles = css({
   fontSize: '$0',
   cursor: 'pointer',
 
-  transition: 'background 0.5s',
+  '@motion': {
+    transition: 'background 0.5s',
+  },
   backgroundPosition: 'center',
 
   '&:hover': {
@@ -165,7 +169,9 @@ export const checkStyles = css({
   '&:active': {
     backgroundColor: '$$active',
     backgroundSize: '100%',
-    transition: 'background 0s',
+    '@motion': {
+      transition: 'background 0s',
+    },
   },
 
   '&:disabled': disabled,

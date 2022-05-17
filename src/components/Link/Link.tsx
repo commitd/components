@@ -87,7 +87,9 @@ export const linkStyles = css({
         textDecoration: 'underline',
       },
       styled: {
-        transition: 'background 100ms ease-out',
+        '@motion': {
+          transition: 'background 100ms ease-out',
+        },
         fontWeight: 'bold',
         background:
           'linear-gradient($$linkBackground, $$linkBackground) left bottom transparent no-repeat',

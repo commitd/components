@@ -144,7 +144,10 @@ const StyledChip = styled(DEFAULT_TAG, {
     },
     interactive: {
       true: {
-        transition: 'background 0.5s',
+        cursor: 'pointer',
+        '@motion': {
+          transition: 'background 0.5s',
+        },
         backgroundPosition: 'center',
         '&:focus': {
           boxShadow: 'inset 0 0 0 1px $$focus, 0 0 0 1px $$focus',
@@ -158,7 +161,9 @@ const StyledChip = styled(DEFAULT_TAG, {
         '&:active': {
           backgroundColor: '$$active',
           backgroundSize: '100%',
-          transition: 'background 0s',
+          '@motion': {
+            transition: 'background 0s',
+          },
         },
         '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]': {
           backgroundColor: '$$active',

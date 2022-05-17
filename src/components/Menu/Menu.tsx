@@ -28,6 +28,8 @@ import {
   StyledTriggerItemIndicator,
   triggerItemStyles,
 } from '../../utils/menuStyles'
+import { Button } from '../Button'
+import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper'
 
 /**
@@ -100,6 +102,32 @@ export const MenuTrigger = forwardRef<
   </Trigger>
 ))
 MenuTrigger.toString = () => `.${MENU_TRIGGER_CLASS_NAME}`
+
+const ButtonIndicator = styled(ChevronDown, {
+  position: 'relative',
+  top: 1,
+  '[data-state=open] &': { transform: 'rotate(-180deg)' },
+  marginRight: '-$2',
+  '@motion': {
+    transition: 'transform 250ms ease',
+  },
+})
+
+type MenuButtonProps = ComponentProps<typeof Button>
+const MENU_BUTTON_CLASS_NAME = 'c-menu-button'
+
+export const MenuButton = forwardRef<
+  ElementRef<typeof Trigger>,
+  MenuButtonProps
+>(({ children, ...props }, forwardedRef) => (
+  <Trigger className={MENU_BUTTON_CLASS_NAME} asChild ref={forwardedRef}>
+    <Button {...props}>
+      {children}
+      <ButtonIndicator />
+    </Button>
+  </Trigger>
+))
+MenuButton.toString = () => `.${MENU_BUTTON_CLASS_NAME}`
 
 const StyledCheckboxIndicator = forwardRef<
   ElementRef<typeof StyledItemIndicator>,

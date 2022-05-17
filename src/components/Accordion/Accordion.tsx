@@ -17,7 +17,9 @@ const slideUp = keyframes({
 })
 
 const Chevron = styled(ChevronDown, {
-  transition: 'transform 300ms',
+  '@motion': {
+    transition: 'transform 300ms',
+  },
 
   '[data-state=open] &': {
     transform: 'rotate(180deg)',
@@ -58,10 +60,14 @@ export const AccordionContent = styled(Content, {
   padding: '$4',
   color: '$text',
   '&[data-state="open"]': {
-    animation: `${slideDown} 300ms ease-out`,
+    '@motion': {
+      animation: `${slideDown} 300ms ease-out`,
+    },
   },
   '&[data-state="closed"]': {
-    animation: `${slideUp} 300ms ease-out`,
+    '@motion': {
+      animation: `${slideUp} 300ms ease-out`,
+    },
   },
 })
 

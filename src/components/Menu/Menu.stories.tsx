@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
 import {
   Menu,
+  MenuButton,
   MenuCheckboxItem,
   MenuContent,
   MenuItem,
@@ -16,7 +17,10 @@ import {
   MenuTrigger,
   MenuTriggerItem,
 } from '.'
-import { Button } from '../Button'
+import { Avatar } from '../Avatar'
+import { Chip } from '../Chip'
+import { Row } from '../Flex'
+import { Text } from '../Text'
 
 export default {
   title: 'Components/Menu',
@@ -33,14 +37,13 @@ export default {
     MenuItemGroup,
     MenuRadioGroup,
     MenuTriggerItem,
+    MenuButton,
   },
 } as Meta
 
 export const Default: Story = (args) => (
   <Menu {...args}>
-    <MenuTrigger>
-      <Button>Trigger</Button>
-    </MenuTrigger>
+    <MenuButton>Show Menu</MenuButton>
     <MenuContent>
       <MenuItem onSelect={action('cut')}>Cut</MenuItem>
       <MenuItem onSelect={action('copy')}>Copy</MenuItem>
@@ -51,12 +54,9 @@ export const Default: Story = (args) => (
 
 export const WithDisabledItems: Story = () => (
   <Menu>
-    <MenuTrigger>
-      <Button>Trigger</Button>
-    </MenuTrigger>
+    <MenuButton>Show Menu</MenuButton>
     <MenuContent>
       <MenuItem disabled>Cut</MenuItem>
-
       <MenuItem>Copy</MenuItem>
     </MenuContent>
   </Menu>
@@ -65,9 +65,7 @@ export const WithDisabledItems: Story = () => (
 /* Separators and Groups can be used to arrange items in vertical and horizontal sections */
 export const WithSeparators: Story = () => (
   <Menu>
-    <MenuTrigger>
-      <Button>Trigger</Button>
-    </MenuTrigger>
+    <MenuButton>Show Menu</MenuButton>
     <MenuContent>
       <MenuItem>Cut</MenuItem>
       <MenuItem>Copy</MenuItem>
@@ -90,9 +88,7 @@ export const WithSeparators: Story = () => (
 
 export const WithLabel: Story = () => (
   <Menu>
-    <MenuTrigger>
-      <Button>Trigger</Button>
-    </MenuTrigger>
+    <MenuButton>Show Menu</MenuButton>
     <MenuContent>
       <MenuLabel>Actions</MenuLabel>
       <MenuItem>Cut</MenuItem>
@@ -107,9 +103,7 @@ export const Controlled: Story = () => {
   return (
     <>
       <Menu open={open} onOpenChange={setFalse}>
-        <MenuTrigger>
-          <Button onClick={setTrue}>Show Menu</Button>
-        </MenuTrigger>
+        <MenuButton onClick={setTrue}>Show Menu</MenuButton>
         <MenuContent>
           <MenuItem>Item</MenuItem>
         </MenuContent>
@@ -123,9 +117,7 @@ export const WithCheckbox: Story = () => {
   const [checked, setChecked] = useState(true)
   return (
     <Menu>
-      <MenuTrigger>
-        <Button>Trigger</Button>
-      </MenuTrigger>
+      <MenuButton>Show Menu</MenuButton>
       <MenuContent>
         <MenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
           Cut
@@ -141,9 +133,7 @@ export const WithRadioItems: Story = () => {
   const [color, setColor] = React.useState('blue')
   return (
     <Menu>
-      <MenuTrigger>
-        <Button>Trigger</Button>
-      </MenuTrigger>
+      <MenuButton>Show Menu</MenuButton>
       <MenuContent>
         <MenuRadioGroup value={color} onValueChange={setColor}>
           <MenuRadioItem value="red">Red</MenuRadioItem>
@@ -159,9 +149,7 @@ export const WithRadioItems: Story = () => {
 export const Shortcuts: Story = () => {
   return (
     <Menu>
-      <MenuTrigger>
-        <Button>Trigger</Button>
-      </MenuTrigger>
+      <MenuButton>Show Menu</MenuButton>
       <MenuContent>
         <MenuItem>
           New Tab <MenuItemShortcut>⌘+T</MenuItemShortcut>
@@ -174,13 +162,56 @@ export const Shortcuts: Story = () => {
   )
 }
 
+/** The menu can be triggers from other components using the `MenuTrigger` */
+export const WithTrigger: Story = () => {
+  return (
+    <Row gap css={{ alignItems: 'center' }}>
+      <Menu>
+        <MenuTrigger>
+          <Text css={{ cursor: 'pointer' }}>Show Menu</Text>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem onSelect={action('cut')}>Cut</MenuItem>
+          <MenuItem onSelect={action('copy')}>Copy</MenuItem>
+          <MenuItem onSelect={action('paste')}>Paste</MenuItem>
+        </MenuContent>
+      </Menu>
+      <Menu>
+        <MenuTrigger>
+          <Avatar
+            size="small"
+            alt="Show Menu"
+            src="https://i.pravatar.cc"
+            css={{ cursor: 'pointer' }}
+          />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem onSelect={action('cut')}>Cut</MenuItem>
+          <MenuItem onSelect={action('copy')}>Copy</MenuItem>
+          <MenuItem onSelect={action('paste')}>Paste</MenuItem>
+        </MenuContent>
+      </Menu>
+      <Menu>
+        <MenuTrigger>
+          <Chip interactive variant="success">
+            Show Menu
+          </Chip>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem onSelect={action('cut')}>Cut</MenuItem>
+          <MenuItem onSelect={action('copy')}>Copy</MenuItem>
+          <MenuItem onSelect={action('paste')}>Paste</MenuItem>
+        </MenuContent>
+      </Menu>
+    </Row>
+  )
+}
+
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
 export const Nested: Story = () => {
   return (
     <Menu>
-      <MenuTrigger>
-        <Button>Trigger</Button>
-      </MenuTrigger>
+      <MenuButton>Show Menu</MenuButton>
       <MenuContent>
         <MenuItem>
           New Tab <MenuItemShortcut>⌘+T</MenuItemShortcut>
@@ -209,16 +240,14 @@ export const Nested: Story = () => {
   )
 }
 
-/* A `MenuCheckboxItem` are items with an indicated boolean state */
+/* Visual test for different size menu buttons and potential menu overlap */
 export const MultipleMenus: Story = () => {
   const [checked, setChecked] = useState(true)
   const [color, setColor] = React.useState('blue')
   return (
-    <>
+    <Row gap>
       <Menu>
-        <MenuTrigger>
-          <Button>Trigger</Button>
-        </MenuTrigger>
+        <MenuButton size="large">Menu 1</MenuButton>
         <MenuContent>
           <MenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
             Cut
@@ -227,9 +256,7 @@ export const MultipleMenus: Story = () => {
         </MenuContent>
       </Menu>
       <Menu>
-        <MenuTrigger>
-          <Button>Trigger</Button>
-        </MenuTrigger>
+        <MenuButton>Menu 2</MenuButton>
         <MenuContent>
           <MenuRadioGroup value={color} onValueChange={setColor}>
             <MenuRadioItem value="red">Red</MenuRadioItem>
@@ -238,7 +265,17 @@ export const MultipleMenus: Story = () => {
           </MenuRadioGroup>
         </MenuContent>
       </Menu>
-    </>
+      <Menu>
+        <MenuButton size="small">Menu 3</MenuButton>
+        <MenuContent>
+          <MenuRadioGroup value={color} onValueChange={setColor}>
+            <MenuRadioItem value="red">Red</MenuRadioItem>
+            <MenuRadioItem value="green">Green</MenuRadioItem>
+            <MenuRadioItem value="blue">Blue</MenuRadioItem>
+          </MenuRadioGroup>
+        </MenuContent>
+      </Menu>
+    </Row>
   )
 }
 
@@ -248,9 +285,7 @@ export const Destructive: Story = () => {
   const [checked, setChecked] = useState(true)
   return (
     <Menu>
-      <MenuTrigger>
-        <Button>Trigger</Button>
-      </MenuTrigger>
+      <MenuButton>Show Menu</MenuButton>
       <MenuContent>
         <MenuItem>
           Open <MenuItemShortcut>⌘+O</MenuItemShortcut>
