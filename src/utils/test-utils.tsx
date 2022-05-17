@@ -10,7 +10,7 @@ import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 import { ComponentsProvider } from '..'
 import './domrect-polyfill'
@@ -24,13 +24,13 @@ global.ResizeObserver = ResizeObserver
 // releasePointerCapture called by some radix components but not in js-dom
 global.HTMLElement.prototype.releasePointerCapture = () => undefined
 
-const LightTheme: React.FC = ({ children }) => (
+const LightTheme: React.FC<PropsWithChildren<unknown>> = ({ children }) => (
   <ComponentsProvider theme={{ choice: 'light' }}>
     {children}
   </ComponentsProvider>
 )
 
-const DarkTheme: React.FC = ({ children }) => (
+const DarkTheme: React.FC<PropsWithChildren<unknown>> = ({ children }) => (
   <ComponentsProvider theme={{ choice: 'dark' }}>{children}</ComponentsProvider>
 )
 
