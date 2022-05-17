@@ -103,6 +103,16 @@ export const MenuTrigger = forwardRef<
 ))
 MenuTrigger.toString = () => `.${MENU_TRIGGER_CLASS_NAME}`
 
+const ButtonIndicator = styled(ChevronDown, {
+  position: 'relative',
+  top: 1,
+  '[data-state=open] &': { transform: 'rotate(-180deg)' },
+  marginRight: '-$2',
+  '@motion': {
+    transition: 'transform 250ms ease',
+  },
+})
+
 type MenuButtonProps = ComponentProps<typeof Button>
 const MENU_BUTTON_CLASS_NAME = 'c-menu-button'
 
@@ -113,17 +123,7 @@ export const MenuButton = forwardRef<
   <Trigger className={MENU_BUTTON_CLASS_NAME} asChild ref={forwardedRef}>
     <Button {...props}>
       {children}
-      <ChevronDown
-        aria-hidden
-        css={{
-          position: 'relative',
-          top: 1,
-          '[data-state=open] &': { transform: 'rotate(-180deg)' },
-          '@media (prefers-reduced-motion: no-preference)': {
-            transition: 'transform 250ms ease',
-          },
-        }}
-      />
+      <ButtonIndicator />
     </Button>
   </Trigger>
 ))
