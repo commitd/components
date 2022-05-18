@@ -117,6 +117,29 @@ export const inputStyles = css({
         $$active: '$colors$success',
       },
     },
+    native: {
+      false: {},
+      true: {
+        '&:invalid': {
+          backgroundColor: '$errorBackground',
+          $$inactive: '$colors$errorLowlight',
+          $$active: '$colors$error',
+        },
+        '&:valid': {
+          $$inactive: '$colors$successLowlight',
+          $$active: '$colors$success',
+        },
+        '&:has(+select:invalid)': {
+          backgroundColor: '$errorBackground',
+          $$inactive: '$colors$errorLowlight',
+          $$active: '$colors$error',
+        },
+        '&:has(+select:valid)': {
+          $$inactive: '$colors$successLowlight',
+          $$active: '$colors$success',
+        },
+      },
+    },
     cursor: {
       default: {
         cursor: 'default',
@@ -221,6 +244,22 @@ export const checkStyles = css({
         borderColor: '$colors$success',
         $$inactive: '$colors$successLowlight',
         $$active: '$colors$success',
+      },
+    },
+    native: {
+      false: {},
+      true: {
+        '&:has(+input:invalid)': {
+          backgroundColor: '$errorBackground',
+          borderColor: '$colors$error',
+          $$inactive: '$colors$errorLowlight',
+          $$active: '$colors$error',
+        },
+        '&:has(+input:valid)': {
+          borderColor: '$colors$success',
+          $$inactive: '$colors$successLowlight',
+          $$active: '$colors$success',
+        },
       },
     },
     destructive: {

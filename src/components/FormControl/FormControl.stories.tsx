@@ -41,6 +41,7 @@ export const API_1: Story = () => {
   const [disabled, setDisabled] = useState(false)
   const [error, setError] = useState(false)
   const [valid, setValid] = useState(false)
+  const [native, setNative] = useState(false)
 
   const rotate = rotateCheckedState(setRequired)
 
@@ -67,6 +68,11 @@ export const API_1: Story = () => {
           onCheckedChange={setValid}
           label="Valid"
         ></Checkbox>
+        <Checkbox
+          checked={native}
+          onCheckedChange={setNative}
+          label="Native"
+        ></Checkbox>
       </Row>
 
       <FormControl>
@@ -77,6 +83,7 @@ export const API_1: Story = () => {
           error={error}
           valid={valid}
           disabled={disabled}
+          native={native}
           required={required === 'indeterminate' ? undefined : required}
         />
         <FormControlHelp
@@ -199,11 +206,55 @@ export const Example: Story = () => {
   )
 }
 
+/**
+ * The `native` prop can be added to allow the use of the native html `:invalid` and `:valid` pseudo-classes.
+ *
+ * This is not the default as can have negative user experience when required forms show initial error.
+ *
+ * This is useful for styling the inputs when using the native html validation attributes.
+ * The is added for checkbox, radio, and select inputs too but uses the :has selector which has limited support.
+ */
+export const Native: Story = () => {
+  return (
+    <Form onSubmit={withFormData(alert)}>
+      <FormControl>
+        <Input
+          name="email"
+          label="Email"
+          type="email"
+          placeholder="hello@committed.io"
+          minLength={3}
+          required
+          native
+        />
+        <FormControlHelp defaultText="Input your email address" />
+      </FormControl>
+      <FormControl>
+        <Input
+          name="password"
+          type="password"
+          label="Password"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+          required
+          native
+          title="Password must have minimum eight characters, at least one letter, one number and one special character"
+        />
+        <FormControlHelp defaultText="Input your password" />
+      </FormControl>
+      <FormButton />
+    </Form>
+  )
+}
+
+/**
+ * Behavioural test/demo. Use the checkboxes to add these properties to all form elements.
+ */
 export const Controls: Story = () => {
   const [required, setRequired] = useState<CheckedState>('indeterminate')
   const [disabled, setDisabled] = useState(false)
   const [error, setError] = useState(false)
   const [valid, setValid] = useState(false)
+  const [native, setNative] = useState(false)
 
   const rotate = rotateCheckedState(setRequired)
 
@@ -212,6 +263,7 @@ export const Controls: Story = () => {
     valid,
     disabled,
     required: required === 'indeterminate' ? undefined : required,
+    native,
   }
 
   return (
@@ -236,6 +288,11 @@ export const Controls: Story = () => {
           checked={valid}
           onCheckedChange={setValid}
           label="Valid"
+        ></Checkbox>
+        <Checkbox
+          checked={native}
+          onCheckedChange={setNative}
+          label="Native"
         ></Checkbox>
       </Row>
 
@@ -309,11 +366,15 @@ export const Controls: Story = () => {
   )
 }
 
+/**
+ * Behavioural test/demo with ids, to ensure elements are correctly referenced in aria. Use the checkboxes to add these properties to all form elements.
+ */
 export const WithIds: Story = () => {
   const [required, setRequired] = useState<CheckedState>('indeterminate')
   const [disabled, setDisabled] = useState(false)
   const [error, setError] = useState(false)
   const [valid, setValid] = useState(false)
+  const [native, setNative] = useState(false)
 
   const rotate = rotateCheckedState(setRequired)
 
@@ -322,6 +383,7 @@ export const WithIds: Story = () => {
     valid,
     disabled,
     required: required === 'indeterminate' ? undefined : required,
+    native,
   }
 
   return (
@@ -346,6 +408,11 @@ export const WithIds: Story = () => {
           checked={valid}
           onCheckedChange={setValid}
           label="Valid"
+        ></Checkbox>
+        <Checkbox
+          checked={native}
+          onCheckedChange={setNative}
+          label="Native"
         ></Checkbox>
       </Row>
 
