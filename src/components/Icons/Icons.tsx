@@ -6,6 +6,7 @@ import {
   mdiChevronRight,
   mdiChevronUp,
   mdiClose,
+  mdiFormatItalic,
 } from '@mdi/js'
 import React, { ComponentProps, FC } from 'react'
 import type { CSS } from '../../stitches.config'
@@ -48,4 +49,8 @@ export const LightMode: IconType = (props) => (
 
 export const DarkMode: IconType = (props) => (
   <Svg path={mdiBrightness3} {...props} />
+)
+
+export const Italic: IconType = (props) => (
+  <Svg path={mdiFormatItalic} {...props} />
 )
