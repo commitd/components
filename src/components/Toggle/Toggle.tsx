@@ -1,21 +1,6 @@
 import * as TogglePrimitive from '@radix-ui/react-toggle'
-import { styled } from '@stitches/react'
-
-const hover = {
-  background:
-    '$$hover radial-gradient(circle, transparent 1%, $$hover 1%) center/15000%',
-}
-
-export const disabled = {
-  pointerEvents: 'none',
-  $$main: '$$lowlight',
-  opacity: 0.4,
-}
-
-export const noFocus = {
-  $$focusColor: 'transparent',
-  $$onFocusColor: 'transparent',
-}
+import { styled } from '../../stitches.config'
+import { disabled, hover } from '../IconButton'
 
 export const selected = {
   backgroundColor: '$$onBackgroundColor',
@@ -25,8 +10,8 @@ export const selected = {
 
 const focus = { borderColor: '$$focusColor', border: 'solid 2px' }
 
-// TODO: pressed focus not working as intended
-const StyledToggle = styled(TogglePrimitive.Root, {
+// TODO: pressed + hover together not working as intended
+export const ToggleStyling = {
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -65,7 +50,6 @@ const StyledToggle = styled(TogglePrimitive.Root, {
   borderRadius: '$default',
   cursor: 'pointer',
   backgroundColor: 'transparent',
-  border: 'solid 2px',
   borderColor: 'transparent',
 
   // Actions
@@ -77,7 +61,6 @@ const StyledToggle = styled(TogglePrimitive.Root, {
   '&:hover': hover,
   '&:focus': focus,
   '&:disabled': disabled,
-  '&:noFocus': noFocus,
   '&[data-state=on]': selected,
 
   variants: {
@@ -89,10 +72,10 @@ const StyledToggle = styled(TogglePrimitive.Root, {
         color: '$$contrast',
         $$onBackgroundColor: '$$contrast',
         $$focusColor: 'transparent',
-        $$onFocusColor: 'transparent',
+        $$onFocusColor: '$$onBackgroundColor',
       },
       secondary: {
-        borderColor: '$$default',
+        border: 'solid 2px',
         color: '$$default',
         $$hover: '$$defaultHover',
         $$onBackgroundColor: '$$contrast',
@@ -132,7 +115,9 @@ const StyledToggle = styled(TogglePrimitive.Root, {
     variant: 'secondary',
     size: 'default',
   },
-})
+}
+
+const StyledToggle = styled(TogglePrimitive.Root, ToggleStyling)
 
 /**
  * Toggle Component

@@ -6,6 +6,9 @@ import {
   mdiChevronRight,
   mdiChevronUp,
   mdiClose,
+  mdiFormatAlignCenter,
+  mdiFormatAlignLeft,
+  mdiFormatAlignRight,
   mdiFormatItalic,
 } from '@mdi/js'
 import React, { ComponentProps, FC } from 'react'
@@ -53,4 +56,16 @@ export const DarkMode: IconType = (props) => (
 
 export const Italic: IconType = (props) => (
   <Svg path={mdiFormatItalic} {...props} />
+)
+
+export const TextAlignLeft: IconType = (props) => (
+  <Svg path={mdiFormatAlignLeft} {...props} />
+)
+
+export const TextAlignRight: IconType = (props) => (
+  <Svg path={mdiFormatAlignRight} {...props} />
+)
+
+export const TextAlignCenter: IconType = (props) => (
+  <Svg path={mdiFormatAlignCenter} {...props} />
 )

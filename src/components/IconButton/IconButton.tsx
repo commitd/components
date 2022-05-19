@@ -5,7 +5,7 @@ import { Svg } from '../Svg'
 
 const DEFAULT_TAG = 'button'
 
-const hover = {
+export const hover = {
   background:
     '$$hover radial-gradient(circle, transparent 1%, $$hover 1%) center/15000%',
 }

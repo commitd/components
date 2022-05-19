@@ -33,14 +33,6 @@ export const Variants: Story = () => (
   </Row>
 )
 
-export const Disabled: Story = () => {
-  return (
-    <Toggle aria-label="Toggle italic" variant="primary" disabled>
-      <Italic />
-    </Toggle>
-  )
-}
-
 /**
  * This uses the force prop to simulate hover and focus states so they can be compared at the same time.
  * This prop is not intended for normal use and the toggles here will not interact normally.
