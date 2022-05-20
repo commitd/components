@@ -26,7 +26,7 @@ export const disabled = {
   opacity: 0.4,
 }
 
-export const StyledIconButton = styled(DEFAULT_TAG, {
+export const IconButtonStyling = {
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -135,7 +135,9 @@ export const StyledIconButton = styled(DEFAULT_TAG, {
     destructive: 'false',
     size: 'default',
   },
-})
+}
+
+export const StyledIconButton = styled(DEFAULT_TAG, IconButtonStyling)
 
 type IconButtonVariants = VariantProps<typeof StyledIconButton>
 type ButtonProps = ComponentProps<typeof DEFAULT_TAG>

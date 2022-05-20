@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof Toggle> = ({ ...args }) => {
   return (
-    <Toggle aria-label="Toggle italic">
+    <Toggle aria-label="Toggle italic" {...args}>
       <Italic />
     </Toggle>
   )

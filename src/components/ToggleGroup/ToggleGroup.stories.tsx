@@ -24,6 +24,7 @@ const Template: Story<typeof ToggleGroup> = ({ ...args }) => {
       type="single"
       defaultValue="center"
       aria-label="Text alignment"
+      {...args}
     >
       <ToggleGroupItem value="left" aria-label="Left aligned">
         <TextAlignLeft />

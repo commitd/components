@@ -2,18 +2,18 @@ import * as TogglePrimitive from '@radix-ui/react-toggle'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-import { disabled, hover } from '../IconButton'
+import { hover, IconButtonStyling } from '../IconButton'
 
 export const selected = {
   backgroundColor: '$$onBackgroundColor',
   color: '$$onColor',
-  $$focusColor: '$$onFocusColor',
 }
 
 const focus = hover
 
 // TODO: pressed + hover together not working as intended
 export const ToggleStyling = {
+  ...IconButtonStyling,
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -23,45 +23,7 @@ export const ToggleStyling = {
   $$lowlight: '$colors$defaultLowlight',
   $$onBackgroundColor: '$color$defaultHighlight',
   $$onColor: '$$main',
-  $$focusColor: '$$default',
 
-  // Reset
-  alignItems: 'center',
-  appearance: 'none',
-  boxSizing: 'border-box',
-  display: 'inline-flex',
-  flexShrink: 0,
-  justifyContent: 'center',
-  lineHeight: '$none',
-  margin: '0',
-  outline: 'none',
-  padding: '0',
-  textDecoration: 'none',
-  userSelect: 'none',
-  WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-  '&::before': {
-    boxSizing: 'border-box',
-  },
-  '&::after': {
-    boxSizing: 'border-box',
-  },
-
-  // Defaults
-  fontSize: '$0',
-  borderRadius: '$default',
-  cursor: 'pointer',
-  backgroundColor: 'transparent',
-  border: 'none',
-
-  // Actions
-  '@motion': {
-    transition: 'background 0.5s',
-  },
-  backgroundPosition: 'center',
-
-  '&:hover': hover,
-  '&:focus': focus,
-  '&:disabled': disabled,
   '&[data-state=on]': selected,
 
   variants: {
