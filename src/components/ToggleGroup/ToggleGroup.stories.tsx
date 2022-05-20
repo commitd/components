@@ -1,22 +1,46 @@
+import {
+  mdiFormatAlignCenter,
+  mdiFormatAlignLeft,
+  mdiFormatAlignRight,
+  mdiFormatBold,
+  mdiFormatItalic,
+  mdiFormatUnderline,
+} from '@mdi/js'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { ToggleGroup, ToggleGroupItem } from '.'
-import {
-  Bold,
-  ChevronDown,
-  ChevronUp,
-  Italic,
-  TextAlignCenter,
-  TextAlignLeft,
-  TextAlignRight,
-  Underline,
-} from '../Icons'
+import { ChevronDown, ChevronUp } from '../Icons'
+import { Svg } from '../Svg'
 
 export default {
   title: 'Components/ToggleGroup',
   component: ToggleGroup,
   subcomponents: { ToggleGroupItem },
 } as Meta
+
+const Italic: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatItalic} {...props} />
+)
+
+const Bold: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatBold} {...props} />
+)
+
+const Underline: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatUnderline} {...props} />
+)
+
+const TextAlignLeft: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatAlignLeft} {...props} />
+)
+
+const TextAlignRight: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatAlignRight} {...props} />
+)
+
+const TextAlignCenter: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatAlignCenter} {...props} />
+)
 
 const Template: Story<typeof ToggleGroup> = ({ ...args }) => {
   return (

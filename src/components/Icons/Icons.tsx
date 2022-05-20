@@ -6,12 +6,6 @@ import {
   mdiChevronRight,
   mdiChevronUp,
   mdiClose,
-  mdiFormatAlignCenter,
-  mdiFormatAlignLeft,
-  mdiFormatAlignRight,
-  mdiFormatBold,
-  mdiFormatItalic,
-  mdiFormatUnderline,
 } from '@mdi/js'
 import React, { ComponentProps, FC } from 'react'
 import type { CSS } from '../../stitches.config'
@@ -54,26 +48,4 @@ export const LightMode: IconType = (props) => (
 
 export const DarkMode: IconType = (props) => (
   <Svg path={mdiBrightness3} {...props} />
-)
-
-export const Italic: IconType = (props) => (
-  <Svg path={mdiFormatItalic} {...props} />
-)
-
-export const Bold: IconType = (props) => <Svg path={mdiFormatBold} {...props} />
-
-export const Underline: IconType = (props) => (
-  <Svg path={mdiFormatUnderline} {...props} />
-)
-
-export const TextAlignLeft: IconType = (props) => (
-  <Svg path={mdiFormatAlignLeft} {...props} />
-)
-
-export const TextAlignRight: IconType = (props) => (
-  <Svg path={mdiFormatAlignRight} {...props} />
-)
-
-export const TextAlignCenter: IconType = (props) => (
-  <Svg path={mdiFormatAlignCenter} {...props} />
 )

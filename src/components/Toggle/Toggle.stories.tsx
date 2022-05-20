@@ -1,13 +1,17 @@
+import { mdiFormatItalic } from '@mdi/js'
 import { ComponentStory, Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Toggle } from '.'
-import { Column, Row } from '../'
-import { Italic } from '../Icons'
+import { Column, Row, Svg } from '../'
 
 export default {
   title: 'Components/Toggle',
   component: Toggle,
 } as Meta
+
+const Italic: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
+  <Svg path={mdiFormatItalic} {...props} />
+)
 
 const Template: ComponentStory<typeof Toggle> = ({ ...args }) => {
   return (
@@ -20,7 +24,7 @@ const Template: ComponentStory<typeof Toggle> = ({ ...args }) => {
 export const Default = Template.bind({})
 
 export const Variants: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Row gap>
     <Toggle variant="primary">
       <Italic />
     </Toggle>
@@ -38,8 +42,8 @@ export const Variants: Story = () => (
  * This prop is not intended for normal use and the toggles here will not interact normally.
  */
 export const States: Story = () => (
-  <Column css={{ gap: '$3' }}>
-    <Row css={{ gap: '$3' }}>
+  <Column gap>
+    <Row gap>
       <Toggle variant="primary">
         <Italic />
       </Toggle>
@@ -62,7 +66,7 @@ export const States: Story = () => (
         <Italic />
       </Toggle>
     </Row>
-    <Row css={{ gap: '$3' }}>
+    <Row gap>
       <Toggle variant="secondary">
         <Italic />
       </Toggle>
@@ -85,7 +89,7 @@ export const States: Story = () => (
         <Italic />
       </Toggle>
     </Row>
-    <Row css={{ gap: '$3' }}>
+    <Row gap>
       <Toggle variant="tertiary">
         <Italic />
       </Toggle>

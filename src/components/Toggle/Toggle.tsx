@@ -7,6 +7,7 @@ import { hover, IconButtonStyling } from '../IconButton'
 export const selected = {
   backgroundColor: '$$onBackgroundColor',
   color: '$$onColor',
+  $$hover: '$$defaultHover',
 }
 
 const focus = hover

@@ -14,10 +14,13 @@ const StyledItem = styled(ToggleGroupPrimitive.Item, {
 
   '&:first-child': {
     marginLeft: 0,
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
+    borderTopLeftRadius: '$default',
+    borderBottomLeftRadius: '$default',
   },
-  '&:last-child': { borderTopRightRadius: 4, borderBottomRightRadius: 4 },
+  '&:last-child': {
+    borderTopRightRadius: '$default',
+    borderBottomRightRadius: '$default',
+  },
   defaultVariants: {
     variant: 'tertiary',
     size: 'default',
