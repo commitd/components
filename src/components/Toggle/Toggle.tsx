@@ -1,4 +1,6 @@
 import * as TogglePrimitive from '@radix-ui/react-toggle'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { disabled, hover } from '../IconButton'
 
@@ -8,7 +10,7 @@ export const selected = {
   $$focusColor: '$$onFocusColor',
 }
 
-const focus = { borderColor: '$$focusColor', border: 'solid 2px' }
+const focus = hover
 
 // TODO: pressed + hover together not working as intended
 export const ToggleStyling = {
@@ -22,7 +24,6 @@ export const ToggleStyling = {
   $$onBackgroundColor: '$color$defaultHighlight',
   $$onColor: '$$main',
   $$focusColor: '$$default',
-  $$onFocusColor: '$$contrast',
 
   // Reset
   alignItems: 'center',
@@ -50,7 +51,7 @@ export const ToggleStyling = {
   borderRadius: '$default',
   cursor: 'pointer',
   backgroundColor: 'transparent',
-  borderColor: 'transparent',
+  border: 'none',
 
   // Actions
   '@motion': {
@@ -71,16 +72,12 @@ export const ToggleStyling = {
         backgroundColor: '$$main',
         color: '$$contrast',
         $$onBackgroundColor: '$$contrast',
-        $$focusColor: 'transparent',
-        $$onFocusColor: '$$onBackgroundColor',
       },
       secondary: {
         border: 'solid 2px',
         color: '$$default',
         $$hover: '$$defaultHover',
         $$onBackgroundColor: '$$contrast',
-        $$focusColor: 'transparent',
-        $$onFocusColor: 'transparent',
       },
       tertiary: {
         color: '$$default',
@@ -119,11 +116,24 @@ export const ToggleStyling = {
 
 const StyledToggle = styled(TogglePrimitive.Root, ToggleStyling)
 
+type ToggleVariants = VariantProps<typeof StyledToggle>
+type ToggleProps = ComponentProps<typeof TogglePrimitive.Root> &
+  AsProps &
+  CSSProps &
+  ToggleVariants
+
 /**
  * Toggle Component
  *
- * Toggles are designed to wrap custom `Svg` icons much like an IconButton.
+ * Toggles are designed to wrap custom `Svg` icons much like an IconButton, while also having a controllable 'Pressed' state.
  *
  * Based on [Radix Toggle](https://www.radix-ui.com/docs/primitives/components/toggle).
  */
-export const Toggle = StyledToggle
+export const Toggle = forwardRef<ElementRef<typeof StyledToggle>, ToggleProps>(
+  ({ children, ...props }, forwardedRef) => (
+    <StyledToggle {...props} ref={forwardedRef}>
+      {children}
+    </StyledToggle>
+  )
+)
+Toggle.toString = () => `.${StyledToggle.className}`

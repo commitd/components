@@ -2,11 +2,14 @@ import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { ToggleGroup, ToggleGroupItem } from '.'
 import {
+  Bold,
   ChevronDown,
   ChevronUp,
+  Italic,
   TextAlignCenter,
   TextAlignLeft,
   TextAlignRight,
+  Underline,
 } from '../Icons'
 
 export default {
@@ -52,15 +55,15 @@ export const Variants: Story = () => (
 )
 
 export const MultipleSelections: Story = () => (
-  <ToggleGroup type="multiple" aria-label="Text alignment">
-    <ToggleGroupItem value="left" aria-label="Left aligned">
-      <TextAlignLeft />
+  <ToggleGroup type="multiple" aria-label="Text Styling">
+    <ToggleGroupItem value="left" aria-label="Italic">
+      <Italic />
     </ToggleGroupItem>
-    <ToggleGroupItem value="center" aria-label="Center aligned">
-      <TextAlignCenter />
+    <ToggleGroupItem value="center" aria-label="Bold">
+      <Bold />
     </ToggleGroupItem>
-    <ToggleGroupItem value="right" aria-label="Right aligned">
-      <TextAlignRight />
+    <ToggleGroupItem value="right" aria-label="Underline">
+      <Underline />
     </ToggleGroupItem>
   </ToggleGroup>
 )
@@ -70,7 +73,7 @@ export const Orientation: Story = () => (
     type="single"
     defaultValue="top"
     aria-label="Orientation"
-    orientation="horizontal"
+    orientation="vertical"
   >
     <ToggleGroupItem value="top" aria-label="primary">
       <ChevronUp />

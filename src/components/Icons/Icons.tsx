@@ -9,7 +9,9 @@ import {
   mdiFormatAlignCenter,
   mdiFormatAlignLeft,
   mdiFormatAlignRight,
+  mdiFormatBold,
   mdiFormatItalic,
+  mdiFormatUnderline,
 } from '@mdi/js'
 import React, { ComponentProps, FC } from 'react'
 import type { CSS } from '../../stitches.config'
@@ -56,6 +58,12 @@ export const DarkMode: IconType = (props) => (
 
 export const Italic: IconType = (props) => (
   <Svg path={mdiFormatItalic} {...props} />
+)
+
+export const Bold: IconType = (props) => <Svg path={mdiFormatBold} {...props} />
+
+export const Underline: IconType = (props) => (
+  <Svg path={mdiFormatUnderline} {...props} />
 )
 
 export const TextAlignLeft: IconType = (props) => (
