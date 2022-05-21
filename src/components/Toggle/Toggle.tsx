@@ -1,20 +1,15 @@
-import * as TogglePrimitive from '@radix-ui/react-toggle'
+import { Root } from '@radix-ui/react-toggle'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
-import { hover, IconButtonStyling } from '../IconButton'
+import {
+  AsProps,
+  css,
+  CSSProps,
+  styled,
+  VariantProps,
+} from '../../stitches.config'
+import { focus, hover, iconButtonStyles } from '../IconButton'
 
-export const selected = {
-  backgroundColor: '$$onBackgroundColor',
-  color: '$$onColor',
-  $$hover: '$$defaultHover',
-}
-
-const focus = hover
-
-// TODO: pressed + hover together not working as intended
-export const ToggleStyling = {
-  ...IconButtonStyling,
+export const toggleStyles = css({
   $$main: '$colors$primary',
   $$mainHover: '$colors$primaryHighlight',
   $$contrast: '$colors$primaryContrast',
@@ -25,7 +20,11 @@ export const ToggleStyling = {
   $$onBackgroundColor: '$color$defaultHighlight',
   $$onColor: '$$main',
 
-  '&[data-state=on]': selected,
+  '&[data-state=on]': {
+    backgroundColor: '$$onBackgroundColor',
+    color: '$$onColor',
+    $$hover: '$$defaultHover',
+  },
 
   variants: {
     variant: {
@@ -45,7 +44,7 @@ export const ToggleStyling = {
       tertiary: {
         color: '$$default',
         $$hover: '$$defaultHover',
-        $$onColor: '$$contrast',
+        $$onColor: '$colors$brandContrast',
       },
     },
     size: {
@@ -75,12 +74,12 @@ export const ToggleStyling = {
     variant: 'secondary',
     size: 'default',
   },
-}
+})
 
-const StyledToggle = styled(TogglePrimitive.Root, ToggleStyling)
+const StyledToggle = styled(Root, iconButtonStyles, toggleStyles)
 
 type ToggleVariants = VariantProps<typeof StyledToggle>
-type ToggleProps = ComponentProps<typeof TogglePrimitive.Root> &
+type ToggleProps = ComponentProps<typeof Root> &
   AsProps &
   CSSProps &
   ToggleVariants

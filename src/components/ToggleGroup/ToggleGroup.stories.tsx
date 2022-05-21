@@ -9,6 +9,7 @@ import {
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { ToggleGroup, ToggleGroupItem } from '.'
+import { Column } from '../Flex'
 import { ChevronDown, ChevronUp } from '../Icons'
 import { Svg } from '../Svg'
 
@@ -66,17 +67,94 @@ const Template: Story<typeof ToggleGroup> = ({ ...args }) => {
 export const Default = Template.bind({})
 
 export const Variants: Story = () => (
-  <ToggleGroup type="single" defaultValue="left" aria-label="Variants">
-    <ToggleGroupItem value="left" variant="primary" aria-label="primary">
-      <TextAlignLeft />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="center" variant="secondary" aria-label="secondary">
-      <TextAlignCenter />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="right" variant="tertiary" aria-label="tertiary">
-      <TextAlignRight />
-    </ToggleGroupItem>
-  </ToggleGroup>
+  <Column gap>
+    <ToggleGroup
+      type="single"
+      variant="primary"
+      defaultValue="left"
+      aria-label="Variants"
+    >
+      <ToggleGroupItem value="left" aria-label="left">
+        <TextAlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="center">
+        <TextAlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="right">
+        <TextAlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup
+      type="single"
+      variant="secondary"
+      defaultValue="left"
+      aria-label="Variants"
+    >
+      <ToggleGroupItem value="left" aria-label="left">
+        <TextAlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="center">
+        <TextAlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="right">
+        <TextAlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup
+      type="single"
+      variant="tertiary"
+      defaultValue="left"
+      aria-label="Variants"
+    >
+      <ToggleGroupItem value="left" aria-label="left">
+        <TextAlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="center">
+        <TextAlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="right">
+        <TextAlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  </Column>
+)
+
+export const Sizes: Story = () => (
+  <Column gap>
+    <ToggleGroup type="single" size="small" defaultValue="left">
+      <ToggleGroupItem value="left" aria-label="left">
+        <TextAlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="center">
+        <TextAlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="right">
+        <TextAlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="single" size="default" defaultValue="left">
+      <ToggleGroupItem value="left" aria-label="left">
+        <TextAlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="center">
+        <TextAlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="right">
+        <TextAlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="single" size="large" defaultValue="left">
+      <ToggleGroupItem value="left" aria-label="left">
+        <TextAlignLeft />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="center">
+        <TextAlignCenter />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="right">
+        <TextAlignRight />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  </Column>
 )
 
 export const MultipleSelections: Story = () => (
@@ -94,17 +172,32 @@ export const MultipleSelections: Story = () => (
 )
 
 export const Orientation: Story = () => (
-  <ToggleGroup
-    type="single"
-    defaultValue="top"
-    aria-label="Orientation"
-    orientation="vertical"
-  >
-    <ToggleGroupItem value="top" aria-label="primary">
-      <ChevronUp />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="bottom" aria-label="secondary">
-      <ChevronDown />
-    </ToggleGroupItem>
-  </ToggleGroup>
+  <Column gap>
+    <ToggleGroup
+      type="single"
+      defaultValue="top"
+      aria-label="Orientation"
+      orientation="vertical"
+    >
+      <ToggleGroupItem value="top" aria-label="up">
+        <ChevronUp />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bottom" aria-label="down">
+        <ChevronDown />
+      </ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup
+      type="single"
+      defaultValue="top"
+      aria-label="Orientation"
+      orientation="horizontal"
+    >
+      <ToggleGroupItem value="top" aria-label="up">
+        <ChevronUp />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="bottom" aria-label="down">
+        <ChevronDown />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  </Column>
 )

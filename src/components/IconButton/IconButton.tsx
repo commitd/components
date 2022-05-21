@@ -1,6 +1,11 @@
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type { AsProps, CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import {
+  AsProps,
+  css,
+  CSSProps,
+  styled,
+  VariantProps,
+} from '../../stitches.config'
 import { Svg } from '../Svg'
 
 const DEFAULT_TAG = 'button'
@@ -10,7 +15,7 @@ export const hover = {
     '$$hover radial-gradient(circle, transparent 1%, $$hover 1%) center/15000%',
 }
 
-const focus = hover
+export const focus = hover
 
 const active = {
   backgroundColor: '$$active',
@@ -26,15 +31,7 @@ export const disabled = {
   opacity: 0.4,
 }
 
-export const IconButtonStyling = {
-  $$main: '$colors$primary',
-  $$mainHover: '$colors$primaryHighlight',
-  $$contrast: '$colors$primaryContrast',
-  $$active: '$colors$defaultActive',
-  $$default: '$colors$default',
-  $$defaultHover: '$colors$defaultHighlight',
-  $$lowlight: '$colors$defaultLowlight',
-
+export const iconButtonStyles = css({
   // Reset
   alignItems: 'center',
   appearance: 'none',
@@ -73,6 +70,16 @@ export const IconButtonStyling = {
   '&:focus': focus,
   '&:active': active,
   '&:disabled': disabled,
+})
+
+export const iconButtonVariants = css({
+  $$main: '$colors$primary',
+  $$mainHover: '$colors$primaryHighlight',
+  $$contrast: '$colors$primaryContrast',
+  $$active: '$colors$defaultActive',
+  $$default: '$colors$default',
+  $$defaultHover: '$colors$defaultHighlight',
+  $$lowlight: '$colors$defaultLowlight',
 
   variants: {
     variant: {
@@ -135,9 +142,13 @@ export const IconButtonStyling = {
     destructive: 'false',
     size: 'default',
   },
-}
+})
 
-export const StyledIconButton = styled(DEFAULT_TAG, IconButtonStyling)
+export const StyledIconButton = styled(
+  DEFAULT_TAG,
+  iconButtonStyles,
+  iconButtonVariants
+)
 
 type IconButtonVariants = VariantProps<typeof StyledIconButton>
 type ButtonProps = ComponentProps<typeof DEFAULT_TAG>
