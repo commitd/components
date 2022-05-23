@@ -4,6 +4,7 @@ import {
   Content,
   Description,
   Overlay,
+  Portal,
   Root,
   Title,
   Trigger,
@@ -11,6 +12,7 @@ import {
 import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
 import { overlayAnimationStyles, overlayStyles } from '../Overlay'
@@ -56,11 +58,6 @@ export const StyledContent = styled(
   overlayAnimationStyles
 )
 
-type ConfirmDialogProps = ComponentProps<typeof Root> & {
-  /** Modify the default styling of the overlay */
-  overlayCss?: CSS
-}
-
 /**
  * The `ConfirmDialog` component can be used get confirmation of an action from the user.
  * This is done by isolating the user from the main window by overlaying
@@ -80,18 +77,7 @@ type ConfirmDialogProps = ComponentProps<typeof Root> & {
  *
  * Based on [Radix Alert Dialog](https://radix-ui.com/primitives/docs/components/alert-dialog).
  */
-export const ConfirmDialog: FC<ConfirmDialogProps> = ({
-  children,
-  overlayCss,
-  ...props
-}) => {
-  return (
-    <Root {...props}>
-      <StyledOverlay css={overlayCss} />
-      {children}
-    </Root>
-  )
-}
+export const ConfirmDialog = Root
 
 type ConfirmDialogContentProps = ComponentProps<typeof StyledContent> &
   CSSProps & {
@@ -99,20 +85,47 @@ type ConfirmDialogContentProps = ComponentProps<typeof StyledContent> &
     title?: string
     /** Add a description to the content. */
     description?: string
+    /** Modify the default styling of the overlay */
+    overlayCss?: CSS
+    /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
   }
 
 export const ConfirmDialogContent = forwardRef<
   ElementRef<typeof StyledContent>,
   ConfirmDialogContentProps
->(({ title, description, children, ...props }, forwardedRef) => (
-  <StyledContent {...props} ref={forwardedRef}>
-    {title && <ConfirmDialogTitle>{title}</ConfirmDialogTitle>}
-    {description && (
-      <ConfirmDialogDescription>{description}</ConfirmDialogDescription>
-    )}
-    {children}
-  </StyledContent>
-))
+>(
+  (
+    {
+      title,
+      description,
+      overlayCss,
+      container,
+      portalled = true,
+      children,
+      ...props
+    },
+    forwardedRef
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <>
+        <StyledOverlay css={overlayCss} />
+        <StyledContent {...props} ref={forwardedRef}>
+          {title && <ConfirmDialogTitle>{title}</ConfirmDialogTitle>}
+          {description && (
+            <ConfirmDialogDescription>{description}</ConfirmDialogDescription>
+          )}
+          {children}
+        </StyledContent>
+      </>
+    </ConditionalWrapper>
+  )
+)
 ConfirmDialogContent.toString = () => `.${StyledContent.className}`
 
 export const ConfirmDialogTrigger = forwardRef<

@@ -3,6 +3,7 @@ import {
   Content,
   Description,
   Overlay,
+  Portal,
   Root,
   Title,
   Trigger,
@@ -10,6 +11,7 @@ import {
 import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { CSS, styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { Heading } from '../Heading'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
@@ -63,11 +65,6 @@ const StyledIconButton = styled(IconButton, {
   top: '$1',
 })
 
-type DialogProps = React.ComponentProps<typeof Root> & {
-  /** Modify the default styling of the overlay */
-  overlayCss?: CSS
-}
-
 /**
  * The Dialog component can be used to isolate the user from the main window by overlaying
  * another window that requires the users attention.
@@ -81,36 +78,55 @@ type DialogProps = React.ComponentProps<typeof Root> & {
  *
  * Based on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
  */
-export const Dialog: FC<DialogProps> = ({ children, overlayCss, ...props }) => {
-  return (
-    <Root {...props}>
-      <StyledOverlay css={overlayCss} />
-      {children}
-    </Root>
-  )
-}
+export const Dialog = Root
 
 type DialogContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> &
   CSSProps & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
+    /** Modify the default styling of the overlay */
+    overlayCss?: CSS
+    /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
   }
 
 export const DialogContent = forwardRef<
   ElementRef<typeof StyledContent>,
   DialogContentProps
->(({ children, defaultClose = true, ...props }, forwardedRef) => (
-  <StyledContent {...props} ref={forwardedRef}>
-    {defaultClose && (
-      <Close asChild>
-        <StyledIconButton aria-label="close" variant="tertiary">
-          <Icon title="Close" />
-        </StyledIconButton>
-      </Close>
-    )}
-    {children}
-  </StyledContent>
-))
+>(
+  (
+    {
+      children,
+      overlayCss,
+      container,
+      portalled = true,
+      defaultClose = true,
+      ...props
+    },
+    forwardedRef
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <>
+        <StyledOverlay css={overlayCss} />
+        <StyledContent {...props} ref={forwardedRef}>
+          {defaultClose && (
+            <Close asChild>
+              <StyledIconButton aria-label="close" variant="tertiary">
+                <Icon title="Close" />
+              </StyledIconButton>
+            </Close>
+          )}
+          {children}
+        </StyledContent>
+      </>
+    </ConditionalWrapper>
+  )
+)
 DialogContent.toString = () => `.${StyledContent.className}`
 
 export const DialogTrigger = forwardRef<

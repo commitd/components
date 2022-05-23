@@ -1,4 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
+import { CSSProps, styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
 import { ThemeProvider, ThemeProviderProps } from '../ThemeProvider'
 import { ToastProvider, ToastViewport } from '../Toast'
@@ -40,7 +41,15 @@ export type ComponentsProviderProps = {
    * Toast viewport configuration options
    */
   viewport?: false | ToastViewportPropsWithoutChildren
-}
+  /**
+   * By default the childre are put into their own stacking context to better separate the content from the portalled dialog elements. Set false to turn this off and controll it yourself.
+   */
+  isolated?: boolean
+} & CSSProps
+
+const Isolate = styled('div', {
+  variants: { isolated: { false: {}, true: { isolation: 'isolate' } } },
+})
 
 /**
  * The `ComponentsProvider` should wrap you application.
@@ -53,7 +62,15 @@ export type ComponentsProviderProps = {
  */
 export const ComponentsProvider: FC<
   PropsWithChildren<ComponentsProviderProps>
-> = ({ theme = {}, tooltip = {}, toast = {}, viewport = {}, children }) => (
+> = ({
+  theme = {},
+  tooltip = {},
+  toast = {},
+  viewport = {},
+  css,
+  isolated = true,
+  children,
+}) => (
   <ConditionalWrapper
     condition={toast}
     wrapper={(wrappedChildren) => (
@@ -73,7 +90,9 @@ export const ComponentsProvider: FC<
         )}
       >
         <>
-          {children}
+          <Isolate css={css as any} isolated={isolated}>
+            {children}
+          </Isolate>
           {viewport && <ToastViewport {...viewport} />}
         </>
       </ConditionalWrapper>

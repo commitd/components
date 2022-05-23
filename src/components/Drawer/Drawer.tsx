@@ -1,12 +1,8 @@
-import { Close, Content, Root } from '@radix-ui/react-dialog'
+import { Close, Content, Portal, Root } from '@radix-ui/react-dialog'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type {
-  ChildProps,
-  CSS,
-  CSSProps,
-  VariantProps,
-} from '../../stitches.config'
+import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
 import { keyframes, styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { DialogClose, DialogTrigger, StyledOverlay } from '../Dialog/Dialog'
 import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
@@ -90,33 +86,53 @@ type DrawerContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> &
   DrawerContentVariants & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
+    /** Modify the default styling of the overlay */
+    overlayCss?: CSS
+    /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
   }
 
 export const DrawerContent = forwardRef<
   ElementRef<typeof StyledContent>,
   DrawerContentProps
->(({ defaultClose, children, ...props }, forwardedRef) => (
-  <StyledContent {...props} ref={forwardedRef}>
-    {children}
-    {defaultClose && (
-      <Close asChild>
-        <StyledIconButton aria-label="close" variant="tertiary">
-          <Icon title="Close" />
-        </StyledIconButton>
-      </Close>
-    )}
-  </StyledContent>
-))
+>(
+  (
+    {
+      defaultClose,
+      children,
+      overlayCss,
+      container,
+      portalled = true,
+      ...props
+    },
+    forwardedRef
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <>
+        <StyledOverlay css={overlayCss} />
+        <StyledContent {...props} ref={forwardedRef}>
+          {children}
+          {defaultClose && (
+            <Close asChild>
+              <StyledIconButton aria-label="close" variant="tertiary">
+                <Icon title="Close" />
+              </StyledIconButton>
+            </Close>
+          )}
+        </StyledContent>
+      </>
+    </ConditionalWrapper>
+  )
+)
 DrawerContent.toString = () => `.${StyledContent.className}`
 
 export const DrawerTrigger = DialogTrigger
 export const DrawerClose = DialogClose
-
-type DrawerProps = React.ComponentProps<typeof Root> &
-  ChildProps & {
-    /** Modify the default styling of the overlay */
-    overlayCss?: CSS
-  }
 
 /**
  * The Drawer component can be used to overlay a panel from any side.
@@ -127,15 +143,4 @@ type DrawerProps = React.ComponentProps<typeof Root> &
  *
  * Based on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
  */
-export const Drawer: React.FC<DrawerProps> = ({
-  children,
-  overlayCss,
-  ...props
-}) => {
-  return (
-    <Root {...props}>
-      <StyledOverlay css={overlayCss} />
-      {children}
-    </Root>
-  )
-}
+export const Drawer = Root
