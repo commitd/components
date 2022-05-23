@@ -66,6 +66,7 @@ export const Form: Story = () => {
               id="name"
               label="Name"
               name="name"
+              required
               onValueChange={(value) => setName(value)}
               value={name}
             />
@@ -108,7 +109,7 @@ export const Form: Story = () => {
               checked={notifyBrowser}
             />
             <Text>Please Specify your role:</Text>
-            <RadioGroup value={role} onValueChange={(v) => setRole(v)}>
+            <RadioGroup required value={role} onValueChange={(v) => setRole(v)}>
               <Radio value="director" label="Director" />
               <Radio value="developer" label="Developer" />
               <Radio value="tester" label="Tester" />
