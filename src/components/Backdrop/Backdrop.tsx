@@ -1,6 +1,7 @@
-import { Content, Overlay, Root } from '@radix-ui/react-dialog'
-import React, { FC } from 'react'
+import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog'
+import React, { ComponentProps, FC } from 'react'
 import { CSS, styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 
 const StyledOverlay = styled(Overlay, overlayStyles, overlayAnimationStyles, {
@@ -33,6 +34,10 @@ type BackdropProps = React.ComponentProps<typeof Root> & {
   overlayCss?: CSS
   /** Modify the default styling of the content wrapper */
   contentCss?: CSS
+  /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
+  portalled?: boolean
+  /** Specify a container element to portal the content into. */
+  container?: ComponentProps<typeof Portal>['container']
 }
 
 /**
@@ -45,13 +50,22 @@ type BackdropProps = React.ComponentProps<typeof Root> & {
 export const Backdrop: FC<BackdropProps> = ({
   overlayCss,
   contentCss,
+  container,
+  portalled = true,
   children,
   ...props
 }) => {
   return (
     <Root {...props}>
-      <StyledOverlay css={overlayCss} />
-      <StyledContent css={contentCss}>{children}</StyledContent>
+      <ConditionalWrapper
+        condition={portalled}
+        wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      >
+        <>
+          <StyledOverlay css={overlayCss} />
+          <StyledContent css={contentCss}>{children}</StyledContent>
+        </>
+      </ConditionalWrapper>
     </Root>
   )
 }
