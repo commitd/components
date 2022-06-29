@@ -1,5 +1,11 @@
 import * as ToastPrimitive from '@radix-ui/react-toast'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import React, {
+  ComponentProps,
+  ElementRef,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { keyframes, styled } from '../../stitches.config'
 import { IconButton } from '../IconButton'
@@ -188,6 +194,26 @@ export const Toast = forwardRef<
     </StyledToast>
   )
 )
+
+export const ImperativeToast = forwardRef((props, forwardedRef) => {
+  const { children, ...toastProps } = props
+  const [count, setCount] = useState<number>(0)
+
+  useImperativeHandle(forwardedRef, () => ({
+    publish: () => setCount((count) => count + 1),
+  }))
+
+  return (
+    <>
+      {Array.from({ length: count }).map((_, index) => (
+        <ToastPrimitive.Root key={index} {...toastProps}>
+          <ToastPrimitive.Description>{children}</ToastPrimitive.Description>
+          <ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>
+        </ToastPrimitive.Root>
+      ))}
+    </>
+  )
+})
 
 // Exports
 export const ToastProvider = ToastPrimitive.Provider
