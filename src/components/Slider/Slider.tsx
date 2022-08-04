@@ -1,4 +1,5 @@
-import { useHover } from '@committed/hooks'
+import { useHover, useMergedRefs } from '@committed/hooks'
+import { Arrow, Content, Portal } from '@radix-ui/react-popover'
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider'
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
@@ -12,7 +13,9 @@ import React, {
 } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
-import { Tooltip } from '../Tooltip'
+import { ConditionalWrapper } from '../../utils'
+import { Popover, PopoverAnchor } from '../Popover'
+import { Tooltip, tooltipArrowStyles, tooltipContentStyles } from '../Tooltip'
 
 type LabelStyle = 'always' | 'hover' | 'none'
 type LabelSide = React.ComponentProps<typeof Tooltip>['side']
@@ -130,41 +133,54 @@ export const StyledSlider = styled(Root, {
 })
 
 type SliderThumbProps = ComponentProps<typeof Thumb> & {
-  labelStyle: LabelStyle
+  showLabel?: boolean
   value: number | string
   labelSide: LabelSide
   portalled: boolean
 }
 
+const StyledPopoverContent = styled(Content, tooltipContentStyles)
+const StyledPopoverArrow = styled(Arrow, tooltipArrowStyles)
+
+type ThumbPopoverContentProps = ComponentProps<typeof Content> & {
+  /** By default, portals your content parts into the body, set false to add at dom location. */
+  portalled?: boolean
+  /** Specify a container element to portal the content into. */
+  container?: ComponentProps<typeof Portal>['container']
+}
+
+const ThumbPopoverContent = forwardRef<
+  ElementRef<typeof StyledPopoverContent>,
+  ThumbPopoverContentProps
+>(({ portalled = true, container, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+  >
+    <StyledPopoverContent {...props} ref={forwardedRef}>
+      <StyledPopoverArrow offset={-1} />
+      {children}
+    </StyledPopoverContent>
+  </ConditionalWrapper>
+))
+ThumbPopoverContent.toString = () => `.${StyledPopoverContent.className}`
+
 export const SliderThumb: FC<SliderThumbProps> = ({
   value,
-  labelStyle,
+  showLabel,
   labelSide,
-  portalled,
+  portalled = true,
   ...props
 }) => {
-  const trackRef = useRef<HTMLSpanElement>(null)
-  const [isHovered] = useHover(trackRef)
-
-  const isOpen = useMemo(() => {
-    if (labelStyle == 'always') {
-      return true
-    }
-    if (labelStyle == 'none') {
-      return false
-    }
-    return isHovered
-  }, [isHovered, labelStyle])
-
   return (
-    <Tooltip
-      open={isOpen}
-      side={labelSide}
-      content={value}
-      portalled={portalled}
-    >
-      <StyledThumb {...props} ref={trackRef} />
-    </Tooltip>
+    <Popover open={showLabel}>
+      <PopoverAnchor>
+        <StyledThumb {...props} />
+      </PopoverAnchor>
+      <ThumbPopoverContent side={labelSide} portalled={portalled}>
+        {value}
+      </ThumbPopoverContent>
+    </Popover>
   )
 }
 
@@ -181,13 +197,14 @@ type SliderProps = ComponentProps<typeof Root> &
     /** Set `false` to turn off the use of portals for labels */
     portalled?: boolean
   }
+type SliderRef = ElementRef<typeof StyledSlider>
 
 /**
  * Sliders can be used for selection from a (numeric) range of values.
  *
  * Based on [Radix Slider](https://radix-ui.com/primitives/docs/components/slider).
  */
-export const Slider = forwardRef<ElementRef<typeof StyledSlider>, SliderProps>(
+export const Slider = forwardRef<SliderRef, SliderProps>(
   (
     {
       min = 0,
@@ -219,13 +236,27 @@ export const Slider = forwardRef<ElementRef<typeof StyledSlider>, SliderProps>(
       labelFunction(val)
     )
 
+    const internalRef = useRef<SliderRef>(null)
+    const [isHovered] = useHover(internalRef)
+    const mergedRef = useMergedRefs<SliderRef>(internalRef, forwardedRef)
+
+    const showLabels = useMemo(() => {
+      if (labelStyle == 'always') {
+        return true
+      }
+      if (labelStyle == 'none') {
+        return false
+      }
+      return isHovered //hover.reduce((acc, cur) => acc || cur, false)
+    }, [isHovered, labelStyle])
+
     return (
       <StyledSlider
         {...props}
         min={min}
         value={values}
         onValueChange={setValues}
-        ref={forwardedRef}
+        ref={mergedRef}
       >
         <SliderTrack>
           <SliderRange />
@@ -234,7 +265,7 @@ export const Slider = forwardRef<ElementRef<typeof StyledSlider>, SliderProps>(
           <SliderThumb
             key={i}
             value={handleLabelFunction(val)}
-            labelStyle={labelStyle}
+            showLabel={showLabels}
             labelSide={labelSide}
             portalled={portalled}
           />

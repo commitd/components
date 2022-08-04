@@ -90,7 +90,7 @@ export const ComponentsProvider: FC<
         )}
       >
         <>
-          <Isolate css={css as any} isolated={isolated}>
+          <Isolate css={css} isolated={isolated}>
             {children}
           </Isolate>
           {viewport && <ToastViewport {...viewport} />}

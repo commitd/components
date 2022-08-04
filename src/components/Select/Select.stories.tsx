@@ -126,6 +126,22 @@ export const Scrollable: Story = () => (
 export const WithLabel = Template.bind({})
 WithLabel.args = { label: 'Label' }
 
+/**
+ * The Select component support a placeholder.
+ *
+ * A html select would normally have a `value`, if controlled, or `defaultValue` in an uncontrolled state.
+ * However, if a default value is not supplied a placeholder should be used.
+ */
+export const Placeholder: Story = () => {
+  return (
+    <Select label="Demo" name="demo" placeholder="Select an item...">
+      <SelectItem value="1">Item 1</SelectItem>
+      <SelectItem value="2">Item 2</SelectItem>
+      <SelectItem value="3">Item 3</SelectItem>
+    </Select>
+  )
+}
+
 /** Using `<SelectRoot>` and `<SelectRootItem>` gives further access to the underlying Radix implementation, allowing for more customization */
 export const Customization: Story = () => (
   <SelectRoot defaultValue="19">
