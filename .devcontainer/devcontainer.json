@@ -1,50 +1,73 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.238.0/containers/typescript-node
 {
-  "name": "committed-component-devcontainer",
-  "runArgs": ["--init", "--privileged"],
-  "overrideCommand": false,
+  "name": "Node.js & TypeScript",
   "build": {
     "dockerfile": "Dockerfile",
+    // Update 'VARIANT' to pick a Node version: 18, 16, 14.
+    // Append -bullseye or -buster to pin to an OS version.
+    // Use -bullseye variants on local on arm64/Apple Silicon.
     "args": {
-      "VARIANT": "14"
+      "VARIANT": "16-bullseye"
     }
   },
-  "settings": {
-    // Default to ZSH
-    "terminal.integrated.profiles.linux": {
-      "zsh": {
-        "path": "/bin/zsh"
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "github.vscode-pull-request-github",
+        "ms-vsliveshare.vsliveshare",
+        "eamodio.gitlens",
+        "streetsidesoftware.code-spell-checker",
+        "sonarsource.sonarlint-vscode",
+        "github.copilot",
+        "bierner.markdown-preview-github-styles",
+        "me-dutour-mathieu.vscode-github-actions",
+        "christian-kohler.npm-intellisense",
+        "eg2.vscode-npm-script"
+      ],
+      "settings": {
+        // Default to ZSH
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        // Setup formatting to save with prettier
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        // Look throughout the project to auto set up eslint
+        "eslint.workingDirectories": [
+          {
+            "mode": "auto"
+          }
+        ],
+        // Our eslint can be very heavy, so we perform it on save not on type
+        "eslint.run": "onSave",
+        // Ignore uncommon words
+        "cSpell.userWords": ["commitd"],
+        // Prefer relative imports
+        "typescript.preferences.importModuleSpecifier": "relative"
       }
-    },
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    // Setup formatting to save with prettier
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    // Look throughout the project to auto set up eslint
-    "eslint.workingDirectories": [
-      {
-        "mode": "auto"
-      }
-    ],
-    // Our eslint can be very heavy, so we perform it on save not on type
-    "eslint.run": "onSave",
-    // Ignore uncommon words
-    "cSpell.userWords": ["commitd"],
-    // Prefer relative imports
-    "typescript.preferences.importModuleSpecifier": "relative"
+    }
   },
-  "extensions": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "github.vscode-pull-request-github",
-    "ms-vsliveshare.vsliveshare",
-    "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker",
-    "sonarsource.sonarlint-vscode",
-    "github.copilot",
-    "bierner.markdown-preview-github-styles",
-    "me-dutour-mathieu.vscode-github-actions",
-    "christian-kohler.npm-intellisense",
-    "eg2.vscode-npm-script"
-  ],
-  "remoteUser": "node"
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "yarn install",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node",
+  "features": {
+    "git": "os-provided",
+    "github-cli": "latest"
+  }
 }
