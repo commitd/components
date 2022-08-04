@@ -14,8 +14,10 @@ import {
   MenuRadioGroup,
   MenuRadioItem,
   MenuSeparator,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
   MenuTrigger,
-  MenuTriggerItem,
 } from '.'
 import { Avatar } from '../Avatar'
 import { Chip } from '../Chip'
@@ -36,8 +38,10 @@ export default {
     MenuLabel,
     MenuItemGroup,
     MenuRadioGroup,
-    MenuTriggerItem,
     MenuButton,
+    MenuSub,
+    MenuSubContent,
+    MenuSubTrigger,
   },
 } as Meta
 
@@ -219,22 +223,22 @@ export const Nested: Story = () => {
         <MenuItem>
           New Window <MenuItemShortcut>⌘+N</MenuItemShortcut>
         </MenuItem>
-        <Menu>
-          <MenuTriggerItem>Developer</MenuTriggerItem>
-          <MenuContent sideOffset={8}>
+        <MenuSub>
+          <MenuSubTrigger>Developer</MenuSubTrigger>
+          <MenuSubContent>
             <MenuItem>Test</MenuItem>
             <MenuItem>Build</MenuItem>
             <MenuItem>Start</MenuItem>
-            <Menu>
-              <MenuTriggerItem>More</MenuTriggerItem>
-              <MenuContent sideOffset={8}>
+            <MenuSub>
+              <MenuSubTrigger>More</MenuSubTrigger>
+              <MenuSubContent>
                 <MenuItem>Test</MenuItem>
                 <MenuItem>Build</MenuItem>
                 <MenuItem>Start</MenuItem>
-              </MenuContent>
-            </Menu>
-          </MenuContent>
-        </Menu>
+              </MenuSubContent>
+            </MenuSub>
+          </MenuSubContent>
+        </MenuSub>
       </MenuContent>
     </Menu>
   )

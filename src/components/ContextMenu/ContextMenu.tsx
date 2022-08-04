@@ -29,7 +29,7 @@ import {
   labelStyles,
   separatorStyles,
   StyledCheckIndicator,
-  StyledTriggerItemIndicator,
+  StyledSubTriggerIndicator,
   triggerItemStyles,
 } from '../../utils/menuStyles'
 import { paperStyles } from '../Paper'
@@ -119,7 +119,7 @@ export const ContextMenuSubTrigger = forwardRef<
   return (
     <StyledSubTrigger {...props} ref={forwardedRef}>
       {children}
-      <StyledTriggerItemIndicator />
+      <StyledSubTriggerIndicator />
     </StyledSubTrigger>
   )
 })

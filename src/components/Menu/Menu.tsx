@@ -5,16 +5,20 @@ import {
   Item,
   ItemIndicator,
   Label,
+  Portal,
   RadioGroup,
   RadioItem,
   Root,
   Separator,
+  Sub,
+  SubContent,
+  SubTrigger,
   Trigger,
-  TriggerItem,
 } from '@radix-ui/react-dropdown-menu'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import {
   checkboxItemStyles,
   contentStyles,
@@ -25,7 +29,7 @@ import {
   labelStyles,
   separatorStyles,
   StyledCheckIndicator,
-  StyledTriggerItemIndicator,
+  StyledSubTriggerIndicator,
   triggerItemStyles,
 } from '../../utils/menuStyles'
 import { Button } from '../Button'
@@ -55,32 +59,27 @@ const StyledContent = styled(Content, paperStyles, contentStyles)
 const StyledItemIndicator = styled(ItemIndicator, itemIndicatorStyles)
 const StyledCheckboxItem = styled(CheckboxItem, itemStyles, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, itemStyles, checkboxItemStyles)
-const StyledTriggerItem = styled(TriggerItem, itemStyles, triggerItemStyles)
 
-type MenuTriggerItemProps = ComponentProps<typeof TriggerItem> & CSSProps
-
-export const MenuTriggerItem = forwardRef<
-  ElementRef<typeof StyledTriggerItem>,
-  MenuTriggerItemProps
->(({ children, ...props }, forwardedRef) => {
-  return (
-    <StyledTriggerItem {...props} ref={forwardedRef}>
-      {children}
-      <StyledTriggerItemIndicator />
-    </StyledTriggerItem>
-  )
-})
-MenuTriggerItem.toString = () => `.${StyledTriggerItem.className}`
-
-type MenuContentProps = ComponentProps<typeof Content> & CSSProps
+type MenuContentProps = ComponentProps<typeof Content> &
+  CSSProps & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
 export const MenuContent = forwardRef<
   ElementRef<typeof StyledContent>,
   MenuContentProps
->(({ children, ...props }, forwardedRef) => (
-  <StyledContent alignOffset={8} {...props} ref={forwardedRef}>
-    {children}
-  </StyledContent>
+>(({ portalled = true, container, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+  >
+    <StyledContent alignOffset={8} {...props} ref={forwardedRef}>
+      {children}
+    </StyledContent>
+  </ConditionalWrapper>
 ))
 MenuContent.toString = () => `.${StyledContent.className}`
 
@@ -164,3 +163,47 @@ export const MenuRadioItem = forwardRef<
   </StyledRadioItem>
 ))
 MenuRadioItem.toString = () => `.${StyledRadioItem.className}`
+
+// Sub menu
+
+export const MenuSub = Sub
+const StyledSubTrigger = styled(SubTrigger, itemStyles, triggerItemStyles)
+const StyledSubContent = styled(SubContent, paperStyles, contentStyles)
+
+type MenuSubTriggerProps = ComponentProps<typeof StyledSubTrigger> & CSSProps
+
+export const MenuSubTrigger = forwardRef<
+  ElementRef<typeof StyledSubTrigger>,
+  MenuSubTriggerProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <StyledSubTrigger {...props} ref={forwardedRef}>
+      {children}
+      <StyledSubTriggerIndicator />
+    </StyledSubTrigger>
+  )
+})
+MenuSubTrigger.toString = () => `.${StyledSubTrigger.className}`
+
+type MenuSubContentProps = ComponentProps<typeof StyledSubContent> &
+  CSSProps & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
+
+export const MenuSubContent = forwardRef<
+  ElementRef<typeof StyledSubContent>,
+  MenuSubContentProps
+>(({ container, portalled = true, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+  >
+    <StyledSubContent {...props} ref={forwardedRef}>
+      {children}
+    </StyledSubContent>
+  </ConditionalWrapper>
+))
+MenuSubContent.toString = () => `.${StyledSubContent.className}`
