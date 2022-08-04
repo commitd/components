@@ -5,16 +5,20 @@ import {
   Item,
   ItemIndicator,
   Label,
+  Portal,
   RadioGroup,
   RadioItem,
   Root,
   Separator,
+  Sub,
+  SubContent,
+  SubTrigger,
   Trigger,
-  TriggerItem,
 } from '@radix-ui/react-context-menu'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import {
   checkboxItemStyles,
   contentStyles,
@@ -48,35 +52,78 @@ export const ContextMenuLabel = styled(Label, labelStyles)
 export const ContextMenuItemGroup = styled(Group, groupStyles(ContextMenuItem))
 export const ContextMenuRadioGroup = RadioGroup
 
-export const ContextMenuContent = styled(Content, paperStyles, contentStyles)
+const StyledContent = styled(Content, paperStyles, contentStyles)
+
+type ContextMenuContentProps = ComponentProps<typeof StyledContent> &
+  CSSProps & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
+
+export const ContextMenuContent = forwardRef<
+  ElementRef<typeof StyledContent>,
+  ContextMenuContentProps
+>(({ container, portalled = true, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+  >
+    <StyledContent {...props} ref={forwardedRef}>
+      {children}
+    </StyledContent>
+  </ConditionalWrapper>
+))
+ContextMenuContent.toString = () => `.${StyledContent.className}`
 
 const StyledItemIndicator = styled(ItemIndicator, itemIndicatorStyles)
 const StyledCheckboxItem = styled(CheckboxItem, itemStyles, checkboxItemStyles)
 const StyledRadioItem = styled(RadioItem, itemStyles, checkboxItemStyles)
 
-const StyledContextMenuTriggerItem = styled(
-  TriggerItem,
-  itemStyles,
-  triggerItemStyles
-)
+// Submenu
+export const ContextMenuSub = Sub
+const StyledSubContent = styled(SubContent, paperStyles, contentStyles)
 
-type ContextMenuTriggerItemProps = ComponentProps<
-  typeof StyledContextMenuTriggerItem
->
+type ContextMenuSubContentProps = ComponentProps<typeof StyledSubContent> &
+  CSSProps & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
-export const ContextMenuTriggerItem = forwardRef<
-  ElementRef<typeof StyledContextMenuTriggerItem>,
-  ContextMenuTriggerItemProps
+export const ContextMenuSubContent = forwardRef<
+  ElementRef<typeof StyledSubContent>,
+  ContextMenuSubContentProps
+>(({ container, portalled = true, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+  >
+    <StyledSubContent {...props} ref={forwardedRef}>
+      {children}
+    </StyledSubContent>
+  </ConditionalWrapper>
+))
+ContextMenuSubContent.toString = () => `.${StyledSubContent.className}`
+
+const StyledSubTrigger = styled(SubTrigger, itemStyles, triggerItemStyles)
+
+type ContextMenuSubTriggerProps = ComponentProps<typeof StyledSubTrigger>
+
+export const ContextMenuSubTrigger = forwardRef<
+  ElementRef<typeof StyledSubTrigger>,
+  ContextMenuSubTriggerProps
 >(({ children, ...props }, forwardedRef) => {
   return (
-    <StyledContextMenuTriggerItem {...props} ref={forwardedRef}>
+    <StyledSubTrigger {...props} ref={forwardedRef}>
       {children}
       <StyledTriggerItemIndicator />
-    </StyledContextMenuTriggerItem>
+    </StyledSubTrigger>
   )
 })
-ContextMenuTriggerItem.toString = () =>
-  `.${StyledContextMenuTriggerItem.className}`
+ContextMenuSubTrigger.toString = () => `.${StyledSubTrigger.className}`
 
 type ContextMenuCheckboxItemProps = ComponentProps<typeof CheckboxItem> &
   CSSProps
