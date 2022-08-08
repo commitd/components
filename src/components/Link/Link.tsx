@@ -27,10 +27,12 @@ export function isExternalUrl(url: string | undefined): boolean {
 type InternalLinkProps = React.ComponentPropsWithRef<typeof DEFAULT_TAG> &
   AsChildProps
 
-const InternalLink: React.FC<InternalLinkProps> = ({ asChild, ...props }) => {
-  const Comp = asChild ? Slot : DEFAULT_TAG
-  return <Comp {...props} />
-}
+const InternalLink: React.FC<InternalLinkProps> = forwardRef(
+  ({ asChild, ...props }, forwardedRef) => {
+    const Comp = asChild ? Slot : DEFAULT_TAG
+    return <Comp {...props} ref={forwardedRef} />
+  }
+)
 
 /**
  * Used to provide link props derived from the href

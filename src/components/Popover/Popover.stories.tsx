@@ -1,6 +1,6 @@
 import { mdiAlertCircleOutline } from '@mdi/js'
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import {
   Popover,
   PopoverAnchor,
@@ -21,8 +21,8 @@ export default {
   },
 } as Meta
 
-export const Default: Story = (args) => (
-  <Popover>
+export const Default: Story<ComponentProps<typeof Popover>> = (args) => (
+  <Popover {...args}>
     <PopoverTrigger>
       <Button>Trigger</Button>
     </PopoverTrigger>
