@@ -1,27 +1,34 @@
 import {
   Arrow,
   Content,
+  Portal,
   Provider,
   Root,
   Trigger,
 } from '@radix-ui/react-tooltip'
-import React, { FC } from 'react'
-import { styled } from '../../stitches.config'
+import React, { ComponentProps, FC, ReactElement, ReactNode } from 'react'
+import { css, styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { Text } from '../Text'
 
-type TooltipProps = React.ComponentProps<typeof Root> &
-  React.ComponentProps<typeof Content> & {
-    children: React.ReactElement
-    content: React.ReactNode
+type TooltipProps = ComponentProps<typeof Root> &
+  ComponentProps<typeof Content> & {
+    children: ReactElement
+    content: ReactNode
     multiline?: boolean
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
   }
 
-const StyledContent = styled(Content, {
+export const tooltipContentStyles = css({
   backgroundColor: '$tooltip',
   color: '$textTooltip',
   borderRadius: '$default',
   padding: '$1 $2',
   boxShadow: '$3',
+  outline: 'none',
 
   variants: {
     multiline: {
@@ -33,10 +40,13 @@ const StyledContent = styled(Content, {
   },
 })
 
-const StyledArrow = styled(Arrow, {
+export const tooltipArrowStyles = css({
   fill: '$tooltip',
   boxShadow: '$3',
 })
+
+const StyledContent = styled(Content, tooltipContentStyles)
+const StyledArrow = styled(Arrow, tooltipArrowStyles)
 /**
  *
  * Tooltips display extra information when users hover over, focus on, or tap an element.
@@ -53,6 +63,8 @@ export const Tooltip: FC<TooltipProps> = ({
   delayDuration,
   onOpenChange,
   multiline,
+  container,
+  portalled = true,
   side = 'top',
   align = 'center',
   ...props
@@ -64,24 +76,29 @@ export const Tooltip: FC<TooltipProps> = ({
     onOpenChange={onOpenChange}
   >
     <Trigger asChild>{children}</Trigger>
-    <StyledContent
-      side={side}
-      align={align}
-      sideOffset={5}
-      {...props}
-      multiline={multiline}
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
     >
-      <Text
-        size="0"
-        css={{
-          lineHeight: multiline ? '20px' : undefined,
-          color: 'inherit',
-        }}
+      <StyledContent
+        side={side}
+        align={align}
+        sideOffset={5}
+        {...props}
+        multiline={multiline}
       >
-        {content}
-      </Text>
-      <StyledArrow offset={5} width={11} height={5} />
-    </StyledContent>
+        <Text
+          size="0"
+          css={{
+            lineHeight: multiline ? '20px' : undefined,
+            color: 'inherit',
+          }}
+        >
+          {content}
+        </Text>
+        <StyledArrow offset={5} width={11} height={5} />
+      </StyledContent>
+    </ConditionalWrapper>
   </Root>
 )
 

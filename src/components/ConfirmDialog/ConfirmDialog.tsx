@@ -19,20 +19,15 @@ import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 import { paperStyles } from '../Paper'
 import { Text } from '../Text'
 
-export const StyledOverlay = styled(
-  Overlay,
-  overlayStyles,
-  overlayAnimationStyles,
-  {
-    position: 'fixed',
-    right: 0,
-    bottom: 0,
-    top: 0,
-    left: 0,
-  }
-)
+const StyledOverlay = styled(Overlay, overlayStyles, overlayAnimationStyles, {
+  position: 'fixed',
+  right: 0,
+  bottom: 0,
+  top: 0,
+  left: 0,
+})
 
-export const StyledContent = styled(
+const StyledContent = styled(
   Content,
   paperStyles,
   {

@@ -22,5 +22,7 @@
       "@storybook/theming": ["./typings.d.ts"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  // due to png import issue
+  "exclude": ["**/HoverCard.stories.tsx"]
 }

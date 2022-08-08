@@ -1,4 +1,5 @@
 import { useBoolean } from '@committed/hooks'
+import { ContextMenuSub } from '@radix-ui/react-context-menu'
 import { action } from '@storybook/addon-actions'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
@@ -13,10 +14,12 @@ import {
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
   ContextMenuSeparator,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
   ContextMenuTrigger,
-  ContextMenuTriggerItem,
 } from '.'
 import { Flex } from '../Flex'
+import {} from './ContextMenu'
 
 export default {
   title: 'Components/ContextMenu',
@@ -33,7 +36,9 @@ export default {
     ContextMenuCheckboxItem,
     ContextMenuRadioItem,
     ContextMenuRadioGroup,
-    ContextMenuTriggerItem,
+    ContextMenuSub,
+    ContextMenuSubTrigger,
+    ContextMenuSubContent,
   },
 } as Meta
 
@@ -195,22 +200,22 @@ export const Nested: Story = () => {
         <ContextMenuItem>
           New Window <ContextMenuItemShortcut>⌘+N</ContextMenuItemShortcut>
         </ContextMenuItem>
-        <ContextMenu>
-          <ContextMenuTriggerItem>Developer</ContextMenuTriggerItem>
-          <ContextMenuContent sideOffset={8}>
+        <ContextMenuSub>
+          <ContextMenuSubTrigger>Developer</ContextMenuSubTrigger>
+          <ContextMenuSubContent>
             <ContextMenuItem>Test</ContextMenuItem>
             <ContextMenuItem>Build</ContextMenuItem>
             <ContextMenuItem>Start</ContextMenuItem>
-            <ContextMenu>
-              <ContextMenuTriggerItem>More</ContextMenuTriggerItem>
-              <ContextMenuContent sideOffset={8}>
+            <ContextMenuSub>
+              <ContextMenuSubTrigger>More</ContextMenuSubTrigger>
+              <ContextMenuSubContent>
                 <ContextMenuItem>Test</ContextMenuItem>
                 <ContextMenuItem>Build</ContextMenuItem>
                 <ContextMenuItem>Start</ContextMenuItem>
-              </ContextMenuContent>
-            </ContextMenu>
-          </ContextMenuContent>
-        </ContextMenu>
+              </ContextMenuSubContent>
+            </ContextMenuSub>
+          </ContextMenuSubContent>
+        </ContextMenuSub>
       </ContextMenuContent>
     </ContextMenu>
   )

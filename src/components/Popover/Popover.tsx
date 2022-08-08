@@ -3,12 +3,14 @@ import {
   Arrow,
   Close,
   Content,
+  Portal,
   Root,
   Trigger,
 } from '@radix-ui/react-popover'
 import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import type { AsProps, CSSProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
+import { ConditionalWrapper } from '../../utils'
 import { paperStyles } from '../Paper'
 
 const StyledContent = styled(Content, paperStyles, {
@@ -30,16 +32,28 @@ const StyledArrow = styled(Arrow, {
   fill: '$paper',
 })
 
-type PopoverContentProps = CSSProps & AsProps & ComponentProps<typeof Content>
+type PopoverContentProps = CSSProps &
+  AsProps &
+  ComponentProps<typeof Content> & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
 export const PopoverContent = forwardRef<
   ElementRef<typeof StyledContent>,
   PopoverContentProps
->(({ children, ...props }, forwardedRef) => (
-  <StyledContent {...props} ref={forwardedRef}>
-    <StyledArrow offset={-1} />
-    {children}
-  </StyledContent>
+>(({ portalled = true, container, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+  >
+    <StyledContent {...props} ref={forwardedRef}>
+      <StyledArrow offset={-1} />
+      {children}
+    </StyledContent>
+  </ConditionalWrapper>
 ))
 PopoverContent.toString = () => `.${StyledContent.className}`
 

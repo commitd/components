@@ -121,5 +121,5 @@ export const triggerItemStyles = css({
 
 const indicatorStyles = css({ size: '$4' })
 
-export const StyledTriggerItemIndicator = styled(ChevronRight, indicatorStyles)
+export const StyledSubTriggerIndicator = styled(ChevronRight, indicatorStyles)
 export const StyledCheckIndicator = styled(Check, indicatorStyles)
