@@ -1,9 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Grid } from '.'
-import { Box, Row } from '../'
-import { randomColor } from '../../docs/util'
+import { Row } from '../'
 import type { CSS } from '../../stitches.config'
+import { GridBox } from '../../utils/story-utils'
 
 export default {
   title: 'Components/Grid',
@@ -11,27 +11,6 @@ export default {
 } as Meta
 
 const border = '1px solid $grey3'
-
-type BoxProps = React.ComponentProps<typeof Box>
-type GridBoxProps = Omit<BoxProps, 'css'> & {
-  css?: CSS
-}
-
-const GridBox: React.FC<GridBoxProps> = ({ css, ...props }) => (
-  <Box
-    css={
-      {
-        minWidth: '$5',
-        minHeight: '$5',
-        p: '$2',
-        border,
-        backgroundColor: randomColor(),
-        ...css,
-      } as CSS
-    }
-    {...props}
-  />
-)
 
 export const Default: React.FC = () => (
   <Grid
