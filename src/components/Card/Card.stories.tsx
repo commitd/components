@@ -10,7 +10,8 @@ import {
   CardLeadIn,
   CardSubheading,
 } from '.'
-import { Button, IconButton, Row, Svg, Text } from '../'
+import { Button, IconButton, Svg, Text } from '../'
+import { Inline } from '../Inline'
 
 export default {
   title: 'Components/Card',
@@ -44,7 +45,7 @@ export const Default: Story = () => {
  */
 export const Classic: Story = () => {
   return (
-    <Row css={{ gap: '$3' }}>
+    <Inline>
       <Card>
         <CardHeading>Default Card</CardHeading>
         <CardBody>
@@ -57,7 +58,7 @@ export const Classic: Story = () => {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardBody>
       </Card>
-    </Row>
+    </Inline>
   )
 }
 
@@ -68,7 +69,7 @@ export const Classic: Story = () => {
  */
 export const Outline: Story = () => {
   return (
-    <Row css={{ gap: '$3' }}>
+    <Inline>
       <Card variant="outline">
         <CardHeading>Outline</CardHeading>
         <CardBody>
@@ -81,7 +82,7 @@ export const Outline: Story = () => {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardBody>
       </Card>
-    </Row>
+    </Inline>
   )
 }
 
@@ -92,7 +93,7 @@ export const Outline: Story = () => {
  */
 export const Ghost: Story = () => {
   return (
-    <Row css={{ gap: '$3' }}>
+    <Inline>
       <Card variant="ghost">
         <CardHeading>Ghost</CardHeading>
         <CardBody>
@@ -105,7 +106,7 @@ export const Ghost: Story = () => {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardBody>
       </Card>
-    </Row>
+    </Inline>
   )
 }
 
@@ -128,7 +129,7 @@ export const Body: Story = () => (
  * By default headings are just `div`s, use the `as` prop if the heading should be semantic.
  */
 export const Headers: Story = () => (
-  <Row css={{ flexWrap: 'wrap', gap: '$3' }}>
+  <Inline wrap>
     <Card>
       <CardHeading>Heading</CardHeading>
       <CardBody>
@@ -149,7 +150,7 @@ export const Headers: Story = () => (
         <Text>Lorem Ipsum is simply dummy text...</Text>
       </CardBody>
     </Card>
-  </Row>
+  </Inline>
 )
 
 /**
@@ -159,7 +160,7 @@ export const Headers: Story = () => (
  * If a more complex layout is required you can create your own.
  */
 export const Actions: Story = () => (
-  <Row css={{ flexWrap: 'wrap', gap: '$3' }}>
+  <Inline wrap>
     <Card>
       <CardHeading>
         Heading
@@ -228,5 +229,5 @@ export const Actions: Story = () => (
         />
       </CardActions>
     </Card>
-  </Row>
+  </Inline>
 )

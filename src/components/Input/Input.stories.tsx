@@ -1,8 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Input } from '.'
-import { Column, Form, FormButton, Grid, Label } from '../'
+import { Form, FormButton, Grid, Label } from '../'
 import { withFormData } from '../../docs/util'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/Input',
@@ -21,7 +22,7 @@ export const Required: Story = () => <Input required id="default" />
 export const Controlled: Story = () => {
   const [name, setName] = React.useState('test')
   return (
-    <Column gap>
+    <Stack>
       <Input
         id="name-event"
         label="Name"
@@ -36,7 +37,7 @@ export const Controlled: Story = () => {
         value={name}
         onValueChange={setName}
       />
-    </Column>
+    </Stack>
   )
 }
 
@@ -44,11 +45,11 @@ export const Controlled: Story = () => {
  * Use the label props to add a standard label, automatically adds aria.
  */
 export const WithLabel: Story = () => (
-  <Column gap>
+  <Stack>
     <Input id="username" label="Username" required />
     <Input id="firstname" label="First name" />
     <Input id="familyname" label="Family name" required={false} />
-  </Column>
+  </Stack>
 )
 
 /**

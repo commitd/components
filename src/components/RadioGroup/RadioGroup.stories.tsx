@@ -1,8 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Radio, RadioGroup } from '.'
-import { Form, FormButton, FormControl, Row } from '../'
+import { Form, FormButton, FormControl } from '../'
 import { withFormData } from '../../docs/util'
+import { Inline } from '../Inline'
 
 export default {
   title: 'Components/Radio',
@@ -36,7 +37,7 @@ export const Primary: Story = () => {
  */
 export const Orientation: Story = () => {
   return (
-    <Row gap>
+    <Inline>
       <RadioGroup orientation="vertical">
         <Radio value="mobx" label="Mobx" />
         <Radio value="redux" label="Redux" />
@@ -47,7 +48,7 @@ export const Orientation: Story = () => {
         <Radio value="redux" label="Redux" />
         <Radio value="context" label="Context" />
       </RadioGroup>
-    </Row>
+    </Inline>
   )
 }
 
@@ -69,7 +70,7 @@ export const Controlled: Story = () => {
  */
 export const Disabled: Story = () => {
   return (
-    <Row gap>
+    <Inline>
       <RadioGroup defaultValue="redux">
         <Radio value="mobx" label="Mobx" />
         <Radio value="redux" label="Redux" />
@@ -87,13 +88,13 @@ export const Disabled: Story = () => {
           <Radio value="context" label="Context" />
         </RadioGroup>
       </FormControl>
-    </Row>
+    </Inline>
   )
 }
 
 export const Destructive: Story = () => {
   return (
-    <Row gap>
+    <Inline>
       <RadioGroup label="Choose">
         <Radio destructive value="mobx" label="Mobx" />
         <Radio destructive value="redux" label="Redux" />
@@ -104,7 +105,7 @@ export const Destructive: Story = () => {
         <Radio destructive variant="primary" value="redux" label="Redux" />
         <Radio destructive variant="primary" value="context" label="Context" />
       </RadioGroup>
-    </Row>
+    </Inline>
   )
 }
 
@@ -113,7 +114,7 @@ export const Destructive: Story = () => {
  */
 export const NoLabels: Story = () => {
   return (
-    <Row gap>
+    <Inline>
       <RadioGroup orientation="vertical">
         <Radio value="mobx" />
         <Radio value="redux" />
@@ -124,7 +125,7 @@ export const NoLabels: Story = () => {
         <Radio variant="primary" value="redux" />
         <Radio variant="primary" value="context" />
       </RadioGroup>
-    </Row>
+    </Inline>
   )
 }
 

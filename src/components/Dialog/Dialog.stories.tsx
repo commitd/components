@@ -10,8 +10,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '.'
-import { Box, Button, Column, IconButton, Link, Row, Text } from '../'
+import { Box, Button, IconButton, Link, Row, Text } from '../'
 import { Close as CloseIcon } from '../Icons'
+import { Inline } from '../Inline'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/Dialog',
@@ -97,7 +99,7 @@ export const CloseButton: Story = () => {
 
 /**
  * The dialog is portalled by default. This means the dialog will be appended to the body and so over lay other elements.
- * In addition, the `CompontsProvider`, by default, isolates the children in their own stacking context so this will not be afected by the z-index of other elements of the UI.
+ * In addition, the `ComponentsProvider`, by default, isolates the children in their own stacking context so this will not be affected by the z-index of other elements of the UI.
  *
  * This example shows how the z-index of other elements in the UI do not affect the dialog.
  *
@@ -105,7 +107,7 @@ export const CloseButton: Story = () => {
  */
 export const Portalled: Story = () => {
   return (
-    <Row gap centered>
+    <Inline align="center">
       <Dialog>
         <DialogTrigger>
           <Button>Default</Button>
@@ -162,7 +164,7 @@ export const Portalled: Story = () => {
           </DialogContent>
         </Dialog>
       </Box>
-    </Row>
+    </Inline>
   )
 }
 
@@ -171,7 +173,7 @@ export const Portalled: Story = () => {
  */
 export const zIndex: Story = () => {
   return (
-    <Row gap centered>
+    <Inline align="center">
       <Dialog>
         <DialogTrigger>
           <Button>Default</Button>
@@ -235,19 +237,19 @@ export const zIndex: Story = () => {
           </DialogContent>
         </Dialog>
       </Box>
-    </Row>
+    </Inline>
   )
 }
 
 /**
- * The element the dialog portalls to can be provided, and different effects can be achieved by supplying additional css. For example:
+ * The element the dialog portals to can be provided, and different effects can be achieved by supplying additional css. For example:
  */
 export const Container: Story = () => {
   const [element, setElement] = useState<HTMLElement | null>(null)
 
   return (
-    <Column gap>
-      <Row gap centered>
+    <Stack align="center">
+      <Inline align="center">
         <Dialog>
           <DialogTrigger>
             <Button>Default</Button>
@@ -334,7 +336,7 @@ export const Container: Story = () => {
             </DialogContent>
           </Dialog>
         </Box>
-      </Row>
+      </Inline>
       <Row
         css={{ position: 'relative', minHeight: '200px', minWidth: '100%' }}
         centered
@@ -342,6 +344,6 @@ export const Container: Story = () => {
       >
         <Text>This area will now contain the dialog</Text>
       </Row>
-    </Column>
+    </Stack>
   )
 }

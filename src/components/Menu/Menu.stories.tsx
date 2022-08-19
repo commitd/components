@@ -21,7 +21,7 @@ import {
 } from '.'
 import { Avatar } from '../Avatar'
 import { Chip } from '../Chip'
-import { Row } from '../Flex'
+import { Inline } from '../Inline'
 import { Text } from '../Text'
 
 export default {
@@ -169,7 +169,7 @@ export const Shortcuts: Story = () => {
 /** The menu can be triggers from other components using the `MenuTrigger` */
 export const WithTrigger: Story = () => {
   return (
-    <Row gap css={{ alignItems: 'center' }}>
+    <Inline css={{ alignItems: 'center' }}>
       <Menu>
         <MenuTrigger>
           <Text css={{ cursor: 'pointer' }}>Show Menu</Text>
@@ -207,7 +207,7 @@ export const WithTrigger: Story = () => {
           <MenuItem onSelect={action('paste')}>Paste</MenuItem>
         </MenuContent>
       </Menu>
-    </Row>
+    </Inline>
   )
 }
 
@@ -249,7 +249,7 @@ export const MultipleMenus: Story = () => {
   const [checked, setChecked] = useState(true)
   const [color, setColor] = React.useState('blue')
   return (
-    <Row gap>
+    <Inline>
       <Menu>
         <MenuButton size="large">Menu 1</MenuButton>
         <MenuContent>
@@ -279,7 +279,7 @@ export const MultipleMenus: Story = () => {
           </MenuRadioGroup>
         </MenuContent>
       </Menu>
-    </Row>
+    </Inline>
   )
 }
 

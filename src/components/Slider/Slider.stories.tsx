@@ -1,7 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React, { useState } from 'react'
 import { Slider } from '.'
-import { Column, Row } from '../'
+import { Column } from '../'
+import { Inline } from '../Inline'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/Slider',
@@ -12,38 +14,38 @@ export const Default: React.FC = () => <Slider />
 
 /** A primary and secondary variant can be used. Secondary, is the default. */
 export const Variants: Story = () => (
-  <Column css={{ mt: '$7', gap: '$5' }}>
+  <Stack spacing="large">
     <Slider variant="primary" />
     <Slider variant="secondary" />
-  </Column>
+  </Stack>
 )
 
 export const Disabled: Story = () => (
-  <Column css={{ mt: '$7', gap: '$5' }}>
+  <Stack spacing="large">
     <Slider disabled variant="primary" defaultValue={[50]} />
     <Slider disabled variant="secondary" value={[50]} />
-  </Column>
+  </Stack>
 )
 
 export const Vertical: Story = () => (
-  <Row css={{ gap: '$5' }}>
+  <Inline spacing="large">
     <Column css={{ height: '$10' }}>
       <Slider orientation="vertical" variant="primary" labelSide="left" />
     </Column>
     <Column css={{ height: '$10' }}>
       <Slider orientation="vertical" variant="secondary" labelSide="right" />
     </Column>
-  </Row>
+  </Inline>
 )
 
 /**
  * Passing an array as the `defaultValue` or `value` will add multiple markers  on the track.
  */
 export const Contained: Story = () => (
-  <Column css={{ mt: '$7', gap: '$5' }}>
+  <Stack spacing="large">
     <Slider defaultValue={[25, 75]} variant="primary" />
     <Slider defaultValue={[10, 50, 90]} variant="secondary" />
-  </Column>
+  </Stack>
 )
 
 /**
@@ -58,11 +60,11 @@ export const Controlled: Story = () => {
  * The Slider labels can be shown, `always`, on `hover`, or `none`. Using the `labelStyle` prop.
  */
 export const LabelMarkers: Story = () => (
-  <Column css={{ mt: '$7', gap: '$5' }}>
+  <Stack>
     <Slider labelStyle="always" />
     <Slider labelStyle="hover" />
     <Slider labelStyle="none" />
-  </Column>
+  </Stack>
 )
 
 /**

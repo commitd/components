@@ -1,7 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Divider } from '.'
-import { Column, Monospace, Row, Text } from '../'
+import { Column, Monospace, Text } from '../'
+import { Inline } from '../Inline'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/Divider',
@@ -46,7 +48,7 @@ export const AsHr: Story = () => (
  * Decorators can have horizontal (default) and vertical orientation
  */
 export const Orientation: Story = () => (
-  <Row>
+  <Inline>
     <Text css={{ textAlign: 'right' }}>
       Decorators can also be vertical. Aut aspernatur dolor sit voluptates
       repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
@@ -63,7 +65,7 @@ export const Orientation: Story = () => (
       reprehenderit qui modi nihil quo recusandae delectus sed inventore aperiam
       non minus modi.
     </Text>
-  </Row>
+  </Inline>
 )
 
 export const Decorative: Story = () => (
@@ -75,7 +77,7 @@ export const Decorative: Story = () => (
 )
 
 export const Sizes: Story = () => (
-  <Column css={{ maxWidth: '100%' }}>
+  <Stack>
     <Text>
       Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
       repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
@@ -113,11 +115,11 @@ export const Sizes: Story = () => (
       voluptatem temporibus et autem consequatur. Est assumenda totam id
       assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
     </Text>
-  </Column>
+  </Stack>
 )
 
 export const SizesHorizontal: Story = () => (
-  <Row css={{ height: '300px' }}>
+  <Inline css={{ height: '300px' }}>
     <Text>
       Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
       repellendus et blanditiis alias eum laudantium enim. Ea quis quis est Rem
@@ -146,5 +148,5 @@ export const SizesHorizontal: Story = () => (
       Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
       voluptatem temporibus et autem consequatur. Est assumenda totam id
     </Text>
-  </Row>
+  </Inline>
 )
