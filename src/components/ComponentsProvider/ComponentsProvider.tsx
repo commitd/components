@@ -42,7 +42,7 @@ export type ComponentsProviderProps = {
    */
   viewport?: false | ToastViewportPropsWithoutChildren
   /**
-   * By default the childre are put into their own stacking context to better separate the content from the portalled dialog elements. Set false to turn this off and controll it yourself.
+   * By default the children are put into their own stacking context to better separate the content from the portalled dialog elements. Set false to turn this off and control it yourself.
    */
   isolated?: boolean
 } & CSSProps
