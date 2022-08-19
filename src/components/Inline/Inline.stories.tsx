@@ -89,3 +89,22 @@ Bottom.args = {
   width: '25%',
   align: 'right',
 }
+
+/**
+ * Add the `wrap` prop to allow the inline element to wrap the children
+ */
+export const Wrap: Story = () => (
+  <Inline wrap>
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+    <ExampleComponent width="100px" />
+  </Inline>
+)

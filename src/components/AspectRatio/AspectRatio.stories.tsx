@@ -3,10 +3,11 @@ import React, { ComponentProps, useState } from 'react'
 import { AspectRatio } from '.'
 import { Box } from '../Box'
 import { Card, CardBody, CardHeading, CardSubheading } from '../Card'
-import { Row } from '../Flex'
 import { Image } from '../Image'
+import { Inline } from '../Inline'
 import { Label } from '../Label'
 import { Slider } from '../Slider'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/AspectRatio',
@@ -40,12 +41,18 @@ export const Dynamic: Story = () => {
   const [denominator, setDenominator] = useState([16])
 
   return (
-    <Row>
+    <Inline>
       <Box variant="wide">
-        <Label>Numerator</Label>
-        <Slider value={numerator} onValueChange={setNumerator} />
-        <Label>Denominator</Label>
-        <Slider value={denominator} onValueChange={setDenominator} />
+        <Stack>
+          <Label>
+            Numerator
+            <Slider value={numerator} onValueChange={setNumerator} />
+          </Label>
+          <Label>
+            Denominator
+            <Slider value={denominator} onValueChange={setDenominator} />
+          </Label>
+        </Stack>
       </Box>
       <Card css={{ width: '50%' }}>
         <CardHeading>Photo by Damian Markutt</CardHeading>
@@ -59,6 +66,6 @@ export const Dynamic: Story = () => {
           </AspectRatio>
         </CardBody>
       </Card>
-    </Row>
+    </Inline>
   )
 }

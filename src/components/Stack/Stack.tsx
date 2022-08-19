@@ -26,6 +26,5 @@ export const Stack = styled(Box, {
   },
   defaultVariants: {
     spacing: 'default',
-    align: 'left',
   },
 })

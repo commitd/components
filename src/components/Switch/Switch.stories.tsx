@@ -2,7 +2,10 @@ import { useBoolean } from '@committed/hooks'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Switch } from '.'
-import { Grid, Row } from '../'
+import { Grid } from '../'
+import { Box } from '../Box'
+import { Inline } from '../Inline'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/Switch',
@@ -15,10 +18,10 @@ export const Variants: Story = () => {
   const [value, { toggle }] = useBoolean(false)
 
   return (
-    <Row css={{ gap: '$4' }}>
+    <Inline>
       <Switch variant="primary" checked={value} onCheckedChange={toggle} />
       <Switch variant="secondary" checked={value} onCheckedChange={toggle} />
-    </Row>
+    </Inline>
   )
 }
 
@@ -26,9 +29,9 @@ export const Brand: Story = () => {
   const [value, { toggle }] = useBoolean(false)
 
   return (
-    <Row css={{ padding: '$4', backgroundColor: '$brand' }}>
+    <Box css={{ padding: '$4', backgroundColor: '$brand' }}>
       <Switch variant="brand" checked={value} onCheckedChange={toggle} />
-    </Row>
+    </Box>
   )
 }
 
@@ -36,7 +39,7 @@ export const Destructive: Story = () => {
   const [value, { toggle }] = useBoolean(false)
 
   return (
-    <Row css={{ gap: '$4' }}>
+    <Inline>
       <Switch
         destructive
         variant="primary"
@@ -49,13 +52,13 @@ export const Destructive: Story = () => {
         checked={value}
         onCheckedChange={toggle}
       />
-    </Row>
+    </Inline>
   )
 }
 
 export const Disabled: Story = () => (
-  <>
-    <Row css={{ gap: '$4', mb: '$3' }}>
+  <Stack>
+    <Inline>
       <Switch variant="primary" checked={false} />
       <Switch variant="primary" checked={true} />
       <Switch variant="secondary" checked={false} />
@@ -64,8 +67,8 @@ export const Disabled: Story = () => (
       <Switch destructive variant="primary" checked={true} />
       <Switch destructive variant="secondary" checked={false} />
       <Switch destructive variant="secondary" checked={true} />
-    </Row>
-    <Row css={{ gap: '$4' }}>
+    </Inline>
+    <Inline>
       <Switch disabled variant="primary" checked={false} />
       <Switch disabled variant="primary" checked={true} />
       <Switch disabled variant="secondary" checked={false} />
@@ -74,8 +77,8 @@ export const Disabled: Story = () => (
       <Switch disabled destructive variant="primary" checked={true} />
       <Switch disabled destructive variant="secondary" checked={false} />
       <Switch disabled destructive variant="secondary" checked={true} />
-    </Row>
-  </>
+    </Inline>
+  </Stack>
 )
 
 export const States: Story = () => {

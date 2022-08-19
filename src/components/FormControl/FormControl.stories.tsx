@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 import { FormControl, FormControlHelp } from '.'
 import { rotateCheckedState, withFormData } from '../../docs/util'
 import { Checkbox, CheckedState } from '../Checkbox'
-import { Row } from '../Flex'
 import { Form, FormButton } from '../Form'
+import { Inline } from '../Inline'
 import { Input } from '../Input'
 import { Label, LabelOptional } from '../Label'
 import { Radio, RadioGroup } from '../RadioGroup'
 import { Select, SelectItem } from '../Select'
+import { Stack } from '../Stack'
 import { TextArea } from '../TextArea'
 
 export default {
@@ -46,8 +47,8 @@ export const API_1: Story = () => {
   const rotate = rotateCheckedState(setRequired)
 
   return (
-    <>
-      <Row css={{ gap: '$3', mb: '$5' }}>
+    <Stack spacing="large">
+      <Inline>
         <Checkbox
           checked={required}
           onCheckedChange={rotate}
@@ -73,7 +74,7 @@ export const API_1: Story = () => {
           onCheckedChange={setNative}
           label="Native"
         ></Checkbox>
-      </Row>
+      </Inline>
 
       <FormControl>
         <Input
@@ -92,7 +93,7 @@ export const API_1: Story = () => {
           validText="This is the valid text"
         />
       </FormControl>
-    </>
+    </Stack>
   )
 }
 
@@ -267,8 +268,8 @@ export const Controls: Story = () => {
   }
 
   return (
-    <>
-      <Row css={{ gap: '$3' }}>
+    <Stack spacing="large">
+      <Inline>
         <Checkbox
           checked={required}
           onCheckedChange={rotate}
@@ -294,7 +295,7 @@ export const Controls: Story = () => {
           onCheckedChange={setNative}
           label="Native"
         ></Checkbox>
-      </Row>
+      </Inline>
 
       <Form onSubmit={withFormData(alert)}>
         <FormControl>
@@ -362,7 +363,7 @@ export const Controls: Story = () => {
         </FormControl>
         <FormButton />
       </Form>
-    </>
+    </Stack>
   )
 }
 
@@ -387,8 +388,8 @@ export const WithIds: Story = () => {
   }
 
   return (
-    <>
-      <Row css={{ gap: '$3' }}>
+    <Stack spacing="large">
+      <Inline>
         <Checkbox
           checked={required}
           onCheckedChange={rotate}
@@ -414,7 +415,7 @@ export const WithIds: Story = () => {
           onCheckedChange={setNative}
           label="Native"
         ></Checkbox>
-      </Row>
+      </Inline>
 
       <Form onSubmit={withFormData(alert)}>
         <FormControl>
@@ -486,6 +487,6 @@ export const WithIds: Story = () => {
         </FormControl>
         <FormButton />
       </Form>
-    </>
+    </Stack>
   )
 }

@@ -23,9 +23,13 @@ export const Inline = styled(Box, {
         justifyContent: 'flex-end',
       },
     },
+    wrap: {
+      true: {
+        flexWrap: 'wrap',
+      },
+    },
   },
   defaultVariants: {
     spacing: 'default',
-    align: 'left',
   },
 })

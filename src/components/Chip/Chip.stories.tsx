@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions'
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Chip } from '.'
-import { Row } from '../'
 import { Variants } from '../../docs/util'
+import { Inline } from '../Inline'
 
 export default {
   title: 'Components/Chip',
@@ -14,17 +14,17 @@ export const Default: Story = (args) => <Chip {...args}>Chip</Chip>
 
 /** Chips are available in 2 sizes, `default` and `small`  */
 export const Sizes: Story = () => (
-  <>
+  <Inline css={{ alignItems: 'center' }}>
     <Chip variant="info" size="small">
       New
     </Chip>
     <Chip variant="error">Error</Chip>
-  </>
+  </Inline>
 )
 
 /** If an `onClose` prop is provided a close button is added and clicking calls the onClose`  */
 export const Closable: Story = () => (
-  <Row css={{ gap: '$3', alignItems: 'center' }}>
+  <Inline css={{ alignItems: 'center' }}>
     <Chip variant="info" size="small" onClose={action('close')}>
       Close
     </Chip>
@@ -50,7 +50,7 @@ export const Closable: Story = () => (
     >
       Click
     </Chip>
-  </Row>
+  </Inline>
 )
 
 export const All: Story = () => (
@@ -95,7 +95,7 @@ export const Interactive: Story = () => (
 )
 
 export const Disabled: Story = () => (
-  <Row css={{ gap: '$3', alignItems: 'center' }}>
+  <Inline css={{ alignItems: 'center' }}>
     <Chip
       as="button"
       onClick={action('disabled')}
@@ -128,5 +128,5 @@ export const Disabled: Story = () => (
     >
       Disabled
     </Chip>
-  </Row>
+  </Inline>
 )

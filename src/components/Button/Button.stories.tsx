@@ -1,7 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import { Column, Grid, Row } from '../'
+import { Grid } from '../'
 import { Variants } from '../../docs/util'
+import { Inline } from '../Inline'
+import { Stack } from '../Stack'
 import { Button } from './Button'
 
 export default {
@@ -61,16 +63,16 @@ export const Default: Story<ComponentProps<typeof Button>> = (args) => {
 
 /* Three size options are available */
 export const Size: Story = () => (
-  <Row css={{ gap: '$3', mb: '$3' }}>
+  <Inline>
     <Button size="small">Small</Button>
     <Button size="default">Default</Button>
     <Button size="large">Large</Button>
-  </Row>
+  </Inline>
 )
 
 /* Add `full-width` to make the button grow to take the full width */
 export const FullWidth: Story = () => (
-  <Column css={{ gap: '$3' }}>
+  <Stack>
     <Button full-width size="small">
       Small
     </Button>
@@ -80,7 +82,7 @@ export const FullWidth: Story = () => (
     <Button full-width size="large">
       Large
     </Button>
-  </Column>
+  </Stack>
 )
 
 /* Three variants are supported,
@@ -90,16 +92,16 @@ export const FullWidth: Story = () => (
  * - `tertiary` use to pair with others as cancel or for icon buttons
  */
 export const Variant: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Inline>
     <Button variant="primary">Primary</Button>
     <Button variant="secondary">Secondary</Button>
     <Button variant="tertiary">Tertiary</Button>
-  </Row>
+  </Inline>
 )
 
 /** If the action is destructive, say a delete or an action that cannot be undone, add the `destructive` flag */
 export const Destructive: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Inline>
     <Button destructive variant="primary">
       Primary
     </Button>
@@ -109,12 +111,12 @@ export const Destructive: Story = () => (
     <Button destructive variant="tertiary">
       Tertiary
     </Button>
-  </Row>
+  </Inline>
 )
 
 /** The `disabled` state is controlled in the standard way */
 export const Disabled: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Inline>
     <Button disabled variant="primary">
       Primary
     </Button>
@@ -124,7 +126,7 @@ export const Disabled: Story = () => (
     <Button disabled variant="tertiary">
       Tertiary
     </Button>
-  </Row>
+  </Inline>
 )
 
 /**

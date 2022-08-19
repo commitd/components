@@ -1,9 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Grid } from '.'
-import { Row } from '../'
 import type { CSS } from '../../stitches.config'
 import { GridBox } from '../../utils/story-utils'
+import { Inline } from '../Inline'
 
 export default {
   title: 'Components/Grid',
@@ -159,7 +159,7 @@ const Template: Story<{
  *
  */
 export const JustifyItems: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Inline>
     <Grid
       css={{
         justifyItems: 'start',
@@ -212,7 +212,7 @@ export const JustifyItems: Story = () => (
       <GridBox />
       <GridBox />
     </Grid>
-  </Row>
+  </Inline>
 )
 
 /**
@@ -228,7 +228,7 @@ export const JustifyItems: Story = () => (
  * - `stretch` - fills the whole height of the cell (this is the default)
  */
 export const AlignItems: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Inline>
     <Grid
       css={{
         alignItems: 'start',
@@ -281,7 +281,7 @@ export const AlignItems: Story = () => (
       <GridBox />
       <GridBox />
     </Grid>
-  </Row>
+  </Inline>
 )
 
 /**
@@ -314,7 +314,7 @@ export const AlignItems: Story = () => (
  * - `space-evenly` - places an even amount of space between each grid item, including the far ends
  */
 export const JustifyContent: Story = () => (
-  <Row css={{ gap: '$3', flexWrap: 'wrap' }}>
+  <Inline wrap>
     <Grid
       css={{
         justifyContent: 'start',
@@ -413,7 +413,7 @@ export const JustifyContent: Story = () => (
       <GridBox />
       <GridBox />
     </Grid>
-  </Row>
+  </Inline>
 )
 
 /**
@@ -431,7 +431,7 @@ export const JustifyContent: Story = () => (
  * - `space-evenly` - places an even amount of space between each grid item, including the far ends
  */
 export const AlignContent: Story = () => (
-  <Row css={{ gap: '$3', flewWrap: 'wrap' }}>
+  <Inline wrap>
     <Grid
       css={{
         height: '$10',
@@ -530,7 +530,7 @@ export const AlignContent: Story = () => (
       <GridBox />
       <GridBox />
     </Grid>
-  </Row>
+  </Inline>
 )
 
 /**
@@ -563,7 +563,7 @@ export const AlignContent: Story = () => (
  * - `dense` - tells the auto-placement algorithm to attempt to fill in holes earlier in the grid if smaller items come up later
  */
 export const GridAutoFlow: Story = () => (
-  <Row css={{ gap: '$3' }}>
+  <Inline>
     <Grid
       css={{
         gridAutoFlow: 'row',
@@ -588,7 +588,7 @@ export const GridAutoFlow: Story = () => (
       <GridBox>3</GridBox>
       <GridBox>4</GridBox>
     </Grid>
-  </Row>
+  </Inline>
 )
 
 /**

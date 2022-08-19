@@ -1,8 +1,9 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Tooltip, TooltipProvider } from '.'
-import { Box, Button, Flex, Row } from '../../'
+import { Box, Button, Flex } from '../../'
 import { Check } from '../Icons'
+import { Inline } from '../Inline'
 
 export default {
   title: 'Components/Tooltip',
@@ -24,14 +25,14 @@ export const Default: Story = () => (
 
 /** The `open` state can be controlled, or you can start a tooltip open then it behaves normally using `defaultOpen`  */
 export const Open: Story = () => (
-  <Row gap>
+  <Inline>
     <Tooltip open={true} content="OK">
       <Button>Open</Button>
     </Tooltip>
     <Tooltip defaultOpen content="OK">
       <Button>DefaultOpen</Button>
     </Tooltip>
-  </Row>
+  </Inline>
 )
 
 export const Placement: Story = () => (
@@ -125,7 +126,7 @@ export const Delay: Story = () => (
  * You can turn off the use of portals with the `portalled` prop, but in most situations they should work correctly with the default.
  */
 export const Portalled: Story = () => (
-  <Row gap>
+  <Inline>
     <Tooltip content="Portalled" portalled>
       <Button>
         <Check />
@@ -136,7 +137,7 @@ export const Portalled: Story = () => (
         <Check />
       </Button>
     </Tooltip>
-  </Row>
+  </Inline>
 )
 
 /**

@@ -2,7 +2,9 @@ import { mdiFormatItalic } from '@mdi/js'
 import { ComponentStory, Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Toggle } from '.'
-import { Column, Row, Svg } from '../'
+import { Svg } from '../'
+import { Inline } from '../Inline'
+import { Stack } from '../Stack'
 
 export default {
   title: 'Components/Toggle',
@@ -24,7 +26,7 @@ const Template: ComponentStory<typeof Toggle> = ({ ...args }) => {
 export const Default = Template.bind({})
 
 export const Variants: Story = () => (
-  <Row gap>
+  <Inline>
     <Toggle variant="primary">
       <Italic />
     </Toggle>
@@ -34,11 +36,11 @@ export const Variants: Story = () => (
     <Toggle variant="tertiary">
       <Italic />
     </Toggle>
-  </Row>
+  </Inline>
 )
 
 export const Sizes: Story = () => (
-  <Row gap>
+  <Inline>
     <Toggle size="small">
       <Italic />
     </Toggle>
@@ -48,7 +50,7 @@ export const Sizes: Story = () => (
     <Toggle size="large">
       <Italic />
     </Toggle>
-  </Row>
+  </Inline>
 )
 
 /**
@@ -56,8 +58,8 @@ export const Sizes: Story = () => (
  * This prop is not intended for normal use and the toggles here will not interact normally.
  */
 export const States: Story = () => (
-  <Column gap>
-    <Row gap>
+  <Stack>
+    <Inline>
       <Toggle variant="primary">
         <Italic />
       </Toggle>
@@ -79,8 +81,8 @@ export const States: Story = () => (
       <Toggle variant="primary" disabled>
         <Italic />
       </Toggle>
-    </Row>
-    <Row gap>
+    </Inline>
+    <Inline>
       <Toggle variant="secondary">
         <Italic />
       </Toggle>
@@ -102,8 +104,8 @@ export const States: Story = () => (
       <Toggle variant="secondary" disabled>
         <Italic />
       </Toggle>
-    </Row>
-    <Row gap>
+    </Inline>
+    <Inline>
       <Toggle variant="tertiary">
         <Italic />
       </Toggle>
@@ -125,6 +127,6 @@ export const States: Story = () => (
       <Toggle variant="tertiary" disabled>
         <Italic />
       </Toggle>
-    </Row>
-  </Column>
+    </Inline>
+  </Stack>
 )

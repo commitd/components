@@ -9,8 +9,8 @@ import {
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { ToggleGroup, ToggleGroupItem } from '.'
-import { Column } from '../Flex'
 import { ChevronDown, ChevronUp } from '../Icons'
+import { Stack } from '../Stack'
 import { Svg } from '../Svg'
 
 export default {
@@ -67,7 +67,7 @@ const Template: Story<typeof ToggleGroup> = ({ ...args }) => {
 export const Default = Template.bind({})
 
 export const Variants: Story = () => (
-  <Column gap>
+  <Stack>
     <ToggleGroup
       type="single"
       variant="primary"
@@ -116,11 +116,11 @@ export const Variants: Story = () => (
         <TextAlignRight />
       </ToggleGroupItem>
     </ToggleGroup>
-  </Column>
+  </Stack>
 )
 
 export const Sizes: Story = () => (
-  <Column gap>
+  <Stack>
     <ToggleGroup type="single" size="small" defaultValue="left">
       <ToggleGroupItem value="left" aria-label="left">
         <TextAlignLeft />
@@ -154,7 +154,7 @@ export const Sizes: Story = () => (
         <TextAlignRight />
       </ToggleGroupItem>
     </ToggleGroup>
-  </Column>
+  </Stack>
 )
 
 export const MultipleSelections: Story = () => (
@@ -172,7 +172,7 @@ export const MultipleSelections: Story = () => (
 )
 
 export const Orientation: Story = () => (
-  <Column gap>
+  <Stack>
     <ToggleGroup
       type="single"
       defaultValue="top"
@@ -199,5 +199,5 @@ export const Orientation: Story = () => (
         <ChevronDown />
       </ToggleGroupItem>
     </ToggleGroup>
-  </Column>
+  </Stack>
 )
