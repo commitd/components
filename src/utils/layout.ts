@@ -4,15 +4,15 @@ export const spacing = {
     gap: '$2',
   },
   default: {
-    gap: '$4',
+    gap: '$3',
   },
   large: {
-    gap: '$8',
+    gap: '$6',
   },
   responsive: {
-    gap: '$3',
+    gap: '$2',
     '@md': {
-      gap: '$4',
+      gap: '$3',
     },
     '@lg': {
       gap: '$6',
