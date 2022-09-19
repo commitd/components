@@ -165,9 +165,10 @@ const StyledChip = styled(DEFAULT_TAG, {
             transition: 'background 0s',
           },
         },
-        '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]': {
-          backgroundColor: '$$active',
-        },
+        '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]':
+          {
+            backgroundColor: '$$active',
+          },
       },
     },
   },

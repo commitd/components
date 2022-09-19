@@ -27,16 +27,15 @@ export function withFormData(callback: (...args: any[]) => void) {
   }
 }
 
-export const rotateCheckedState = (
-  setChecked: Dispatch<SetStateAction<CheckedState>>
-) => () => {
-  setChecked((checked) => {
-    if (checked === 'indeterminate') {
-      return true
-    } else if (checked) {
-      return false
-    } else {
-      return 'indeterminate'
-    }
-  })
-}
+export const rotateCheckedState =
+  (setChecked: Dispatch<SetStateAction<CheckedState>>) => () => {
+    setChecked((checked) => {
+      if (checked === 'indeterminate') {
+        return true
+      } else if (checked) {
+        return false
+      } else {
+        return 'indeterminate'
+      }
+    })
+  }

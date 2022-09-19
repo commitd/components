@@ -92,7 +92,7 @@ export const ListItem = forwardRef<unknown, ListItemProps>(
       return (
         <StyledInteractiveListItem
           {...buttonProps}
-          ref={(forwardedRef as unknown) as ForwardedRef<HTMLButtonElement>}
+          ref={forwardedRef as unknown as ForwardedRef<HTMLButtonElement>}
         />
       )
     } else {
@@ -100,7 +100,7 @@ export const ListItem = forwardRef<unknown, ListItemProps>(
       return (
         <StyledListItem
           {...divProps}
-          ref={(forwardedRef as unknown) as ForwardedRef<HTMLDivElement>}
+          ref={forwardedRef as unknown as ForwardedRef<HTMLDivElement>}
         />
       )
     }

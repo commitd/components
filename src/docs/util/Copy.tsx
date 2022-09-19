@@ -21,9 +21,8 @@ export const Copy: FC<CopyProps> = ({
   ...others
 }) => {
   const [open, { setTrue: setOpen, setFalse: close }] = useBoolean(false)
-  const [copied, { setTrue: setCopied, setFalse: clearCopied }] = useBoolean(
-    false
-  )
+  const [copied, { setTrue: setCopied, setFalse: clearCopied }] =
+    useBoolean(false)
   useTimeout(
     () => {
       close()

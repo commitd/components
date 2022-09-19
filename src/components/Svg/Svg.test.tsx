@@ -4,7 +4,7 @@ import { Default } from './Svg.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(
-    Default({}, ({ globals: { portalled: true } } as unknown) as StoryContext<
+    Default({}, { globals: { portalled: true } } as unknown as StoryContext<
       ReactFramework,
       Args
     >)
@@ -14,7 +14,7 @@ it('renders light without error', () => {
 
 it('renders dark without error', () => {
   const { asFragment } = renderDark(
-    Default({}, ({ globals: { portalled: true } } as unknown) as StoryContext<
+    Default({}, { globals: { portalled: true } } as unknown as StoryContext<
       ReactFramework,
       Args
     >)
