@@ -10,9 +10,10 @@ const flatten = <T extends unknown>(arr: Array<T>) => [].concat.apply([], arr)
 const cartesianProduct = (props: { [x: string]: any }): { [x: string]: any } =>
   Object.keys(props)
     .map((k) => arr(props[k]).map((v) => [k, v]))
-    .reduce((acc, set) => flatten(acc.map((x) => set.map((y) => [...x, y]))), [
-      [],
-    ])
+    .reduce(
+      (acc, set) => flatten(acc.map((x) => set.map((y) => [...x, y]))),
+      [[]]
+    )
     .map((pairsArr) =>
       pairsArr.reduce((result, [k, v]) => ({ ...result, [k]: v }), {})
     )

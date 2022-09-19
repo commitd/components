@@ -57,9 +57,8 @@ export const TextArea = forwardRef<
   ElementRef<typeof DEFAULT_TAG>,
   TextAreaProps
 >(({ label, onValueChange, ...props }, forwardedRef) => {
-  const [id, { state, disabled, required }, remainingProps] = useFormControl(
-    props
-  )
+  const [id, { state, disabled, required }, remainingProps] =
+    useFormControl(props)
   return (
     <>
       {label && (
