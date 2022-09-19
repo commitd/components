@@ -170,9 +170,8 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
     },
     forwardedRef
   ) => {
-    const [id, { state, disabled, required }, remainingProps] = useFormControl(
-      props
-    )
+    const [id, { state, disabled, required }, remainingProps] =
+      useFormControl(props)
     return (
       <ConditionalWrapper
         condition={label}

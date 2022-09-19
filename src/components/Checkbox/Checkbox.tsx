@@ -48,9 +48,8 @@ export const Checkbox = forwardRef<
   ElementRef<typeof StyledRoot>,
   CheckboxProps
 >(({ label, ...props }, forwardedRef) => {
-  const [id, { state, disabled, required }, remainingProps] = useFormControl(
-    props
-  )
+  const [id, { state, disabled, required }, remainingProps] =
+    useFormControl(props)
   return (
     <ConditionalWrapper
       condition={label}

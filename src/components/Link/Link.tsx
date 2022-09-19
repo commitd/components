@@ -39,9 +39,7 @@ const InternalLink: React.FC<InternalLinkProps> = forwardRef(
  *
  * Used inside `Link` but can be used separately to create custom links.
  * */
-export function linkProps(
-  href: string | undefined
-): {
+export function linkProps(href: string | undefined): {
   href: string | undefined
   target?: string
   rel?: string

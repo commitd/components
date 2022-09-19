@@ -41,9 +41,10 @@ export const DEFAULT_FORM_STATE: FormControlState = {
   state: undefined,
 }
 
-export const FormControlContext = createContext<
-  [FormControlState, Dispatch<SetStateAction<FormControlState>>] | undefined
->(undefined)
+export const FormControlContext =
+  createContext<
+    [FormControlState, Dispatch<SetStateAction<FormControlState>>] | undefined
+  >(undefined)
 FormControlContext.displayName = 'FormControlContext'
 
 if (process.env.NODE_ENV !== 'production') {

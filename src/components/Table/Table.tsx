@@ -97,10 +97,12 @@ export const Table = styled(DEFAULT_TAG, {
   [`& th`]: {
     fontWeight: '$bold',
   },
-  [`& thead td,& thead th,& ${TableHead} td,& ${TableHead} th,& ${TableHead} ${TableCell}`]: {
-    fontWeight: '$regular',
-  },
-  [`& tfoot td,& tfoot th,& ${TableFoot} td,& ${TableFoot} th,& ${TableFoot} ${TableCell}`]: {},
+  [`& thead td,& thead th,& ${TableHead} td,& ${TableHead} th,& ${TableHead} ${TableCell}`]:
+    {
+      fontWeight: '$regular',
+    },
+  [`& tfoot td,& tfoot th,& ${TableFoot} td,& ${TableFoot} th,& ${TableFoot} ${TableCell}`]:
+    {},
 
   [`& thead,& ${TableHead}`]: {
     backgroundColor: '$grey2',
@@ -110,26 +112,32 @@ export const Table = styled(DEFAULT_TAG, {
   variants: {
     hover: {
       row: {
-        [`& tbody tr:hover,& tbody ${TableRow}:hover,& ${TableBody} tr:hover,& ${TableBody} ${TableRow}:hover`]: {
-          backgroundColor: '$grey4',
-        },
-        [`& tbody tr[class*="selected"],& tbody ${TableRow}[class*="selected"],& ${TableBody} tr[class*="selected"],& ${TableBody} ${TableRow}[class*="selected"]`]: {
-          backgroundColor: '$selection',
-        },
-        [`& tbody td[class*="selected"],& tbody ${TableCell}[class*="selected"],& ${TableBody} td[class*="selected"],& ${TableBody} ${TableCell}[class*="selected"]`]: {
-          backgroundColor: '$selection',
-        },
+        [`& tbody tr:hover,& tbody ${TableRow}:hover,& ${TableBody} tr:hover,& ${TableBody} ${TableRow}:hover`]:
+          {
+            backgroundColor: '$grey4',
+          },
+        [`& tbody tr[class*="selected"],& tbody ${TableRow}[class*="selected"],& ${TableBody} tr[class*="selected"],& ${TableBody} ${TableRow}[class*="selected"]`]:
+          {
+            backgroundColor: '$selection',
+          },
+        [`& tbody td[class*="selected"],& tbody ${TableCell}[class*="selected"],& ${TableBody} td[class*="selected"],& ${TableBody} ${TableCell}[class*="selected"]`]:
+          {
+            backgroundColor: '$selection',
+          },
       },
       cell: {
-        [`& tbody td:hover,& tbody ${TableCell}:hover,& ${TableBody} td:hover,& ${TableBody} ${TableCell}:hover`]: {
-          backgroundColor: '$grey4',
-        },
-        [`& tbody td[class*="selected"],& tbody ${TableCell}[class*="selected"],& ${TableBody} td[class*="selected"],& ${TableBody} ${TableCell}[class*="selected"]`]: {
-          backgroundColor: '$selection',
-        },
-        [`& tbody tr[class*="selected"],& tbody ${TableRow}[class*="selected"],& ${TableBody} tr[class*="selected"],& ${TableBody} ${TableRow}[class*="selected"]`]: {
-          backgroundColor: '$selection',
-        },
+        [`& tbody td:hover,& tbody ${TableCell}:hover,& ${TableBody} td:hover,& ${TableBody} ${TableCell}:hover`]:
+          {
+            backgroundColor: '$grey4',
+          },
+        [`& tbody td[class*="selected"],& tbody ${TableCell}[class*="selected"],& ${TableBody} td[class*="selected"],& ${TableBody} ${TableCell}[class*="selected"]`]:
+          {
+            backgroundColor: '$selection',
+          },
+        [`& tbody tr[class*="selected"],& tbody ${TableRow}[class*="selected"],& ${TableBody} tr[class*="selected"],& ${TableBody} ${TableRow}[class*="selected"]`]:
+          {
+            backgroundColor: '$selection',
+          },
       },
     },
     striped: {
@@ -144,11 +152,12 @@ export const Table = styled(DEFAULT_TAG, {
       true: {
         position: 'relative',
         borderCollapse: 'separate',
-        [`& thead td,& thead th,& ${TableHead} td,& ${TableHead} th,& ${TableHead} ${TableCell}`]: {
-          position: 'sticky',
-          top: 0,
-          zIndex: 2,
-        },
+        [`& thead td,& thead th,& ${TableHead} td,& ${TableHead} th,& ${TableHead} ${TableCell}`]:
+          {
+            position: 'sticky',
+            top: 0,
+            zIndex: 2,
+          },
         [`& thead,& ${TableHead}`]: {
           position: 'sticky',
           top: 0,
