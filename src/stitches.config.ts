@@ -16,8 +16,7 @@ import {
   sandDark,
   whiteA,
 } from '@radix-ui/colors'
-import type * as Stitches from '@stitches/react'
-import { createStitches } from '@stitches/react'
+import { createStitches, CSS, PropertyValue, ScaleValue } from '@stitches/react'
 import { ReactNode } from 'react'
 import { ThemeConfig } from './components/ThemeProvider/ThemeProvider.stories'
 
@@ -369,110 +368,70 @@ const stitches = createStitches({
     light: '(prefers-color-scheme: light)',
   },
   utils: {
-    p: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'paddingTop'>
-    ) => ({
+    p: (value: ScaleValue<'space'> | PropertyValue<'paddingTop'>) => ({
       paddingTop: value,
       paddingBottom: value,
       paddingLeft: value,
       paddingRight: value,
     }),
-    pt: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'paddingTop'>
-    ) => ({
+    pt: (value: ScaleValue<'space'> | PropertyValue<'paddingTop'>) => ({
       paddingTop: value,
     }),
-    pr: (
-      value:
-        | Stitches.ScaleValue<'space'>
-        | Stitches.PropertyValue<'paddingRight'>
-    ) => ({
+    pr: (value: ScaleValue<'space'> | PropertyValue<'paddingRight'>) => ({
       paddingRight: value,
     }),
-    pb: (
-      value:
-        | Stitches.ScaleValue<'space'>
-        | Stitches.PropertyValue<'paddingBottom'>
-    ) => ({
+    pb: (value: ScaleValue<'space'> | PropertyValue<'paddingBottom'>) => ({
       paddingBottom: value,
     }),
-    pl: (
-      value:
-        | Stitches.ScaleValue<'space'>
-        | Stitches.PropertyValue<'paddingLeft'>
-    ) => ({
+    pl: (value: ScaleValue<'space'> | PropertyValue<'paddingLeft'>) => ({
       paddingLeft: value,
     }),
-    px: (
-      value:
-        | Stitches.ScaleValue<'space'>
-        | Stitches.PropertyValue<'paddingLeft'>
-    ) => ({
+    px: (value: ScaleValue<'space'> | PropertyValue<'paddingLeft'>) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'paddingTop'>
-    ) => ({
+    py: (value: ScaleValue<'space'> | PropertyValue<'paddingTop'>) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
 
-    m: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginTop'>
-    ) => ({
+    m: (value: ScaleValue<'space'> | PropertyValue<'marginTop'>) => ({
       marginTop: value,
       marginBottom: value,
       marginLeft: value,
       marginRight: value,
     }),
-    mt: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginTop'>
-    ) => ({
+    mt: (value: ScaleValue<'space'> | PropertyValue<'marginTop'>) => ({
       marginTop: value,
     }),
-    mr: (
-      value:
-        | Stitches.ScaleValue<'space'>
-        | Stitches.PropertyValue<'marginRight'>
-    ) => ({
+    mr: (value: ScaleValue<'space'> | PropertyValue<'marginRight'>) => ({
       marginRight: value,
     }),
-    mb: (
-      value:
-        | Stitches.ScaleValue<'space'>
-        | Stitches.PropertyValue<'marginBottom'>
-    ) => ({
+    mb: (value: ScaleValue<'space'> | PropertyValue<'marginBottom'>) => ({
       marginBottom: value,
     }),
-    ml: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginLeft'>
-    ) => ({
+    ml: (value: ScaleValue<'space'> | PropertyValue<'marginLeft'>) => ({
       marginLeft: value,
     }),
-    mx: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginLeft'>
-    ) => ({
+    mx: (value: ScaleValue<'space'> | PropertyValue<'marginLeft'>) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (
-      value: Stitches.ScaleValue<'space'> | Stitches.PropertyValue<'marginTop'>
-    ) => ({
+    my: (value: ScaleValue<'space'> | PropertyValue<'marginTop'>) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
     size: (
       value:
-        | Stitches.ScaleValue<'sizes'>
-        | Stitches.PropertyValue<'width'>
-        | Stitches.PropertyValue<'height'>
+        | ScaleValue<'sizes'>
+        | PropertyValue<'width'>
+        | PropertyValue<'height'>
     ) => ({
       width: value,
       height: value,
     }),
-    '@dark': (value: Stitches.CSS) => ({
+    '@dark': (value: CSS) => ({
       [`.${DARK_THEME} &`]: value,
     }),
   },
@@ -587,8 +546,9 @@ export const {
   config,
 } = stitches
 
-export type CSS = Stitches.CSS<typeof config>
+type ComponentsCSS = CSS<typeof config>
 export type { VariantProps } from '@stitches/react'
+export { ComponentsCSS as CSS }
 export type CSSProps = { css?: CSS }
 export type As = React.ElementType
 export type AsProps = {
