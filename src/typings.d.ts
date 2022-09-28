@@ -17,7 +17,7 @@ export type PartialPick<T, K extends keyof T> = {
 }
 
 /**
- * A utility typing to allow the extraction of just the raw variants from a stiches variant.
+ * A utility typing to allow the extraction of just the raw variants from a stitches variant.
  *
  * For example:
  * ```JustVariants<ComponentProps<typeof Spinner>['variant']> // "scale" | "draw" | "spin"```

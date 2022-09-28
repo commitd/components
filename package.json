@@ -142,7 +142,7 @@
     "storybook-dark-mode": "^1.1.2",
     "ts-jest": "^27.1.4",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
-    "typescript": "^4.6.3"
+    "typescript": "4.7.4"
   },
   "dependencies": {
     "@committed/hooks": "^0.8.0",
@@ -173,6 +173,6 @@
     "@radix-ui/react-toggle-group": "^1.0.0",
     "@radix-ui/react-tooltip": "^1.0.0",
     "@radix-ui/react-visually-hidden": "^1.0.0",
-    "@stitches/react": "^1.2.7"
+    "@stitches/react": "^1.2.8"
   }
 }
