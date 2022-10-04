@@ -16,13 +16,19 @@ const StyledSvg = styled(DEFAULT_TAG, {
 })
 
 type SvgVariants = VariantProps<typeof StyledSvg>
-type SvgProps = ComponentProps<typeof DEFAULT_TAG> &
+type SvgProps = Omit<ComponentProps<typeof DEFAULT_TAG>, 'fr'> &
   CSSProps &
   SvgVariants & {
     /** Add a title to the svg */
     title?: string
     /** Add the given svg path  */
     path?: string
+    /**
+     * The fr attribute defines the radius of the focal point for the radial gradient.
+     *
+     * Forced optional due to ts bug
+     */
+    fr?: string
   }
 
 /**
