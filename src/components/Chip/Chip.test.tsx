@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderDark, renderLight, screen, userEvent } from 'test-utils'
 import { Chip } from '.'
+import { renderDark, renderLight, screen, userEvent } from '../../test'
 import { All, Default } from './Chip.stories'
 
 it('renders light without error', () => {

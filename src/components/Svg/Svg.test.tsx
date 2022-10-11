@@ -1,5 +1,5 @@
 import { Args, ReactFramework, StoryContext } from '@storybook/react'
-import { renderDark, renderLight } from 'test-utils'
+import { renderDark, renderLight } from '../../test'
 import { Default } from './Svg.stories'
 
 it('renders light without error', () => {

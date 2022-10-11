@@ -1,9 +1,16 @@
 import React from 'react'
-import { Box } from '../components/Box'
-import { CSS } from '../stitches.config'
-import { randomColor } from './'
+import { Box } from '../../components/Box'
+import { CSS } from '../../stitches.config'
 
 const border = '1px solid $grey3'
+
+const keys = ['brandYellow', 'brandGrey', 'info', 'success', 'error', 'warning']
+type Depth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+export const randomColor = (depth: Depth = 5): CSS['color'] => {
+  const color = keys[Math.floor(Math.random() * keys.length)]
+  return `$${color}${depth}`
+}
 
 type BoxProps = React.ComponentProps<typeof Box>
 type ExampleComponentProps = Omit<BoxProps, 'css'> & {

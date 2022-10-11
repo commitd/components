@@ -6,7 +6,7 @@ import {
   screen,
   userEvent,
   waitForElementToBeRemoved,
-} from 'test-utils'
+} from '../../test'
 import * as stories from './Toast.stories'
 
 const { Default, WithClose, WithAction } = composeStories(stories)

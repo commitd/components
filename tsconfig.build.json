@@ -7,8 +7,7 @@
   "exclude": [
     "**/*.test.tsx",
     "**/*.stories.tsx",
-    "**/docs/**/*.ts",
-    "**/docs/**/*.tsx",
-    "**/test-utils.tsx"
+    "src/docs/**/*",
+    "src/test/**/*"
   ]
 }

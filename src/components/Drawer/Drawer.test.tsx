@@ -6,7 +6,7 @@ import {
   screen,
   userEvent,
   waitForElementToBeRemoved,
-} from 'test-utils'
+} from '../../test'
 import { Controllable, Default } from './Drawer.stories'
 
 const defaultDrawerText = 'This is a Drawer'

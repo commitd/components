@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDark, renderLight } from 'test-utils'
+import { renderDark, renderLight } from '../../test'
 import { Caption, Monospace, Span, Strike } from './'
 import { Default } from './Text.stories'
 
