@@ -1,11 +1,11 @@
 import React from 'react'
-import { act, renderDark, renderLight, screen, userEvent } from 'test-utils'
 import {
   ConfirmDialog,
   ConfirmDialogActions,
   ConfirmDialogContent,
   ConfirmDialogTrigger,
 } from '.'
+import { act, renderDark, renderLight, screen, userEvent } from '../../test'
 import { Button } from '../Button'
 import { Default } from './ConfirmDialog.stories'
 

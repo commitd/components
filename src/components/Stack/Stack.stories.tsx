@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react'
 import React, { ComponentProps } from 'react'
 import { Stack } from '.'
+import { ExampleComponent } from '../../docs/util/story-utils'
 import { CSS } from '../../stitches.config'
-import { ExampleComponent } from '../../utils/story-utils'
 
 export default {
   title: 'Components/Stack',

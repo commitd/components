@@ -8,7 +8,7 @@ import {
   renderLight,
   screen,
   userEvent,
-} from 'test-utils'
+} from '../../test'
 import * as stories from './ContextMenu.stories'
 
 const { Default, Nested, Destructive } = composeStories(stories)

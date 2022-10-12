@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDark, renderLight } from 'test-utils'
+import { renderDark, renderLight } from '../../test'
 import { Actions, Default } from './Card.stories'
 
 it('renders light without error', () => {

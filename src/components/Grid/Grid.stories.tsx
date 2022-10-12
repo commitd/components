@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Grid } from '.'
+import { GridBox } from '../../docs/util/story-utils'
 import type { CSS } from '../../stitches.config'
-import { GridBox } from '../../utils/story-utils'
 import { Inline } from '../Inline'
 
 export default {

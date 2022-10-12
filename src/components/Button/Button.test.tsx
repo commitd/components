@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/testing-react'
 import React from 'react'
-import { renderDark, renderLight, screen, userEvent } from 'test-utils'
+import { renderDark, renderLight, screen, userEvent } from '../../test'
 import * as stories from './Button.stories'
 
 const { Default, Disabled, All } = composeStories(stories)

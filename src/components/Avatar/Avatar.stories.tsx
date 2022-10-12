@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import React from 'react'
 import { Avatar } from '.'
 import { Flex } from '../'
-import { randomColor } from '../../utils'
+import { randomColor } from '../../docs/util'
 
 export default {
   title: 'Components/Avatar',

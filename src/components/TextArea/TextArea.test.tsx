@@ -1,6 +1,6 @@
 import React from 'react'
-import { renderDark, renderLight, screen, userEvent } from 'test-utils'
 import { TextArea } from '.'
+import { renderDark, renderLight, screen, userEvent } from '../../test'
 import { Default } from './TextArea.stories'
 
 it('renders light without error', () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDark, renderLight } from 'test-utils'
+import { renderDark, renderLight } from '../../test'
 import { Card, CardBody, CardHeading, CardLeadIn } from '../Card'
 import { Link } from '../Link'
 import { Text } from '../Text'

@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/testing-react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { renderDark, renderLight, screen, waitFor } from 'test-utils'
+import { renderDark, renderLight, screen, waitFor } from '../../test'
 import * as stories from './Accordion.stories'
 
 const { Default, Multiple, OneOpen } = composeStories(stories)

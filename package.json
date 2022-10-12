@@ -21,13 +21,12 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && node build.js && tsc --project tsconfig.build.json",
+    "build": "npm run clean && node build.mjs && tsc --project tsconfig.build.json",
     "lint": "tsc --noEmit && eslint './src/**/*.{ts,tsx}'",
     "test": "jest",
     "coverage": "npx live-server coverage/lcov-report",
     "commit": "cz",
     "size": "size-limit",
-    "analyze": "size-limit --why",
     "generate": "plop --plopfile ./generators/plopfile.js",
     "storybook": "start-storybook -p 6006 -h 0.0.0.0",
     "build-storybook": "build-storybook",
@@ -50,7 +49,7 @@
   "size-limit": [
     {
       "path": "dist/index.cjs.js",
-      "limit": "90 KB"
+      "limit": "900 KB"
     },
     {
       "path": "dist/index.esm.js",
@@ -89,7 +88,7 @@
     "@faker-js/faker": "^6.1.2",
     "@fontsource/dosis": "^4.5.7",
     "@fontsource/inter": "^4.5.7",
-    "@size-limit/preset-small-lib": "^7.0.8",
+    "@size-limit/preset-small-lib": "^8.1.0",
     "@storybook/addon-docs": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/react": "^6.5.12",
@@ -110,6 +109,7 @@
     "danger": "^11.0.2",
     "danger-plugin-spellcheck": "^2.1.0",
     "esbuild": "^0.14.36",
+    "esbuild-node-externals": "^1.5.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -137,7 +137,7 @@
     "react-virtual": "^2.10.4",
     "resize-observer-polyfill": "^1.5.1",
     "semantic-release": "^19.0.3",
-    "size-limit": "^7.0.8",
+    "size-limit": "^8.1.0",
     "story-description-loader": "^1.0.0",
     "storybook-dark-mode": "^1.1.2",
     "ts-jest": "^27.1.4",

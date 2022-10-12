@@ -1,6 +1,6 @@
 import React from 'react'
-import { act, renderDark, renderLight, renderPlain, screen } from 'test-utils'
 import { ThemeProvider } from '.'
+import { act, renderDark, renderLight, renderPlain, screen } from '../../test'
 import {
   UtilityUseThemeController,
   UtilityUseThemeResolve,

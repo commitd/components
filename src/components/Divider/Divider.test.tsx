@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDark, renderLight, screen } from 'test-utils'
+import { renderDark, renderLight, screen } from '../../test'
 import { AsHr, Decorative, Default } from './Divider.stories'
 
 it('renders light without error', () => {
