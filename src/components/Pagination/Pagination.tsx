@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ComponentProps, useCallback, useMemo } from 'react'
 import { styled } from '../../stitches.config'
-import { Box } from '../Box'
 import { Button } from '../Button'
 import { ChevronLeft, ChevronRight } from '../Icons'
+import { Inline } from '../Inline'
 
 const CommonButton = styled(Button, {
   width: '1em',
@@ -13,11 +13,19 @@ const UnclickableButton = styled(Button, {
   pointerEvents: 'none',
 })
 
-export interface PaginationProps {
+type InlineProps = ComponentProps<typeof Inline>
+
+export interface PaginationProps
+  extends Pick<InlineProps, 'align' | 'spacing'> {
+  /**
+    The total number of pages
+    @deprecated use totalPages
+  */
+  count?: number
   /**
     The total number of pages
   */
-  count: number
+  totalPages: number
   /**
     Callback fired when the page is changed
   */
@@ -34,89 +42,132 @@ export interface PaginationProps {
     Number of always visible pages before and after the current page.
   */
   siblingCount?: number
+  /**
+    What to do if only one page
+  */
+  single?: 'show' | 'hide' | 'none'
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
   count,
+  totalPages,
   onPageChange,
   page: pageOptional,
   boundaryCount: boundaryCountOptional,
   siblingCount: siblingCountOptional,
+  single = 'hide',
+  ...inlineProps
 }) => {
-  const page = pageOptional ?? 1
-  const boundaryCount = boundaryCountOptional ?? 1
-  const siblingCount = siblingCountOptional ?? 3
-  const handlePageChange =
-    onPageChange ??
-    (() => {
-      // do nothing
-    })
-  const pages: number[] = []
-  for (let currentPage = 1; currentPage < count + 1; currentPage++) {
-    if (
-      Math.abs(currentPage - 1) <= boundaryCount ||
-      Math.abs(currentPage - count) <= boundaryCount ||
-      Math.abs(currentPage - page) <= siblingCount
-    ) {
-      pages.push(currentPage)
-    }
-  }
-  const items: (
-    | { type: 'page'; currentPage: number }
-    | { type: 'ellipsis' }
-  )[] = []
-  let prevPage: number | null = null
-  for (const page of pages) {
-    if (prevPage != null && page - prevPage > 1) {
-      items.push({ type: 'ellipsis' })
-    }
-    items.push({ type: 'page', currentPage: page })
-    prevPage = page
+  if (totalPages == undefined && count != undefined) {
+    totalPages = count
   }
 
+  const page = pageOptional ?? 1
+  const boundaryCount = boundaryCountOptional ?? 2
+  const siblingCount = siblingCountOptional ?? 3
+
+  const handlePrevious = useCallback(() => {
+    onPageChange?.(Math.max(0, page - 1))
+  }, [onPageChange, page])
+  const handleNext = useCallback(() => {
+    onPageChange?.(Math.min(totalPages, page + 1))
+  }, [onPageChange, page, totalPages])
+  const handleSet = useCallback(
+    (newPage: number) => {
+      onPageChange?.(newPage)
+    },
+    [onPageChange]
+  )
+
+  const items = useMemo(() => {
+    const pages: number[] = []
+    const maxPages = Math.min(
+      2 * (boundaryCount + siblingCount) + 1,
+      totalPages
+    )
+    for (let currentPage = 1; currentPage < totalPages + 1; currentPage++) {
+      if (
+        totalPages <= maxPages + 2 ||
+        (page <= boundaryCount + siblingCount + 1 &&
+          currentPage < maxPages - boundaryCount + 2) ||
+        (page >= totalPages - boundaryCount - siblingCount - 1 &&
+          totalPages - currentPage <= maxPages - boundaryCount) ||
+        Math.abs(currentPage) <= boundaryCount ||
+        Math.abs(currentPage - totalPages) < boundaryCount ||
+        Math.abs(currentPage - page) <= siblingCount
+      ) {
+        pages.push(currentPage)
+      }
+    }
+    const items = []
+    let prevPage: number | null = null
+    for (const page of pages) {
+      if (prevPage != null && page - prevPage > 1) {
+        items.push({ type: 'ellipsis', currentPage: page - 1 })
+      }
+      items.push({ type: 'page', currentPage: page })
+      prevPage = page
+    }
+    return items
+  }, [boundaryCount, totalPages, page, siblingCount])
+
+  const visibility = useMemo(() => {
+    if (totalPages <= 1) {
+      switch (single) {
+        case 'show':
+          return {}
+        case 'hide':
+          return { visibility: 'hidden' }
+        case 'none':
+          return { display: 'none' }
+        default:
+          return {}
+      }
+    }
+    return {}
+  }, [single, totalPages])
+
   return (
-    <Box css={{ display: 'flex', justifyContent: 'flex-start', gap: '$3' }}>
-      <ControlButton onClick={() => handlePageChange(Math.max(0, page - 1))}>
+    <Inline {...inlineProps} css={{ ...visibility }}>
+      <ControlButton disabled={page === 1} onClick={handlePrevious}>
         <ChevronLeft />
       </ControlButton>
-      {items.map((item, i) => {
-        if (item.type === 'page') {
-          const { currentPage } = item
+      {items.map((item) => {
+        const { type, currentPage } = item
+        if (type === 'page') {
           if (currentPage === page) {
-            return <SelectedPage key={i} page={currentPage} />
+            return <SelectedPage key={currentPage} page={currentPage} />
           } else {
             return (
               <PageButton
-                key={i}
+                key={currentPage}
                 page={currentPage}
-                onClick={() => {
-                  handlePageChange(currentPage)
-                }}
+                onSetPage={handleSet}
               />
             )
           }
-        } else if (item.type === 'ellipsis') {
-          return <Ellipsis key={i} />
+        } else if (type === 'ellipsis') {
+          return <Ellipsis key={currentPage} />
         } else {
           return null
         }
       })}
-      <ControlButton
-        onClick={() => handlePageChange(Math.min(count, page + 1))}
-      >
+      <ControlButton disabled={page === totalPages} onClick={handleNext}>
         <ChevronRight />
       </ControlButton>
-    </Box>
+    </Inline>
   )
 }
 
 const PageButton: React.FC<
-  {
+  React.ComponentProps<typeof Button> & {
     page: number
-  } & React.ComponentProps<typeof Button>
-> = ({ page, ...props }) => {
+    onSetPage: (page: number) => void
+  }
+> = ({ page, onSetPage, ...props }) => {
+  const onClick = useCallback(() => onSetPage(page), [onSetPage, page])
   return (
-    <CommonButton variant="tertiary" {...props}>
+    <CommonButton variant="tertiary" {...props} onClick={onClick}>
       {page}
     </CommonButton>
   )
