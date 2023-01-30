@@ -86,6 +86,12 @@ export const linkStyles = css({
       default: {
         textDecoration: 'underline',
       },
+      hovered: {
+        textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'revert',
+        },
+      },
       styled: {
         '@motion': {
           transition: 'background 100ms ease-out',

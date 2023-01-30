@@ -1,13 +1,13 @@
 import React from 'react'
 import { renderDark, renderLight } from '../../test'
-import { Default } from './Pagination.stories'
+import { Primary } from './Breadcrumbs.stories'
 
 it('renders light without error', () => {
-  const { asFragment } = renderLight(<Default totalPages={10} />)
+  const { asFragment } = renderLight(<Primary />)
   expect(asFragment()).toBeDefined()
 })
 
 it('renders dark without error', () => {
-  const { asFragment } = renderDark(<Default totalPages={20} />)
+  const { asFragment } = renderDark(<Primary />)
   expect(asFragment()).toBeDefined()
 })

@@ -1,4 +1,5 @@
 import { useHover, useMergedRefs } from '@committed/hooks'
+
 import { Arrow, Content, Portal } from '@radix-ui/react-popover'
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider'
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref'
@@ -8,12 +9,16 @@ import React, {
   ElementRef,
   FC,
   forwardRef,
+  ReactNode,
+  useCallback,
   useMemo,
   useRef,
 } from 'react'
 import type { CSSProps, VariantProps } from '../../stitches.config'
 import { styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
+import { useFormControl, UseFormControlProps } from '../FormControl'
+import { Label } from '../Label'
 import { Popover, PopoverAnchor } from '../Popover'
 import { Tooltip, tooltipArrowStyles, tooltipContentStyles } from '../Tooltip'
 
@@ -102,6 +107,9 @@ export const StyledSlider = styled(Root, {
 
   [`& ${StyledThumb}`]: {
     backgroundColor: '$$range',
+    '&[data-disabled]': {
+      backgroundColor: '$$trackHover',
+    },
   },
 
   [`& ${SliderRange}`]: {
@@ -152,17 +160,20 @@ type ThumbPopoverContentProps = ComponentProps<typeof Content> & {
 const ThumbPopoverContent = forwardRef<
   ElementRef<typeof StyledPopoverContent>,
   ThumbPopoverContentProps
->(({ portalled = true, container, children, ...props }, forwardedRef) => (
-  <ConditionalWrapper
-    condition={portalled}
-    wrapper={(child) => <Portal container={container}>{child}</Portal>}
-  >
-    <StyledPopoverContent {...props} ref={forwardedRef}>
-      <StyledPopoverArrow offset={-1} />
-      {children}
-    </StyledPopoverContent>
-  </ConditionalWrapper>
-))
+>(({ portalled = true, container, children, ...props }, forwardedRef) => {
+  const wrapper = useCallback(
+    (child: ReactNode) => <Portal container={container}>{child}</Portal>,
+    [container]
+  )
+  return (
+    <ConditionalWrapper condition={portalled} wrapper={wrapper}>
+      <StyledPopoverContent {...props} ref={forwardedRef}>
+        <StyledPopoverArrow offset={-1} />
+        {children}
+      </StyledPopoverContent>
+    </ConditionalWrapper>
+  )
+})
 ThumbPopoverContent.toString = () => `.${StyledPopoverContent.className}`
 
 export const SliderThumb: FC<SliderThumbProps> = ({
@@ -187,7 +198,10 @@ export const SliderThumb: FC<SliderThumbProps> = ({
 type SliderVariants = VariantProps<typeof StyledSlider>
 type SliderProps = ComponentProps<typeof Root> &
   SliderVariants &
+  UseFormControlProps &
   CSSProps & {
+    /** Add a label to the Slider */
+    label?: string
     /** Add labels to the markers, permanently, on hover or none */
     labelStyle?: LabelStyle
     /** Move the label location */
@@ -215,6 +229,7 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
       labelSide = 'top',
       labelFunction = (val) => val,
       portalled = true,
+      label,
       ...props
     },
     forwardedRef
@@ -227,6 +242,8 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
         )
       }
     }
+    const [id, { disabled }, remainingProps] = useFormControl(props)
+
     const [values = [], setValues] = useControllableState({
       prop: value,
       defaultProp: defaultValue,
@@ -250,27 +267,41 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
       return isHovered //hover.reduce((acc, cur) => acc || cur, false)
     }, [isHovered, labelStyle])
 
+    const withLabel = useCallback(
+      (children: ReactNode) => (
+        <Label id={`label-${id}`} variant="wrapping">
+          {label}
+          {children}
+        </Label>
+      ),
+      [label, id]
+    )
+
     return (
-      <StyledSlider
-        {...props}
-        min={min}
-        value={values}
-        onValueChange={setValues}
-        ref={mergedRef}
-      >
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        {values.map((val: number, i: number) => (
-          <SliderThumb
-            key={i}
-            value={handleLabelFunction(val)}
-            showLabel={showLabels}
-            labelSide={labelSide}
-            portalled={portalled}
-          />
-        ))}
-      </StyledSlider>
+      <ConditionalWrapper condition={label} wrapper={withLabel}>
+        <StyledSlider
+          {...remainingProps}
+          id={id}
+          disabled={disabled}
+          min={min}
+          value={values}
+          onValueChange={setValues}
+          ref={mergedRef}
+        >
+          <SliderTrack>
+            <SliderRange />
+          </SliderTrack>
+          {values.map((val: number, i: number) => (
+            <SliderThumb
+              key={i}
+              value={handleLabelFunction(val)}
+              showLabel={showLabels}
+              labelSide={labelSide}
+              portalled={portalled}
+            />
+          ))}
+        </StyledSlider>
+      </ConditionalWrapper>
     )
   }
 )

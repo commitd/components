@@ -32,12 +32,14 @@ type FormControlProps = CSSProps & {
 export const FormControl = forwardRef<
   ElementRef<typeof DEFAULT_TAG>,
   FormControlProps
->(({ children }, forwardedRef) => {
+>(({ css, children }, forwardedRef) => {
   const value = useState(DEFAULT_FORM_STATE)
 
   return (
     <FormControlContext.Provider value={value}>
-      <Root ref={forwardedRef}>{children}</Root>
+      <Root css={css} ref={forwardedRef}>
+        {children}
+      </Root>
     </FormControlContext.Provider>
   )
 })

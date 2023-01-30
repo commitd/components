@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/testing-react'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   renderDark,
   renderLight,
@@ -7,9 +7,39 @@ import {
   userEvent,
   waitForElementToBeRemoved,
 } from '../../test'
+import { Button } from '../Button'
+import { Toast } from './Toast'
 import * as stories from './Toast.stories'
 
-const { Default, WithClose, WithAction } = composeStories(stories)
+const { Default, UseToast } = composeStories(stories)
+
+const WithAction = () => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setOpen(true)
+        }}
+      >
+        Open Toast
+      </Button>
+      <Toast
+        open={open}
+        onOpenChange={setOpen}
+        title="Deleted ID#1928"
+        description="Was this intentional?"
+        altText="Undo"
+        duration={9999999}
+      >
+        <Button variant="primary" size="small">
+          Undo
+        </Button>
+      </Toast>
+    </>
+  )
+}
 
 it('renders light without error', async () => {
   renderLight(<Default />)
@@ -26,7 +56,7 @@ it('renders dark without error', async () => {
 })
 
 it('renders close without error', async () => {
-  renderLight(<WithClose />)
+  renderLight(<Default close={true} />)
   userEvent.click(screen.getByRole('button'))
   const panel = await screen.findByText('Toast Title')
   expect(panel).toBeInTheDocument()
@@ -50,7 +80,7 @@ it('renders action without error', async () => {
 })
 
 it('Can close with esc', async () => {
-  renderLight(<WithClose />)
+  renderLight(<Default close={true} />)
   userEvent.click(screen.getByRole('button'))
   const panel = await screen.findByText('Toast Title')
   expect(panel).toBeInTheDocument()
@@ -69,6 +99,13 @@ it('Can close with esc and actions', async () => {
   const waiting = waitForElementToBeRemoved(() =>
     screen.queryByText('Deleted ID#1928')
   )
-  userEvent.keyboard('{esc}')
+  userEvent.click(screen.getByRole('button', { name: /undo/i }))
   await waiting
+})
+
+it('renders useToast', async () => {
+  renderLight(<UseToast />)
+  userEvent.click(screen.getByRole('button'))
+  const panel = await screen.findByText('Hello Toast')
+  expect(panel).toBeInTheDocument()
 })

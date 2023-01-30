@@ -9,6 +9,7 @@ import { Input } from '../Input'
 import { Label, LabelOptional } from '../Label'
 import { Radio, RadioGroup } from '../RadioGroup'
 import { Select, SelectItem } from '../Select'
+import { Slider } from '../Slider'
 import { Stack } from '../Stack'
 import { TextArea } from '../TextArea'
 
@@ -354,7 +355,15 @@ export const Controls: Story = () => {
           <Input {...state} name="demo7" placeholder="No label!!" />
         </FormControl>
         <FormControl>
-          <TextArea {...state} name="demo8" label="Demo 3" />
+          <TextArea {...state} name="demo8" label="Demo 8" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Slider {...state} name="demo9" label="Demo 9" />
           <FormControlHelp
             defaultText="This is a demo"
             errorText="This is an error"
@@ -479,10 +488,18 @@ export const WithIds: Story = () => {
           <Input {...state} name="demo7" id="demo-7" placeholder="No label!!" />
         </FormControl>
         <FormControl>
-          <TextArea {...state} name="demo8" id="demo-8" label="Demo 3" />
+          <TextArea {...state} name="demo8" id="demo-8" label="Demo 8" />
           <FormControlHelp
             defaultText="This is a demo"
             errorText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Slider {...state} name="demo9" id="demo-9" label="Demo 9" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is an error"
           />
         </FormControl>
         <FormButton />

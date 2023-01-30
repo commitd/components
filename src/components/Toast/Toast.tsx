@@ -139,14 +139,16 @@ export const ToastClose = forwardRef<ElementRef<typeof StyledClose>>(
 )
 
 type ToastVariants = VariantProps<typeof StyledToast>
-type ToastProps = ToastVariants & CSSProps & ComponentProps<typeof StyledToast>
+type StyledToastProps = ToastVariants &
+  CSSProps &
+  ComponentProps<typeof StyledToast>
 
-type AbstractToastProps = ToastProps &
-  ComponentProps<typeof StyledAction> & {
-    title: string
-    description?: string
-    close?: boolean
-  }
+export type ToastProps = StyledToastProps & {
+  title: string
+  description?: string
+  close?: boolean
+  altText?: string
+}
 
 /**
  * Toast component.
@@ -155,20 +157,19 @@ type AbstractToastProps = ToastProps &
  *
  * Based on [Radix Toast](https://www.radix-ui.com/docs/primitives/components/toast).
  *
+ * Toasts can be used directly with your own control mechanism or you can use the managed toasts via the `useToast` hook.
+ *
  * Toast can be closed by a timeout or by swiping right by default (these can be changed by `duration` and `swipeDirection` respectively in the `ToastProvider` which is included in the `ComponentsProvider`).
  * Alternatively, they can be closed by an action button (implying addition effects) or by an close icon (`ToastClose`).
  *
  * Doesn't currently nicely handle both close button and action button simultaneously, instead only separately.
  */
-export const Toast = forwardRef<
-  ElementRef<typeof StyledToast>,
-  AbstractToastProps
->(
+export const Toast = forwardRef<ElementRef<typeof StyledToast>, ToastProps>(
   (
     {
       title,
       description,
-      altText,
+      altText = '',
       close,
       severity = 'default',
       children,
