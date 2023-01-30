@@ -48,6 +48,17 @@ export const Clear: Story = () => (
 )
 
 /**
+ * For when a link should be hidden but shown on hover
+ */
+export const Hovered: Story = () => (
+  <Text>
+    <Link variant="hovered" href="#">
+      Link
+    </Link>
+  </Text>
+)
+
+/**
  * The styled variant is intended for use in articles such as blog posts.
  */
 export const Styled: Story = () => (
