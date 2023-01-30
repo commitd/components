@@ -7,11 +7,17 @@ export * from './randomColor'
 export * from './SemanticColors'
 export * from './Variants'
 
-export function withFormData(callback: (...args: any[]) => void) {
+export function toJson(callback: (...args: any[]) => void) {
+  return (object: any): void => {
+    callback(JSON.stringify(object, null, 2))
+  }
+}
+
+export function withFormObject(callback: (...args: any[]) => void) {
   return (e: FormEvent): void => {
     e.preventDefault()
     const formData = new FormData(e.target as HTMLFormElement)
-    var object: any = {}
+    let object: any = {}
     formData.forEach((value, key) => {
       // Reflect.has in favor of: object.hasOwnProperty(key)
       if (!Reflect.has(object, key)) {
@@ -23,8 +29,12 @@ export function withFormData(callback: (...args: any[]) => void) {
       }
       object[key].push(value)
     })
-    callback(JSON.stringify(object, null, 2))
+    callback(object)
   }
+}
+
+export function withFormData(callback: (...args: any[]) => void) {
+  return withFormObject(toJson(callback))
 }
 
 export const rotateCheckedState =

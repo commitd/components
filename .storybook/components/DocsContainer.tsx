@@ -1,9 +1,10 @@
-import React from 'react'
 import { DocsContainer as BaseContainer } from '@storybook/addon-docs/blocks'
-import { useDarkMode } from 'storybook-dark-mode'
 import { themes } from '@storybook/theming'
+import React from 'react'
+import { useDarkMode } from 'storybook-dark-mode'
+import { ComponentsProvider } from '../../src'
 
-export const DocsContainer = ({ context, ...props }) => {
+export const DocsContainer = ({ context, children, ...props }) => {
   const dark = useDarkMode()
 
   return (
@@ -25,6 +26,8 @@ export const DocsContainer = ({ context, ...props }) => {
         },
       }}
       {...props}
-    />
+    >
+      <ComponentsProvider>{children}</ComponentsProvider>
+    </BaseContainer>
   )
 }

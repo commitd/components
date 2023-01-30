@@ -1,8 +1,9 @@
-import React, { FC, PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren, useCallback } from 'react'
 import { CSSProps, styled } from '../../stitches.config'
 import { ConditionalWrapper } from '../../utils'
 import { ThemeProvider, ThemeProviderProps } from '../ThemeProvider'
 import { ToastProvider, ToastViewport } from '../Toast'
+import { ToasterProvider } from '../Toast/Toaster'
 import { TooltipProvider } from '../Tooltip'
 
 //---------------------------- Props ----------------------------------//
@@ -17,6 +18,10 @@ export type TooltipProviderPropsWithoutChildren = Omit<
 >
 export type ToastProviderPropsWithoutChildren = Omit<
   React.ComponentProps<typeof ToastProvider>,
+  'children'
+>
+export type ToasterProviderPropsWithoutChildren = Omit<
+  React.ComponentProps<typeof ToasterProvider>,
   'children'
 >
 export type ToastViewportPropsWithoutChildren = Omit<
@@ -36,7 +41,9 @@ export type ComponentsProviderProps = {
   /**
    * Toast configuration options
    */
-  toast?: false | ToastProviderPropsWithoutChildren
+  toast?:
+    | false
+    | (ToastProviderPropsWithoutChildren & ToasterProviderPropsWithoutChildren)
   /**
    * Toast viewport configuration options
    */
@@ -70,32 +77,59 @@ export const ComponentsProvider: FC<
   css,
   isolated = true,
   children,
-}) => (
-  <ConditionalWrapper
-    condition={toast}
-    wrapper={(wrappedChildren) => (
-      <ToastProvider {...toast}>{wrappedChildren}</ToastProvider>
-    )}
-  >
-    <ConditionalWrapper
-      condition={tooltip}
-      wrapper={(wrappedChildren) => (
-        <TooltipProvider {...tooltip}>{wrappedChildren}</TooltipProvider>
-      )}
-    >
-      <ConditionalWrapper
-        condition={theme}
-        wrapper={(wrappedChildren) => (
-          <ThemeProvider {...theme}>{wrappedChildren}</ThemeProvider>
-        )}
-      >
-        <>
-          <Isolate css={css} isolated={isolated}>
-            {children}
-          </Isolate>
-          {viewport && <ToastViewport {...viewport} />}
-        </>
+}) => {
+  const toastWrapper = useCallback(
+    (wrappedChildren) => {
+      const {
+        label,
+        duration,
+        swipeDirection,
+        swipeThreshold,
+        ...toasterProps
+      } = toast as ToastProviderPropsWithoutChildren &
+        ToasterProviderPropsWithoutChildren
+      return (
+        <ToastProvider
+          label={label}
+          duration={duration}
+          swipeDirection={swipeDirection}
+          swipeThreshold={swipeThreshold}
+        >
+          <ToasterProvider duration={duration} {...toasterProps}>
+            {wrappedChildren}
+          </ToasterProvider>
+        </ToastProvider>
+      )
+    },
+    [toast]
+  )
+
+  const tooltipWrapper = useCallback(
+    (wrappedChildren) => (
+      <TooltipProvider {...tooltip}>{wrappedChildren}</TooltipProvider>
+    ),
+    [tooltip]
+  )
+
+  const themeWrapper = useCallback(
+    (wrappedChildren) => (
+      <ThemeProvider {...theme}>{wrappedChildren}</ThemeProvider>
+    ),
+    [theme]
+  )
+
+  return (
+    <ConditionalWrapper condition={toast} wrapper={toastWrapper}>
+      <ConditionalWrapper condition={tooltip} wrapper={tooltipWrapper}>
+        <ConditionalWrapper condition={theme} wrapper={themeWrapper}>
+          <>
+            <Isolate css={css} isolated={isolated}>
+              {children}
+            </Isolate>
+            {viewport && <ToastViewport {...viewport} />}
+          </>
+        </ConditionalWrapper>
       </ConditionalWrapper>
     </ConditionalWrapper>
-  </ConditionalWrapper>
-)
+  )
+}
