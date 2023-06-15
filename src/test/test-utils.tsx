@@ -15,14 +15,14 @@ import ResizeObserver from 'resize-observer-polyfill'
 import { ComponentsProvider } from '..'
 import './domrect-polyfill'
 // organize-imports-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as ___ from '@testing-library/react/node_modules/@testing-library/dom/types/queries' // NOSONAR
 
 // Use the polyfill for the ResizeObserver.
 // This is used in some components.
 global.ResizeObserver = ResizeObserver
 // releasePointerCapture called by some radix components but not in js-dom
 global.HTMLElement.prototype.releasePointerCapture = () => undefined
+global.HTMLElement.prototype.scrollIntoView = () => undefined
+global.HTMLElement.prototype.hasPointerCapture = () => false
 
 const LightTheme: React.FC<PropsWithChildren<unknown>> = ({ children }) => (
   <ComponentsProvider theme={{ choice: 'light' }}>
