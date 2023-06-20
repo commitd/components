@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/testing-react'
+import { composeStories } from '@storybook/react'
 import React, { useState } from 'react'
 import {
   renderDark,

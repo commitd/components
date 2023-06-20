@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/testing-react'
+import { composeStories } from '@storybook/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { renderDark, renderLight, screen, waitFor } from '../../test'

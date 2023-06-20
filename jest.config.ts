@@ -1,8 +1,10 @@
-const { jsWithTs: tsjPreset } = require('ts-jest/presets')
+import type { JestConfigWithTsJest } from 'ts-jest'
 
-module.exports = {
-  // use ts-jest to transform all test files so they are fully typed checked
-  transform: tsjPreset.transform,
+const jestConfig: JestConfigWithTsJest = {
+  // [...]
+  // Replace `ts-jest` with the preset you want to use
+  // from the above list
+  preset: 'ts-jest',
   testEnvironment: 'jsdom',
   verbose: true,
   setupFiles: ['./jest.patch-cssom.js'],
@@ -36,13 +38,6 @@ module.exports = {
     '.*.stories.tsx',
   ],
   testResultsProcessor: 'jest-sonar-reporter',
-  globals: {
-    'ts-jest': {
-      diagnostics: {
-        // TS151001 is a suggestion to set esModuleInterop to true
-        // regardless of if it is actually causing an issue, so not useful
-        ignoreCodes: [151001],
-      },
-    },
-  },
 }
+
+export default jestConfig

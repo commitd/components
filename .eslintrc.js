@@ -78,6 +78,7 @@ module.exports = {
     'docs',
     'example',
     'node_modules',
+    'jest.config.ts',
     '**/*.stories.tsx',
     '**/*.test.ts',
   ],

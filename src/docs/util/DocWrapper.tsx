@@ -6,7 +6,7 @@ import '@fontsource/inter/400.css'
 import '@fontsource/inter/700.css'
 import React from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
-import { ThemeProvider } from '../../components/ThemeProvider'
+import { ComponentsProvider } from '../../components'
 
 /**
  * Wrap a component with the default ThemeProvider
@@ -14,8 +14,8 @@ import { ThemeProvider } from '../../components/ThemeProvider'
 export const DocWrapper: React.FC = ({ children }) => {
   const choice = useDarkMode() ? 'dark' : 'light'
   return (
-    <ThemeProvider local choice={choice}>
+    <ComponentsProvider theme={{ choice, local: true }}>
       {children}
-    </ThemeProvider>
+    </ComponentsProvider>
   )
 }

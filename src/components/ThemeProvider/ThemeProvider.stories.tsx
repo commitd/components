@@ -1,12 +1,7 @@
 import { blue, blueDark } from '@radix-ui/colors'
-import { Meta, Story } from '@storybook/react'
+import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 import React from 'react'
-import {
-  ThemeProvider,
-  ThemeProviderProps,
-  useTheme,
-  useThemeController,
-} from '.'
+import { ThemeProvider, useTheme, useThemeController } from '.'
 import {
   config,
   createDarkTheme,
@@ -25,32 +20,39 @@ import { Paper } from '../Paper'
 import { Switch } from '../Switch'
 import { Monospace, Paragraph, Span } from '../Text'
 
-export default {
+const meta: Meta<typeof ThemeProvider> = {
   title: 'Components/ThemeProvider',
   component: ThemeProvider,
   decorators: [],
-} as Meta
+}
+
+export default meta
+type Story = StoryObj<typeof ThemeProvider>
 
 const Example = styled(Paper, {
   width: '100%',
   height: '300px',
 })
 
-const Template: Story<ThemeProviderProps> = (args) => (
-  <ThemeProvider local={true} {...args}>
-    <Example>Example</Example>
-  </ThemeProvider>
-)
+const Template: Story = {
+  render: (args) => (
+    <ThemeProvider local={true} {...args}>
+      <Example>Example</Example>
+    </ThemeProvider>
+  ),
+}
 
-export const Default: Story = () => <Example>Example</Example>
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Default: Story = {
+  render: () => <Example>Example</Example>,
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <ThemeProvider>
   <Paper>Example</Paper>
 </ThemeProvider>
 `,
+      },
     },
   },
 }
@@ -58,18 +60,20 @@ Default.parameters = {
 /**
  * Selects the Dark theme
  */
-export const Dark = Template.bind({})
-Dark.args = {
-  choice: 'dark',
-}
-Dark.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Dark: Story = {
+  ...Template,
+  args: {
+    choice: 'dark',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <ThemeProvider choice='dark'>
   <Paper>Example</Paper>
 </ThemeProvider>
 `,
+      },
     },
   },
 }
@@ -79,28 +83,29 @@ Dark.parameters = {
  *
  * (NB As this provider is nested we provide the lightTheme explicitly so it will override any higher level dark theme.)
  */
-export const Light = Template.bind({})
-Light.args = {
-  light: lightTheme,
-  choice: 'light',
-}
-Light.parameters = {
-  docs: {
-    source: {
-      code: `
+export const Light: Story = {
+  ...Template,
+  args: {
+    light: lightTheme,
+    choice: 'light',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
 <ThemeProvider choice='light' light={lightTheme}>
   <Paper>Example</Paper>
 </ThemeProvider>
 `,
+      },
     },
   },
 }
-
 /**
  * The `useThemeController` hook can be used to get the theme choice state and a toggle function.
  * This can be used to build a custom theme switch.
  */
-export const UtilityUseThemeController: Story = () => {
+export const UtilityUseThemeController: StoryFn = () => {
   const CustomSwitch = () => {
     const [choice, toggleChoice] = useThemeController()
     return <Switch checked={choice == 'dark'} onCheckedChange={toggleChoice} />
@@ -115,7 +120,7 @@ export const UtilityUseThemeController: Story = () => {
 }
 
 /** The `useTheme` hook can be used to get the full details of the current theme. */
-export const UtilityUseTheme: Story = () => {
+export const UtilityUseTheme: StoryFn = () => {
   const [theme] = useTheme()
   return (
     <Accordion type="single">
@@ -134,8 +139,8 @@ export const UtilityUseTheme: Story = () => {
 /**
  * The `useTheme` hook also provides a utility function to dereference theme tokens.
  * This can be used in case the theme details are required outside of the normal css landscape.*/
-export const UtilityUseThemeResolve: Story = () => {
-  const [theme, resolve] = useTheme()
+export const UtilityUseThemeResolve: StoryFn = () => {
+  const [, resolve] = useTheme()
   return (
     <>
       <Paragraph>
@@ -164,20 +169,21 @@ export const UtilityUseThemeResolve: Story = () => {
  * See the existing theme properties below for what can be configured.
  *
  */
-export const CustomLight = Template.bind({})
-CustomLight.args = {
-  choice: 'light',
-  light: createTheme({
-    colors: {
-      text: blue.blue10,
-      paper: blue.blue3,
-    },
-  }),
-}
-CustomLight.parameters = {
-  docs: {
-    source: {
-      code: `
+export const CustomLight: Story = {
+  ...Template,
+  args: {
+    choice: 'light',
+    light: createTheme({
+      colors: {
+        text: blue.blue10,
+        paper: blue.blue3,
+      },
+    }),
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
 import { theme, ThemeProvider, Paper } from '@committed/components'
 
 const customTheme = createTheme({
@@ -193,6 +199,7 @@ export const CustomThemeProvider: Story = () => (
   </ThemeProvider>
 )
 `,
+      },
     },
   },
 }
@@ -201,20 +208,21 @@ export const CustomThemeProvider: Story = () => (
  * For convenience the existing `darkThemeConfig` is exported.
  * This can be used as a starting point for custom dark themes.
  */
-export const CustomDark = Template.bind({})
-CustomDark.args = {
-  choice: 'dark',
-  dark: createDarkTheme({
-    colors: {
-      text: blueDark.blue10,
-      paper: blueDark.blue3,
-    },
-  }),
-}
-CustomDark.parameters = {
-  docs: {
-    source: {
-      code: `
+export const CustomDark: Story = {
+  ...Template,
+  args: {
+    choice: 'dark',
+    dark: createDarkTheme({
+      colors: {
+        text: blueDark.blue10,
+        paper: blueDark.blue3,
+      },
+    }),
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
  import { theme, ThemeProvider, Paper, darkThemeConfig } from '@committed/components'
  
  const customTheme = createDarkTheme({
@@ -230,10 +238,10 @@ CustomDark.parameters = {
    </ThemeProvider>
  )
  `,
+      },
     },
   },
 }
-
 /**
  *
  * The properties below can be overridden to create a custom theme.
@@ -242,7 +250,7 @@ CustomDark.parameters = {
  *
  * For more information see https://stitches.dev/docs/theming
  */
-export const ThemeConfig: Story = () => (
+export const ThemeConfig: StoryFn = () => (
   <Paper>
     <Monospace>{JSON.stringify(config.theme, null, 2)}</Monospace>
   </Paper>
