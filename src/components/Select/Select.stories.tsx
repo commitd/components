@@ -4,7 +4,7 @@ import {
   mdiThumbUp,
 } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 import {
   Select,
@@ -37,28 +37,31 @@ import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
 import { Form, FormButton } from '../Form'
 import { Svg } from '../Svg'
 
-export default {
+const subcomponents = {
+  SelectContent,
+  SelectGroup,
+  SelectIcon,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport,
+  SelectRoot,
+  SelectRootItem,
+} as unknown as Meta<typeof Select>['subcomponents']
+
+const meta: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
-  subcomponents: {
-    SelectContent,
-    SelectGroup,
-    SelectIcon,
-    SelectItem,
-    SelectItemIndicator,
-    SelectItemText,
-    SelectLabel,
-    SelectScrollDownButton,
-    SelectScrollUpButton,
-    SelectTrigger,
-    SelectValue,
-    SelectViewport,
-    SelectRoot,
-    SelectRootItem,
-  },
-} as Meta
+  subcomponents,
+}
+export default meta
 
-const Template: Story = (args) => (
+const Template: StoryFn = (args) => (
   <Select defaultValue="1" {...args}>
     <SelectItem value="1">Item 1</SelectItem>
     <SelectItem value="2">Item 2</SelectItem>
@@ -72,7 +75,7 @@ Disabled.args = {
   disabled: true,
 }
 /** This shows how to group items in the select popover */
-export const Grouped: Story = () => (
+export const Grouped: StoryFn = () => (
   <Select defaultValue="grapes">
     <SelectGroup>
       <SelectLabel>Fruits</SelectLabel>
@@ -101,7 +104,7 @@ export const Grouped: Story = () => (
   </Select>
 )
 
-export const WithDisabledItems: Story = () => (
+export const WithDisabledItems: StoryFn = () => (
   <Select defaultValue="1">
     <SelectItem value="1">Item 1</SelectItem>
     <SelectItem value="2">Item 2</SelectItem>
@@ -115,7 +118,7 @@ export const WithDisabledItems: Story = () => (
   </Select>
 )
 
-export const Scrollable: Story = () => (
+export const Scrollable: StoryFn = () => (
   <Select defaultValue="19">
     {[...Array(50)].map((x, i) => (
       <SelectItem value={i.toString()}>Item {i}</SelectItem>
@@ -132,7 +135,7 @@ WithLabel.args = { label: 'Label' }
  * A html select would normally have a `value`, if controlled, or `defaultValue` in an uncontrolled state.
  * However, if a default value is not supplied a placeholder should be used.
  */
-export const Placeholder: Story = () => {
+export const Placeholder: StoryFn = () => {
   return (
     <Select label="Demo" name="demo" placeholder="Select an item...">
       <SelectItem value="1">Item 1</SelectItem>
@@ -143,7 +146,7 @@ export const Placeholder: Story = () => {
 }
 
 /** Using `<SelectRoot>` and `<SelectRootItem>` gives further access to the underlying Radix implementation, allowing for more customization */
-export const Customization: Story = () => (
+export const Customization: StoryFn = () => (
   <SelectRoot defaultValue="19">
     <SelectTrigger>
       <SelectValue />
@@ -175,7 +178,7 @@ export const Customization: Story = () => (
 /**
  * Demo of use in a `Form`
  */
-export const InForm: Story = () => {
+export const InForm: StoryFn = () => {
   return (
     <Form onSubmit={withFormData(alert)}>
       <Select label="Demo" name="demo" defaultValue="1">
@@ -191,7 +194,7 @@ export const InForm: Story = () => {
 /**
  * Test case of a select in a `Dialog`
  */
-export const DialogSelect: Story = () => (
+export const DialogSelect: StoryFn = () => (
   <Dialog>
     <DialogTrigger>
       <Button>Show Dialog</Button>
@@ -205,7 +208,7 @@ export const DialogSelect: Story = () => (
 /**
  * In this version, we add a `fullscreen` Box
  * */
-export const ConfirmDialogSelect: Story = () => (
+export const ConfirmDialogSelect: StoryFn = () => (
   <Box variant="fullscreen">
     <ConfirmDialog>
       <ConfirmDialogContent description="This is a test" title="Test Select">

@@ -4,16 +4,11 @@ import { mdiImage } from '@mdi/js'
 import { Svg, Text } from '../'
 import { DocWrapper } from './util/DocWrapper'
 
-<DocWrapper>
-
 <Meta title="Design System/Getting Started" />
 
 # Getting Started
 
 Install the design system and dependencies in your application
-
-<!--  Omitted due to Storybook v6.3 bug https://github.com/storybookjs/storybook/issues/15359
-<code>npm add @committed/components@{version}</code> -->
 
 <code>npm add @committed/components</code>
 
@@ -93,17 +88,17 @@ By design, components control their internal spacing and positioning but not the
 
 For example:
 
-<Text
-  css={{
-    color: '$error',
-    padding: '$3',
-    border: 'solid 1px',
-    borderColor: '$text',
-    m: '$3',
-  }}
->
-  Example
-</Text>
+<DocWrapper>
+  <Text
+    css={{
+      color: '$error',
+      padding: '$3',
+      m: '$3',
+    }}
+  >
+    Example
+  </Text>
+</DocWrapper>
 
 ```jsx
 import { Text } from "@committed/components
@@ -159,5 +154,3 @@ My article
 This would create an `article` element in the html rather than this components standard `div`
 but would still support the `css` props and other styles already applied to the component.
 This makes for a cleaner html, that is semantically correct and reduced unnecessary elements.
-
-</DocWrapper>

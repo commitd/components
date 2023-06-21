@@ -1,17 +1,22 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 import { Radio, RadioGroup } from '.'
 import { Form, FormButton, FormControl } from '../'
 import { withFormData } from '../../docs/util'
 import { Inline } from '../Inline'
 
-export default {
+const subcomponents = { Radio } as unknown as Meta<
+  typeof RadioGroup
+>['subcomponents']
+
+const meta: Meta<typeof RadioGroup> = {
   title: 'Components/Radio',
   component: RadioGroup,
-  subcomponents: { Radio },
-} as Meta
+  subcomponents,
+}
+export default meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   return (
     <RadioGroup>
       <Radio value="mobx" label="Mobx" />
@@ -22,7 +27,7 @@ export const Default: Story = () => {
 }
 
 /** A primary variants is also available but should be used sparingly, e.g. when the only or most important control on the page. */
-export const Primary: Story = () => {
+export const Primary: StoryFn = () => {
   return (
     <RadioGroup>
       <Radio variant="primary" value="mobx" label="Mobx" />
@@ -35,7 +40,7 @@ export const Primary: Story = () => {
 /**
  * The groups can be orientated horizontally or vertically (default).
  */
-export const Orientation: Story = () => {
+export const Orientation: StoryFn = () => {
   return (
     <Inline>
       <RadioGroup orientation="vertical">
@@ -52,7 +57,7 @@ export const Orientation: Story = () => {
   )
 }
 
-export const Controlled: Story = () => {
+export const Controlled: StoryFn = () => {
   const [value, setValue] = React.useState('redux')
   return (
     <RadioGroup value={value} onValueChange={(v) => setValue(v)}>
@@ -68,7 +73,7 @@ export const Controlled: Story = () => {
  *
  * The disabled prop on radio item can be used inside a FormControl.
  */
-export const Disabled: Story = () => {
+export const Disabled: StoryFn = () => {
   return (
     <Inline>
       <RadioGroup defaultValue="redux">
@@ -92,7 +97,7 @@ export const Disabled: Story = () => {
   )
 }
 
-export const Destructive: Story = () => {
+export const Destructive: StoryFn = () => {
   return (
     <Inline>
       <RadioGroup label="Choose">
@@ -112,7 +117,7 @@ export const Destructive: Story = () => {
 /**
  * This story just checks the spacing works without labels but this would be a rare requirement. Normally, you would have labels.
  */
-export const NoLabels: Story = () => {
+export const NoLabels: StoryFn = () => {
   return (
     <Inline>
       <RadioGroup orientation="vertical">
@@ -132,7 +137,7 @@ export const NoLabels: Story = () => {
 /**
  * Demo of use in a `Form`
  */
-export const InForm: Story = () => {
+export const InForm: StoryFn = () => {
   return (
     <Form onSubmit={withFormData(alert)}>
       <RadioGroup name="radio" id="radio-test" label="Radio">

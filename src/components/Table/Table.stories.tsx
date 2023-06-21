@@ -61,7 +61,7 @@ type User = {
 }
 
 function createStatus() {
-  const statusChance = faker.datatype.float({ min: 0, max: 1 })
+  const statusChance = faker.number.float({ min: 0, max: 1 })
   if (statusChance > 0.75) {
     return <Chip variant="success">active</Chip>
   }
@@ -76,13 +76,13 @@ function createStatus() {
 
 function buildUser(): User {
   return {
-    id: faker.datatype.uuid(),
+    id: faker.string.uuid(),
     avatar: faker.internet.avatar(),
     username: faker.internet.userName(),
     email: faker.internet.email(),
-    age: faker.datatype.number(100),
-    visits: faker.datatype.number(1000),
-    progress: faker.datatype.number(100),
+    age: faker.number.int(100),
+    visits: faker.number.int(1000),
+    progress: faker.number.int(100),
     status: createStatus(),
   }
 }

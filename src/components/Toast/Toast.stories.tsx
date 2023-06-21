@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta, ComponentStory, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React, { useCallback, useEffect } from 'react'
 import {
   Toast,
@@ -21,11 +21,10 @@ import { Select, SelectItem } from '../Select'
 import { TextArea } from '../TextArea'
 import { useToast } from './Toaster'
 
-export default {
+const meta: Meta<typeof Toast> = {
   title: 'Components/Toast',
   component: Toast,
   subcomponents: {
-    Toast,
     ToastAction,
     ToastDescription,
     ToastProvider,
@@ -39,9 +38,10 @@ export default {
       description: 'Set the severity of the alert',
     },
   },
-} as ComponentMeta<typeof Toast>
+}
+export default meta
 
-const Template: ComponentStory<typeof Toast> = ({
+const Template: StoryFn<typeof Toast> = ({
   title = 'Toast Title',
   altText = 'Undo',
   description = 'This is the toast content, the content is optional but should usually give further explanation about the toast and if any action is required.',
@@ -89,7 +89,7 @@ export const Default = Template.bind({})
  *
  * The hook is supplied with the props of the toast and it's creation is manage by the provider.
  */
-export const UseToast: Story = () => {
+export const UseToast: StoryFn = () => {
   const { addToast } = useToast()
   return (
     <Button
@@ -351,7 +351,7 @@ export const OtherOptions = () => {
  * Each application should have a `ToastProvider` and a `ToastViewport`, these are provided by default in the
  * `ComponentsProvider`. they can be configured there or disabled and used separately.
  */
-export const FullAccess: ComponentStory<typeof Toast> = () => {
+export const FullAccess: StoryFn<typeof Toast> = () => {
   const [open, setOpen] = React.useState(false)
   const eventDateRef = React.useRef(new Date())
   const timerRef = React.useRef(0)

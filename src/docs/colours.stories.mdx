@@ -8,7 +8,7 @@ import {
   Column,
   Grid,
 } from '../'
-import { SemanticColors, Swatch, Colors, Surfaces } from './util'
+import { SemanticColors, Colors } from './util'
 
 <Meta title="Design System/Colour" />
 
@@ -106,19 +106,16 @@ These are themed and rand from 1-12, with 9 being the pure color from which the 
 We use the brand colours within our main color sets differently for light and dark themes but full palettes are provided in both
 themes.
 
-<>
-  <ComponentsProvider
-    theme={{ local: true, light: lightTheme, choice: 'light' }}
-  >
-    <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
-      <Colors key="brandYellow" theme={lightTheme} name="brandYellow" />
-      <Colors key="brandGrey" theme={lightTheme} name="brandGrey" />
-    </Column>
-  </ComponentsProvider>
-  <ComponentsProvider theme={{ local: true, dark: darkTheme, choice: 'dark' }}>
-    <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
-      <Colors key="brandYellow" theme={darkTheme} name="brandYellow" />
-      <Colors key="brandGrey" theme={darkTheme} name="brandGrey" />
-    </Column>
-  </ComponentsProvider>
-</>
+<ComponentsProvider theme={{ local: true, light: lightTheme, choice: 'light' }}>
+  <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
+    <Colors key="brandYellow" theme={lightTheme} name="brandYellow" />
+    <Colors key="brandGrey" theme={lightTheme} name="brandGrey" />
+  </Column>
+</ComponentsProvider>
+
+<ComponentsProvider theme={{ local: true, dark: darkTheme, choice: 'dark' }}>
+  <Column css={{ p: '$3', py: '$6', backgroundColor: '$paper' }}>
+    <Colors key="brandYellow" theme={darkTheme} name="brandYellow" />
+    <Colors key="brandGrey" theme={darkTheme} name="brandGrey" />
+  </Column>
+</ComponentsProvider>

@@ -1,7 +1,7 @@
 import { useBoolean } from '@committed/hooks'
 import { ContextMenuSub } from '@radix-ui/react-context-menu'
 import { action } from '@storybook/addon-actions'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 import {
   ContextMenu,
@@ -19,28 +19,31 @@ import {
   ContextMenuTrigger,
 } from '.'
 import { Flex } from '../Flex'
-import {} from './ContextMenu'
 
-export default {
+const subcomponents = {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuItemGroup,
+  ContextMenuItemShortcut,
+  ContextMenuSeparator,
+  ContextMenuLabel,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuRadioGroup,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+} as unknown as Meta<typeof ContextMenu>['subcomponents']
+
+const meta: Meta<typeof ContextMenu> = {
   title: 'Components/ContextMenu',
   component: ContextMenu,
-  subcomponents: {
-    ContextMenu,
-    ContextMenuTrigger,
-    ContextMenuContent,
-    ContextMenuItem,
-    ContextMenuItemGroup,
-    ContextMenuItemShortcut,
-    ContextMenuSeparator,
-    ContextMenuLabel,
-    ContextMenuCheckboxItem,
-    ContextMenuRadioItem,
-    ContextMenuRadioGroup,
-    ContextMenuSub,
-    ContextMenuSubTrigger,
-    ContextMenuSubContent,
-  },
-} as Meta
+  subcomponents,
+}
+
+export default meta
 
 const ClickTarget = () => (
   <Flex
@@ -57,7 +60,7 @@ const ClickTarget = () => (
   </Flex>
 )
 
-export const Default: Story = (args) => (
+export const Default: StoryFn = (args) => (
   <ContextMenu {...args}>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -71,7 +74,7 @@ export const Default: Story = (args) => (
 )
 
 /** The disabled prop greys out the item and makes it unselectable  */
-export const WithDisabledItems: Story = () => (
+export const WithDisabledItems: StoryFn = () => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -87,7 +90,7 @@ export const WithDisabledItems: Story = () => (
 )
 
 /** ContextMenuSeparator adds a separator between other items and can be used with Groups to create horizontal sections */
-export const WithSeparators: Story = () => (
+export const WithSeparators: StoryFn = () => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -113,7 +116,7 @@ export const WithSeparators: Story = () => (
 )
 
 /** Add a label with ContextMenuLabel */
-export const WithLabels: Story = () => (
+export const WithLabels: StoryFn = () => (
   <ContextMenu>
     <ContextMenuTrigger>
       <ClickTarget />
@@ -128,7 +131,7 @@ export const WithLabels: Story = () => (
 )
 
 /** Add shortcut indicators using the `ContextMenuItemShortcut` */
-export const Shortcuts: Story = () => {
+export const Shortcuts: StoryFn = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -147,7 +150,7 @@ export const Shortcuts: Story = () => {
 }
 
 /** ContextMenuCheckboxItem adds an item that can be checked */
-export const WithCheckboxItems: Story = () => {
+export const WithCheckboxItems: StoryFn = () => {
   const [checked, { toggle }] = useBoolean(true)
   return (
     <ContextMenu>
@@ -168,7 +171,7 @@ export const WithCheckboxItems: Story = () => {
 }
 
 /** ContextMenuRadioItem when wrapped in a ContextMenuRadioGroup adds an item that can be checked with only one item in the group checked at once */
-export const WithRadioItems: Story = () => {
+export const WithRadioItems: StoryFn = () => {
   const [color, setColor] = React.useState('blue')
   return (
     <ContextMenu>
@@ -187,7 +190,7 @@ export const WithRadioItems: Story = () => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested: Story = () => {
+export const Nested: StoryFn = () => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -222,7 +225,7 @@ export const Nested: Story = () => {
 }
 
 /** use the `destructive flag to indicate the action triggered it destructive */
-export const Destructive: Story = () => {
+export const Destructive: StoryFn = () => {
   const [checked, { toggle }] = useBoolean(true)
   const [color, setColor] = React.useState('blue')
   return (

@@ -38,7 +38,7 @@ function parseColor(input: string): { hsl: string; hex: string } {
       hex: '#000000FF',
     }
   }
-  var div = document.createElement('div')
+  const div = document.createElement('div')
   div.style.backgroundColor = input
   const computed = getComputedStyle(div)
   const col = convertColor(
@@ -81,13 +81,12 @@ export const Color = ({
   const rawValue = theme.colors[key].value
   const rawColor = resolveColor(theme, `$${key}`)
   const col = parseColor(rawColor)
+  const colorValue = rawValue === rawColor ? '' : `(${rawValue})`
 
   return (
     <Copy
       content={
-        <pre>{`${colorKey} ${rawValue === rawColor ? '' : `(${rawValue})`}\n${
-          col.hsl
-        }\n${col.hex}`}</pre>
+        <pre>{`${colorKey} ${colorValue}}\n${col.hsl}\n${col.hex}`}</pre>
       }
       copy={colorKey}
       css={

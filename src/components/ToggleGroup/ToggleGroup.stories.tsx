@@ -6,18 +6,19 @@ import {
   mdiFormatItalic,
   mdiFormatUnderline,
 } from '@mdi/js'
-import { Meta, Story } from '@storybook/react'
-import React from 'react'
+import { Meta, StoryFn } from '@storybook/react'
+import React, { ComponentProps } from 'react'
 import { ToggleGroup, ToggleGroupItem } from '.'
 import { ChevronDown, ChevronUp } from '../Icons'
 import { Stack } from '../Stack'
 import { Svg } from '../Svg'
 
-export default {
+const meta: Meta<typeof ToggleGroup> = {
   title: 'Components/ToggleGroup',
   component: ToggleGroup,
   subcomponents: { ToggleGroupItem },
-} as Meta
+}
+export default meta
 
 const Italic: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
   <Svg path={mdiFormatItalic} {...props} />
@@ -43,13 +44,15 @@ const TextAlignCenter: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
   <Svg path={mdiFormatAlignCenter} {...props} />
 )
 
-const Template: Story<typeof ToggleGroup> = ({ ...args }) => {
+const Template: StoryFn<
+  ComponentProps<typeof ToggleGroup> & { type: 'single' }
+> = ({ ...args }) => {
   return (
     <ToggleGroup
-      type="single"
       defaultValue="center"
       aria-label="Text alignment"
       {...args}
+      type="single"
     >
       <ToggleGroupItem value="left" aria-label="Left aligned">
         <TextAlignLeft />
@@ -66,7 +69,7 @@ const Template: Story<typeof ToggleGroup> = ({ ...args }) => {
 
 export const Default = Template.bind({})
 
-export const Variants: Story = () => (
+export const Variants: StoryFn = () => (
   <Stack>
     <ToggleGroup
       type="single"
@@ -119,7 +122,7 @@ export const Variants: Story = () => (
   </Stack>
 )
 
-export const Sizes: Story = () => (
+export const Sizes: StoryFn = () => (
   <Stack>
     <ToggleGroup type="single" size="small" defaultValue="left">
       <ToggleGroupItem value="left" aria-label="left">
@@ -157,7 +160,7 @@ export const Sizes: Story = () => (
   </Stack>
 )
 
-export const MultipleSelections: Story = () => (
+export const MultipleSelections: StoryFn = () => (
   <ToggleGroup type="multiple" aria-label="Text Styling">
     <ToggleGroupItem value="left" aria-label="Italic">
       <Italic />
@@ -171,7 +174,7 @@ export const MultipleSelections: Story = () => (
   </ToggleGroup>
 )
 
-export const Orientation: Story = () => (
+export const Orientation: StoryFn = () => (
   <Stack>
     <ToggleGroup
       type="single"

@@ -1,6 +1,6 @@
 import { useBoolean } from '@committed/hooks'
 import { action } from '@storybook/addon-actions'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
 import {
   Menu,
@@ -24,28 +24,31 @@ import { Chip } from '../Chip'
 import { Inline } from '../Inline'
 import { Text } from '../Text'
 
-export default {
+const subcomponents = {
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuCheckboxItem,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuItemShortcut,
+  MenuLabel,
+  MenuItemGroup,
+  MenuRadioGroup,
+  MenuButton,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
+} as unknown as Meta<typeof Menu>['subcomponents']
+
+const meta: Meta<typeof Menu> = {
   title: 'Components/Menu',
   component: Menu,
-  subcomponents: {
-    MenuTrigger,
-    MenuContent,
-    MenuItem,
-    MenuCheckboxItem,
-    MenuRadioItem,
-    MenuSeparator,
-    MenuItemShortcut,
-    MenuLabel,
-    MenuItemGroup,
-    MenuRadioGroup,
-    MenuButton,
-    MenuSub,
-    MenuSubContent,
-    MenuSubTrigger,
-  },
-} as Meta
+  subcomponents,
+}
+export default meta
 
-export const Default: Story = (args) => (
+export const Default: StoryFn = (args) => (
   <Menu {...args}>
     <MenuButton>Show Menu</MenuButton>
     <MenuContent>
@@ -56,7 +59,7 @@ export const Default: Story = (args) => (
   </Menu>
 )
 
-export const WithDisabledItems: Story = () => (
+export const WithDisabledItems: StoryFn = () => (
   <Menu>
     <MenuButton>Show Menu</MenuButton>
     <MenuContent>
@@ -67,7 +70,7 @@ export const WithDisabledItems: Story = () => (
 )
 
 /* Separators and Groups can be used to arrange items in vertical and horizontal sections */
-export const WithSeparators: Story = () => (
+export const WithSeparators: StoryFn = () => (
   <Menu>
     <MenuButton>Show Menu</MenuButton>
     <MenuContent>
@@ -90,7 +93,7 @@ export const WithSeparators: Story = () => (
   </Menu>
 )
 
-export const WithLabel: Story = () => (
+export const WithLabel: StoryFn = () => (
   <Menu>
     <MenuButton>Show Menu</MenuButton>
     <MenuContent>
@@ -102,7 +105,7 @@ export const WithLabel: Story = () => (
   </Menu>
 )
 
-export const Controlled: Story = () => {
+export const Controlled: StoryFn = () => {
   const [open, { setTrue, setFalse }] = useBoolean(false)
   return (
     <>
@@ -117,7 +120,7 @@ export const Controlled: Story = () => {
 }
 
 /* A `MenuCheckboxItem` are items with an indicated boolean state */
-export const WithCheckbox: Story = () => {
+export const WithCheckbox: StoryFn = () => {
   const [checked, setChecked] = useState(true)
   return (
     <Menu>
@@ -133,7 +136,7 @@ export const WithCheckbox: Story = () => {
 }
 
 /* `MenuItemRadioGroup` can be used to make sub `MenuRadioItem`s single select */
-export const WithRadioItems: Story = () => {
+export const WithRadioItems: StoryFn = () => {
   const [color, setColor] = React.useState('blue')
   return (
     <Menu>
@@ -150,7 +153,7 @@ export const WithRadioItems: Story = () => {
 }
 
 /** Add shortcut indicators using the `MenuItemShortcut` */
-export const Shortcuts: Story = () => {
+export const Shortcuts: StoryFn = () => {
   return (
     <Menu>
       <MenuButton>Show Menu</MenuButton>
@@ -167,7 +170,7 @@ export const Shortcuts: Story = () => {
 }
 
 /** The menu can be triggers from other components using the `MenuTrigger` */
-export const WithTrigger: Story = () => {
+export const WithTrigger: StoryFn = () => {
   return (
     <Inline css={{ alignItems: 'center' }}>
       <Menu>
@@ -212,7 +215,7 @@ export const WithTrigger: Story = () => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested: Story = () => {
+export const Nested: StoryFn = () => {
   return (
     <Menu>
       <MenuButton>Show Menu</MenuButton>
@@ -245,7 +248,7 @@ export const Nested: Story = () => {
 }
 
 /* Visual test for different size menu buttons and potential menu overlap */
-export const MultipleMenus: Story = () => {
+export const MultipleMenus: StoryFn = () => {
   const [checked, setChecked] = useState(true)
   const [color, setColor] = React.useState('blue')
   return (
@@ -284,7 +287,7 @@ export const MultipleMenus: Story = () => {
 }
 
 /** use the `destructive` flag to show the item triggers a destructive action */
-export const Destructive: Story = () => {
+export const Destructive: StoryFn = () => {
   const [color, setColor] = React.useState('blue')
   const [checked, setChecked] = useState(true)
   return (

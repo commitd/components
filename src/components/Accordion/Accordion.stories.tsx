@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from '.'
 
-export default {
+const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
   component: Accordion,
   subcomponents: { AccordionItem, AccordionHeader, AccordionContent },
@@ -23,13 +23,13 @@ export default {
       description: 'In single mode only, declares that they can all be closed.',
     },
   },
-} as Meta
+}
 
-export const Default: Story<React.ComponentProps<typeof Accordion>> = ({
-  ...args
-}) => {
+export default meta
+
+export const Default: StoryFn = ({ type, ...args }) => {
   return (
-    <Accordion {...args}>
+    <Accordion type={type} {...args}>
       <AccordionItem value="item-1">
         <AccordionHeader>Item 1</AccordionHeader>
         <AccordionContent>
