@@ -3,6 +3,7 @@
 
 # dependencies
 node_modules
+styled-system
 
 # builds
 build

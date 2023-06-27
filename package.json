@@ -21,6 +21,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
+    "prepare": "husky install",
     "build": "npm run clean && node build.mjs && tsc --project tsconfig.build.json",
     "lint": "tsc --noEmit && eslint './src/**/*.{ts,tsx}'",
     "test": "jest",
@@ -35,7 +36,6 @@
     "deploy-storybook": "storybook-to-ghpages",
     "danger:local": "danger local -b main --dangerfile dangerfile.lite.ts",
     "danger:pr": "danger pr https://github.com/commitd/components/pull/${PR}",
-    "prepare": "husky install",
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
@@ -88,6 +88,7 @@
     "@faker-js/faker": "^8.0.2",
     "@fontsource/dosis": "^5.0.3",
     "@fontsource/inter": "^5.0.3",
+    "@pandacss/dev": "^0.5.0",
     "@size-limit/preset-small-lib": "^8.2.4",
     "@storybook/addon-docs": "^7.0.21",
     "@storybook/addon-essentials": "^7.0.21",
@@ -156,6 +157,7 @@
   "dependencies": {
     "@committed/hooks": "^0.10.4",
     "@mdi/js": "^7.2.96",
+    "@polymorphic-factory/react": "^0.4.1",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.4",

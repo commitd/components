@@ -22,7 +22,7 @@
       "@storybook/theming": ["./typings.d.ts"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "styled-system", "panda.config.ts"],
   // due to png import issue
   "exclude": ["**/HoverCard.stories.tsx"]
 }

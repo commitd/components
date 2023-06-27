@@ -1,11 +1,14 @@
 import React, { FC, useContext, useEffect, useRef } from 'react'
-import { globalStyles, Theme } from '../../stitches.config'
+import { Theme } from '../../stitches.config'
 import {
   ThemeChoice,
   ThemeContext,
   ThemeController,
   ThemeControllerProps,
 } from './ThemeController'
+
+// Import the pandas css
+import '../../index.css'
 
 export interface ThemeProviderProps extends ThemeControllerProps {
   /**
@@ -66,7 +69,6 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
   local = false,
   children,
 }: ThemeProviderProps) => {
-  globalStyles()
   const prevThemeRef = useRef<Theme>()
   const [theme] = useTheme()
 
