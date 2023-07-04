@@ -71,7 +71,8 @@ export const inputStyles = css({
   $$inactive: '$colors$grey7',
   $$active: '$colors$primary',
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'background 0.5s',
   },
   backgroundPosition: 'center',
@@ -178,7 +179,8 @@ export const checkStyles = css({
   fontSize: '$0',
   cursor: 'pointer',
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'background 0.5s',
   },
   backgroundPosition: 'center',
@@ -192,7 +194,8 @@ export const checkStyles = css({
   '&:active': {
     backgroundColor: '$$active',
     backgroundSize: '100%',
-    '@motion': {
+    _motionReduce: { transition: 'none' },
+    _motionSafe: {
       transition: 'background 0s',
     },
   },

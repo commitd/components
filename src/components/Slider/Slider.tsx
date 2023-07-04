@@ -70,7 +70,8 @@ const StyledThumb = styled(Thumb, {
     backgroundColor: '$transparency1',
     transform: 'scale(1)',
     borderRadius: '$round',
-    '@motion': {
+    _motionReduce: { transition: 'none' },
+    _motionSafe: {
       transition: 'transform 200ms cubic-bezier(0.22, 1, 0.36, 1)',
     },
   },

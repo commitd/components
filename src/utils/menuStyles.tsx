@@ -21,7 +21,8 @@ export const itemStyles = css({
   alignItems: 'center',
   justifyContent: 'space-between',
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'all 50ms',
   },
 

@@ -20,8 +20,8 @@ import { createStitches, CSS, PropertyValue, ScaleValue } from '@stitches/react'
 import { ReactNode } from 'react'
 import { ThemeConfig } from './components/ThemeProvider/ThemeProvider.stories'
 
-const LIGHT_THEME = 'light'
-const DARK_THEME = 'dark'
+const LIGHT_THEME = 'light-theme'
+const DARK_THEME = 'dark-theme'
 
 const semanticColors = (
   sandType: typeof sand,

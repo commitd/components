@@ -1,5 +1,6 @@
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import { CSSProps, styled, VariantProps } from '../../stitches.config'
+import { css } from '../../../styled-system/css'
+import { withClasses } from '../../utils'
 import { Link, LinkProps } from '../Link'
 
 const BREADCRUMB_TAG = 'nav'
@@ -9,36 +10,38 @@ const CRUMB_TAG = 'li'
 /**
  * StyledBreadcrumbs base component
  */
-const StyledBreadcrumbs = styled(BREADCRUMB_TAG, {})
-const BreadcrumbList = styled(BREADCRUMB_LIST_TAG, {
-  padding: 0,
-  margin: 0,
-  listStyleType: 'none',
-})
+const StyledBreadcrumbs = withClasses(BREADCRUMB_TAG, 'c-breadcrumbs')
+const BreadcrumbList = withClasses(
+  BREADCRUMB_LIST_TAG,
+  css({
+    padding: 0,
+    margin: 0,
+    listStyleType: 'none',
+  })
+)
 
-const StyledCrumb = styled(CRUMB_TAG, {
-  display: 'inline',
-  $$spacing: '$space$3',
+const StyledCrumb = withClasses(
+  CRUMB_TAG,
+  css({
+    display: 'inline',
+    '--spacing': 'token(spacing.3)',
 
-  '&:not(:first-of-type)': {
-    marginLeft: '$$spacing',
-
-    '&::before': {
+    '&:not(:first-of-type)': {
+      marginLeft: 'var(--spacing)',
+    },
+    '&:not(:first-of-type)::before': {
       content: '',
       opacity: 0.25,
-      marginRight: '$$spacing',
+      marginRight: 'var(--spacing)',
       display: 'inline-block',
       transform: 'rotate(15deg)',
       borderRight: '1px solid',
       height: '0.8em',
     },
-  },
-})
+  })
+)
 
-type BreadcrumbsVariants = VariantProps<typeof StyledBreadcrumbs>
-type BreadcrumbsProps = BreadcrumbsVariants &
-  CSSProps &
-  ComponentProps<typeof BREADCRUMB_TAG>
+type BreadcrumbsProps = ComponentProps<typeof BREADCRUMB_TAG>
 
 export const Breadcrumbs = forwardRef<
   ElementRef<typeof StyledBreadcrumbs>,
@@ -50,7 +53,6 @@ export const Breadcrumbs = forwardRef<
     </StyledBreadcrumbs>
   )
 })
-Breadcrumbs.toString = () => `.${StyledBreadcrumbs.className}`
 
 export type CrumbProps = LinkProps & {
   isCurrentPage?: boolean

@@ -68,7 +68,8 @@ const StyledSpinner = styled(Logo, {
       variant: 'draw',
       css: {
         stroke: 'currentColor',
-        '@motion': {
+        _motionReduce: { transition: 'none' },
+        _motionSafe: {
           animation: `${strokeKeyframes} 3s cubic-bezier(.24,0,.37,1) alternate infinite, ${fillKeyframes} 3s cubic-bezier(1, 0, .5, 0) alternate infinite`,
         },
         '@reducedmotion': {
@@ -80,7 +81,8 @@ const StyledSpinner = styled(Logo, {
       active: true,
       variant: 'spin',
       css: {
-        '@motion': {
+        _motionReduce: { transition: 'none' },
+        _motionSafe: {
           animation: `${spinKeyframes} 1.5s ease infinite`,
         },
         '@reducedmotion': {
@@ -92,7 +94,8 @@ const StyledSpinner = styled(Logo, {
       active: true,
       variant: 'scale',
       css: {
-        '@motion': {
+        _motionReduce: { transition: 'none' },
+        _motionSafe: {
           animation: `${scaleKeyframes} 1.5s cubic-bezier(0.190, 1.000, 0.220, 1.000) infinite alternate both;`,
         },
         '@reducedmotion': {

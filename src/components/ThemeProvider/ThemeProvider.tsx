@@ -9,6 +9,9 @@ import {
 
 // Import the pandas css
 import '../../index.css'
+// Import the fonts
+import '@fontsource/dosis'
+import '@fontsource/inter'
 
 export interface ThemeProviderProps extends ThemeControllerProps {
   /**

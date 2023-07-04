@@ -1,88 +1,85 @@
+import { HTMLPolymorphicProps } from '@polymorphic-factory/react'
 import React, { ElementRef, forwardRef } from 'react'
-import type { CSS, CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import { cva, cx, RecipeVariantProps } from '../../../styled-system/css'
+import { styled } from '../../../styled-system/jsx'
+import { CSSProps, poly } from '../Base'
 
 const DEFAULT_TAG = 'span'
 
-/**
- * Text component covers all text use in the components.
- *
- * Prefer styling using the supplied props options, but the standard css is also available if required.
- *
- * A set of pre-configured components are also supplied for common use cases. These all use the same underlying Text component.
- */
-export const Text = styled(DEFAULT_TAG, {
-  // Reset
-  lineHeight: '1',
-  margin: '0',
-  fontWeight: '$regular',
-  fontVariantNumeric: 'tabular-nums',
-  display: 'inline',
-  color: '$text',
-
+export const text = cva({
+  base: {
+    // Reset
+    lineHeight: '1',
+    margin: '0',
+    fontFamily: 'text',
+    fontWeight: 'regular',
+    fontVariantNumeric: 'tabular-nums',
+    display: 'inline',
+    color: 'text',
+  },
   variants: {
     size: {
       '-2': {
-        fontSize: '$-2',
-        lineHeight: '$body',
+        fontSize: '-2',
+        lineHeight: 'body',
       },
       '-1': {
-        fontSize: '$-1',
-        lineHeight: '$body',
+        fontSize: '-1',
+        lineHeight: 'body',
       },
       '0': {
-        fontSize: '$0',
-        lineHeight: '$body',
+        fontSize: '0',
+        lineHeight: 'body',
       },
       '1': {
-        fontSize: '$1',
-        lineHeight: '$body',
+        fontSize: '1',
+        lineHeight: 'body',
       },
       '2': {
-        fontSize: '$2',
-        lineHeight: '$body',
+        fontSize: '2',
+        lineHeight: 'body',
       },
       '3': {
-        fontSize: '$3',
-        lineHeight: '$body',
+        fontSize: '3',
+        lineHeight: 'body',
       },
       '4': {
-        fontSize: '$4',
-        lineHeight: '$body',
+        fontSize: '4',
+        lineHeight: 'body',
       },
       '5': {
-        fontSize: '$5',
-        letterSpacing: '$tight',
-        lineHeight: '$tight',
+        fontSize: '5',
+        letterSpacing: 'tight',
+        lineHeight: 'tight',
       },
       '6': {
-        fontSize: '$6',
-        lineHeight: '$tight',
-        letterSpacing: '$tight',
+        fontSize: '6',
+        lineHeight: 'tight',
+        letterSpacing: 'tight',
       },
       '7': {
-        fontSize: '$7',
-        letterSpacing: '$tighter',
-        lineHeight: '$tight',
+        fontSize: '7',
+        letterSpacing: 'tighter',
+        lineHeight: 'tight',
         textIndent: '-.005em',
       },
       '8': {
-        fontSize: '$8',
-        letterSpacing: '$tighter',
-        lineHeight: '$tight',
+        fontSize: '8',
+        letterSpacing: 'tighter',
+        lineHeight: 'tight',
         textIndent: '-.018em',
       },
     },
     weight: {
-      regular: { fontWeight: '$regular' },
-      bold: { fontWeight: '$bold' },
-      light: { fontWeight: '$light' },
+      regular: { fontWeight: 'regular' },
+      bold: { fontWeight: 'bold' },
+      light: { fontWeight: 'light' },
     },
     font: {
-      default: { fontFamily: '$text' },
-      display: { fontFamily: '$display' },
-      system: { fontFamily: '$system' },
-      monospace: { fontFamily: '$monospace' },
+      default: { fontFamily: 'text' },
+      display: { fontFamily: 'display' },
+      system: { fontFamily: 'system' },
+      monospace: { fontFamily: 'monospace' },
     },
     italic: {
       true: {
@@ -103,22 +100,41 @@ export const Text = styled(DEFAULT_TAG, {
   },
 })
 
-type ParagraphProps = CSSProps &
-  VariantProps<typeof Text> & { children?: React.ReactNode }
+const StyledText = styled(poly(DEFAULT_TAG), text)
 
-const PARAGRAPH_CLASS_NAME = 'c-paragraph'
-const SPAN_CLASS_NAME = 'c-span'
-const STRIKE_CLASS_NAME = 'c-strike'
-const MONOSPACE_CLASS_NAME = 'c-monospace'
-const CAPTION_CLASS_NAME = 'c-caption'
+type TextVariantProps = RecipeVariantProps<typeof text>
+export type TextProps = HTMLPolymorphicProps<typeof DEFAULT_TAG> &
+  CSSProps &
+  TextVariantProps &
+  Partial<Pick<Parameters<typeof StyledText>[0], 'ref'>>
+
+/**
+ * Text component covers all text use in the components.
+ *
+ * Prefer styling using the supplied props options, but the standard css is also available if required.
+ *
+ * A set of pre-configured components are also supplied for common use cases. These all use the same underlying Text component.
+ */
+
+export const Text: React.FC<TextProps> = StyledText
+
+type ParagraphProps = HTMLPolymorphicProps<'p'> &
+  CSSProps &
+  TextVariantProps & { children?: React.ReactNode }
+
+export const PARAGRAPH_CLASS_NAME = 'c-paragraph'
+export const SPAN_CLASS_NAME = 'c-span'
+export const STRIKE_CLASS_NAME = 'c-strike'
+export const MONOSPACE_CLASS_NAME = 'c-monospace'
+export const CAPTION_CLASS_NAME = 'c-caption'
 
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ({ css, ...props }, forwardedRef) => {
+  ({ css, className, ...props }, forwardedRef) => {
     return (
       <Text
-        css={{ display: 'block', mb: '$3', ...css } as CSS}
+        css={{ display: 'block', mb: 3, ...css }}
         as="p"
-        className={PARAGRAPH_CLASS_NAME}
+        className={cx(PARAGRAPH_CLASS_NAME, className)}
         {...props}
         ref={forwardedRef}
       />
@@ -127,8 +143,7 @@ export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
 )
 Paragraph.toString = () => `.${PARAGRAPH_CLASS_NAME}`
 
-type SpanProps = CSSProps &
-  VariantProps<typeof Text> & { children?: React.ReactNode }
+type SpanProps = CSSProps & TextVariantProps & { children?: React.ReactNode }
 
 /**
  * Convenience export of text with the `span` tag
@@ -140,8 +155,7 @@ export const Span = forwardRef<HTMLSpanElement, SpanProps>(
 )
 Span.toString = () => `.${SPAN_CLASS_NAME}`
 
-type StrikeProps = CSSProps &
-  VariantProps<typeof Text> & { children?: React.ReactNode }
+type StrikeProps = CSSProps & TextVariantProps & { children?: React.ReactNode }
 
 /**
  * Convenience export of text with the `strikethrough` tag
@@ -161,7 +175,7 @@ export const Strike = forwardRef<HTMLSpanElement, StrikeProps>(
 Span.toString = () => `.${STRIKE_CLASS_NAME}`
 
 type MonospaceProps = CSSProps &
-  VariantProps<typeof Text> & {
+  TextVariantProps & {
     inline?: boolean
     children?: React.ReactNode
   }
@@ -184,8 +198,7 @@ export const Monospace = forwardRef<HTMLPreElement, MonospaceProps>(
 )
 Monospace.toString = () => `.${MONOSPACE_CLASS_NAME}`
 
-type CaptionProps = CSSProps &
-  VariantProps<typeof Text> & { children?: React.ReactNode }
+type CaptionProps = CSSProps & TextVariantProps & { children?: React.ReactNode }
 
 /**
  * Captions styles the text for use in a caption. This remain polymorphic, so the component type can be set to `caption` or `figcaption` if required.
@@ -194,7 +207,7 @@ export const Caption = forwardRef<ElementRef<typeof Text>, CaptionProps>(
   (props, forwardedRef) => {
     return (
       <Text
-        size={-2}
+        size="-2"
         className={CAPTION_CLASS_NAME}
         {...props}
         ref={forwardedRef}

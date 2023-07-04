@@ -1,42 +1,45 @@
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type { CSSProps, VariantProps } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import { css, cx } from '../../../styled-system/css'
+import { withClasses } from '../../utils'
 
 const DEFAULT_TAG = 'svg'
+export const SVG_CLASS = 'c-svg'
 
-const StyledSvg = styled(DEFAULT_TAG, {
-  // Reset
-  boxSizing: 'border-box',
-  //
-  display: 'inline-block',
-  flexShrink: 0,
-  userSelect: 'none',
-  fill: 'currentColor',
-  color: 'inherit',
-})
+const StyledSvg = withClasses(
+  'svg',
+  SVG_CLASS,
+  css({
+    // Reset
+    boxSizing: 'border-box',
+    //
+    display: 'inline-block',
+    flexShrink: 0,
+    userSelect: 'none',
+    fill: 'currentColor',
+    color: 'inherit',
+  })
+)
 
-type SvgVariants = VariantProps<typeof StyledSvg>
-type SvgProps = Omit<ComponentProps<typeof DEFAULT_TAG>, 'fr'> &
-  CSSProps &
-  SvgVariants & {
-    /** Add a title to the svg */
-    title?: string
-    /** Add the given svg path  */
-    path?: string
-    /**
-     * The fr attribute defines the radius of the focal point for the radial gradient.
-     *
-     * Forced optional due to ts bug
-     */
-    fr?: string
-  }
+type SvgProps = Omit<ComponentProps<typeof DEFAULT_TAG>, 'fr'> & {
+  /** Add a title to the svg */
+  title?: string
+  /** Add the given svg path  */
+  path?: string
+  /**
+   * The fr attribute defines the radius of the focal point for the radial gradient.
+   *
+   * Forced optional due to ts bug
+   */
+  fr?: string
+}
 
 /**
  * Svg is the base component for wrapping svg icon paths.
  */
 export const Svg = forwardRef<ElementRef<typeof DEFAULT_TAG>, SvgProps>(
-  ({ title, path, children, ...props }, forwardedRef) => (
+  ({ title, path, children, className, ...props }, forwardedRef) => (
     <StyledSvg
+      className={cx(SVG_CLASS, className)}
       focusable="false"
       width="24"
       height="24"
@@ -52,5 +55,3 @@ export const Svg = forwardRef<ElementRef<typeof DEFAULT_TAG>, SvgProps>(
     </StyledSvg>
   )
 )
-Svg.displayName = 'Svg'
-Svg.toString = () => `.${StyledSvg.className}`

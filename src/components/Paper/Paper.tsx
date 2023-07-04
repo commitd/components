@@ -1,19 +1,21 @@
-import { css, styled } from '../../stitches.config'
+import React from 'react'
+import { css, cx } from '../../../styled-system/css'
+import { Base, BaseProps } from '../Base'
 
 export const paperStyles = css({
   appearance: 'none',
   border: 'none',
   boxSizing: 'border-box',
   font: 'inherit',
-  lineHeight: '$none',
+  lineHeight: 'none',
   outline: 'none',
   textAlign: 'inherit',
   verticalAlign: 'middle',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
 
-  backgroundColor: '$paper',
-  borderRadius: '$default',
-  color: '$text',
+  backgroundColor: 'paper',
+  borderRadius: 'default',
+  color: 'text',
 
   '&::before': {
     boxSizing: 'border-box',
@@ -23,9 +25,9 @@ export const paperStyles = css({
     right: 0,
     bottom: 0,
     left: 0,
-    borderRadius: '$default',
+    borderRadius: 'default',
     pointerEvents: 'none',
-    boxShadow: '$1',
+    boxShadow: '1',
   },
 })
 
@@ -36,4 +38,7 @@ export const paperStyles = css({
  * It is primarily for internal use but exported for use in custom components to make them consistent.
  * The styles are also exported and may be more easily used.
  */
-export const Paper = styled('div', paperStyles)
+export const Paper: React.FC<BaseProps> = ({ className, ...props }) => {
+  const rootClassName = cx(paperStyles, className)
+  return <Base className={rootClassName} {...props} />
+}

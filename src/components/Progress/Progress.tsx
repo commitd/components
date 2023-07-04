@@ -41,7 +41,8 @@ const StyledProgress = styled(Root, {
       bottom: 0,
       left: 0,
       width: '5%',
-      '@motion': {
+      _motionReduce: { transition: 'none' },
+      _motionSafe: {
         animationDuration: '1500ms',
         animationIterationCount: 'infinite',
         animationTimingFunction: 'cubic-bezier(0.65, 0, 0.35, 1)',
@@ -88,7 +89,8 @@ const ProgressIndicator = styled(Indicator, {
   left: 0,
   width: '100%',
   backgroundColor: '$grey3',
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'transform 150ms cubic-bezier(0.65, 0, 0.35, 1)',
   },
 })

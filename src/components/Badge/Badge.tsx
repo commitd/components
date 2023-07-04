@@ -1,88 +1,107 @@
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import type { CSSProps } from '../../stitches.config'
-import { styled, VariantProps } from '../../stitches.config'
+import { cva, RecipeVariantProps } from '../../../styled-system/css'
+import { styled } from '../../../styled-system/jsx'
 
 const DEFAULT_TAG = 'span'
 
 const badgeHeight = 20
 
-const BadgeRoot = styled(DEFAULT_TAG, {
-  display: 'inline-flex',
-  position: 'relative',
-  flexShrink: 0,
-  verticalAlign: 'middle',
-})
+const BadgeRoot = styled(
+  DEFAULT_TAG,
+  cva({
+    base: {
+      display: 'inline-flex',
+      position: 'relative',
+      flexShrink: 0,
+      verticalAlign: 'middle',
+    },
+  })
+)
 
-const StyledBadge = styled(DEFAULT_TAG, {
-  top: '0',
-  right: '0',
-  transform: 'scale(1) translate(50%, -50%)',
-  transformOrigin: '100% 0%',
-  height: badgeHeight,
-  display: 'flex',
-  padding: '0 $1',
-  zIndex: 1,
-  position: 'absolute',
-  flexWrap: 'wrap',
-  fontSize: '$-2',
-  minWidth: badgeHeight,
-  alignItems: 'center',
-  fontWeight: 500,
-  lineHeight: 1,
-  alignContent: 'center',
-  borderRadius: '$pill',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  backgroundColor: '$$background',
-  color: '$$main',
+const badge = cva({
+  base: {
+    top: '0',
+    right: '0',
+    transform: 'scale(1) translate(90%, -70%)',
+    transformOrigin: '100% 0%',
 
+    display: 'flex',
+    padding: '0 token(sizes.1)',
+    zIndex: 1,
+    position: 'absolute',
+    flexWrap: 'wrap',
+    fontSize: '-2',
+    alignItems: 'center',
+    fontWeight: 500,
+    lineHeight: 1,
+    alignContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: 'var(--background)',
+    color: 'var(--main)',
+  },
   variants: {
+    status: {
+      false: {
+        height: badgeHeight,
+        minWidth: badgeHeight,
+        borderRadius: 'pill',
+      },
+      true: {
+        height: 2,
+        minWidth: 2,
+        padding: 0,
+        borderRadius: 'round',
+      },
+    },
     variant: {
       grey: {
-        $$main: '$colors$grey2',
-        $$background: '$colors$grey9',
+        '--main': 'token(colors.grey2)',
+        '--background': 'token(colors.grey9)',
       },
       ghost: {
-        $$main: '$colors$text',
-        $$background: '$colors$transparency3',
+        '--main': 'token(colors.text)',
+        '--background': 'token(colors.transparency3)',
       },
       brand: {
-        $$main: '$colors$brand',
-        $$background: '$colors$brandContrast',
+        '--main': 'token(colors.brand)',
+        '--background': 'token(colors.brandContrast)',
       },
       primary: {
-        $$main: '$colors$primary2',
-        $$background: '$colors$primary9',
+        '--main': 'token(colors.primary2)',
+        '--background': 'token(colors.primary9)',
       },
       error: {
-        $$main: '$colors$error2',
-        $$background: '$colors$error9',
+        '--main': 'token(colors.error2)',
+        '--background': 'token(colors.error9)',
       },
       info: {
-        $$main: '$colors$info2',
-        $$background: '$colors$info9',
+        '--main': 'token(colors.info2)',
+        '--background': 'token(colors.info9)',
       },
       success: {
-        $$main: '$colors$success2',
-        $$background: '$colors$success9',
+        '--main': 'token(colors.success2)',
+        '--background': 'token(colors.success9)',
       },
       warning: {
-        $$main: '$colors$warning2',
-        $$background: '$colors$warning9',
+        '--main': 'token(colors.warning2)',
+        '--background': 'token(colors.warning9)',
       },
     },
   },
   defaultVariants: {
     variant: 'grey',
+    status: false,
   },
 })
 
-type BadgeVariants = VariantProps<typeof StyledBadge>
-type BadgeProps = CSSProps &
-  BadgeVariants & {
-    content: React.ReactNode
-    max?: number
-  } & ComponentProps<typeof DEFAULT_TAG>
+const StyledBadge = styled(DEFAULT_TAG, badge)
+
+type BadgeVariants = Omit<RecipeVariantProps<typeof badge>, 'status'>
+type BadgeProps = BadgeVariants & {
+  content: React.ReactNode
+  max?: number
+} & ComponentProps<typeof DEFAULT_TAG>
 
 /**
  * Badge component
@@ -91,7 +110,7 @@ export const Badge = forwardRef<ElementRef<typeof DEFAULT_TAG>, BadgeProps>(
   ({ children, content, max, ...props }, forwardedRef) => (
     <BadgeRoot>
       {children}
-      <StyledBadge {...props} ref={forwardedRef}>
+      <StyledBadge {...props} ref={forwardedRef} status={false}>
         {typeof content === 'number' && max != null && content > max
           ? `${max}+`
           : content}
@@ -99,30 +118,17 @@ export const Badge = forwardRef<ElementRef<typeof DEFAULT_TAG>, BadgeProps>(
     </BadgeRoot>
   )
 )
-Badge.toString = () => `.${StyledBadge.className}`
 
-const StatusContainer = styled(StyledBadge, {
-  height: '$2',
-  padding: '0',
-  minWidth: '$2',
-  borderRadius: '$round',
-})
-
-type StatusVariants = VariantProps<typeof StyledBadge>
-type StatusProps = CSSProps &
-  StatusVariants &
-  ComponentProps<typeof DEFAULT_TAG>
+type StatusProps = BadgeVariants & ComponentProps<typeof DEFAULT_TAG>
 
 /**
  * Status component
  */
-export const Status = forwardRef<
-  ElementRef<typeof StatusContainer>,
-  StatusProps
->(({ children, ...props }, forwardedRef) => (
-  <BadgeRoot>
-    {children}
-    <StatusContainer {...props} ref={forwardedRef} />
-  </BadgeRoot>
-))
-Status.toString = () => `.${StatusContainer.className}`
+export const Status = forwardRef<ElementRef<typeof DEFAULT_TAG>, StatusProps>(
+  ({ children, ...props }, forwardedRef) => (
+    <BadgeRoot>
+      {children}
+      <StyledBadge {...props} status ref={forwardedRef} />
+    </BadgeRoot>
+  )
+)

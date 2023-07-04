@@ -93,7 +93,8 @@ export const linkStyles = css({
         },
       },
       styled: {
-        '@motion': {
+        _motionReduce: { transition: 'none' },
+        _motionSafe: {
           transition: 'background 100ms ease-out',
         },
         fontWeight: 'bold',

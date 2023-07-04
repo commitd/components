@@ -1,37 +1,23 @@
-import { css, keyframes, styled } from '../../stitches.config'
-
-const fadeIn = keyframes({
-  from: {
-    opacity: 0,
-  },
-  to: {
-    opacity: 1,
-  },
-})
-
-const fadeOut = keyframes({
-  from: {
-    opacity: 1,
-  },
-  to: {
-    opacity: 0,
-  },
-})
+import { css } from '../../../styled-system/css'
+import { withClasses } from '../../utils'
 
 export const overlayStyles = css({
-  backgroundColor: '$transparency7',
+  backgroundColor: 'transparency7',
 })
 
 export const overlayAnimationStyles = css({
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     '&[data-state=open]': {
-      animation: `${fadeIn} 200ms ease-out`,
+      animation: 'fadeIn 200ms ease-out',
     },
     '&[data-state=closed]': {
-      animation: `${fadeOut} 200ms ease-out`,
+      animation: 'fadeOut 200ms ease-out',
     },
   },
 })
+
+export const OVERLAY_CLASS = 'c-overlay'
 
 /**
  * An `Overlay` is used in other components to overlay on the normal content and
@@ -39,4 +25,4 @@ export const overlayAnimationStyles = css({
  * exported for use in custom components to make them consistent. The styles are also
  * exported and may be more easily used.
  */
-export const Overlay = styled('div', overlayStyles)
+export const Overlay = withClasses('div', OVERLAY_CLASS, overlayStyles)

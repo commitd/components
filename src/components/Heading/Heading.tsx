@@ -1,19 +1,15 @@
-import React, { ElementRef, forwardRef } from 'react'
-import type {
-  As,
-  AsProps,
-  ChildProps,
-  CSSProps,
-  VariantProps,
-} from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import { cva, RecipeVariantProps } from '../../../styled-system/css'
+import { styled } from '../../../styled-system/jsx'
 import { Text } from '../Text'
+import { text } from '../Text/Text'
 
 const DEFAULT_TAG = 'h3'
 
-const StyledHeading = styled(Text, {
-  fontWight: '$bold',
+const heading = cva({
+  ...text.config,
   variants: {
+    ...text.config.variants,
     variant: {
       h1: { fontSize: '$7' },
       h2: { fontSize: '$6' },
@@ -23,21 +19,22 @@ const StyledHeading = styled(Text, {
       h6: { fontSize: '$2' },
     },
   },
+  defaultVariants: {
+    variant: 'h3',
+    weight: 'bold',
+  },
 })
 
-type TextVariants = VariantProps<typeof Text>
-type HeadingVariants = VariantProps<typeof StyledHeading>
-type HeadingProps = CSSProps &
-  AsProps &
-  ChildProps &
-  HeadingVariants &
-  TextVariants
+const StyledHeading = styled(Text, heading)
+
+type HeadingVariants = RecipeVariantProps<typeof heading>
+type HeadingProps = ComponentProps<typeof Text> & HeadingVariants
 
 export const Heading = forwardRef<ElementRef<typeof DEFAULT_TAG>, HeadingProps>(
   ({ variant = DEFAULT_TAG, as, ...props }, forwardedRef) => {
     return (
       <StyledHeading
-        as={as ?? (variant as As)}
+        as={as ?? variant}
         variant={variant}
         {...props}
         ref={forwardedRef}
@@ -45,4 +42,4 @@ export const Heading = forwardRef<ElementRef<typeof DEFAULT_TAG>, HeadingProps>(
     )
   }
 )
-Heading.toString = () => `.${StyledHeading.className}`
+Heading.toString = () => `.Heading`

@@ -37,13 +37,15 @@ const StyledContent = styled(Content, paperStyles, {
   boxShadow: '$2',
 
   '&[data-state="open"]': {
-    '@motion': {
+    _motionReduce: { transition: 'none' },
+    _motionSafe: {
       animation: `${slideIn} 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
     },
   },
 
   '&[data-state="closed"]': {
-    '@motion': {
+    _motionReduce: { transition: 'none' },
+    _motionSafe: {
       animation: `${slideOut} 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
     },
   },

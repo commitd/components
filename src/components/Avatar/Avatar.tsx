@@ -1,23 +1,24 @@
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
-import { VariantProps } from '@stitches/react'
 import React, { ElementRef, forwardRef } from 'react'
-import type { CSS } from '../../stitches.config'
-import { styled } from '../../stitches.config'
+import { cva, RecipeVariantProps } from '../../../styled-system/css'
+import { styled } from '../../../styled-system/jsx'
+import { SystemStyleObject } from '../../../styled-system/types'
 
-const StyledRoot = styled(Root, {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  verticalAlign: 'middle',
-  overflow: 'hidden',
-  userSelect: 'none',
-  borderRadius: '$round',
-
+const avatarRoot = cva({
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    verticalAlign: 'middle',
+    overflow: 'hidden',
+    userSelect: 'none',
+    borderRadius: 'round',
+  },
   variants: {
     size: {
-      small: { size: '$5' },
-      medium: { size: '$7' },
-      large: { size: '$9' },
+      small: { h: 5, w: 5 },
+      medium: { h: 7, w: 7 },
+      large: { h: 9, w: 9 },
     },
   },
   defaultVariants: {
@@ -25,26 +26,37 @@ const StyledRoot = styled(Root, {
   },
 })
 
-const StyledImage = styled(Image, {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-})
+const StyledRoot = styled(Root, avatarRoot)
 
-const StyledFallback = styled(Fallback, {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-})
+const StyledImage = styled(
+  Image,
+  cva({
+    base: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    },
+  })
+)
 
-interface AvatarProps extends VariantProps<typeof StyledRoot> {
+const StyledFallback = styled(
+  Fallback,
+  cva({
+    base: {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
+)
+
+type AvatarProps = RecipeVariantProps<typeof avatarRoot> & {
   src?: string
   alt?: string
-  css?: CSS
-  color?: CSS['color']
-  backgroundColor?: CSS['backgroundColor']
+  color?: SystemStyleObject['color']
+  backgroundColor?: SystemStyleObject['backgroundColor']
   children?: React.ReactNode
 }
 
@@ -55,8 +67,8 @@ export const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
   (
     {
       src,
-      backgroundColor = '$grey5',
-      color = '$text',
+      backgroundColor = 'grey5',
+      color = 'text',
       alt = 'Avatar',
       children,
       ...props
@@ -76,4 +88,3 @@ export const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
     </StyledRoot>
   )
 )
-Avatar.toString = () => `.${StyledRoot.className}`

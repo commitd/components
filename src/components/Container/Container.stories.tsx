@@ -1,65 +1,71 @@
-import { Meta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Container } from '.'
 
-export default {
+const meta: Meta<typeof Container> = {
   title: 'Components/Container',
   component: Container,
-} as Meta
+}
+export default meta
+type Story = StoryObj<typeof Container>
 
-export const Default: React.FC = () => <Container>Container</Container>
+export const Default: Story = { render: () => <Container>Container</Container> }
 
 // Change the viewport to see the different breakpoints
-export const Nested: React.FC = () => (
-  <Container
-    maxWidth="xl"
-    css={{
-      backgroundColor: '$red5',
-      py: '$3',
-      px: '$0',
-    }}
-  >
+export const Nested: Story = {
+  render: () => (
     <Container
-      maxWidth="lg"
+      maxWidth="xl"
       css={{
-        backgroundColor: '$green5',
+        backgroundColor: '$red5',
         py: '$3',
         px: '$0',
       }}
     >
       <Container
-        maxWidth="md"
+        maxWidth="lg"
         css={{
-          backgroundColor: '$blue5',
+          backgroundColor: '$green5',
           py: '$3',
           px: '$0',
         }}
       >
         <Container
-          maxWidth="sm"
+          maxWidth="md"
           css={{
-            backgroundColor: '$orange5',
+            backgroundColor: '$blue5',
             py: '$3',
-            textAlign: 'center',
+            px: '$0',
           }}
         >
-          Container
+          <Container
+            maxWidth="sm"
+            css={{
+              backgroundColor: '$orange5',
+              py: '$3',
+              textAlign: 'center',
+            }}
+          >
+            Container
+          </Container>
         </Container>
       </Container>
     </Container>
-  </Container>
-)
+  ),
+}
 
 // Switch according to breakpoint automatically
-export const Responsive: React.FC = () => (
-  <Container
-    maxWidth="responsive"
-    css={{
-      backgroundColor: '$grey4',
-      py: '$3',
-      textAlign: 'center',
-    }}
-  >
-    Container
-  </Container>
-)
+export const Responsive: Story = {
+  render: () => (
+    <Container
+      maxWidth="responsive"
+      css={{
+        backgroundColor: '$grey4',
+        py: '$3',
+        textAlign: 'center',
+      }}
+    >
+      Container
+    </Container>
+  ),
+}

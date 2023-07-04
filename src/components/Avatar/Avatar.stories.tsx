@@ -1,62 +1,55 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Avatar } from '.'
-import { Flex } from '../'
 import { randomColor } from '../../docs/util'
+import { Inline } from '../Inline'
 
-export default {
+const meta: Meta<typeof Avatar> = {
   title: 'Components/Avatar',
   component: Avatar,
-} as Meta
+}
+export default meta
+type Story = StoryObj<typeof Avatar>
 
-export const Default: Story = () => (
-  <Avatar css={{ m: '$3' }} alt="John Smith" src="https://i.pravatar.cc" />
-)
+export const Default: Story = {
+  args: { alt: 'John Smith', src: 'https://i.pravatar.cc' },
+}
 
 /**
  * Size can be controlled through the `size` prop, with values `small`, `medium` (default) and `large`.
  */
-export const Size: Story = () => (
-  <Flex css={{ gap: '$3' }}>
-    <Avatar size="small" alt="John Smith" src="https://i.pravatar.cc" />
-    <Avatar alt="John Smith" src="https://i.pravatar.cc" />
-    <Avatar size="large" alt="John Smith" src="https://i.pravatar.cc" />
-  </Flex>
-)
+export const Size: Story = {
+  render: () => (
+    <Inline>
+      <Avatar size="small" alt="John Smith" src="https://i.pravatar.cc" />
+      <Avatar alt="John Smith" src="https://i.pravatar.cc" />
+      <Avatar size="large" alt="John Smith" src="https://i.pravatar.cc" />
+    </Inline>
+  ),
+}
 
 /**
  * If no image the avatar will default to the letters provided.
  *
  * Background color can be controlled through the `css` prop,
  */
-export const Letters: Story = () => (
-  <Flex>
-    <Avatar
-      src="Missing"
-      css={{ m: '$2' }}
-      backgroundColor="$primary"
-      color="$primaryContrast"
-    >
-      H
-    </Avatar>
-    <Avatar css={{ m: '$2' }} backgroundColor="$success">
-      N
-    </Avatar>
-    <Avatar css={{ m: '$2' }} backgroundColor="$warning">
-      OP
-    </Avatar>
-    <Avatar css={{ m: '$2' }} backgroundColor="$error9" color="$error1">
-      H
-    </Avatar>
-    <Avatar css={{ m: '$2' }} backgroundColor="#AB34FA" color="$white">
-      PP
-    </Avatar>
-    <Avatar
-      css={{ m: '$2' }}
-      backgroundColor={randomColor()}
-      color={randomColor(1)}
-    >
-      RC
-    </Avatar>
-  </Flex>
-)
+export const Letters: Story = {
+  render: () => (
+    <Inline>
+      <Avatar src="Missing" backgroundColor="primary" color="primaryContrast">
+        H
+      </Avatar>
+      <Avatar backgroundColor="success">N</Avatar>
+      <Avatar backgroundColor="warning">OP</Avatar>
+      <Avatar backgroundColor="error9" color="error1">
+        H
+      </Avatar>
+      <Avatar backgroundColor="#AB34FA" color="white">
+        PP
+      </Avatar>
+      <Avatar backgroundColor={randomColor()} color={randomColor(1)}>
+        RC
+      </Avatar>
+    </Inline>
+  ),
+}

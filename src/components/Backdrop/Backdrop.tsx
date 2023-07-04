@@ -1,39 +1,49 @@
 import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog'
 import React, { ComponentProps, FC } from 'react'
-import { CSS, styled } from '../../stitches.config'
-import { ConditionalWrapper } from '../../utils'
+import { css } from '../../../styled-system/css'
+
+import { ConditionalWrapper, withClasses } from '../../utils'
 import { overlayAnimationStyles, overlayStyles } from '../Overlay'
 
-const StyledOverlay = styled(Overlay, overlayStyles, overlayAnimationStyles, {
-  position: 'fixed',
-  right: 0,
-  bottom: 0,
-  top: 0,
-  left: 0,
-})
+const StyledOverlay = withClasses(
+  Overlay,
+  overlayStyles,
+  overlayAnimationStyles,
+  css({
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    top: 0,
+    left: 0,
+  })
+)
 
-const StyledContent = styled(Content, overlayAnimationStyles, {
-  position: 'fixed',
-  isolation: 'isolate',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  minWidth: 200,
-  maxWidth: 'fit-content',
-  maxHeight: '85vh',
-  padding: 20,
-  marginTop: '-5vh',
+const StyledContent = withClasses(
+  Content,
+  overlayAnimationStyles,
+  css({
+    position: 'fixed',
+    isolation: 'isolate',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    minWidth: 200,
+    maxWidth: 'fit-content',
+    maxHeight: '85vh',
+    padding: 20,
+    marginTop: '-5vh',
 
-  '&:focus': {
-    outline: 'none',
-  },
-})
+    '&:focus': {
+      outline: 'none',
+    },
+  })
+)
 
 type BackdropProps = React.ComponentProps<typeof Root> & {
   /** Modify the default styling of the overlay */
-  overlayCss?: CSS
+  overlayClassName?: string
   /** Modify the default styling of the content wrapper */
-  contentCss?: CSS
+  contentClassName?: string
   /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
   portalled?: boolean
   /** Specify a container element to portal the content into. */
@@ -48,8 +58,8 @@ type BackdropProps = React.ComponentProps<typeof Root> & {
  * Base on [Radix Dialog](https://radix-ui.com/primitives/docs/components/dialog).
  */
 export const Backdrop: FC<BackdropProps> = ({
-  overlayCss,
-  contentCss,
+  overlayClassName,
+  contentClassName,
   container,
   portalled = true,
   children,
@@ -62,8 +72,8 @@ export const Backdrop: FC<BackdropProps> = ({
         wrapper={(child) => <Portal container={container}>{child}</Portal>}
       >
         <>
-          <StyledOverlay css={overlayCss} />
-          <StyledContent css={contentCss}>{children}</StyledContent>
+          <StyledOverlay className={overlayClassName} />
+          <StyledContent className={contentClassName}>{children}</StyledContent>
         </>
       </ConditionalWrapper>
     </Root>

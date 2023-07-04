@@ -62,10 +62,26 @@ const globalCss = defineGlobalStyles({
 
   'pre, code': { margin: 0, fontFamily: 'token(fonts.monospace)' },
   'body, button': {
-    fontFamily: 'token(colors.text)',
+    fontFamily: 'token(fonts.text)',
   },
   '::selection': {
     backgroundColor: 'token(colors.selection)',
+  },
+
+  button: {
+    alignItems: 'center',
+    appearance: 'none',
+    boxSizing: 'border-box',
+    display: 'inline-flex',
+    flexShrink: 0,
+    justifyContent: 'center',
+    lineHeight: 'none',
+    margin: '0',
+    outline: 'none',
+    padding: '0',
+    textDecoration: 'none',
+    userSelect: 'none',
+    WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   },
 })
 
@@ -154,19 +170,19 @@ export default defineConfig({
       fonts: {
         system: {
           value:
-            '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
+            'var(--font-system), -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
         },
         display: {
           value:
-            '"Dosis", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
+            'var(--font-display), "Dosis", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
         },
         monospace: {
           value:
-            '"SFMono-Regular", Consolas, "Liberation Mono", "Andale Mono", "Ubuntu Mono", Menlo, Courier, monospace',
+            'var(--font-monospace), "SF Mono", "SFMono-Regular", ui-monospace, Consolas, "Liberation Mono", "Andale Mono", "DejaVu Sans Mono", "Ubuntu Mono", Menlo, Courier, monospace',
         },
         text: {
           value:
-            '"Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
+            'var(--font-text), "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
         },
       },
       fontSizes: {
@@ -638,21 +654,21 @@ export default defineConfig({
         },
       },
       shadows: {
-        1: {
+        '1': {
           value: {
             base: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
             _dark:
               '0px 2px 1px -1px rgb(0 0 0 / 40%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 30%)',
           },
         },
-        2: {
+        '2': {
           value: {
             base: '0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)',
             _dark:
               '0px 3px 3px -2px rgba(0,0,0,0.4), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.3)',
           },
         },
-        3: {
+        '3': {
           value: {
             base: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
             _dark:
@@ -661,18 +677,50 @@ export default defineConfig({
         },
         hover: {
           value: {
-            base: 'inset 0 0 0 1px {colors.grey4}',
-            _dark: 'inset 0 0 0 1px {colors.grey6}',
+            base: 'inset 0 0 0 1px token(colors.grey4)',
+            _dark: 'inset 0 0 0 1px token(colors.grey6)',
           },
         },
         focus: {
           value: {
-            base: 'inset 0 0 0 1px {colors.grey4}, 0 0 0 1px {colors.grey4}',
-            _dark: 'inset 0 0 0 1px {colors.grey6}, 0 0 0 1px {colors.grey6}',
+            base: 'inset 0 0 0 1px token(colors.grey4), 0 0 0 1px token(colors.grey4)',
+            _dark:
+              'inset 0 0 0 1px token(colors.grey6), 0 0 0 1px token(colors.grey6)',
           },
         },
       },
     }),
+
+    keyframes: {
+      fadeIn: {
+        from: {
+          opacity: 0,
+        },
+        to: {
+          opacity: 1,
+        },
+      },
+      fadeOut: {
+        from: {
+          opacity: 1,
+        },
+        to: {
+          opacity: 0,
+        },
+      },
+      accordionSlideDown: {
+        from: { height: 0 },
+        to: {
+          height: 'cal(var(--radix-accordion-panel-height) + token(sizes.6))',
+        },
+      },
+      accordionSlideUp: {
+        from: {
+          height: 'cal(var(--radix-accordion-panel-height) + token(sizes.6))',
+        },
+        to: { height: 0 },
+      },
+    },
   },
 
   // Where to look for your css declarations

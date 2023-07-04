@@ -65,7 +65,8 @@ const StyledItem = styled(Item, {
   position: 'relative',
   userSelect: 'none',
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'all 50ms',
   },
 

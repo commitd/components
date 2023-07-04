@@ -17,7 +17,8 @@ const StyledThumb = styled(Thumb, {
   willChange: 'transform',
   border: 'solid 2px',
   borderColor: '$$border',
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'transform 100ms cubic-bezier(0.22, 1, 0.36, 1)',
   },
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { renderDark, renderLight } from '../../test'
-import { Actions, Default } from './Card.stories'
+import { Actions, Default } from './Card.tories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

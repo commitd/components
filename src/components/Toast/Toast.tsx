@@ -47,7 +47,8 @@ const StyledToast = styled(ToastPrimitive.Root, {
   columnGap: '$4',
   alignItems: 'center',
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     '&[data-state="open"]': {
       animation: `${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
     },

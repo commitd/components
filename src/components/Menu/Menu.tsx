@@ -107,7 +107,8 @@ const ButtonIndicator = styled(ChevronDown, {
   top: 1,
   '[data-state=open] &': { transform: 'rotate(-180deg)' },
   marginRight: '-$2',
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'transform 250ms ease',
   },
 })

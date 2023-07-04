@@ -1,12 +1,25 @@
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Paper } from '.'
+import { Box } from '../Box'
 
-export default {
+const meta: Meta<typeof Paper> = {
   title: 'Components/Paper',
   component: Paper,
-} as Meta
+}
 
-export const Default: Story = (args) => (
-  <Paper css={{ height: '100px', width: '100%' }} {...args} />
-)
+export default meta
+type Story = StoryObj<typeof Paper>
+
+export const Default: Story = {
+  render: (args) => (
+    <Paper css={{ minHeight: '100px', minWidth: '100%' }} {...args} />
+  ),
+}
+
+export const OnGrey: Story = {
+  ...Default,
+  decorators: [
+    (story) => <Box css={{ padding: 4, bg: 'grey4' }}>{story()}</Box>,
+  ],
+}

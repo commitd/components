@@ -125,7 +125,8 @@ const StyledCaret = styled(ChevronDown, {
   color: '$colors$primary',
   top: 1,
   '[data-state=open] &': { transform: 'rotate(-180deg)' },
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'transform 250ms ease',
   },
 })
@@ -172,7 +173,8 @@ const StyledContent = styled(Content, paperStyles, {
   left: 0,
   width: '100%',
   '@default': { width: 'auto' },
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     animationDuration: '250ms',
     animationTimingFunction: 'ease',
     '&[data-motion="from-start"]': { animationName: enterFromLeft },
@@ -191,7 +193,8 @@ const StyledIndicator = styled(Indicator, {
   overflow: 'hidden',
   zIndex: 1,
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'width, transform 250ms ease',
     '&[data-state="visible"]': { animation: `${fadeIn} 200ms ease` },
     '&[data-state="hidden"]': { animation: `${fadeOut} 200ms ease` },
@@ -227,7 +230,8 @@ const StyledViewport = styled(Viewport, {
   boxShadow: '$2',
   height: 'var(--radix-navigation-menu-viewport-height)',
 
-  '@motion': {
+  _motionReduce: { transition: 'none' },
+  _motionSafe: {
     transition: 'width, height, 300ms ease',
     '&[data-state="open"]': { animation: `${scaleIn} 200ms ease` },
     '&[data-state="closed"]': { animation: `${scaleOut} 200ms ease` },

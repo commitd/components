@@ -145,7 +145,8 @@ const StyledChip = styled(DEFAULT_TAG, {
     interactive: {
       true: {
         cursor: 'pointer',
-        '@motion': {
+        _motionReduce: { transition: 'none' },
+        _motionSafe: {
           transition: 'background 0.5s',
         },
         backgroundPosition: 'center',
@@ -161,7 +162,8 @@ const StyledChip = styled(DEFAULT_TAG, {
         '&:active': {
           backgroundColor: '$$active',
           backgroundSize: '100%',
-          '@motion': {
+          _motionReduce: { transition: 'none' },
+          _motionSafe: {
             transition: 'background 0s',
           },
         },
