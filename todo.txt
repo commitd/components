@@ -1,2 +1,4 @@
 - Think about way to add consistent class names, say a wrapping function (see Text)
 - Breadcrumbs not showing the /
+
+- Add back test on commit // "jest --bail --findRelatedTests"

@@ -1,0 +1,15 @@
+{
+  "extends": "@committed/tsconfig/react-library.json",
+  "include": [
+    ".",
+    "panda.config.ts",
+    "../../apps/storybook/stories/Box.stories.tsx",
+    "../../apps/storybook/stories/Container.stories.tsx",
+    "../../apps/storybook/stories/Flex.stories.tsx",
+    "../../apps/storybook/stories/Grid.stories.tsx",
+    "../../apps/storybook/stories/Inline.stories.tsx",
+    "../../apps/storybook/stories/Paper.stories.tsx",
+    "../../apps/storybook/stories/Stack.stories.tsx"
+  ],
+  "exclude": ["dist", "build", "node_modules"]
+}

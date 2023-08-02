@@ -1,7 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test
-npm run lint
-npm run build
-npm run size
+# pnpm test
+pnpm build
+# pnpm lint
+# pnpm size

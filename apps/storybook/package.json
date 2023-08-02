@@ -1,0 +1,43 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "pnpm codegen",
+    "codegen": "panda codegen --clean",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rimraf .next && storybook dev -p 6006",
+    "build": "storybook build",
+    "serve": "serve storybook-static"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@committed/colors": "workspace:*",
+    "@committed/ds": "workspace:*",
+    "@committed/tokens": "workspace:*",
+    "@storybook/addon-docs": "^7.1.0",
+    "@storybook/theming": "^7.1.0",
+    "serve": "^14.2.0",
+    "storybook-dark-mode": "^3.0.0"
+  },
+  "devDependencies": {
+    "@committed/eslint-config": "workspace:*",
+    "@committed/tsconfig": "workspace:*",
+    "@pandacss/dev": "^0.9.0",
+    "@pandacss/types": "^0.9.0",
+    "@storybook/addon-essentials": "^7.1.0",
+    "@storybook/addon-interactions": "^7.1.0",
+    "@storybook/addon-links": "^7.1.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.1.0",
+    "@storybook/react": "^7.1.0",
+    "@storybook/react-vite": "^7.1.0",
+    "@storybook/testing-library": "^0.2.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.1.0",
+    "typescript": "^5.1.6"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@committed/eslint-config": "workspace:*",
+    "@committed/tsconfig": "workspace:*",
+    "typescript": "^5.1.6"
+  }
+}

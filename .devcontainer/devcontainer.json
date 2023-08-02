@@ -61,12 +61,13 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
 
-  "postCreateCommand": "npm ci",
+  "postCreateCommand": "alias pm=pnpm ; alias px='pnpm dlx' ; pnpm setup ; pnpm add -g turbo",
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "node",
   "features": {
     "git": "os-provided",
-    "github-cli": "latest"
+    "github-cli": "latest",
+    "ghcr.io/devcontainers-contrib/features/pnpm": {}
   }
 }
