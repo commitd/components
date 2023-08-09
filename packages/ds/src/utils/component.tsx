@@ -2,7 +2,7 @@ import { css, cx } from '@committed/ss/css'
 import { Slot } from '@radix-ui/react-slot'
 import { ComponentProps, ComponentType, ElementType } from 'react'
 import { fixedForwardRef } from './forwardRef'
-import { CComponentProps } from './types'
+import { PolyCComponentProps } from './types'
 
 type ClassList = string[]
 
@@ -10,7 +10,7 @@ export function component<T extends ElementType>(
   component: T,
   ...classList: ClassList
 ) {
-  return fixedForwardRef<T, CComponentProps>(
+  return fixedForwardRef<T, PolyCComponentProps>(
     function Component(props, forwardedRef) {
       const { asChild, className, css: cssProp, ...elementProps } = props
       const remainingProps = elementProps as ComponentProps<T>

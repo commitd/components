@@ -1,6 +1,8 @@
-import React from 'react'
+import {
+  Default,
+  Variants,
+} from '../../../../apps/storybook/stories/Heading.stories'
 import { renderDark, renderLight } from '../../test'
-import { Default, Variants } from './Heading.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

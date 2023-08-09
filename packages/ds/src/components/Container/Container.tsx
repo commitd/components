@@ -1,6 +1,6 @@
 import { cva, RecipeVariantProps } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { CComponent, component } from '../../utils'
+import { component, PolyCComponent } from '../../utils'
 
 const DEFAULT_TAG = 'div'
 
@@ -50,6 +50,6 @@ type ContainerVariants = RecipeVariantProps<typeof container>
  *
  * Use a container to keep the content within the maxWidth set by a breakpoint.
  */
-export const Container: CComponent<typeof DEFAULT_TAG, ContainerVariants> =
+export const Container: PolyCComponent<typeof DEFAULT_TAG, ContainerVariants> =
   styled(component(DEFAULT_TAG, 'c-container'), container)
 Container.displayName = 'Container'

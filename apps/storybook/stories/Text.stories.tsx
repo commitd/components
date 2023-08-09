@@ -1,10 +1,20 @@
 import { css } from '@committed/ss/css'
 import { SystemStyleObject } from '@committed/ss/types'
 import { Meta, StoryObj } from '@storybook/react'
-import { Caption, Monospace, Paragraph, Span, Strike, Text } from '.'
-import { Column, Row } from '../'
-import { withClasses } from '../../utils'
-import { CAPTION_CLASS, PARAGRAPH_CLASS } from './Text'
+import { Column, Row } from '../../../packages/ds/src/components'
+import {
+  Caption,
+  Monospace,
+  Paragraph,
+  Span,
+  Strike,
+  Text,
+} from '../../../packages/ds/src/components/Text'
+import {
+  CAPTION_CLASS,
+  PARAGRAPH_CLASS,
+} from '../../../packages/ds/src/components/Text/Text'
+import { component } from '../../../packages/ds/src/utils'
 
 const meta: Meta<typeof Text> = {
   title: 'Components/Text',
@@ -55,17 +65,17 @@ export const Default: Story = {
 export const Size: Story = {
   render: () => (
     <Column>
-      <Text size="-2">Size -2</Text>
-      <Text size="-1">Size -1</Text>
-      <Text size="0">Size 0 (Default)</Text>
-      <Text size="1">Size 1</Text>
-      <Text size="2">Size 2</Text>
-      <Text size="3">Size 3</Text>
-      <Text size="4">Size 4</Text>
-      <Text size="5">Size 5</Text>
-      <Text size="6">Size 6</Text>
-      <Text size="7">Size 7</Text>
-      <Text size="8">Size 8</Text>
+      <Text size="$-2">Size -2</Text>
+      <Text size="$-1">Size -1</Text>
+      <Text size="$0">Size 0 (Default)</Text>
+      <Text size="$1">Size 1</Text>
+      <Text size="$2">Size 2</Text>
+      <Text size="$3">Size 3</Text>
+      <Text size="$4">Size 4</Text>
+      <Text size="$5">Size 5</Text>
+      <Text size="$6">Size 6</Text>
+      <Text size="$7">Size 7</Text>
+      <Text size="$8">Size 8</Text>
     </Column>
   ),
 }
@@ -126,14 +136,16 @@ export const Variations: Story = {
       <Text italic>Italic</Text>
       <Text className={css({ color: '$primary' })}>Primary</Text>
       <Text className={css({ color: '$textSecondary' })}>Secondary</Text>
-      <Text as="s">strikethrough</Text>
+      <Text asChild>
+        <s>strikethrough</s>
+      </Text>
       <Text
-        as="s"
+        asChild
         className={css({ textTransform: 'capitalize' })}
         weight="bold"
         italic
       >
-        multiple
+        <s>multiple</s>
       </Text>
     </Row>
   ),
@@ -186,9 +198,9 @@ export const Inline: Story = {
       </Text>
       <Text>
         This is{' '}
-        <Text as="s" weight="bold" italic>
+        <Strike weight="bold" italic>
           multiple
-        </Text>{' '}
+        </Strike>{' '}
         text
       </Text>
     </Row>
@@ -297,16 +309,16 @@ export const MonospaceStory: Story = {
   },
 }
 
-const Wrapper = withClasses(
+const Wrapper = component(
   Column,
   css({
     [`& .${PARAGRAPH_CLASS}`]: {
-      color: 'token(colors.$success9)',
+      color: 'token(colors.$success.9)',
     },
     [`& .${CAPTION_CLASS}`]: {
-      color: 'token(colors.$error9)',
+      color: 'token(colors.$error.9)',
     },
-  } as SystemStyleObject)
+  } as SystemStyleObject),
 )
 
 /**
@@ -324,7 +336,7 @@ NestingClassNameTest.parameters = {
   docs: {
     source: {
       code: `
-const Wrapper = styled(Column, {
+const Wrapper = component(Column, {
   [\`& \${Paragraph}\`]: {
     color: '$success9',
   },

@@ -1,8 +1,7 @@
 import { composeStories } from '@storybook/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
+import * as stories from '../../../../../apps/storybook/stories/Accordion.stories'
 import { renderDark, renderLight, screen, waitFor } from '../../test'
-import * as stories from './Accordion.stories'
 
 const { Default, Multiple, OneOpen } = composeStories(stories)
 
@@ -20,7 +19,7 @@ it('starts closed', () => {
   renderLight(<Multiple />)
   expect(screen.getByLabelText(/Item 1/i)).toBeInTheDocument()
   expect(
-    screen.queryByText(/Here goes the content for the accordion item 1./i)
+    screen.queryByText(/Here goes the content for the accordion item 1./i),
   ).not.toBeInTheDocument()
 })
 
@@ -28,12 +27,12 @@ it('can open panel', async () => {
   renderLight(<Multiple />)
   expect(screen.getByLabelText(/Item 1/i)).toBeInTheDocument()
   expect(
-    screen.queryByText(/Here goes the content for the accordion item 1./i)
+    screen.queryByText(/Here goes the content for the accordion item 1./i),
   ).not.toBeInTheDocument()
   userEvent.click(screen.getByRole('button', { name: /Item 1/i }))
   await waitFor(() => {
     expect(
-      screen.getByText(/Here goes the content for the accordion item 1./i)
+      screen.getByText(/Here goes the content for the accordion item 1./i),
     ).toBeInTheDocument()
   })
 })
@@ -42,6 +41,6 @@ it('starts open with defaultValue set', () => {
   renderLight(<OneOpen />)
   expect(screen.getByLabelText(/Item 1/i)).toBeInTheDocument()
   expect(
-    screen.queryByText(/Here goes the content for the accordion item 1./i)
+    screen.queryByText(/Here goes the content for the accordion item 1./i),
   ).toBeInTheDocument()
 })

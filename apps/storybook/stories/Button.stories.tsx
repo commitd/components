@@ -1,16 +1,14 @@
-import { Button } from '@committed/ds'
+import {
+  neutralColors,
+  primaryColors,
+  semanticColors,
+} from '@committed/colors/src/preset'
+import { Button, Inline, Stack } from '@committed/ds'
 import { css } from '@committed/ss/css'
 import { Meta, StoryObj } from '@storybook/react'
+import { ComponentProps } from 'react'
 import { Variants } from './utils'
 
-const Inline = ({ children }) => (
-  <div className={css({ display: 'inline-flex', gap: '$3' })}>{children}</div>
-)
-const Stack = ({ children }) => (
-  <div className={css({ display: 'flex', flexDirection: 'column', gap: '$3' })}>
-    {children}
-  </div>
-)
 const Grid = ({ children }) => (
   <div
     className={css({
@@ -32,14 +30,13 @@ const meta: Meta<typeof Button> = {
      * react-docgen-typescript fails us here.
      * @see https://github.com/storybookjs/storybook/issues/12641#issuecomment-708603353
      */
-    as: {
+    asChild: {
       control: {
-        type: 'select',
-        options: ['button', 'a'],
+        type: 'boolean',
       },
-      defaultValue: 'button',
+      defaultValue: 'false',
       description:
-        'Can be any HTML element, but can also be any component. Typically only used with "button" or "a".',
+        'Can be set to use the child component, typically only used with "a".',
     },
     destructive: {
       control: {
@@ -52,10 +49,10 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: {
         type: 'select',
-        options: ['primary', 'secondary', 'tertiary', 'brand'],
+        options: ['solid', 'outline', 'text', 'brand'],
       },
       description:
-        'The button is available in different variants. For the primary action on the view use the `primary` variant, most others should be `secondary` which is the default. Use `tertiary` for paired no-action buttons and `brand` is for use in the AppBar.',
+        'The button is available in different variants. For the solid action on the view use the `solid` variant, most others should be `outline` which is the default. Use `text` for paired no-action buttons and `brand` is for use in the AppBar.',
     },
     size: {
       control: {
@@ -105,16 +102,16 @@ export const FullWidth: Story = {
 
 /* Three variants are supported,
  *
- * - `primary` use for the main action, try to only use one per page
- * - `secondary` use for other actions on the page
- * - `tertiary` use to pair with others as cancel or for icon buttons
+ * - `solid` use for the main action, try to only use one per page
+ * - `outline` use for other actions on the page
+ * - `text` use to pair with others as cancel or for icon buttons
  */
 export const Variant: Story = {
   render: () => (
     <Inline>
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="tertiary">Tertiary</Button>
+      <Button variant="solid">solid</Button>
+      <Button variant="outline">outline</Button>
+      <Button variant="text">text</Button>
     </Inline>
   ),
 }
@@ -123,14 +120,14 @@ export const Variant: Story = {
 export const Destructive: Story = {
   render: () => (
     <Inline>
-      <Button destructive variant="primary">
-        Primary
+      <Button destructive variant="solid">
+        solid
       </Button>
-      <Button destructive variant="secondary">
-        Secondary
+      <Button destructive variant="outline">
+        outline
       </Button>
-      <Button destructive variant="tertiary">
-        Tertiary
+      <Button destructive variant="text">
+        text
       </Button>
     </Inline>
   ),
@@ -140,29 +137,19 @@ export const Destructive: Story = {
 export const Disabled: Story = {
   render: () => (
     <Inline>
-      <Button disabled variant="primary">
-        Primary
+      <Button disabled variant="solid">
+        solid
       </Button>
-      <Button disabled variant="secondary">
-        Secondary
+      <Button disabled variant="outline">
+        outline
       </Button>
-      <Button disabled variant="tertiary">
-        Tertiary
+      <Button disabled variant="text">
+        text
       </Button>
     </Inline>
   ),
 }
 
-/**
- * A `brand` variant is also supplied for particular uses cases, like in the AppBar, where changing to the dark theme does not affect the coloring.
- */
-export const Brand: Story = {
-  ...Default,
-  args: {
-    variant: 'brand',
-    children: 'Brand',
-  },
-}
 /**
  * This uses the force prop to simulate hover, focus and active states so they can be compared at the same time.
  * This prop is not intended for normal use and the buttons here will not interact normally.
@@ -170,34 +157,34 @@ export const Brand: Story = {
 export const State: Story = {
   render: () => (
     <Grid>
-      <Button variant="primary">Button</Button>
-      <Button variant="primary" data-hover>
+      <Button variant="solid">Button</Button>
+      <Button variant="solid" data-hover>
         Button
       </Button>
-      <Button variant="primary" data-focus>
+      <Button variant="solid" data-focus>
         Button
       </Button>
-      <Button variant="primary" data-active>
+      <Button variant="solid" data-active>
         Button
       </Button>
-      <Button variant="secondary">Button</Button>
-      <Button variant="secondary" data-hover>
+      <Button variant="outline">Button</Button>
+      <Button variant="outline" data-hover>
         Button
       </Button>
-      <Button variant="secondary" data-focus>
+      <Button variant="outline" data-focus>
         Button
       </Button>
-      <Button variant="secondary" data-active>
+      <Button variant="outline" data-active>
         Button
       </Button>
-      <Button variant="tertiary">Button</Button>
-      <Button variant="tertiary" data-hover>
+      <Button variant="text">Button</Button>
+      <Button variant="text" data-hover>
         Button
       </Button>
-      <Button variant="tertiary" data-focus>
+      <Button variant="text" data-focus>
         Button
       </Button>
-      <Button variant="tertiary" data-active>
+      <Button variant="text" data-active>
         Button
       </Button>
     </Grid>
@@ -208,11 +195,55 @@ export const All: Story = {
   render: () => (
     <Variants
       component={Button}
-      variant={['primary', 'secondary', 'tertiary']}
+      variant={['solid', 'outline', 'text']}
       size={['small', 'default', 'large']}
       destructive={[false, true]}
       disabled={[false, true]}
       children="Button"
     />
   ),
+}
+
+export const SemanticColors: StoryObj<{
+  colors: ComponentProps<typeof Button>['color'][]
+}> = {
+  render: ({ colors }) => (
+    <Stack>
+      <Variants
+        component={Button}
+        variant="solid"
+        color={colors}
+        children="Button"
+      />
+      <Variants
+        component={Button}
+        variant="outline"
+        color={colors}
+        children="Button"
+      />
+      <Variants
+        component={Button}
+        variant={'text'}
+        color={colors}
+        children="Button"
+      />
+    </Stack>
+  ),
+  args: {
+    colors: semanticColors,
+  },
+}
+
+export const PrimaryColors = {
+  ...SemanticColors,
+  args: {
+    colors: primaryColors,
+  },
+}
+
+export const NeutralColors = {
+  ...SemanticColors,
+  args: {
+    colors: neutralColors,
+  },
 }

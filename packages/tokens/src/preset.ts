@@ -50,22 +50,6 @@ const globalCss = defineGlobalStyles({
   '::selection': {
     backgroundColor: 'var(--colors.\\$selection)',
   },
-
-  button: {
-    alignItems: 'center',
-    appearance: 'none',
-    boxSizing: 'border-box',
-    display: 'inline-flex',
-    flexShrink: 0,
-    justifyContent: 'center',
-    lineHeight: 'none',
-    margin: '0',
-    outline: 'none',
-    padding: '0',
-    textDecoration: 'none',
-    userSelect: 'none',
-    WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-  },
 })
 
 const sizeValues: PropertyValues = (theme) => ({
@@ -247,43 +231,28 @@ export function presetTokens(): Preset {
       }),
 
       keyframes: {
-        $accordionSlideDown: {
-          from: { height: 0 },
-          to: {
-            height: 'cal(var(--radix-accordion-panel-height) + {sizes.$6})',
-          },
-        },
-        $accordionSlideUp: {
-          from: {
-            height: 'cal(var(--radix-accordion-panel-height) + {sizes.$6})',
-          },
-          to: { height: 0 },
-        },
-        $beat: {
+        beat: {
           '0%': { opacity: 0 },
           '50%': { opacity: '100%' },
           '100%': { opacity: '100%' },
         },
-        $enterFromRight: {
+        enterFromRight: {
           from: { transform: 'translateX(200px)', opacity: 0 },
           to: { transform: 'translateX(0)', opacity: 1 },
         },
-
-        $enterFromLeft: {
+        enterFromLeft: {
           from: { transform: 'translateX(-200px)', opacity: 0 },
           to: { transform: 'translateX(0)', opacity: 1 },
         },
-
-        $exitToRight: {
+        exitToRight: {
           from: { transform: 'translateX(0)', opacity: 1 },
           to: { transform: 'translateX(200px)', opacity: 0 },
         },
-
-        $exitToLeft: {
+        exitToLeft: {
           from: { transform: 'translateX(0)', opacity: 1 },
           to: { transform: 'translateX(-200px)', opacity: 0 },
         },
-        $fadeIn: {
+        fadeIn: {
           from: {
             opacity: 0,
           },
@@ -291,7 +260,7 @@ export function presetTokens(): Preset {
             opacity: 1,
           },
         },
-        $fadeOut: {
+        fadeOut: {
           from: {
             opacity: 1,
           },
@@ -299,7 +268,7 @@ export function presetTokens(): Preset {
             opacity: 0,
           },
         },
-        $fill: {
+        fill: {
           '0%': {
             fill: 'transparent',
           },
@@ -307,11 +276,11 @@ export function presetTokens(): Preset {
             fill: 'currentColor',
           },
         },
-        $hide: {
+        hide: {
           '0%': { opacity: 1 },
           '100%': { opacity: 0 },
         },
-        $indeterminate: {
+        indeterminate: {
           '0%': {
             transform: 'translateX(-100%)',
             transformOrigin: 'left',
@@ -325,12 +294,12 @@ export function presetTokens(): Preset {
             transformOrigin: 'left',
           },
         },
-        $pulse: {
+        pulse: {
           '0%': { opacity: 0.8 },
           '50%': { opacity: 1 },
           '100%': { opacity: 0.8 },
         },
-        $ripple: {
+        ripple: {
           '0%': {
             backgroundPosition: '-1000px 0',
           },
@@ -338,7 +307,7 @@ export function presetTokens(): Preset {
             backgroundPosition: '1000px 0',
           },
         },
-        $scale: {
+        scale: {
           '0%': {
             transform: 'scale(0.5)',
           },
@@ -346,30 +315,40 @@ export function presetTokens(): Preset {
             transform: 'scale(1)',
           },
         },
-        $scaleIn: {
+        scaleIn: {
           from: { transform: 'rotateX(-30deg) scale(0.9)', opacity: 0 },
           to: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
         },
-
-        $scaleOut: {
+        scaleOut: {
           from: { transform: 'rotateX(0deg) scale(1)', opacity: 1 },
           to: { transform: 'rotateX(-10deg) scale(0.95)', opacity: 0 },
         },
-        $slideIn: {
+        slideDown: {
+          from: { height: 0 },
+          to: {
+            height: 'var(--transformValue)',
+          },
+        },
+        slideIn: {
           from: { transform: 'var(--transformValue)' },
           to: { transform: 'translate3d(0,0,0)' },
         },
-        $slideOut: {
+        slideOut: {
           from: { transform: 'translate3d(0,0,0)' },
           to: { transform: 'var(--transformValue)' },
         },
-
-        $spin: {
+        slideUp: {
+          from: {
+            height: 'var(--transformValue)',
+          },
+          to: { height: 0 },
+        },
+        spin: {
           to: {
             transform: 'rotate(360deg)',
           },
         },
-        $stroke: {
+        stroke: {
           '0%': {
             strokeDashoffset: '2300',
           },
@@ -377,11 +356,11 @@ export function presetTokens(): Preset {
             strokeDashoffset: '0',
           },
         },
-        $toastIn: {
+        toastIn: {
           from: { transform: `translateX(calc(100% + {space.$5}))` },
           to: { transform: 'translateX(0)' },
         },
-        $toastOut: {
+        toastOut: {
           from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
           to: { transform: `translateX(calc(100% + {space.$5}))` },
         },
@@ -401,6 +380,7 @@ export function presetTokens(): Preset {
         size: {
           values: sizeValues,
           shorthand: 's',
+          property: 'width',
           transform(value: any) {
             return {
               width: value,

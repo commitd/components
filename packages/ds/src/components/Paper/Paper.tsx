@@ -1,5 +1,5 @@
 import { css } from '@committed/ss/css'
-import { component } from '../../utils'
+import { PolyCComponent, component } from '../../utils'
 
 const DEFAULT_TAG = 'div'
 
@@ -39,4 +39,8 @@ export const paperStyles = css({
  * It is primarily for internal use but exported for use in custom components to make them consistent.
  * The styles are also exported and may be more easily used.
  */
-export const Paper = component(DEFAULT_TAG, 'c-paper', paperStyles)
+export const Paper: PolyCComponent<typeof DEFAULT_TAG> = component(
+  DEFAULT_TAG,
+  'c-paper',
+  paperStyles,
+)

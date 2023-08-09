@@ -6,20 +6,64 @@ type AllColor = keyof typeof colors
 export type Color = Exclude<AllColor, `${string}Dark` | `${string}A`>
 export type ColorScale = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 
+export const neutralColors: Color[] = [
+  'gray',
+  'mauve',
+  'slate',
+  'sage',
+  'olive',
+  'sand',
+]
+export const primaryColors: Color[] = [
+  'tomato',
+  'red',
+  'crimson',
+  'pink',
+  'plum',
+  'purple',
+  'violet',
+  'indigo',
+  'blue',
+  'cyan',
+  'teal',
+  'green',
+  'grass',
+  'orange',
+  'brown',
+  'sky',
+  'mint',
+  'lime',
+  'yellow',
+  'amber',
+]
 export interface ColorConfig {
   primary?: Color
   secondary?: Color
-  grey?: Color
+  neutral?: Color
   info?: Color
   warn?: Color
   error?: Color
   success?: Color
 }
 
+export type SemanticColor = keyof ColorConfig
+
+export const semanticColors: SemanticColor[] = [
+  'primary',
+  'secondary',
+  'neutral',
+  'info',
+  'warn',
+  'error',
+  'success',
+]
+
+const blackText = ['sky', 'mint', 'lime', 'yellow', 'amber']
+
 const DefaultColorConfig: ColorConfig = {
   primary: 'amber',
   secondary: 'mint',
-  grey: 'sand',
+  neutral: 'sand',
   info: 'blue',
   warn: 'orange',
   error: 'red',
@@ -96,17 +140,28 @@ function createColorScale(color: Color) {
       hover: createColorValue(color, 10),
     },
     text: {
-      DEFAULT: createColorValue(color, 11),
+      DEFAULT: { value: blackText.includes(color) ? 'black' : 'white' },
       contrast: createColorValue(color, 12),
     },
   }
 }
 
+const primaryColorTokens = primaryColors.reduce((colors, color) => {
+  colors[`$${color}`] = createColorScale(color)
+  return colors
+}, {} as any)
+const neutralColorsTokens = neutralColors.reduce((colors, color) => {
+  colors[`$${color}`] = createColorScale(color)
+  return colors
+}, {} as any)
+
 function createColorTokens(config: ColorConfig) {
   return {
+    ...primaryColorTokens,
+    ...neutralColorsTokens,
     $primary: createColorScale(config.primary!),
     $secondary: createColorScale(config.secondary!),
-    $grey: createColorScale(config.grey!),
+    $neutral: createColorScale(config.neutral!),
     $info: createColorScale(config.info!),
     $warn: createColorScale(config.warn!),
     $error: createColorScale(config.error!),
@@ -147,14 +202,14 @@ function createColorTokens(config: ColorConfig) {
       value: { base: '{colors.$grey.3}', _dark: '{colors.$grey.3}' },
     },
     $paper: { value: { base: 'white', _dark: '{colors.$grey.9}' } },
-    $tooltip: createInvertedValue(config.grey!, 1),
+    $tooltip: createInvertedValue(config.neutral!, 1),
     $selection: {
-      value: '{$primary.3}',
+      value: '{colors.$primary.3}',
     },
     $text: {
       DEFAULT: { value: { base: '#3b3b3b', _dark: '#FFFFFF' } },
       secondary: {
-        value: { base: '{colors.$grey11}', _dark: '{colors.$white}' },
+        value: { base: '{colors.$grey.11}', _dark: '{colors.$white}' },
       },
       tooltip: {
         value: { base: '#FFFFFF', _dark: '#000000' },

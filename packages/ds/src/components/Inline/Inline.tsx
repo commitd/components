@@ -2,7 +2,7 @@ import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import {
   BoxVariants,
-  CComponent,
+  PolyCComponent,
   SpacingVariants,
   component,
   spacing,
@@ -45,7 +45,7 @@ type InlineProps = RecipeVariantProps<typeof inline> &
  *
  * It is implemented with `flex` so supports other flexbox controls provided by css
  */
-export const Inline = component(Base, 'c-inline') as CComponent<
+export const Inline = component(Base, 'c-inline') as PolyCComponent<
   'div',
   InlineProps
 >

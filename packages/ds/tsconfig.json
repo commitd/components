@@ -9,7 +9,12 @@
     "../../apps/storybook/stories/Grid.stories.tsx",
     "../../apps/storybook/stories/Inline.stories.tsx",
     "../../apps/storybook/stories/Paper.stories.tsx",
-    "../../apps/storybook/stories/Stack.stories.tsx"
+    "../../apps/storybook/stories/Stack.stories.tsx",
+    "../../apps/storybook/stories/Svg.stories.tsx",
+    "../../apps/storybook/stories/Accordion.stories.tsx",
+    "../../apps/storybook/stories/Alert.stories.tsx",
+    "../../apps/storybook/stories/Heading.stories.tsx",
+    "../../apps/storybook/stories/Text.stories.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

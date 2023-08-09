@@ -2,7 +2,7 @@ import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import {
   BoxVariants,
-  CComponent,
+  PolyCComponent,
   SpacingVariants,
   component,
   spacing,
@@ -39,5 +39,8 @@ type StackProps = RecipeVariantProps<typeof stack> &
  *
  * It is implemented with `flex` so supports other flexbox controls provided by css
  */
-export const Stack = component(Base, 'c-stack') as CComponent<'div', StackProps>
+export const Stack = component(Base, 'c-stack') as PolyCComponent<
+  'div',
+  StackProps
+>
 Stack.displayName = 'Stack'

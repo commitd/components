@@ -1,14 +1,13 @@
-import { css, cx } from '@committed/ss/css'
-import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { withClasses } from '../../utils'
+import { cx } from '@committed/ss/css'
+import { styled } from '@committed/ss/jsx'
+import { ComponentProps } from 'react'
+import { CComponent, component, fixedForwardRef } from '../../utils'
 
 const DEFAULT_TAG = 'svg' as const
 export const SVG_CLASS = 'c-svg'
 
-const StyledSvg = withClasses(
-  'svg',
-  SVG_CLASS,
-  css({
+const StyledSvg = styled(component('svg', SVG_CLASS), {
+  base: {
     // Reset
     boxSizing: 'border-box',
     //
@@ -17,32 +16,33 @@ const StyledSvg = withClasses(
     userSelect: 'none',
     fill: 'currentColor',
     color: 'inherit',
-  })
-)
+    size: '24px',
+  },
+})
 
-type SvgProps = Omit<ComponentProps<typeof DEFAULT_TAG>, 'fr'> & {
+type SvgProps = {
   /** Add a title to the svg */
   title?: string
   /** Add the given svg path  */
   path?: string
-  /**
-   * The fr attribute defines the radius of the focal point for the radial gradient.
-   *
-   * Forced optional due to ts bug
-   */
-  fr?: string
+  /** Set the size of the svg  */
+  size?: ComponentProps<typeof StyledSvg>['size']
+  /** Set the color of the svg used for fill and stroke */
+  color?: ComponentProps<typeof StyledSvg>['color']
+  /** set the fill color */
+  fill?: ComponentProps<typeof StyledSvg>['fill']
+  /** set the stroke color */
+  stroke?: ComponentProps<typeof StyledSvg>['stroke']
 }
 
 /**
  * Svg is the base component for wrapping svg icon paths.
  */
-export const Svg = forwardRef<ElementRef<typeof StyledSvg>, SvgProps>(
+export const Svg = fixedForwardRef<typeof StyledSvg, SvgProps>(
   ({ title, path, children, className, ...props }, forwardedRef) => (
     <StyledSvg
       className={cx(SVG_CLASS, className)}
       focusable="false"
-      width="24"
-      height="24"
       viewBox="0 0 24 24"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
@@ -53,5 +53,5 @@ export const Svg = forwardRef<ElementRef<typeof StyledSvg>, SvgProps>(
       {path ? <path d={path} /> : null}
       {children}
     </StyledSvg>
-  )
-)
+  ),
+) as CComponent<'svg', SvgProps>

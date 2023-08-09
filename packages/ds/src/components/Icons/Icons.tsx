@@ -7,7 +7,7 @@ import {
   mdiChevronUp,
   mdiClose,
 } from '@mdi/js'
-import React, { ComponentProps, FC } from 'react'
+import { ComponentProps, FC } from 'react'
 import { Svg } from '../Svg'
 
 type IconType = FC<ComponentProps<typeof Svg>>

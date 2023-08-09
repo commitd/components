@@ -1,6 +1,7 @@
 import { component } from '@committed/ds'
 import { css } from '@committed/ss/css'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import React from 'react'
 
 const Component = component('button', 'c-component')
 
@@ -18,6 +19,17 @@ export const NormalChild: StoryFn = () => (
     <a href="https://committed.io">link</a>
   </Component>
 )
+
+export const WithRef: StoryFn = () => {
+  const button = React.useRef<HTMLButtonElement>(null)
+
+  React.useEffect(() => {
+    if (button.current) {
+      button.current.focus()
+    }
+  }, [])
+  return <Component ref={button}>Focused</Component>
+}
 
 export const AsChild: StoryFn = () => (
   <Component asChild>

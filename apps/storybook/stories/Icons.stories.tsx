@@ -1,9 +1,8 @@
+import { Box, Copy, Svg } from '@committed/ds'
 import * as Icons from '@mdi/js'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
+import { useVirtualizer } from '@tanstack/react-virtual'
 import React from 'react'
-import { useVirtual } from 'react-virtual'
-import { Box, Svg } from '..'
-import { Copy } from '../../docs/util'
 
 export default {
   title: 'Components/Icons',
@@ -24,8 +23,8 @@ Only the imported paths should be included in your final bundle through tree-sha
   },
 } as Meta
 
-export const Default: Story = (
-  args: Omit<React.ComponentProps<typeof Svg>, 'path'>
+export const Default: StoryFn = (
+  args: Omit<React.ComponentProps<typeof Svg>, 'path'>,
 ) => <Svg {...args} path={Icons.mdiAccount} />
 
 const keys = Object.keys(Icons)
@@ -42,7 +41,7 @@ const Icon: React.FC<{ name: string }> = ({ name }) => {
       multiline
       copy={`import { ${name} } from '@mdi/js'
 export const ${name.substring(
-        3
+        3,
       )}: React.FC<React.ComponentProps<typeof Svg>> = (props) => (
   <Svg path={${name}} {...props} />
 )`}
@@ -69,6 +68,21 @@ export function IconGrid() {
   const parentRef = React.useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = React.useState({ rows: 0, columns: 0 })
 
+  const rowVirtualizer = useVirtualizer({
+    count: dimensions.rows,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => iconSize,
+    overscan: 20,
+  })
+
+  const columnVirtualizer = useVirtualizer({
+    horizontal: true,
+    count: dimensions.columns,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => iconSize,
+    overscan: 20,
+  })
+
   React.useEffect(() => {
     const current = parentRef.current
     const columns =
@@ -79,21 +93,6 @@ export function IconGrid() {
       rows,
     })
   }, [parentRef.current, setDimensions])
-
-  const rowVirtualizer = useVirtual({
-    size: dimensions.rows,
-    parentRef,
-    estimateSize: React.useCallback(() => iconSize, []),
-    overscan: 20,
-  })
-
-  const columnVirtualizer = useVirtual({
-    horizontal: true,
-    size: dimensions.columns,
-    parentRef,
-    estimateSize: React.useCallback(() => iconSize, []),
-    overscan: 20,
-  })
 
   return (
     <Box
@@ -106,30 +105,37 @@ export function IconGrid() {
       <Box
         css={{
           margin: 'auto',
-          height: `${rowVirtualizer.totalSize}px`,
-          width: `${columnVirtualizer.totalSize}px`,
           position: 'relative',
         }}
+        style={{
+          height: `${rowVirtualizer.getTotalSize()}px`,
+          width: `${columnVirtualizer.getTotalSize()}px`,
+        }}
       >
-        {rowVirtualizer.virtualItems.map((virtualRow) => (
+        {rowVirtualizer.getVirtualItems().map((virtualRow) => (
           <React.Fragment key={virtualRow.index}>
-            {columnVirtualizer.virtualItems.map((virtualColumn) => (
+            {columnVirtualizer.getVirtualItems().map((virtualColumn) => (
               <Box
+                key={virtualColumn.index}
                 css={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
+                }}
+                style={{
                   width: `${virtualColumn.size}px`,
                   height: `${virtualRow.size}px`,
                   transform: `translateX(${virtualColumn.start}px) translateY(${virtualRow.start}px)`,
                 }}
               >
                 <Icon
-                  key={virtualColumn.index}
                   name={
                     keys[
-                      dimensions.columns * virtualRow.index +
-                        virtualColumn.index
+                      Math.min(
+                        dimensions.columns * virtualRow.index +
+                          virtualColumn.index,
+                        numberOfIcons - 1,
+                      )
                     ]
                   }
                 />

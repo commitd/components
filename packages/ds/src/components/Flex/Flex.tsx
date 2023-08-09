@@ -1,6 +1,6 @@
 import { css, cva, RecipeVariantProps } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { BoxVariants, CComponent, component } from '../../utils'
+import { BoxVariants, component, PolyCComponent } from '../../utils'
 import { Box } from '../Box'
 
 const flex = cva({
@@ -47,7 +47,10 @@ type FlexVariants = RecipeVariantProps<typeof flex> & BoxVariants
  * - spaced: Makes spaced between (justifyContent: 'spaced-between')
  * - centered: Makes items centered: ((justifyContent: 'center', (align-items: 'center'))
  */
-export const Flex = component(Base, 'c-flex') as CComponent<'div', FlexVariants>
+export const Flex = component(Base, 'c-flex') as PolyCComponent<
+  'div',
+  FlexVariants
+>
 Flex.displayName = 'Flex'
 
 export const Row = component(

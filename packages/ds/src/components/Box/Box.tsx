@@ -1,5 +1,5 @@
 import { styled } from '@committed/ss/jsx'
-import { BoxVariants, CComponent, box, component } from '../../utils'
+import { BoxVariants, PolyCComponent, box, component } from '../../utils'
 
 const Base = component('div', 'c-box')
 /**
@@ -16,5 +16,5 @@ const Base = component('div', 'c-box')
  * - `max` adds 100% height and width
  * - `fullscreen` adds 100vh height and 100% width
  */
-export const Box: CComponent<'div', BoxVariants> = styled(Base, box)
+export const Box: PolyCComponent<'div', BoxVariants> = styled(Base, box)
 Box.displayName = 'Box'

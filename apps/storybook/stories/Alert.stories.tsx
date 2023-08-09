@@ -1,7 +1,5 @@
+import { Alert, AlertContent, AlertTitle, Column } from '@committed/ds'
 import { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
-import { Alert, AlertContent, AlertTitle } from '.'
-import { Column } from '../'
 
 const meta: Meta<typeof Alert> = {
   title: 'Components/Alert',
@@ -11,7 +9,7 @@ const meta: Meta<typeof Alert> = {
     severity: {
       control: {
         type: 'select',
-        options: ['error', 'warning', 'info', 'success', 'ghost'],
+        options: ['error', 'warn', 'info', 'success', 'ghost'],
       },
       defaultValue: 'error',
       description: 'Set the severity of the alert',
@@ -42,7 +40,7 @@ export const Severity: Story = {
       <Alert severity="error">
         <AlertTitle>This is an error alert</AlertTitle>
       </Alert>
-      <Alert severity="warning">
+      <Alert severity="warn">
         <AlertTitle>This is a warning alert</AlertTitle>
       </Alert>
       <Alert severity="info">
@@ -73,7 +71,7 @@ export const WithContent: Story = {
           This is an error alert — <strong>check it out!</strong>
         </AlertContent>
       </Alert>
-      <Alert severity="warning">
+      <Alert severity="warn">
         <AlertTitle>Warning</AlertTitle>
         <AlertContent>
           This is a warning alert — <strong>check it out!</strong>
