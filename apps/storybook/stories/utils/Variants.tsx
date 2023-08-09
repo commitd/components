@@ -1,5 +1,7 @@
 // @ts-nocheck
-import { Fragment } from 'react'
+import { Grid } from '@committed/ds'
+import { SystemStyleObject } from '@committed/ss/css'
+import { ElementType, Fragment } from 'react'
 
 const arr = <T extends unknown>(v: T | Array<T>): Array<T> =>
   Array.isArray(v) ? v : [v]
@@ -17,30 +19,36 @@ const cartesianProduct = (props: { [x: string]: any }): { [x: string]: any } =>
       pairsArr.reduce((result, [k, v]) => ({ ...result, [k]: v }), {}),
     )
 
-export const Variants = ({
-  gridCss = { gap: '$3', gridTemplateColumns: '1fr 1fr 1fr 1fr' },
+type ArrayProps<Props> = { [K in keyof Props]: Array<Props[K]> }
+
+export const Variants = <T extends ElementType>({
+  gridCss = { gridTemplateColumns: '1fr 1fr 1fr 1fr' },
   component,
   container = Fragment,
   ...props
-}) => {
+}: {
+  gridCss?: SystemStyleObject
+  container?: () => ReactElement<any, any>
+  component: T // (props: P) => ReactElement<any, any>
+} & ArrayProps<ComponentProps<T>>) => {
   const combinations = cartesianProduct(props)
   const Component = component
   const Container = container
 
   return (
-    // <Grid css={gridCss}>
-    <div>
-      {combinations.map((props, i: number) => {
-        const { css, children, ..._display } = props
-        return (
-          <Container key={i}>
-            {/* <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}> */}
-            <Component {...props} />
-            {/* </Tooltip> */}
-          </Container>
-        )
-      })}
-    </div>
-    // </Grid>
+    <Grid gap css={gridCss}>
+      <>
+        {combinations.map((props, i: number) => {
+          const { css, children, ..._display } = props
+          return (
+            <Container key={i}>
+              {/* <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}> */}
+              <Component {...props} />
+              {/* </Tooltip> */}
+            </Container>
+          )
+        })}
+      </>
+    </Grid>
   )
 }

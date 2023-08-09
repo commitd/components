@@ -1,11 +1,11 @@
 import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import { Link } from '../../packages/ds/src/components/Link'
 import { withClasses } from '../../utils'
 import { Box } from '../Box'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
-import { Link } from '../Link'
 
 const appBar = cva({
   base: {
@@ -34,7 +34,7 @@ const StyledHeading = styled(
       fontSize: '$1',
       fontWeight: 'regular',
     },
-  })
+  }),
 )
 
 const HEADING_TAG = 'h1'
@@ -64,7 +64,7 @@ export const AppBarActions = styled(
       color: '$brandContrast',
       // },
     },
-  })
+  }),
 )
 AppBarActions.displayName = 'AppBarActions'
 
@@ -103,7 +103,7 @@ export const AppBarMenu = withClasses(
     '& > *': {
       pointerEvents: 'auto',
     },
-  })
+  }),
 )
 AppBarMenu.displayName = 'AppBarMenu'
 
@@ -117,6 +117,6 @@ export const AppBarMenuItem = styled(
         textDecoration: 'underline',
       },
     },
-  })
+  }),
 )
 AppBarMenuItem.displayName = 'AppBarMenuItem'

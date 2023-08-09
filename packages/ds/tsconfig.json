@@ -14,7 +14,21 @@
     "../../apps/storybook/stories/Accordion.stories.tsx",
     "../../apps/storybook/stories/Alert.stories.tsx",
     "../../apps/storybook/stories/Heading.stories.tsx",
-    "../../apps/storybook/stories/Text.stories.tsx"
+    "../../apps/storybook/stories/Text.stories.tsx",
+    "../../apps/storybook/stories/AspectRatio.stories.tsx",
+    "../../apps/storybook/stories/Avatar.stories.tsx",
+    "../../apps/storybook/stories/Backdrop.stories.tsx",
+    "../../apps/storybook/stories/Spinner.stories.tsx",
+    "../../apps/storybook/stories/Logo.stories.tsx",
+    "../../apps/storybook/stories/Overlay.stories.tsx",
+    "../../apps/storybook/stories/Badge.stories.tsx",
+    "../../apps/storybook/stories/Breadcrumbs.stories.tsx",
+    "../../apps/storybook/stories/Subheading.stories.tsx",
+    "../../apps/storybook/stories/Card.stories.tsx",
+    "../../apps/storybook/stories/Hidden.stories.tsx",
+    "../../apps/storybook/stories/Image.stories.tsx",
+    "../../apps/storybook/stories/IconButton.stories.tsx",
+    "../../apps/storybook/stories/Chip.stories.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

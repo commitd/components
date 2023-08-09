@@ -1,8 +1,14 @@
-import { cva } from '@committed/ss/css'
+import { cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
 import { RecipeVariantProps } from '@committed/ss/types/recipe'
-import { PolyCComponent, component } from '../../utils'
+import {
+  PolyCComponent,
+  Prettify,
+  component,
+  fixedForwardRef,
+} from '../../utils'
+import { Svg } from '../Svg'
 
 const DEFAULT_TAG = 'button'
 
@@ -461,13 +467,12 @@ export const buttonBaseStyle: SystemStyleObject = {
   flexShrink: 0,
   justifyContent: 'center',
   lineHeight: 'none',
-  margin: '0',
   outline: 'none',
-  padding: '0',
   textDecoration: 'none',
   userSelect: 'none',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   // Defaults
+  // fontFamily: '$text',
   fontSize: '$0',
   borderRadius: '$default',
   backgroundColor: '$transparent',
@@ -513,3 +518,81 @@ const Base = component(DEFAULT_TAG, 'c-button')
 export const Button: PolyCComponent<typeof DEFAULT_TAG, ButtonVariants> =
   styled(Base, button)
 Button.displayName = 'Button'
+
+//// IconButton
+
+const iconSizeVariants = {
+  small: {
+    size: 5,
+    '& > svg': {
+      size: 4,
+    },
+  },
+  default: {
+    size: 6,
+  },
+  large: {
+    size: 7,
+    '& > svg': {
+      size: 6,
+    },
+  },
+}
+
+const iconButtonVariants = {
+  variants: {
+    variant: mainVariants,
+    destructive: destructiveVariants,
+    color: buttonColors,
+    size: iconSizeVariants,
+  },
+}
+
+const iconButton = cva({
+  base: {
+    ...buttonVariables,
+    ...buttonBaseStyle,
+    ...buttonInteractionStyles,
+  },
+  ...iconButtonVariants,
+  defaultVariants: {
+    variant: 'outline',
+    destructive: false,
+    size: 'default',
+  },
+})
+
+export const StyledIconButton = styled(DEFAULT_TAG, iconButton)
+
+type IconButtonVariants = RecipeVariantProps<typeof iconButton>
+type ButtonProps = Omit<React.HTMLProps<HTMLButtonElement>, 'size'>
+type StyledIconButtonProps = ButtonProps &
+  IconButtonVariants & {
+    className?: string
+    // override the incorrectly inferred type from HTMLProps
+    type?: 'button' | 'reset' | 'submit'
+    /** Add a title */
+    title?: string
+    /** Add the given svg path  */
+    path?: string
+  }
+
+type IconButtonProps = Prettify<StyledIconButtonProps>
+
+export const ICON_BUTTON_CLASS = 'c-icon-button'
+
+/**
+ * IconButton can be used to wrap custom `Svg` icons or use the `path` prop to supply a standard mdi icon.
+ */
+export const IconButton = fixedForwardRef<'button', IconButtonProps>(
+  ({ className, title, path, children, ...props }, forwardedRef) => (
+    <StyledIconButton
+      className={cx(ICON_BUTTON_CLASS, className)}
+      {...props}
+      ref={forwardedRef}
+    >
+      {path ? <Svg path={path} title={title} /> : children}
+    </StyledIconButton>
+  ),
+)
+IconButton.displayName = 'IconButton'

@@ -1,8 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react'
-import React from 'react'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '.'
+import { Link } from '../../packages/ds/src/components/Link'
 import { Card, CardBody, CardHeading, CardLeadIn } from '../Card'
-import { Link } from '../Link'
 import { Text } from '../Text'
 import image from './committed_io.png'
 

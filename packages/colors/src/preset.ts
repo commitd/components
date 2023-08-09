@@ -166,6 +166,47 @@ function createColorTokens(config: ColorConfig) {
     $warn: createColorScale(config.warn!),
     $error: createColorScale(config.error!),
     $success: createColorScale(config.success!),
+    $transparency: {
+      DEFAULT: {
+        value: { base: colors.blackA.blackA12, _dark: colors.whiteA.whiteA12 },
+      },
+      1: {
+        value: { base: colors.blackA.blackA1, _dark: colors.whiteA.whiteA1 },
+      },
+      2: {
+        value: { base: colors.blackA.blackA2, _dark: colors.whiteA.whiteA2 },
+      },
+      3: {
+        value: { base: colors.blackA.blackA3, _dark: colors.whiteA.whiteA3 },
+      },
+      4: {
+        value: { base: colors.blackA.blackA4, _dark: colors.whiteA.whiteA4 },
+      },
+      5: {
+        value: { base: colors.blackA.blackA5, _dark: colors.whiteA.whiteA5 },
+      },
+      6: {
+        value: { base: colors.blackA.blackA6, _dark: colors.whiteA.whiteA6 },
+      },
+      7: {
+        value: { base: colors.blackA.blackA7, _dark: colors.whiteA.whiteA7 },
+      },
+      8: {
+        value: { base: colors.blackA.blackA8, _dark: colors.whiteA.whiteA8 },
+      },
+      9: {
+        value: { base: colors.blackA.blackA9, _dark: colors.whiteA.whiteA9 },
+      },
+      10: {
+        value: { base: colors.blackA.blackA10, _dark: colors.whiteA.whiteA10 },
+      },
+      11: {
+        value: { base: colors.blackA.blackA11, _dark: colors.whiteA.whiteA11 },
+      },
+      12: {
+        value: { base: colors.blackA.blackA12, _dark: colors.whiteA.whiteA12 },
+      },
+    },
     $overlay: {
       black: {
         DEFAULT: { value: colors.blackA.blackA12 },
@@ -199,9 +240,9 @@ function createColorTokens(config: ColorConfig) {
       },
     },
     $background: {
-      value: { base: '{colors.$grey.3}', _dark: '{colors.$grey.3}' },
+      value: { base: '{colors.$neutral.3}', _dark: '{colors.$neutral.3}' },
     },
-    $paper: { value: { base: 'white', _dark: '{colors.$grey.9}' } },
+    $paper: { value: { base: 'white', _dark: '{colors.$neutral.9}' } },
     $tooltip: createInvertedValue(config.neutral!, 1),
     $selection: {
       value: '{colors.$primary.3}',
@@ -209,7 +250,7 @@ function createColorTokens(config: ColorConfig) {
     $text: {
       DEFAULT: { value: { base: '#3b3b3b', _dark: '#FFFFFF' } },
       secondary: {
-        value: { base: '{colors.$grey.11}', _dark: '{colors.$white}' },
+        value: { base: '{colors.$neutral.11}', _dark: '{colors.$white}' },
       },
       tooltip: {
         value: { base: '#FFFFFF', _dark: '#000000' },

@@ -1,13 +1,15 @@
 import { styled } from '@committed/ss/jsx'
-import { CComponentProps, component, fixedForwardRef } from '../../utils'
+import {
+  CComponentProps,
+  Headings,
+  component,
+  fixedForwardRef,
+} from '../../utils'
 import { TextVariants, text } from '../Text/Text'
 
 const DEFAULT_TAG = 'h3'
-type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-const headingSizesVariants: Record<
-  Headings,
-  NonNullable<TextVariants>['size']
-> = {
+
+const sizes: Record<Headings, NonNullable<TextVariants>['size']> = {
   h1: '$7',
   h2: '$6',
   h3: '$5',
@@ -16,24 +18,24 @@ const headingSizesVariants: Record<
   h6: '$2',
 }
 
-const BaseHeading = component(DEFAULT_TAG, 'c-heading')
-const StyledHeading = styled(BaseHeading, text)
+const Base = component(DEFAULT_TAG, 'c-heading')
+const Styled = styled(Base, text)
 
 export const Heading = fixedForwardRef<
   typeof DEFAULT_TAG,
-  CComponentProps &
-    TextVariants & { as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }
->(({ as: Variant = DEFAULT_TAG, children, ...props }, forwardedRef) => {
+  CComponentProps & TextVariants & { variant?: Headings; as?: Headings }
+>(({ variant = DEFAULT_TAG, as: asProp, children, ...props }, forwardedRef) => {
+  const Variant = asProp ?? variant
   return (
-    <StyledHeading
+    <Styled
       weight="bold"
-      size={headingSizesVariants[Variant]}
+      size={sizes[variant]}
       {...props}
       asChild
       ref={forwardedRef}
     >
       <Variant>{children}</Variant>
-    </StyledHeading>
+    </Styled>
   )
 })
 Heading.displayName = 'Heading'

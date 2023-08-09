@@ -15,12 +15,12 @@ export const Default: StoryFn<typeof Heading> = (args) => (
  */
 export const As: StoryFn = () => (
   <Column>
-    <Heading as="h1">Heading 1</Heading>
-    <Heading as="h2">Heading 2</Heading>
-    <Heading as="h3">Heading 3</Heading>
-    <Heading as="h4">Heading 4</Heading>
-    <Heading as="h5">Heading 5</Heading>
-    <Heading as="h6">Heading 6</Heading>
+    <Heading variant="h1">Heading 1</Heading>
+    <Heading variant="h2">Heading 2</Heading>
+    <Heading variant="h3">Heading 3</Heading>
+    <Heading variant="h4">Heading 4</Heading>
+    <Heading variant="h5">Heading 5</Heading>
+    <Heading variant="h6">Heading 6</Heading>
   </Column>
 )
 
@@ -29,22 +29,22 @@ export const As: StoryFn = () => (
  */
 export const Display: StoryFn = () => (
   <Column>
-    <Heading as="h1" font="display">
+    <Heading variant="h1" font="display">
       Heading 1
     </Heading>
-    <Heading as="h2" font="display">
+    <Heading variant="h2" font="display">
       Heading 2
     </Heading>
-    <Heading as="h3" font="display">
+    <Heading variant="h3" font="display">
       Heading 3
     </Heading>
-    <Heading as="h4" font="display">
+    <Heading variant="h4" font="display">
       Heading 4
     </Heading>
-    <Heading as="h5" font="display">
+    <Heading variant="h5" font="display">
       Heading 5
     </Heading>
-    <Heading as="h6" font="display">
+    <Heading variant="h6" font="display">
       Heading 6
     </Heading>
   </Column>
@@ -54,7 +54,29 @@ export const Display: StoryFn = () => (
  * The underlying text component props are still available if the need to be used.
  */
 export const TextProps: StoryFn = () => (
-  <Heading as="h1" size="$5" css={{ color: '$primary' }} italic>
+  <Heading variant="h1" size="$5" css={{ color: '$primary' }} italic>
     Different h1
   </Heading>
+)
+
+/**
+ * The the heading renders as the relevant `h?` element by default, use the `as` props to render as a different heading element.
+ */
+export const Polymorphic: StoryFn = () => (
+  <Column>
+    <Heading as="h1">Heading 1</Heading>
+    <Heading as="h2">Heading 2</Heading>
+    <Heading variant="h4" as="h3">
+      Heading 3
+    </Heading>
+    <Heading variant="h4" as="h4">
+      Heading 4
+    </Heading>
+    <Heading variant="h5" as="h5">
+      Heading 5
+    </Heading>
+    <Heading variant="h5" as="h6">
+      Heading 6
+    </Heading>
+  </Column>
 )

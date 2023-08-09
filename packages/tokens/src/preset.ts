@@ -43,12 +43,12 @@ const globalCss = defineGlobalStyles({
   //   boxSizing: 'border-box',
   // },
 
-  'pre, code': { margin: 0, fontFamily: 'var(--fonts.\\$monospace)' },
+  'pre, code': { margin: 0, fontFamily: 'var(--fonts-\\$monospace)' },
   'body, button': {
-    fontFamily: 'var(--fonts.\\$text)',
+    fontFamily: 'var(--fonts-\\$text)',
   },
   '::selection': {
-    backgroundColor: 'var(--colors.\\$selection)',
+    backgroundColor: 'var(--colors-\\$selection)',
   },
 })
 
@@ -134,19 +134,19 @@ export function presetTokens(): Preset {
         fonts: {
           $system: {
             value:
-              'var(--font-system), -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
+              'var(--font-system, -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue")',
           },
           $display: {
             value:
-              'var(--font-display), "Dosis", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif',
+              'var(--font-display, "Dosis", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif)',
           },
           $monospace: {
             value:
-              'var(--font-monospace), "SF Mono", "SFMono-Regular", ui-monospace, Consolas, "Liberation Mono", "Andale Mono", "DejaVu Sans Mono", "Ubuntu Mono", Menlo, Courier, monospace',
+              'var(--font-monospace, "SF Mono", "SFMono-Regular", ui-monospace, Consolas, "Liberation Mono", "Andale Mono", "DejaVu Sans Mono", "Ubuntu Mono", Menlo, Courier, monospace)',
           },
           $text: {
             value:
-              'var(--font-text), "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue"',
+              'var(--font-text, "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", Roboto,  "Segoe UI", "Helvetica Neue")',
           },
         },
         fontSizes: {

@@ -2,20 +2,9 @@
   #docs-root {
     isolation: isolate;
   }
-  /* Fix dynamic dark mode */
-  #storybook-docs h1 > a:first-child,
-  #storybook-docs h2 > a:first-child,
-  #storybook-docs h3 > a:first-child,
-  #storybook-docs h4 > a:first-child,
-  #storybook-docs h5 > a:first-child,
-  #storybook-docs h6 > a:first-child {
-    float: left;
-    line-height: inherit;
-    padding-right: 10px;
-    margin-left: -24px;
-    color: inherit;
-  }
-  #storybook-preview-iframe {
-    background-color: transparent !important;
+  .docs-story,
+  .dockblock-code-toggle {
+    background-color: var(--colors-\$background) !important;
+    color: var(--colors-\$text) !important;
   }
 </style>

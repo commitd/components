@@ -1,7 +1,6 @@
-import React from 'react'
+import { Link } from '../../packages/ds/src/components/Link'
 import { renderDark, renderLight } from '../../test'
 import { Card, CardBody, CardHeading, CardLeadIn } from '../Card'
-import { Link } from '../Link'
 import { Text } from '../Text'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './HoverCard'
 

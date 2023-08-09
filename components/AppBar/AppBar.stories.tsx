@@ -1,9 +1,8 @@
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 import {
-  Link as RouterLink,
   MemoryRouter,
   Route,
+  Link as RouterLink,
   Routes,
 } from 'react-router-dom'
 import {
@@ -14,7 +13,7 @@ import {
   AppBarMenu,
   AppBarMenuItem,
 } from '.'
-import { Link } from '../Link'
+import { Link } from '../../packages/ds/src/components/Link'
 import { WrappedNavigationMenu } from '../NavigationMenu'
 
 export default {
