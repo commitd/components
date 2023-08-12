@@ -6,7 +6,6 @@ import {
   Inline,
   Stack,
 } from '@committed/ds'
-import { css } from '@committed/ss/css'
 import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
 import { Meta, StoryObj } from '@storybook/react'
@@ -190,11 +189,7 @@ export const Variations: Story = {
         <CheckIndeterminate />
       </IconButton>
       <IconButton path={mdiPencil} variant="solid" />
-      <IconButton
-        path={mdiThumbUp}
-        className={css({ color: '$success' })}
-        variant="text"
-      />
+      <IconButton path={mdiThumbUp} color="success" variant="text" />
     </Inline>
   ),
 }

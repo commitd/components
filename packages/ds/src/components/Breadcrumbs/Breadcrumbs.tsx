@@ -24,15 +24,15 @@ const StyledCrumb = component(
   CRUMB_TAG,
   css({
     display: 'inline',
-    '--spacing': 'token(spacing.$3)',
 
     '&:not(:first-of-type)': {
-      marginLeft: 'var(--spacing)',
+      marginLeft: 'token(spacing.$3)',
     },
     '&:not(:first-of-type)::before': {
-      content: '',
+      // https://github.com/chakra-ui/panda/issues/1122
+      content: `''`,
       opacity: 0.25,
-      marginRight: 'var(--spacing)',
+      marginRight: 'token(spacing.$3)',
       display: 'inline-block',
       transform: 'rotate(15deg)',
       borderRight: '1px solid',

@@ -1,3 +1,5 @@
+'use client'
+
 import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Root } from '@radix-ui/react-separator'

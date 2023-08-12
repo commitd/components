@@ -10,10 +10,6 @@ import {
   Strike,
   Text,
 } from '../../../packages/ds/src/components/Text'
-import {
-  CAPTION_CLASS,
-  PARAGRAPH_CLASS,
-} from '../../../packages/ds/src/components/Text/Text'
 import { component } from '../../../packages/ds/src/utils'
 
 const meta: Meta<typeof Text> = {
@@ -53,6 +49,7 @@ export default meta
 type Story = StoryObj<typeof Text>
 
 export const Default: Story = {
+  render: ({ size = 0, ...args }) => <Text size={`$${size}` as ComponentProps<typeof Text>['size']} {...args} />,
   args: {
     children:
       "This is the regular text using the default settings in a longer paragraph, the sort you might read in a blog post. The reason we are using prose here is because the most common use case for this container size is long form text. So we're previewing some longform text here so we can make sure the container width provides an optimal line length for this font size.",
@@ -312,10 +309,10 @@ export const MonospaceStory: Story = {
 const Wrapper = component(
   Column,
   css({
-    [`& .${PARAGRAPH_CLASS}`]: {
+    '& .c-paragraph': {
       color: 'token(colors.$success.9)',
     },
-    [`& .${CAPTION_CLASS}`]: {
+    '& .c-caption': {
       color: 'token(colors.$error.9)',
     },
   } as SystemStyleObject),

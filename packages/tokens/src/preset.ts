@@ -216,15 +216,15 @@ export function presetTokens(): Preset {
           },
           $hover: {
             value: {
-              base: 'inset 0 0 0 1px {colors.$grey.4}',
-              _dark: 'inset 0 0 0 1px {colors.$grey.6}',
+              base: 'inset 0 0 0 1px token(colors.$neutral.4)',
+              _dark: 'inset 0 0 0 1px token(colors.$neutral.6)',
             },
           },
           $focus: {
             value: {
-              base: 'inset 0 0 0 1px {colors.$grey.4}, 0 0 0 1px {colors.$grey.4}',
+              base: 'inset 0 0 0 1px token(colors.$neutral.4), 0 0 0 1px token(colors.$neutral.4)',
               _dark:
-                'inset 0 0 0 1px {colors.$grey.6}, 0 0 0 1px {colors.$grey.6}',
+                'inset 0 0 0 1px token(colors.$neutral.6), 0 0 0 1px token(colors.$neutral.6)',
             },
           },
         },

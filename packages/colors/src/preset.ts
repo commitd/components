@@ -263,8 +263,10 @@ export function presetColors(config: ColorConfig = {}): Preset {
   const fullConfig = { ...DefaultColorConfig, ...config }
   return definePreset({
     theme: {
-      semanticTokens: {
-        colors: createColorTokens(fullConfig),
+      extend: {
+        semanticTokens: {
+          colors: createColorTokens(fullConfig),
+        },
       },
     },
   })

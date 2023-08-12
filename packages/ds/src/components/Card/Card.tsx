@@ -1,9 +1,10 @@
 import { css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps } from '@committed/ss/types/recipe'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { component } from '../../utils'
-import { Paper } from '../Paper'
-import { Text } from '../Text'
+import { CComponent, component } from '../../utils'
+import { Paper, paperStyles } from '../Paper/Paper'
+import { Text, text } from '../Text/Text'
 
 const card = cva({
   base: {
@@ -14,10 +15,24 @@ const card = cva({
     flexDirection: 'column',
 
     width: 'fit-content',
+
+    _before: {
+      inset: 0,
+      position: 'absolute',
+      pointerEvents: 'none',
+      borderRadius: 'inherit',
+      _motionReduce: { transition: 'none' },
+      transition: 'box-shadow 180ms',
+      content: "''",
+    },
   },
   variants: {
     variant: {
-      default: {},
+      default: {
+        _before: {
+          boxShadow: '$1',
+        },
+      },
       outline: {
         _before: {
           boxShadow: 'inset 0 0 0 1px token(colors.$neutral.4)',
@@ -25,15 +40,15 @@ const card = cva({
       },
       ghost: {
         backgroundColor: 'transparent',
-        _motionReduce: { transition: 'none' },
+
         _motionSafe: {
           transition:
             'transform 200ms cubic-bezier(0.22, 1, 0.36, 1), background-color 25ms linear',
         },
         willChange: 'transform',
         _before: {
+          boxShadow: '$1',
           opacity: '0',
-          _motionReduce: { transition: 'none' },
           _motionSafe: {
             transition: 'all 200ms cubic-bezier(0.22, 1, 0.36, 1)',
           },
@@ -89,6 +104,7 @@ const card = cva({
           transform: 'translateY(-2px)',
           _before: {
             opacity: '1',
+            boxShadow: 'token(shadows.$1)',
           },
         },
         _active: {
@@ -115,7 +131,10 @@ const card = cva({
 /**
  * Use Card component to group elements onto a card.
  */
-export const Card = styled(Paper, card)
+export const Card: CComponent<
+  typeof Paper,
+  RecipeVariantProps<typeof card>
+> = styled(component('div', 'c-card', paperStyles), card)
 Card.displayName = 'Card'
 
 // CARD_CONTENT *************************************************************
@@ -123,7 +142,7 @@ Card.displayName = 'Card'
 export const CardContent = component(
   'div',
   css({
-    padding: 4,
+    padding: '$4',
     flex: 1,
   }),
 )
@@ -136,8 +155,11 @@ export const CardBody = CardContent
 
 // CARD_HEADING *************************************************************
 
+const CARD_HEADING_TAG = 'div'
+
 export const StyledHeading = component(
-  Text,
+  styled(CARD_HEADING_TAG, text),
+  'c-card-heading',
   css({
     px: '$4',
     position: 'relative',
@@ -154,8 +176,6 @@ export const StyledHeading = component(
   }),
 )
 
-const CARD_HEADING_TAG = 'div'
-
 type CardHeadingProps = ComponentProps<typeof CARD_HEADING_TAG> &
   ComponentProps<typeof Text>
 
@@ -163,22 +183,17 @@ export const CardHeading = forwardRef<
   ElementRef<typeof StyledHeading>,
   CardHeadingProps
 >((props, forwardedRef) => {
-  return (
-    <StyledHeading
-      //as={CARD_HEADING_TAG}
-      size="$1"
-      weight="bold"
-      {...props}
-      ref={forwardedRef}
-    />
-  )
+  return <StyledHeading size="$1" weight="bold" {...props} ref={forwardedRef} />
 })
 CardHeading.displayName = 'CardHeading'
 
 // CARD_SUBHEADING *************************************************************
 
+const CARD_SUBHEADING_TAG = 'div'
+
 export const StyledSubheading = component(
-  Text,
+  styled(CARD_SUBHEADING_TAG, text),
+  'c-card-subheading',
   css({
     px: '$4',
     color: '$text.secondary',
@@ -186,8 +201,6 @@ export const StyledSubheading = component(
     mb: '-$1',
   }),
 )
-
-const CARD_SUBHEADING_TAG = 'div'
 
 type CardSubheadingProps = ComponentProps<typeof CARD_SUBHEADING_TAG> &
   ComponentProps<typeof Text>
@@ -197,21 +210,18 @@ export const CardSubheading = forwardRef<
   CardSubheadingProps
 >((props, forwardedRef) => {
   return (
-    <StyledSubheading
-      //as={CARD_SUBHEADING_TAG}
-      size="$-1"
-      weight="light"
-      {...props}
-      ref={forwardedRef}
-    />
+    <StyledSubheading size="$-1" weight="light" {...props} ref={forwardedRef} />
   )
 })
 CardSubheading.displayName = 'CardSubheading'
 
-// CARD_LEADING ****************************************************************
+// CARD_LEAD_IN ****************************************************************
+
+const CARD_LEAD_IN_TAG = 'div'
 
 export const StyledLeadIn = component(
-  Text,
+  styled(CARD_LEAD_IN_TAG, text),
+  'c-card-lead-in',
   css({
     px: '$4',
     position: 'relative',
@@ -221,16 +231,14 @@ export const StyledLeadIn = component(
     mt: '$4',
     mb: '-$3',
 
-    // [`& .${ICON_BUTTON_CLASS}`]: {
-    //   position: 'absolute',
-    //   color: 'textSecondary',
-    //   right: '0',
-    //   top: '0',
-    // },
+    [`& .c-icon-button`]: {
+      position: 'absolute',
+      color: '$text.secondary',
+      right: '$4',
+      top: '0',
+    },
   }),
 )
-
-const CARD_LEAD_IN_TAG = 'div'
 
 type CardLeadInProps = ComponentProps<typeof CARD_LEAD_IN_TAG> &
   ComponentProps<typeof Text>
@@ -239,14 +247,7 @@ export const CardLeadIn = forwardRef<
   ElementRef<typeof StyledLeadIn>,
   CardLeadInProps
 >((props, forwardedRef) => {
-  return (
-    <StyledLeadIn
-      as={CARD_LEAD_IN_TAG}
-      size="$-2"
-      {...props}
-      ref={forwardedRef}
-    />
-  )
+  return <StyledLeadIn size="$-2" {...props} ref={forwardedRef} />
 })
 CardLeadIn.displayName = 'CardLeadIn'
 

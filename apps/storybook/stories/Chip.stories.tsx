@@ -20,10 +20,10 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
-      <Chip variant="info" size="small">
+      <Chip color="info" size="small">
         New
       </Chip>
-      <Chip variant="error">Error</Chip>
+      <Chip color="error">Error</Chip>
     </Inline>
   ),
 }
@@ -32,41 +32,22 @@ export const Sizes: Story = {
 export const Closable: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
-      <Chip variant="info" size="small" onClose={action('close')}>
+      <Chip closable color="info" size="small" onClick={action('close')}>
         Close
       </Chip>
-      <Chip variant="error" onClose={action('close')}>
+      <Chip closable color="error" onClick={action('close')}>
         Close
-      </Chip>
-      <Chip
-        as="button"
-        variant="info"
-        interactive
-        onClick={action('chip')}
-        size="small"
-        onClose={action('close')}
-      >
-        Click
-      </Chip>
-      <Chip
-        as="button"
-        variant="error"
-        interactive
-        onClick={action('chip')}
-        onClose={action('close')}
-      >
-        Click
       </Chip>
     </Inline>
   ),
 }
 
 export const All: Story = {
-  name: 'Variants',
+  name: 'colors',
   render: () => (
     <Variants
       component={Chip}
-      variant={[
+      color={[
         'brand',
         'primary',
         'error',
@@ -87,9 +68,8 @@ export const All: Story = {
 export const Interactive: Story = {
   render: () => (
     <Variants
-      as="button"
       component={Chip}
-      variant={[
+      color={[
         'brand',
         'primary',
         'error',
@@ -99,7 +79,6 @@ export const Interactive: Story = {
         'grey',
         'ghost',
       ]}
-      interactive
       children="Chip"
       onClick={action('chip')}
     />
@@ -109,32 +88,17 @@ export const Interactive: Story = {
 export const Disabled: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
-      <Chip
-        as="button"
-        onClick={action('disabled')}
-        disabled
-        variant="info"
-        size="small"
-      >
+      <Chip onClick={action('disabled')} disabled color="info" size="small">
         Disabled
       </Chip>
-      <Chip as="button" onClick={action('disabled')} disabled variant="error">
+      <Chip onClick={action('disabled')} disabled color="error">
+        Disabled
+      </Chip>
+      <Chip onClick={action('disabled')} color="success" disabled size="small">
         Disabled
       </Chip>
       <Chip
-        as="button"
-        onClick={action('disabled')}
-        variant="success"
-        disabled
-        interactive
-        size="small"
-      >
-        Disabled
-      </Chip>
-      <Chip
-        as="button"
-        variant="primary"
-        interactive
+        color="primary"
         disabled
         onClick={action('disabled')}
         onClose={action('disabled')}

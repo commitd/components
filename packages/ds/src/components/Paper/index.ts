@@ -1,1 +1,1 @@
-export * from './Paper'
+export { Paper } from './Paper'

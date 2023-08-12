@@ -17,14 +17,8 @@ export const CAPTION_CLASS = 'c-caption'
 
 export const text = cva({
   base: {
-    // Reset
     lineHeight: '1',
-    margin: '0',
-    fontFamily: '$text',
-    fontWeight: '$regular',
     fontVariantNumeric: 'tabular-nums',
-    display: 'inline',
-    color: 'inherit',
   },
   variants: {
     size: {
@@ -106,6 +100,7 @@ export const text = cva({
   defaultVariants: {
     size: '$0',
     weight: 'regular',
+    font: 'default',
   },
 })
 

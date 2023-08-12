@@ -1,1 +1,1 @@
-export * from './Hidden'
+export { Hidden } from './Hidden'

@@ -6,7 +6,7 @@ import { ComponentProps } from 'react'
 import { component, fixedForwardRef } from '../../utils'
 import { buttonInteractionStyles, buttonVariables } from '../Button/Button'
 import { ChevronDown } from '../Icons'
-import { paperStyles } from '../Paper'
+import { paperStyles } from '../Paper/Paper'
 
 const Chevron = component(
   ChevronDown,

@@ -174,7 +174,7 @@ export const Actions: Story = {
       <Card>
         <CardHeading>
           Heading
-          <IconButton variant="tertiary" onClick={action('action')}>
+          <IconButton variant="text" onClick={action('action')}>
             <Svg path={mdiPencil} />
           </IconButton>
         </CardHeading>
@@ -190,7 +190,7 @@ export const Actions: Story = {
       <Card>
         <CardHeading>
           Heading
-          <IconButton variant="tertiary" onClick={action('action')}>
+          <IconButton variant="text" onClick={action('action')}>
             <Svg path={mdiPencil} />
           </IconButton>
         </CardHeading>
@@ -199,7 +199,7 @@ export const Actions: Story = {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardContent>
         <CardActions>
-          <Button variant="text" onClick={action('cancel')}>
+          <Button variant="text" color="neutral" onClick={action('cancel')}>
             Cancel
           </Button>
           <Button variant="solid" color="primary" onClick={action('action')}>
@@ -212,31 +212,33 @@ export const Actions: Story = {
           Lead in
           <IconButton
             path={mdiPencil}
-            variant="tertiary"
+            variant="text"
             onClick={action('action')}
           />
         </CardLeadIn>
-        <CardHeading as="h3">Header</CardHeading>
+        <CardHeading asChild>
+          <h3>Header</h3>
+        </CardHeading>
         <CardContent>
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardContent>
         <CardActions justifyContent="flex-start">
           <IconButton
             path={mdiThumbUp}
-            variant="tertiary"
+            variant="text"
             className={css({ color: 'info' })}
             onClick={action('Thumb Up')}
           />
           <IconButton
             path={mdiOpenInNew}
-            variant="tertiary"
-            className={css({ color: 'textSecondary' })}
+            variant="text"
+            className={css({ color: '$text.secondary' })}
             onClick={action('Open')}
           />
           <IconButton
             path={mdiComment}
-            variant="tertiary"
-            className={css({ color: 'textSecondary' })}
+            variant="text"
+            className={css({ color: '$text.secondary' })}
             onClick={action('Comment')}
           />
         </CardActions>

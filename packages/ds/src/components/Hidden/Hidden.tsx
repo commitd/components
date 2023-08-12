@@ -1,6 +1,8 @@
+'use client'
+
 import { useBoolean, useKeyboard } from '@committed/hooks'
 import { Root } from '@radix-ui/react-visually-hidden'
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 /**
  * Hidden component

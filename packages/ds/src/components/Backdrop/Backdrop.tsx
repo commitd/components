@@ -1,3 +1,5 @@
+'use client'
+
 import { css, cx } from '@committed/ss/css'
 import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog'
 import React, { ComponentProps, FC } from 'react'

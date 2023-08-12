@@ -1,8 +1,12 @@
-import { RecipeVariantProps, cva } from '@committed/ss/css'
+import { cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import React from 'react'
 
-import { PolyCComponentProps, component, fixedForwardRef } from '../../utils'
+import {
+  CComponent,
+  ConditionalWrapper,
+  component,
+  fixedForwardRef,
+} from '../../utils'
 import { IconButton } from '../Button'
 import { Close } from '../Icons'
 
@@ -28,14 +32,13 @@ const chip = cva({
     lineHeight: '1',
     verticalAlign: 'middle',
     outline: 'none',
-    padding: '0',
     textDecoration: 'none',
     userSelect: 'none',
     WebkitTapHighlightColor: 'rgba(0,0,0,0)',
     _disabled: {
       backgroundColor: '$neutral.2',
       pointerEvents: 'none',
-      color: '$grey7',
+      color: '$neutral.7',
     },
     _before: {
       content: '""',
@@ -61,14 +64,14 @@ const chip = cva({
   variants: {
     size: {
       small: {
-        height: 4,
-        px: 2,
+        height: '$4',
+        px: '$2',
         fontSize: '$-2',
 
         '& .c-icon-button': {
-          height: 4,
-          width: 4,
-          mr: '-token(sizes.2)',
+          height: '$4',
+          width: '$4',
+          mr: 'calc(-1 * token(sizes.$2))',
           [`& > svg`]: {
             height: '$3',
             width: '$3',
@@ -76,11 +79,11 @@ const chip = cva({
         },
       },
       default: {
-        height: 6,
-        px: 3,
+        height: '$6',
+        px: '$3',
         fontSize: '$1',
         '& .c-icon-button': {
-          mr: '-token(sizes.3)',
+          mr: 'calc(-1 * token(sizes.$3))',
           height: '$6',
           width: '$6',
           [`& > svg`]: {
@@ -90,21 +93,21 @@ const chip = cva({
         },
       },
     },
-    variant: {
+    color: {
       neutral: {
-        '--background': 'token(colors.$neutral2)',
-        '--backgroundHover': 'token(colors.$neutral3)',
-        '--main': 'token(colors.$neutral9)',
-        '--focus': 'token(colors.$neutral7)',
-        '--active': 'token(colors.$neutral9)',
+        '--background': 'token(colors.$neutral.2)',
+        '--backgroundHover': 'token(colors.$neutral.3)',
+        '--main': 'token(colors.$neutral.9)',
+        '--focus': 'token(colors.$neutral.7)',
+        '--active': 'token(colors.$neutral.9)',
       },
-      ghost: {
-        '--background': 'token(colors.$transparency.2)',
-        '--backgroundHover': 'token(colors.$transparency.3)',
-        '--main': 'token(colors.$text)',
-        '--focus': 'token(colors.$transparency.7)',
-        '--active': 'token(colors.$transparency.9)',
-      },
+      // ghost: {
+      //   '--background': 'token(colors.$transparency.2)',
+      //   '--backgroundHover': 'token(colors.$transparency.3)',
+      //   '--main': 'token(colors.$text)',
+      //   '--focus': 'token(colors.$transparency.7)',
+      //   '--active': 'token(colors.$transparency.9)',
+      // },
       primary: {
         '--background': 'token(colors.$primary.2)',
         '--backgroundHover': 'token(colors.$primary.3)',
@@ -180,50 +183,68 @@ const chip = cva({
   },
   defaultVariants: {
     size: 'default',
-    variant: 'neutral',
+    color: 'neutral',
   },
 })
 
 const Styled = styled(component(DEFAULT_TAG, 'c-chip'), chip)
 
-type Variants = RecipeVariantProps<typeof chip>
+// Not sure why this confuses typescript
+// type AllVariants = RecipeVariantProps<typeof chip>
+// type Variants = Omit<AllVariants, 'interactive'>
+type Variants = {
+  size?: 'small' | 'default'
+  color?:
+    | 'neutral'
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warn'
+}
 type Props = Variants & {
+  closable?: boolean
   disabled?: boolean
-  onClose?: () => void
-} & PolyCComponentProps
+  onClick?: () => void
+}
 
 /**
  * The `Chip` component can be used for small bits of information such as labels or attributes and can
  * optionally add actions to, say edit and delete.
  */
-export const Chip = fixedForwardRef<typeof Styled, Props>(
-  ({ onClose, children, size, ...props }, forwardedRef) => {
-    const handleClose = (event: React.MouseEvent) => {
-      // This seems overkill but with out all three the event
-      // seems to get through to the chip.
-      event.stopPropagation()
-      event.nativeEvent.stopImmediatePropagation()
-      event.preventDefault()
-      onClose && onClose()
-    }
-
-    return (
-      <Styled size={size} {...props} ref={forwardedRef}>
+export const Chip: CComponent<typeof DEFAULT_TAG, Props> = fixedForwardRef<
+  typeof Styled,
+  Props
+>(({ onClick, color, children, closable, size, ...props }, forwardedRef) => {
+  return (
+    <Styled
+      asChild={!!onClick}
+      interactive={!!onClick}
+      size={size}
+      color={color}
+      {...props}
+      ref={forwardedRef}
+    >
+      <ConditionalWrapper
+        condition={onClick && !closable}
+        wrapper={(c) => <button onClick={onClick}>{c}</button>}
+      >
         {children}
-        {onClose && (
+        {onClick && closable && (
           <IconButton
-            as="span"
             size={size}
+            color={color}
             role="button"
             aria-label="close"
-            variant="tertiary"
-            onClick={handleClose}
+            variant="text"
+            onClick={onClick}
           >
             <Close />
           </IconButton>
         )}
-      </Styled>
-    )
-  },
-)
+      </ConditionalWrapper>
+    </Styled>
+  )
+})
 Chip.displayName = 'Chip'

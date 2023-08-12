@@ -1,1 +1,1 @@
-export * from './AspectRatio'
+export { AspectRatio } from './AspectRatio'

@@ -14,14 +14,14 @@ const DEFAULT_TAG = 'button'
 
 export const buttonVariables: SystemStyleObject = {
   //colors
-  '--base': 'token(colors.$neutral.9)',
-  '--solid': 'token(colors.$neutral.10)',
-  '--bold': 'token(colors.$neutral.11)',
-  '--contrast': 'token(colors.$neutral.11)',
-  '--bg': 'token(colors.$neutral.2)',
-  '--subtle': 'token(colors.$neutral.3)',
-  '--normal': 'token(colors.$neutral.4)',
-  '--text': 'token(colors.$neutral.text)',
+  '--base': 'token(colors.$primary.9)',
+  '--solid': 'token(colors.$primary.10)',
+  '--bold': 'token(colors.$primary.11)',
+  '--contrast': 'token(colors.$primary.11)',
+  '--bg': 'token(colors.$primary.2)',
+  '--subtle': 'token(colors.$primary.3)',
+  '--normal': 'token(colors.$primary.4)',
+  '--text': 'token(colors.$primary.text)',
 
   // states
   '--active': 'var(--bold)',
@@ -523,18 +523,18 @@ Button.displayName = 'Button'
 
 const iconSizeVariants = {
   small: {
-    size: 5,
+    size: '$5',
     '& > svg': {
-      size: 4,
+      size: '$4',
     },
   },
   default: {
-    size: 6,
+    size: '$6',
   },
   large: {
-    size: 7,
+    size: '$7',
     '& > svg': {
-      size: 6,
+      size: '$6',
     },
   },
 }
@@ -566,16 +566,15 @@ export const StyledIconButton = styled(DEFAULT_TAG, iconButton)
 
 type IconButtonVariants = RecipeVariantProps<typeof iconButton>
 type ButtonProps = Omit<React.HTMLProps<HTMLButtonElement>, 'size'>
-type StyledIconButtonProps = ButtonProps &
-  IconButtonVariants & {
-    className?: string
-    // override the incorrectly inferred type from HTMLProps
-    type?: 'button' | 'reset' | 'submit'
-    /** Add a title */
-    title?: string
-    /** Add the given svg path  */
-    path?: string
-  }
+type StyledIconButtonProps = IconButtonVariants & {
+  className?: string
+  // override the incorrectly inferred type from HTMLProps
+  type?: 'button' | 'reset' | 'submit'
+  /** Add a title */
+  title?: string
+  /** Add the given svg path  */
+  path?: string
+}
 
 type IconButtonProps = Prettify<StyledIconButtonProps>
 
@@ -584,7 +583,10 @@ export const ICON_BUTTON_CLASS = 'c-icon-button'
 /**
  * IconButton can be used to wrap custom `Svg` icons or use the `path` prop to supply a standard mdi icon.
  */
-export const IconButton = fixedForwardRef<'button', IconButtonProps>(
+export const IconButton: PolyCComponent<
+  typeof DEFAULT_TAG,
+  StyledIconButtonProps
+> = fixedForwardRef<typeof DEFAULT_TAG, IconButtonProps>(
   ({ className, title, path, children, ...props }, forwardedRef) => (
     <StyledIconButton
       className={cx(ICON_BUTTON_CLASS, className)}

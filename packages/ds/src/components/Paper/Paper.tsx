@@ -28,7 +28,12 @@ export const paperStyles = css({
     left: 0,
     borderRadius: '$default',
     pointerEvents: 'none',
-    boxShadow: '1',
+  },
+})
+
+export const paperShadowStyles = css({
+  _before: {
+    boxShadow: '$1',
   },
 })
 
@@ -43,4 +48,5 @@ export const Paper: PolyCComponent<typeof DEFAULT_TAG> = component(
   DEFAULT_TAG,
   'c-paper',
   paperStyles,
+  paperShadowStyles,
 )

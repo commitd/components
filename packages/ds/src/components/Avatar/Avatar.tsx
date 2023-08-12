@@ -1,3 +1,5 @@
+'use client'
+
 import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
