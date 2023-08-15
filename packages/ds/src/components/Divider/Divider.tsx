@@ -2,8 +2,7 @@
 
 import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { Root } from '@radix-ui/react-separator'
-import { ComponentProps } from 'react'
+import { Root, SeparatorProps } from '@radix-ui/react-separator'
 import { PolyCComponent, component } from '../../utils'
 
 const dividerRoot = cva({
@@ -70,13 +69,13 @@ const dividerRoot = cva({
 const Styled = styled(Root, dividerRoot)
 
 type Variants = RecipeVariantProps<typeof dividerRoot>
-type Props = ComponentProps<typeof Root> & Variants
+type Props = Variants & SeparatorProps
 
 /**
  * Use a divider to separate different groups of content.
  *
- * By default it uses a `div` but the `as` props can be used to assign it to the correct html tag for the
- * use case, such as a `hr` for thematic break in text.
+ * By default it uses a `div` but the `asChild` prop can be used to assign it to the correct html tag for the
+ * use case, such as a `hr` for thematic break in text by supplying the child component.
  *
  * Based on [Radix Separator](https://radix-ui.com/primitives/docs/components/separator).
  */

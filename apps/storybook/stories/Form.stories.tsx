@@ -1,17 +1,21 @@
-import { Meta, Story } from '@storybook/react'
-import React, { useState } from 'react'
-import { Form, FormButton } from '.'
-import { withFormData } from '../../docs/util'
-import { FormControl, FormControlHelp } from '../FormControl'
-import { Input } from '../Input'
+import {
+  Form,
+  FormButton,
+  FormControl,
+  FormControlHelp,
+  Input,
+} from '@committed/ds'
+import { Meta, StoryFn } from '@storybook/react'
+import { useState } from 'react'
+import { withFormData } from './utils'
 
 export default {
   title: 'Components/Form',
   component: Form,
   subcomponents: { FormButton },
-} as Meta
+} satisfies Meta<typeof Form>
 
-export const Default: Story = (args) => {
+export const Default: StoryFn = (args) => {
   type TextFields = 'email' | 'password' | 'touched'
   type FieldErrors = Record<TextFields, string | null>
 

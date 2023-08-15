@@ -1,7 +1,6 @@
 import { cva, RecipeVariantProps } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { BoxVariants, component, PolyCComponent } from '../../utils'
-import { Box } from '../Box/Box'
+import { BoxVariants, component } from '../../utils'
 
 const grid = cva({
   base: {
@@ -16,7 +15,8 @@ const grid = cva({
   },
 })
 
-const Base = styled(Box, grid)
+const Base = component('div', 'c-grid')
+// const Base = styled(Box, grid)
 
 type GridProps = RecipeVariantProps<typeof grid> & BoxVariants
 
@@ -29,8 +29,5 @@ type GridProps = RecipeVariantProps<typeof grid> & BoxVariants
  *
  * - gap: Adds standard gap between items (gap: '$3')
  */
-export const Grid = component(Base, 'c-grid') as PolyCComponent<
-  'div',
-  GridProps
->
+export const Grid = styled(Base, grid) //as PolyCComponent<'div', GridProps>
 Grid.displayName = 'Grid'

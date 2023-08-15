@@ -1,27 +1,28 @@
 import React, {
-    ComponentProps,
-    ElementRef,
-    forwardRef,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
+  ComponentProps,
+  ElementRef,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react'
 
 import { css, cva, RecipeVariantProps } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { withClasses } from '../../utils'
+import { component } from '../../utils'
 import { Text } from '../Text'
 import {
-    DEFAULT_FORM_STATE,
-    FormControlContext,
-    useFormControlState,
+  DEFAULT_FORM_STATE,
+  FormControlContext,
+  useFormControlState,
 } from './FormControlContext'
 
 const DEFAULT_TAG = 'div'
 
-const Root = withClasses(
+const Root = component(
   DEFAULT_TAG,
+  'c-form-control',
   css({
     // Reset
     boxSizing: 'border-box',
@@ -29,7 +30,7 @@ const Root = withClasses(
 
     display: 'flex',
     flexDirection: 'column',
-  })
+  }),
 )
 
 type FormControlProps = {
@@ -59,7 +60,7 @@ const formControlText = cva({
         color: '$success',
       },
       disabled: {
-        color: '$grey9',
+        color: '$neutral.9',
       },
     },
   },
@@ -70,7 +71,7 @@ type StyledFormControlTextProps = ComponentProps<typeof Text> &
 
 const StyledFormControlText: React.FC<StyledFormControlTextProps> = styled(
   Text,
-  formControlText
+  formControlText,
 )
 
 interface FormControlHelpProps {
@@ -107,7 +108,7 @@ export const FormControlHelp = ({
            */
           const currentAriaDescribedBy = getAriaDescribed()?.replace(
             formControlId,
-            ''
+            '',
           )
           if (currentAriaDescribedBy === '') {
             element.removeAttribute('aria-describedby')
@@ -159,7 +160,7 @@ export const FormControlHelp = ({
   }, [disabled, error, valid, errorText, validText])
 
   return (
-    <StyledFormControlText size="-1" ref={ref} state={state}>
+    <StyledFormControlText size="$-1" ref={ref} state={state}>
       {text}
     </StyledFormControlText>
   )

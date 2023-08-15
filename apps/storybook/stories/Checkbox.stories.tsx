@@ -1,9 +1,9 @@
+import { Flex, Form, FormButton } from '@committed/ds/src/components'
+import { Checkbox, CheckedState } from '@committed/ds/src/components/Checkbox'
 import { action } from '@storybook/addon-actions'
 import { Meta, StoryObj } from '@storybook/react'
-import React, { useState } from 'react'
-import { Checkbox, CheckedState } from '.'
-import { Flex, Form, FormButton } from '../'
-import { Variants, rotateCheckedState, withFormData } from '../../docs/util'
+import { useState } from 'react'
+import { Variants, rotateCheckedState, withFormData } from './utils'
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
@@ -17,19 +17,19 @@ export const Default: Story = {
 }
 
 /**
- * A primary version for if the check is the main action.
+ * A solid version for if the check is the main action.
  * (This probably doesn't happen very often.)
  *
  * Example with state - __Note__ the use of `onCheckedChange` to get the change notification from all triggering actions.
  * You can import the `CheckedState` to get the correct typing.
  */
-export const Primary: Story = {
+export const Solid: Story = {
   render: () => {
     const [checked, setChecked] = useState<CheckedState>(false)
     return (
       <Checkbox
         checked={checked}
-        variant="primary"
+        variant="solid"
         onCheckedChange={setChecked}
       />
     )
@@ -40,7 +40,7 @@ export const Destructive: Story = {
   render: () => {
     return (
       <Flex gap>
-        <Checkbox variant="primary" destructive />
+        <Checkbox variant="solid" destructive />
         <Checkbox destructive />
       </Flex>
     )
@@ -51,8 +51,8 @@ export const Disabled: Story = {
   render: () => {
     return (
       <Flex gap>
-        <Checkbox disabled variant="primary" />
-        <Checkbox disabled variant="primary" checked />
+        <Checkbox disabled variant="solid" />
+        <Checkbox disabled variant="solid" checked />
         <Checkbox disabled />
         <Checkbox disabled checked />
       </Flex>
@@ -72,11 +72,7 @@ export const Indeterminate: Story = {
 
     return (
       <Flex gap>
-        <Checkbox
-          checked={checked}
-          variant="primary"
-          onCheckedChange={rotate}
-        />
+        <Checkbox checked={checked} variant="solid" onCheckedChange={rotate} />
         <Checkbox checked={checked} onCheckedChange={rotate} />
       </Flex>
     )
@@ -111,7 +107,7 @@ export const All: Story = {
   render: () => (
     <Variants
       component={Checkbox}
-      variant={['primary', 'secondary']}
+      variant={['solid', 'secondary']}
       destructive={[false, true]}
       disabled={[false, true]}
       checked={[false, true, 'indeterminate']}

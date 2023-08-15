@@ -1,12 +1,8 @@
 import { cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 
-import {
-  CComponent,
-  ConditionalWrapper,
-  component,
-  fixedForwardRef,
-} from '../../utils'
+import { useMemo } from 'react'
+import { CComponent, component, fixedForwardRef } from '../../utils'
 import { IconButton } from '../Button'
 import { Close } from '../Icons'
 
@@ -16,8 +12,8 @@ const chip = cva({
   base: {
     '--background': 'token(colors.$neutral.2)',
     '--backgroundHover': 'token(colors.$neutral.3)',
-    '--main': 'token(colors.$neutral.9)',
-    '--focus': 'token(colors.$neutral.7)',
+    '--main': 'token(colors.$neutral.11)',
+    '--focus': 'token(colors.$neutral.11)',
     '--active': 'token(colors.$neutral.9)',
 
     // Reset
@@ -97,57 +93,57 @@ const chip = cva({
       neutral: {
         '--background': 'token(colors.$neutral.2)',
         '--backgroundHover': 'token(colors.$neutral.3)',
-        '--main': 'token(colors.$neutral.9)',
-        '--focus': 'token(colors.$neutral.7)',
+        '--main': 'token(colors.$neutral.11)',
+        '--focus': 'token(colors.$neutral.11)',
         '--active': 'token(colors.$neutral.9)',
       },
       // ghost: {
       //   '--background': 'token(colors.$transparency.2)',
       //   '--backgroundHover': 'token(colors.$transparency.3)',
       //   '--main': 'token(colors.$text)',
-      //   '--focus': 'token(colors.$transparency.7)',
+      //   '--focus': 'token(colors.$transparency.11)',
       //   '--active': 'token(colors.$transparency.9)',
       // },
       primary: {
         '--background': 'token(colors.$primary.2)',
         '--backgroundHover': 'token(colors.$primary.3)',
-        '--main': 'token(colors.$primary.9)',
+        '--main': 'token(colors.$primary.11)',
         '--focus': 'token(colors.$primary.10)',
         '--active': 'token(colors.$primary.9)',
       },
       secondary: {
         '--background': 'token(colors.$secondary.2)',
         '--backgroundHover': 'token(colors.$secondary.3)',
-        '--main': 'token(colors.$secondary.9)',
+        '--main': 'token(colors.$secondary.11)',
         '--focus': 'token(colors.$secondary.10)',
         '--active': 'token(colors.$secondary.9)',
       },
       error: {
         '--background': 'token(colors.$error.2)',
         '--backgroundHover': 'token(colors.$error.3)',
-        '--main': 'token(colors.$error.9)',
-        '--focus': 'token(colors.$error.7)',
+        '--main': 'token(colors.$error.11)',
+        '--focus': 'token(colors.$error.11)',
         '--active': 'token(colors.$error.9)',
       },
       info: {
         '--background': 'token(colors.$info.2)',
         '--backgroundHover': 'token(colors.$info.3)',
-        '--main': 'token(colors.$info.9)',
-        '--focus': 'token(colors.$info.7)',
+        '--main': 'token(colors.$info.11)',
+        '--focus': 'token(colors.$info.11)',
         '--active': 'token(colors.$info.9)',
       },
       success: {
         '--background': 'token(colors.$success.2)',
         '--backgroundHover': 'token(colors.$success.3)',
-        '--main': 'token(colors.$success.9)',
-        '--focus': 'token(colors.$success.7)',
+        '--main': 'token(colors.$success.11)',
+        '--focus': 'token(colors.$success.11)',
         '--active': 'token(colors.$success.9)',
       },
       warn: {
         '--background': 'token(colors.$warn.2)',
         '--backgroundHover': 'token(colors.$warn.3)',
-        '--main': 'token(colors.$warn.9)',
-        '--focus': 'token(colors.$warn.7)',
+        '--main': 'token(colors.$warn.11)',
+        '--focus': 'token(colors.$warn.11)',
         '--active': 'token(colors.$warn.9)',
       },
     },
@@ -217,33 +213,38 @@ export const Chip: CComponent<typeof DEFAULT_TAG, Props> = fixedForwardRef<
   typeof Styled,
   Props
 >(({ onClick, color, children, closable, size, ...props }, forwardedRef) => {
+  const additionalProps = useMemo(() => {
+    if (onClick && !closable) {
+      return {
+        role: 'button',
+        tabIndex: 0,
+        onClick: onClick,
+      }
+    }
+  }, [onClick, closable])
+
   return (
     <Styled
-      asChild={!!onClick}
-      interactive={!!onClick}
+      interactive={!!onClick && !closable}
       size={size}
       color={color}
+      {...additionalProps}
       {...props}
       ref={forwardedRef}
     >
-      <ConditionalWrapper
-        condition={onClick && !closable}
-        wrapper={(c) => <button onClick={onClick}>{c}</button>}
-      >
-        {children}
-        {onClick && closable && (
-          <IconButton
-            size={size}
-            color={color}
-            role="button"
-            aria-label="close"
-            variant="text"
-            onClick={onClick}
-          >
-            <Close />
-          </IconButton>
-        )}
-      </ConditionalWrapper>
+      {children}
+      {onClick && closable && (
+        <IconButton
+          size={size}
+          color={color}
+          role="button"
+          aria-label="close"
+          variant="text"
+          onClick={onClick}
+        >
+          <Close />
+        </IconButton>
+      )}
     </Styled>
   )
 })

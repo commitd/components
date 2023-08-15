@@ -28,7 +28,12 @@
     "../../apps/storybook/stories/Hidden.stories.tsx",
     "../../apps/storybook/stories/Image.stories.tsx",
     "../../apps/storybook/stories/IconButton.stories.tsx",
-    "../../apps/storybook/stories/Chip.stories.tsx"
+    "../../apps/storybook/stories/Chip.stories.tsx",
+    "../../apps/storybook/stories/Checkbox.stories.tsx",
+    "../../apps/storybook/stories/Input.stories.tsx",
+    "../../apps/storybook/stories/Label.stories.tsx",
+    "../../apps/storybook/stories/Form.stories.tsx",
+    "../../apps/storybook/stories/FormControl.stories.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

@@ -1,6 +1,6 @@
 import { css } from '@committed/ss/css'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { withClasses } from '../../utils'
+import { component } from '../../utils'
 import { Button } from '../Button'
 const DEFAULT_TAG = 'form' as const
 
@@ -9,8 +9,9 @@ const DEFAULT_TAG = 'form' as const
  *
  * Is a styled version of the `form` html tag for use with `FormControl`s.
  */
-export const Form = withClasses(
+export const Form = component(
   DEFAULT_TAG,
+  'c-form',
   css({
     boxSizing: 'border-box',
     outline: 'none',
@@ -18,7 +19,7 @@ export const Form = withClasses(
     display: 'flex',
     flexDirection: 'column',
     gap: '$5',
-  })
+  }),
 )
 Form.displayName = 'Form'
 
@@ -37,7 +38,7 @@ export const FormButton = forwardRef<
   return (
     <Button
       type="submit"
-      variant="primary"
+      variant="solid"
       disabled={disabled}
       {...props}
       ref={forwardedRef}

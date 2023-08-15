@@ -1,6 +1,5 @@
-import React from 'react'
+import { Default } from '../../../../../apps/storybook/stories/FormControl.stories'
 import { renderDark, renderLight } from '../../test'
-import { Default } from './FormControl.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

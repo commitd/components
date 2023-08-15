@@ -1,7 +1,5 @@
+import { Checkbox, Input, Label, LabelOptional } from '@committed/ds'
 import { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
-import { Label, LabelOptional } from '.'
-import { Checkbox, Input } from '../'
 
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',

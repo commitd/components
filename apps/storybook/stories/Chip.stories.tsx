@@ -52,9 +52,9 @@ export const All: Story = {
         'primary',
         'error',
         'success',
-        'warning',
+        'warn',
         'info',
-        'grey',
+        'neutral',
         'ghost',
       ]}
       children="Chip"
@@ -74,9 +74,9 @@ export const Interactive: Story = {
         'primary',
         'error',
         'success',
-        'warning',
+        'warn',
         'info',
-        'grey',
+        'neutral',
         'ghost',
       ]}
       children="Chip"
@@ -97,12 +97,31 @@ export const Disabled: Story = {
       <Chip onClick={action('disabled')} color="success" disabled size="small">
         Disabled
       </Chip>
+      <Chip color="primary" disabled onClick={action('disabled')}>
+        Disabled
+      </Chip>
       <Chip
-        color="primary"
-        disabled
+        closable
         onClick={action('disabled')}
-        onClose={action('disabled')}
+        disabled
+        color="info"
+        size="small"
       >
+        Disabled
+      </Chip>
+      <Chip closable onClick={action('disabled')} disabled color="error">
+        Disabled
+      </Chip>
+      <Chip
+        closable
+        onClick={action('disabled')}
+        color="success"
+        disabled
+        size="small"
+      >
+        Disabled
+      </Chip>
+      <Chip color="primary" disabled closable onClick={action('disabled')}>
         Disabled
       </Chip>
     </Inline>

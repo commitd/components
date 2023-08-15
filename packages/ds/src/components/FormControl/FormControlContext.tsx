@@ -1,10 +1,10 @@
 // TODO: Change to react's version when upgrading to react 18.
-import { useId } from '@radix-ui/react-id'
 import {
   createContext,
   Dispatch,
   SetStateAction,
   useContext,
+  useId,
   useLayoutEffect,
   useMemo,
 } from 'react'
@@ -22,10 +22,7 @@ export interface FormControlBaseProps {
   valid: boolean
 }
 
-export interface UseFormControlProps extends Partial<FormControlBaseProps> {
-  /** supply a static id for the control */
-  id?: string
-}
+export interface UseFormControlProps extends Partial<FormControlBaseProps> {}
 
 export interface FormControlState extends FormControlBaseProps {
   formControlId: string
@@ -56,18 +53,13 @@ if (process.env.NODE_ENV !== 'production') {
  * @returns [string, FormControlState]  the id to use in the control and form state derived from the props.
  */
 export function useFormControl<Props extends UseFormControlProps>({
-  id: providedId,
   disabled = DEFAULT_FORM_STATE.disabled,
   required = DEFAULT_FORM_STATE.required,
   error = DEFAULT_FORM_STATE.error,
   valid = DEFAULT_FORM_STATE.valid,
   ...props
-}: Props): [
-  string,
-  FormControlState,
-  Omit<Props, 'id' | keyof FormControlBaseProps>
-] {
-  const formControlId = useId(providedId)
+}: Props): [string, FormControlState, Omit<Props, keyof FormControlBaseProps>] {
+  const formControlId = useId()
   const context = useContext(FormControlContext)
 
   const resolvedState = useMemo(() => {

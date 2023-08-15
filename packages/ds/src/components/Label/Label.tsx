@@ -35,7 +35,7 @@ const label = cva({
     },
     disabled: {
       true: {
-        color: '$grey9',
+        color: '$neutral.9',
       },
     },
   },
@@ -52,6 +52,7 @@ interface LabelOptionalProps {
   text?: string
 }
 
+const labelColor = css({ color: '$neutral.9' })
 /**
  * Consistent optional marker
  */
@@ -60,7 +61,7 @@ export const LabelOptional: React.FC<LabelOptionalProps> = ({
 }) => (
   <>
     {' '}
-    <Text className={css({ color: '$grey9' })}>{text}</Text>
+    <Text className={labelColor}>{text}</Text>
   </>
 )
 
@@ -73,16 +74,10 @@ export const Label = forwardRef<ElementRef<typeof StyledLabel>, LabelProps>(
       contextProps.disabled = context.disabled
     }
     return (
-      <Text
-        {...contextProps}
-        as={StyledLabel}
-        nowrap
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
+      <Text {...contextProps} asChild nowrap {...props} ref={forwardedRef}>
+        <StyledLabel>{children}</StyledLabel>
       </Text>
     )
-  }
+  },
 )
 Label.displayName = 'Label'

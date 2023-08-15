@@ -1,5 +1,4 @@
 import { Grid, Inline } from '@committed/ds'
-import { css } from '@committed/ss/css'
 import { Meta, StoryFn } from '@storybook/react'
 import { GridBox } from './utils'
 
@@ -11,10 +10,8 @@ export default meta
 
 export const Default: StoryFn = () => (
   <Grid
-    css={css.raw({
-      gridTemplateColumns: '40px 50px auto 50px 40px',
-      gridTemplateRows: '25% 50px',
-    })}
+    gridTemplateColumns="40px 50px auto 50px 40px"
+    gridTemplateRows="25% 50px"
   >
     <GridBox />
     <GridBox />
