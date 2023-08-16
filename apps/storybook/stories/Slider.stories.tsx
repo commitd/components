@@ -1,40 +1,39 @@
+import { Column, Inline, Paper, Slider, Stack } from '@committed/ds'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import React, { useState } from 'react'
-import { Slider } from '.'
-import { Column } from '../'
-import { Inline } from '../Inline'
-import { Stack } from '../Stack'
+import { useState } from 'react'
 
-const meta: Meta<typeof Slider> = {
+export default {
   title: 'Components/Slider',
   component: Slider,
-}
-export default meta
+} satisfies Meta<typeof Slider>
 
 export const Default: StoryObj<typeof Slider> = {}
 
-/** A primary and secondary variant can be used. Secondary, is the default. */
+/** A primary and secondary color can be used. Secondary, is the default. */
 export const Variants: StoryFn = () => (
-  <Stack spacing="large">
-    <Slider variant="primary" />
-    <Slider variant="secondary" />
-  </Stack>
+  <Paper>
+    <Stack spacing="large">
+      <Slider />
+      <Slider color="primary" />
+      <Slider color="secondary" />
+    </Stack>
+  </Paper>
 )
 
 export const Disabled: StoryFn = () => (
   <Stack spacing="large">
-    <Slider disabled variant="primary" defaultValue={[50]} />
-    <Slider disabled variant="secondary" value={[50]} />
+    <Slider disabled color="primary" defaultValue={[50]} />
+    <Slider disabled color="secondary" value={[50]} />
   </Stack>
 )
 
 export const Vertical: StoryFn = () => (
   <Inline spacing="large">
     <Column css={{ height: '$10' }}>
-      <Slider orientation="vertical" variant="primary" labelSide="left" />
+      <Slider orientation="vertical" color="primary" labelSide="left" />
     </Column>
     <Column css={{ height: '$10' }}>
-      <Slider orientation="vertical" variant="secondary" labelSide="right" />
+      <Slider orientation="vertical" color="secondary" labelSide="right" />
     </Column>
   </Inline>
 )
@@ -44,8 +43,8 @@ export const Vertical: StoryFn = () => (
  */
 export const Contained: StoryFn = () => (
   <Stack spacing="large">
-    <Slider defaultValue={[25, 75]} variant="primary" />
-    <Slider defaultValue={[10, 50, 90]} variant="secondary" />
+    <Slider defaultValue={[25, 75]} color="primary" />
+    <Slider defaultValue={[10, 50, 90]} color="secondary" />
   </Stack>
 )
 

@@ -1,7 +1,6 @@
+import { Column, Grid, Label, TextArea } from '@committed/ds'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import React, { useState } from 'react'
-import { TextArea } from '.'
-import { Column, Grid, Label } from '../'
+import { useState } from 'react'
 
 const meta: Meta<typeof TextArea> = {
   title: 'Components/TextArea',

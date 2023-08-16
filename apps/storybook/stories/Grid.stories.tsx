@@ -88,7 +88,7 @@ export const Gaps: StoryFn = () => (
       rowGap: '$3',
       columnGap: '$2',
       gridTemplateColumns: 'token(sizes.$9) token(sizes.$9) token(sizes.$9)',
-      gridTemplateRows: '{sizes.$9} {sizes.$9} {sizes.$9}',
+      gridTemplateRows: 'token(sizes.$9) token(sizes.$9) token(sizes.$9)',
     }}
   >
     <GridBox />

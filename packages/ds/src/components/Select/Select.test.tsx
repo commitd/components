@@ -1,6 +1,5 @@
-import React from 'react'
+import { Default } from '../../apps/storybook/stories/Select.stories'
 import { renderDark, renderLight } from '../../test'
-import { Default } from './RadioGroup.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

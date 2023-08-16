@@ -1,18 +1,18 @@
 import { css, cx } from '@committed/ss/css'
 import {
-    Anchor,
-    Arrow,
-    Close,
-    Content,
-    Portal,
-    Root,
-    Trigger,
+  Anchor,
+  Arrow,
+  Close,
+  Content,
+  Portal,
+  Root,
+  Trigger,
 } from '@radix-ui/react-popover'
-import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
-import { ConditionalWrapper, withClasses } from '../../utils'
-import { paperStyles } from '../Paper'
+import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import { ConditionalWrapper, component } from '../../utils'
+import { paperStyles } from '../Paper/Paper'
 
-const StyledContent = withClasses(
+const StyledContent = component(
   Content,
   paperStyles,
   css({
@@ -28,14 +28,14 @@ const StyledContent = withClasses(
     },
     filter:
       'drop-shadow(0px 3px 2.5px rgba(0,0,0,0.2)) drop-shadow(0px 6px 5px rgba(0,0,0,0.14)) drop-shadow(0px 1px 9px rgba(0,0,0,0.12))',
-  })
+  }),
 )
 
-const StyledArrow = withClasses(
+const StyledArrow = component(
   Arrow,
   css({
     fill: '$paper',
-  })
+  }),
 )
 
 type PopoverContentProps = ComponentProps<typeof Content> & {
@@ -120,5 +120,5 @@ PopoverClose.displayName = 'PopoverClose'
  *
  * Built using [Radix Popover](https://radix-ui.com/primitives/docs/components/popover)
  */
-export const Popover: FC<React.ComponentProps<typeof Root>> = Root
+export const Popover: FC<ComponentProps<typeof Root>> = Root
 Popover.displayName = 'Popover'

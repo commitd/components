@@ -7,17 +7,17 @@ import { Range, Root, Thumb, Track } from '@radix-ui/react-slider'
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
 import React, {
-    ComponentProps,
-    ComponentRef,
-    ElementRef,
-    FC,
-    ReactNode,
-    forwardRef,
-    useCallback,
-    useMemo,
-    useRef,
+  ComponentProps,
+  ComponentRef,
+  ElementRef,
+  FC,
+  ReactNode,
+  forwardRef,
+  useCallback,
+  useMemo,
+  useRef,
 } from 'react'
-import { ConditionalWrapper, withClasses } from '../../utils'
+import { ConditionalWrapper, component } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Label } from '../Label'
 import { Popover, PopoverAnchor } from '../Popover'
@@ -31,52 +31,62 @@ const SLIDER_TRACK_CLASS = 'c-slider-track'
 const SLIDER_RANGE_CLASS = 'c-slider-range'
 const SLIDER_THUMB_CLASS = 'c-slider-thumb'
 
-const SliderTrack = withClasses(
+const TRACK_DEFAULT = 'token(colors.$neutral.4)'
+const TRACK_HOVER = 'token(colors.$neutral.5)'
+
+const SliderTrack = component(
   Track,
   SLIDER_TRACK_CLASS,
   css({
     position: 'relative',
     flexGrow: 1,
     borderRadius: '$default',
-    '&[data-orientation="horizontal"]': {
-      height: '$2',
+    backgroundColor: TRACK_DEFAULT,
+    _horizontal: {
+      height: '$1',
     },
-    '&[data-orientation="vertical"]': {
-      width: '$2',
+    _vertical: {
+      width: '$1',
       height: '100px', //??? test,
     },
-  })
+    _groupHover: {
+      backgroundColor: TRACK_HOVER,
+    },
+  }),
 )
 SliderTrack.displayName = 'SliderTrack'
 
-const SliderRange = withClasses(
+const SliderRange = component(
   Range,
   SLIDER_RANGE_CLASS,
   css({
     position: 'absolute',
-    background: '$primary',
+    background: 'var(--range-default)',
     borderRadius: 'inherit',
-    '&[data-orientation="horizontal"]': {
+    _horizontal: {
       height: '100%',
     },
-    '&[data-orientation="vertical"]': {
+    _vertical: {
       width: '100%',
     },
-  })
+    _groupHover: {
+      backgroundColor: 'var(--range-hover)',
+    },
+  }),
 )
 SliderRange.displayName = 'SliderRange'
 
-const StyledThumb = withClasses(
+const StyledThumb = component(
   Thumb,
   SLIDER_THUMB_CLASS,
   css({
     position: 'relative',
     display: 'block',
-    width: 15,
-    height: 15,
+    size: '$4',
     outline: 'none',
     boxShadow: '$1',
     borderRadius: '$round',
+    backgroundColor: 'var(--thumb)',
 
     _after: {
       content: '""',
@@ -86,7 +96,7 @@ const StyledThumb = withClasses(
       bottom: 0,
       left: 0,
       zIndex: -2,
-      backgroundColor: '$transparency1',
+      backgroundColor: 'var(--thumb-background)',
       transform: 'scale(1)',
       borderRadius: '$round',
       _motionReduce: { transition: 'none' },
@@ -100,15 +110,20 @@ const StyledThumb = withClasses(
         transform: 'scale(2)',
       },
     },
-  })
+
+    _disabled: {
+      backgroundColor: TRACK_HOVER,
+    },
+  }),
 )
 StyledThumb.displayName = 'StyledThumb'
 
 const slider = cva({
   base: {
-    '--track': 'token(colors.$grey3)',
-    '--trackHover': 'token(colors.$grey4)',
-    '--range': 'token(colors.$default)',
+    '--range-default': 'token(colors.$neutral.9)',
+    '--range-hover': 'token(colors.$neutral.10)',
+    '--thumb': 'token(colors.$neutral.1)',
+    '--thumb-background': 'token(colors.$neutral.3.a)',
 
     position: 'relative',
     display: 'flex',
@@ -116,49 +131,30 @@ const slider = cva({
     flexShrink: 0,
     userSelect: 'none',
     touchAction: 'none',
-    height: 15,
+    height: '15px',
     flexGrow: 1,
 
-    '&[data-orientation="vertical"]': {
+    _vertical: {
       flexDirection: 'column',
-      width: 15,
-    },
-
-    [`& .${SLIDER_TRACK_CLASS}`]: {
-      backgroundColor: 'var(--track)',
-    },
-
-    [`& .${SLIDER_THUMB_CLASS}`]: {
-      backgroundColor: 'var(--range)',
-      '&[data-disabled]': {
-        backgroundColor: 'var(--trackHover)',
-      },
-    },
-
-    [`& .${SLIDER_RANGE_CLASS}`]: {
-      backgroundColor: 'var(--range)',
-    },
-
-    _hover: {
-      [`& .${SLIDER_TRACK_CLASS}`]: {
-        backgroundColor: 'var(--trackHover)',
-      },
+      width: '15px',
     },
   } as SystemStyleObject,
 
   variants: {
-    variant: {
+    color: {
       primary: {
-        '--range': 'token(colors.$brandYellow}',
+        '--range-default': 'token(colors.$primary.9)',
+        '--range-hover': 'token(colors.$primary.10)',
+        // '--thumb': 'token(colors.$primary.9)',
+        '--thumb-background': 'token(colors.$primary.3.a)',
       },
       secondary: {
-        '--range': 'token(colors.$default}',
+        '--range-default': 'token(colors.$secondary.9)',
+        '--range-hover': 'token(colors.$secondary.10)',
+        // '--thumb': 'token(colors.$secondary.9)',
+        '--thumb-background': 'token(colors.$secondary.3.a)',
       },
     },
-  },
-
-  defaultVariants: {
-    variant: 'secondary',
   },
 })
 
@@ -173,7 +169,7 @@ type SliderThumbProps = ComponentProps<typeof Thumb> & {
 }
 
 const StyledPopoverContent = styled(Content, tooltipContentCva)
-const StyledPopoverArrow = withClasses(Arrow, tooltipArrowStyles)
+const StyledPopoverArrow = component(Arrow, tooltipArrowStyles)
 
 type ThumbPopoverContentProps = ComponentProps<typeof Content> & {
   /** By default, portals your content parts into the body, set false to add at dom location. */
@@ -188,7 +184,7 @@ const ThumbPopoverContent = forwardRef<
 >(({ portalled = true, container, children, ...props }, forwardedRef) => {
   const wrapper = useCallback(
     (child: ReactNode) => <Portal container={container}>{child}</Portal>,
-    [container]
+    [container],
   )
   return (
     <ConditionalWrapper condition={portalled} wrapper={wrapper}>
@@ -257,13 +253,13 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
       className,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     if (process.env.NODE_ENV !== 'production') {
       const hasRange = Array.isArray(defaultValue || value)
       if (!hasRange) {
         console.warn(
-          '[Slider] The provided value, or defaultValue must be an array of numbers.'
+          '[Slider] The provided value, or defaultValue must be an array of numbers.',
         )
       }
     }
@@ -275,7 +271,7 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
       onChange: onValueChange,
     })
     const handleLabelFunction = useCallbackRef((val: number) =>
-      labelFunction(val)
+      labelFunction(val),
     )
 
     const internalRef = useRef<SliderRef>(null)
@@ -299,7 +295,7 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
           {children}
         </Label>
       ),
-      [label, id]
+      [label, id],
     )
 
     return (
@@ -311,7 +307,7 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
           min={min}
           value={values}
           onValueChange={setValues}
-          className={cx(SLIDER_CLASS, className)}
+          className={cx(SLIDER_CLASS, 'group', className)}
           ref={mergedRef}
         >
           <SliderTrack>
@@ -329,6 +325,6 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
         </StyledSlider>
       </ConditionalWrapper>
     )
-  }
+  },
 )
 Slider.displayName = 'Slider'

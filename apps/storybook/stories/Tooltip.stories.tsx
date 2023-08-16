@@ -1,11 +1,17 @@
+import {
+  Box,
+  Button,
+  Check,
+  Flex,
+  Inline,
+  Margin,
+  Tooltip,
+  TooltipProvider,
+} from '@committed/ds'
 import { css } from '@committed/ss/css'
 import { Meta, StoryFn } from '@storybook/react'
-import { Tooltip, TooltipProvider } from '.'
-import { Box, Button, Flex } from '../../'
-import { Check } from '../Icons'
-import { Inline } from '../Inline'
 
-const meta: Meta<typeof Tooltip> = {
+export default {
   title: 'Components/Tooltip',
   component: Tooltip,
   subcomponents: {
@@ -13,8 +19,7 @@ const meta: Meta<typeof Tooltip> = {
   },
   decorators: [],
   excludeStories: ['TooltipProvider'],
-}
-export default meta
+} satisfies Meta<typeof Tooltip>
 
 export const Default: StoryFn = () => (
   <Tooltip content="OK">
@@ -40,17 +45,19 @@ const withMargin = css({ m: '$2' })
 
 export const Placement: StoryFn = () => (
   <>
-    <Flex justifyContent="center" mt="$4">
-      <Tooltip content="Tooltip" side="top" align="start">
-        <Button className="withMargin">top-start</Button>
-      </Tooltip>
-      <Tooltip content="Tooltip" side="top">
-        <Button className={withMargin}>top</Button>
-      </Tooltip>
-      <Tooltip content="Tooltip" side="top" align="end">
-        <Button className={withMargin}>top-end</Button>
-      </Tooltip>
-    </Flex>
+    <Margin mt="$4">
+      <Flex justifyContent="center">
+        <Tooltip content="Tooltip" side="top" align="start">
+          <Button className={withMargin}>top-start</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip" side="top">
+          <Button className={withMargin}>top</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip" side="top" align="end">
+          <Button className={withMargin}>top-end</Button>
+        </Tooltip>
+      </Flex>
+    </Margin>
     <Flex justifyContent="center">
       <Flex alignItems="flex-start" flexDirection="column">
         <Tooltip content="Tooltip" side="left" align="start">
@@ -63,7 +70,7 @@ export const Placement: StoryFn = () => (
           <Button className={withMargin}>left-end</Button>
         </Tooltip>
       </Flex>
-      <Box className={css({ width: '200px' })} />
+      <Box width={'200px'} />
       <Flex alignItems="flex-end" flexDirection="column">
         <Tooltip content="Tooltip" side="right" align="start">
           <Button className={withMargin}>right-start</Button>

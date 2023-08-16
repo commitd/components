@@ -1,9 +1,14 @@
+import {
+  Form,
+  FormButton,
+  FormControl,
+  Inline,
+  Radio,
+  RadioGroup,
+} from '@committed/ds'
 import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
-import { Radio, RadioGroup } from '.'
-import { Form, FormButton, FormControl } from '../'
-import { withFormData } from '../../docs/util'
-import { Inline } from '../Inline'
+import { withFormData } from './utils'
 
 const subcomponents = { Radio } as unknown as Meta<
   typeof RadioGroup
@@ -26,13 +31,13 @@ export const Default: StoryFn = () => {
   )
 }
 
-/** A primary variants is also available but should be used sparingly, e.g. when the only or most important control on the page. */
-export const Primary: StoryFn = () => {
+/** A solid variants is also available but should be used sparingly, e.g. when the only or most important control on the page. */
+export const Solid: StoryFn = () => {
   return (
     <RadioGroup>
-      <Radio variant="primary" value="mobx" label="Mobx" />
-      <Radio variant="primary" value="redux" label="Redux" />
-      <Radio variant="primary" value="context" label="Context" />
+      <Radio variant="solid" value="mobx" label="Mobx" />
+      <Radio variant="solid" value="redux" label="Redux" />
+      <Radio variant="solid" value="context" label="Context" />
     </RadioGroup>
   )
 }
@@ -82,9 +87,9 @@ export const Disabled: StoryFn = () => {
         <Radio disabled value="context" label="Context" />
       </RadioGroup>
       <RadioGroup defaultValue="context">
-        <Radio variant="primary" disabled value="mobx" label="Mobx" />
-        <Radio variant="primary" disabled value="redux" label="Redux" />
-        <Radio variant="primary" disabled value="context" label="Context" />
+        <Radio variant="solid" disabled value="mobx" label="Mobx" />
+        <Radio variant="solid" disabled value="redux" label="Redux" />
+        <Radio variant="solid" disabled value="context" label="Context" />
       </RadioGroup>
       <FormControl>
         <RadioGroup disabled defaultValue="context">
@@ -106,9 +111,9 @@ export const Destructive: StoryFn = () => {
         <Radio destructive value="context" label="Context" />
       </RadioGroup>
       <RadioGroup label="Choose">
-        <Radio destructive variant="primary" value="mobx" label="Mobx" />
-        <Radio destructive variant="primary" value="redux" label="Redux" />
-        <Radio destructive variant="primary" value="context" label="Context" />
+        <Radio destructive variant="solid" value="mobx" label="Mobx" />
+        <Radio destructive variant="solid" value="redux" label="Redux" />
+        <Radio destructive variant="solid" value="context" label="Context" />
       </RadioGroup>
     </Inline>
   )
@@ -126,9 +131,9 @@ export const NoLabels: StoryFn = () => {
         <Radio value="context" />
       </RadioGroup>
       <RadioGroup orientation="horizontal" defaultValue="context">
-        <Radio variant="primary" value="mobx" />
-        <Radio variant="primary" value="redux" />
-        <Radio variant="primary" value="context" />
+        <Radio variant="solid" value="mobx" />
+        <Radio variant="solid" value="redux" />
+        <Radio variant="solid" value="context" />
       </RadioGroup>
     </Inline>
   )

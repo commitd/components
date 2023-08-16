@@ -1,12 +1,13 @@
 import {
-  mdiArrowDownDropCircleOutline,
-  mdiArrowUpDropCircleOutline,
-  mdiThumbUp,
-} from '@mdi/js'
-import { action } from '@storybook/addon-actions'
-import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import React from 'react'
-import {
+  // ConfirmDialog,
+  // ConfirmDialogActions,
+  // ConfirmDialogContent,
+  // ConfirmDialogTrigger,
+  // Dialog,
+  // DialogContent,
+  // DialogTrigger,
+  Form,
+  FormButton,
   Select,
   SelectContent,
   SelectGroup,
@@ -23,19 +24,15 @@ import {
   SelectTrigger,
   SelectValue,
   SelectViewport,
-} from '.'
-import { withFormData } from '../../docs/util'
-import { Box } from '../Box'
-import { Button } from '../Button'
+  Svg,
+} from '@committed/ds'
 import {
-  ConfirmDialog,
-  ConfirmDialogActions,
-  ConfirmDialogContent,
-  ConfirmDialogTrigger,
-} from '../ConfirmDialog'
-import { Dialog, DialogContent, DialogTrigger } from '../Dialog'
-import { Form, FormButton } from '../Form'
-import { Svg } from '../Svg'
+  mdiArrowDownDropCircleOutline,
+  mdiArrowUpDropCircleOutline,
+  mdiThumbUp,
+} from '@mdi/js'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { withFormData } from './utils'
 
 const subcomponents = {
   SelectContent,
@@ -201,45 +198,45 @@ export const InForm: StoryFn = () => {
 /**
  * Test case of a select in a `Dialog`
  */
-export const DialogSelect: Story = {
-  ...Default,
-  decorators: [
-    (story) => (
-      <Dialog>
-        <DialogTrigger>
-          <Button>Show Dialog</Button>
-        </DialogTrigger>
-        <DialogContent>{story()}</DialogContent>
-      </Dialog>
-    ),
-  ],
-}
+// export const DialogSelect: Story = {
+//   ...Default,
+//   decorators: [
+//     (story) => (
+//       <Dialog>
+//         <DialogTrigger>
+//           <Button>Show Dialog</Button>
+//         </DialogTrigger>
+//         <DialogContent>{story()}</DialogContent>
+//       </Dialog>
+//     ),
+//   ],
+// }
 
-/**
- * In this version, we add a `fullscreen` Box
- * */
-export const ConfirmDialogSelect: Story = {
-  ...Default,
-  decorators: [
-    (story) => (
-      <Box variant="fullscreen">
-        <ConfirmDialog>
-          <ConfirmDialogContent
-            description="This is a test"
-            title="Test Select"
-          >
-            {story()}
-            {story()}
-            <ConfirmDialogActions
-              confirm="Confirm"
-              onConfirm={action('Confirm')}
-            />
-          </ConfirmDialogContent>
-          <ConfirmDialogTrigger>
-            <Button>Show Dialog</Button>
-          </ConfirmDialogTrigger>
-        </ConfirmDialog>
-      </Box>
-    ),
-  ],
-}
+// /**
+//  * In this version, we add a `fullscreen` Box
+//  * */
+// export const ConfirmDialogSelect: Story = {
+//   ...Default,
+//   decorators: [
+//     (story) => (
+//       <Box variant="fullscreen">
+//         <ConfirmDialog>
+//           <ConfirmDialogContent
+//             description="This is a test"
+//             title="Test Select"
+//           >
+//             {story()}
+//             {story()}
+//             <ConfirmDialogActions
+//               confirm="Confirm"
+//               onConfirm={action('Confirm')}
+//             />
+//           </ConfirmDialogContent>
+//           <ConfirmDialogTrigger>
+//             <Button>Show Dialog</Button>
+//           </ConfirmDialogTrigger>
+//         </ConfirmDialog>
+//       </Box>
+//     ),
+//   ],
+// }

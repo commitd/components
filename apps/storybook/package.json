@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rimraf .next && storybook dev -p 6006",
     "build": "storybook build",
-    "serve": "serve storybook-static"
+    "serve": "serve storybook-static",
+    "debug": "panda debug -c ./panda.config.ts"
   },
   "keywords": [],
   "dependencies": {

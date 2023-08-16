@@ -2,7 +2,8 @@ import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { ConditionalWrapper, withClasses } from '../../utils'
+import { ConditionalWrapper, component } from '../../utils'
+import { checkStyleVariants, checkStylesBase } from '../Checkbox/Checkbox'
 import {
   DEFAULT_FORM_STATE,
   UseFormControlProps,
@@ -10,7 +11,6 @@ import {
   usePossibleFormControlState as useFormControlState,
 } from '../FormControl'
 import { Check } from '../Icons'
-import { checkStyleVariants, checkStylesBase } from '../Input/Input'
 import { Label, LabelOptional } from '../Label'
 
 const item = cva({
@@ -21,13 +21,13 @@ const item = cva({
   },
   variants: checkStyleVariants,
   defaultVariants: {
-    variant: 'secondary',
+    variant: 'outline',
   },
 })
 
 const StyledItem = styled(Item, item)
 
-const StyledIndicator = withClasses(
+const StyledIndicator = component(
   Indicator,
   css({
     display: 'flex',
@@ -72,7 +72,7 @@ export const Radio = forwardRef<ElementRef<typeof StyledItem>, RadioProps>(
 )
 Radio.displayName = 'Radio'
 
-export const StyledRoot = withClasses(
+export const StyledRoot = component(
   Root,
   css({
     display: 'flex',

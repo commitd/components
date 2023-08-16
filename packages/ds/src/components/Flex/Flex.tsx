@@ -1,6 +1,16 @@
 import { css, cva, RecipeVariantProps } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { BoxVariants, component, PolyCComponent } from '../../utils'
+import { SystemProperties } from '@committed/ss/types/style-props'
+import {
+  BoxVariants,
+  component,
+  FlexItemProps,
+  FlexProps,
+  HideProps,
+  PolyCComponent,
+  Prettify,
+  SizeProps,
+} from '../../utils'
 import { Box } from '../Box'
 
 const flex = cva({
@@ -33,7 +43,15 @@ const flex = cva({
 })
 
 const Base = styled(Box, flex)
-type FlexVariants = RecipeVariantProps<typeof flex> & BoxVariants
+
+type Props = Prettify<
+  RecipeVariantProps<typeof flex> &
+    BoxVariants &
+    FlexProps &
+    FlexItemProps &
+    SizeProps &
+    HideProps
+>
 
 /**
  * Flex component
@@ -49,7 +67,7 @@ type FlexVariants = RecipeVariantProps<typeof flex> & BoxVariants
  */
 export const Flex = component(Base, 'c-flex') as PolyCComponent<
   'div',
-  FlexVariants
+  Props & Pick<SystemProperties, 'flexDirection'>
 >
 Flex.displayName = 'Flex'
 
@@ -59,7 +77,7 @@ export const Row = component(
   css({
     flexDirection: 'row',
   }),
-) as CComponent<'div', FlexVariants>
+) as PolyCComponent<'div', Props>
 Row.displayName = 'Row'
 
 export const Column = component(
@@ -68,5 +86,5 @@ export const Column = component(
   css({
     flexDirection: 'column',
   }),
-) as CComponent<'div', FlexVariants>
+) as PolyCComponent<'div', Props>
 Column.displayName = 'Column'

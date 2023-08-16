@@ -8,15 +8,18 @@ import {
   Inline,
   Input,
   Label,
+  LabelOptional,
+  Radio,
+  RadioGroup,
+  Select,
+  SelectItem,
+  Slider,
   Stack,
+  TextArea,
 } from '@committed/ds'
 import { Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 import { rotateCheckedState, withFormData } from './utils'
-// import { Radio, RadioGroup } from '../RadioGroup'
-// import { Select, SelectItem } from '../Select'
-// import { Slider } from '../Slider'
-// import { TextArea } from '../TextArea'
 
 export default {
   title: 'Components/FormControl',
@@ -25,10 +28,11 @@ export default {
     FormControlHelp,
     Label,
     Input,
-    //TextArea,
-    //Select,
+    TextArea,
+    Select,
     Checkbox,
-    //RadioGroup,
+    RadioGroup,
+    Slider,
   },
 } satisfies Meta<typeof FormControl>
 
@@ -256,259 +260,259 @@ export const Native: StoryFn = () => {
 /**
  * Behavioural test/demo. Use the checkboxes to add these properties to all form elements.
  */
-// export const Controls: StoryFn = () => {
-//   const [required, setRequired] = useState<CheckedState>('indeterminate')
-//   const [disabled, setDisabled] = useState(false)
-//   const [error, setError] = useState(false)
-//   const [valid, setValid] = useState(false)
-//   const [native, setNative] = useState(false)
+export const Controls: StoryFn = () => {
+  const [required, setRequired] = useState<CheckedState>('indeterminate')
+  const [disabled, setDisabled] = useState(false)
+  const [error, setError] = useState(false)
+  const [valid, setValid] = useState(false)
+  const [native, setNative] = useState(false)
 
-//   const rotate = rotateCheckedState(setRequired)
+  const rotate = rotateCheckedState(setRequired)
 
-//   const state = {
-//     error,
-//     valid,
-//     disabled,
-//     required: required === 'indeterminate' ? undefined : required,
-//     native,
-//   }
+  const state = {
+    error,
+    valid,
+    disabled,
+    required: required === 'indeterminate' ? undefined : required,
+    native,
+  }
 
-//   return (
-//     <Stack spacing="large">
-//       <Inline>
-//         <Checkbox
-//           checked={required}
-//           onCheckedChange={rotate}
-//           label="Required"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={disabled}
-//           onCheckedChange={setDisabled}
-//           label="Disabled"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={error}
-//           onCheckedChange={setError}
-//           label="Error"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={valid}
-//           onCheckedChange={setValid}
-//           label="Valid"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={native}
-//           onCheckedChange={setNative}
-//           label="Native"
-//         ></Checkbox>
-//       </Inline>
+  return (
+    <Stack spacing="large">
+      <Inline>
+        <Checkbox
+          checked={required}
+          onCheckedChange={rotate}
+          label="Required"
+        ></Checkbox>
+        <Checkbox
+          checked={disabled}
+          onCheckedChange={setDisabled}
+          label="Disabled"
+        ></Checkbox>
+        <Checkbox
+          checked={error}
+          onCheckedChange={setError}
+          label="Error"
+        ></Checkbox>
+        <Checkbox
+          checked={valid}
+          onCheckedChange={setValid}
+          label="Valid"
+        ></Checkbox>
+        <Checkbox
+          checked={native}
+          onCheckedChange={setNative}
+          label="Native"
+        ></Checkbox>
+      </Inline>
 
-//       <Form onSubmit={withFormData(alert)}>
-//         <FormControl>
-//           <Input
-//             {...state}
-//             name="demo1"
-//             label="Demo 1"
-//             type="email"
-//             placeholder="hello@committed.io"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Label htmlFor="demo-2">
-//             Own Label
-//             <LabelOptional />
-//           </Label>
-//           <Input {...state} name="demo2" type="password" />
-//           <FormControlHelp defaultText="This is a demo" />
-//         </FormControl>
-//         <FormControl>
-//           <Input {...state} name="demo3" label="Demo 3" />
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Select {...state} name="demo4" label="Demo 4" defaultValue="one">
-//             <SelectItem value="one">One</SelectItem>
-//             <SelectItem value="two">Two</SelectItem>
-//             <SelectItem value="three">Three</SelectItem>
-//           </Select>
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//             validText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Checkbox {...state} name="demo5" label="Demo 5" />
-//           <FormControlHelp defaultText="Check the box" />
-//         </FormControl>
-//         <FormControl>
-//           <RadioGroup {...state} name="demo6" label="Demo 6">
-//             <Radio value="mobx" label="Mobx" />
-//             <Radio value="redux" label="Redux" />
-//             <Radio value="context" label="Context" />
-//           </RadioGroup>
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//             validText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Input {...state} name="demo7" placeholder="No label!!" />
-//         </FormControl>
-//         <FormControl>
-//           <TextArea {...state} name="demo8" label="Demo 8" />
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//             validText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Slider {...state} name="demo9" label="Demo 9" />
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//             validText="This is an error"
-//           />
-//         </FormControl>
-//         <FormButton />
-//       </Form>
-//     </Stack>
-//   )
-// }
+      <Form onSubmit={withFormData(alert)}>
+        <FormControl>
+          <Input
+            {...state}
+            name="demo1"
+            label="Demo 1"
+            type="email"
+            placeholder="hello@committed.io"
+          />
+        </FormControl>
+        <FormControl>
+          <Label htmlFor="demo-2">
+            Own Label
+            <LabelOptional />
+          </Label>
+          <Input {...state} name="demo2" type="password" />
+          <FormControlHelp defaultText="This is a demo" />
+        </FormControl>
+        <FormControl>
+          <Input {...state} name="demo3" label="Demo 3" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Select {...state} name="demo4" label="Demo 4" defaultValue="one">
+            <SelectItem value="one">One</SelectItem>
+            <SelectItem value="two">Two</SelectItem>
+            <SelectItem value="three">Three</SelectItem>
+          </Select>
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Checkbox {...state} name="demo5" label="Demo 5" />
+          <FormControlHelp defaultText="Check the box" />
+        </FormControl>
+        <FormControl>
+          <RadioGroup {...state} name="demo6" label="Demo 6">
+            <Radio value="mobx" label="Mobx" />
+            <Radio value="redux" label="Redux" />
+            <Radio value="context" label="Context" />
+          </RadioGroup>
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is valid"
+          />
+        </FormControl>
+        <FormControl>
+          <Input {...state} name="demo7" placeholder="No label!!" />
+        </FormControl>
+        <FormControl>
+          <TextArea {...state} name="demo8" label="Demo 8" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is valid"
+          />
+        </FormControl>
+        <FormControl>
+          <Slider {...state} name="demo9" label="Demo 9" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is valid"
+          />
+        </FormControl>
+        <FormButton />
+      </Form>
+    </Stack>
+  )
+}
 
 /**
  * Behavioural test/demo with ids, to ensure elements are correctly referenced in aria. Use the checkboxes to add these properties to all form elements.
  */
-// export const WithIds: StoryFn = () => {
-//   const [required, setRequired] = useState<CheckedState>('indeterminate')
-//   const [disabled, setDisabled] = useState(false)
-//   const [error, setError] = useState(false)
-//   const [valid, setValid] = useState(false)
-//   const [native, setNative] = useState(false)
+export const WithIds: StoryFn = () => {
+  const [required, setRequired] = useState<CheckedState>('indeterminate')
+  const [disabled, setDisabled] = useState(false)
+  const [error, setError] = useState(false)
+  const [valid, setValid] = useState(false)
+  const [native, setNative] = useState(false)
 
-//   const rotate = rotateCheckedState(setRequired)
+  const rotate = rotateCheckedState(setRequired)
 
-//   const state = {
-//     error,
-//     valid,
-//     disabled,
-//     required: required === 'indeterminate' ? undefined : required,
-//     native,
-//   }
+  const state = {
+    error,
+    valid,
+    disabled,
+    required: required === 'indeterminate' ? undefined : required,
+    native,
+  }
 
-//   return (
-//     <Stack spacing="large">
-//       <Inline>
-//         <Checkbox
-//           checked={required}
-//           onCheckedChange={rotate}
-//           label="Required"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={disabled}
-//           onCheckedChange={setDisabled}
-//           label="Disabled"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={error}
-//           onCheckedChange={setError}
-//           label="Error"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={valid}
-//           onCheckedChange={setValid}
-//           label="Valid"
-//         ></Checkbox>
-//         <Checkbox
-//           checked={native}
-//           onCheckedChange={setNative}
-//           label="Native"
-//         ></Checkbox>
-//       </Inline>
+  return (
+    <Stack spacing="large">
+      <Inline>
+        <Checkbox
+          checked={required}
+          onCheckedChange={rotate}
+          label="Required"
+        ></Checkbox>
+        <Checkbox
+          checked={disabled}
+          onCheckedChange={setDisabled}
+          label="Disabled"
+        ></Checkbox>
+        <Checkbox
+          checked={error}
+          onCheckedChange={setError}
+          label="Error"
+        ></Checkbox>
+        <Checkbox
+          checked={valid}
+          onCheckedChange={setValid}
+          label="Valid"
+        ></Checkbox>
+        <Checkbox
+          checked={native}
+          onCheckedChange={setNative}
+          label="Native"
+        ></Checkbox>
+      </Inline>
 
-//       <Form onSubmit={withFormData(alert)}>
-//         <FormControl>
-//           <Input
-//             {...state}
-//             name="demo1"
-//             id="demo-1"
-//             label="Demo 1"
-//             type="email"
-//             placeholder="hello@committed.io"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Label htmlFor="demo-2">
-//             Own Label
-//             <LabelOptional />
-//           </Label>
-//           <Input {...state} name="demo2" id="demo-2" type="password" />
-//           <FormControlHelp defaultText="This is a demo" />
-//         </FormControl>
-//         <FormControl>
-//           <Input {...state} name="demo3" id="demo-3" label="Demo 3" />
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Select
-//             {...state}
-//             name="demo4"
-//             id="demo-4"
-//             label="Demo 4"
-//             defaultValue="one"
-//           >
-//             <SelectItem value="one">One</SelectItem>
-//             <SelectItem value="two">Two</SelectItem>
-//             <SelectItem value="three">Three</SelectItem>
-//           </Select>
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Checkbox {...state} name="demo5" id="demo-5" label="Demo 5" />
-//           <FormControlHelp defaultText="Check the box" />
-//         </FormControl>
-//         <FormControl>
-//           <RadioGroup {...state} name="demo6" id="demo-6" label="Demo 6">
-//             <Radio value="mobx" label="Mobx" />
-//             <Radio value="redux" label="Redux" />
-//             <Radio value="context" label="Context" />
-//           </RadioGroup>
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Input {...state} name="demo7" id="demo-7" placeholder="No label!!" />
-//         </FormControl>
-//         <FormControl>
-//           <TextArea {...state} name="demo8" id="demo-8" label="Demo 8" />
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <Slider {...state} name="demo9" id="demo-9" label="Demo 9" />
-//           <FormControlHelp
-//             defaultText="This is a demo"
-//             errorText="This is an error"
-//             validText="This is an error"
-//           />
-//         </FormControl>
-//         <FormButton />
-//       </Form>
-//     </Stack>
-//   )
-// }
+      <Form onSubmit={withFormData(alert)}>
+        <FormControl>
+          <Input
+            {...state}
+            name="demo1"
+            id="demo-1"
+            label="Demo 1"
+            type="email"
+            placeholder="hello@committed.io"
+          />
+        </FormControl>
+        <FormControl>
+          <Label htmlFor="demo-2">
+            Own Label
+            <LabelOptional />
+          </Label>
+          <Input {...state} name="demo2" id="demo-2" type="password" />
+          <FormControlHelp defaultText="This is a demo" />
+        </FormControl>
+        <FormControl>
+          <Input {...state} name="demo3" id="demo-3" label="Demo 3" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Select
+            {...state}
+            name="demo4"
+            id="demo-4"
+            label="Demo 4"
+            defaultValue="one"
+          >
+            <SelectItem value="one">One</SelectItem>
+            <SelectItem value="two">Two</SelectItem>
+            <SelectItem value="three">Three</SelectItem>
+          </Select>
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Checkbox {...state} name="demo5" id="demo-5" label="Demo 5" />
+          <FormControlHelp defaultText="Check the box" />
+        </FormControl>
+        <FormControl>
+          <RadioGroup {...state} name="demo6" id="demo-6" label="Demo 6">
+            <Radio value="mobx" label="Mobx" />
+            <Radio value="redux" label="Redux" />
+            <Radio value="context" label="Context" />
+          </RadioGroup>
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Input {...state} name="demo7" id="demo-7" placeholder="No label!!" />
+        </FormControl>
+        <FormControl>
+          <TextArea {...state} name="demo8" id="demo-8" label="Demo 8" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+          />
+        </FormControl>
+        <FormControl>
+          <Slider {...state} name="demo9" id="demo-9" label="Demo 9" />
+          <FormControlHelp
+            defaultText="This is a demo"
+            errorText="This is an error"
+            validText="This is an error"
+          />
+        </FormControl>
+        <FormButton />
+      </Form>
+    </Stack>
+  )
+}

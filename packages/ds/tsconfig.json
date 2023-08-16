@@ -33,7 +33,10 @@
     "../../apps/storybook/stories/Input.stories.tsx",
     "../../apps/storybook/stories/Label.stories.tsx",
     "../../apps/storybook/stories/Form.stories.tsx",
-    "../../apps/storybook/stories/FormControl.stories.tsx"
+    "../../apps/storybook/stories/FormControl.stories.tsx",
+    "../../apps/storybook/stories/RadioGroup.stories.tsx",
+    "../../apps/storybook/stories/Popover.stories.tsx",
+    "../../apps/storybook/stories/Tooltip.stories.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

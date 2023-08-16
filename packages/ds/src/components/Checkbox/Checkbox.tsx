@@ -17,12 +17,6 @@ export const checkStylesBase = {
   '--inactive': 'token(colors.$neutral.7)',
   '--active': 'token(colors.$primary)',
 
-  // '--main': 'token(colors.$error)',
-  // '--contrast': 'token(colors.$error.text)',
-  // '--active': 'token(colors.$error)',
-  // '--default': 'token(colors.$error)',
-  // '--hover': 'token(colors.$error.2)',
-
   appearance: 'none',
   pointerEvents: 'auto',
 
@@ -157,7 +151,7 @@ export const checkStyleVariants = {
       '--hover': 'token(colors.$error.2)',
     },
   },
-}
+} as const
 
 const checkbox = cva({
   base: checkStylesBase,

@@ -1,6 +1,5 @@
-import React from 'react'
+import { Default } from '../../../../../apps/storybook/stories/Tooltip.stories'
 import { renderDark, renderLight } from '../../test'
-import { Default } from './Select.stories'
 
 it('renders light without error', () => {
   const { asFragment } = renderLight(<Default />)

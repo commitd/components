@@ -1,21 +1,21 @@
-import { css, cva } from '@committed/ss/css'
+import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import {
-    Arrow,
-    Content,
-    Portal,
-    Provider,
-    Root,
-    Trigger,
+  Arrow,
+  Content,
+  Portal,
+  Provider,
+  Root,
+  Trigger,
 } from '@radix-ui/react-tooltip'
 import {
-    CSSProperties,
-    ComponentProps,
-    FC,
-    ReactElement,
-    ReactNode,
+  CSSProperties,
+  ComponentProps,
+  FC,
+  ReactElement,
+  ReactNode,
 } from 'react'
-import { ConditionalWrapper, withClasses } from '../../utils'
+import { ConditionalWrapper, component } from '../../utils'
 import { Text } from '../Text'
 
 type TooltipProps = ComponentProps<typeof Root> &
@@ -32,9 +32,10 @@ type TooltipProps = ComponentProps<typeof Root> &
 export const tooltipContentCva = cva({
   base: {
     backgroundColor: '$tooltip',
-    color: '$textTooltip',
+    color: '$text.tooltip',
     borderRadius: '$default',
-    padding: '$1 $2',
+    py: '$1',
+    px: '$2',
     boxShadow: '$3',
     outline: 'none',
   },
@@ -54,7 +55,7 @@ export const tooltipArrowStyles = css({
 })
 
 const StyledContent = styled(Content, tooltipContentCva)
-const StyledArrow = withClasses(Arrow, tooltipArrowStyles)
+const StyledArrow = component(Arrow, tooltipArrowStyles)
 /**
  *
  * Tooltips display extra information when users hover over, focus on, or tap an element.
@@ -64,6 +65,7 @@ const StyledArrow = withClasses(Arrow, tooltipArrowStyles)
  * Built using [Radix Tooltip](https://radix-ui.com/primitives/docs/components/tooltip)
  */
 export const Tooltip: FC<TooltipProps> = ({
+  className,
   children,
   content,
   open,
@@ -93,10 +95,11 @@ export const Tooltip: FC<TooltipProps> = ({
         align={align}
         sideOffset={5}
         {...props}
+        className={cx('c-tooltip', className)}
         multiline={multiline}
       >
         <Text
-          size="0"
+          size="$0"
           className={css({
             lineHeight: 'var(--tooltipLineHeight)',
             color: 'inherit',
@@ -114,5 +117,6 @@ export const Tooltip: FC<TooltipProps> = ({
     </ConditionalWrapper>
   </Root>
 )
+Tooltip.displayName = 'Tooltip'
 
 export const TooltipProvider = Provider

@@ -3,9 +3,12 @@ import { styled } from '@committed/ss/jsx'
 import React, { FC, PropsWithChildren, useCallback } from 'react'
 // import { ToastProvider, ToastViewport } from '../../../../../components/Toast'
 // import { ToasterProvider } from '../../../../../components/Toast/Toaster'
-// import { TooltipProvider } from '../../../../../components/Tooltip'
 import { ConditionalWrapper, component } from '../../utils'
-import { ThemeProvider, ThemeProviderProps } from '../ThemeProvider'
+import {
+  ThemeProvider,
+  ThemeProviderProps,
+} from '../ThemeProvider/ThemeProvider'
+import { TooltipProvider } from '../Tooltip'
 
 //---------------------------- Props ----------------------------------//
 
@@ -13,10 +16,10 @@ export type ThemeProviderPropsWithoutChildren = Omit<
   ThemeProviderProps,
   'children'
 >
-// export type TooltipProviderPropsWithoutChildren = Omit<
-//   React.ComponentProps<typeof TooltipProvider>,
-//   'children'
-// >
+export type TooltipProviderPropsWithoutChildren = Omit<
+  React.ComponentProps<typeof TooltipProvider>,
+  'children'
+>
 // export type ToastProviderPropsWithoutChildren = Omit<
 //   React.ComponentProps<typeof ToastProvider>,
 //   'children'
@@ -38,7 +41,7 @@ export type ComponentsProviderProps = {
   /**
    * Tooltip configuration options
    */
-  // tooltip?: false | TooltipProviderPropsWithoutChildren
+  tooltip?: false | TooltipProviderPropsWithoutChildren
   /**
    * Toast configuration options
    */
@@ -75,7 +78,7 @@ export const ComponentsProvider: FC<
   PropsWithChildren<ComponentsProviderProps>
 > = ({
   theme = {},
-  // tooltip = {},
+  tooltip = {},
   // toast = {},
   // viewport = {},
   isolated = true,
@@ -107,12 +110,12 @@ export const ComponentsProvider: FC<
   //   [toast]
   // )
 
-  // const tooltipWrapper = useCallback(
-  //   (wrappedChildren: React.ReactNode) => (
-  //     <TooltipProvider {...tooltip}>{wrappedChildren}</TooltipProvider>
-  //   ),
-  //   [tooltip]
-  // )
+  const tooltipWrapper = useCallback(
+    (wrappedChildren: React.ReactNode) => (
+      <TooltipProvider {...tooltip}>{wrappedChildren}</TooltipProvider>
+    ),
+    [tooltip],
+  )
 
   const themeWrapper = useCallback(
     (wrappedChildren: React.ReactNode) => (
@@ -123,14 +126,14 @@ export const ComponentsProvider: FC<
 
   return (
     // <ConditionalWrapper condition={toast} wrapper={toastWrapper}>
-    // <ConditionalWrapper condition={tooltip} wrapper={tooltipWrapper}>
-    <ConditionalWrapper condition={theme} wrapper={themeWrapper}>
-      <>
-        <Isolate isolated={isolated}>{children}</Isolate>
-        {/* {viewport && <ToastViewport {...viewport} />} */}
-      </>
+    <ConditionalWrapper condition={tooltip} wrapper={tooltipWrapper}>
+      <ConditionalWrapper condition={theme} wrapper={themeWrapper}>
+        <>
+          <Isolate isolated={isolated}>{children}</Isolate>
+          {/* {viewport && <ToastViewport {...viewport} />} */}
+        </>
+      </ConditionalWrapper>
     </ConditionalWrapper>
-    // </ConditionalWrapper>
     // </ConditionalWrapper>
   )
 }

@@ -1,9 +1,9 @@
 import { Meta, Story } from '@storybook/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Pagination, PaginationProps } from '.'
+import { Radio, RadioGroup } from '../../packages/ds/src/components/RadioGroup'
 import { Divider } from '../Divider'
 import { Label } from '../Label'
-import { Radio, RadioGroup } from '../RadioGroup'
 import { Stack } from '../Stack'
 
 export default {

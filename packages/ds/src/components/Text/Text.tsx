@@ -105,6 +105,7 @@ export const text = cva({
 })
 
 export type TextVariants = RecipeVariantProps<typeof text>
+const inlineCss = css({ display: 'inline' })
 
 /**
  * Text component covers all text use in the components.
@@ -149,6 +150,7 @@ Caption.displayName = 'Caption'
 export const Span: CComponent<'span', TextVariants> = component(
   styled('span', text),
   SPAN_CLASS,
+  inlineCss,
 )
 Span.displayName = 'Span'
 
@@ -158,6 +160,7 @@ Span.displayName = 'Span'
 export const Strike: CComponent<'s', TextVariants> = component(
   styled('s', text),
   STRIKE_CLASS,
+  inlineCss,
 )
 Strike.displayName = 'Strike'
 
@@ -174,7 +177,7 @@ export const Monospace = fixedForwardRef<typeof Text, MonospaceProps>(
     return (
       <Text
         asChild
-        className={cx(MONOSPACE_CLASS, className)}
+        className={cx(MONOSPACE_CLASS, className, inlineCss)}
         font="monospace"
         {...props}
         ref={forwardedRef}

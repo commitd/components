@@ -1,31 +1,31 @@
 import {
-    Content,
-    Group,
-    Icon,
-    Item,
-    ItemIndicator,
-    ItemText,
-    Portal,
-    Root,
-    ScrollDownButton,
-    ScrollUpButton,
-    Separator,
-    Trigger,
-    Value,
-    Viewport,
+  Content,
+  Group,
+  Icon,
+  Item,
+  ItemIndicator,
+  ItemText,
+  Portal,
+  Root,
+  ScrollDownButton,
+  ScrollUpButton,
+  Separator,
+  Trigger,
+  Value,
+  Viewport,
 } from '@radix-ui/react-select'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 
 import { css } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { ConditionalWrapper, withClasses } from '../../utils'
+import { ConditionalWrapper, component, fixedForwardRef } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Check, ChevronDown, ChevronUp } from '../Icons'
 import { inputStyles } from '../Input'
 import { Label, LabelOptional } from '../Label'
-import { paperStyles } from '../Paper'
+import { paperStyles } from '../Paper/Paper'
 
-const StyledTrigger = withClasses(
+const StyledTrigger = component(
   styled(Trigger, inputStyles),
   css({
     _readOnly: {},
@@ -34,18 +34,18 @@ const StyledTrigger = withClasses(
     justifyContent: 'space-between',
     cursor: 'pointer',
     alignContent: 'center',
-    '&[data-placeholder] span:first-child': { color: '$grey8' },
-  })
+    '&[data-placeholder] span:first-child': { color: '$neutral.8' },
+  }),
 )
 
-const StyledValue = withClasses(
+const StyledValue = component(
   Value,
   css({
     flexGrow: 1,
-  })
+  }),
 )
 
-const StyledContent = withClasses(
+const StyledContent = component(
   Content,
   paperStyles,
   css({
@@ -54,22 +54,23 @@ const StyledContent = withClasses(
     _before: {
       boxShadow: 'none',
     },
-  })
+  }),
 )
 
-const StyledViewport = withClasses(
+const StyledViewport = component(
   Viewport,
   css({
-    padding: '$5',
-  })
+    padding: '$2',
+  }),
 )
 
-const StyledItem = withClasses(
+const StyledItem = component(
   Item,
   css({
     all: 'unset',
-    fontSize: 0,
-    padding: '$2 $3 $2 $6',
+    py: '$2',
+    pr: '$3',
+    pl: '$6',
     cursor: 'default',
     borderRadius: '$default',
     backgroundColor: 'transparent',
@@ -92,32 +93,33 @@ const StyledItem = withClasses(
       cursor: 'pointer',
     },
     '&[data-disabled]': {
-      color: '$grey9',
+      color: '$neutral.9',
       pointerEvents: 'none',
     },
-  })
+  }),
 )
 
-const StyledLabel = withClasses(
+const StyledLabel = component(
   Label,
   css({
-    padding: '$0 $2',
+    py: '$0',
+    px: '$2',
     fontSize: 0,
     lineHeight: '$2',
-    color: '$grey10',
-  })
+    color: '$neutral.10',
+  }),
 )
 
-const StyledSeparator = withClasses(
+const StyledSeparator = component(
   Separator,
   css({
     height: 1,
-    backgroundColor: '$grey7',
+    backgroundColor: '$neutral.7',
     margin: '$1',
-  })
+  }),
 )
 
-const StyledItemIndicator = withClasses(
+const StyledItemIndicator = component(
   ItemIndicator,
   css({
     position: 'absolute',
@@ -126,7 +128,7 @@ const StyledItemIndicator = withClasses(
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-  })
+  }),
 )
 
 const scrollButtonStyles = css({
@@ -134,13 +136,13 @@ const scrollButtonStyles = css({
   alignItems: 'center',
   justifyContent: 'center',
   height: '$5',
-  color: '$grey7',
+  color: '$neutral.7',
   cursor: 'default',
 })
 
-const StyledScrollUpButton = withClasses(ScrollUpButton, scrollButtonStyles)
+const StyledScrollUpButton = component(ScrollUpButton, scrollButtonStyles)
 
-const StyledScrollDownButton = withClasses(ScrollDownButton, scrollButtonStyles)
+const StyledScrollDownButton = component(ScrollDownButton, scrollButtonStyles)
 
 type SelectContentProps = ComponentProps<typeof StyledContent> & {
   /** By default, portals your content parts into the body, set false to add at dom location. */
@@ -166,6 +168,8 @@ SelectContent.displayName = 'SelectContent'
 
 type SelectProps = ComponentProps<typeof Root> &
   UseFormControlProps & {
+    /** may not currently be used */
+    id?: string
     /** Add a label to the select */
     label?: string
     /** By default, portals your content parts into the body, set false to add at dom location. */
@@ -184,10 +188,10 @@ type SelectProps = ComponentProps<typeof Root> &
  *
  * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
  */
-export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
+export const Select = fixedForwardRef<typeof Root, SelectProps>(
   (
     { label, container, portalled = true, placeholder, children, ...props },
-    forwardedRef
+    forwardedRef,
   ) => {
     const [id, { state, disabled, required }, remainingProps] =
       useFormControl(props)
@@ -228,7 +232,7 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
         </Root>
       </ConditionalWrapper>
     )
-  }
+  },
 )
 Select.displayName = 'Select'
 

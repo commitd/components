@@ -1,4 +1,5 @@
 import { SystemStyleObject } from '@committed/ss/types'
+import { SystemProperties } from '@committed/ss/types/style-props'
 import { ComponentProps, ElementType, ReactNode } from 'react'
 import { ForwardRef } from './forwardRef'
 /////////////////////
@@ -55,3 +56,50 @@ export type PickProps<
 > = {
   [P in K]?: ComponentProps<T>[P]
 }
+
+////////////////////
+// Box props
+
+export type BackgroundProps = Pick<
+  SystemProperties,
+  'bg' | 'background' | 'bgColor' | 'backgroundColor' | 'bgGradient'
+>
+
+export type SizeProps = Pick<
+  SystemProperties,
+  | 'size'
+  | 'w'
+  | 'width'
+  | 'minWidth'
+  | 'maxWidth'
+  | 'minW'
+  | 'maxW'
+  | 'h'
+  | 'height'
+  | 'minHeight'
+  | 'maxHeight'
+  | 'minH'
+  | 'maxH'
+>
+
+export type FlexProps = Pick<
+  SystemProperties,
+  | 'display'
+  | 'flex'
+  | 'flexDirection'
+  | 'flexWrap'
+  | 'flexFlow'
+  | 'justifyContent'
+  | 'alignItems'
+  | 'alignContent'
+  | 'gap'
+  | 'rowGap'
+  | 'columnGap'
+>
+
+export type FlexItemProps = Pick<
+  SystemProperties,
+  'flex' | 'order' | 'flexGrow' | 'flexShrink' | 'flexBasis' | 'alignSelf'
+>
+
+export type HideProps = Pick<SystemProperties, 'hideFrom' | 'hideBelow'>
