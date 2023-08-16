@@ -1,9 +1,10 @@
 import { styled } from '@committed/ss/jsx'
+import { ElementType } from 'react'
 import {
   CComponentProps,
   Headings,
   component,
-  fixedForwardRef,
+  forwardRefExtend,
 } from '../../utils'
 import { TextVariants, text } from '../Text/Text'
 
@@ -21,9 +22,10 @@ const sizes: Record<Headings, NonNullable<TextVariants>['size']> = {
 const Base = component(DEFAULT_TAG, 'c-heading')
 const Styled = styled(Base, text)
 
-export const Heading = fixedForwardRef<
+export const Heading = forwardRefExtend<
   typeof DEFAULT_TAG,
-  CComponentProps & TextVariants & { variant?: Headings; as?: Headings }
+  CComponentProps &
+    TextVariants & { variant?: Headings; as?: Headings | ElementType }
 >(({ variant = DEFAULT_TAG, as: asProp, children, ...props }, forwardedRef) => {
   const Variant = asProp ?? variant
   return (

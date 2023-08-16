@@ -5,7 +5,7 @@ import {
   CComponentProps,
   Headings,
   component,
-  fixedForwardRef,
+  forwardRefExtend,
 } from '../../utils'
 import { TextVariants, text } from '../Text/Text'
 
@@ -32,7 +32,7 @@ const Base = component(
 )
 const Styled = styled(Base, text)
 
-export const Subheading = fixedForwardRef<
+export const Subheading = forwardRefExtend<
   typeof DEFAULT_TAG,
   CComponentProps & TextVariants & { variant?: Headings; as?: Headings }
 >(

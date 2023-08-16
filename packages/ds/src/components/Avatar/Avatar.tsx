@@ -4,7 +4,7 @@ import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import React from 'react'
-import { PickProps, Prettify, fixedForwardRef } from '../../utils'
+import { PickProps, Prettify, forwardRefExtend } from '../../utils'
 
 const avatarRoot = cva({
   base: {
@@ -66,7 +66,7 @@ type AvatarProps = Prettify<
 /**
  * The Avatar should be used for profile images. If an image is not available initials can be used.
  */
-export const Avatar = fixedForwardRef<typeof Root, AvatarProps>(
+export const Avatar = forwardRefExtend<typeof Root, AvatarProps>(
   (
     {
       src,

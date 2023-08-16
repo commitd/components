@@ -1,7 +1,7 @@
 import { styled } from '@committed/ss/jsx'
 import { SystemProperties } from '@committed/ss/types/style-props'
 import React from 'react'
-import { CComponent, component, fixedForwardRef } from '../../utils'
+import { CComponent, component, forwardRefExtend } from '../../utils'
 
 const Base = styled(component('div', 'c-margin'), {})
 export type MarginProps = Pick<
@@ -32,7 +32,7 @@ export type MarginProps = Pick<
  * Marin css properties and shorthands are exposed as props and have access to spacing design tokens.
  *
  */
-export const Margin: CComponent<'div', MarginProps> = fixedForwardRef(
+export const Margin: CComponent<'div', MarginProps> = forwardRefExtend(
   ({ children, ...props }, forwardedRef) => {
     return (
       <Base

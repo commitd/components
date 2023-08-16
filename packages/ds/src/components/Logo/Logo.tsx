@@ -1,6 +1,6 @@
 import { css } from '@committed/ss/css'
 import { ComponentProps } from 'react'
-import { CComponent, Prettify, component, fixedForwardRef } from '../../utils'
+import { CComponent, Prettify, component, forwardRefExtend } from '../../utils'
 import { Svg } from '../Svg'
 
 const StyledSvg = component(
@@ -17,7 +17,7 @@ type LogoProps = Prettify<
  * Committed Logo, SVG component defaults to the Committed yellow.
  *
  */
-export const Logo = fixedForwardRef<
+export const Logo = forwardRefExtend<
   typeof StyledSvg,
   ComponentProps<typeof Svg> & LogoProps
 >((props, forwardedRef) => (

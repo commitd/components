@@ -18,7 +18,7 @@ import { ComponentProps, ElementRef, forwardRef } from 'react'
 
 import { css } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { ConditionalWrapper, component, fixedForwardRef } from '../../utils'
+import { ConditionalWrapper, component, forwardRefExtend } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Check, ChevronDown, ChevronUp } from '../Icons'
 import { inputStyles } from '../Input'
@@ -188,7 +188,7 @@ type SelectProps = ComponentProps<typeof Root> &
  *
  * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
  */
-export const Select = fixedForwardRef<typeof Root, SelectProps>(
+export const Select = forwardRefExtend<typeof Root, SelectProps>(
   (
     { label, container, portalled = true, placeholder, children, ...props },
     forwardedRef,

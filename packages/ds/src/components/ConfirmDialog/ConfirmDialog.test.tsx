@@ -5,9 +5,9 @@ import {
   ConfirmDialogContent,
   ConfirmDialogTrigger,
 } from '.'
+import { Default } from '../../../../../apps/storybook/stories/ConfirmDialog.stories'
 import { act, renderDark, renderLight, screen, userEvent } from '../../test'
 import { Button } from '../Button'
-import { Default } from './ConfirmDialog.stories'
 
 const TestCase = ({
   onCancel,
@@ -41,7 +41,7 @@ it('calls onConfirm when confirmed', async () => {
   const onConfirm = jest.fn()
   const onCancel = jest.fn()
   renderLight(
-    <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={onConfirm} />
+    <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={onConfirm} />,
   )
   userEvent.click(screen.getByRole('button'))
   userEvent.click(await screen.findByRole('button', { name: /confirm/i }))
@@ -54,7 +54,7 @@ it('calls onCancel when cancelled', async () => {
   const onConfirm = jest.fn()
   const onCancel = jest.fn()
   renderLight(
-    <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={jest.fn()} />
+    <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={jest.fn()} />,
   )
   userEvent.click(screen.getByRole('button'))
   userEvent.click(await screen.findByRole('button', { name: /cancel/i }))
@@ -68,7 +68,7 @@ it('calls onCancel on esc', () => {
   const onConfirm = jest.fn()
   const onCancel = jest.fn()
   renderLight(
-    <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={jest.fn()} />
+    <TestCase confirm="Confirm" onCancel={onCancel} onConfirm={jest.fn()} />,
   )
   userEvent.click(screen.getByRole('button'))
   act(() => {

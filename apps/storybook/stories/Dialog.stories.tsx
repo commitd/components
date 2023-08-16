@@ -1,19 +1,24 @@
-import { useBoolean } from '@committed/hooks'
-import { action } from '@storybook/addon-actions'
-import { Meta, StoryFn } from '@storybook/react'
-import React, { useState } from 'react'
 import {
+  Box,
+  Button,
+  Close as CloseIcon,
   Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from '.'
-import { Box, Button, IconButton, Link, Row, Text } from '../'
-import { Close as CloseIcon } from '../Icons'
-import { Inline } from '../Inline'
-import { Stack } from '../Stack'
+  IconButton,
+  Inline,
+  Link,
+  Row,
+  Stack,
+  Text,
+} from '@committed/ds'
+import { useBoolean } from '@committed/hooks'
+import { action } from '@storybook/addon-actions'
+import { Meta, StoryFn } from '@storybook/react'
+import { useState } from 'react'
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
@@ -87,7 +92,7 @@ export const CloseButton: StoryFn = () => {
               </IconButton>
             </DialogClose>
             <DialogClose>
-              <Button variant="primary" onClick={action('CloseButton')}>
+              <Button variant="solid" onClick={action('CloseButton')}>
                 Close Button
               </Button>
             </DialogClose>
@@ -117,49 +122,49 @@ export const Portalled: StoryFn = () => {
           This is a dialog
         </DialogContent>
       </Dialog>
-      <Box css={{ zIndex: 10, backgroundColor: '$success4' }}>
+      <Box css={{ zIndex: 10, backgroundColor: '$success.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 10</Button>
           </DialogTrigger>
           <DialogContent
-            overlayCss={{ backgroundColor: '$success4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$success.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
         </Dialog>
       </Box>
-      <Box css={{ zIndex: 100, backgroundColor: '$info4' }}>
+      <Box css={{ zIndex: 100, backgroundColor: '$info.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 100</Button>
           </DialogTrigger>
           <DialogContent
-            overlayCss={{ backgroundColor: '$info4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$info.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
         </Dialog>
       </Box>
-      <Box css={{ zIndex: 1000, backgroundColor: '$warning4' }}>
+      <Box css={{ zIndex: 1000, backgroundColor: '$warn.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 1000</Button>
           </DialogTrigger>
           <DialogContent
-            overlayCss={{ backgroundColor: '$warning4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$warn.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
         </Dialog>
       </Box>
-      <Box css={{ zIndex: 10000, backgroundColor: '$error4' }}>
+      <Box css={{ zIndex: 10000, backgroundColor: '$error.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 10000</Button>
           </DialogTrigger>
           <DialogContent
-            overlayCss={{ backgroundColor: '$error4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$error.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
@@ -186,53 +191,53 @@ export const zIndex: StoryFn = () => {
           This is a dialog
         </DialogContent>
       </Dialog>
-      <Box css={{ zIndex: 10, backgroundColor: '$success4' }}>
+      <Box css={{ zIndex: 10, backgroundColor: '$success.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 10</Button>
           </DialogTrigger>
           <DialogContent
             portalled={false}
-            overlayCss={{ backgroundColor: '$success4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$success.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
         </Dialog>
       </Box>
-      <Box css={{ zIndex: 100, backgroundColor: '$info4' }}>
+      <Box css={{ zIndex: 100, backgroundColor: '$info.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 100</Button>
           </DialogTrigger>
           <DialogContent
             portalled={false}
-            overlayCss={{ backgroundColor: '$info4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$info.11.a', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
         </Dialog>
       </Box>
-      <Box css={{ zIndex: 1000, backgroundColor: '$warning4' }}>
+      <Box css={{ zIndex: 1000, backgroundColor: '$warn.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 1000</Button>
           </DialogTrigger>
           <DialogContent
             portalled={false}
-            overlayCss={{ backgroundColor: '$warning4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$warn.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
         </Dialog>
       </Box>
-      <Box css={{ zIndex: 10000, backgroundColor: '$error4' }}>
+      <Box css={{ zIndex: 10000, backgroundColor: '$error.4' }}>
         <Dialog>
           <DialogTrigger>
             <Button>zIndex: 10000</Button>
           </DialogTrigger>
           <DialogContent
             portalled={false}
-            overlayCss={{ backgroundColor: '$error4', opacity: 0.9 }}
+            overlayCss={{ backgroundColor: '$error.4', opacity: 0.9 }}
           >
             This is a dialog
           </DialogContent>
@@ -265,7 +270,7 @@ export const Container: StoryFn = () => {
             This is a dialog
           </DialogContent>
         </Dialog>
-        <Box css={{ zIndex: 10, backgroundColor: '$success4' }}>
+        <Box css={{ zIndex: 10, backgroundColor: '$success.4' }}>
           <Dialog>
             <DialogTrigger>
               <Button>zIndex: 10</Button>
@@ -273,7 +278,7 @@ export const Container: StoryFn = () => {
             <DialogContent
               container={element}
               overlayCss={{
-                backgroundColor: '$success4',
+                backgroundColor: '$success.4',
                 opacity: 0.9,
                 position: 'absolute',
               }}
@@ -291,7 +296,7 @@ export const Container: StoryFn = () => {
             <DialogContent
               container={element}
               overlayCss={{
-                backgroundColor: '$info4',
+                backgroundColor: '$info.4',
                 opacity: 0.9,
                 position: 'absolute',
               }}
@@ -301,7 +306,7 @@ export const Container: StoryFn = () => {
             </DialogContent>
           </Dialog>
         </Box>
-        <Box css={{ zIndex: 1000, backgroundColor: '$warning4' }}>
+        <Box css={{ zIndex: 1000, backgroundColor: '$warn.4' }}>
           <Dialog>
             <DialogTrigger>
               <Button>zIndex: 1000</Button>
@@ -309,7 +314,7 @@ export const Container: StoryFn = () => {
             <DialogContent
               container={element}
               overlayCss={{
-                backgroundColor: '$warning4',
+                backgroundColor: '$warn.4',
                 opacity: 0.9,
                 position: 'absolute',
               }}
@@ -319,7 +324,7 @@ export const Container: StoryFn = () => {
             </DialogContent>
           </Dialog>
         </Box>
-        <Box css={{ zIndex: 10000, backgroundColor: '$error4' }}>
+        <Box css={{ zIndex: 10000, backgroundColor: '$error.4' }}>
           <Dialog>
             <DialogTrigger>
               <Button>zIndex: 10000</Button>
@@ -327,7 +332,7 @@ export const Container: StoryFn = () => {
             <DialogContent
               container={element}
               overlayCss={{
-                backgroundColor: '$error4',
+                backgroundColor: '$error.4',
                 opacity: 0.9,
                 position: 'absolute',
               }}

@@ -3,7 +3,7 @@
 import { css } from '@committed/ss/css'
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import { ComponentProps } from 'react'
-import { component, fixedForwardRef } from '../../utils'
+import { component, forwardRefExtend } from '../../utils'
 import { buttonInteractionStyles, buttonVariables } from '../Button/Button'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper/Paper'
@@ -94,7 +94,7 @@ AccordionContent.displayName = 'AccordionContent'
 type AccordionTriggerProps = ComponentProps<typeof AccordionTrigger>
 type AccordionHeaderProps = AccordionTriggerProps
 
-export const AccordionHeader = fixedForwardRef<
+export const AccordionHeader = forwardRefExtend<
   typeof AccordionTrigger,
   AccordionHeaderProps
 >(({ children, ...props }, forwardedRef) => (

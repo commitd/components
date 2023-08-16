@@ -5,7 +5,7 @@ import {
   CComponent,
   PolyCComponent,
   component,
-  fixedForwardRef,
+  forwardRefExtend,
 } from '../../utils'
 
 export const TEXT_CLASS = 'c-text'
@@ -171,7 +171,7 @@ type MonospaceProps = ComponentProps<typeof Text> & {
 /**
  * Convenience export of text with the monospace font and `pre` tag (or 'span' if marked `inline`)
  */
-export const Monospace = fixedForwardRef<typeof Text, MonospaceProps>(
+export const Monospace = forwardRefExtend<typeof Text, MonospaceProps>(
   ({ inline = false, className, children, ...props }, forwardedRef) => {
     const MonoComponent = inline ? 'span' : 'pre'
     return (

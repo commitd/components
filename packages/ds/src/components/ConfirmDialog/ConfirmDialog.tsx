@@ -1,25 +1,25 @@
 import { css, cx } from '@committed/ss/css'
 import { SystemStyleObject } from '@committed/ss/types'
 import {
-    Action,
-    Cancel,
-    Content,
-    Description,
-    Overlay,
-    Portal,
-    Root,
-    Title,
-    Trigger,
+  Action,
+  Cancel,
+  Content,
+  Description,
+  Overlay,
+  Portal,
+  Root,
+  Title,
+  Trigger,
 } from '@radix-ui/react-alert-dialog'
 import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
-import { ConditionalWrapper, withClasses } from '../../utils'
+import { ConditionalWrapper, component } from '../../utils'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
 import { overlayAnimationStyles, overlayStyles } from '../Overlay'
-import { paperStyles } from '../Paper'
+import { paperStyles } from '../Paper/Paper'
 import { Text } from '../Text'
 
-const StyledOverlay = withClasses(
+const StyledOverlay = component(
   Overlay,
   overlayStyles,
   overlayAnimationStyles,
@@ -29,10 +29,10 @@ const StyledOverlay = withClasses(
     bottom: 0,
     top: 0,
     left: 0,
-  })
+  }),
 )
 
-const StyledContent = withClasses(
+const StyledContent = component(
   Content,
   paperStyles,
   css({
@@ -43,7 +43,7 @@ const StyledContent = withClasses(
     minWidth: 200,
     maxWidth: 'fit-content',
     maxHeight: '85vh',
-    padding: 4,
+    padding: '$4',
     marginTop: '-5vh',
 
     boxShadow: '$2',
@@ -55,7 +55,7 @@ const StyledContent = withClasses(
       outline: 'none',
     },
   }),
-  overlayAnimationStyles
+  overlayAnimationStyles,
 )
 
 /**
@@ -106,7 +106,7 @@ export const ConfirmDialogContent = forwardRef<
       children,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => (
     <ConditionalWrapper
       condition={portalled}
@@ -123,7 +123,7 @@ export const ConfirmDialogContent = forwardRef<
         </StyledContent>
       </>
     </ConditionalWrapper>
-  )
+  ),
 )
 ConfirmDialogContent.displayName = 'ConfirmDialogContent'
 
@@ -153,7 +153,7 @@ export const ConfirmDialogTitle: FC<ComponentProps<typeof Heading>> = ({
 ConfirmDialogTitle.displayName = 'ConfirmDialogTitle'
 
 export const ConfirmDialogDescription: FC<ComponentProps<typeof Text>> = (
-  props
+  props,
 ) => (
   <Description>
     <Text {...props} />
@@ -162,31 +162,31 @@ export const ConfirmDialogDescription: FC<ComponentProps<typeof Text>> = (
 ConfirmDialogDescription.displayName = 'ConfirmDialogDescription'
 
 export const ConfirmDialogAction: FC<ComponentProps<typeof Button>> = (
-  props
+  props,
 ) => (
   <Action asChild>
-    <Button variant="primary" {...props} />
+    <Button variant="solid" {...props} />
   </Action>
 )
 ConfirmDialogAction.displayName = 'ConfirmDialogAction'
 
 export const ConfirmDialogCancel: FC<ComponentProps<typeof Button>> = (
-  props
+  props,
 ) => (
   <Cancel asChild>
-    <Button variant="tertiary" {...props} />
+    <Button variant="text" color="neutral" {...props} />
   </Cancel>
 )
 ConfirmDialogCancel.displayName = 'ConfirmDialogCancel'
 
-export const ConfirmDialogActionsWrapper = withClasses(
+export const ConfirmDialogActionsWrapper = component(
   'div',
   css({
     display: 'flex',
-    gap: 2,
+    gap: '$2',
     justifyContent: 'flex-end',
-    mt: 4,
-  })
+    mt: '$4',
+  }),
 )
 ConfirmDialogActionsWrapper.displayName = 'ConfirmDialogActionsWrapper'
 

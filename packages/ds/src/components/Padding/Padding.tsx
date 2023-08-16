@@ -1,7 +1,7 @@
 import { styled } from '@committed/ss/jsx'
 import { SystemProperties } from '@committed/ss/types/style-props'
 import React from 'react'
-import { CComponent, component, fixedForwardRef } from '../../utils'
+import { CComponent, component, forwardRefExtend } from '../../utils'
 
 const Base = styled(component('div', 'c-padding'), {})
 export type PaddingProps = Pick<
@@ -32,7 +32,7 @@ export type PaddingProps = Pick<
  * Padding css properties and shorthands are exposed as props and have access to spacing design tokens.
  *
  */
-export const Padding: CComponent<'div', PaddingProps> = fixedForwardRef(
+export const Padding: CComponent<'div', PaddingProps> = forwardRefExtend(
   ({ children, ...props }, forwardedRef) => {
     return (
       <Base

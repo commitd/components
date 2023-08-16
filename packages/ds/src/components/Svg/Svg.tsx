@@ -1,7 +1,7 @@
 import { cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { ComponentProps } from 'react'
-import { CComponent, component, fixedForwardRef } from '../../utils'
+import { CComponent, component, forwardRefExtend } from '../../utils'
 
 const DEFAULT_TAG = 'svg' as const
 export const SVG_CLASS = 'c-svg'
@@ -38,7 +38,7 @@ type SvgProps = {
 /**
  * Svg is the base component for wrapping svg icon paths.
  */
-export const Svg = fixedForwardRef<typeof StyledSvg, SvgProps>(
+export const Svg = forwardRefExtend<typeof StyledSvg, SvgProps>(
   ({ title, path, children, className, ...props }, forwardedRef) => (
     <StyledSvg
       className={cx(SVG_CLASS, className)}

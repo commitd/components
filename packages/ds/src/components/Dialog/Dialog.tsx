@@ -2,26 +2,26 @@ import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
 import {
-    Close,
-    Content,
-    Description,
-    Overlay,
-    Portal,
-    Root,
-    Title,
-    Trigger,
+  Close,
+  Content,
+  Description,
+  Overlay,
+  Portal,
+  Root,
+  Title,
+  Trigger,
 } from '@radix-ui/react-dialog'
-import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
-import { ConditionalWrapper, withClasses } from '../../utils'
+import { ComponentProps, FC } from 'react'
+import { ConditionalWrapper, component, forwardRefDefine } from '../../utils'
+import { IconButton } from '../Button'
 import { Heading } from '../Heading'
-import { IconButton } from '../IconButton'
 import { Close as Icon } from '../Icons'
 import { overlayAnimationStyles, overlayStyles } from '../Overlay'
-import { paperStyles } from '../Paper'
+import { paperStyles } from '../Paper/Paper'
 import { Text } from '../Text'
 
 export const StyledOverlay = styled(
-  withClasses(Overlay, overlayStyles, overlayAnimationStyles),
+  component(Overlay, overlayStyles, overlayAnimationStyles),
   cva({
     base: {
       position: 'fixed',
@@ -30,10 +30,10 @@ export const StyledOverlay = styled(
       top: 0,
       left: 0,
     },
-  })
+  }),
 )
 
-export const StyledContent = withClasses(
+export const StyledContent = component(
   Content,
   paperStyles,
   css({
@@ -56,17 +56,17 @@ export const StyledContent = withClasses(
       outline: 'none',
     },
   }),
-  overlayAnimationStyles
+  overlayAnimationStyles,
 )
 
 // Could be exported for reuse but currently causes typing issue
-const StyledIconButton = withClasses(
+const StyledIconButton = component(
   IconButton,
   css({
     position: 'fixed',
     right: '$1',
     top: '$1',
-  })
+  }),
 )
 
 /**
@@ -95,8 +95,8 @@ type DialogContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> & {
   container?: ComponentProps<typeof Portal>['container']
 }
 
-export const DialogContent = forwardRef<
-  ElementRef<typeof StyledContent>,
+export const DialogContent = forwardRefDefine<
+  typeof StyledContent,
   DialogContentProps
 >(
   (
@@ -108,7 +108,7 @@ export const DialogContent = forwardRef<
       defaultClose = true,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => (
     <ConditionalWrapper
       condition={portalled}
@@ -119,7 +119,11 @@ export const DialogContent = forwardRef<
         <StyledContent {...props} ref={forwardedRef}>
           {defaultClose && (
             <Close asChild>
-              <StyledIconButton aria-label="close" variant="tertiary">
+              <StyledIconButton
+                aria-label="close"
+                variant="text"
+                color="neutral"
+              >
                 <Icon title="Close" />
               </StyledIconButton>
             </Close>
@@ -128,12 +132,12 @@ export const DialogContent = forwardRef<
         </StyledContent>
       </>
     </ConditionalWrapper>
-  )
+  ),
 )
 DialogContent.displayName = 'DialogContent'
 
-export const DialogTrigger = forwardRef<
-  ElementRef<typeof Trigger>,
+export const DialogTrigger = forwardRefDefine<
+  typeof Trigger,
   Omit<ComponentProps<typeof Trigger>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Trigger asChild {...props} ref={forwardedRef}>
@@ -142,8 +146,8 @@ export const DialogTrigger = forwardRef<
 ))
 DialogTrigger.displayName = 'DialogTrigger'
 
-export const DialogClose = forwardRef<
-  ElementRef<typeof Close>,
+export const DialogClose = forwardRefDefine<
+  typeof Close,
   Omit<ComponentProps<typeof Close>, 'asChild'>
 >(({ children, ...props }, forwardedRef) => (
   <Close asChild {...props} ref={forwardedRef}>
@@ -154,6 +158,7 @@ DialogClose.displayName = 'DialogClose'
 
 export const DialogTitle: FC<ComponentProps<typeof Heading>> = ({
   className,
+  children,
   ...props
 }) => (
   <Title>
@@ -162,7 +167,9 @@ export const DialogTitle: FC<ComponentProps<typeof Heading>> = ({
       variant="h6"
       className={cx(css({ mb: '$4' }), className)}
       {...props}
-    />
+    >
+      <div>{children}</div>
+    </Heading>
   </Title>
 )
 DialogTitle.displayName = 'DialogTitle'

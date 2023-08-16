@@ -36,7 +36,9 @@
     "../../apps/storybook/stories/FormControl.stories.tsx",
     "../../apps/storybook/stories/RadioGroup.stories.tsx",
     "../../apps/storybook/stories/Popover.stories.tsx",
-    "../../apps/storybook/stories/Tooltip.stories.tsx"
+    "../../apps/storybook/stories/Tooltip.stories.tsx",
+    "../../apps/storybook/stories/Dialog.stories.tsx",
+    "../../apps/storybook/stories/ConfirmDialog.stories.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

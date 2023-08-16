@@ -26,12 +26,12 @@ export type PolyCComponentProps = Prettify<CComponentProps & AsChildProps>
 
 export type CComponent<T extends ElementType, P = {}> = ForwardRef<
   T,
-  P & CComponentProps
+  Assign<ComponentProps<T>, P & CComponentProps>
 >
 
 export type PolyCComponent<T extends ElementType, P = {}> = ForwardRef<
   T,
-  P & PolyCComponentProps
+  Assign<ComponentProps<T>, P & PolyCComponentProps>
 >
 
 /////////////////////

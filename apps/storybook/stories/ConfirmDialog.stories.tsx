@@ -1,7 +1,5 @@
-import { action } from '@storybook/addon-actions'
-import { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
 import {
+  Button,
   ConfirmDialog,
   ConfirmDialogAction,
   ConfirmDialogActions,
@@ -11,8 +9,9 @@ import {
   ConfirmDialogDescription,
   ConfirmDialogTitle,
   ConfirmDialogTrigger,
-} from '.'
-import { Button } from '../'
+} from '@committed/ds'
+import { action } from '@storybook/addon-actions'
+import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ConfirmDialog> = {
   title: 'Components/ConfirmDialog',

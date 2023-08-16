@@ -4,7 +4,7 @@ import {
   BackgroundProps,
   CComponent,
   component,
-  fixedForwardRef,
+  forwardRefExtend,
 } from '../../utils'
 
 const Base = styled(component('div', 'c-background'), {})
@@ -16,7 +16,7 @@ const Base = styled(component('div', 'c-background'), {})
  * Background css properties and shorthands are exposed as props.
  *
  */
-export const Background: CComponent<'div', BackgroundProps> = fixedForwardRef(
+export const Background: CComponent<'div', BackgroundProps> = forwardRefExtend(
   ({ children, ...props }, forwardedRef) => {
     return (
       <Base

@@ -2,7 +2,7 @@ import { cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 
 import { useMemo } from 'react'
-import { CComponent, component, fixedForwardRef } from '../../utils'
+import { CComponent, component, forwardRefExtend } from '../../utils'
 import { IconButton } from '../Button'
 import { Close } from '../Icons'
 
@@ -209,7 +209,7 @@ type Props = Variants & {
  * The `Chip` component can be used for small bits of information such as labels or attributes and can
  * optionally add actions to, say edit and delete.
  */
-export const Chip: CComponent<typeof DEFAULT_TAG, Props> = fixedForwardRef<
+export const Chip: CComponent<typeof DEFAULT_TAG, Props> = forwardRefExtend<
   typeof Styled,
   Props
 >(({ onClick, color, children, closable, size, ...props }, forwardedRef) => {

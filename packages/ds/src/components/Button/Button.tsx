@@ -6,7 +6,7 @@ import {
   PolyCComponent,
   Prettify,
   component,
-  fixedForwardRef,
+  forwardRefExtend,
 } from '../../utils'
 import { Svg } from '../Svg'
 
@@ -586,7 +586,7 @@ export const ICON_BUTTON_CLASS = 'c-icon-button'
 export const IconButton: PolyCComponent<
   typeof DEFAULT_TAG,
   StyledIconButtonProps
-> = fixedForwardRef<typeof DEFAULT_TAG, IconButtonProps>(
+> = forwardRefExtend<typeof DEFAULT_TAG, IconButtonProps>(
   ({ className, title, path, children, ...props }, forwardedRef) => (
     <StyledIconButton
       className={cx(ICON_BUTTON_CLASS, className)}
