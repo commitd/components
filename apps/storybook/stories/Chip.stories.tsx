@@ -20,10 +20,10 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
-      <Chip color="info" size="small">
+      <Chip color="$info" size="small">
         New
       </Chip>
-      <Chip color="error">Error</Chip>
+      <Chip color="$error">Error</Chip>
     </Inline>
   ),
 }
@@ -32,10 +32,10 @@ export const Sizes: Story = {
 export const Closable: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
-      <Chip closable color="info" size="small" onClick={action('close')}>
+      <Chip closable color="$info" size="small" onClick={action('close')}>
         Close
       </Chip>
-      <Chip closable color="error" onClick={action('close')}>
+      <Chip closable color="$error" onClick={action('close')}>
         Close
       </Chip>
     </Inline>
@@ -48,14 +48,14 @@ export const All: Story = {
     <Variants
       component={Chip}
       color={[
-        'brand',
-        'primary',
-        'error',
-        'success',
-        'warn',
-        'info',
-        'neutral',
-        'ghost',
+        '$brand',
+        '$primary',
+        '$error',
+        '$success',
+        '$warn',
+        '$info',
+        '$neutral',
+        // '$ghost',
       ]}
       children="Chip"
     />
@@ -70,14 +70,14 @@ export const Interactive: Story = {
     <Variants
       component={Chip}
       color={[
-        'brand',
-        'primary',
-        'error',
-        'success',
-        'warn',
-        'info',
-        'neutral',
-        'ghost',
+        '$brand',
+        '$primary',
+        '$error',
+        '$success',
+        '$warn',
+        '$info',
+        '$neutral',
+        //'$ghost',
       ]}
       children="Chip"
       onClick={action('chip')}
@@ -88,40 +88,40 @@ export const Interactive: Story = {
 export const Disabled: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
-      <Chip onClick={action('disabled')} disabled color="info" size="small">
+      <Chip onClick={action('disabled')} disabled color="$info" size="small">
         Disabled
       </Chip>
-      <Chip onClick={action('disabled')} disabled color="error">
+      <Chip onClick={action('disabled')} disabled color="$error">
         Disabled
       </Chip>
-      <Chip onClick={action('disabled')} color="success" disabled size="small">
+      <Chip onClick={action('disabled')} color="$success" disabled size="small">
         Disabled
       </Chip>
-      <Chip color="primary" disabled onClick={action('disabled')}>
+      <Chip color="$primary" disabled onClick={action('disabled')}>
         Disabled
       </Chip>
       <Chip
         closable
         onClick={action('disabled')}
         disabled
-        color="info"
+        color="$info"
         size="small"
       >
         Disabled
       </Chip>
-      <Chip closable onClick={action('disabled')} disabled color="error">
+      <Chip closable onClick={action('disabled')} disabled color="$error">
         Disabled
       </Chip>
       <Chip
         closable
         onClick={action('disabled')}
-        color="success"
+        color="$success"
         disabled
         size="small"
       >
         Disabled
       </Chip>
-      <Chip color="primary" disabled closable onClick={action('disabled')}>
+      <Chip color="$primary" disabled closable onClick={action('disabled')}>
         Disabled
       </Chip>
     </Inline>

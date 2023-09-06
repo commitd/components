@@ -87,6 +87,8 @@ export const Dialog = Root
 type DialogContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> & {
   /** Closable, add a standard close icon. */
   defaultClose?: boolean
+  /** Modify the default styling of the content */
+  css?: SystemStyleObject
   /** Modify the default styling of the overlay */
   overlayCss?: SystemStyleObject
   /** By default, portals your overlay and content parts into the body, set false to add at dom location. */

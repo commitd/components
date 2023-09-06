@@ -114,6 +114,9 @@ importers:
       '@committed/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
+      '@faker-js/faker':
+        specifier: ^8.0.2
+        version: 8.0.2
       '@mdi/js':
         specifier: ^7.2.96
         version: 7.2.96
@@ -2395,6 +2398,11 @@ packages:
   /@eslint/js@8.44.0:
     resolution: {integrity: sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: false
+
+  /@faker-js/faker@8.0.2:
+    resolution: {integrity: sha512-Uo3pGspElQW91PCvKSIAXoEgAUlRnH29sX2/p89kg7sP1m2PzCufHINd0FhTXQf6DYGiUlVncdSPa2F9wxed2A==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: false
 
   /@fal-works/esbuild-plugin-global-externals@2.1.2:

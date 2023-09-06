@@ -1,7 +1,7 @@
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
-import { ComponentProps, ElementRef, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import { checkStyleVariants, checkStylesBase } from '../Checkbox/Checkbox'
 import {
@@ -44,15 +44,19 @@ type RadioProps = ComponentProps<typeof StyledItem> & {
 }
 
 export const Radio = forwardRef<ElementRef<typeof StyledItem>, RadioProps>(
-  ({ disabled: disabledProp, label, ...props }, forwardedRef) => {
+  ({ disabled: disabledProp, label, children, ...props }, forwardedRef) => {
     const { state, disabled } = useFormControlState() ?? DEFAULT_FORM_STATE
+
     return (
       <ConditionalWrapper
-        condition={label}
+        condition={
+          label ??
+          (React.Children.count(children) === 1 && typeof children === 'string')
+        }
         wrapper={(child) => (
           <Label disabled={disabled || disabledProp} variant="wrapping">
             {child}
-            {label}
+            {label ?? children}
           </Label>
         )}
       >

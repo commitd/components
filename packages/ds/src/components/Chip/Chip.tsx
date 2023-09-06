@@ -90,7 +90,7 @@ const chip = cva({
       },
     },
     color: {
-      neutral: {
+      $neutral: {
         '--background': 'token(colors.$neutral.2)',
         '--backgroundHover': 'token(colors.$neutral.3)',
         '--main': 'token(colors.$neutral.11)',
@@ -104,42 +104,42 @@ const chip = cva({
       //   '--focus': 'token(colors.$transparency.11)',
       //   '--active': 'token(colors.$transparency.9)',
       // },
-      primary: {
+      $primary: {
         '--background': 'token(colors.$primary.2)',
         '--backgroundHover': 'token(colors.$primary.3)',
         '--main': 'token(colors.$primary.11)',
         '--focus': 'token(colors.$primary.10)',
         '--active': 'token(colors.$primary.9)',
       },
-      secondary: {
+      $secondary: {
         '--background': 'token(colors.$secondary.2)',
         '--backgroundHover': 'token(colors.$secondary.3)',
         '--main': 'token(colors.$secondary.11)',
         '--focus': 'token(colors.$secondary.10)',
         '--active': 'token(colors.$secondary.9)',
       },
-      error: {
+      $error: {
         '--background': 'token(colors.$error.2)',
         '--backgroundHover': 'token(colors.$error.3)',
         '--main': 'token(colors.$error.11)',
         '--focus': 'token(colors.$error.11)',
         '--active': 'token(colors.$error.9)',
       },
-      info: {
+      $info: {
         '--background': 'token(colors.$info.2)',
         '--backgroundHover': 'token(colors.$info.3)',
         '--main': 'token(colors.$info.11)',
         '--focus': 'token(colors.$info.11)',
         '--active': 'token(colors.$info.9)',
       },
-      success: {
+      $success: {
         '--background': 'token(colors.$success.2)',
         '--backgroundHover': 'token(colors.$success.3)',
         '--main': 'token(colors.$success.11)',
         '--focus': 'token(colors.$success.11)',
         '--active': 'token(colors.$success.9)',
       },
-      warn: {
+      $warn: {
         '--background': 'token(colors.$warn.2)',
         '--backgroundHover': 'token(colors.$warn.3)',
         '--main': 'token(colors.$warn.11)',
@@ -191,17 +191,18 @@ const Styled = styled(component(DEFAULT_TAG, 'c-chip'), chip)
 type Variants = {
   size?: 'small' | 'default'
   color?:
-    | 'neutral'
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'info'
-    | 'success'
-    | 'warn'
+    | '$neutral'
+    | '$primary'
+    | '$secondary'
+    | '$error'
+    | '$info'
+    | '$success'
+    | '$warn'
 }
 type Props = Variants & {
   closable?: boolean
   disabled?: boolean
+  interactive?: boolean
   onClick?: () => void
 }
 
@@ -212,40 +213,45 @@ type Props = Variants & {
 export const Chip: CComponent<typeof DEFAULT_TAG, Props> = forwardRefExtend<
   typeof Styled,
   Props
->(({ onClick, color, children, closable, size, ...props }, forwardedRef) => {
-  const additionalProps = useMemo(() => {
-    if (onClick && !closable) {
-      return {
-        role: 'button',
-        tabIndex: 0,
-        onClick: onClick,
+>(
+  (
+    { onClick, color, children, closable, interactive, size, ...props },
+    forwardedRef,
+  ) => {
+    const additionalProps = useMemo(() => {
+      if ((onClick || interactive) && !closable) {
+        return {
+          role: 'button',
+          tabIndex: 0,
+          onClick: onClick,
+        }
       }
-    }
-  }, [onClick, closable])
+    }, [onClick, closable])
 
-  return (
-    <Styled
-      interactive={!!onClick && !closable}
-      size={size}
-      color={color}
-      {...additionalProps}
-      {...props}
-      ref={forwardedRef}
-    >
-      {children}
-      {onClick && closable && (
-        <IconButton
-          size={size}
-          color={color}
-          role="button"
-          aria-label="close"
-          variant="text"
-          onClick={onClick}
-        >
-          <Close />
-        </IconButton>
-      )}
-    </Styled>
-  )
-})
+    return (
+      <Styled
+        interactive={(!!onClick || interactive) && !closable}
+        size={size}
+        color={color}
+        {...additionalProps}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+        {onClick && closable && (
+          <IconButton
+            size={size}
+            color={color}
+            role="button"
+            aria-label="close"
+            variant="text"
+            onClick={onClick}
+          >
+            <Close />
+          </IconButton>
+        )}
+      </Styled>
+    )
+  },
+)
 Chip.displayName = 'Chip'

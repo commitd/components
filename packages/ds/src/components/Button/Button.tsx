@@ -35,7 +35,8 @@ export const hover: SystemStyleObject = {
 }
 
 export const focus = {
-  ...hover,
+  background:
+    'var(--focus) radial-gradient(circle, transparent 1%, var(--focus) 1%) center/15000%',
   outline: '2px solid var(--bold)',
 }
 
@@ -91,7 +92,7 @@ export const mainVariants = {
 
     color: 'var(--contrast)',
   },
-}
+} as const
 
 export const destructiveVariants = {
   false: {},
@@ -124,10 +125,10 @@ export const sizeVariants = {
     paddingRight: '$6',
     height: '$7',
   },
-}
+} as const
 
 export const buttonColors = {
-  primary: {
+  $primary: {
     '--base': 'token(colors.$primary.9)',
     '--solid': 'token(colors.$primary.10)',
     '--bold': 'token(colors.$primary.11)',
@@ -137,7 +138,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$primary.4)',
     '--text': 'token(colors.$primary.text)',
   },
-  secondary: {
+  $secondary: {
     '--base': 'token(colors.$secondary.9)',
     '--solid': 'token(colors.$secondary.10)',
     '--bold': 'token(colors.$secondary.11)',
@@ -147,7 +148,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$secondary.4)',
     '--text': 'token(colors.$secondary.text)',
   },
-  neutral: {
+  $neutral: {
     '--base': 'token(colors.$neutral.9)',
     '--solid': 'token(colors.$neutral.10)',
     '--bold': 'token(colors.$neutral.11)',
@@ -157,7 +158,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$neutral.4)',
     '--text': 'token(colors.$neutral.text)',
   },
-  info: {
+  $info: {
     '--base': 'token(colors.$info.9)',
     '--solid': 'token(colors.$info.10)',
     '--bold': 'token(colors.$info.11)',
@@ -167,7 +168,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$info.4)',
     '--text': 'token(colors.$info.text)',
   },
-  warn: {
+  $warn: {
     '--base': 'token(colors.$warn.9)',
     '--solid': 'token(colors.$warn.10)',
     '--bold': 'token(colors.$warn.11)',
@@ -177,7 +178,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$warn.4)',
     '--text': 'token(colors.$warn.text)',
   },
-  error: {
+  $error: {
     '--base': 'token(colors.$error.9)',
     '--solid': 'token(colors.$error.10)',
     '--bold': 'token(colors.$error.11)',
@@ -187,7 +188,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$error.4)',
     '--text': 'token(colors.$error.text)',
   },
-  success: {
+  $success: {
     '--base': 'token(colors.$success.9)',
     '--solid': 'token(colors.$success.10)',
     '--bold': 'token(colors.$success.11)',
@@ -197,7 +198,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$success.4)',
     '--text': 'token(colors.$success.text)',
   },
-  tomato: {
+  $tomato: {
     '--base': 'token(colors.$tomato.9)',
     '--solid': 'token(colors.$tomato.10)',
     '--bold': 'token(colors.$tomato.11)',
@@ -207,7 +208,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$tomato.4)',
     '--text': 'token(colors.$tomato.text)',
   },
-  red: {
+  $red: {
     '--base': 'token(colors.$red.9)',
     '--solid': 'token(colors.$red.10)',
     '--bold': 'token(colors.$red.11)',
@@ -217,7 +218,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$red.4)',
     '--text': 'token(colors.$red.text)',
   },
-  crimson: {
+  $crimson: {
     '--base': 'token(colors.$crimson.9)',
     '--solid': 'token(colors.$crimson.10)',
     '--bold': 'token(colors.$crimson.11)',
@@ -227,7 +228,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$crimson.4)',
     '--text': 'token(colors.$crimson.text)',
   },
-  pink: {
+  $pink: {
     '--base': 'token(colors.$pink.9)',
     '--solid': 'token(colors.$pink.10)',
     '--bold': 'token(colors.$pink.11)',
@@ -237,7 +238,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$pink.4)',
     '--text': 'token(colors.$pink.text)',
   },
-  plum: {
+  $plum: {
     '--base': 'token(colors.$plum.9)',
     '--solid': 'token(colors.$plum.10)',
     '--bold': 'token(colors.$plum.11)',
@@ -247,7 +248,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$plum.4)',
     '--text': 'token(colors.$plum.text)',
   },
-  purple: {
+  $purple: {
     '--base': 'token(colors.$purple.9)',
     '--solid': 'token(colors.$purple.10)',
     '--bold': 'token(colors.$purple.11)',
@@ -257,7 +258,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$purple.4)',
     '--text': 'token(colors.$purple.text)',
   },
-  violet: {
+  $violet: {
     '--base': 'token(colors.$violet.9)',
     '--solid': 'token(colors.$violet.10)',
     '--bold': 'token(colors.$violet.11)',
@@ -267,7 +268,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$violet.4)',
     '--text': 'token(colors.$violet.text)',
   },
-  indigo: {
+  $indigo: {
     '--base': 'token(colors.$indigo.9)',
     '--solid': 'token(colors.$indigo.10)',
     '--bold': 'token(colors.$indigo.11)',
@@ -277,7 +278,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$indigo.4)',
     '--text': 'token(colors.$indigo.text)',
   },
-  blue: {
+  $blue: {
     '--base': 'token(colors.$blue.9)',
     '--solid': 'token(colors.$blue.10)',
     '--bold': 'token(colors.$blue.11)',
@@ -287,7 +288,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$blue.4)',
     '--text': 'token(colors.$blue.text)',
   },
-  cyan: {
+  $cyan: {
     '--base': 'token(colors.$cyan.9)',
     '--solid': 'token(colors.$cyan.10)',
     '--bold': 'token(colors.$cyan.11)',
@@ -297,7 +298,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$cyan.4)',
     '--text': 'token(colors.$cyan.text)',
   },
-  teal: {
+  $teal: {
     '--base': 'token(colors.$teal.9)',
     '--solid': 'token(colors.$teal.10)',
     '--bold': 'token(colors.$teal.11)',
@@ -307,7 +308,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$teal.4)',
     '--text': 'token(colors.$teal.text)',
   },
-  green: {
+  $green: {
     '--base': 'token(colors.$green.9)',
     '--solid': 'token(colors.$green.10)',
     '--bold': 'token(colors.$green.11)',
@@ -317,7 +318,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$green.4)',
     '--text': 'token(colors.$green.text)',
   },
-  grass: {
+  $grass: {
     '--base': 'token(colors.$grass.9)',
     '--solid': 'token(colors.$grass.10)',
     '--bold': 'token(colors.$grass.11)',
@@ -327,7 +328,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$grass.4)',
     '--text': 'token(colors.$grass.text)',
   },
-  orange: {
+  $orange: {
     '--base': 'token(colors.$orange.9)',
     '--solid': 'token(colors.$orange.10)',
     '--bold': 'token(colors.$orange.11)',
@@ -337,7 +338,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$orange.4)',
     '--text': 'token(colors.$orange.text)',
   },
-  brown: {
+  $brown: {
     '--base': 'token(colors.$brown.9)',
     '--solid': 'token(colors.$brown.10)',
     '--bold': 'token(colors.$brown.11)',
@@ -347,7 +348,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$brown.4)',
     '--text': 'token(colors.$brown.text)',
   },
-  sky: {
+  $sky: {
     '--base': 'token(colors.$sky.9)',
     '--solid': 'token(colors.$sky.10)',
     '--bold': 'token(colors.$sky.11)',
@@ -357,7 +358,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$sky.4)',
     '--text': 'token(colors.$sky.text)',
   },
-  mint: {
+  $mint: {
     '--base': 'token(colors.$mint.9)',
     '--solid': 'token(colors.$mint.10)',
     '--bold': 'token(colors.$mint.11)',
@@ -367,7 +368,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$mint.4)',
     '--text': 'token(colors.$mint.text)',
   },
-  lime: {
+  $lime: {
     '--base': 'token(colors.$lime.9)',
     '--solid': 'token(colors.$lime.10)',
     '--bold': 'token(colors.$lime.11)',
@@ -377,7 +378,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$lime.4)',
     '--text': 'token(colors.$lime.text)',
   },
-  yellow: {
+  $yellow: {
     '--base': 'token(colors.$yellow.9)',
     '--solid': 'token(colors.$yellow.10)',
     '--bold': 'token(colors.$yellow.11)',
@@ -387,7 +388,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$yellow.4)',
     '--text': 'token(colors.$yellow.text)',
   },
-  amber: {
+  $amber: {
     '--base': 'token(colors.$amber.9)',
     '--solid': 'token(colors.$amber.10)',
     '--bold': 'token(colors.$amber.11)',
@@ -397,7 +398,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$amber.4)',
     '--text': 'token(colors.$amber.text)',
   },
-  gray: {
+  $gray: {
     '--base': 'token(colors.$gray.9)',
     '--solid': 'token(colors.$gray.10)',
     '--bold': 'token(colors.$gray.11)',
@@ -407,7 +408,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$gray.4)',
     '--text': 'token(colors.$gray.text)',
   },
-  mauve: {
+  $mauve: {
     '--base': 'token(colors.$mauve.9)',
     '--solid': 'token(colors.$mauve.10)',
     '--bold': 'token(colors.$mauve.11)',
@@ -417,7 +418,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$mauve.4)',
     '--text': 'token(colors.$mauve.text)',
   },
-  slate: {
+  $slate: {
     '--base': 'token(colors.$slate.9)',
     '--solid': 'token(colors.$slate.10)',
     '--bold': 'token(colors.$slate.11)',
@@ -427,7 +428,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$slate.4)',
     '--text': 'token(colors.$slate.text)',
   },
-  sage: {
+  $sage: {
     '--base': 'token(colors.$sage.9)',
     '--solid': 'token(colors.$sage.10)',
     '--bold': 'token(colors.$sage.11)',
@@ -437,7 +438,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$sage.4)',
     '--text': 'token(colors.$sage.text)',
   },
-  olive: {
+  $olive: {
     '--base': 'token(colors.$olive.9)',
     '--solid': 'token(colors.$olive.10)',
     '--bold': 'token(colors.$olive.11)',
@@ -447,7 +448,7 @@ export const buttonColors = {
     '--normal': 'token(colors.$olive.4)',
     '--text': 'token(colors.$olive.text)',
   },
-  sand: {
+  $sand: {
     '--base': 'token(colors.$sand.9)',
     '--solid': 'token(colors.$sand.10)',
     '--bold': 'token(colors.$sand.11)',
@@ -459,7 +460,7 @@ export const buttonColors = {
   },
 }
 
-export const buttonBaseStyle: SystemStyleObject = {
+export const buttonBaseStyles: SystemStyleObject = {
   alignItems: 'center',
   appearance: 'none',
   boxSizing: 'border-box',
@@ -468,7 +469,6 @@ export const buttonBaseStyle: SystemStyleObject = {
   justifyContent: 'center',
   lineHeight: 'none',
   outline: 'none',
-  textDecoration: 'none',
   userSelect: 'none',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   // Defaults
@@ -498,7 +498,7 @@ const buttonVariants = {
 const button = cva({
   base: {
     ...buttonVariables,
-    ...buttonBaseStyle,
+    ...buttonBaseStyles,
     ...buttonInteractionStyles,
   },
   ...buttonVariants,
@@ -551,7 +551,7 @@ const iconButtonVariants = {
 const iconButton = cva({
   base: {
     ...buttonVariables,
-    ...buttonBaseStyle,
+    ...buttonBaseStyles,
     ...buttonInteractionStyles,
   },
   ...iconButtonVariants,

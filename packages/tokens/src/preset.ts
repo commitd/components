@@ -7,15 +7,6 @@ import {
 import type { Preset, PropertyValues } from '@pandacss/types'
 
 const globalCss = defineGlobalStyles({
-  // 'html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark, audio, video':
-  //   {
-  //     fontSize: '100%',
-  //     verticalAlign: 'baseline',
-  //   },
-  // 'article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, svg':
-  //   {
-  //     display: 'block',
-  //   },
   '*[hidden]': {
     display: 'none',
   },
@@ -38,10 +29,6 @@ const globalCss = defineGlobalStyles({
   html: {
     overflowX: 'hidden',
   },
-
-  // '*, *::before, *::after': {
-  //   boxSizing: 'border-box',
-  // },
 
   'pre, code': { margin: 0, fontFamily: 'var(--fonts-\\$monospace)' },
   'body, button': {
@@ -85,7 +72,9 @@ const sizeValues: PropertyValues = (theme) => ({
 
 export function presetTokens(): Preset {
   return definePreset({
-    globalCss,
+    globalCss: {
+      extend: globalCss,
+    },
     theme: {
       tokens: defineTokens({
         sizes: {
@@ -395,6 +384,12 @@ export function presetTokens(): Preset {
       extend: {
         notVertical: '&:not([data-orientation=vertical])',
         notHorizontal: '&:not([data-orientation=horizontal])',
+        indeterminate:
+          '&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])',
+        open: '&:is([open], [data-state=open])',
+        closed: '&:is([closed], [data-state=closed])',
+        checked:
+          '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
       },
     },
   })

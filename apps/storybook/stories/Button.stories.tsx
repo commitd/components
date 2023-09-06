@@ -230,20 +230,26 @@ export const SemanticColors: StoryObj<{
     </Stack>
   ),
   args: {
-    colors: semanticColors,
+    colors: semanticColors.map((c) => `$${c}`) as ComponentProps<
+      typeof Button
+    >['color'][],
   },
 }
 
 export const PrimaryColors = {
   ...SemanticColors,
   args: {
-    colors: primaryColors,
+    colors: primaryColors.map((c) => `$${c}`) as ComponentProps<
+      typeof Button
+    >['color'][],
   },
 }
 
 export const NeutralColors = {
   ...SemanticColors,
   args: {
-    colors: neutralColors,
+    colors: neutralColors.map((c) => `$${c}`) as ComponentProps<
+      typeof Button
+    >['color'][],
   },
 }

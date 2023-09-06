@@ -38,7 +38,16 @@
     "../../apps/storybook/stories/Popover.stories.tsx",
     "../../apps/storybook/stories/Tooltip.stories.tsx",
     "../../apps/storybook/stories/Dialog.stories.tsx",
-    "../../apps/storybook/stories/ConfirmDialog.stories.tsx"
+    "../../apps/storybook/stories/ConfirmDialog.stories.tsx",
+    "../../apps/storybook/stories/Drawer.stories.tsx",
+    "../../apps/storybook/stories/Progress.stories.tsx",
+    "../../apps/storybook/stories/List.stories.tsx",
+    "../../apps/storybook/stories/Switch.stories.tsx",
+    "../../apps/storybook/stories/HoverCard.stories.tsx",
+    "../../apps/storybook/stories/ContextMenu.stories.tsx",
+    "../../apps/storybook/stories/Menu.stories.tsx",
+    "../../apps/storybook/stories/NavigationMenu.stories.tsx",
+    "../../apps/storybook/stories/Skeleton.stories.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

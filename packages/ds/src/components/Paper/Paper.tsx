@@ -5,7 +5,7 @@ const DEFAULT_TAG = 'div'
 
 export const paperStyles = css({
   appearance: 'none',
-  border: 'none',
+  // border: 'none',
   boxSizing: 'border-box',
   font: 'inherit',
   lineHeight: 'none',
@@ -16,7 +16,7 @@ export const paperStyles = css({
 
   backgroundColor: '$paper',
   borderRadius: '$default',
-  color: 'text',
+  color: '$text',
 
   _before: {
     boxSizing: 'border-box',

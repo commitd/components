@@ -141,6 +141,7 @@ function createColorScale(color: Color) {
     },
     text: {
       DEFAULT: { value: blackText.includes(color) ? 'black' : 'white' },
+      low: createColorValue(color, 11),
       contrast: createColorValue(color, 12),
     },
   }

@@ -2,6 +2,7 @@
 
 import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
+import { SystemStyleObject } from '@committed/ss/types'
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import React from 'react'
 import { PickProps, Prettify, forwardRefExtend } from '../../utils'
@@ -59,6 +60,7 @@ type AvatarProps = Prettify<
     PickProps<typeof StyledRoot, 'color' | 'backgroundColor'> &
     PickProps<typeof Image, 'src' | 'alt'> & {
       className?: string
+      css?: SystemStyleObject
       children?: React.ReactNode
     }
 >

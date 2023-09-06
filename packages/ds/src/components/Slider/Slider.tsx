@@ -230,6 +230,8 @@ type SliderProps = ComponentProps<typeof Root> &
     labelFunction?: (value: number) => string | number
     /** Set `false` to turn off the use of portals for labels */
     portalled?: boolean
+    /** additional css styles */
+    css?: SystemStyleObject
   }
 type SliderRef = ElementRef<typeof StyledSlider>
 
@@ -249,6 +251,7 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
       labelSide = 'top',
       labelFunction = (val) => val,
       portalled = true,
+      css,
       label,
       className,
       ...props
@@ -303,6 +306,7 @@ export const Slider = forwardRef<SliderRef, SliderProps>(
         <StyledSlider
           {...remainingProps}
           id={id}
+          css={css}
           disabled={disabled}
           min={min}
           value={values}
