@@ -118,7 +118,9 @@ export const Portalled: StoryFn = () => {
         <DialogTrigger>
           <Button>Default</Button>
         </DialogTrigger>
-        <DialogContent overlayCss={{ backgroundColor: '$paper', opacity: 0.9 }}>
+        <DialogContent
+          overlayCss={{ backgroundColor: '$surface.solid', opacity: 0.9 }}
+        >
           This is a dialog
         </DialogContent>
       </Dialog>
@@ -185,7 +187,7 @@ export const zIndex: StoryFn = () => {
           <Button>Default</Button>
         </DialogTrigger>
         <DialogContent
-          overlayCss={{ backgroundColor: '$paper', opacity: 0.9 }}
+          overlayCss={{ backgroundColor: '$surface.solid', opacity: 0.9 }}
           portalled={false}
         >
           This is a dialog

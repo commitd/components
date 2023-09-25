@@ -1,3 +1,4 @@
+'use client'
 import { css } from '@committed/ss/css'
 import {
   Arrow,
@@ -9,7 +10,7 @@ import {
 import React, { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 
 import { ConditionalWrapper, component } from '../../utils'
-import { overlayAnimationStyles } from '../Overlay'
+import { overlayAnimationStyles } from '../Overlay/Overlay'
 import { paperStyles } from '../Paper/Paper'
 
 const StyledContent = component(
@@ -39,7 +40,7 @@ const StyledContent = component(
 const StyledArrow = component(
   Arrow,
   css({
-    fill: '$paper',
+    fill: '$surface.solid',
   }),
 )
 

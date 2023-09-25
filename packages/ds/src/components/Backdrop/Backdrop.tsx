@@ -5,7 +5,7 @@ import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog'
 import React, { ComponentProps, FC } from 'react'
 
 import { ConditionalWrapper, component } from '../../utils'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay'
+import { overlayAnimationStyles, overlayStyles } from '../Overlay/Overlay'
 
 const StyledOverlay = component(
   Overlay,

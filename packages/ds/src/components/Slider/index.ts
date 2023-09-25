@@ -1,1 +1,1 @@
-export * from './Slider'
+export { Slider, SliderThumb, StyledSlider } from './Slider'

@@ -26,7 +26,7 @@ export const Colors: StoryFn = () => {
 
   return (
     <Padding p="$3">
-      <Background bg="$paper">
+      <Background bg="$surface.solid">
         <Inline>
           <Switch checked={value} onCheckedChange={toggle} />
           <Switch color="$primary" checked={value} onCheckedChange={toggle} />

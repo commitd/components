@@ -38,7 +38,7 @@ export const Default: StoryObj<
         'wrapper',
         css({
           backgroundColor: '$default',
-          border: 'token(colors.$grey.3) solid token(sizes.$2)',
+          border: 'token(colors.$neutral.3) solid token(sizes.$2)',
           width: '100%',
           height: '300px',
         }),
@@ -49,9 +49,9 @@ export const Default: StoryObj<
     >
       <Box
         className={css({
-          backgroundColor: '$paper',
+          backgroundColor: '$surface.solid',
           color: '$text',
-          border: 'token(colors.$grey.7) solid token(sizes.$2)',
+          border: 'token(colors.$neutral.7) solid token(sizes.$2)',
           padding: 4,
         })}
         {...args}

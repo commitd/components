@@ -95,7 +95,7 @@ const users = new Array(5).fill(0).map(buildUser)
 export const Default: Story = {
   render: (args) => {
     return (
-      <Table css={{ background: '$paper' }} {...args}>
+      <Table css={{ background: '$surface.solid' }} {...args}>
         <thead>
           <tr>
             <th></th>
@@ -175,7 +175,7 @@ export const HighlightCells: Story = {
 export const Selection: StoryFn = () => {
   const [selected, setSelected] = React.useState<string | null>(null)
   return (
-    <Table css={{ background: '$paper' }} hover="row" striped>
+    <Table css={{ background: '$surface.solid' }} hover="row" striped>
       <TableHead>
         <TableRow>
           <TableCell></TableCell>
@@ -229,7 +229,7 @@ export const Selection: StoryFn = () => {
  */
 export const UtilityClasses: StoryFn = (args) => {
   return (
-    <Table css={{ background: '$paper' }} {...args}>
+    <Table css={{ background: '$surface.solid' }} {...args}>
       <TableCaption className={css({ fontWeight: '$light' })}>
         A Caption for the table
       </TableCaption>

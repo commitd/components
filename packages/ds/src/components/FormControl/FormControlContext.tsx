@@ -1,4 +1,5 @@
-// TODO: Change to react's version when upgrading to react 18.
+'use client'
+
 import {
   createContext,
   Dispatch,
@@ -42,10 +43,6 @@ export const FormControlContext = createContext<
   [FormControlState, Dispatch<SetStateAction<FormControlState>>] | undefined
 >(undefined)
 FormControlContext.displayName = 'FormControlContext'
-
-if (process.env.NODE_ENV !== 'production') {
-  FormControlContext.displayName = 'FormControlContext'
-}
 
 /**
  * To be use within the supported FormControls (e.g. Input, TextArea, Select, Checkbox, Radio) or in you own form controls.

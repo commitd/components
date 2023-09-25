@@ -1,3 +1,4 @@
+'use client'
 import { css } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -62,6 +63,7 @@ const groupStyles = css({
 export const ContextMenu = Root
 export const ContextMenuTrigger = Trigger
 export const ContextMenuItem: CComponent<
+  typeof Item,
   ItemVariants & ComponentProps<typeof Item>
 > = component(styled(Item, itemCva), CONTEXT_MENU_ITEM, baseItemStyles)
 export const ContextMenuItemShortcut = component('span', itemShortcutStyles)

@@ -1,3 +1,4 @@
+'use client'
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import * as ToastPrimitive from '@radix-ui/react-toast'
@@ -65,7 +66,7 @@ const StyledDescription = component(
 
 const toast = cva({
   base: {
-    backgroundColor: '$paper',
+    backgroundColor: '$surface.solid',
     border: '1px solid',
     borderRadius: '$default',
     boxShadow: '$3',
@@ -99,7 +100,7 @@ const toast = cva({
   variants: {
     severity: {
       default: {
-        backgroundColor: '$paper',
+        backgroundColor: '$surface.solid',
         borderColor: 'transparent',
         color: '$text',
       },

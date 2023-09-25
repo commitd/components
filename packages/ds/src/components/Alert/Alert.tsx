@@ -25,27 +25,27 @@ const alert = cva({
   variants: {
     severity: {
       ghost: {
-        backgroundColor: '$neutral.2',
-        borderColor: '$neutral.7',
-        color: '$neutral.12',
+        backgroundColor: '$neutral.outline',
+        borderColor: '$neutral.border',
+        color: '$neutral.text.low',
       },
       warn: {
-        backgroundColor: '$warn.bg',
+        backgroundColor: '$warn.outline',
         borderColor: '$warn.border',
         color: '$warn.text.low',
       },
       info: {
-        backgroundColor: '$info.bg',
+        backgroundColor: '$info.outline',
         borderColor: '$info.border',
         color: '$info.text.low',
       },
       success: {
-        backgroundColor: '$success.bg',
+        backgroundColor: '$success.outline',
         borderColor: '$success.border',
         color: '$success.text.low',
       },
       error: {
-        backgroundColor: '$error.bg',
+        backgroundColor: '$error.outline',
         borderColor: '$error.border',
         color: '$error.text.low',
       },

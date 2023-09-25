@@ -48,7 +48,7 @@ export default meta
 const ClickTarget = () => (
   <Flex
     css={{
-      backgroundColor: '$grey4',
+      backgroundColor: '$neutral4',
       color: '$text',
       padding: '$2',
       minHeight: 150,

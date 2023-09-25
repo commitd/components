@@ -1,3 +1,4 @@
+'use client'
 import {
   Content,
   Group,
@@ -21,7 +22,7 @@ import { styled } from '@committed/ss/jsx'
 import { ConditionalWrapper, component, forwardRefExtend } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Check, ChevronDown, ChevronUp } from '../Icons'
-import { inputStyles } from '../Input'
+import { inputStyles } from '../Input/Input'
 import { Label, LabelOptional } from '../Label'
 import { paperStyles } from '../Paper/Paper'
 
@@ -105,7 +106,7 @@ const StyledLabel = component(
     py: '$0',
     px: '$2',
     fontSize: 0,
-    lineHeight: '$2',
+    lineHeight: 2,
     color: '$neutral.10',
   }),
 )

@@ -1,3 +1,4 @@
+'use client'
 import { css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -98,7 +99,7 @@ const tabs = cva({
         [`& .${TABS_LIST_CLASS}`]: {
           flexDirection: 'row',
         },
-      },
+      } as SystemStyleObject,
       bottom: {
         gridTemplateColumns: '1fr',
         gridTemplateRows: '1fr auto',
@@ -112,7 +113,7 @@ const tabs = cva({
         [`& .${TABS_LIST_CLASS}`]: {
           flexDirection: 'row',
         },
-      },
+      } as SystemStyleObject,
       left: {
         gridTemplateColumns: 'auto 1fr',
         gridTemplateRows: '1fr',
@@ -126,7 +127,7 @@ const tabs = cva({
         [`& .${TABS_LIST_CLASS}`]: {
           flexDirection: 'column',
         },
-      },
+      } as SystemStyleObject,
       right: {
         gridTemplateColumns: '1fr auto',
         gridTemplateRows: '1fr',
@@ -140,7 +141,7 @@ const tabs = cva({
         [`& .${TABS_LIST_CLASS}`]: {
           flexDirection: 'column',
         },
-      },
+      } as SystemStyleObject,
     },
     variant: {
       solid: {
@@ -148,7 +149,7 @@ const tabs = cva({
         [`& .${TABS_LIST_CLASS}`]: {
           backgroundColor: '$primary',
         },
-      },
+      } as SystemStyleObject,
       outline: {
         [`& .${TABS_TAB_CLASS}`]: {
           ...buttonVariants.outline,
@@ -161,10 +162,10 @@ const tabs = cva({
             textDecoration: 'underline',
           },
         },
-      },
+      } as SystemStyleObject,
       text: {
         [`& .${TABS_TAB_CLASS}`]: buttonVariants.text,
-      },
+      } as SystemStyleObject,
     },
   },
   compoundVariants: [

@@ -66,7 +66,6 @@ export const link = cva({
     fontVariantNumeric: 'tabular-nums',
     display: 'inline',
 
-    color: 'inherit',
     textDecoration: 'none',
 
     _hover: {

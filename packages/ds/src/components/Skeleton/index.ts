@@ -1,1 +1,1 @@
-export * from './Skeleton'
+export { Skeleton } from './Skeleton'

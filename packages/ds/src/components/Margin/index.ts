@@ -1,1 +1,1 @@
-export * from './Margin'
+export { Margin } from './Margin'

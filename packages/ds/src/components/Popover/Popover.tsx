@@ -1,3 +1,4 @@
+'use client'
 import { css, cx } from '@committed/ss/css'
 import {
   Anchor,
@@ -34,7 +35,7 @@ const StyledContent = component(
 const StyledArrow = component(
   Arrow,
   css({
-    fill: '$paper',
+    fill: '$surface.solid',
   }),
 )
 

@@ -15,7 +15,7 @@ export const GridBox: React.FC<GridBoxProps> = ({ css, ...props }) => (
       minWidth: '$5',
       minHeight: '$5',
       p: '$2',
-      border: '1px solid token(colors.$grey.3)',
+      border: '1px solid token(colors.$neutral.3)',
       ...css,
     }}
     style={{

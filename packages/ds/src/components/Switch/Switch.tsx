@@ -1,3 +1,4 @@
+'use client'
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -13,7 +14,7 @@ const StyledThumb = component(
   SWITCH_THUMB_CLASS,
   css({
     '--border': 'token(colors.$neutral)',
-    '--background': 'token(colors.$paper)',
+    '--background': 'token(colors.$surface.solid)',
 
     position: 'absolute',
     left: 0,

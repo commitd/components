@@ -76,7 +76,7 @@ export const StyledInteractiveListItem = styled(
 
       // states
       '--active': 'var(--bold)',
-      '--focus': 'token(colors.$paper)',
+      '--focus': 'token(colors.$surface.solid)',
       '--hover': 'var(--normal)',
     }),
     css(buttonBaseStyles),

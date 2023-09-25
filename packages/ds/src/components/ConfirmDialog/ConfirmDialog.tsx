@@ -1,3 +1,4 @@
+'use client'
 import { css, cx } from '@committed/ss/css'
 import { SystemStyleObject } from '@committed/ss/types'
 import {
@@ -15,7 +16,7 @@ import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay'
+import { overlayAnimationStyles, overlayStyles } from '../Overlay/Overlay'
 import { paperStyles } from '../Paper/Paper'
 import { Text } from '../Text'
 
@@ -174,7 +175,7 @@ export const ConfirmDialogCancel: FC<ComponentProps<typeof Button>> = (
   props,
 ) => (
   <Cancel asChild>
-    <Button variant="text" color="neutral" {...props} />
+    <Button variant="text" color="$neutral" {...props} />
   </Cancel>
 )
 ConfirmDialogCancel.displayName = 'ConfirmDialogCancel'

@@ -1,4 +1,5 @@
-import React, {
+'use client'
+import {
   createContext,
   FC,
   Fragment,
@@ -59,7 +60,7 @@ const WatchedToast: FC<WatcherToastProps> = ({
         onClose?.()
       }
     },
-    [id, onRemove, onClose]
+    [id, onRemove, onClose],
   )
   return (
     <Toast {...props} onOpenChange={onOpenChange}>
@@ -168,19 +169,19 @@ const InternalToasterProvider: FC<PropsWithChildren<ToasterProviderProps>> = ({
           ...toast,
         },
       }),
-    [severity, duration, close]
+    [severity, duration, close],
   )
 
   const removeToast = useCallback(
     (id: string) => dispatch({ type: REMOVE_TOAST, payload: id }),
-    []
+    [],
   )
 
   const api = useMemo(
     () => ({
       addToast,
     }),
-    [addToast]
+    [addToast],
   )
 
   return (

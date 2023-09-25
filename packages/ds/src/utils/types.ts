@@ -62,7 +62,7 @@ export type PickProps<
 
 export type BackgroundProps = Pick<
   SystemProperties,
-  'bg' | 'background' | 'bgColor' | 'backgroundColor' | 'bgGradient'
+  'bg' | 'background' | 'bgColor' | 'backgroundColor' | 'bgGradient' | 'surface'
 >
 
 export type SizeProps = Pick<

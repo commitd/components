@@ -14,27 +14,16 @@ export const paperStyles = css({
   verticalAlign: 'middle',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
 
-  backgroundColor: '$paper',
   borderRadius: '$default',
   color: '$text',
+})
 
-  _before: {
-    boxSizing: 'border-box',
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    borderRadius: '$default',
-    pointerEvents: 'none',
-  },
+export const paperSurfaceStyles = css({
+  backgroundColor: '$surface.solid',
 })
 
 export const paperShadowStyles = css({
-  _before: {
-    boxShadow: '$1',
-  },
+  boxShadow: '$1',
 })
 
 /**
@@ -48,5 +37,6 @@ export const Paper: PolyCComponent<typeof DEFAULT_TAG> = component(
   DEFAULT_TAG,
   'c-paper',
   paperStyles,
+  paperSurfaceStyles,
   paperShadowStyles,
 )

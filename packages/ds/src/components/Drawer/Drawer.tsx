@@ -1,3 +1,4 @@
+'use client'
 import { RecipeVariantProps, css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -34,14 +35,14 @@ const drawerContent = cva({
     _open: {
       _motionReduce: { transition: 'none' },
       _motionSafe: {
-        animation: `$slideIn 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
+        animation: `slideIn 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
       },
     },
 
     _closed: {
       _motionReduce: { transition: 'none' },
       _motionSafe: {
-        animation: `$slideOut 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
+        animation: `slideOut 150ms cubic-bezier(0.22, 1, 0.36, 1)`,
       },
     },
   },
@@ -119,7 +120,7 @@ export const DrawerContent = forwardRefDefine<
           {defaultClose && (
             <Close asChild>
               <StyledIconButton
-                color="neutral"
+                color="$neutral"
                 aria-label="close"
                 variant="text"
               >

@@ -12,17 +12,17 @@ export const hover = {
   boxShadow: 'inset 0px 0px 0px 1px var(--active)',
   '&:-webkit-autofill': {
     boxShadow:
-      'inset 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$paper)',
+      'inset 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$surface.solid)',
   },
 } as const satisfies SystemStyleObject
 
 export const focus = {
-  backgroundColor: '$paper',
+  backgroundColor: '$surface.solid',
   boxShadow:
     'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active)',
   '&:-webkit-autofill': {
     boxShadow:
-      'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$paper)',
+      'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$surface.solid)',
   },
 } as const satisfies SystemStyleObject
 
@@ -119,19 +119,19 @@ export const inputStyles = {
     },
 
     _focus: {
-      backgroundColor: '$paper',
+      backgroundColor: '$surface.solid',
       boxShadow:
         'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active) !important',
       '&:-webkit-autofill': {
         boxShadow:
-          'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$paper)',
+          'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$surface.solid)',
       },
     },
     _hover: {
       boxShadow: 'inset 0px 0px 0px 1px var(--active)',
       '&:-webkit-autofill': {
         boxShadow:
-          'inset 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$paper)',
+          'inset 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$surface.solid)',
       },
     },
     _placeholder: {

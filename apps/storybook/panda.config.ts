@@ -1,9 +1,10 @@
 import { presetColors } from '@committed/colors'
 import { presetTokens } from '@committed/tokens'
+import { presetUtilities } from '@committed/utilities'
 import { defineConfig } from '@pandacss/dev'
 
 export default defineConfig({
-  presets: [presetColors(), presetTokens()],
+  presets: [presetColors(), presetTokens(), presetUtilities()],
   // Whether to use css reset
   preflight: true,
 
@@ -24,9 +25,9 @@ export default defineConfig({
 
   // Files to exclude
   exclude: [],
+  jsxFramework: 'react',
   hooks: {
     'config:resolved': (conf) => {
-      // console.log(JSON.stringify(conf, null, 5));
       console.log('🐼 config:resolve')
     },
     'config:change': (conf) => {
@@ -35,11 +36,9 @@ export default defineConfig({
         JSON.stringify(conf?.theme?.recipes, null, 5),
       )
     },
-    'parser:before': (file, _content) => {
-      console.log('🐼 parser:before', file)
-    },
     'generator:css': (file, _css) => {
       console.log('🐼 generator:css', file)
+      // console.log('🐼 generator:css', _css)
     },
   },
 

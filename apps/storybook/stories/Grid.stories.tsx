@@ -136,7 +136,7 @@ export const JustifyItems: StoryFn = () => (
     <Grid
       css={{
         justifyItems: 'start',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -149,7 +149,7 @@ export const JustifyItems: StoryFn = () => (
     <Grid
       css={{
         justifyItems: 'end',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -162,7 +162,7 @@ export const JustifyItems: StoryFn = () => (
     <Grid
       css={{
         justifyItems: 'center',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -175,7 +175,7 @@ export const JustifyItems: StoryFn = () => (
     <Grid
       css={{
         justifyItems: 'stretch',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -205,7 +205,7 @@ export const AlignItems: StoryFn = () => (
     <Grid
       css={{
         alignItems: 'start',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -218,7 +218,7 @@ export const AlignItems: StoryFn = () => (
     <Grid
       css={{
         alignItems: 'end',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -231,7 +231,7 @@ export const AlignItems: StoryFn = () => (
     <Grid
       css={{
         alignItems: 'center',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -244,7 +244,7 @@ export const AlignItems: StoryFn = () => (
     <Grid
       css={{
         alignItems: 'stretch',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -291,7 +291,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'start',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -305,7 +305,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'end',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -319,7 +319,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'center',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -333,7 +333,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'stretch',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -347,7 +347,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'space-around',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -361,7 +361,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'space-between',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -375,7 +375,7 @@ export const JustifyContent: StoryFn = () => (
     <Grid
       css={{
         justifyContent: 'space-evenly',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
         width: '$10',
@@ -409,7 +409,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         height: '$10',
         alignContent: 'start',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -423,7 +423,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         minHeight: '$10',
         alignContent: 'end',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -437,7 +437,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         minHeight: '$10',
         alignContent: 'center',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -451,7 +451,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         minHeight: '$10',
         alignContent: 'stretch',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -465,7 +465,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         minHeight: '$10',
         alignContent: 'space-around',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -479,7 +479,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         minHeight: '$10',
         alignContent: 'space-between',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -493,7 +493,7 @@ export const AlignContent: StoryFn = () => (
       css={{
         minHeight: '$10',
         alignContent: 'space-evenly',
-        border: '1px solid token(colors.$grey.3)',
+        border: '1px solid token(colors.$neutral.3)',
         gridTemplateColumns: 'token(sizes.$7) token(sizes.$7)',
         gridTemplateRows: 'token(sizes.$7) token(sizes.$7)',
       }}
@@ -690,7 +690,7 @@ export const ItemArea: StoryFn = () => (
 export const Self: StoryFn = () => (
   <Grid
     css={{
-      border: '1px solid token(colors.$grey.3)',
+      border: '1px solid token(colors.$neutral.3)',
       gridTemplateColumns: '100px 100px',
       gridTemplateRows: '100px 100px',
     }}

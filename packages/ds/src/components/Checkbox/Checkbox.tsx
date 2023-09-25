@@ -1,3 +1,4 @@
+'use client'
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Indicator, Root } from '@radix-ui/react-checkbox'
@@ -58,7 +59,7 @@ export const checkStylesBase = {
     boxShadow: 'inset 0px 0px 0px 1px var(--active)',
     '&:-webkit-autofill': {
       boxShadow:
-        'inset 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$paper)',
+        'inset 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$surface.solid)',
     },
     background:
       'var(--hover) radial-gradient(circle, transparent 1%, var(--hover) 1%) center/15000%',
@@ -88,9 +89,9 @@ export const checkStylesBase = {
       'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active) !important',
     '&:-webkit-autofill': {
       boxShadow:
-        'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$paper) !important',
+        'inset 0px 0px 0px 1px var(--active), 0px 0px 0px 1px var(--active), inset 0 0 0 100px token(colors.$surface.solid) !important',
     },
-    backgroundColor: '$paper',
+    backgroundColor: '$surface.solid',
   },
 } as const
 

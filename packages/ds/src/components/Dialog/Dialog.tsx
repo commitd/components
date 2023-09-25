@@ -1,3 +1,4 @@
+'use client'
 import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -16,7 +17,7 @@ import { ConditionalWrapper, component, forwardRefDefine } from '../../utils'
 import { IconButton } from '../Button'
 import { Heading } from '../Heading'
 import { Close as Icon } from '../Icons'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay'
+import { overlayAnimationStyles, overlayStyles } from '../Overlay/Overlay'
 import { paperStyles } from '../Paper/Paper'
 import { Text } from '../Text'
 
@@ -124,7 +125,7 @@ export const DialogContent = forwardRefDefine<
               <StyledIconButton
                 aria-label="close"
                 variant="text"
-                color="neutral"
+                color="$neutral"
               >
                 <Icon title="Close" />
               </StyledIconButton>

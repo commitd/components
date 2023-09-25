@@ -91,8 +91,7 @@ export const AccordionContent = component(
 )
 AccordionContent.displayName = 'AccordionContent'
 
-type AccordionTriggerProps = ComponentProps<typeof AccordionTrigger>
-type AccordionHeaderProps = AccordionTriggerProps
+type AccordionHeaderProps = ComponentProps<typeof AccordionTrigger>
 
 export const AccordionHeader = forwardRefExtend<
   typeof AccordionTrigger,

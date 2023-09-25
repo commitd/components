@@ -105,11 +105,13 @@ export const Ghost: Story = {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardContent>
       </Card>
-      <Card as="button" interactive variant="ghost" onClick={action('Action')}>
-        <CardHeading>Ghost</CardHeading>
-        <CardContent>
-          <Text>Lorem Ipsum is simply dummy text...</Text>
-        </CardContent>
+      <Card asChild interactive variant="ghost">
+        <button onClick={action('Action')}>
+          <CardHeading>Ghost</CardHeading>
+          <CardContent>
+            <Text>Lorem Ipsum is simply dummy text...</Text>
+          </CardContent>
+        </button>
       </Card>
     </Inline>
   ),
@@ -182,7 +184,7 @@ export const Actions: Story = {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardContent>
         <CardActions>
-          <Button variant="solid" color="primary">
+          <Button variant="solid" color="$primary">
             Action
           </Button>
         </CardActions>

@@ -179,7 +179,7 @@ const chip = cva({
   },
   defaultVariants: {
     size: 'default',
-    color: 'neutral',
+    color: '$neutral',
   },
 })
 

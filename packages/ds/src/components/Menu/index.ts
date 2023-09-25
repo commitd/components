@@ -1,1 +1,17 @@
-export * from './Menu'
+export {
+  Menu,
+  MenuButton,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuItem,
+  MenuItemGroup,
+  MenuItemShortcut,
+  MenuLabel,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
+  MenuTrigger,
+} from './Menu'

@@ -14,8 +14,6 @@ const StyledSvg = styled(component('svg', SVG_CLASS), {
     display: 'inline-block',
     flexShrink: 0,
     userSelect: 'none',
-    fill: 'currentColor',
-    color: 'inherit',
     size: '24px',
   },
 })
@@ -39,13 +37,26 @@ type SvgProps = {
  * Svg is the base component for wrapping svg icon paths.
  */
 export const Svg = forwardRefExtend<typeof StyledSvg, SvgProps>(
-  ({ title, path, children, className, ...props }, forwardedRef) => (
+  (
+    {
+      title,
+      path,
+      children,
+      fill = 'currentColor',
+      color = 'inherit',
+      className,
+      ...props
+    },
+    forwardedRef,
+  ) => (
     <StyledSvg
       className={cx(SVG_CLASS, className)}
       focusable="false"
       viewBox="0 0 24 24"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
+      fill={fill}
+      color={color}
       {...props}
       ref={forwardedRef}
     >

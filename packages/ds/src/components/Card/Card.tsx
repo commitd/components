@@ -15,6 +15,7 @@ const card = cva({
     flexDirection: 'column',
 
     width: 'fit-content',
+    backgroundColor: '$card',
 
     _before: {
       inset: 0,
@@ -100,7 +101,7 @@ const card = cva({
       css: {
         willChange: 'transform',
         _hover: {
-          backgroundColor: '$paper',
+          backgroundColor: '$card',
           transform: 'translateY(-2px)',
           _before: {
             opacity: '1',

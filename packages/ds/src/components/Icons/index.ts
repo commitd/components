@@ -1,1 +1,11 @@
-export * from './Icons'
+export {
+  Check,
+  CheckIndeterminate,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  Close,
+  DarkMode,
+  LightMode,
+} from './Icons'

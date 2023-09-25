@@ -1,3 +1,4 @@
+'use client'
 import { Root } from '@radix-ui/react-label'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 

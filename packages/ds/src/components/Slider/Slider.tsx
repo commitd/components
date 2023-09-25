@@ -1,3 +1,4 @@
+'use client'
 import { useHover, useMergedRefs } from '@committed/hooks'
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
@@ -21,7 +22,8 @@ import { ConditionalWrapper, component } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Label } from '../Label'
 import { Popover, PopoverAnchor } from '../Popover'
-import { Tooltip, tooltipArrowStyles, tooltipContentCva } from '../Tooltip'
+import { Tooltip } from '../Tooltip'
+import { tooltipArrowStyles, tooltipContentCva } from '../Tooltip/Tooltip'
 
 type LabelStyle = 'always' | 'hover' | 'none'
 type LabelSide = React.ComponentProps<typeof Tooltip>['side']

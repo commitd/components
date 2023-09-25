@@ -17,7 +17,7 @@ export const ExampleComponent: React.FC<ExampleComponentProps> = ({
   <Box
     css={{
       p: '$2',
-      border: '1px solid token(colors.$grey.3)',
+      border: '1px solid token(colors.$neutral.3)',
     }}
     style={{
       width,

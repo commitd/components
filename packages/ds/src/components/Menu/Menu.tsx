@@ -1,3 +1,4 @@
+'use client'
 import { css } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -20,13 +21,16 @@ import {
 } from '@radix-ui/react-dropdown-menu'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 import {
+  CComponent,
   ConditionalWrapper,
+  ForwardRef,
   StyledCheckIndicator,
   StyledSubTriggerIndicator,
   baseItemStyles,
   checkboxItemStyles,
   component,
   contentStyles,
+  forwardRefDefine,
   itemCva,
   itemIndicatorStyles,
   itemShortcutStyles,
@@ -76,7 +80,7 @@ export const MenuRadioGroup = RadioGroup
 
 const StyledContent = component(Content, paperStyles, contentStyles)
 const StyledItemIndicator = component(ItemIndicator, itemIndicatorStyles)
-const StyledCheckboxItem = component(
+const StyledCheckboxItem: CComponent<typeof CheckboxItem> = component(
   styled(CheckboxItem, itemCva),
   checkboxItemStyles,
 )
@@ -167,15 +171,17 @@ const StyledCheckboxIndicator = forwardRef<
 
 type MenuCheckboxItemProps = ComponentProps<typeof StyledCheckboxItem>
 
-export const MenuCheckboxItem = forwardRef<
-  ElementRef<typeof StyledCheckboxItem>,
+export const MenuCheckboxItem: ForwardRef<
+  typeof CheckboxItem,
   MenuCheckboxItemProps
->(({ children, ...props }, forwardedRef) => (
-  <StyledCheckboxItem {...props} ref={forwardedRef}>
-    <StyledCheckboxIndicator />
-    {children}
-  </StyledCheckboxItem>
-))
+> = forwardRefDefine<typeof CheckboxItem, MenuCheckboxItemProps>(
+  ({ children, ...props }, forwardedRef) => (
+    <StyledCheckboxItem {...props} ref={forwardedRef}>
+      <StyledCheckboxIndicator />
+      {children}
+    </StyledCheckboxItem>
+  ),
+)
 MenuCheckboxItem.displayName = 'MenuCheckboxItem'
 
 type MenuRadioItemProps = ComponentProps<typeof StyledRadioItem>

@@ -1,3 +1,4 @@
+'use client'
 import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
@@ -12,7 +13,13 @@ import {
   Viewport,
 } from '@radix-ui/react-navigation-menu'
 import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
-import { PickProps, Prettify, component, forwardRefDefine } from '../../utils'
+import {
+  PickProps,
+  Prettify,
+  component,
+  forwardRefDefine,
+  forwardRefExtend,
+} from '../../utils'
 import { Button, focus, hover } from '../Button/Button'
 import { ChevronDown } from '../Icons'
 import { paperStyles } from '../Paper/Paper'
@@ -26,11 +33,6 @@ const NAVIGATION_ITEM_CLASS = 'c-navigation-item'
 const NAVIGATION_CONTENT_CLASS = 'c-navigation-content'
 const NAVIGATION_VIEWPORT_POSITION_CLASS = 'c-navigation-viewport-position'
 const NAVIGATION_INDICATOR_CLASS = 'c-navigation-indicator'
-// const NAVIGATION_CONTENT_LIST_CLASS = 'c-navigation-content-list'
-// const NAVIGATION_CONTENT_LIST_ITEM_CLASS =
-//   'c-navigation-content-list-item'
-// const NAVIGATION_CONTENT_LIST_LINK_CLASS =
-//   'c-navigation-content-list-link'
 
 const StyledMenu = component(
   Root,
@@ -47,14 +49,12 @@ const StyledList = component(
   List,
   NAVIGATION_LIST_CLASS,
   css({
-    all: 'unset',
     display: 'flex',
     padding: 0,
     rowGap: '8px',
     listStyle: 'none',
     fontSize: 0,
     borderRadius: '$default',
-    // backgroundColor: '$transparent',
     border: 'none',
   }),
 )
@@ -196,7 +196,7 @@ const StyledArrow = component(
   css({
     position: 'relative',
     top: '70%',
-    backgroundColor: '$paper',
+    backgroundColor: '$surface.solid',
     width: '$3',
     height: '$3',
     transform: 'rotate(45deg)',
@@ -204,13 +204,18 @@ const StyledArrow = component(
   }),
 )
 
-const StyledIndicatorWithArrow = forwardRef<ElementRef<typeof StyledIndicator>>(
-  (props, forwardedRef) => (
-    <StyledIndicator {...props} ref={forwardedRef}>
-      <StyledArrow />
-    </StyledIndicator>
-  ),
-)
+const StyledIndicatorWithArrow = forwardRefExtend<
+  typeof StyledIndicator,
+  { className?: string }
+>(({ className, ...props }, forwardedRef) => (
+  <StyledIndicator
+    className={cx(NAVIGATION_INDICATOR_CLASS, className)}
+    {...props}
+    ref={forwardedRef}
+  >
+    <StyledArrow />
+  </StyledIndicator>
+))
 
 const StyledViewport = component(
   Viewport,
@@ -220,7 +225,7 @@ const StyledViewport = component(
     transformOrigin: 'top center',
     marginTop: '$2',
     width: '50%',
-    backgroundColor: '$paper',
+    backgroundColor: '$surface.solid',
     borderRadius: 6,
     overflow: 'hidden',
     boxShadow: '$2',
@@ -243,7 +248,6 @@ const ContentList = styled(
       margin: 0,
       columnGap: '$2',
       rowGap: '$2',
-      listStyle: 'none',
     },
     variants: {
       layout: {
@@ -353,13 +357,17 @@ export type MenuLink = {
   text: string
 }
 
-export type WrappedNavigationMenuProps = {
-  items: Array<MenuContentList | MenuLink>
-}
+export type WrappedNavigationMenuProps = Prettify<
+  ComponentProps<typeof Root> & {
+    items: Array<MenuContentList | MenuLink>
+    variant?: ComponentProps<typeof NavigationMenuTrigger>['variant']
+  }
+>
 
 export type WrappedNavigationMenuItemProps = {
   item: MenuContentList | MenuLink
   key: number
+  variant?: ComponentProps<typeof NavigationMenuTrigger>['variant']
 }
 
 //type guard for menu items
@@ -370,12 +378,13 @@ function isContentList(
 }
 
 export const WrappedNavigationMenuItem: FC<WrappedNavigationMenuItemProps> = ({
+  variant,
   item,
 }) => {
   if (isContentList(item)) {
     return (
       <NavigationMenuItem>
-        <NavigationMenuTrigger caret={true}>
+        <NavigationMenuTrigger variant={variant} caret={true}>
           {item.trigger}
         </NavigationMenuTrigger>
         <NavigationMenuContent>
@@ -395,19 +404,22 @@ export const WrappedNavigationMenuItem: FC<WrappedNavigationMenuItemProps> = ({
   } else {
     return (
       <NavigationMenuItem>
-        <NavigationMenuLink href={item.href}>{item.text}</NavigationMenuLink>
+        <NavigationMenuLink variant={variant} href={item.href}>
+          {item.text}
+        </NavigationMenuLink>
       </NavigationMenuItem>
     )
   }
 }
 
 export const WrappedNavigationMenu: FC<WrappedNavigationMenuProps> = ({
+  variant,
   items,
 }) => (
   <NavigationMenu>
     <NavigationMenuList>
       {items.map((item, index) => (
-        <WrappedNavigationMenuItem item={item} key={index} />
+        <WrappedNavigationMenuItem variant={variant} item={item} key={index} />
       ))}
       <NavigationMenuIndicator />
     </NavigationMenuList>

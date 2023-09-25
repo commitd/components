@@ -1,3 +1,4 @@
+'use client'
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
@@ -5,11 +6,13 @@ import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import { checkStyleVariants, checkStylesBase } from '../Checkbox/Checkbox'
 import {
-  DEFAULT_FORM_STATE,
-  UseFormControlProps,
   useFormControl,
   usePossibleFormControlState as useFormControlState,
 } from '../FormControl'
+import {
+  DEFAULT_FORM_STATE,
+  UseFormControlProps,
+} from '../FormControl/FormControlContext'
 import { Check } from '../Icons'
 import { Label, LabelOptional } from '../Label'
 

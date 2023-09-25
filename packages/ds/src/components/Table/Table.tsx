@@ -1,6 +1,5 @@
 import { RecipeVariantProps, css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import React from 'react'
 
 import { SystemStyleObject } from '@committed/ss/types'
 import { RecipeVariantRecord } from '@committed/ss/types/recipe'
@@ -94,11 +93,10 @@ const cell = cva({
   },
 })
 type TableCellVariants = RecipeVariantProps<typeof cell>
-type TableCellProps = TableCellVariants & React.HTMLProps<'td'>
-export const TableCell = styled(
+export const TableCell: CComponent<'td', TableCellVariants> = styled(
   component('td', TABLE_CELL_CLASS),
   cell,
-) as React.FC<TableCellProps>
+)
 
 const DEFAULT_TAG = 'table'
 
