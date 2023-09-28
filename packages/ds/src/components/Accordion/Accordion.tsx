@@ -1,12 +1,17 @@
 'use client'
 
-import { css } from '@committed/ss/css'
+import { css, cx } from '@committed/ss/css'
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
-import { ComponentProps } from 'react'
-import { component, forwardRefExtend } from '../../utils'
+import {
+  CComponent,
+  ChildProps,
+  ClassNameProps,
+  component,
+  forwardRefDefine,
+} from '../../utils'
 import { buttonInteractionStyles, buttonVariables } from '../Button/Button'
 import { ChevronDown } from '../Icons'
-import { paperStyles } from '../Paper/Paper'
+import { paperStyles, paperSurfaceStyles } from '../Paper/Paper'
 
 const Chevron = component(
   ChevronDown,
@@ -23,9 +28,11 @@ const Chevron = component(
 )
 Chevron.displayName = 'Chevron'
 
-export const Accordion = component(
+export const Accordion: CComponent<typeof Root> = component(
   Root,
+  'c-accordion',
   paperStyles,
+  paperSurfaceStyles,
   css({
     boxShadow: '1',
     borderTop: '1px solid token(colors.$neutral.4)',
@@ -35,6 +42,7 @@ Accordion.displayName = 'Accordion'
 
 export const AccordionItem = component(
   Item,
+  'c-accordion-item',
   css({
     borderBottom: '1px solid token(colors.$neutral.4)',
   }),
@@ -43,6 +51,7 @@ AccordionItem.displayName = 'AccordionItem'
 
 const AccordionTrigger = component(
   Trigger,
+  'c-accordion-trigger',
   css(buttonVariables),
   css(buttonInteractionStyles),
   css({
@@ -70,6 +79,7 @@ AccordionTrigger.displayName = 'AccordionTrigger'
 
 export const AccordionContent = component(
   Content,
+  'c-accordion-content',
   css({
     '--transformValue':
       'calc(var(--radix-accordion-content-height)+token(sizes.$6))',
@@ -91,13 +101,11 @@ export const AccordionContent = component(
 )
 AccordionContent.displayName = 'AccordionContent'
 
-type AccordionHeaderProps = ComponentProps<typeof AccordionTrigger>
-
-export const AccordionHeader = forwardRefExtend<
+export const AccordionHeader = forwardRefDefine<
   typeof AccordionTrigger,
-  AccordionHeaderProps
->(({ children, ...props }, forwardedRef) => (
-  <Header>
+  ChildProps & ClassNameProps
+>(({ children, className, ...props }, forwardedRef) => (
+  <Header className={cx('c-accordion-header', className)}>
     <AccordionTrigger {...props} ref={forwardedRef}>
       {children}
       <Chevron />

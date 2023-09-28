@@ -12,7 +12,7 @@ const globalCss = defineGlobalStyles({
   },
   body: {
     lineHeight: '1',
-    backgroundColor: 'var(--colors-\\$background)',
+    backgroundColor: 'var(--colors-\\$surface-neutral)',
     color: 'var(--colors-\\$text)',
     textSizeAdjust: '100%',
     textRendering: 'optimizeLegibility',

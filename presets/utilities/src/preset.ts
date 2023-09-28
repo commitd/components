@@ -1,11 +1,15 @@
 import { definePreset } from '@pandacss/dev'
 import type { Preset, PropertyTransform, PropertyValues } from '@pandacss/types'
 
-export type Surface = 'neutral' | 'solid' | 'glass' | 'transparent'
+export type Surface = 'clear' | 'frost' | 'glass' | 'neutral' | 'solid'
 export type SurfaceVariants = { surface?: Surface }
-export const surfaces: Surface[] = ['neutral', 'solid', 'glass', 'transparent']
-
-
+export const surfaces: Surface[] = [
+  'clear',
+  'frost',
+  'glass',
+  'neutral',
+  'solid',
+]
 
 const sizeValues: PropertyValues = (theme) => ({
   auto: 'auto',

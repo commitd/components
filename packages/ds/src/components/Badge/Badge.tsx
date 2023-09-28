@@ -1,6 +1,7 @@
 import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import React, { ComponentProps } from 'react'
+import { Assign, Prettify, forwardRefDefine } from '../../utils'
 
 const DEFAULT_TAG = 'span'
 
@@ -38,8 +39,8 @@ const badge = cva({
     alignContent: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: 'var(--background)',
-    color: 'var(--main)',
+    backgroundColor: 'colorPalette.9',
+    color: 'colorPalette.2',
   },
   variants: {
     status: {
@@ -57,36 +58,26 @@ const badge = cva({
     },
     variant: {
       neutral: {
-        '--main': 'token(colors.$neutral.2)',
-        '--background': 'token(colors.$neutral.9)',
+        colorPalette: '$neutral',
       },
-      ghost: {
-        '--main': 'token(colors.$text)',
-        '--background': 'token(colors.$transparency.3)',
-      },
+      ghost: {},
       primary: {
-        '--main': 'token(colors.$primary.2)',
-        '--background': 'token(colors.$primary.9)',
+        colorPalette: '$primary',
       },
       secondary: {
-        '--main': 'token(colors.$secondary.2)',
-        '--background': 'token(colors.$secondary.9)',
+        colorPalette: '$secondary',
       },
       error: {
-        '--main': 'token(colors.$error.2)',
-        '--background': 'token(colors.$error.9)',
+        colorPalette: '$error',
       },
       info: {
-        '--main': 'token(colors.$info.2)',
-        '--background': 'token(colors.$info.9)',
+        colorPalette: '$info',
       },
       success: {
-        '--main': 'token(colors.$success.2)',
-        '--background': 'token(colors.$success.9)',
+        colorPalette: '$success',
       },
       warn: {
-        '--main': 'token(colors.$warning.2)',
-        '--background': 'token(colors.$warn.9)',
+        colorPalette: '$warning',
       },
     },
   },
@@ -99,15 +90,20 @@ const badge = cva({
 const StyledBadge = styled(DEFAULT_TAG, badge)
 
 type BadgeVariants = Omit<RecipeVariantProps<typeof badge>, 'status'>
-type BadgeProps = BadgeVariants & {
-  content: React.ReactNode
-  max?: number
-} & ComponentProps<typeof DEFAULT_TAG>
+type BadgeProps = Prettify<
+  Assign<
+    ComponentProps<typeof DEFAULT_TAG>,
+    BadgeVariants & {
+      content: React.ReactNode
+      max?: number
+    }
+  >
+>
 
 /**
  * Badge component
  */
-export const Badge = forwardRef<ElementRef<typeof DEFAULT_TAG>, BadgeProps>(
+export const Badge = forwardRefDefine<typeof DEFAULT_TAG, BadgeProps>(
   ({ children, content, max, ...props }, forwardedRef) => (
     <BadgeRoot>
       {children}
@@ -126,7 +122,7 @@ type StatusProps = BadgeVariants & ComponentProps<typeof DEFAULT_TAG>
 /**
  * Status component
  */
-export const Status = forwardRef<ElementRef<typeof DEFAULT_TAG>, StatusProps>(
+export const Status = forwardRefDefine<typeof DEFAULT_TAG, StatusProps>(
   ({ children, ...props }, forwardedRef) => (
     <BadgeRoot>
       {children}

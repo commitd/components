@@ -31,11 +31,6 @@ export interface PaginationProps
   extends Pick<InlineProps, 'align' | 'spacing'> {
   /**
     The total number of pages
-    @deprecated use totalPages
-  */
-  count?: number
-  /**
-    The total number of pages
   */
   totalPages: number
   /**
@@ -61,7 +56,6 @@ export interface PaginationProps
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
-  count,
   totalPages,
   onPageChange,
   page: pageOptional,
@@ -70,10 +64,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   single = 'hide',
   ...inlineProps
 }) => {
-  if (totalPages == undefined && count != undefined) {
-    totalPages = count
-  }
-
   const page = pageOptional ?? 1
   const boundaryCount = boundaryCountOptional ?? 2
   const siblingCount = siblingCountOptional ?? 3

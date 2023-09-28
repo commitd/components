@@ -13,13 +13,13 @@ const StyledThumb = component(
   Thumb,
   SWITCH_THUMB_CLASS,
   css({
+    '--size': '20px',
     '--border': 'token(colors.$neutral)',
     '--background': 'token(colors.$surface.solid)',
 
     position: 'absolute',
     left: 0,
-    width: 20,
-    height: 20,
+    size: 'var(--size)',
     backgroundColor: 'var(--background)',
     borderRadius: '$round',
     boxShadow: '$1',
@@ -32,7 +32,7 @@ const StyledThumb = component(
     },
 
     _checked: {
-      transform: 'translateX(14px)',
+      transform: 'translateX(calc(var(--width) - var(--size)))',
     },
   }),
 )
@@ -42,7 +42,6 @@ const hover = {
     '--background': 'var(--thumbBackgroundHighlight) !important',
     _checked: {
       '--background': 'var(--thumbBackgroundHighlight) !important',
-      // '--background': 'var(--thumbBackgroundChecked) !important',
     },
   },
 } as SystemStyleObject
@@ -50,10 +49,13 @@ const hover = {
 const focus = hover
 
 const base = {
-  '--background': 'token(colors.$neutral.4)',
-  '--thumbBorder': 'token(colors.$neutral)',
+  '--width': 'token(sizes.$6)',
+
+  '--background': 'token(colors.colorPalette.4)',
+  '--thumbBorder': 'token(colors.colorPalette.9)', // DEFAULT
   '--thumbBackgroundChecked': 'var(--thumbBorder)',
-  '--thumbBackgroundHighlight': 'token(colors.$neutral.5)',
+  '--thumbBackgroundHighlight': 'token(colors.colorPalette.5)',
+  colorPalette: '$neutral',
 
   // Reset
   alignItems: 'center',
@@ -70,8 +72,8 @@ const base = {
   border: 'none',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
 
-  width: '34px',
-  height: '14px',
+  width: 'var(--width)',
+  height: '$3',
   backgroundColor: 'var(--background)',
   borderRadius: '$pill',
   position: 'relative',
@@ -97,12 +99,6 @@ const switchCva = cva({
   base,
   variants: {
     color: {
-      $primary: {
-        '--background': 'token(colors.$primary.4)',
-        '--thumbBorder': 'token(colors.$primary)',
-        '--thumbBackgroundChecked': 'var(--thumbBorder)',
-        '--thumbBackgroundHighlight': 'token(colors.$primary.5)',
-      },
       $secondary: {
         '--background': 'token(colors.$secondary.4)',
         '--thumbBorder': 'token(colors.$secondary)',

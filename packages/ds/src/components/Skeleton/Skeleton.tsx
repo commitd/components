@@ -6,20 +6,20 @@ import { CComponent, component } from '../../utils'
 const DEFAULT_TAG = 'div'
 
 const BASE_COLOR = '$neutral.5'
-const HIGHLIGHT_COLOR = '$neutral.7'
+const HIGHLIGHT_COLOR = ''
 
 /**
  * StyledSkeleton base component
  */
 const skeleton = cva({
   base: {
-    backgroundColor: BASE_COLOR,
+    backgroundColor: '$neutral.5',
     position: 'relative',
     overflow: 'hidden',
 
     _after: {
       bottom: 0,
-      content: '""',
+      content: "''",
       left: 0,
       position: 'absolute',
       right: 0,
@@ -58,9 +58,9 @@ const skeleton = cva({
           animation: `ripple 2s ease-in-out infinite`,
           backgroundImage: `linear-gradient(
             to right,
-            token(colors.${BASE_COLOR}) 4%,
-            token(colors.${HIGHLIGHT_COLOR}) 25%,
-            token(colors.${BASE_COLOR}) 35%
+            token(colors.$neutral.4) 4%,
+            token(colors.$neutral.7) 25%,
+            token(colors.$neutral.4) 35%
           )`,
           backgroundSize: '1000px 100%',
           backgroundRepeat: 'no-repeat',
@@ -72,7 +72,7 @@ const skeleton = cva({
       pulse: {
         _after: {
           animation: `pulse 1s alternate ease-in-out infinite`,
-          backgroundColor: HIGHLIGHT_COLOR,
+          backgroundColor: '$neutral.7',
         },
       },
     },

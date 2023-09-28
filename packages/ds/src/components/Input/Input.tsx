@@ -1,8 +1,8 @@
 import { RecipeVariantProps, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import { ConditionalWrapper } from '../../utils'
+import React from 'react'
+import { ConditionalWrapper, forwardRefExtend } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Label, LabelOptional } from '../Label'
 
@@ -50,24 +50,6 @@ export const readonlyStyles = {
   },
 } satisfies SystemStyleObject
 
-export const defaultStyles = {
-  appearance: 'none',
-  pointerEvents: 'auto',
-
-  fontFamily: 'inherit',
-  textDecoration: 'none',
-  color: '$text',
-  lineHeight: 'none',
-
-  boxSizing: 'border-box',
-  WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-  outline: 'none',
-
-  borderRadius: '$default',
-  backgroundColor: '$background',
-  fontVariantNumeric: 'tabular-nums',
-} satisfies SystemStyleObject
-
 export const inputStyles = {
   base: {
     '--inactive': 'token(colors.$neutral.7)',
@@ -86,8 +68,8 @@ export const inputStyles = {
     outline: 'none',
 
     borderWidth: '0',
+    backgroundColor: '$surface.clear',
     borderRadius: '$default',
-    backgroundColor: '$background',
     fontVariantNumeric: 'tabular-nums',
 
     _readOnly: {
@@ -208,14 +190,13 @@ const input = cva(inputStyles)
 
 const StyledInput = styled(DEFAULT_TAG, input)
 
-type InputVariants = Omit<RecipeVariantProps<typeof input>, 'state'>
+type InputVariants = RecipeVariantProps<typeof input>
 
 // Required due to ts error forcing the enterKeyHint props. Likely can be removed in later version.
-type StyledInputProps = Omit<ComponentProps<typeof StyledInput>, 'enterKeyHint'>
+//type StyledInputProps = Omit<ComponentProps<typeof StyledInput>, 'enterKeyHint'>
 
-type InputProps = StyledInputProps &
-  UseFormControlProps &
-  InputVariants & {
+type InputProps = UseFormControlProps &
+  Omit<InputVariants, 'state'> & {
     /** Add a label to the Input */
     label?: string
     /** Add the required props to mark input as required.*/
@@ -234,8 +215,8 @@ type InputProps = StyledInputProps &
       | undefined
   }
 
-export const Input = forwardRef<ElementRef<typeof DEFAULT_TAG>, InputProps>(
-  ({ label, onValueChange, className, ...props }, forwardedRef) => {
+export const Input = forwardRefExtend<typeof DEFAULT_TAG, InputProps>(
+  ({ label, onValueChange, className, size, ...props }, forwardedRef) => {
     const [id, { state, disabled, required }, remainingProps] =
       useFormControl(props)
     return (
@@ -259,6 +240,8 @@ export const Input = forwardRef<ElementRef<typeof DEFAULT_TAG>, InputProps>(
           {...remainingProps}
           id={id}
           className={cx('c-input', className)}
+          // @ts-ignore overriden size prop
+          size={size}
           state={state}
           disabled={disabled}
           required={required}

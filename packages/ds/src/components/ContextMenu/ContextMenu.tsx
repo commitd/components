@@ -1,7 +1,8 @@
 'use client'
-import { css } from '@committed/ss/css'
+import { css, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
+import { SurfaceVariants } from '@committed/utilities'
 import {
   CheckboxItem,
   Content,
@@ -39,7 +40,8 @@ import {
 } from '../../utils'
 import { paperStyles } from '../Paper/Paper'
 
-const CONTEXT_MENU_ITEM = 'c-context-menu-item'
+const CONTEXT_MENU = 'c-context'
+const CONTEXT_MENU_ITEM = `${CONTEXT_MENU}-item`
 
 const groupStyles = css({
   display: 'flex',
@@ -60,16 +62,34 @@ const groupStyles = css({
  *
  * Based on [Radix Context Menu](https://radix-ui.com/primitives/docs/components/context-menu).
  */
-export const ContextMenu = Root
+export const ContextMenu: React.FC<ComponentProps<typeof Root>> = component(
+  Root,
+  CONTEXT_MENU,
+)
 export const ContextMenuTrigger = Trigger
 export const ContextMenuItem: CComponent<
   typeof Item,
   ItemVariants & ComponentProps<typeof Item>
 > = component(styled(Item, itemCva), CONTEXT_MENU_ITEM, baseItemStyles)
-export const ContextMenuItemShortcut = component('span', itemShortcutStyles)
-export const ContextMenuSeparator = styled(Separator, separatorCva)
-export const ContextMenuLabel = component(Label, labelStyles)
-export const ContextMenuItemGroup = component(Group, groupStyles)
+export const ContextMenuItemShortcut = component(
+  'span',
+  'c-context-menu-item-shortcut',
+  itemShortcutStyles,
+)
+export const ContextMenuSeparator = styled(
+  component(Separator, 'c-context-menu-separator'),
+  separatorCva,
+)
+export const ContextMenuLabel = component(
+  Label,
+  'c-context-menu-label',
+  labelStyles,
+)
+export const ContextMenuItemGroup = component(
+  Group,
+  'c-context-menu-item-group',
+  groupStyles,
+)
 export const ContextMenuRadioGroup = RadioGroup
 
 ContextMenu.displayName = 'ContextMenu'
@@ -81,33 +101,46 @@ ContextMenuLabel.displayName = 'ContextMenuLabel'
 ContextMenuItemGroup.displayName = 'ContextMenuItemGroup'
 ContextMenuRadioGroup.displayName = 'ContextMenuRadioGroup'
 
-const StyledContent = component(Content, paperStyles, contentStyles)
+const StyledContent = styled(
+  component(Content, 'c-context-menu-content', paperStyles, contentStyles),
+)
 
-type ContextMenuContentProps = ComponentProps<typeof StyledContent> & {
-  /** By default, portals your content parts into the body, set false to add at dom location. */
-  portalled?: boolean
-  /** Specify a container element to portal the content into. */
-  container?: ComponentProps<typeof Portal>['container']
-}
+type ContextMenuContentProps = ComponentProps<typeof StyledContent> &
+  SurfaceVariants & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
 export const ContextMenuContent = forwardRef<
   ElementRef<typeof StyledContent>,
   ContextMenuContentProps
->(({ container, portalled = true, children, ...props }, forwardedRef) => (
-  <ConditionalWrapper
-    condition={portalled}
-    wrapper={(child) => <Portal container={container}>{child}</Portal>}
-  >
-    <StyledContent {...props} ref={forwardedRef}>
-      {children}
-    </StyledContent>
-  </ConditionalWrapper>
-))
+>(
+  (
+    { container, surface = 'solid', portalled = true, children, ...props },
+    forwardedRef,
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <StyledContent surface={surface} {...props} ref={forwardedRef}>
+        {children}
+      </StyledContent>
+    </ConditionalWrapper>
+  ),
+)
 ContextMenuContent.displayName = 'ContextMenuContent'
 
-const StyledItemIndicator = component(ItemIndicator, itemIndicatorStyles)
+const StyledItemIndicator = component(
+  ItemIndicator,
+  'c-context-menu-item-indicator',
+  itemIndicatorStyles,
+)
 const StyledCheckboxItem = component(
   styled(CheckboxItem, itemCva),
+  'c-context-menu-checkbox-item',
   checkboxItemStyles,
 )
 const StyledRadioItem = component(
@@ -119,14 +152,22 @@ const StyledRadioItem = component(
 export const ContextMenuSub = Sub
 ContextMenuSub.displayName = 'ContextMenuSub'
 
-const StyledSubContent = component(SubContent, paperStyles, contentStyles)
+const StyledSubContent = styled(
+  component(
+    SubContent,
+    'c-context-menu-sub-content',
+    paperStyles,
+    contentStyles,
+  ),
+)
 
-type ContextMenuSubContentProps = ComponentProps<typeof StyledSubContent> & {
-  /** By default, portals your content parts into the body, set false to add at dom location. */
-  portalled?: boolean
-  /** Specify a container element to portal the content into. */
-  container?: ComponentProps<typeof Portal>['container']
-}
+type ContextMenuSubContentProps = ComponentProps<typeof StyledSubContent> &
+  SurfaceVariants & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
 export const ContextMenuSubContent = forwardRef<
   ElementRef<typeof StyledSubContent>,
@@ -145,6 +186,7 @@ ContextMenuSubContent.displayName = 'ContextMenuSubContent'
 
 const StyledSubTrigger = component(
   styled(SubTrigger, itemCva),
+  'c-context-menu-sub-trigger',
   baseItemStyles,
   triggerItemStyles,
 )
@@ -186,9 +228,13 @@ type ContextMenuRadioItemProps = ComponentProps<typeof RadioItem> & ItemVariants
 export const ContextMenuRadioItem = forwardRef<
   ElementRef<typeof StyledRadioItem>,
   ContextMenuRadioItemProps
->(({ children, ...props }, forwardedRef) => {
+>(({ children, className, ...props }, forwardedRef) => {
   return (
-    <StyledRadioItem {...props} ref={forwardedRef}>
+    <StyledRadioItem
+      className={cx('c-context-menu-radio-item', className)}
+      {...props}
+      ref={forwardedRef}
+    >
       <StyledItemIndicator>
         <StyledCheckIndicator />
       </StyledItemIndicator>

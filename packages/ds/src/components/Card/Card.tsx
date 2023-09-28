@@ -1,10 +1,18 @@
 import { css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { RecipeVariantProps } from '@committed/ss/types/recipe'
+import { Surface } from '@committed/utilities'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { CComponent, component } from '../../utils'
+import {
+  CComponent,
+  FlexProps,
+  PolyCComponent,
+  PolyCComponentProps,
+  component,
+  forwardRefDefine,
+} from '../../utils'
 import { Paper, paperStyles } from '../Paper/Paper'
-import { Text, text } from '../Text/Text'
+import { Text, TextVariants, text } from '../Text/Text'
 
 const card = cva({
   base: {
@@ -15,7 +23,7 @@ const card = cva({
     flexDirection: 'column',
 
     width: 'fit-content',
-    backgroundColor: '$card',
+    surface: 'solid',
 
     _before: {
       inset: 0,
@@ -132,9 +140,9 @@ const card = cva({
 /**
  * Use Card component to group elements onto a card.
  */
-export const Card: CComponent<
+export const Card: PolyCComponent<
   typeof Paper,
-  RecipeVariantProps<typeof card>
+  RecipeVariantProps<typeof card> & { surface?: Surface }
 > = styled(component('div', 'c-card', paperStyles), card)
 Card.displayName = 'Card'
 
@@ -177,12 +185,9 @@ export const StyledHeading = component(
   }),
 )
 
-type CardHeadingProps = ComponentProps<typeof CARD_HEADING_TAG> &
-  ComponentProps<typeof Text>
-
-export const CardHeading = forwardRef<
-  ElementRef<typeof StyledHeading>,
-  CardHeadingProps
+export const CardHeading = forwardRefDefine<
+  typeof CARD_HEADING_TAG,
+  TextVariants & PolyCComponentProps
 >((props, forwardedRef) => {
   return <StyledHeading size="$1" weight="bold" {...props} ref={forwardedRef} />
 })
@@ -254,14 +259,16 @@ CardLeadIn.displayName = 'CardLeadIn'
 
 // CARD_ACTIONS ****************************************************************
 
-export const CardActions = component(
-  'div',
-  css({
-    display: 'flex',
-    gap: '$2',
-    justifyContent: 'flex-end',
-    mt: '$3',
-    padding: '$4',
-  }),
+export const CardActions: CComponent<'div', FlexProps> = styled(
+  component('div', 'c-card-actions'),
+  {
+    base: {
+      display: 'flex',
+      gap: '$2',
+      justifyContent: 'flex-end',
+      mt: '$3',
+      padding: '$4',
+    },
+  },
 )
 CardActions.displayName = 'CardActions'

@@ -1,26 +1,44 @@
-import React, { ComponentProps, ElementType, forwardRef } from 'react'
+import {
+  ComponentProps,
+  ElementRef,
+  ElementType,
+  ReactElement,
+  Ref,
+  RefAttributes,
+  forwardRef,
+} from 'react'
 import { Assign } from './types'
 
-export type ForwardRef<T extends ElementType, P = {}> = {
-  (
-    props: P & React.RefAttributes<React.ElementRef<T>>,
-  ): React.ReactElement | null
+export type ForwardRef<TType extends ElementType, TProps = {}> = {
+  (props: TProps & RefAttributes<ElementRef<TType>>): ReactElement | null
   displayName?: string
 }
 
-type DefineForwardRef = <T extends ElementType, P = {}>(
-  render: (
-    props: P,
-    ref: React.Ref<React.ElementRef<T>>,
-  ) => React.ReactElement | null,
-) => ForwardRef<T, P>
+type DefineForwardRef = <TType extends ElementType, TProps = {}>(
+  render: (props: TProps, ref: Ref<ElementRef<TType>>) => ReactElement | null,
+) => ForwardRef<TType, TProps>
 
-type ExtendForwardRef = <T extends ElementType, P = {}>(
+type OmitForwardRef = <
+  TType extends ElementType,
+  TOmit extends keyof ComponentProps<TType> = never,
+>(
   render: (
-    props: ComponentProps<T> & P,
-    ref: React.Ref<React.ElementRef<T>>,
-  ) => React.ReactElement | null,
-) => ForwardRef<T, Assign<ComponentProps<T>, P>>
+    props: Omit<ComponentProps<TType>, TOmit>,
+    ref: Ref<ElementRef<TType>>,
+  ) => ReactElement | null,
+) => ForwardRef<TType, Omit<ComponentProps<TType>, TOmit>>
+
+type ExtendForwardRef = <
+  TType extends ElementType,
+  TProps = {},
+  TOmit extends keyof ComponentProps<TType> = never,
+>(
+  render: (
+    props: Assign<Omit<ComponentProps<TType>, TOmit>, TProps>,
+    ref: Ref<ElementRef<TType>>,
+  ) => ReactElement | null,
+) => ForwardRef<TType, Assign<Omit<ComponentProps<TType>, TOmit>, TProps>>
 
 export const forwardRefDefine = forwardRef as DefineForwardRef
+export const forwardRefOmit = forwardRef as OmitForwardRef
 export const forwardRefExtend = forwardRef as ExtendForwardRef

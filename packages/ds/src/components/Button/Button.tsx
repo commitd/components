@@ -3,6 +3,7 @@ import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
 import { RecipeVariantProps } from '@committed/ss/types/recipe'
 import {
+  ColorPaletteProps,
   PolyCComponent,
   Prettify,
   component,
@@ -110,108 +111,6 @@ export const sizeVariants = {
   },
 } as const
 
-export const buttonColors = {
-  $primary: {
-    colorPalette: '$primary',
-  },
-  $secondary: {
-    colorPalette: '$secondary',
-  },
-  $neutral: {
-    colorPalette: '$neutral',
-  },
-  $info: {
-    colorPalette: '$info',
-  },
-  $warn: {
-    colorPalette: '$warn',
-  },
-  $error: {
-    colorPalette: '$error',
-  },
-  $success: {
-    colorPalette: '$success',
-  },
-  $tomato: {
-    colorPalette: '$tomato',
-  },
-  $red: {
-    colorPalette: '$red',
-  },
-  $crimson: {
-    colorPalette: '$crimson',
-  },
-  $pink: {
-    colorPalette: '$pink',
-  },
-  $plum: {
-    colorPalette: '$plum',
-  },
-  $purple: {
-    colorPalette: '$purple',
-  },
-  $violet: {
-    colorPalette: '$violet',
-  },
-  $indigo: {
-    colorPalette: '$indigo',
-  },
-  $blue: {
-    colorPalette: '$blue',
-  },
-  $cyan: {
-    colorPalette: '$cyan',
-  },
-  $teal: {
-    colorPalette: '$teal',
-  },
-  $green: {
-    colorPalette: '$green',
-  },
-  $grass: {
-    colorPalette: '$grass',
-  },
-  $orange: {
-    colorPalette: '$orange',
-  },
-  $brown: {
-    colorPalette: '$brown',
-  },
-  $sky: {
-    colorPalette: '$sky',
-  },
-  $mint: {
-    colorPalette: '$mint',
-  },
-  $lime: {
-    colorPalette: '$lime',
-  },
-  $yellow: {
-    colorPalette: '$yellow',
-  },
-  $amber: {
-    colorPalette: '$amber',
-  },
-  $gray: {
-    colorPalette: '$gray',
-  },
-  $mauve: {
-    colorPalette: '$mauve',
-  },
-  $slate: {
-    colorPalette: '$slate',
-  },
-  $sage: {
-    colorPalette: '$sage',
-  },
-  $olive: {
-    colorPalette: '$olive',
-  },
-  $sand: {
-    colorPalette: '$sand',
-  },
-}
-
 export const buttonBaseStyles: SystemStyleObject = {
   alignItems: 'center',
   appearance: 'none',
@@ -237,7 +136,6 @@ const buttonVariants = {
   variants: {
     variant: mainVariants,
     destructive: destructiveVariants,
-    color: buttonColors,
     size: sizeVariants,
     ['full-width']: {
       true: {
@@ -252,17 +150,17 @@ const button = cva({
     ...buttonVariables,
     ...buttonBaseStyles,
     ...buttonInteractionStyles,
+    colorPalette: '$primary',
   },
   ...buttonVariants,
   defaultVariants: {
-    color: '$primary',
     variant: 'outline',
     destructive: false,
     size: 'default',
   },
 })
 
-type ButtonVariants = RecipeVariantProps<typeof button>
+type ButtonVariants = RecipeVariantProps<typeof button> & ColorPaletteProps
 const Base = component(DEFAULT_TAG, 'c-button')
 
 /**
@@ -296,7 +194,6 @@ const iconButtonVariants = {
   variants: {
     variant: mainVariants,
     destructive: destructiveVariants,
-    color: buttonColors,
     size: iconSizeVariants,
   },
 }
@@ -306,11 +203,11 @@ const iconButton = cva({
     ...buttonVariables,
     ...buttonBaseStyles,
     ...buttonInteractionStyles,
+    colorPalette: '$primary',
   },
   ...iconButtonVariants,
   defaultVariants: {
     variant: 'outline',
-    color: '$primary',
     destructive: false,
     size: 'default',
   },
@@ -318,10 +215,10 @@ const iconButton = cva({
 
 export const StyledIconButton = styled(DEFAULT_TAG, iconButton)
 
-type IconButtonVariants = RecipeVariantProps<typeof iconButton>
-type ButtonProps = Omit<React.HTMLProps<HTMLButtonElement>, 'size'>
+type IconButtonVariants = RecipeVariantProps<typeof iconButton> &
+  ColorPaletteProps
+
 type StyledIconButtonProps = IconButtonVariants & {
-  className?: string
   // override the incorrectly inferred type from HTMLProps
   type?: 'button' | 'reset' | 'submit'
   /** Add a title */

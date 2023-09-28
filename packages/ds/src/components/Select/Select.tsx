@@ -1,4 +1,7 @@
 'use client'
+import { css } from '@committed/ss/css'
+import { styled } from '@committed/ss/jsx'
+import { SurfaceVariants } from '@committed/utilities'
 import {
   Content,
   Group,
@@ -16,10 +19,12 @@ import {
   Viewport,
 } from '@radix-ui/react-select'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
-
-import { css } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { ConditionalWrapper, component, forwardRefExtend } from '../../utils'
+import {
+  CComponentProps,
+  ConditionalWrapper,
+  component,
+  forwardRefExtend,
+} from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Check, ChevronDown, ChevronUp } from '../Icons'
 import { inputStyles } from '../Input/Input'
@@ -28,6 +33,7 @@ import { paperStyles } from '../Paper/Paper'
 
 const StyledTrigger = component(
   styled(Trigger, inputStyles),
+  'c-select-trigger',
   css({
     _readOnly: {},
     display: 'inline-flex',
@@ -41,25 +47,30 @@ const StyledTrigger = component(
 
 const StyledValue = component(
   Value,
+  'c-select-value',
   css({
     flexGrow: 1,
   }),
 )
 
-const StyledContent = component(
-  Content,
-  paperStyles,
-  css({
-    overflow: 'hidden',
-    boxShadow: '$2',
-    _before: {
-      boxShadow: 'none',
-    },
-  }),
+const StyledContent = styled(
+  component(
+    Content,
+    'c-select-content',
+    paperStyles,
+    css({
+      overflow: 'hidden',
+      boxShadow: '$2',
+      _before: {
+        boxShadow: 'none',
+      },
+    }),
+  ),
 )
 
 const StyledViewport = component(
   Viewport,
+  'c-select-viewport',
   css({
     padding: '$2',
   }),
@@ -67,8 +78,8 @@ const StyledViewport = component(
 
 const StyledItem = component(
   Item,
+  'c-select-item',
   css({
-    all: 'unset',
     py: '$2',
     pr: '$3',
     pl: '$6',
@@ -102,6 +113,7 @@ const StyledItem = component(
 
 const StyledLabel = component(
   Label,
+  'c-select-label',
   css({
     py: '$0',
     px: '$2',
@@ -113,6 +125,7 @@ const StyledLabel = component(
 
 const StyledSeparator = component(
   Separator,
+  'c-select-separator',
   css({
     height: 1,
     backgroundColor: '$neutral.7',
@@ -122,6 +135,7 @@ const StyledSeparator = component(
 
 const StyledItemIndicator = component(
   ItemIndicator,
+  'c-select-item-indicator',
   css({
     position: 'absolute',
     left: '$2',
@@ -141,19 +155,28 @@ const scrollButtonStyles = css({
   cursor: 'default',
 })
 
-const StyledScrollUpButton = component(ScrollUpButton, scrollButtonStyles)
+const StyledScrollUpButton = component(
+  ScrollUpButton,
+  'c-select-scroll-up',
+  scrollButtonStyles,
+)
 
-const StyledScrollDownButton = component(ScrollDownButton, scrollButtonStyles)
+const StyledScrollDownButton = component(
+  ScrollDownButton,
+  'c-select-scroll-down',
+  scrollButtonStyles,
+)
 
-type SelectContentProps = ComponentProps<typeof StyledContent> & {
-  /** By default, portals your content parts into the body, set false to add at dom location. */
-  portalled?: boolean
-  /** Specify a container element to portal the content into. */
-  container?: ComponentProps<typeof Portal>['container']
-}
+type SelectContentProps = CComponentProps &
+  SurfaceVariants & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
-export const SelectContent = forwardRef<
-  ElementRef<typeof StyledContent>,
+export const SelectContent = forwardRefExtend<
+  typeof Content,
   SelectContentProps
 >(({ container, portalled = true, children, ...props }, forwardedRef) => (
   <ConditionalWrapper
@@ -167,20 +190,20 @@ export const SelectContent = forwardRef<
 ))
 SelectContent.displayName = 'SelectContent'
 
-type SelectProps = ComponentProps<typeof Root> &
-  UseFormControlProps & {
-    /** may not currently be used */
-    id?: string
-    /** Add a label to the select */
-    label?: string
-    /** By default, portals your content parts into the body, set false to add at dom location. */
-    portalled?: boolean
-    /** Specify a placeholder if no value of defaultValue supplied. */
-    placeholder?: ComponentProps<typeof Value>['placeholder']
-    /** Specify a container element to portal the content into. */
-    container?: ComponentProps<typeof Portal>['container']
-  }
+type SelectProps = UseFormControlProps & {
+  /** may not currently be used */
+  id?: string
+  /** Add a label to the select */
+  label?: string
+  /** By default, portals your content parts into the body, set false to add at dom location. */
+  portalled?: boolean
+  /** Specify a placeholder if no value of defaultValue supplied. */
+  placeholder?: ComponentProps<typeof Value>['placeholder']
+  /** Specify a container element to portal the content into. */
+  container?: ComponentProps<typeof Portal>['container']
+} & SurfaceVariants
 
+const StyledRoot = component(Root, 'c-select')
 /**
  * Select component
  *
@@ -189,9 +212,17 @@ type SelectProps = ComponentProps<typeof Root> &
  *
  * Based on [Radix Select](https://www.radix-ui.com/docs/primitives/components/select).
  */
-export const Select = forwardRefExtend<typeof Root, SelectProps>(
+export const Select = forwardRefExtend<typeof StyledRoot, SelectProps>(
   (
-    { label, container, portalled = true, placeholder, children, ...props },
+    {
+      label,
+      container,
+      portalled = true,
+      placeholder,
+      children,
+      surface = 'solid',
+      ...props
+    },
     forwardedRef,
   ) => {
     const [id, { state, disabled, required }, remainingProps] =
@@ -209,7 +240,7 @@ export const Select = forwardRefExtend<typeof Root, SelectProps>(
           </Label>
         )}
       >
-        <Root {...remainingProps}>
+        <StyledRoot {...remainingProps}>
           <StyledTrigger
             id={id}
             disabled={disabled}
@@ -221,7 +252,11 @@ export const Select = forwardRefExtend<typeof Root, SelectProps>(
               <ChevronDown />
             </Icon>
           </StyledTrigger>
-          <SelectContent portalled={portalled} container={container}>
+          <SelectContent
+            surface={surface}
+            portalled={portalled}
+            container={container}
+          >
             <StyledScrollUpButton>
               <ChevronUp />
             </StyledScrollUpButton>
@@ -230,7 +265,7 @@ export const Select = forwardRefExtend<typeof Root, SelectProps>(
               <ChevronDown />
             </StyledScrollDownButton>
           </SelectContent>
-        </Root>
+        </StyledRoot>
       </ConditionalWrapper>
     )
   },
@@ -267,7 +302,7 @@ export const SelectScrollUpButton = StyledScrollUpButton
 export const SelectScrollDownButton = StyledScrollDownButton
 
 // Included as exports to allow non-abstracted access to a Styled Radix-based Select
-export const SelectRoot = Root
+export const SelectRoot = StyledRoot
 export const SelectRootItem = StyledItem
 
 SelectTrigger.displayName = 'SelectTrigger'

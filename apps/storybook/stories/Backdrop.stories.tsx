@@ -1,6 +1,5 @@
 import { Backdrop, Button, Spinner, Text } from '@committed/ds'
 import { useBoolean, useTimeout } from '@committed/hooks'
-import { css } from '@committed/ss/css'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Backdrop> = {
@@ -20,7 +19,7 @@ export const Default: Story = {
       <>
         <Button onClick={setTrue}>Show Backdrop</Button>
         <Backdrop open={open}>
-          <Spinner variant="spin" />
+          <Spinner size="$8" variant="spin" />
         </Backdrop>
       </>
     )
@@ -40,13 +39,14 @@ export const Styling: Story = {
         <Button onClick={setTrue}>Show Backdrop</Button>
         <Backdrop
           open={open}
-          overlayClassName={css({
-            backgroundColor: 'paper',
-          })}
-          contentClassName={css({
+          overlay="solid"
+          css={{
+            zIndex: 1000,
+          }}
+          contentCss={{
             border: 'solid 2px black',
-            color: 'text',
-          })}
+            color: '$primary',
+          }}
         >
           <Text size="$3">Running...</Text>
         </Backdrop>

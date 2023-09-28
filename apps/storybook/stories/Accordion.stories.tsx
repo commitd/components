@@ -19,6 +19,7 @@ export default {
       options: ['single', 'multiple'],
       description: 'Defines the policy for how many items can be open',
     },
+    //@ts-ignore (available only in single mode so causes error for general availability)
     collapsible: {
       defaultValue: true,
       control: {

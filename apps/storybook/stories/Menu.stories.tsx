@@ -200,7 +200,7 @@ export const WithTrigger: StoryFn = () => {
       </Menu>
       <Menu>
         <MenuTrigger>
-          <Chip color="$success" interactive>
+          <Chip colorPalette="$success" interactive>
             Show Menu
           </Chip>
         </MenuTrigger>

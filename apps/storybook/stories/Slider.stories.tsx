@@ -9,31 +9,35 @@ export default {
 
 export const Default: StoryObj<typeof Slider> = {}
 
-/** A primary and secondary color can be used. Secondary, is the default. */
+/** The semantic colors can be set using `colorPalette`. */
 export const Variants: StoryFn = () => (
   <Paper>
     <Stack spacing="large">
       <Slider />
-      <Slider color="primary" />
-      <Slider color="secondary" />
+      <Slider colorPalette="$primary" />
+      <Slider colorPalette="$secondary" />
     </Stack>
   </Paper>
 )
 
 export const Disabled: StoryFn = () => (
   <Stack spacing="large">
-    <Slider disabled color="primary" defaultValue={[50]} />
-    <Slider disabled color="secondary" value={[50]} />
+    <Slider disabled colorPalette="$primary" defaultValue={[50]} />
+    <Slider disabled colorPalette="$secondary" value={[50]} />
   </Stack>
 )
 
 export const Vertical: StoryFn = () => (
   <Inline spacing="large">
     <Column css={{ height: '$10' }}>
-      <Slider orientation="vertical" color="primary" labelSide="left" />
+      <Slider orientation="vertical" colorPalette="$primary" labelSide="left" />
     </Column>
     <Column css={{ height: '$10' }}>
-      <Slider orientation="vertical" color="secondary" labelSide="right" />
+      <Slider
+        orientation="vertical"
+        colorPalette="$secondary"
+        labelSide="right"
+      />
     </Column>
   </Inline>
 )
@@ -43,8 +47,8 @@ export const Vertical: StoryFn = () => (
  */
 export const Contained: StoryFn = () => (
   <Stack spacing="large">
-    <Slider defaultValue={[25, 75]} color="primary" />
-    <Slider defaultValue={[10, 50, 90]} color="secondary" />
+    <Slider defaultValue={[25, 75]} colorPalette="$primary" />
+    <Slider defaultValue={[10, 50, 90]} colorPalette="$secondary" />
   </Stack>
 )
 

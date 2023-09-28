@@ -1,8 +1,6 @@
-import { cva } from '@committed/ss/css'
+import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { Slot } from '@radix-ui/react-slot'
-import React, { ElementRef, forwardRef } from 'react'
-import { AsChildProps } from '../../utils'
+import { PolyCComponentProps, component, forwardRefExtend } from '../../utils'
 
 const DEFAULT_TAG = 'a' as const
 
@@ -19,16 +17,6 @@ export function isExternalUrl(url: string | undefined): boolean {
     )
   )
 }
-
-type InternalLinkProps = React.ComponentPropsWithRef<typeof DEFAULT_TAG> &
-  AsChildProps
-
-const InternalLink: React.FC<InternalLinkProps> = forwardRef(
-  ({ asChild, ...props }, forwardedRef) => {
-    const Comp = asChild ? Slot : DEFAULT_TAG
-    return <Comp {...props} ref={forwardedRef} />
-  },
-)
 
 /**
  * Used to provide link props derived from the href
@@ -58,7 +46,7 @@ export function linkProps(href: string | undefined): {
  * */
 export const link = cva({
   base: {
-    '--linkBackground': 'token(colors.$selection)',
+    '--linkBackground': 'token(colors.$primary.5)',
     // Reset
     lineHeight: '1',
     margin: '0',
@@ -105,7 +93,7 @@ export const link = cva({
     },
     external: {
       true: {
-        '--linkBackground': 'token(colors.$error.3)',
+        '--linkBackground': 'token(colors.$error.5)',
       },
     },
   },
@@ -114,15 +102,11 @@ export const link = cva({
   },
 })
 
-export const StyledLink = styled(InternalLink, link)
+export const StyledLink = styled(component(DEFAULT_TAG, 'c-link'), link)
 
-// This doesn't work as expected
-// type AllLinkVariants = RecipeVariantProps<typeof link>
-//type LinkVariants = Pick<AllLinkVariants, 'variant'>
-type LinkVariants = {
-  variant?: 'clear' | 'default' | 'hovered' | 'styled' | undefined
-}
-export type LinkProps = LinkVariants & InternalLinkProps & AsChildProps
+type AllLinkVariants = NonNullable<RecipeVariantProps<typeof link>>
+type LinkVariants = Pick<AllLinkVariants, 'variant'>
+export type LinkProps = PolyCComponentProps & LinkVariants
 
 /**
  * Link component
@@ -130,7 +114,7 @@ export type LinkProps = LinkVariants & InternalLinkProps & AsChildProps
  * Has standard anchor tag props. Uses the radix style `asChild` prop to render as the child component.
  * This can be used to wrap other link providers, say for routing. Other the styles and utils are also available to build your own: `linkStyles`, `linkProps` `isExternalUrl`.
  */
-export const Link = forwardRef<ElementRef<typeof StyledLink>, LinkProps>(
+export const Link = forwardRefExtend<typeof DEFAULT_TAG, LinkProps>(
   ({ href, ...props }, forwardedRef) => {
     return <StyledLink {...linkProps(href)} {...props} ref={forwardedRef} />
   },

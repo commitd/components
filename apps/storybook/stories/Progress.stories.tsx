@@ -17,10 +17,10 @@ const meta: Meta<typeof Progress> = {
       },
       description: 'The current progress, between the min and max values',
     },
-    color: {
+    colorPalette: {
       control: {
         type: 'select',
-        options: ['primary', 'secondary', 'gradient', 'neutral'],
+        options: ['$primary', '$secondary', '$neutral'],
       },
       description:
         'The progress is available in different variants. For a primary action use `primary`, for a background task use the `secondary` (default), two others are provided for special use cases.',
@@ -45,10 +45,10 @@ type Story = StoryObj<typeof Progress>
 export const Default: Story = {}
 
 export const Primary: Story = {
-  args: { color: 'primary', value: 50 },
+  args: { colorPalette: '$primary', value: 50 },
 }
 export const Neutral: Story = {
-  args: { color: 'neutral', value: 75 },
+  args: { colorPalette: '$neutral', value: 75 },
 }
 
 export const Indeterminate: Story = {}
@@ -68,8 +68,12 @@ export const Controlled: StoryFn = () => {
   return (
     <Stack>
       <Progress value={value[0]} />
-      <Progress color="neutral" value={value[0]} />
-      <Progress color="secondary" value={value[0]} />
+      <Progress colorPalette="$neutral" value={value[0]} />
+      <Progress colorPalette="$primary" value={value[0]} />
+      <Progress colorPalette="$secondary" value={value[0]} />
+      <Progress colorPalette="$success" value={value[0]} />
+      <Progress colorPalette="$error" value={value[0]} />
+      <Progress colorPalette="$info" value={value[0]} />
       <Slider css={{ mt: '$6' }} value={value} onValueChange={setValue} />
     </Stack>
   )

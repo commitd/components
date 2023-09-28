@@ -1,9 +1,7 @@
 import { css } from '@committed/ss/css'
-import { component } from '../../utils'
-
-export const overlayStyles = css({
-  backgroundColor: '$transparency.4',
-})
+import { styled } from '@committed/ss/jsx'
+import { SurfaceVariants } from '@committed/utilities'
+import { CComponent, component } from '../../utils'
 
 export const overlayAnimationStyles = css({
   _motionReduce: { transition: 'none' },
@@ -25,4 +23,6 @@ export const OVERLAY_CLASS = 'c-overlay'
  * exported for use in custom components to make them consistent. The styles are also
  * exported and may be more easily used.
  */
-export const Overlay = component('div', OVERLAY_CLASS, overlayStyles)
+export const Overlay: CComponent<'div', SurfaceVariants> = styled(
+  component('div', OVERLAY_CLASS),
+)

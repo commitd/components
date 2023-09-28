@@ -1,6 +1,7 @@
 'use client'
 import { css, cx } from '@committed/ss/css'
 import { SystemStyleObject } from '@committed/ss/types'
+import { Surface } from '@committed/utilities'
 import {
   Action,
   Cancel,
@@ -16,13 +17,12 @@ import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay/Overlay'
+import { overlayAnimationStyles } from '../Overlay/Overlay'
 import { paperStyles } from '../Paper/Paper'
 import { Text } from '../Text'
 
 const StyledOverlay = component(
   Overlay,
-  overlayStyles,
   overlayAnimationStyles,
   css({
     position: 'fixed',
@@ -85,7 +85,12 @@ type ConfirmDialogContentProps = ComponentProps<typeof StyledContent> & {
   title?: string
   /** Add a description to the content. */
   description?: string
+  /** Set the dialog surface */
+  surface?: Surface
+  /** Set the dialog css */
+  css?: SystemStyleObject
   /** Modify the default styling of the overlay */
+  overlay?: Surface
   overlayCss?: SystemStyleObject
   /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
   portalled?: boolean
@@ -101,6 +106,9 @@ export const ConfirmDialogContent = forwardRef<
     {
       title,
       description,
+      surface = 'solid',
+      overlay = 'frost',
+      css: contentCss,
       overlayCss = {},
       container,
       portalled = true,
@@ -114,8 +122,12 @@ export const ConfirmDialogContent = forwardRef<
       wrapper={(child) => <Portal container={container}>{child}</Portal>}
     >
       <>
-        <StyledOverlay className={css(overlayCss)} />
-        <StyledContent {...props} ref={forwardedRef}>
+        <StyledOverlay className={css({ surface: overlay }, overlayCss)} />
+        <StyledContent
+          className={css({ surface: surface }, contentCss)}
+          {...props}
+          ref={forwardedRef}
+        >
           {title && <ConfirmDialogTitle>{title}</ConfirmDialogTitle>}
           {description && (
             <ConfirmDialogDescription>{description}</ConfirmDialogDescription>
@@ -175,7 +187,7 @@ export const ConfirmDialogCancel: FC<ComponentProps<typeof Button>> = (
   props,
 ) => (
   <Cancel asChild>
-    <Button variant="text" color="$neutral" {...props} />
+    <Button variant="text" colorPalette="$neutral" {...props} />
   </Cancel>
 )
 ConfirmDialogCancel.displayName = 'ConfirmDialogCancel'

@@ -1,5 +1,4 @@
 import {
-  Card,
   CardContent,
   CardHeading,
   CardLeadIn,
@@ -45,18 +44,44 @@ export const Sticky: StoryFn = () => (
         Committed Website
       </Link>
     </HoverCardTrigger>
-    <HoverCardContent>
-      <Card>
-        <CardLeadIn>https://committed.io</CardLeadIn>
-        <CardHeading as="h3">Committed Software</CardHeading>
-        <CardContent>
-          <Text>
-            Bespoke software company specializing in integrating the best of
-            breed open source technologies to allow rapid development and
-            minimal duplication of effort.
-          </Text>
-        </CardContent>
-      </Card>
+    <HoverCardContent surface="solid">
+      <CardLeadIn>https://committed.io</CardLeadIn>
+      <CardHeading asChild>
+        <h3>Committed Software</h3>
+      </CardHeading>
+      <CardContent>
+        <Text>
+          Bespoke software company specializing in integrating the best of breed
+          open source technologies to allow rapid development and minimal
+          duplication of effort.
+        </Text>
+      </CardContent>
+    </HoverCardContent>
+  </HoverCard>
+)
+
+/**
+ * The HoverCard surface can be specified.
+ */
+export const Surface: StoryFn = () => (
+  <HoverCard>
+    <HoverCardTrigger>
+      <Link href="https://committed.io" target="_blank">
+        Committed Website
+      </Link>
+    </HoverCardTrigger>
+    <HoverCardContent surface="glass">
+      <CardLeadIn>https://committed.io</CardLeadIn>
+      <CardHeading asChild>
+        <h3>Committed Software</h3>
+      </CardHeading>
+      <CardContent>
+        <Text>
+          Bespoke software company specializing in integrating the best of breed
+          open source technologies to allow rapid development and minimal
+          duplication of effort.
+        </Text>
+      </CardContent>
     </HoverCardContent>
   </HoverCard>
 )

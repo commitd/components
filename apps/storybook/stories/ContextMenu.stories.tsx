@@ -262,3 +262,16 @@ export const Destructive: StoryFn = () => {
     </ContextMenu>
   )
 }
+
+export const Surface: StoryFn = (args) => (
+  <ContextMenu {...args}>
+    <ContextMenuTrigger>
+      <ClickTarget />
+    </ContextMenuTrigger>
+    <ContextMenuContent surface="glass">
+      <ContextMenuItem onSelect={action('cut')}>Cut</ContextMenuItem>
+      <ContextMenuItem onSelect={action('copy')}>Copy</ContextMenuItem>
+      <ContextMenuItem onSelect={action('paste')}>Paste</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+)

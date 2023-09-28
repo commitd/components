@@ -19,7 +19,7 @@ import { mdiAlertCircleOutline } from '@mdi/js'
 import { Meta, StoryFn } from '@storybook/react'
 import { ComponentProps } from 'react'
 
-const meta: Meta<typeof Popover> = {
+export default {
   title: 'Components/Popover',
   component: Popover,
   subcomponents: {
@@ -28,8 +28,7 @@ const meta: Meta<typeof Popover> = {
     PopoverAnchor,
     PopoverClose,
   },
-}
-export default meta
+} satisfies Meta<typeof Popover>
 
 export const Default: StoryFn<ComponentProps<typeof Popover>> = (args) => (
   <Popover {...args}>
@@ -101,7 +100,7 @@ export const NestedAnchored: StoryFn = (args) => (
       <Paragraph>Are you sure you want to delete this?</Paragraph>
       <Inline align="right">
         <PopoverClose>
-          <Button variant="text" color="neutral">
+          <Button variant="text" colorPalette="$neutral">
             No
           </Button>
         </PopoverClose>

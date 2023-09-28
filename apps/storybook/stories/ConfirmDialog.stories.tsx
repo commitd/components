@@ -96,3 +96,21 @@ export const Destructive: Story = {
     </ConfirmDialog>
   ),
 }
+
+export const Surfaces: Story = {
+  render: (args) => (
+    <ConfirmDialog {...args}>
+      <ConfirmDialogTrigger>
+        <Button>Show Dialog</Button>
+      </ConfirmDialogTrigger>
+      <ConfirmDialogContent
+        overlay="glass"
+        surface="neutral"
+        title="Confirm Dialog"
+        description="Are you sure this is a confirm dialog?"
+      >
+        <ConfirmDialogActions confirm="Confirm" onConfirm={action('confirm')} />
+      </ConfirmDialogContent>
+    </ConfirmDialog>
+  ),
+}

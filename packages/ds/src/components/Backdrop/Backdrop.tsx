@@ -1,15 +1,24 @@
 'use client'
 
 import { css, cx } from '@committed/ss/css'
+import { SystemStyleObject } from '@committed/ss/types'
 import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog'
 import React, { ComponentProps, FC } from 'react'
 
-import { ConditionalWrapper, component } from '../../utils'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay/Overlay'
+import { Surface } from '@committed/utilities'
+import { component, ConditionalWrapper } from '../../utils'
+import { overlayAnimationStyles } from '../Overlay/Overlay'
+
+const StyledRoot = component(
+  Root,
+  'c-backdrop',
+  css({
+    isolation: 'isolate',
+  }),
+)
 
 const StyledOverlay = component(
   Overlay,
-  overlayStyles,
   overlayAnimationStyles,
   css({
     position: 'fixed',
@@ -44,10 +53,12 @@ const StyledContent = component(
 type BackdropProps = React.ComponentProps<typeof Root> & {
   /** className of wrapper component */
   className?: string
+  css?: SystemStyleObject
   /** Modify the default styling of the overlay */
-  overlayClassName?: string
+  overlay?: Surface
+  overlayCss?: SystemStyleObject
   /** Modify the default styling of the content wrapper */
-  contentClassName?: string
+  contentCss?: SystemStyleObject
   /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
   portalled?: boolean
   /** Specify a container element to portal the content into. */
@@ -63,25 +74,27 @@ type BackdropProps = React.ComponentProps<typeof Root> & {
  */
 export const Backdrop: FC<BackdropProps> = ({
   className,
-  overlayClassName,
-  contentClassName,
+  overlay = 'frost',
+  css: rootCss,
+  overlayCss,
+  contentCss,
   container,
   portalled = true,
   children,
   ...props
 }) => {
   return (
-    <Root {...props}>
+    <StyledRoot css={css.raw(rootCss)} {...props}>
       <ConditionalWrapper
         condition={portalled}
         wrapper={(child) => <Portal container={container}>{child}</Portal>}
       >
         <div className={cx('c-backdrop', className)}>
-          <StyledOverlay className={overlayClassName} />
-          <StyledContent className={contentClassName}>{children}</StyledContent>
+          <StyledOverlay className={css({ surface: overlay }, overlayCss)} />
+          <StyledContent css={contentCss}>{children}</StyledContent>
         </div>
       </ConditionalWrapper>
-    </Root>
+    </StyledRoot>
   )
 }
 Backdrop.displayName = 'Backdrop'

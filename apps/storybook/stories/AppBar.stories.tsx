@@ -19,6 +19,7 @@ import {
   Routes,
 } from 'react-router-dom'
 import { Variants } from './utils'
+import { ZigZag } from './utils/ZigZag'
 
 export default {
   title: 'Components/AppBar',
@@ -154,26 +155,16 @@ export const WithReactRouter: StoryFn = () => {
 export const Surfaces: StoryFn = () => {
   return (
     <Box>
-      <Box
-        css={{
-          position: 'fixed',
-          width: '100%',
-          height: '100%',
-          backgroundImage:
-            'linear-gradient(135deg, token(colors.$primary.6) 25%, transparent 25%), linear-gradient(225deg, token(colors.$primary.6) 25%, transparent 25%), linear-gradient(45deg, token(colors.$primary.6) 25%, transparent 25%), linear-gradient(315deg, token(colors.$primary.6) 25%, token(colors.$neutral.3) 25%)',
-          backgroundPosition: '13px 0, 13px 0, 0 0, 0 0',
-          backgroundSize: '26px 26px',
-          backgroundRepeat: 'repeat',
-        }}
-      />
-      <Variants
-        gridCss={{
-          gridTemplateColumns: '1fr',
-          padding: '$4',
-        }}
-        component={WithMenu}
-        surface={surfaces}
-      />
+      <ZigZag>
+        <Variants
+          gridCss={{
+            gridTemplateColumns: '1fr',
+            padding: '$4',
+          }}
+          component={WithMenu}
+          surface={surfaces}
+        />
+      </ZigZag>
     </Box>
   )
 }

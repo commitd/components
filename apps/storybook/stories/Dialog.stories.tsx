@@ -355,3 +355,32 @@ export const Container: StoryFn = () => {
     </Stack>
   )
 }
+
+export const Surfaces: StoryFn = () => (
+  <Inline>
+    <Dialog>
+      <DialogTrigger>
+        <Button>Show Glass</Button>
+      </DialogTrigger>
+      <DialogContent overlay="clear" surface="glass" defaultClose={false}>
+        This is a glass dialog
+      </DialogContent>
+    </Dialog>
+    <Dialog>
+      <DialogTrigger>
+        <Button>Show Neutral</Button>
+      </DialogTrigger>
+      <DialogContent overlay="glass" surface="neutral" defaultClose={false}>
+        This is a glass overlay with neutral dialog
+      </DialogContent>
+    </Dialog>
+    <Dialog>
+      <DialogTrigger>
+        <Button>Show solid</Button>
+      </DialogTrigger>
+      <DialogContent overlay="solid" surface="solid" defaultClose={false}>
+        This is a solid overlay dialog
+      </DialogContent>
+    </Dialog>
+  </Inline>
+)

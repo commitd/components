@@ -18,7 +18,7 @@ export const Default: StoryFn = () => (
       <Heading as="h5">Ghost</Heading>
     </Badge>
     <Badge variant="secondary" content={999} max={99}>
-      <Heading as="h5">Brand</Heading>
+      <Heading as="h5">Secondary</Heading>
     </Badge>
     <Badge variant="error" content={9999} max={99}>
       <Heading as="h5">Error</Heading>
@@ -66,11 +66,8 @@ export const StatusBadge: StoryFn = () => (
     <Status variant="primary">
       <Heading as="h5">Primary</Heading>
     </Status>
-    <Status variant="ghost">
-      <Heading as="h5">Ghost</Heading>
-    </Status>
-    <Status variant="brand">
-      <Heading as="h5">Brand</Heading>
+    <Status variant="secondary">
+      <Heading as="h5">Secondary</Heading>
     </Status>
     <Status variant="error">
       <Heading as="h5">Error</Heading>
@@ -95,7 +92,7 @@ export const DottedIcons: Story = () => (
     <Status variant="ghost">
       <Check />
     </Status>
-    <Status variant="brand">
+    <Status variant="secondary">
       <Check />
     </Status>
     <Status variant="error">

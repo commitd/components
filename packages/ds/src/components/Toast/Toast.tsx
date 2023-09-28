@@ -1,9 +1,14 @@
 'use client'
-import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
+import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import * as ToastPrimitive from '@radix-ui/react-toast'
-import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { component, forwardRefExtend } from '../../utils'
+import { ComponentProps } from 'react'
+import {
+  CComponentProps,
+  component,
+  forwardRefDefine,
+  forwardRefExtend,
+} from '../../utils'
 import { IconButton } from '../Button'
 import { Close } from '../Icons'
 
@@ -14,9 +19,9 @@ const TOAST_DESCRIPTION_CLASS = 'c-toast-description'
 const TOAST_CLOSE_CLASS = 'c-toast-close'
 const TOAST_ACTION_CLASS = 'c-toast-action'
 
-const SeverityColor: Record<
+const Severity: Record<
   string,
-  ComponentProps<typeof IconButton>['color']
+  ComponentProps<typeof IconButton>['colorPalette']
 > = {
   default: '$neutral',
   warning: '$warn',
@@ -66,7 +71,6 @@ const StyledDescription = component(
 
 const toast = cva({
   base: {
-    backgroundColor: '$surface.solid',
     border: '1px solid',
     borderRadius: '$default',
     boxShadow: '$3',
@@ -76,6 +80,11 @@ const toast = cva({
     gridTemplateColumns: 'auto max-content',
     columnGap: '$4',
     alignItems: 'center',
+
+    borderColor: 'colorPalette.border',
+    color: 'colorPalette.text.low',
+    backgroundColor: 'colorPalette.outline',
+    colorPalette: '$neutral',
 
     _motionReduce: { transition: 'none' },
     _motionSafe: {
@@ -97,42 +106,9 @@ const toast = cva({
       },
     },
   },
-  variants: {
-    severity: {
-      default: {
-        backgroundColor: '$surface.solid',
-        borderColor: 'transparent',
-        color: '$text',
-      },
-      warning: {
-        backgroundColor: '$warn.bg',
-        borderColor: '$warn.border',
-        color: '$warn.text.low',
-      },
-      info: {
-        backgroundColor: '$info.bg',
-        borderColor: '$info.border',
-        color: '$info.text.low',
-      },
-      success: {
-        backgroundColor: '$success.bg',
-        borderColor: '$success.border',
-        color: '$success.text.low',
-      },
-      error: {
-        backgroundColor: '$error.bg',
-        borderColor: '$error.border',
-        color: '$error.text.low',
-      },
-    },
-  },
-
-  defaultVariants: {
-    severity: 'default',
-  },
 })
 
-const StyledToast = styled(ToastPrimitive.Root, toast)
+const StyledToast = styled(component(ToastPrimitive.Root, 'c-toast'), toast)
 
 const StyledClose = component(
   ToastPrimitive.Close,
@@ -156,22 +132,20 @@ const StyledAction = component(
 export const ToastClose = forwardRefExtend<
   typeof StyledClose,
   {
-    severity?: keyof typeof SeverityColor
+    severity?: keyof typeof Severity
   }
 >(({ severity = 'default', ...props }, forwardedRef) => {
   return (
     <StyledClose {...props} ref={forwardedRef} aria-label="Close">
-      <IconButton color={SeverityColor[severity]} size="small" variant="text">
+      <IconButton colorPalette={Severity[severity]} size="small" variant="text">
         <Close />
       </IconButton>
     </StyledClose>
   )
 })
 
-type ToastVariants = RecipeVariantProps<typeof toast>
-type StyledToastProps = ToastVariants & ComponentProps<typeof StyledToast>
-
-export type ToastProps = StyledToastProps & {
+export type ToastProps = CComponentProps & {
+  severity: keyof typeof Severity
   title: string
   description?: string
   close?: boolean
@@ -192,7 +166,7 @@ export type ToastProps = StyledToastProps & {
  *
  * Doesn't currently nicely handle both close button and action button simultaneously, instead only separately.
  */
-export const Toast = forwardRef<ElementRef<typeof StyledToast>, ToastProps>(
+export const Toast = forwardRefDefine<typeof StyledToast, ToastProps>(
   (
     {
       title,
@@ -208,7 +182,7 @@ export const Toast = forwardRef<ElementRef<typeof StyledToast>, ToastProps>(
   ) => (
     <StyledToast
       className={cx(TOAST_CLASS, className)}
-      severity={severity}
+      colorPalette={Severity[severity]}
       {...props}
       ref={forwardedRef}
     >

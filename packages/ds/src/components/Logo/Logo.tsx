@@ -3,11 +3,7 @@ import { ComponentProps } from 'react'
 import { CComponent, Prettify, component, forwardRefExtend } from '../../utils'
 import { Svg } from '../Svg'
 
-const StyledSvg = component(
-  Svg,
-  'c-logo',
-  css({ color: '#FFBB00', size: '$12' }),
-)
+const StyledSvg = component(Svg, 'c-logo', css({ color: '#FFBB00' }))
 
 type LogoProps = Prettify<
   Partial<Pick<ComponentProps<typeof Svg>, 'color' | 'size'>>
@@ -20,11 +16,12 @@ type LogoProps = Prettify<
 export const Logo = forwardRefExtend<
   typeof StyledSvg,
   ComponentProps<typeof Svg> & LogoProps
->((props, forwardedRef) => (
+>(({ size = '$12', ...props }, forwardedRef) => (
   <StyledSvg
     viewBox="0 0 512 512"
     strokeDasharray={2300}
     ref={forwardedRef}
+    size={size}
     {...props}
   >
     <path

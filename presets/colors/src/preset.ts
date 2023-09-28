@@ -6,6 +6,10 @@ type AllColor = keyof typeof colors
 export type Color = Exclude<AllColor, `${string}Dark` | `${string}A`>
 export type ColorScale = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 
+export type Prefix<P extends string, T extends string> = `${P}${T}`
+
+export type test = Prefix<'$', Color>
+
 export const neutralColors: Color[] = [
   'gray',
   'mauve',
@@ -229,9 +233,6 @@ function createColorTokens(config: Required<Config>) {
         value: { base: colors.blackA.blackA12, _dark: colors.whiteA.whiteA12 },
       },
     },
-    $background: {
-      value: { base: '{colors.$neutral.3}', _dark: '{colors.$neutral.3}' },
-    },
     $surface: {
       neutral: {
         value: { base: '{colors.$neutral.3}', _dark: '{colors.$neutral.1}' },
@@ -239,14 +240,17 @@ function createColorTokens(config: Required<Config>) {
       solid: {
         value: { base: '{colors.$neutral.1}', _dark: '{colors.$neutral.3}' },
       },
+      clear: {
+        value: 'transparent',
+      },
       glass: {
         value: {
           base: '{colors.$neutral.1.a}',
           _dark: '{colors.$neutral.3.a}',
         },
       },
-      transparent: {
-        value: 'transparent',
+      frost: {
+        value: '{colors.$neutral.4.a}',
       },
     },
 

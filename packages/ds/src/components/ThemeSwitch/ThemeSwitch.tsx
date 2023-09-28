@@ -6,18 +6,7 @@ import { DarkMode, LightMode } from '../Icons'
 import { useThemeController } from '../ThemeProvider'
 import { ThemeChoice } from '../ThemeProvider/ThemeController'
 
-type ThemeSwitchProps = ComponentProps<typeof IconButton> & {
-  /**
-   *  Theme based color from the palette form the light theme, defaults to
-   *  @default $brandContrast
-   */
-  lightColor?: string
-  /**
-   *  Theme based color from the palette from the dark theme, defaults to
-   *  @default $brandContrast
-   */
-  darkColor?: string
-}
+type ThemeSwitchProps = ComponentProps<typeof IconButton>
 
 type ControlledThemeSwitchProps = ThemeSwitchProps & {
   className?: string
@@ -45,9 +34,8 @@ export const ControlledThemeSwitch = forwardRefDefine<
       onClick={toggle}
       title={title}
       aria-label="switch-theme"
-      {...props}
-      // css={{ color: isLight ? lightColor : darkColor }}
       variant="solid"
+      {...props}
     >
       {icon}
     </IconButton>

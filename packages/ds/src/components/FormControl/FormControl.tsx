@@ -62,7 +62,7 @@ const formControlText = cva({
         color: '$success',
       },
       disabled: {
-        color: '$neutral.9',
+        color: '$neutral',
       },
     },
   },

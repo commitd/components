@@ -2,6 +2,7 @@
 import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
+import { Surface } from '@committed/utilities'
 import {
   Close,
   Content,
@@ -17,12 +18,12 @@ import { ConditionalWrapper, component, forwardRefDefine } from '../../utils'
 import { IconButton } from '../Button'
 import { Heading } from '../Heading'
 import { Close as Icon } from '../Icons'
-import { overlayAnimationStyles, overlayStyles } from '../Overlay/Overlay'
+import { overlayAnimationStyles } from '../Overlay/Overlay'
 import { paperStyles } from '../Paper/Paper'
 import { Text } from '../Text'
 
 export const StyledOverlay = styled(
-  component(Overlay, overlayStyles, overlayAnimationStyles),
+  component(Overlay, overlayAnimationStyles),
   cva({
     base: {
       position: 'fixed',
@@ -34,30 +35,30 @@ export const StyledOverlay = styled(
   }),
 )
 
-export const StyledContent = component(
-  Content,
-  paperStyles,
-  css({
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    minWidth: 200,
-    maxWidth: 'fit-content',
-    maxHeight: '85vh',
-    padding: 20,
-    marginTop: '-5vh',
+export const StyledContent = styled(
+  component(Content, paperStyles, overlayAnimationStyles),
+  cva({
+    base: {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      minWidth: 200,
+      maxWidth: 'fit-content',
+      maxHeight: '85vh',
+      padding: 20,
+      marginTop: '-5vh',
 
-    boxShadow: '$2',
+      boxShadow: '$2',
 
-    display: 'flex',
-    flexDirection: 'column',
+      display: 'flex',
+      flexDirection: 'column',
 
-    _focus: {
-      outline: 'none',
+      _focus: {
+        outline: 'none',
+      },
     },
   }),
-  overlayAnimationStyles,
 )
 
 // Could be exported for reuse but currently causes typing issue
@@ -89,8 +90,10 @@ type DialogContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> & {
   /** Closable, add a standard close icon. */
   defaultClose?: boolean
   /** Modify the default styling of the content */
+  surface?: Surface
   css?: SystemStyleObject
   /** Modify the default styling of the overlay */
+  overlay?: Surface
   overlayCss?: SystemStyleObject
   /** By default, portals your overlay and content parts into the body, set false to add at dom location. */
   portalled?: boolean
@@ -105,8 +108,10 @@ export const DialogContent = forwardRefDefine<
   (
     {
       children,
+      overlay,
       overlayCss,
       container,
+      surface = 'solid',
       portalled = true,
       defaultClose = true,
       ...props
@@ -118,14 +123,14 @@ export const DialogContent = forwardRefDefine<
       wrapper={(child) => <Portal container={container}>{child}</Portal>}
     >
       <>
-        <StyledOverlay css={overlayCss} />
-        <StyledContent {...props} ref={forwardedRef}>
+        <StyledOverlay className={css({ surface: overlay }, overlayCss)} />
+        <StyledContent surface={surface} {...props} ref={forwardedRef}>
           {defaultClose && (
             <Close asChild>
               <StyledIconButton
                 aria-label="close"
                 variant="text"
-                color="$neutral"
+                colorPalette="$neutral"
               >
                 <Icon title="Close" />
               </StyledIconButton>

@@ -19,7 +19,7 @@ export const paperStyles = css({
 })
 
 export const paperSurfaceStyles = css({
-  backgroundColor: '$surface.solid',
+  surface: 'solid',
 })
 
 export const paperShadowStyles = css({

@@ -3,7 +3,6 @@ import { styled } from '@committed/ss/jsx'
 import { ComponentProps } from 'react'
 import { CComponent, component, forwardRefExtend } from '../../utils'
 
-const DEFAULT_TAG = 'svg' as const
 export const SVG_CLASS = 'c-svg'
 
 const StyledSvg = styled(component('svg', SVG_CLASS), {
@@ -14,7 +13,6 @@ const StyledSvg = styled(component('svg', SVG_CLASS), {
     display: 'inline-block',
     flexShrink: 0,
     userSelect: 'none',
-    size: '24px',
   },
 })
 
@@ -42,8 +40,8 @@ export const Svg = forwardRefExtend<typeof StyledSvg, SvgProps>(
       title,
       path,
       children,
+      size = '$5',
       fill = 'currentColor',
-      color = 'inherit',
       className,
       ...props
     },
@@ -56,7 +54,7 @@ export const Svg = forwardRefExtend<typeof StyledSvg, SvgProps>(
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill={fill}
-      color={color}
+      size={size}
       {...props}
       ref={forwardedRef}
     >

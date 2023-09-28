@@ -1,3 +1,4 @@
+import { Color, Prefix, SemanticColor } from '@committed/colors'
 import { SystemStyleObject } from '@committed/ss/types'
 import { SystemProperties } from '@committed/ss/types/style-props'
 import { ComponentProps, ElementType, ReactNode } from 'react'
@@ -20,6 +21,11 @@ export type CssProps = {
 export type ClassNameProps = {
   className?: string
 }
+
+export type ColorPaletteProps<T extends Color | SemanticColor = SemanticColor> =
+  {
+    colorPalette?: Prefix<'$', T>
+  }
 
 export type CComponentProps = Prettify<ChildProps & CssProps & ClassNameProps>
 export type PolyCComponentProps = Prettify<CComponentProps & AsChildProps>

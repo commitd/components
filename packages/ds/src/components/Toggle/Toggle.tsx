@@ -7,7 +7,6 @@ import { CComponent, component } from '../../utils'
 
 import {
   buttonBaseStyles,
-  buttonColors,
   buttonInteractionStyles,
   buttonVariables,
   destructiveVariants,
@@ -21,23 +20,22 @@ const toggleVariants = {
       ...mainVariants.solid,
       '--hover': 'token(colors.$text.secondary)',
       '--focus': 'token(colors.$text.secondary)',
-      backgroundColor: 'var(--text)',
-      color: 'var(--base)',
-      '--onBackgroundColor': 'var(--base)',
-      '--onColor': 'var(--text)',
+      backgroundColor: 'token(colors.colorPalette.text)',
+      color: 'token(colors.colorPalette.solid)',
+      '--onBackgroundColor': 'token(colors.colorPalette.solid)',
+      '--onColor': 'token(colors.colorPalette.text)',
     },
     outline: {
       ...mainVariants.outline,
       border: 'solid 2px',
-      '--onBackgroundColor': 'var(--base)',
+      '--onBackgroundColor': 'token(colors.colorPalette.solid)',
     },
     text: {
       ...mainVariants.text,
-      '--onBackgroundColor': 'var(--base)',
+      '--onBackgroundColor': 'token(colors.colorPalette.solid)',
     },
   },
   destructive: destructiveVariants,
-  color: buttonColors,
   size: iconSizeVariants,
 }
 
@@ -47,19 +45,19 @@ const toggle = cva({
     ...buttonBaseStyles,
     ...buttonInteractionStyles,
 
-    '--onBackgroundColor': 'var(--base)',
-    '--onColor': 'var(--text)',
+    '--onBackgroundColor': 'token(colors.colorPalette.solid)',
+    '--onColor': 'token(colors.colorPalette.text)',
 
     '&[data-state=on]': {
       backgroundColor: 'var(--onBackgroundColor)',
       color: 'var(--onColor)',
-      '--hover': 'var(--solid)',
-      '--focus': 'var(--solid)',
+      '--hover': 'token(colors.colorPalette.solid)',
+      '--focus': 'token(colors.colorPalette.solid)',
     },
+    colorPalette: '$primary',
   },
   variants: toggleVariants,
   defaultVariants: {
-    color: '$primary',
     variant: 'outline',
     destructive: false,
     size: 'default',

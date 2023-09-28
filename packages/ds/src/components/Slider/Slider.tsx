@@ -13,12 +13,16 @@ import React, {
   ElementRef,
   FC,
   ReactNode,
-  forwardRef,
   useCallback,
   useMemo,
   useRef,
 } from 'react'
-import { ConditionalWrapper, component } from '../../utils'
+import {
+  ColorPaletteProps,
+  ConditionalWrapper,
+  component,
+  forwardRefExtend,
+} from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Label } from '../Label'
 import { Popover, PopoverAnchor } from '../Popover'
@@ -33,9 +37,6 @@ const SLIDER_TRACK_CLASS = 'c-slider-track'
 const SLIDER_RANGE_CLASS = 'c-slider-range'
 const SLIDER_THUMB_CLASS = 'c-slider-thumb'
 
-const TRACK_DEFAULT = 'token(colors.$neutral.4)'
-const TRACK_HOVER = 'token(colors.$neutral.5)'
-
 const SliderTrack = component(
   Track,
   SLIDER_TRACK_CLASS,
@@ -43,7 +44,7 @@ const SliderTrack = component(
     position: 'relative',
     flexGrow: 1,
     borderRadius: '$default',
-    backgroundColor: TRACK_DEFAULT,
+    backgroundColor: '$neutral.4',
     _horizontal: {
       height: '$1',
     },
@@ -52,7 +53,7 @@ const SliderTrack = component(
       height: '100px', //??? test,
     },
     _groupHover: {
-      backgroundColor: TRACK_HOVER,
+      backgroundColor: '$neutral.5',
     },
   }),
 )
@@ -114,7 +115,7 @@ const StyledThumb = component(
     },
 
     _disabled: {
-      backgroundColor: TRACK_HOVER,
+      backgroundColor: '$neutral.5',
     },
   }),
 )
@@ -122,10 +123,12 @@ StyledThumb.displayName = 'StyledThumb'
 
 const slider = cva({
   base: {
-    '--range-default': 'token(colors.$neutral.9)',
-    '--range-hover': 'token(colors.$neutral.10)',
+    '--range-default': 'token(colors.colorPalette.9)',
+    '--range-hover': 'token(colors.colorPalette.10)',
+    '--thumb-background': 'token(colors.colorPalette.3.a)',
     '--thumb': 'token(colors.$neutral.1)',
-    '--thumb-background': 'token(colors.$neutral.3.a)',
+
+    colorPalette: '$neutral',
 
     position: 'relative',
     display: 'flex',
@@ -139,23 +142,6 @@ const slider = cva({
     _vertical: {
       flexDirection: 'column',
       width: '15px',
-    },
-  } as SystemStyleObject,
-
-  variants: {
-    color: {
-      primary: {
-        '--range-default': 'token(colors.$primary.9)',
-        '--range-hover': 'token(colors.$primary.10)',
-        // '--thumb': 'token(colors.$primary.9)',
-        '--thumb-background': 'token(colors.$primary.3.a)',
-      },
-      secondary: {
-        '--range-default': 'token(colors.$secondary.9)',
-        '--range-hover': 'token(colors.$secondary.10)',
-        // '--thumb': 'token(colors.$secondary.9)',
-        '--thumb-background': 'token(colors.$secondary.3.a)',
-      },
     },
   },
 })
@@ -173,15 +159,15 @@ type SliderThumbProps = ComponentProps<typeof Thumb> & {
 const StyledPopoverContent = styled(Content, tooltipContentCva)
 const StyledPopoverArrow = component(Arrow, tooltipArrowStyles)
 
-type ThumbPopoverContentProps = ComponentProps<typeof Content> & {
+type ThumbPopoverContentProps = {
   /** By default, portals your content parts into the body, set false to add at dom location. */
   portalled?: boolean
   /** Specify a container element to portal the content into. */
   container?: ComponentProps<typeof Portal>['container']
 }
 
-const ThumbPopoverContent = forwardRef<
-  ElementRef<typeof StyledPopoverContent>,
+const ThumbPopoverContent = forwardRefExtend<
+  typeof StyledPopoverContent,
   ThumbPopoverContentProps
 >(({ portalled = true, container, children, ...props }, forwardedRef) => {
   const wrapper = useCallback(
@@ -219,7 +205,7 @@ export const SliderThumb: FC<SliderThumbProps> = ({
 }
 
 type SliderVariants = RecipeVariantProps<typeof slider>
-type SliderProps = ComponentProps<typeof Root> &
+type SliderProps = ColorPaletteProps &
   SliderVariants &
   UseFormControlProps & {
     /** Add a label to the Slider */
@@ -242,7 +228,7 @@ type SliderRef = ElementRef<typeof StyledSlider>
  *
  * Based on [Radix Slider](https://radix-ui.com/primitives/docs/components/slider).
  */
-export const Slider = forwardRef<SliderRef, SliderProps>(
+export const Slider = forwardRefExtend<typeof StyledSlider, SliderProps>(
   (
     {
       min = 0,

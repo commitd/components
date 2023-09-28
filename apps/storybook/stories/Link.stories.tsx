@@ -1,5 +1,5 @@
 import { Box, Column, Link, Text } from '@committed/ds'
-import { Meta, Story } from '@storybook/react'
+import { Meta, Story, StoryFn } from '@storybook/react'
 import {
   MemoryRouter,
   Route,
@@ -12,14 +12,14 @@ export default {
   component: Link,
 } as Meta
 
-export const Default: Story = () => {
+export const Default: StoryFn = () => {
   return (
     <Column>
       <Box>
         <Link href="#">Link</Link>
       </Box>
-      <Box css={{ color: '$red500' }}>
-        <Link href="#">color inherits"</Link>
+      <Box css={{ color: '$success' }}>
+        <Link href="#">color inherits</Link>
       </Box>
       <Box>
         <Text font="monospace">
@@ -37,7 +37,7 @@ export const Default: Story = () => {
 /**
  * For when a link need to be applied to a separately styled element
  */
-export const Clear: Story = () => (
+export const Clear: StoryFn = () => (
   <Text>
     <Link variant="clear" href="#">
       Link
@@ -48,7 +48,7 @@ export const Clear: Story = () => (
 /**
  * For when a link should be hidden but shown on hover
  */
-export const Hovered: Story = () => (
+export const Hovered: StoryFn = () => (
   <Text>
     <Link variant="hovered" href="#">
       Link
@@ -59,7 +59,7 @@ export const Hovered: Story = () => (
 /**
  * The styled variant is intended for use in articles such as blog posts.
  */
-export const Styled: Story = () => (
+export const Styled: StoryFn = () => (
   <Text>
     This is{' '}
     <Link variant="styled" href="#link">
@@ -102,7 +102,7 @@ export const WithReactRouter: Story = () => {
 /**
  * Links support substituting the rendered element for one supplied to the `asChild` pattern prop.
  */
-export const As: Story = () => (
+export const As: StoryFn = () => (
   <ol>
     <Link asChild href="test.com" css={{ display: 'block' }}>
       <li>Test</li>

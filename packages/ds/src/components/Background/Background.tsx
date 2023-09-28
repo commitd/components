@@ -1,6 +1,6 @@
 import { styled } from '@committed/ss/jsx'
+import { SurfaceVariants } from '@committed/utilities'
 import React from 'react'
-import { type SurfaceVariants } from '../../recipes'
 import {
   BackgroundProps,
   CComponent,
@@ -17,18 +17,16 @@ const Base = styled(component('div', 'c-background'), {})
  * Background css properties and shorthands are exposed as props.
  *
  */
-export const Background: CComponent<
-  'div',
-  BackgroundProps & Partial<SurfaceVariants>
-> = forwardRefExtend(({ children, ...props }, forwardedRef) => {
-  return (
-    <Base
-      asChild={React.Children.count(children) == 1}
-      {...props}
-      ref={forwardedRef}
-    >
-      {children}
-    </Base>
-  )
-})
+export const Background: CComponent<'div', BackgroundProps & SurfaceVariants> =
+  forwardRefExtend(({ children, ...props }, forwardedRef) => {
+    return (
+      <Base
+        asChild={React.Children.count(children) == 1}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </Base>
+    )
+  })
 Background.displayName = 'Background'

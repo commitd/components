@@ -12,7 +12,7 @@ import {
   Trigger,
   Viewport,
 } from '@radix-ui/react-navigation-menu'
-import { ComponentProps, ElementRef, FC, forwardRef } from 'react'
+import { ComponentProps, FC } from 'react'
 import {
   PickProps,
   Prettify,
@@ -26,11 +26,15 @@ import { paperStyles } from '../Paper/Paper'
 
 const NAVIGATION_CLASS = 'c-navigation'
 const NAVIGATION_TRIGGER_CLASS = 'c-navigation-trigger'
+const NAVIGATION_ARROW_CLASS = 'c-navigation-arrpw'
 const NAVIGATION_VIEWPORT_CLASS = 'c-navigation-viewport'
 const NAVIGATION_LINK_CLASS = 'c-navigation-link'
 const NAVIGATION_LIST_CLASS = 'c-navigation-list'
 const NAVIGATION_ITEM_CLASS = 'c-navigation-item'
 const NAVIGATION_CONTENT_CLASS = 'c-navigation-content'
+const NAVIGATION_CONTENT_LIST_CLASS = 'c-navigation-content-list'
+const NAVIGATION_CONTENT_LIST_ITEM_CLASS = 'c-navigation-content-list-item'
+const NAVIGATION_CONTENT_LIST_LINK_CLASS = 'c-navigation-content-list-link'
 const NAVIGATION_VIEWPORT_POSITION_CLASS = 'c-navigation-viewport-position'
 const NAVIGATION_INDICATOR_CLASS = 'c-navigation-indicator'
 
@@ -173,6 +177,7 @@ const StyledContent = component(
 
 const StyledIndicator = component(
   Indicator,
+  NAVIGATION_INDICATOR_CLASS,
   css({
     display: 'flex',
     alignItems: 'flex-end',
@@ -193,6 +198,7 @@ const StyledIndicator = component(
 
 const StyledArrow = component(
   'div',
+  NAVIGATION_ARROW_CLASS,
   css({
     position: 'relative',
     top: '70%',
@@ -207,12 +213,8 @@ const StyledArrow = component(
 const StyledIndicatorWithArrow = forwardRefExtend<
   typeof StyledIndicator,
   { className?: string }
->(({ className, ...props }, forwardedRef) => (
-  <StyledIndicator
-    className={cx(NAVIGATION_INDICATOR_CLASS, className)}
-    {...props}
-    ref={forwardedRef}
-  >
+>((props, forwardedRef) => (
+  <StyledIndicator {...props} ref={forwardedRef}>
     <StyledArrow />
   </StyledIndicator>
 ))
@@ -241,7 +243,7 @@ const StyledViewport = component(
 )
 
 const ContentList = styled(
-  'ul',
+  component('ul', NAVIGATION_CONTENT_LIST_CLASS),
   cva({
     base: {
       display: 'grid',
@@ -313,20 +315,19 @@ const StyledLink = component(
     display: 'block',
     textDecoration: 'none',
     borderRadius: '$default',
-    _hover: { backgroundColor: '$primary.7' },
+    _hover: { backgroundColor: '$primary.3' },
   } as SystemStyleObject),
 )
 
-const ContentListItem = forwardRef<
-  ElementRef<typeof StyledLink>,
-  ComponentProps<typeof StyledLink>
->(({ children, ...props }, forwardedRef) => (
-  <ListItem>
-    <StyledLink {...props} ref={forwardedRef}>
-      {children}
-    </StyledLink>
-  </ListItem>
-))
+const ContentListItem = forwardRefExtend<typeof StyledLink>(
+  ({ children, ...props }, forwardedRef) => (
+    <ListItem>
+      <StyledLink {...props} ref={forwardedRef}>
+        {children}
+      </StyledLink>
+    </ListItem>
+  ),
+)
 
 export type ContentListTextLinkProps = {
   title: string

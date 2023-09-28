@@ -1,8 +1,4 @@
-import {
-  neutralColors,
-  primaryColors,
-  semanticColors,
-} from '@committed/colors/src/preset'
+import { semanticColors } from '@committed/colors/src/preset'
 import { Inline, Stack, Svg, Toggle } from '@committed/ds'
 import { useBoolean } from '@committed/hooks'
 import { mdiFormatItalic } from '@mdi/js'
@@ -145,7 +141,7 @@ export const SemanticColors: StoryObj<{
           pressed={pressed}
           component={Toggle}
           variant="solid"
-          color={colors}
+          colorPalette={colors}
           children={<Italic />}
           onPressedChange={toggle}
         />
@@ -153,7 +149,7 @@ export const SemanticColors: StoryObj<{
           pressed={pressed}
           component={Toggle}
           variant="outline"
-          color={colors}
+          colorPalette={colors}
           children={<Italic />}
           onPressedChange={toggle}
         />
@@ -161,7 +157,7 @@ export const SemanticColors: StoryObj<{
           pressed={pressed}
           component={Toggle}
           variant={'text'}
-          color={colors}
+          colorPalette={colors}
           children={<Italic />}
           onPressedChange={toggle}
         />
@@ -170,24 +166,6 @@ export const SemanticColors: StoryObj<{
   },
   args: {
     colors: semanticColors.map((c) => `$${c}`) as ComponentProps<
-      typeof Toggle
-    >['color'][],
-  },
-}
-
-export const PrimaryColors = {
-  ...SemanticColors,
-  args: {
-    colors: primaryColors.map((c) => `$${c}`) as ComponentProps<
-      typeof Toggle
-    >['color'][],
-  },
-}
-
-export const NeutralColors = {
-  ...SemanticColors,
-  args: {
-    colors: neutralColors.map((c) => `$${c}`) as ComponentProps<
       typeof Toggle
     >['color'][],
   },

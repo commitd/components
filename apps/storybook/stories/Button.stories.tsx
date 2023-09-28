@@ -1,8 +1,4 @@
-import {
-  neutralColors,
-  primaryColors,
-  semanticColors,
-} from '@committed/colors/src/preset'
+import { semanticColors } from '@committed/colors/src/preset'
 import { Button, Inline, Stack } from '@committed/ds'
 import { css } from '@committed/ss/css'
 import { Meta, StoryObj } from '@storybook/react'
@@ -210,45 +206,39 @@ export const SemanticColors: StoryObj<{
   render: ({ colors }) => (
     <Stack>
       <Variants
+        gridCss={css.raw({
+          gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+          padding: '$4',
+        })}
         component={Button}
         variant="solid"
-        color={colors}
+        colorPalette={colors}
         children="Button"
       />
       <Variants
+        gridCss={{
+          gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+          padding: '$4',
+        }}
         component={Button}
         variant="outline"
-        color={colors}
+        colorPalette={colors}
         children="Button"
       />
       <Variants
+        gridCss={{
+          gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+          padding: '$4',
+        }}
         component={Button}
         variant={'text'}
-        color={colors}
+        colorPalette={colors}
         children="Button"
       />
     </Stack>
   ),
   args: {
     colors: semanticColors.map((c) => `$${c}`) as ComponentProps<
-      typeof Button
-    >['color'][],
-  },
-}
-
-export const PrimaryColors = {
-  ...SemanticColors,
-  args: {
-    colors: primaryColors.map((c) => `$${c}`) as ComponentProps<
-      typeof Button
-    >['color'][],
-  },
-}
-
-export const NeutralColors = {
-  ...SemanticColors,
-  args: {
-    colors: neutralColors.map((c) => `$${c}`) as ComponentProps<
       typeof Button
     >['color'][],
   },

@@ -1,11 +1,13 @@
 import { css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
+import { SurfaceVariants } from '@committed/utilities'
 import { ComponentProps, ElementRef, FC, ForwardedRef, forwardRef } from 'react'
 import { component } from '../../utils'
 import {
   IconButton,
   buttonBaseStyles,
   buttonInteractionStyles,
+  buttonVariables,
 } from '../Button/Button'
 import { paperStyles } from '../Paper/Paper'
 import { Svg } from '../Svg'
@@ -45,13 +47,14 @@ const itemCva = cva({
     display: 'flex',
     px: '$4',
     py: '$2',
+    colorPalette: '$neutral',
     borderBottom: '1px solid token(colors.$neutral.4)',
   },
 
   variants: {
     selected: {
       true: {
-        backgroundColor: 'var(--selectionColor)',
+        backgroundColor: 'var(--selectionColor) !important',
       },
     },
   },
@@ -63,25 +66,9 @@ export const StyledInteractiveListItem = styled(
   component(
     'button',
     paperStyles,
-    css({
-      //colors
-      '--base': 'token(colors.$neutral.9)',
-      '--solid': 'token(colors.$neutral.10)',
-      '--bold': 'token(colors.$neutral.11)',
-      '--contrast': 'token(colors.$neutral.11)',
-      '--bg': 'token(colors.$neutral.2)',
-      '--subtle': 'token(colors.$neutral.3)',
-      '--normal': 'token(colors.$neutral.4)',
-      '--text': 'token(colors.$neutral.text)',
-
-      // states
-      '--active': 'var(--bold)',
-      '--focus': 'token(colors.$surface.solid)',
-      '--hover': 'var(--normal)',
+    css(buttonVariables, buttonBaseStyles, buttonInteractionStyles, {
+      width: '100%',
     }),
-    css(buttonBaseStyles),
-    css(buttonInteractionStyles),
-    css({ width: '100%' }),
   ),
   itemCva,
 )
@@ -102,17 +89,19 @@ type ListItemProps = {
   disabled?: boolean
   /* An item can also be highlighted as selected */
   selected?: boolean
-} & ConditionalListItemProps
+} & ConditionalListItemProps &
+  SurfaceVariants
 
 export const ListItem = forwardRef<
   ElementRef<typeof StyledInteractiveListItem | typeof StyledListItem>,
   ListItemProps
->(({ interactive, ...props }, forwardedRef) => {
+>(({ interactive, surface = 'solid', ...props }, forwardedRef) => {
   if (interactive) {
     const buttonProps = props as Omit<InteractiveProps, 'interactive'>
     return (
       <StyledInteractiveListItem
         {...buttonProps}
+        surface={surface}
         ref={forwardedRef as ForwardedRef<HTMLButtonElement>}
       />
     )
@@ -121,6 +110,7 @@ export const ListItem = forwardRef<
     return (
       <StyledListItem
         {...divProps}
+        surface={surface}
         ref={forwardedRef as ForwardedRef<HTMLDivElement>}
       />
     )

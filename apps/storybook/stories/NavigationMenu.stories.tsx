@@ -153,7 +153,7 @@ export const Variants: StoryFn = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger caret variant="text" color="$info">
+            <NavigationMenuTrigger caret variant="text" colorPalette="$info">
               Text+Color
             </NavigationMenuTrigger>
             <NavigationMenuContent>

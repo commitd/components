@@ -63,7 +63,13 @@ export const Responsive: Story = {
     <Container
       maxWidth="responsive"
       css={{
-        backgroundColor: '$secondary.4',
+        backgroundColor: {
+          xl: '$warning.5',
+          lg: '$success.5',
+          md: '$info.5',
+          sm: '$error.5',
+          base: '$primary.5',
+        },
         py: '$3',
         textAlign: 'center',
       }}

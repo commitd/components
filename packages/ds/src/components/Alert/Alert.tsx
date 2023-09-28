@@ -18,36 +18,29 @@ const alert = cva({
     display: 'flex',
     flexDirection: 'column',
     gap: '$2',
-
     p: '$4',
+
+    borderColor: 'colorPalette.border',
+    color: 'colorPalette.text.low',
+    backgroundColor: 'colorPalette.outline',
   },
 
   variants: {
     severity: {
       ghost: {
-        backgroundColor: '$neutral.outline',
-        borderColor: '$neutral.border',
-        color: '$neutral.text.low',
+        colorPalette: '$neutral',
       },
       warn: {
-        backgroundColor: '$warn.outline',
-        borderColor: '$warn.border',
-        color: '$warn.text.low',
+        colorPalette: '$warn',
       },
       info: {
-        backgroundColor: '$info.outline',
-        borderColor: '$info.border',
-        color: '$info.text.low',
+        colorPalette: '$info',
       },
       success: {
-        backgroundColor: '$success.outline',
-        borderColor: '$success.border',
-        color: '$success.text.low',
+        colorPalette: '$success',
       },
       error: {
-        backgroundColor: '$error.outline',
-        borderColor: '$error.border',
-        color: '$error.text.low',
+        colorPalette: '$error',
       },
     },
   },

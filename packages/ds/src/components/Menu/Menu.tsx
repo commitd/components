@@ -2,6 +2,7 @@
 import { css } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
+import { SurfaceVariants } from '@committed/utilities'
 import {
   CheckboxItem,
   Content,
@@ -65,50 +66,76 @@ const groupStyles = css({
  *
  * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/dropdown-menu).
  */
-export const Menu = Root
+export const Menu: CComponent<typeof Root> = component(Root, MENU_CLASS)
 
 export const MenuItem = component(
   styled(Item, itemCva),
   MENU_ITEM_CLASS,
   baseItemStyles,
 )
-export const MenuItemShortcut = component('span', itemShortcutStyles)
-export const MenuSeparator = styled(Separator, separatorCva)
-export const MenuLabel = component(Label, labelStyles)
-export const MenuItemGroup = component(Group, groupStyles)
-export const MenuRadioGroup = RadioGroup
-
-const StyledContent = component(Content, paperStyles, contentStyles)
-const StyledItemIndicator = component(ItemIndicator, itemIndicatorStyles)
-const StyledCheckboxItem: CComponent<typeof CheckboxItem> = component(
-  styled(CheckboxItem, itemCva),
-  checkboxItemStyles,
+export const MenuItemShortcut = component(
+  'span',
+  'c-menu-item-shortcut',
+  itemShortcutStyles,
 )
-const StyledRadioItem = component(
-  styled(RadioItem, itemCva),
-  checkboxItemStyles,
+export const MenuSeparator = styled(
+  component(Separator, 'c-menu-separator'),
+  separatorCva,
+)
+export const MenuLabel = component(Label, 'c-menu-label', labelStyles)
+export const MenuItemGroup = component(Group, 'c-menu-group', groupStyles)
+export const MenuRadioGroup = component(RadioGroup, 'c-menu-radio-group')
+
+const StyledContent = styled(
+  component(Content, 'c-menu-content', paperStyles, contentStyles),
 )
 
-type MenuContentProps = ComponentProps<typeof Content> & {
-  /** By default, portals your content parts into the body, set false to add at dom location. */
-  portalled?: boolean
-  /** Specify a container element to portal the content into. */
-  container?: ComponentProps<typeof Portal>['container']
-}
+const StyledItemIndicator = component(
+  ItemIndicator,
+  'c-menu-indicator',
+  itemIndicatorStyles,
+)
+const StyledCheckboxItem: CComponent<typeof CheckboxItem> = styled(
+  component(CheckboxItem, 'c-menu-checkbox-item', checkboxItemStyles),
+  itemCva,
+)
+
+const StyledRadioItem = styled(
+  component(RadioItem, 'c-menu-radio-item', checkboxItemStyles),
+  itemCva,
+)
+
+type MenuContentProps = ComponentProps<typeof Content> &
+  SurfaceVariants & {
+    /** By default, portals your content parts into the body, set false to add at dom location. */
+    portalled?: boolean
+    /** Specify a container element to portal the content into. */
+    container?: ComponentProps<typeof Portal>['container']
+  }
 
 export const MenuContent = forwardRef<
   ElementRef<typeof StyledContent>,
   MenuContentProps
->(({ portalled = true, container, children, ...props }, forwardedRef) => (
-  <ConditionalWrapper
-    condition={portalled}
-    wrapper={(child) => <Portal container={container}>{child}</Portal>}
-  >
-    <StyledContent alignOffset={8} {...props} ref={forwardedRef}>
-      {children}
-    </StyledContent>
-  </ConditionalWrapper>
-))
+>(
+  (
+    { portalled = true, surface = 'solid', container, children, ...props },
+    forwardedRef,
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <StyledContent
+        surface={surface}
+        alignOffset={8}
+        {...props}
+        ref={forwardedRef}
+      >
+        {children}
+      </StyledContent>
+    </ConditionalWrapper>
+  ),
+)
 MenuContent.displayName = 'MenuContent'
 
 type MenuTriggerProps = Omit<ComponentProps<typeof Trigger>, 'asChild'>

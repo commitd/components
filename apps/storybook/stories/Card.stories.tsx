@@ -15,6 +15,7 @@ import { css } from '@committed/ss/css'
 import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 import { action } from '@storybook/addon-actions'
 import { Meta, StoryObj } from '@storybook/react'
+import { zigzag } from './utils/ZigZag'
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
@@ -122,9 +123,9 @@ export const Ghost: Story = {
  *
  * This adds the padding and column layout. Elements, like a header image, that go to the edge of the card should be outside this.
  */
-export const Body: Story = {
+export const Content: Story = {
   render: () => (
-    <Card as="button">
+    <Card>
       <CardContent>
         <Text>Lorem Ipsum is simply dummy text...</Text>
       </CardContent>
@@ -155,7 +156,9 @@ export const Headers: Story = {
       </Card>
       <Card>
         <CardLeadIn>Lead in</CardLeadIn>
-        <CardHeading as="h3">Header</CardHeading>
+        <CardHeading asChild>
+          <h2>Heading</h2>
+        </CardHeading>
         <CardContent>
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardContent>
@@ -184,7 +187,7 @@ export const Actions: Story = {
           <Text>Lorem Ipsum is simply dummy text...</Text>
         </CardContent>
         <CardActions>
-          <Button variant="solid" color="$primary">
+          <Button variant="solid" colorPalette="$primary">
             Action
           </Button>
         </CardActions>
@@ -210,6 +213,87 @@ export const Actions: Story = {
         </CardActions>
       </Card>
       <Card>
+        <CardLeadIn>
+          Lead in
+          <IconButton
+            path={mdiPencil}
+            variant="text"
+            onClick={action('action')}
+          />
+        </CardLeadIn>
+        <CardHeading asChild>
+          <h3>Header</h3>
+        </CardHeading>
+        <CardContent>
+          <Text>Lorem Ipsum is simply dummy text...</Text>
+        </CardContent>
+        <CardActions justifyContent="flex-start">
+          <IconButton
+            path={mdiThumbUp}
+            variant="text"
+            className={css({ color: 'info' })}
+            onClick={action('Thumb Up')}
+          />
+          <IconButton
+            path={mdiOpenInNew}
+            variant="text"
+            className={css({ color: '$text.secondary' })}
+            onClick={action('Open')}
+          />
+          <IconButton
+            path={mdiComment}
+            variant="text"
+            className={css({ color: '$text.secondary' })}
+            onClick={action('Comment')}
+          />
+        </CardActions>
+      </Card>
+    </Inline>
+  ),
+}
+
+/**
+ */
+export const Surface: Story = {
+  render: () => (
+    <Inline className={zigzag} wrap>
+      <Card surface="clear">
+        <CardHeading>
+          Heading
+          <IconButton variant="text" onClick={action('action')}>
+            <Svg path={mdiPencil} />
+          </IconButton>
+        </CardHeading>
+        <CardContent>
+          <Text>Lorem Ipsum is simply dummy text...</Text>
+        </CardContent>
+        <CardActions>
+          <Button variant="solid" colorPalette="$primary">
+            Action
+          </Button>
+        </CardActions>
+      </Card>
+      <Card surface="frost">
+        <CardHeading>
+          Heading
+          <IconButton variant="text" onClick={action('action')}>
+            <Svg path={mdiPencil} />
+          </IconButton>
+        </CardHeading>
+        <CardSubheading>Subheading</CardSubheading>
+        <CardContent>
+          <Text>Lorem Ipsum is simply dummy text...</Text>
+        </CardContent>
+        <CardActions>
+          <Button variant="text" color="neutral" onClick={action('cancel')}>
+            Cancel
+          </Button>
+          <Button variant="solid" color="primary" onClick={action('action')}>
+            Action
+          </Button>
+        </CardActions>
+      </Card>
+      <Card surface="glass">
         <CardLeadIn>
           Lead in
           <IconButton

@@ -2,7 +2,7 @@
 
 import { RecipeVariantProps, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
-import { Root, SeparatorProps } from '@radix-ui/react-separator'
+import { Root } from '@radix-ui/react-separator'
 import { PolyCComponent, component } from '../../utils'
 
 const dividerRoot = cva({
@@ -69,7 +69,6 @@ const dividerRoot = cva({
 const Styled = styled(Root, dividerRoot)
 
 type Variants = RecipeVariantProps<typeof dividerRoot>
-type Props = Variants & SeparatorProps
 
 /**
  * Use a divider to separate different groups of content.
@@ -79,7 +78,7 @@ type Props = Variants & SeparatorProps
  *
  * Based on [Radix Separator](https://radix-ui.com/primitives/docs/components/separator).
  */
-export const Divider: PolyCComponent<typeof Styled, Props> = component(
+export const Divider: PolyCComponent<typeof Root, Variants> = component(
   Styled,
   'c-divider',
 )

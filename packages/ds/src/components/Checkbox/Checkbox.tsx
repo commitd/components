@@ -10,13 +10,14 @@ import { Label, LabelOptional } from '../Label'
 export type { CheckedState } from '@radix-ui/react-checkbox'
 
 export const checkStylesBase = {
-  '--main': 'token(colors.$primary)',
-  '--contrast': 'token(colors.$primary.text)',
-  '--default': 'token(colors.$primary)',
-  '--hover': 'token(colors.$primary.2)',
+  colorPalette: '$primary',
+  '--main': 'token(colors.colorPalette.9)',
+  '--contrast': 'token(colors.colorPalette.text)',
+  '--default': 'token(colors.colorPalette.9)',
+  '--hover': 'token(colors.colorPalette.2)',
 
   '--inactive': 'token(colors.$neutral.7)',
-  '--active': 'token(colors.$primary)',
+  '--active': 'token(colors.colorPalette.9)',
 
   appearance: 'none',
   pointerEvents: 'auto',
@@ -31,7 +32,6 @@ export const checkStylesBase = {
   outline: 'none',
 
   borderRadius: '$default',
-  backgroundColor: '$background',
   fontVariantNumeric: 'tabular-nums',
   boxShadow: 'inset 0 0 0 1px var(--inactive)',
 

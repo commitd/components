@@ -2,6 +2,7 @@
 import { RecipeVariantProps, css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
+import { SurfaceVariants } from '@committed/utilities'
 import { Close, Content, Portal, Root } from '@radix-ui/react-dialog'
 import { ComponentProps } from 'react'
 import { ConditionalWrapper, component, forwardRefDefine } from '../../utils'
@@ -83,6 +84,7 @@ const StyledContent = styled(component(Content, paperStyles), drawerContent)
 type DrawerContentVariants = RecipeVariantProps<typeof drawerContent>
 
 type DrawerContentProps = Omit<ComponentProps<typeof Content>, 'asChild'> &
+  SurfaceVariants &
   DrawerContentVariants & {
     /** Closable, add a standard close icon. */
     defaultClose?: boolean
@@ -104,6 +106,7 @@ export const DrawerContent = forwardRefDefine<
       children,
       overlayCss,
       container,
+      surface = 'solid',
       portalled = true,
       ...props
     },
@@ -115,12 +118,12 @@ export const DrawerContent = forwardRefDefine<
     >
       <>
         <StyledOverlay css={overlayCss} />
-        <StyledContent {...props} ref={forwardedRef}>
+        <StyledContent surface={surface} {...props} ref={forwardedRef}>
           {children}
           {defaultClose && (
             <Close asChild>
               <StyledIconButton
-                color="$neutral"
+                colorPalette="$neutral"
                 aria-label="close"
                 variant="text"
               >

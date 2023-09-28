@@ -1,6 +1,8 @@
 import { Background } from '@committed/ds'
-import { styled } from '@committed/ss/jsx'
+import { surfaces } from '@committed/utilities'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { Variants } from './utils'
+import { ZigZag } from './utils/ZigZag'
 
 const meta: Meta<typeof Background> = {
   title: 'Components/Background',
@@ -62,22 +64,21 @@ export const SurfaceGlass: StoryFn = () => (
   />
 )
 
-export const SurfaceTransparent: StoryFn = () => (
-  <Background
-    surface="transparent"
-    css={{
-      width: '100%',
-      height: '200px',
-    }}
-  />
-)
-
-export const SurfaceCss: StoryFn = () => (
-  <styled.div
-    css={{
-      surface: 'solid',
-      width: '100%',
-      height: '200px',
-    }}
-  />
-)
+export const Surfaces: StoryFn = () => {
+  return (
+    <ZigZag>
+      <Variants
+        gridCss={{
+          gridTemplateColumns: '1fr',
+          padding: '$4',
+          width: '100%',
+        }}
+        css={{
+          height: '100px',
+        }}
+        component={Background}
+        surface={surfaces}
+      />
+    </ZigZag>
+  )
+}

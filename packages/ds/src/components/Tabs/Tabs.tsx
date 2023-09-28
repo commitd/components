@@ -1,15 +1,14 @@
 'use client'
-import { css, cva } from '@committed/ss/css'
+import { RecipeVariantProps, css, cva } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
-import { component } from '../../utils'
+import { CComponent, component } from '../../utils'
 import {
   buttonBaseStyles,
   buttonVariables,
   mainVariants as buttonVariants,
 } from '../Button/Button'
-
 const TABS_CLASS = 'c-tabs'
 const TABS_TAB_CLASS = 'c-tabs-tab'
 const TABS_LIST_CLASS = 'c-tabs-list'
@@ -22,7 +21,7 @@ export const Tab = component(
   css({
     cursor: 'pointer',
     minWidth: '160px',
-    borderRadius: '0',
+    borderRadius: '0 !important',
     border: 'none',
 
     '&[data-state="active"]': {
@@ -218,4 +217,7 @@ const tabs = cva({
  *
  * Support positioning, `top`, `bottom`, `left` and `right`, and out standard variants, `primary`, `secondary`, `tertiary` and `brand`.
  */
-export const Tabs = styled(component(Root, TABS_CLASS), tabs)
+export const Tabs: CComponent<
+  typeof Root,
+  RecipeVariantProps<typeof tabs>
+> = styled(component(Root, TABS_CLASS), tabs)

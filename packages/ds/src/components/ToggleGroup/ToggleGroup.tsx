@@ -11,7 +11,6 @@ import { Item, Root } from '@radix-ui/react-toggle-group'
 import { CComponent, component } from '../../utils'
 import {
   buttonBaseStyles,
-  buttonColors,
   buttonInteractionStyles,
   buttonVariables,
   mainVariants,
@@ -21,8 +20,8 @@ const TOGGLE_GROUP_CLASS = 'c-toggle-group'
 const TOGGLE_ITEM_CLASS = 'c-toggle-item'
 
 const defaultVariables = {
-  '--onBackgroundColor': 'var(--base)',
-  '--onColor': 'var(--text)',
+  '--onBackgroundColor': 'token(colors.colorPalette.solid)',
+  '--onColor': 'token(colors.colorPalette.text)',
 }
 
 const StyledItem = component(
@@ -35,6 +34,7 @@ const StyledItem = component(
     defaultVariables,
     {
       borderRadius: '0',
+      border: 'none',
     },
   ),
 )
@@ -48,6 +48,8 @@ const base = {
   borderRadius: '$default',
   width: 'fit-content',
   boxSizing: 'border-box',
+
+  colorPalette: '$primary',
 
   _notVertical: {
     display: 'inline-flex',
@@ -76,20 +78,19 @@ const base = {
   [`& .c-toggle-item[data-state=on]`]: {
     backgroundColor: 'var(--onBackgroundColor)',
     color: 'var(--onColor)',
-    '--hover': 'var(--solid)',
-    '--focus': 'var(--solid)',
+    '--hover': 'token(colors.colorPalette.solid)',
+    '--focus': 'token(colors.colorPalette.solid)',
   },
 }
 
 const variants = {
-  color: buttonColors,
   variant: {
     solid: {
       [`& .c-toggle-item`]: {
         ...mainVariants.solid,
         backgroundColor: 'var(--text)',
-        color: 'var(--base)',
-        '--onBackgroundColor': 'var(--base)',
+        color: 'token(colors.colorPalette.solid)',
+        '--onBackgroundColor': 'token(colors.colorPalette.solid)',
         '--onColor': 'var(--text)',
       },
     },
@@ -97,7 +98,7 @@ const variants = {
       [`& .c-toggle-item`]: {
         ...mainVariants.outline,
         borderColor: 'var(--text)',
-        '--onBackgroundColor': 'var(--base)',
+        '--onBackgroundColor': 'token(colors.colorPalette.solid)',
       },
       _notVertical: {
         [`& .c-toggle-item`]: {
@@ -127,7 +128,7 @@ const variants = {
     text: {
       [`& .c-toggle-item`]: {
         ...mainVariants.text,
-        '--onBackgroundColor': 'var(--base)',
+        '--onBackgroundColor': 'token(colors.colorPalette.solid)',
       },
     },
   },
@@ -166,7 +167,6 @@ const toggleGroup: RecipeRuntimeFn<typeof variants> = cva({
   variants,
   defaultVariants: {
     variant: 'outline',
-    color: '$primary',
     size: 'default',
   },
 })
