@@ -21,11 +21,13 @@ import {
 } from '@committed/ds'
 import { css } from '@committed/ss/css'
 import { action } from '@storybook/addon-actions'
-import { Meta, StoryFn } from '@storybook/react'
+import { expect } from '@storybook/jest'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { screen, userEvent, waitFor, within } from '@storybook/testing-library'
 import React, { useCallback, useEffect } from 'react'
 import { withFormObject } from './utils'
 
-const meta: Meta<typeof Toast> = {
+export default {
   title: 'Components/Toast',
   component: Toast,
   subcomponents: {
@@ -42,45 +44,56 @@ const meta: Meta<typeof Toast> = {
       description: 'Set the severity of the alert',
     },
   },
-}
-export default meta
+} satisfies Meta<typeof Toast>
 
-export const Default: StoryFn<typeof Toast> = ({
-  title = 'Toast Title',
-  altText = 'Undo',
-  description = 'This is the toast content, the content is optional but should usually give further explanation about the toast and if any action is required.',
-  severity = 'default',
-  ...args
-}) => {
-  const [open, setOpen] = React.useState(false)
-  const timerRef = React.useRef(0)
+type Story = StoryObj<typeof Toast>
 
-  useEffect(() => {
-    return () => clearTimeout(timerRef.current)
-  }, [])
+export const Default: Story = {
+  render: ({
+    title = 'Toast Title',
+    altText = 'Undo',
+    description = 'This is the toast content, the content is optional but should usually give further explanation about the toast and if any action is required.',
+    severity = 'default',
+    ...args
+  }) => {
+    const [open, setOpen] = React.useState(false)
+    const timerRef = React.useRef(0)
 
-  const onClick = useCallback(() => {
-    setOpen(false)
-    window.clearTimeout(timerRef.current)
-    timerRef.current = window.setTimeout(() => {
-      setOpen(true)
-    }, 100)
-  }, [])
+    useEffect(() => {
+      return () => clearTimeout(timerRef.current)
+    }, [])
 
-  return (
-    <>
-      <Button onClick={onClick}>Open Toast</Button>
-      <Toast
-        open={open}
-        onOpenChange={setOpen}
-        title={title}
-        altText={altText}
-        description={description}
-        severity={severity}
-        {...args}
-      />
-    </>
-  )
+    const onClick = useCallback(() => {
+      setOpen(false)
+      window.clearTimeout(timerRef.current)
+      timerRef.current = window.setTimeout(() => {
+        setOpen(true)
+      }, 100)
+    }, [])
+
+    return (
+      <>
+        <Button onClick={onClick}>Open Toast</Button>
+        <Toast
+          open={open}
+          onOpenChange={setOpen}
+          title={title}
+          altText={altText}
+          description={description}
+          severity={severity}
+          {...args}
+        />
+      </>
+    )
+  },
+  play: async ({ canvasElement }) => {
+    within(canvasElement).getByRole('button').click()
+
+    await waitFor(async () => {
+      expect(await screen.findByText('Toast Title')).toBeInTheDocument()
+    })
+    userEvent.keyboard('[Escape]')
+  },
 }
 
 /**
@@ -292,63 +305,83 @@ export const UseToastWithKey: StoryFn = () => {
   )
 }
 
-export const OtherOptions: StoryFn = () => {
-  const { addToast } = useToast()
-  return (
-    <Inline>
-      <Button
-        onClick={() => {
-          addToast({
-            title: 'With Close',
-            description: `this toast has a close button`,
-            close: true,
-          })
-        }}
-      >
-        With Close
-      </Button>
-      <Button
-        onClick={() => {
-          addToast({
-            title: 'Requires Closing',
-            description: `this toast must be dismissed manually`,
-            close: true,
-            duration: null,
-          })
-        }}
-      >
-        Requires closing
-      </Button>
-      <Button
-        onClick={() => {
-          addToast({
-            title: 'With Action',
-            description: 'this toast has an action which also closes the toast',
-            altText: 'An alt text must also be supplied',
-            actions: (
-              <Button variant="solid" onClick={action('clicked')}>
-                Action
-              </Button>
-            ),
-          })
-        }}
-      >
-        Action Button
-      </Button>
-      <Button
-        onClick={() => {
-          addToast({
-            title: 'With Close Action',
-            description:
-              'See actions panel - onClose is called as it it closed',
-            onClose: action('onClose'),
-          })
-        }}
-      >
-        Close Action
-      </Button>
-    </Inline>
-  )
+export const OtherOptions: Story = {
+  render: () => {
+    const { addToast } = useToast()
+    return (
+      <Inline>
+        <Button
+          onClick={() => {
+            addToast({
+              title: 'Toast With Close',
+              description: `this toast has a close button`,
+              close: true,
+            })
+          }}
+        >
+          With Close
+        </Button>
+        <Button
+          onClick={() => {
+            addToast({
+              title: 'Requires Closing',
+              description: `this toast must be dismissed manually`,
+              close: true,
+              duration: null,
+            })
+          }}
+        >
+          Requires closing
+        </Button>
+        <Button
+          onClick={() => {
+            addToast({
+              title: 'With Action',
+              description:
+                'this toast has an action which also closes the toast',
+              altText: 'An alt text must also be supplied',
+              actions: (
+                <Button variant="solid" onClick={action('clicked')}>
+                  Action
+                </Button>
+              ),
+            })
+          }}
+        >
+          Action Button
+        </Button>
+        <Button
+          onClick={() => {
+            addToast({
+              title: 'With Close Action',
+              description:
+                'See actions panel - onClose is called as it it closed',
+              onClose: action('onClose'),
+            })
+          }}
+        >
+          Close Action
+        </Button>
+      </Inline>
+    )
+  },
+  play: async ({ canvasElement }) => {
+    within(canvasElement)
+      .getByRole('button', { name: /With Close/i })
+      .click()
+
+    const notifications = await waitFor(async () =>
+      screen.findByLabelText(/Notifications/i),
+    )
+    const closeButton = await waitFor(() =>
+      within(notifications).getByRole('button', { name: /Close/i }),
+    )
+
+    // Cannot currently click automatically
+    // userEvent.click(closeButton)
+    closeButton.focus()
+    userEvent.keyboard('[Escape]')
+  },
 }
 
 /**

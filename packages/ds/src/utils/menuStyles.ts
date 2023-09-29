@@ -108,7 +108,7 @@ export const checkboxItemStyles = css({
   pt: '$1',
   pr: '$2',
   pb: '$1',
-  pl: '$5',
+  pl: '$6',
 })
 
 export const triggerItemStyles = css({

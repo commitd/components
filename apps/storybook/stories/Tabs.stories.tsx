@@ -1,7 +1,9 @@
 import { Tab, TabContent, Tabs, TabsList } from '@committed/ds'
+import { expect } from '@storybook/jest'
 import { Meta, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 
-const meta: Meta<typeof Tabs> = {
+export default {
   title: 'Components/Tabs',
   component: Tabs,
   subcomponents: { TabsList, Tab, TabContent },
@@ -22,8 +24,8 @@ const meta: Meta<typeof Tabs> = {
       description: 'The button is available in 3 different sizes.',
     },
   },
-}
-export default meta
+} satisfies Meta<typeof Tabs>
+
 type Story = StoryObj<typeof Tabs>
 
 const Default: Story = {
@@ -158,5 +160,49 @@ export const TextRight: Story = {
     defaultValue: 'tab1',
     variant: 'text',
     position: 'right',
+  },
+}
+
+export const TestTabs: Story = {
+  ...Default,
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+    const tab1 = await screen.findByRole('tab', { name: 'One' })
+    const tab2 = await screen.findByRole('tab', { name: 'Two' })
+    const tab3 = await screen.findByRole('tab', { name: 'Three' })
+    expect(tab1).toBeInTheDocument()
+    expect(tab2).toBeInTheDocument()
+    expect(tab3).toBeInTheDocument()
+
+    expect(
+      await screen
+        .getAllByRole('tabpanel')
+        .filter((tab) => tab.getAttribute('data-state') === 'active'),
+    ).toHaveLength(1)
+    expect(await screen.findByText('Tab one content')).toBeVisible()
+
+    await userEvent.click(tab2)
+
+    await waitFor(async () => {
+      expect(
+        await screen
+          .getAllByRole('tabpanel')
+          .filter((tab) => tab.getAttribute('data-state') === 'active'),
+      ).toHaveLength(1)
+      expect(await screen.findByText('Tab two content')).toBeVisible()
+    })
+
+    await userEvent.keyboard('[ArrowRight]')
+
+    await waitFor(async () => {
+      expect(
+        await screen
+          .getAllByRole('tabpanel')
+          .filter((tab) => tab.getAttribute('data-state') === 'active'),
+      ).toHaveLength(1)
+      expect(await screen.findByText('Tab three content')).toBeVisible()
+    })
+
+    await userEvent.click(tab1)
   },
 }

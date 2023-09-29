@@ -1,5 +1,7 @@
 import { Column, Grid, Label, TextArea } from '@committed/ds'
+import { expect, jest } from '@storybook/jest'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 import { useState } from 'react'
 
 const meta: Meta<typeof TextArea> = {
@@ -110,3 +112,16 @@ export const States: StoryFn = () => (
     <TextArea id="f6" readOnly value="readonly" />
   </Grid>
 )
+
+export const TestOnValueChange: Story = {
+  args: {
+    id: 'name-value',
+    label: 'Name',
+    onValueChange: jest.fn(),
+  },
+  play: async ({ args: { onValueChange }, canvasElement }) => {
+    const screen = within(canvasElement)
+    userEvent.type(screen.getByLabelText('Name'), 't')
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledWith('t'))
+  },
+}

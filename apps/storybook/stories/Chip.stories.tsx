@@ -1,6 +1,9 @@
 import { Chip, Inline } from '@committed/ds'
 import { action } from '@storybook/addon-actions'
+import { Story } from '@storybook/addon-docs'
+import { expect, jest } from '@storybook/jest'
 import { Meta, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 import { Variants } from './utils'
 
 const meta: Meta<typeof Chip> = {
@@ -28,7 +31,30 @@ export const Sizes: Story = {
   ),
 }
 
-/** If an `onClose` prop is provided a close button is added and clicking calls the onClose`  */
+/**
+ * To make interactive add an `onClick` handler.
+ */
+export const Interactive: Story = {
+  render: () => (
+    <Variants
+      component={Chip}
+      colorPalette={[
+        '$brand',
+        '$primary',
+        '$error',
+        '$success',
+        '$warn',
+        '$info',
+        '$neutral',
+        //'$ghost',
+      ]}
+      children="Chip"
+      onClick={action('chip')}
+    />
+  ),
+}
+
+/** If an `onClick` prop is provided and `closeable` a close button is added and clicking calls the onClick  */
 export const Closable: Story = {
   render: () => (
     <Inline css={{ alignItems: 'center' }}>
@@ -63,29 +89,6 @@ export const All: Story = {
         // '$ghost',
       ]}
       children="Chip"
-    />
-  ),
-}
-
-/**
- * To make interactive add the `interactive` prop and delclare `as` `button` or `link` as required and use the relevant action prop `href` or `onClick`.
- */
-export const Interactive: Story = {
-  render: () => (
-    <Variants
-      component={Chip}
-      colorPalette={[
-        '$brand',
-        '$primary',
-        '$error',
-        '$success',
-        '$warn',
-        '$info',
-        '$neutral',
-        //'$ghost',
-      ]}
-      children="Chip"
-      onClick={action('chip')}
     />
   ),
 }
@@ -151,4 +154,37 @@ export const Disabled: Story = {
       </Chip>
     </Inline>
   ),
+}
+
+export const TestInteractive: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    onClick: jest.fn(),
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+
+    await step('Starts open', async () => {
+      userEvent.click(screen.getByRole('button'))
+      await waitFor(() => expect(args.onClick).toHaveBeenCalled())
+    })
+  },
+}
+
+export const TestClosable: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    closable: true,
+    onClick: jest.fn(),
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+
+    await step('Starts open', async () => {
+      userEvent.click(screen.getByRole('button'))
+      await waitFor(() => expect(args.onClick).toHaveBeenCalled())
+    })
+  },
 }

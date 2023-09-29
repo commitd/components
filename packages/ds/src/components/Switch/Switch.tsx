@@ -3,8 +3,7 @@ import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
 import { Root, Thumb } from '@radix-ui/react-switch'
-import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { component } from '../../utils'
+import { ColorPaletteProps, component, forwardRefExtend } from '../../utils'
 
 const SWITCH_CLASS = 'c-switch'
 const SWITCH_THUMB_CLASS = 'c-switch-thumb'
@@ -97,49 +96,13 @@ const base = {
 
 const switchCva = cva({
   base,
-  variants: {
-    color: {
-      $secondary: {
-        '--background': 'token(colors.$secondary.4)',
-        '--thumbBorder': 'token(colors.$secondary)',
-        '--thumbBackgroundChecked': 'var(--thumbBorder)',
-        '--thumbBackgroundHighlight': 'token(colors.$secondary.5)',
-      },
-      $info: {
-        '--background': 'token(colors.$info.4)',
-        '--thumbBorder': 'token(colors.$info)',
-        '--thumbBackgroundChecked': 'var(--thumbBorder)',
-        '--thumbBackgroundHighlight': 'token(colors.$info.5)',
-      },
-      $success: {
-        '--background': 'token(colors.$success.4)',
-        '--thumbBorder': 'token(colors.$success)',
-        '--thumbBackgroundChecked': 'var(--thumbBorder)',
-        '--thumbBackgroundHighlight': 'token(colors.$success.5)',
-      },
-      $warn: {
-        '--background': 'token(colors.$warn.4)',
-        '--thumbBorder': 'token(colors.$warn)',
-        '--thumbBackgroundChecked': 'var(--thumbBorder)',
-        '--thumbBackgroundHighlight': 'token(colors.$warn.5)',
-      },
-      $error: {
-        '--background': 'token(colors.$error.4)',
-        '--thumbBorder': 'token(colors.$error)',
-        '--thumbBackgroundChecked': 'var(--thumbBorder)',
-        '--thumbBackgroundHighlight': 'token(colors.$error.5)',
-      },
-    },
-  },
 })
 
 const StyledSwitch = styled(Root, switchCva)
 
-type SwitchVariants = RecipeVariantProps<typeof switchCva>
-type SwitchRootProps = ComponentProps<typeof Root>
-type SwitchProps = SwitchRootProps & SwitchVariants
+type SwitchProps = RecipeVariantProps<typeof switchCva> & ColorPaletteProps
 
-export const Switch = forwardRef<ElementRef<typeof StyledSwitch>, SwitchProps>(
+export const Switch = forwardRefExtend<typeof Root, SwitchProps>(
   ({ className, ...props }, forwardedRef) => (
     <StyledSwitch
       className={cx(SWITCH_CLASS, className)}

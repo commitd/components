@@ -1,6 +1,8 @@
 import { Column, Inline, Monospace, Stack, Text } from '@committed/ds'
 import { Divider } from '@committed/ds/src/components/Divider'
+import { expect } from '@storybook/jest'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { within } from '@storybook/testing-library'
 
 export default {
   title: 'Components/Divider',
@@ -20,28 +22,34 @@ export default {
 export const Default: StoryObj<typeof Divider> = {}
 
 /** Tag assigned with `as` prop */
-export const AsHr: StoryFn = () => (
-  <Column css={{ maxWidth: '300px' }}>
-    <Text>
-      Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
-      repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
-      velit voluptas hic velit sint. Et iusto modi ea dolorem exercitationem et
-      molestiae perferendis ut voluptatum cumque rem accusamus harum.
-    </Text>
-    <Divider asChild>
-      <hr />
-    </Divider>
-    <Text>
-      Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia aut
-      voluptatem temporibus et autem consequatur. Est assumenda totam id
-      assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
-      distinctio qui exercitationem velit et velit suscipit et consequatur
-      fugiat qui similique fugit quo incidunt fugiat! Sit dolorem adipisci At
-      beatae illum ad iure reprehenderit qui modi nihil quo recusandae delectus
-      sed inventore aperiam non minus modi.
-    </Text>
-  </Column>
-)
+export const AsHr: StoryObj<typeof Divider> = {
+  render: () => (
+    <Column css={{ maxWidth: '300px' }}>
+      <Text>
+        Lorem ipsum dolor sit amet. Aut aspernatur dolor sit voluptates
+        repellendus et blanditiis alias eum laudantium enim. Ea quis quis est
+        velit voluptas hic velit sint. Et iusto modi ea dolorem exercitationem
+        et molestiae perferendis ut voluptatum cumque rem accusamus harum.
+      </Text>
+      <Divider asChild>
+        <hr />
+      </Divider>
+      <Text>
+        Rem architecto iste ea deserunt libero sed sequi debitis aut modi quia
+        aut voluptatem temporibus et autem consequatur. Est assumenda totam id
+        assumenda modi ut libero voluptatibus est suscipit eius? Vel atque
+        distinctio qui exercitationem velit et velit suscipit et consequatur
+        fugiat qui similique fugit quo incidunt fugiat! Sit dolorem adipisci At
+        beatae illum ad iure reprehenderit qui modi nihil quo recusandae
+        delectus sed inventore aperiam non minus modi.
+      </Text>
+    </Column>
+  ),
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+    expect(screen.getByRole('separator')).toBeInTheDocument()
+  },
+}
 
 /**
  * Decorators can have horizontal (default) and vertical orientation
@@ -67,13 +75,19 @@ export const Orientation: StoryFn = () => (
   </Inline>
 )
 
-export const Decorative: StoryFn = () => (
-  <Column css={{ textAlign: 'center' }}>
-    <Text>Decorators can be marked decorative</Text>
-    <Divider decorative />
-    <Text>And will be ignored by assistive technologies</Text>
-  </Column>
-)
+export const Decorative: StoryObj<typeof Divider> = {
+  render: () => (
+    <Column css={{ textAlign: 'center' }}>
+      <Text>Decorators can be marked decorative</Text>
+      <Divider decorative />
+      <Text>And will be ignored by assistive technologies</Text>
+    </Column>
+  ),
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+    expect(screen.queryByRole('separator')).not.toBeInTheDocument()
+  },
+}
 
 export const Sizes: StoryFn = () => (
   <Stack>

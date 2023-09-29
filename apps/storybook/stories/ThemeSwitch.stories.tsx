@@ -10,7 +10,9 @@ import {
   ThemeSwitch,
   useThemeController,
 } from '@committed/ds'
-import { Meta, StoryFn } from '@storybook/react'
+import { expect } from '@storybook/jest'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 
 export default {
   title: 'Components/ThemeSwitch',
@@ -78,4 +80,28 @@ export const SSR: StoryFn = () => {
       </Paper>
     </ThemeProvider>
   )
+}
+
+export const TestThemeSwitch: StoryObj<typeof ThemeSwitch> = {
+  render: Default,
+
+  play: async ({ canvasElement }) => {
+    const screen = within(canvasElement)
+    const wrapper = await screen.findByTestId('theme-provider')
+    const current = wrapper.className.includes('light') ? 'light' : 'dark'
+
+    const button = await screen.findByRole('button')
+    userEvent.click(button)
+    await waitFor(async () =>
+      expect(await screen.findByTestId('theme-provider')).toHaveClass(
+        current === 'light' ? 'dark' : 'light',
+      ),
+    )
+    userEvent.keyboard('[Enter]')
+    await waitFor(async () =>
+      expect(await screen.findByTestId('theme-provider')).toHaveClass(
+        current === 'light' ? 'light' : 'dark',
+      ),
+    )
+  },
 }

@@ -25,6 +25,7 @@ import {
   CComponent,
   ConditionalWrapper,
   ForwardRef,
+  ItemVariants,
   StyledCheckIndicator,
   StyledSubTriggerIndicator,
   baseItemStyles,
@@ -32,6 +33,7 @@ import {
   component,
   contentStyles,
   forwardRefDefine,
+  forwardRefExtend,
   itemCva,
   itemIndicatorStyles,
   itemShortcutStyles,
@@ -68,7 +70,7 @@ const groupStyles = css({
  */
 export const Menu: CComponent<typeof Root> = component(Root, MENU_CLASS)
 
-export const MenuItem = component(
+export const MenuItem: CComponent<typeof Item, ItemVariants> = component(
   styled(Item, itemCva),
   MENU_ITEM_CLASS,
   baseItemStyles,
@@ -95,12 +97,13 @@ const StyledItemIndicator = component(
   'c-menu-indicator',
   itemIndicatorStyles,
 )
-const StyledCheckboxItem: CComponent<typeof CheckboxItem> = styled(
-  component(CheckboxItem, 'c-menu-checkbox-item', checkboxItemStyles),
-  itemCva,
-)
+const StyledCheckboxItem: CComponent<typeof CheckboxItem, ItemVariants> =
+  styled(
+    component(CheckboxItem, 'c-menu-checkbox-item', checkboxItemStyles),
+    itemCva,
+  )
 
-const StyledRadioItem = styled(
+const StyledRadioItem: CComponent<typeof RadioItem, ItemVariants> = styled(
   component(RadioItem, 'c-menu-radio-item', checkboxItemStyles),
   itemCva,
 )
@@ -231,13 +234,13 @@ const StyledSubTrigger = component(
   baseItemStyles,
   triggerItemStyles,
 )
-const StyledSubContent = component(SubContent, paperStyles, contentStyles)
+const StyledSubContent = styled(
+  component(SubContent, 'c-menu-sub-content', paperStyles, contentStyles),
+)
 
-type MenuSubTriggerProps = ComponentProps<typeof StyledSubTrigger>
-
-export const MenuSubTrigger = forwardRef<
-  ElementRef<typeof StyledSubTrigger>,
-  MenuSubTriggerProps
+export const MenuSubTrigger = forwardRefExtend<
+  typeof StyledSubTrigger,
+  ItemVariants
 >(({ children, ...props }, forwardedRef) => {
   return (
     <StyledSubTrigger {...props} ref={forwardedRef}>
@@ -248,24 +251,29 @@ export const MenuSubTrigger = forwardRef<
 })
 MenuSubTrigger.displayName = 'MenuSubTrigger'
 
-type MenuSubContentProps = ComponentProps<typeof StyledSubContent> & {
+type MenuSubContentProps = SurfaceVariants & {
   /** By default, portals your content parts into the body, set false to add at dom location. */
   portalled?: boolean
   /** Specify a container element to portal the content into. */
   container?: ComponentProps<typeof Portal>['container']
 }
 
-export const MenuSubContent = forwardRef<
-  ElementRef<typeof StyledSubContent>,
+export const MenuSubContent = forwardRefExtend<
+  typeof SubContent,
   MenuSubContentProps
->(({ container, portalled = true, children, ...props }, forwardedRef) => (
-  <ConditionalWrapper
-    condition={portalled}
-    wrapper={(child) => <Portal container={container}>{child}</Portal>}
-  >
-    <StyledSubContent {...props} ref={forwardedRef}>
-      {children}
-    </StyledSubContent>
-  </ConditionalWrapper>
-))
+>(
+  (
+    { container, portalled = true, surface = 'solid', children, ...props },
+    forwardedRef,
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <StyledSubContent surface={surface} {...props} ref={forwardedRef}>
+        {children}
+      </StyledSubContent>
+    </ConditionalWrapper>
+  ),
+)
 MenuSubContent.displayName = 'MenuSubContent'

@@ -21,8 +21,10 @@ import {
 } from '@committed/ds'
 import { useBoolean } from '@committed/hooks'
 import { action } from '@storybook/addon-actions'
-import { Meta, StoryFn } from '@storybook/react'
-import React, { useState } from 'react'
+import { expect } from '@storybook/jest'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { screen, userEvent, waitFor } from '@storybook/testing-library'
+import { useState } from 'react'
 
 const subcomponents = {
   MenuTrigger,
@@ -41,33 +43,38 @@ const subcomponents = {
   MenuSubTrigger,
 } as unknown as Meta<typeof Menu>['subcomponents']
 
-const meta: Meta<typeof Menu> = {
+export default {
   title: 'Components/Menu',
   component: Menu,
   subcomponents,
+} satisfies Meta<typeof Menu>
+
+type Story = StoryObj<typeof Menu>
+
+export const Default: Story = {
+  render: (args) => (
+    <Menu {...args}>
+      <MenuButton>Show Menu</MenuButton>
+      <MenuContent>
+        <MenuItem onSelect={action('cut')}>Cut</MenuItem>
+        <MenuItem onSelect={action('copy')}>Copy</MenuItem>
+        <MenuItem onSelect={action('paste')}>Paste</MenuItem>
+      </MenuContent>
+    </Menu>
+  ),
 }
-export default meta
 
-export const Default: StoryFn = (args) => (
-  <Menu {...args}>
-    <MenuButton>Show Menu</MenuButton>
-    <MenuContent>
-      <MenuItem onSelect={action('cut')}>Cut</MenuItem>
-      <MenuItem onSelect={action('copy')}>Copy</MenuItem>
-      <MenuItem onSelect={action('paste')}>Paste</MenuItem>
-    </MenuContent>
-  </Menu>
-)
-
-export const WithDisabledItems: StoryFn = () => (
-  <Menu>
-    <MenuButton>Show Menu</MenuButton>
-    <MenuContent>
-      <MenuItem disabled>Cut</MenuItem>
-      <MenuItem>Copy</MenuItem>
-    </MenuContent>
-  </Menu>
-)
+export const WithDisabledItems: Story = {
+  render: () => (
+    <Menu>
+      <MenuButton>Show Menu</MenuButton>
+      <MenuContent>
+        <MenuItem disabled>Cut</MenuItem>
+        <MenuItem>Copy</MenuItem>
+      </MenuContent>
+    </Menu>
+  ),
+}
 
 /* Separators and Groups can be used to arrange items in vertical and horizontal sections */
 export const WithSeparators: StoryFn = () => (
@@ -137,7 +144,7 @@ export const WithCheckbox: StoryFn = () => {
 
 /* `MenuItemRadioGroup` can be used to make sub `MenuRadioItem`s single select */
 export const WithRadioItems: StoryFn = () => {
-  const [color, setColor] = React.useState('blue')
+  const [color, setColor] = useState('blue')
   return (
     <Menu>
       <MenuButton>Show Menu</MenuButton>
@@ -215,9 +222,9 @@ export const WithTrigger: StoryFn = () => {
 }
 
 /** Create nested menus using a nested `Menu` component with a `MenuTriggerItem` and it's own `MenuContent` */
-export const Nested: StoryFn = () => {
-  return (
-    <Menu>
+export const Nested: Story = {
+  render: (args) => (
+    <Menu {...args}>
       <MenuButton>Show Menu</MenuButton>
       <MenuContent>
         <MenuItem>
@@ -231,12 +238,10 @@ export const Nested: StoryFn = () => {
           <MenuSubContent>
             <MenuItem>Test</MenuItem>
             <MenuItem>Build</MenuItem>
-            <MenuItem>Start</MenuItem>
             <MenuSub>
               <MenuSubTrigger>More</MenuSubTrigger>
               <MenuSubContent>
-                <MenuItem>Test</MenuItem>
-                <MenuItem>Build</MenuItem>
+                <MenuItem>Run</MenuItem>
                 <MenuItem>Start</MenuItem>
               </MenuSubContent>
             </MenuSub>
@@ -244,13 +249,13 @@ export const Nested: StoryFn = () => {
         </MenuSub>
       </MenuContent>
     </Menu>
-  )
+  ),
 }
 
 /* Visual test for different size menu buttons and potential menu overlap */
 export const MultipleMenus: StoryFn = () => {
   const [checked, setChecked] = useState(true)
-  const [color, setColor] = React.useState('blue')
+  const [color, setColor] = useState('blue')
   return (
     <Inline>
       <Menu>
@@ -287,36 +292,120 @@ export const MultipleMenus: StoryFn = () => {
 }
 
 /** use the `destructive` flag to show the item triggers a destructive action */
-export const Destructive: StoryFn = () => {
-  const [color, setColor] = React.useState('blue')
-  const [checked, setChecked] = useState(true)
-  return (
-    <Menu>
-      <MenuButton>Show Menu</MenuButton>
-      <MenuContent>
-        <MenuItem>
-          Open <MenuItemShortcut>⌘+O</MenuItemShortcut>
-        </MenuItem>
-        <MenuItem destructive>
-          Delete <MenuItemShortcut>⌘+D</MenuItemShortcut>
-        </MenuItem>
-        <MenuSeparator />
-        <MenuRadioGroup value={color} onValueChange={setColor}>
-          <MenuRadioItem destructive value="red">
-            Red
-          </MenuRadioItem>
-          <MenuRadioItem value="green">Green</MenuRadioItem>
-          <MenuRadioItem value="blue">Blue</MenuRadioItem>
-        </MenuRadioGroup>
-        <MenuSeparator />
-        <MenuCheckboxItem
-          destructive
-          checked={checked}
-          onCheckedChange={setChecked}
-        >
-          Mark
-        </MenuCheckboxItem>
-      </MenuContent>
-    </Menu>
-  )
+export const Destructive: Story = {
+  render: () => {
+    const [color, setColor] = useState('blue')
+    const [checked, setChecked] = useState(true)
+    return (
+      <Menu>
+        <MenuButton>Show Menu</MenuButton>
+        <MenuContent>
+          <MenuItem>
+            Open <MenuItemShortcut>⌘+O</MenuItemShortcut>
+          </MenuItem>
+          <MenuItem destructive>
+            Delete <MenuItemShortcut>⌘+D</MenuItemShortcut>
+          </MenuItem>
+          <MenuSeparator />
+          <MenuRadioGroup value={color} onValueChange={setColor}>
+            <MenuRadioItem destructive value="red">
+              Red
+            </MenuRadioItem>
+            <MenuRadioItem value="green">Green</MenuRadioItem>
+            <MenuRadioItem value="blue">Blue</MenuRadioItem>
+          </MenuRadioGroup>
+          <MenuSeparator />
+          <MenuCheckboxItem
+            destructive
+            checked={checked}
+            onCheckedChange={setChecked}
+          >
+            Mark
+          </MenuCheckboxItem>
+        </MenuContent>
+      </Menu>
+    )
+  },
+}
+
+export const TestMenu = {
+  ...Default,
+  play: async () => {
+    userEvent.tab()
+    await waitFor(() => expect(screen.getByRole('button')).toHaveFocus())
+    userEvent.keyboard('{Enter}')
+    expect(await screen.findByText('Cut')).toBeInTheDocument()
+  },
+}
+
+export const TestNestedMenu = {
+  ...Nested,
+  play: async () => {
+    expect(
+      screen.queryByRole('menuitem', { name: /test/i }),
+    ).not.toBeInTheDocument()
+
+    userEvent.tab()
+
+    await waitFor(() => expect(screen.getByRole('button')).toHaveFocus())
+
+    userEvent.keyboard('{Enter}')
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('menuitem', { name: /developer/i }),
+      ).toBeInTheDocument()
+      expect(
+        screen.queryByRole('menuitem', { name: /test/i }),
+      ).not.toBeInTheDocument()
+    })
+
+    userEvent.click(screen.getByRole('menuitem', { name: /developer/i }))
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('menuitem', { name: /test/i }),
+      ).toBeInTheDocument()
+    })
+
+    userEvent.click(screen.getByRole('menuitem', { name: /more/i }))
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('menuitem', { name: /start/i }),
+      ).toBeInTheDocument()
+    })
+
+    userEvent.click(screen.getByRole('menuitem', { name: /start/i }))
+
+    await waitFor(() => {
+      expect(screen.getByRole('button')).toHaveFocus()
+      expect(
+        screen.queryByRole('menuitem', { name: /start/i }),
+      ).not.toBeInTheDocument()
+      expect(
+        screen.queryByRole('menuitem', { name: /test/i }),
+      ).not.toBeInTheDocument()
+      expect(
+        screen.queryByRole('menuitem', { name: /developer/i }),
+      ).not.toBeInTheDocument()
+    })
+  },
+}
+
+export const TestDestructiveMenu = {
+  ...Destructive,
+  play: async () => {
+    expect(
+      screen.queryByRole('menuitem', { name: /delete/i }),
+    ).not.toBeInTheDocument()
+    userEvent.tab()
+    await waitFor(() => expect(screen.getByRole('button')).toHaveFocus())
+    userEvent.keyboard('{Enter}')
+    await waitFor(() => {
+      expect(
+        screen.queryByRole('menuitem', { name: /delete/i }),
+      ).toBeInTheDocument()
+    })
+  },
 }

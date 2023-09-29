@@ -1,7 +1,9 @@
 import { semanticColors } from '@committed/colors/src/preset'
 import { Button, Inline, Stack } from '@committed/ds'
 import { css } from '@committed/ss/css'
+import { expect, jest } from '@storybook/jest'
 import { Meta, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 import { ComponentProps } from 'react'
 import { Variants } from './utils'
 
@@ -144,6 +146,14 @@ export const Disabled: Story = {
       </Button>
     </Inline>
   ),
+  play: async ({ canvasElement, step }) => {
+    const screen = within(canvasElement)
+
+    await step('Buttons should have disabled role', async () => {
+      const buttons = await screen.findAllByRole('button')
+      buttons.forEach((b) => expect(b).toHaveAttribute('disabled'))
+    })
+  },
 }
 
 /**
@@ -241,5 +251,39 @@ export const SemanticColors: StoryObj<{
     colors: semanticColors.map((c) => `$${c}`) as ComponentProps<
       typeof Button
     >['color'][],
+  },
+}
+
+export const TestButtonClick: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    onClick: jest.fn(),
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+
+    await step('Can be clicked', async () => {
+      const buttonElement = screen.getByRole('button')
+      buttonElement.click()
+      await waitFor(() => expect(args.onClick).toHaveBeenCalled())
+    })
+  },
+}
+export const TestButtonEnter: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    onClick: jest.fn(),
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+
+    await step('Can open 2', async () => {
+      screen.getByRole('button')
+      userEvent.tab()
+      userEvent.keyboard('{enter}')
+      await waitFor(() => expect(args.onClick).toHaveBeenCalled())
+    })
   },
 }

@@ -18,13 +18,12 @@ import { css } from '@committed/ss/css'
 import { token } from '@committed/ss/tokens'
 import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 
-const meta: Meta<typeof ThemeProvider> = {
+export default {
   title: 'Components/ThemeProvider',
   component: ThemeProvider,
   decorators: [],
-}
+} satisfies Meta<typeof ThemeProvider>
 
-export default meta
 type Story = StoryObj<typeof ThemeProvider>
 
 const Example = component(
@@ -36,7 +35,7 @@ const Example = component(
   }),
 )
 
-const Template: Story = {
+const Template = {
   render: (args) => (
     <ThemeProvider local={true} {...args}>
       <Example>Example</Example>
@@ -120,7 +119,7 @@ export const UtilityUseThemeController: StoryFn = () => {
   )
 }
 
-/** The `useTheme` hook can be used to get the full details of the current theme. */
+/** The `useTheme` hook can be used to get the current theme. */
 export const UtilityUseTheme: StoryFn = () => {
   const [theme] = useTheme()
   return (
@@ -143,7 +142,7 @@ export const UtilityUseTheme: StoryFn = () => {
  *
  * NB this currently resolves to intermediate css vars but this may change later.
  * */
-export const UtilityUseThemeResolve: StoryFn = () => {
+export const UtilityTokenFunction: StoryFn = () => {
   const [theme] = useTheme()
   return (
     <>

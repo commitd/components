@@ -1,5 +1,6 @@
 'use client'
 
+import { cx } from '@committed/ss/css'
 import { FC, useContext, useEffect, useRef } from 'react'
 import {
   ThemeChoice,
@@ -60,7 +61,14 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
   })
 
   if (local) {
-    return <div className={theme}>{children}</div>
+    return (
+      <div
+        className={cx('c-theme-provider', theme)}
+        data-testid="theme-provider"
+      >
+        {children}
+      </div>
+    )
   } else {
     const prevTheme = prevThemeRef.current
     if (prevTheme) {

@@ -172,16 +172,21 @@ type ContextMenuSubContentProps = ComponentProps<typeof StyledSubContent> &
 export const ContextMenuSubContent = forwardRef<
   ElementRef<typeof StyledSubContent>,
   ContextMenuSubContentProps
->(({ container, portalled = true, children, ...props }, forwardedRef) => (
-  <ConditionalWrapper
-    condition={portalled}
-    wrapper={(child) => <Portal container={container}>{child}</Portal>}
-  >
-    <StyledSubContent {...props} ref={forwardedRef}>
-      {children}
-    </StyledSubContent>
-  </ConditionalWrapper>
-))
+>(
+  (
+    { container, portalled = true, surface = 'solid', children, ...props },
+    forwardedRef,
+  ) => (
+    <ConditionalWrapper
+      condition={portalled}
+      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    >
+      <StyledSubContent surface={surface} {...props} ref={forwardedRef}>
+        {children}
+      </StyledSubContent>
+    </ConditionalWrapper>
+  ),
+)
 ContextMenuSubContent.displayName = 'ContextMenuSubContent'
 
 const StyledSubTrigger = component(

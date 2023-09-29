@@ -1,5 +1,7 @@
 import { Form, FormButton, Grid, Input, Label, Stack } from '@committed/ds'
-import { Meta, Story, StoryFn } from '@storybook/react'
+import { expect, jest } from '@storybook/jest'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 import React from 'react'
 import { withFormData } from './utils'
 
@@ -8,10 +10,22 @@ export default {
   component: Input,
 } satisfies Meta<typeof Input>
 
-export const Default: StoryFn = () => <Input id="default" />
+type Story = StoryObj<typeof Input>
+
+export const Default: Story = {
+  args: {
+    name: 'default',
+  },
+}
 
 /** Add the `required` prop to mark as required */
-export const Required: StoryFn = () => <Input required id="default" />
+export const Required: Story = {
+  ...Default,
+  args: {
+    name: 'required',
+    required: true,
+  },
+}
 
 /**
  * Supplying a `value` will make the component controlled. The changes can be handled by the standard `onChange`
@@ -54,7 +68,7 @@ export const WithLabel: StoryFn = () => (
  * If you want a single inline label you can wrap an input in a `Label` component and it will auto assign the
  * `htmlFor` and `id` props.
  */
-export const InlineLabel: Story = () => (
+export const InlineLabel: StoryFn = () => (
   <Label variant="inline">
     Email address
     <Input type="email" />
@@ -64,7 +78,7 @@ export const InlineLabel: Story = () => (
 /**
  * Demo of use in a `Form`
  */
-export const InForm: Story = () => {
+export const InForm: StoryFn = () => {
   return (
     <Form onSubmit={withFormData(alert)}>
       <Input label="Demo" name="demo" />
@@ -77,7 +91,7 @@ export const InForm: Story = () => {
  * If you need to align multiple labels then better to layout yourself to control the width and apply the appropriate
  * `htmlFor` and `id` props.
  */
-export const MultipleInlineLabels: Story = () => (
+export const MultipleInlineLabels: StoryFn = () => (
   <Grid css={{ gridTemplateColumns: '150px 1fr', gap: '$3' }}>
     <Label variant="inline" htmlFor="mll-firstname">
       First name
@@ -94,7 +108,7 @@ export const MultipleInlineLabels: Story = () => (
   </Grid>
 )
 
-export const States: Story = () => (
+export const States: StoryFn = () => (
   <Grid
     css={{
       rowGap: '$3',
@@ -124,3 +138,18 @@ export const States: Story = () => (
     <Input id="f6" readOnly value="readonly" />
   </Grid>
 )
+
+/** Add an `onValueChange` function to add */
+export const OnValueChange: Story = {
+  ...Default,
+  args: {
+    label: 'Name',
+    onValueChange: jest.fn(),
+  },
+  play: async ({ args, canvasElement }) => {
+    const screen = within(canvasElement)
+
+    userEvent.type(screen.getByLabelText('Name'), 't')
+    await waitFor(() => expect(args.onValueChange).toHaveBeenCalledWith('t'))
+  },
+}

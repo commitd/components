@@ -17,7 +17,15 @@ import {
 } from '@committed/ds'
 import { useBoolean } from '@committed/hooks'
 import { action } from '@storybook/addon-actions'
+import { expect } from '@storybook/jest'
 import { Meta, StoryFn } from '@storybook/react'
+import {
+  fireEvent,
+  screen,
+  userEvent,
+  waitFor,
+  within,
+} from '@storybook/testing-library'
 import React from 'react'
 
 const subcomponents = {
@@ -208,12 +216,10 @@ export const Nested: StoryFn = () => {
           <ContextMenuSubContent>
             <ContextMenuItem>Test</ContextMenuItem>
             <ContextMenuItem>Build</ContextMenuItem>
-            <ContextMenuItem>Start</ContextMenuItem>
             <ContextMenuSub>
               <ContextMenuSubTrigger>More</ContextMenuSubTrigger>
               <ContextMenuSubContent>
-                <ContextMenuItem>Test</ContextMenuItem>
-                <ContextMenuItem>Build</ContextMenuItem>
+                <ContextMenuItem>Run</ContextMenuItem>
                 <ContextMenuItem>Start</ContextMenuItem>
               </ContextMenuSubContent>
             </ContextMenuSub>
@@ -275,3 +281,57 @@ export const Surface: StoryFn = (args) => (
     </ContextMenuContent>
   </ContextMenu>
 )
+
+export const TestContextMenu = {
+  render: Default,
+  play: async ({ canvasElement }) => {
+    const element = within(canvasElement)
+
+    fireEvent.contextMenu(element.getByText('Right click anywhere'))
+    // Menu outside canvas element so using full screen
+    await waitFor(() => {
+      expect(screen.getByText('Cut')).toBeInTheDocument()
+      expect(
+        screen.getByRole('menuitem', { name: /copy/i }),
+      ).toBeInTheDocument()
+    })
+  },
+}
+
+export const TestContextMenuNested = {
+  render: Nested,
+  args: {
+    portalled: false,
+  },
+  play: async ({ canvasElement }) => {
+    const element = within(canvasElement)
+
+    fireEvent.contextMenu(element.getByText('Right click anywhere'))
+
+    // Menu outside canvas element so using full screen
+    await waitFor(() => {
+      expect(
+        screen.getByRole('menuitem', { name: /developer/i }),
+      ).toBeInTheDocument()
+      expect(
+        screen.queryByRole('menuitem', { name: /test/i }),
+      ).not.toBeInTheDocument()
+    })
+
+    userEvent.keyboard('[ArrowDown][ArrowDown][ArrowDown][ArrowRight]')
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('menuitem', { name: /test/i }),
+      ).toBeInTheDocument()
+    })
+
+    userEvent.keyboard('[ArrowDown][ArrowDown][Enter]')
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('menuitem', { name: /start/i }),
+      ).toBeInTheDocument()
+    })
+  },
+}

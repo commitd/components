@@ -1,14 +1,17 @@
 import { Background, Grid, Inline, Padding, Stack, Switch } from '@committed/ds'
 import { useBoolean } from '@committed/hooks'
+import { expect, jest } from '@storybook/jest'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { userEvent, waitFor, within } from '@storybook/testing-library'
 
-const meta: Meta<typeof Switch> = {
+export default {
   title: 'Components/Switch',
   component: Switch,
-}
-export default meta
+} satisfies Meta<typeof Switch>
 
-export const Default: StoryObj<typeof Switch> = {}
+type Story = StoryObj<typeof Switch>
+
+export const Default: Story = {}
 
 export const Variants: StoryFn = () => {
   const [value, { toggle }] = useBoolean(false)
@@ -16,7 +19,11 @@ export const Variants: StoryFn = () => {
   return (
     <Inline>
       <Switch checked={value} onCheckedChange={toggle} />
-      <Switch color="$primary" checked={value} onCheckedChange={toggle} />
+      <Switch
+        colorPalette="$primary"
+        checked={value}
+        onCheckedChange={toggle}
+      />
     </Inline>
   )
 }
@@ -60,26 +67,35 @@ export const Colors: StoryFn = () => {
   )
 }
 
-export const Disabled: StoryFn = () => (
-  <Stack>
-    <Inline>
-      <Switch checked={false} />
-      <Switch checked={true} />
-      <Switch colorPalette="$primary" checked={false} />
-      <Switch colorPalette="$primary" checked={true} />
-      <Switch colorPalette="$secondary" checked={false} />
-      <Switch colorPalette="$secondary" checked={true} />
-    </Inline>
-    <Inline>
-      <Switch disabled checked={false} />
-      <Switch disabled checked={true} />
-      <Switch disabled colorPalette="$primary" checked={false} />
-      <Switch disabled colorPalette="$primary" checked={true} />
-      <Switch disabled colorPalette="$secondary" checked={false} />
-      <Switch disabled colorPalette="$secondary" checked={true} />
-    </Inline>
-  </Stack>
-)
+export const Disabled: Story = {
+  render: () => (
+    <Stack>
+      <Inline>
+        <Switch checked={false} />
+        <Switch checked={true} />
+        <Switch colorPalette="$primary" checked={false} />
+        <Switch colorPalette="$primary" checked={true} />
+        <Switch colorPalette="$secondary" checked={false} />
+        <Switch colorPalette="$secondary" checked={true} />
+      </Inline>
+      <Inline>
+        <Switch disabled checked={false} />
+        <Switch disabled checked={true} />
+        <Switch disabled colorPalette="$primary" checked={false} />
+        <Switch disabled colorPalette="$primary" checked={true} />
+        <Switch disabled colorPalette="$secondary" checked={false} />
+        <Switch disabled colorPalette="$secondary" checked={true} />
+      </Inline>
+    </Stack>
+  ),
+  play: async ({ args, canvasElement, step }) => {
+    const screen = within(canvasElement)
+
+    const buttons = await screen.findAllByRole('switch')
+    expect(buttons).toHaveLength(12)
+    expect(buttons.filter((b) => b.hasAttribute('disabled'))).toHaveLength(6)
+  },
+}
 
 export const States: StoryFn = () => {
   return (
@@ -119,4 +135,30 @@ export const States: StoryFn = () => {
       </Grid>
     </>
   )
+}
+
+export const TestClick: Story = {
+  args: {
+    onCheckedChange: jest.fn(),
+  },
+  play: async ({ args, canvasElement }) => {
+    const screen = within(canvasElement)
+
+    userEvent.click(screen.getByRole('switch'))
+    await waitFor(() => expect(args.onCheckedChange).toHaveBeenCalled())
+  },
+}
+
+export const TestKeyboard: Story = {
+  args: {
+    onCheckedChange: jest.fn(),
+  },
+  play: async ({ args, canvasElement }) => {
+    const screen = within(canvasElement)
+
+    userEvent.tab()
+    await waitFor(() => expect(screen.getByRole('switch')).toHaveFocus())
+    userEvent.keyboard('{Enter}')
+    await waitFor(() => expect(args.onCheckedChange).toHaveBeenCalled())
+  },
 }
