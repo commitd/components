@@ -160,6 +160,9 @@ importers:
       '@storybook/addon-actions':
         specifier: ^7.2.0
         version: 7.2.0(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/addon-coverage':
+        specifier: ^0.0.9
+        version: 0.0.9
       '@storybook/addon-essentials':
         specifier: ^7.2.0
         version: 7.2.0(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
@@ -4786,6 +4789,17 @@ packages:
       - '@types/react'
       - '@types/react-dom'
       - encoding
+      - supports-color
+    dev: true
+
+  /@storybook/addon-coverage@0.0.9:
+    resolution: {integrity: sha512-+GrNBVRsdc80L9BvKEbMr5HZsK2U/qB4+YfaWfDIpLP7Xa5volBuPdpVh72Ox2ouz2ptyimTIDkJxYXPSgq98A==}
+    dependencies:
+      '@types/babel__core': 7.20.1
+      '@types/istanbul-lib-coverage': 2.0.4
+      babel-plugin-istanbul: 6.1.1
+      vite-plugin-istanbul: 3.0.4
+    transitivePeerDependencies:
       - supports-color
     dev: true
 
@@ -16278,6 +16292,17 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
+    dev: true
+
+  /vite-plugin-istanbul@3.0.4:
+    resolution: {integrity: sha512-DJy3cq6yOFbsM3gLQf/3zeuaJNJsfBv5dLFdZdv8sUV30xLtZI+66QeYfHUyP/5vBUYyLA+xNUCSG5uHY6w+5g==}
+    dependencies:
+      '@istanbuljs/load-nyc-config': 1.1.0
+      istanbul-lib-instrument: 5.2.1
+      picocolors: 1.0.0
+      test-exclude: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /vite@4.4.9(@types/node@17.0.45):
