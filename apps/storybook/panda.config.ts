@@ -1,19 +1,7 @@
-import { presetColors } from '@committed/colors'
-import { presetTokens } from '@committed/tokens'
-import { presetUtilities } from '@committed/utilities'
-import { defineConfig } from '@pandacss/dev'
+import { componentsConfig } from '@committed/ds'
 
-export default defineConfig({
-  presets: [presetColors(), presetTokens(), presetUtilities()],
-  // Whether to use css reset
-  preflight: true,
-
-  // Where to look for your css declarations
+export default componentsConfig({
   include: [
-    // "./node_modules/@committed/ss/src/**/*.ts*",
-    './node_modules/@committed/ds/src/**/*.ts*',
-    // "./node_modules/@committed/colors/src/**/*.ts*",
-    // "./node_modules/@committed/tokens/src/**/*.ts*",
     // using this instead of the above will trigger a refresh when the preset is changed
     // but config:change is not triggered
     //
@@ -22,10 +10,7 @@ export default defineConfig({
     '../../packages/preset/src/**/*.ts*',
     './stories/**/*.{js,jsx,ts,tsx}',
   ],
-
-  // Files to exclude
   exclude: [],
-  jsxFramework: 'react',
   hooks: {
     'config:resolved': (conf) => {
       console.log('🐼 config:resolve')
@@ -41,7 +26,4 @@ export default defineConfig({
       // console.log('🐼 generator:css', _css)
     },
   },
-
-  outdir: '@committed/ss',
-  emitPackage: true,
 })

@@ -40,7 +40,7 @@ const badge = cva({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: 'colorPalette.9',
-    color: 'colorPalette.2',
+    color: 'colorPalette.text',
   },
   variants: {
     status: {

@@ -32,17 +32,18 @@ export type PaddingProps = Pick<
  * Padding css properties and shorthands are exposed as props and have access to spacing design tokens.
  *
  */
-export const Padding: CComponent<'div', PaddingProps> = forwardRefExtend(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <Base
-        asChild={React.Children.count(children) == 1}
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </Base>
-    )
-  },
-)
+export const Padding: CComponent<'div', PaddingProps> = forwardRefExtend<
+  typeof Base,
+  PaddingProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <Base
+      asChild={React.Children.count(children) == 1}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </Base>
+  )
+})
 Padding.displayName = 'Padding'

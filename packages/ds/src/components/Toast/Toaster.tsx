@@ -1,5 +1,6 @@
 'use client'
 import {
+  ComponentProps,
   createContext,
   FC,
   Fragment,
@@ -10,8 +11,9 @@ import {
   useMemo,
   useReducer,
 } from 'react'
-import { Toast, ToastProps } from './Toast'
+import { Toast } from './Toast'
 
+type ToastProps = ComponentProps<typeof Toast>
 export type ToastData = Partial<Omit<ToastProps, 'duration' | 'title'>> & {
   id?: string
   duration?: ToastProps['duration'] | null

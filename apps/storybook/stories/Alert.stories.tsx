@@ -29,9 +29,7 @@ export const Default: Story = {
       </AlertContent>
     </Alert>
   ),
-  args: {
-    severity: 'error',
-  },
+  args: {},
 }
 
 export const Severity: Story = {

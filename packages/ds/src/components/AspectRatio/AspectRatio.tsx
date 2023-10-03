@@ -1,11 +1,13 @@
 'use client'
 
-import { styled } from '@committed/ss/jsx'
 import { Root } from '@radix-ui/react-aspect-ratio'
+import { CComponent, component } from '../../utils'
 
 /**
  * AspectRatio can be used to display content with a fixed aspect ratio
  */
-// TODO select aspect ratio css prop
-export const AspectRatio = styled(Root, {})
+export const AspectRatio: CComponent<typeof Root> = component(
+  Root,
+  'c-aspect-ratio',
+)
 AspectRatio.displayName = 'AspectRatio'

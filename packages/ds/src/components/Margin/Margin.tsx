@@ -32,17 +32,18 @@ export type MarginProps = Pick<
  * Marin css properties and shorthands are exposed as props and have access to spacing design tokens.
  *
  */
-export const Margin: CComponent<'div', MarginProps> = forwardRefExtend(
-  ({ children, ...props }, forwardedRef) => {
-    return (
-      <Base
-        asChild={React.Children.count(children) == 1}
-        {...props}
-        ref={forwardedRef}
-      >
-        {children}
-      </Base>
-    )
-  },
-)
+export const Margin: CComponent<'div', MarginProps> = forwardRefExtend<
+  typeof Base,
+  MarginProps
+>(({ children, ...props }, forwardedRef) => {
+  return (
+    <Base
+      asChild={React.Children.count(children) == 1}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </Base>
+  )
+})
 Margin.displayName = 'Margin'

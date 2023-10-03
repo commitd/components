@@ -52,8 +52,8 @@ export const Css: Story = {
   args: {
     children: 'classes: c-component css-generated',
     css: {
-      color: '$error',
-      bg: '$warn',
+      color: '$success',
+      bg: '$success.2',
     },
   },
 }
@@ -61,6 +61,6 @@ export const CssAndClassName: Story = {
   args: {
     children: 'classes: c-component css-generated test',
     className: 'test',
-    css: { color: '$error', bg: '$warn' },
+    css: { color: '$success', bg: '$error' },
   },
 }

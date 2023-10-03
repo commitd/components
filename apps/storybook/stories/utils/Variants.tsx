@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Grid } from '@committed/ds'
+import { Grid, Tooltip } from '@committed/ds'
 import { SystemStyleObject } from '@committed/ss/css'
 import { ElementType, Fragment } from 'react'
 
@@ -39,12 +39,12 @@ export const Variants = <T extends ElementType>({
     <Grid gap css={gridCss}>
       <>
         {combinations.map((props, i: number) => {
-          const { css, children, ..._display } = props
+          const { css, children, ...display } = props
           return (
             <Container key={i}>
-              {/* <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}> */}
-              <Component {...props} />
-              {/* </Tooltip> */}
+              <Tooltip content={<pre>{JSON.stringify(display, null, 2)}</pre>}>
+                <Component {...props} />
+              </Tooltip>
             </Container>
           )
         })}

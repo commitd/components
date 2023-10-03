@@ -9,8 +9,8 @@ import {
   Link,
   Padding,
   WrappedNavigationMenu,
+  surfaces,
 } from '@committed/ds'
-import { surfaces } from '@committed/utilities'
 import { Meta, StoryFn } from '@storybook/react'
 import {
   MemoryRouter,

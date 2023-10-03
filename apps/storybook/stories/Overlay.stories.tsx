@@ -1,6 +1,5 @@
-import { Box, Overlay } from '@committed/ds'
+import { Box, Overlay, surfaces } from '@committed/ds'
 import { css } from '@committed/ss/css'
-import { surfaces } from '@committed/utilities'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 import { Variants } from './utils'

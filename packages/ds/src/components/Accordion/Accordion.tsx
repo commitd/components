@@ -63,7 +63,7 @@ const AccordionTrigger = component(
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    color: 'text',
+    color: '$text',
     width: '100%',
     outline: 'none',
 

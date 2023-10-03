@@ -4,6 +4,9 @@ import { themes } from '@storybook/theming'
 import React, { useEffect } from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
 
+import '@fontsource/dosis'
+import '@fontsource/inter'
+
 export const DocsContainer = ({ context, children, ...props }) => {
   const dark = useDarkMode()
 

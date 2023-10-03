@@ -6,7 +6,7 @@ import { Logo } from '../Logo'
 const spinner = cva({
   base: {
     transformOrigin: 'center center',
-    color: { base: '$neutral.6', _dark: '$neutral.2' },
+    color: { base: '$neutral.6', _dark: '$neutral.6' },
     _motionReduce: {
       animation: `pulse 2s ease infinite`,
     },

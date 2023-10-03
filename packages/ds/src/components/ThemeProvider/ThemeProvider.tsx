@@ -10,8 +10,9 @@ import {
 } from './ThemeController'
 
 // Import the fonts
-import '@fontsource/dosis'
-import '@fontsource/inter'
+// This current causes issues with the storybook dev
+// import '@fontsource/dosis'
+// import '@fontsource/inter'
 
 export interface ThemeProviderProps extends ThemeControllerProps {
   /**

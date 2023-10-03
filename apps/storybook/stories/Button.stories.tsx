@@ -1,5 +1,4 @@
-import { semanticColors } from '@committed/colors/src/preset'
-import { Button, Inline, Stack } from '@committed/ds'
+import { Button, Inline, Stack, semanticColors } from '@committed/ds'
 import { css } from '@committed/ss/css'
 import { expect, jest } from '@storybook/jest'
 import { Meta, StoryObj } from '@storybook/react'

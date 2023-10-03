@@ -1,15 +1,5 @@
-import { presetColors } from '@committed/colors'
-import { presetTokens } from '@committed/tokens'
-import { presetUtilities } from '@committed/utilities'
-import { defineConfig } from '@pandacss/dev'
+import { componentsConfig } from './src/config'
 
-export default defineConfig({
-  presets: [presetColors(), presetTokens(), presetUtilities()],
-  jsxFramework: 'react',
-  emitPackage: true,
-  outdir: '@committed/ss',
-  clean: true,
-  preflight: true,
+export default componentsConfig({
   include: ['./src/**/*.{ts,tsx}'],
-  exclude: [],
 })

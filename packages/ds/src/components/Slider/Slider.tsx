@@ -3,21 +3,21 @@ import { useHover, useMergedRefs } from '@committed/hooks'
 import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
 import { styled } from '@committed/ss/jsx'
 import { SystemStyleObject } from '@committed/ss/types'
+import { SurfaceVariants } from '@committed/utilities'
 import { Arrow, Content, Portal } from '@radix-ui/react-popover'
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider'
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref'
 import { useControllableState } from '@radix-ui/react-use-controllable-state'
 import React, {
   ComponentProps,
-  ComponentRef,
   ElementRef,
-  FC,
   ReactNode,
   useCallback,
   useMemo,
   useRef,
 } from 'react'
 import {
+  CComponent,
   ColorPaletteProps,
   ConditionalWrapper,
   component,
@@ -79,54 +79,53 @@ const SliderRange = component(
 )
 SliderRange.displayName = 'SliderRange'
 
-const StyledThumb = component(
-  Thumb,
-  SLIDER_THUMB_CLASS,
-  css({
-    position: 'relative',
-    display: 'block',
-    size: '$4',
-    outline: 'none',
-    boxShadow: '$1',
-    borderRadius: '$round',
-    backgroundColor: 'var(--thumb)',
-
-    _after: {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      zIndex: -2,
-      backgroundColor: 'var(--thumb-background)',
-      transform: 'scale(1)',
+const StyledThumb = styled(
+  component(
+    Thumb,
+    SLIDER_THUMB_CLASS,
+    css({
+      position: 'relative',
+      display: 'block',
+      size: '$4',
+      outline: 'none',
+      boxShadow: '$1',
       borderRadius: '$round',
-      _motionReduce: { transition: 'none' },
-      _motionSafe: {
-        transition: 'transform 200ms cubic-bezier(0.22, 1, 0.36, 1)',
-      },
-    },
-
-    _focus: {
       _after: {
-        transform: 'scale(2)',
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        zIndex: -2,
+        backgroundColor: 'var(--thumb-background)',
+        transform: 'scale(1)',
+        borderRadius: '$round',
+        _motionReduce: { transition: 'none' },
+        _motionSafe: {
+          transition: 'transform 200ms cubic-bezier(0.22, 1, 0.36, 1)',
+        },
       },
-    },
 
-    _disabled: {
-      backgroundColor: '$neutral.5',
-    },
-  }),
+      _focus: {
+        _after: {
+          transform: 'scale(2)',
+        },
+      },
+
+      _disabled: {
+        backgroundColor: '$neutral.5',
+      },
+    }),
+  ),
 )
-StyledThumb.displayName = 'StyledThumb'
+StyledThumb.displayName = 'Thumb'
 
 const slider = cva({
   base: {
     '--range-default': 'token(colors.colorPalette.9)',
     '--range-hover': 'token(colors.colorPalette.10)',
     '--thumb-background': 'token(colors.colorPalette.3.a)',
-    '--thumb': 'token(colors.$neutral.1)',
 
     colorPalette: '$neutral',
 
@@ -148,13 +147,12 @@ const slider = cva({
 
 export const StyledSlider = styled(Root, slider)
 
-type SliderThumbProps = ComponentProps<typeof Thumb> & {
-  ref?: ComponentRef<typeof StyledThumb>
+type SliderThumbProps = {
   showLabel?: boolean
   value: number | string
   labelSide: LabelSide
   portalled: boolean
-}
+} & SurfaceVariants
 
 const StyledPopoverContent = styled(Content, tooltipContentCva)
 const StyledPopoverArrow = component(Arrow, tooltipArrowStyles)
@@ -185,7 +183,7 @@ const ThumbPopoverContent = forwardRefExtend<
 })
 ThumbPopoverContent.displayName = 'ThumbPopoverContent'
 
-export const SliderThumb: FC<SliderThumbProps> = ({
+export const SliderThumb: CComponent<typeof Thumb, SliderThumbProps> = ({
   value,
   showLabel,
   labelSide,
@@ -203,10 +201,12 @@ export const SliderThumb: FC<SliderThumbProps> = ({
     </Popover>
   )
 }
+SliderThumb.displayName = 'SliderThumb'
 
 type SliderVariants = RecipeVariantProps<typeof slider>
 type SliderProps = ColorPaletteProps &
   SliderVariants &
+  SurfaceVariants &
   UseFormControlProps & {
     /** Add a label to the Slider */
     label?: string
@@ -239,6 +239,7 @@ export const Slider = forwardRefExtend<typeof StyledSlider, SliderProps>(
       labelSide = 'top',
       labelFunction = (val) => val,
       portalled = true,
+      surface = 'solid',
       css,
       label,
       className,
@@ -310,6 +311,7 @@ export const Slider = forwardRefExtend<typeof StyledSlider, SliderProps>(
               key={i}
               value={handleLabelFunction(val)}
               showLabel={showLabels}
+              surface={surface}
               labelSide={labelSide}
               portalled={portalled}
             />

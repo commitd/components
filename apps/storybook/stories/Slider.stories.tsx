@@ -61,12 +61,15 @@ export const Controlled: StoryFn = () => {
 }
 
 /**
- * The Slider labels can be shown, `always`, on `hover`, or `none`. Using the `labelStyle` prop.
+ * The Slider labels can be shown, `always`, on `hover`, or `none` using the `labelStyle` prop.
+ * The marker surface can also be set using the `surface` prop.
  */
 export const LabelMarkers: StoryFn = () => (
   <Stack>
-    <Slider labelStyle="always" />
-    <Slider labelStyle="hover" />
+    <Slider labelStyle="always" surface="neutral" />
+    <Slider labelStyle="hover" surface="frost" />
+    <Slider labelStyle="always" surface="solid" />
+    <Slider labelStyle="hover" surface="glass" />
     <Slider labelStyle="none" />
   </Stack>
 )

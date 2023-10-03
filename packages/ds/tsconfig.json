@@ -1,5 +1,16 @@
 {
   "extends": "@committed/tsconfig/react-library.json",
   "include": ["**/*.ts", "**/*.tsx", "panda.config.ts"],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "paths": {
+      "@committed/ss": [
+        "./generated/css",
+        "./generated/jsx",
+        "./generated/patterns",
+        "./generated/tokens",
+        "./generated/types"
+      ]
+    }
+  }
 }

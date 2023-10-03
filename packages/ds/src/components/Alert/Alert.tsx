@@ -44,6 +44,9 @@ const alert = cva({
       },
     },
   },
+  defaultVariants: {
+    severity: 'ghost',
+  },
 })
 
 export const AlertTitle: FC<

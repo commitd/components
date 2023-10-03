@@ -1,5 +1,4 @@
-import { Background } from '@committed/ds'
-import { surfaces } from '@committed/utilities'
+import { Background, surfaces } from '@committed/ds'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { Variants } from './utils'
 import { ZigZag } from './utils/ZigZag'

@@ -2,6 +2,9 @@ import { ComponentsProvider } from '@committed/ds'
 import React from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
 
+import '@fontsource/dosis'
+import '@fontsource/inter'
+
 /**
  * Wrap a component with the default ThemeProvider
  *

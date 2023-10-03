@@ -39,7 +39,7 @@ const StyledItem = component(
   ),
 )
 
-const borderStyle = 'solid 2px'
+const borderStyle = 'solid 2px token(colors.$text)'
 
 const base = {
   ...buttonVariables,
@@ -88,16 +88,15 @@ const variants = {
     solid: {
       [`& .c-toggle-item`]: {
         ...mainVariants.solid,
-        backgroundColor: 'var(--text)',
         color: 'token(colors.colorPalette.solid)',
         '--onBackgroundColor': 'token(colors.colorPalette.solid)',
-        '--onColor': 'var(--text)',
+        '--onColor': 'token(colors.colorPalette.text)',
       },
     },
     outline: {
       [`& .c-toggle-item`]: {
         ...mainVariants.outline,
-        borderColor: 'var(--text)',
+        color: 'token(colors.$text)',
         '--onBackgroundColor': 'token(colors.colorPalette.solid)',
       },
       _notVertical: {

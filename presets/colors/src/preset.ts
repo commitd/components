@@ -250,13 +250,16 @@ function createColorTokens(config: Required<Config>) {
         },
       },
       frost: {
-        value: '{colors.$neutral.4.a}',
+        value: {
+          base: '{colors.$neutral.6.a}',
+          _dark: '{colors.$neutral.6.a}',
+        },
       },
     },
 
     $tooltip: createInvertedValue(config.neutral, 1),
     $selection: {
-      value: '{colors.$primary.3}',
+      value: '{colors.$primary.3.a}',
     },
     $text: {
       DEFAULT: { value: { base: '#3b3b3b', _dark: '#FFFFFF' } },

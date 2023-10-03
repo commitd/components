@@ -1,5 +1,4 @@
-import { semanticColors } from '@committed/colors/src/preset'
-import { Inline, Stack, Svg, Toggle } from '@committed/ds'
+import { Inline, Stack, Svg, Toggle, semanticColors } from '@committed/ds'
 import { useBoolean } from '@committed/hooks'
 import { mdiFormatItalic } from '@mdi/js'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
