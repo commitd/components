@@ -1,4 +1,4 @@
-import { RecipeVariantProps, cva } from '@committed/ss/css'
+import { RecipeVariantProps, cva } from '@committed/ss'
 
 /* spacing variants for use in layout components */
 export const spacing = cva({
@@ -28,7 +28,7 @@ export const spacing = cva({
 })
 export type SpacingVariants = RecipeVariantProps<typeof spacing>
 
-export const box = cva({
+export const boxCva = cva({
   base: {
     boxSizing: 'border-box',
   },
@@ -54,4 +54,4 @@ export const box = cva({
     },
   },
 })
-export type BoxVariants = RecipeVariantProps<typeof box>
+export type BoxVariants = RecipeVariantProps<typeof boxCva>

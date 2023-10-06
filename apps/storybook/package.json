@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "pnpm codegen",
-    "codegen": "panda codegen --clean",
+    "codegen": "panda codegen",
     "test": "test-storybook",
     "dev": "rimraf .next && storybook dev -p 6006",
     "build": "storybook build",
@@ -15,6 +15,7 @@
   "keywords": [],
   "dependencies": {
     "@committed/ds": "workspace:*",
+    "@committed/ss": "workspace:*",
     "@committed/hooks": "^0.10.4",
     "@faker-js/faker": "^8.0.2",
     "@fontsource/dosis": "^5.0.3",
@@ -50,11 +51,5 @@
     "react-dom": "^18.2.0",
     "storybook": "^7.4.5",
     "typescript": "^5.1.6"
-  },  
-  "imports": {
-    "#panda/css": "@committed/ss/css/index.mjs",
-    "#panda/recipes": "@committed/ss/recipes/index.mjs",
-    "#panda/patterns": "@committed/ss/patterns/index.mjs",
-    "#panda/jsx": "@committed/ss/jsx/index.mjs"
   }
 }

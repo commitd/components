@@ -1,5 +1,4 @@
-import { RecipeVariantProps, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps, cva, styled } from '@committed/ss'
 import React, { ComponentProps } from 'react'
 import { Assign, Prettify, forwardRefDefine } from '../../utils'
 

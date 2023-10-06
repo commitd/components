@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Grid, Tooltip } from '@committed/ds'
-import { SystemStyleObject } from '@committed/ss/css'
+import { SystemStyleObject } from '@committed/ss'
 import { ElementType, Fragment } from 'react'
 
 const arr = <T extends unknown>(v: T | Array<T>): Array<T> =>

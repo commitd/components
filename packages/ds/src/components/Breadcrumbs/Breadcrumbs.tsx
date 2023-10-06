@@ -1,4 +1,4 @@
-import { css } from '@committed/ss/css'
+import { css } from '@committed/ss'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 import { component } from '../../utils'
 import { Link, LinkProps } from '../Link'

@@ -1,5 +1,5 @@
 import { Box } from '@committed/ds'
-import { css, cx } from '@committed/ss/css'
+import { css, cx } from '@committed/ss'
 import { Meta, StoryObj } from '@storybook/react'
 import { ComponentProps } from 'react'
 

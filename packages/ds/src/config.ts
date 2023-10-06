@@ -7,7 +7,7 @@ export * from '@committed/colors'
 export * from '@committed/tokens'
 export * from '@committed/utilities'
 
-export const PACKAGE_NAME = '@committed/ss'
+export const PACKAGE_NAME = '@committed/s'
 export type ComponentsConfig = Prettify<
   NonNullable<Parameters<typeof presetColors>[0]> & {
     packageName?: string
@@ -22,6 +22,10 @@ export function committedIncludes(): string[] {
   return ['./node_modules/@committed/ds/src/**/*.ts*']
 }
 
+export function committedExcludes(): string[] {
+  return ['../@committed/ss/**/*', '../../packages/ss/**/*']
+}
+
 export function committedImportMap(packageName = PACKAGE_NAME) {
   return {
     css: packageName,
@@ -32,16 +36,17 @@ export function committedImportMap(packageName = PACKAGE_NAME) {
 }
 
 export function componentsConfig(
-  { presets = [], include = [], ...pandaConfig }: PandaConfig,
+  { presets = [], include = [], exclude = [], ...pandaConfig }: PandaConfig,
   { packageName = PACKAGE_NAME, ...componentsConfig }: ComponentsConfig = {},
 ): PandaConfig {
   return defineConfig({
     presets: [...componentsPresets(componentsConfig), ...presets],
     preflight: true,
-    emitPackage: true,
-    outdir: packageName, //'generated', // packageName,
+    emitPackage: false,
+    outdir: '../node_modules/@committed/ss',
     include: [...committedIncludes(), ...include],
-    //importMap: committedImportMap(),
+    exclude: [...committedExcludes(), ...exclude],
+    // importMap: committedImportMap(),
     jsxFramework: 'react',
     ...pandaConfig,
   })

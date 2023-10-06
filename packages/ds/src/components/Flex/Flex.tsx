@@ -1,6 +1,10 @@
-import { css, cva, RecipeVariantProps } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemProperties } from '@committed/ss/types/style-props'
+import {
+  css,
+  cva,
+  RecipeVariantProps,
+  styled,
+  SystemProperties,
+} from '@committed/ss'
 import {
   BoxVariants,
   component,

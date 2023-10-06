@@ -1,5 +1,4 @@
-import { cva, RecipeVariantProps } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { cva, RecipeVariantProps, styled } from '@committed/ss'
 import { component, PolyCComponent } from '../../utils'
 
 const DEFAULT_TAG = 'div'

@@ -1,6 +1,5 @@
 'use client'
-import { css, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { css, cx, styled } from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
 import {
   Arrow,

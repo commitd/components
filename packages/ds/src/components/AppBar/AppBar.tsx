@@ -1,5 +1,4 @@
-import { css, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { css, cva, cx, styled } from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { CComponent, component, forwardRefExtend } from '../../utils'

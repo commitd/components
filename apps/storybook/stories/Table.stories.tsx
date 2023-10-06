@@ -8,7 +8,7 @@ import {
   TableHead,
   TableRow,
 } from '@committed/ds/src/components/Table'
-import { css } from '@committed/ss/css'
+import { css } from '@committed/ss'
 import { faker } from '@faker-js/faker'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import React from 'react'

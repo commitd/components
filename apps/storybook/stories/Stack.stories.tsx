@@ -1,6 +1,5 @@
 import { Stack } from '@committed/ds/src'
-import { token } from '@committed/ss/tokens'
-import { SystemStyleObject } from '@committed/ss/types'
+import { SystemStyleObject, token } from '@committed/ss'
 import { Meta, StoryObj } from '@storybook/react'
 import { ComponentProps } from 'react'
 import { ExampleComponent } from './utils'

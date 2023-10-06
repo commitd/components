@@ -1,5 +1,4 @@
-import { cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { cva, styled } from '@committed/ss'
 
 import { useMemo } from 'react'
 import {

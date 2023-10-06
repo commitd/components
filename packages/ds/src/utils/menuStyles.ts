@@ -1,5 +1,4 @@
-import { css, cva } from '@committed/ss/css'
-import { RecipeVariantProps } from '@committed/ss/types/recipe'
+import { RecipeVariantProps, css, cva } from '@committed/ss'
 import { Check, ChevronRight } from '../components/Icons'
 import { component } from './component'
 

@@ -1,12 +1,13 @@
 'use client'
 
-import { css, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
 import {
   RecipeRuntimeFn,
   RecipeVariantProps,
   RecipeVariantRecord,
-} from '@committed/ss/types/recipe'
+  css,
+  cva,
+  styled,
+} from '@committed/ss'
 import { Item, Root } from '@radix-ui/react-toggle-group'
 import { CComponent, component } from '../../utils'
 import {

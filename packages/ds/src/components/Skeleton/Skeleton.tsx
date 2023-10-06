@@ -1,6 +1,4 @@
-import { cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { RecipeVariantProps } from '@committed/ss/types/recipe'
+import { RecipeVariantProps, cva, styled } from '@committed/ss'
 import { CComponent, component } from '../../utils'
 
 const DEFAULT_TAG = 'div'

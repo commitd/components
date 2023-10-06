@@ -1,7 +1,11 @@
 'use client'
-import { RecipeVariantProps, css, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  css,
+  cva,
+  styled,
+} from '@committed/ss'
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
 import { CComponent, component } from '../../utils'
 import {

@@ -1,5 +1,4 @@
-import { css } from '@committed/ss/css'
-import { SystemStyleObject } from '@committed/ss/types'
+import { SystemStyleObject, css } from '@committed/ss'
 import { Meta, StoryObj } from '@storybook/react'
 import { Column, Row } from '../../../packages/ds/src/components'
 import {
@@ -49,7 +48,9 @@ export default meta
 type Story = StoryObj<typeof Text>
 
 export const Default: Story = {
-  render: ({ size = 0, ...args }) => <Text size={`$${size}` as ComponentProps<typeof Text>['size']} {...args} />,
+  render: ({ size = 0, ...args }) => (
+    <Text size={`$${size}` as ComponentProps<typeof Text>['size']} {...args} />
+  ),
   args: {
     children:
       "This is the regular text using the default settings in a longer paragraph, the sort you might read in a blog post. The reason we are using prose here is because the most common use case for this container size is long form text. So we're previewing some longform text here so we can make sure the container width provides an optimal line length for this font size.",

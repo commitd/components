@@ -9,6 +9,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm add rimraf -g",
+    "codegen": "turbo run codegen",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "debug": "turbo run debug",

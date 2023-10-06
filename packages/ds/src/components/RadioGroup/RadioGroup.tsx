@@ -1,6 +1,5 @@
 'use client'
-import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ss'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { ConditionalWrapper, component } from '../../utils'

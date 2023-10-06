@@ -1,4 +1,4 @@
-import { cx } from '@committed/ss/css'
+import { cx } from '@committed/ss'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 import { forwardRefDefine } from '../../utils'
 import { IconButton } from '../Button'

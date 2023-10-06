@@ -1,5 +1,4 @@
-import { RecipeVariantProps, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps, cva, cx, styled } from '@committed/ss'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { Prettify } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'

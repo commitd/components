@@ -62,12 +62,21 @@ importers:
       '@committed/ds':
         specifier: workspace:*
         version: link:../../packages/ds
+      '@committed/hooks':
+        specifier: ^0.10.4
+        version: 0.10.4(react@18.2.0)
+      '@committed/ss':
+        specifier: workspace:*
+        version: link:../../packages/ss
       '@committed/tokens':
         specifier: workspace:*
         version: link:../../presets/tokens
       '@committed/utilities':
         specifier: workspace:*
         version: link:../../presets/utilities
+      '@mdi/js':
+        specifier: ^7.2.96
+        version: 7.2.96
       next:
         specifier: ^13.4.1
         version: 13.4.1(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
@@ -111,6 +120,9 @@ importers:
       '@committed/hooks':
         specifier: ^0.10.4
         version: 0.10.4(react@18.2.0)
+      '@committed/ss':
+        specifier: workspace:*
+        version: link:../../packages/ss
       '@faker-js/faker':
         specifier: ^8.0.2
         version: 8.0.2
@@ -317,6 +329,9 @@ importers:
       '@committed/eslint-config':
         specifier: workspace:*
         version: link:../../support/eslint-config
+      '@committed/ss':
+        specifier: workspace:*
+        version: link:../ss
       '@committed/tsconfig':
         specifier: workspace:*
         version: link:../../support/tsconfig
@@ -341,6 +356,15 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+
+  packages/ss:
+    devDependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
 
   presets/colors:
     dependencies:

@@ -1,4 +1,4 @@
-import { css } from '@committed/ss/css'
+import { css } from '@committed/ss'
 import { PolyCComponent, component } from '../../utils'
 
 const DEFAULT_TAG = 'div'

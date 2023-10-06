@@ -1,6 +1,5 @@
 'use client'
-import { css, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { css, cva, cx, styled } from '@committed/ss'
 import {
   Arrow,
   Content,

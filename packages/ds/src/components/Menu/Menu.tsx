@@ -1,7 +1,5 @@
 'use client'
-import { css } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import { SystemStyleObject, css, styled } from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
 import {
   CheckboxItem,
@@ -69,24 +67,31 @@ const groupStyles = css({
  * Based on [Radix Dropdown Menu](https://radix-ui.com/primitives/docs/components/dropdown-menu).
  */
 export const Menu: CComponent<typeof Root> = component(Root, MENU_CLASS)
+Menu.displayName = 'Menu'
 
 export const MenuItem: CComponent<typeof Item, ItemVariants> = component(
   styled(Item, itemCva),
   MENU_ITEM_CLASS,
   baseItemStyles,
 )
+MenuItem.displayName = 'MenuItem'
 export const MenuItemShortcut = component(
   'span',
   'c-menu-item-shortcut',
   itemShortcutStyles,
 )
+MenuItemShortcut.displayName = 'MenuItemShortcut'
 export const MenuSeparator = styled(
   component(Separator, 'c-menu-separator'),
   separatorCva,
 )
+MenuSeparator.displayName = 'MenuSeparator'
 export const MenuLabel = component(Label, 'c-menu-label', labelStyles)
+MenuLabel.displayName = 'MenuLabel'
 export const MenuItemGroup = component(Group, 'c-menu-group', groupStyles)
+MenuItemGroup.displayName = 'MenuItemGroup'
 export const MenuRadioGroup = component(RadioGroup, 'c-menu-radio-group')
+MenuRadioGroup.displayName = 'MenuRadioGroup'
 
 const StyledContent = styled(
   component(Content, 'c-menu-content', paperStyles, contentStyles),
@@ -228,7 +233,9 @@ export const MenuRadioItem = forwardRef<
 MenuRadioItem.displayName = 'MenuRadioItem'
 // Sub menu
 
-export const MenuSub = Sub
+export const MenuSub = component(Sub, 'c-menu-sub')
+MenuSub.displayName = 'MenuSub'
+
 const StyledSubTrigger = component(
   styled(SubTrigger, itemCva),
   baseItemStyles,

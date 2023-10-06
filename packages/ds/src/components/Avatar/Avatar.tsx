@@ -1,8 +1,11 @@
 'use client'
 
-import { RecipeVariantProps, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  cva,
+  styled,
+} from '@committed/ss'
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import React from 'react'
 import { PickProps, Prettify, forwardRefExtend } from '../../utils'

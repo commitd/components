@@ -1,7 +1,12 @@
 'use client'
-import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  css,
+  cva,
+  cx,
+  styled,
+} from '@committed/ss'
 import { Root, Thumb } from '@radix-ui/react-switch'
 import { ColorPaletteProps, component, forwardRefExtend } from '../../utils'
 

@@ -6,6 +6,7 @@
       "dependsOn": ["build"]
     },
     "codegen": {
+      "dependsOn": ["^codegen"]
     },
     "build": {
       "dependsOn": ["codegen", "^build"],

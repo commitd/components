@@ -1,5 +1,5 @@
 import { Box, Overlay, surfaces } from '@committed/ds'
-import { css } from '@committed/ss/css'
+import { css } from '@committed/ss'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 import { Variants } from './utils'

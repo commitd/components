@@ -8,7 +8,7 @@ import {
   Tooltip,
   TooltipProvider,
 } from '@committed/ds'
-import { css } from '@committed/ss/css'
+import { css } from '@committed/ss'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {

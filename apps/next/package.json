@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "pnpm codegen",
-    "codegen": "panda codegen --clean",
+    "codegen": "panda codegen ",
     "dev": "rimraf .next && next dev -p 3001",
     "build": "next build",
     "start": "next start",
@@ -15,9 +15,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@committed/colors": "workspace:*",
+    "@committed/hooks": "^0.10.4",
     "@committed/ds": "workspace:*",
+    "@committed/ss": "workspace:*",
     "@committed/tokens": "workspace:*",
-    "@committed/utilities": "workspace:*"
+    "@committed/utilities": "workspace:*",
+    "@mdi/js": "^7.2.96"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.15.4",

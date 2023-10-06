@@ -11,13 +11,14 @@
     "debug": "panda debug",
     "studio": "panda studio",
     "prepare": "pnpm codegen",
-    "codegen": "panda codegen --clean",
+    "codegen": "panda codegen",
     "build": "pnpm clean && panda cssgen && tsup src/index.ts --format=esm,cjs --dts",
     "lint": "eslint \"**/*.ts*\"",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
     "@committed/eslint-config": "workspace:*",
+    "@committed/ss": "workspace:*",
     "@committed/tsconfig": "workspace:*",
     "@pandacss/dev": "^0.15.4",
     "@pandacss/types": "^0.15.4",

@@ -1,6 +1,5 @@
 'use client'
-import { css, cx } from '@committed/ss/css'
-import { SystemStyleObject } from '@committed/ss/types'
+import { SystemStyleObject, css, cx } from '@committed/ss'
 import { Surface } from '@committed/utilities'
 import {
   Action,
@@ -78,7 +77,8 @@ const StyledContent = component(
  *
  * Based on [Radix Alert Dialog](https://radix-ui.com/primitives/docs/components/alert-dialog).
  */
-export const ConfirmDialog = Root
+export const ConfirmDialog = component(Root, 'c-confirm-dialog')
+ConfirmDialog.displayName = 'ConfirmDialog'
 
 type ConfirmDialogContentProps = ComponentProps<typeof StyledContent> & {
   /** Add a title to the content. */

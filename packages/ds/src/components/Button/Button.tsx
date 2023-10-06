@@ -1,7 +1,10 @@
-import { cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
-import { RecipeVariantProps } from '@committed/ss/types/recipe'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  cva,
+  cx,
+  styled,
+} from '@committed/ss'
 import {
   ColorPaletteProps,
   PolyCComponent,

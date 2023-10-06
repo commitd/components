@@ -1,7 +1,6 @@
 'use client'
 
-import { RecipeVariantProps, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps, cva, styled } from '@committed/ss'
 import { Root } from '@radix-ui/react-separator'
 import { PolyCComponent, component } from '../../utils'
 

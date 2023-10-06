@@ -1,6 +1,5 @@
 'use client'
-import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ss'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import {
   CComponent,

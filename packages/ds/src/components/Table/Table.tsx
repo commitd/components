@@ -1,8 +1,6 @@
-import { RecipeVariantProps, css, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
 
-import { SystemStyleObject } from '@committed/ss/types'
-import { RecipeVariantRecord } from '@committed/ss/types/recipe'
+import { RecipeVariantRecord, SystemStyleObject } from '@committed/ss'
 import { CComponent, component } from '../../utils'
 
 //------- Utility wrappers --------------//

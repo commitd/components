@@ -1,5 +1,4 @@
-import { cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { cva, styled } from '@committed/ss'
 import React, { FC, PropsWithChildren, useCallback } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import {

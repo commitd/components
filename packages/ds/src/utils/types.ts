@@ -1,6 +1,5 @@
 import { Color, Prefix, SemanticColor } from '@committed/colors'
-import { SystemStyleObject } from '@committed/ss/types'
-import { SystemProperties } from '@committed/ss/types/style-props'
+import { SystemProperties, SystemStyleObject } from '@committed/ss'
 import { ComponentProps, ElementType, ReactNode } from 'react'
 import { ForwardRef } from './forwardRef'
 /////////////////////

@@ -1,5 +1,4 @@
-import { cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { cx, styled } from '@committed/ss'
 import { ComponentProps } from 'react'
 import { CComponent, component, forwardRefExtend } from '../../utils'
 

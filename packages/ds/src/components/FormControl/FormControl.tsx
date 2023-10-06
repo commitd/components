@@ -10,8 +10,7 @@ import React, {
   useState,
 } from 'react'
 
-import { css, cva, RecipeVariantProps } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
+import { css, cva, RecipeVariantProps, styled } from '@committed/ss'
 import { component } from '../../utils'
 import { Text } from '../Text'
 import {

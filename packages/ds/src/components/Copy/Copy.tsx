@@ -1,6 +1,5 @@
 import { useBoolean, useTimeout } from '@committed/hooks'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import { SystemStyleObject, styled } from '@committed/ss'
 import React, { ComponentProps, FC } from 'react'
 import { Box } from '../Box'
 //import { Tooltip } from '../Tooltip'

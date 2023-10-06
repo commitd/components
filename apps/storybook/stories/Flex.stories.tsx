@@ -1,9 +1,7 @@
 import { Box, Column, Flex, Row } from '@committed/ds'
-import { css } from '@committed/ss/css'
-import { token } from '@committed/ss/tokens'
-import { SystemStyleObject } from '@committed/ss/types'
+import { css, token } from '@committed/ss'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import { ComponentProps } from 'react'
+import { CSSProperties, ComponentProps } from 'react'
 
 export default {
   title: 'Components/Flex',
@@ -46,9 +44,9 @@ export const Default: StoryFn = () => (
 
 const Utils: StoryObj<
   ComponentProps<typeof Flex> & {
-    box1: SystemStyleObject
-    box2: SystemStyleObject
-    box3?: SystemStyleObject
+    box1: CSSProperties
+    box2: CSSProperties
+    box3?: CSSProperties
   }
 > = {
   render: ({ box1 = {}, box2 = {}, box3, ...args }) => (

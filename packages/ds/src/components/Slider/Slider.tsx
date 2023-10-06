@@ -1,8 +1,13 @@
 'use client'
 import { useHover, useMergedRefs } from '@committed/hooks'
-import { RecipeVariantProps, css, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  css,
+  cva,
+  cx,
+  styled,
+} from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
 import { Arrow, Content, Portal } from '@radix-ui/react-popover'
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider'

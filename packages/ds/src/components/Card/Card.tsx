@@ -1,6 +1,4 @@
-import { css, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { RecipeVariantProps } from '@committed/ss/types/recipe'
+import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
 import { Surface } from '@committed/utilities'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 import {

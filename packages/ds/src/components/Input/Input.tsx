@@ -1,6 +1,10 @@
-import { RecipeVariantProps, cva, cx } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  cva,
+  cx,
+  styled,
+} from '@committed/ss'
 import React from 'react'
 import { ConditionalWrapper, forwardRefExtend } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'

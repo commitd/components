@@ -1,5 +1,4 @@
-import { styled } from '@committed/ss/jsx'
-import { SystemProperties } from '@committed/ss/types/style-props'
+import { SystemProperties, styled } from '@committed/ss'
 import React from 'react'
 import { CComponent, component, forwardRefExtend } from '../../utils'
 

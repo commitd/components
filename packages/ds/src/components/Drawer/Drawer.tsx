@@ -1,7 +1,11 @@
 'use client'
-import { RecipeVariantProps, css, cva } from '@committed/ss/css'
-import { styled } from '@committed/ss/jsx'
-import { SystemStyleObject } from '@committed/ss/types'
+import {
+  RecipeVariantProps,
+  SystemStyleObject,
+  css,
+  cva,
+  styled,
+} from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
 import { Close, Content, Portal, Root } from '@radix-ui/react-dialog'
 import { ComponentProps } from 'react'

@@ -1,0 +1,207 @@
+@layer tokens {
+    @keyframes beat {
+        0% {
+            opacity: 0
+        }
+        50% {
+            opacity: 100%
+        }
+        100% {
+            opacity: 100%
+        }
+    }
+    @keyframes enterFromRight {
+        from {
+            transform: translateX(200px);
+            opacity: 0
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1
+        }
+    }
+    @keyframes enterFromLeft {
+        from {
+            transform: translateX(-200px);
+            opacity: 0
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1
+        }
+    }
+    @keyframes exitToRight {
+        from {
+            transform: translateX(0);
+            opacity: 1
+        }
+        to {
+            transform: translateX(200px);
+            opacity: 0
+        }
+    }
+    @keyframes exitToLeft {
+        from {
+            transform: translateX(0);
+            opacity: 1
+        }
+        to {
+            transform: translateX(-200px);
+            opacity: 0
+        }
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+        to {
+            opacity: 1
+        }
+    }
+    @keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+        to {
+            opacity: 0
+        }
+    }
+    @keyframes fill {
+        0% {
+            fill: transparent
+        }
+        100% {
+            fill: currentColor
+        }
+    }
+    @keyframes hide {
+        0% {
+            opacity: 1
+        }
+        100% {
+            opacity: 0
+        }
+    }
+    @keyframes indeterminate {
+        0% {
+            transform: translateX(-100%);
+            transform-origin: left
+        }
+        50% {
+            transform: translateX(950%);
+            transform-origin: left
+        }
+        100% {
+            transform: translateX(2000%);
+            transform-origin: left
+        }
+    }
+    @keyframes pulse {
+        0% {
+            opacity: 0.8
+        }
+        50% {
+            opacity: 1
+        }
+        100% {
+            opacity: 0.8
+        }
+    }
+    @keyframes ripple {
+        0% {
+            background-position: -1000px 0
+        }
+        100% {
+            background-position: 1000px 0
+        }
+    }
+    @keyframes scale {
+        0% {
+            transform: scale(0.5)
+        }
+        100% {
+            transform: scale(1)
+        }
+    }
+    @keyframes scaleIn {
+        from {
+            transform: rotateX(-30deg) scale(0.9);
+            opacity: 0
+        }
+        to {
+            transform: rotateX(0deg) scale(1);
+            opacity: 1
+        }
+    }
+    @keyframes scaleOut {
+        from {
+            transform: rotateX(0deg) scale(1);
+            opacity: 1
+        }
+        to {
+            transform: rotateX(-10deg) scale(0.95);
+            opacity: 0
+        }
+    }
+    @keyframes slideDown {
+        from {
+            height: 0
+        }
+        to {
+            height: var(--transformValue)
+        }
+    }
+    @keyframes slideIn {
+        from {
+            transform: var(--transformValue)
+        }
+        to {
+            transform: translate3d(0,0,0)
+        }
+    }
+    @keyframes slideOut {
+        from {
+            transform: translate3d(0,0,0)
+        }
+        to {
+            transform: var(--transformValue)
+        }
+    }
+    @keyframes slideUp {
+        from {
+            height: var(--transformValue)
+        }
+        to {
+            height: 0
+        }
+    }
+    @keyframes spin {
+        to {
+            transform: rotate(360deg)
+        }
+    }
+    @keyframes stroke {
+        0% {
+            stroke-dashoffset: 2300
+        }
+        100% {
+            stroke-dashoffset: 0
+        }
+    }
+    @keyframes toastIn {
+        from {
+            transform: translateX(calc(100% + {space.$5}))
+        }
+        to {
+            transform: translateX(0)
+        }
+    }
+    @keyframes toastOut {
+        from {
+            transform: translateX(var(--radix-toast-swipe-end-x))
+        }
+        to {
+            transform: translateX(calc(100% + {space.$5}))
+        }
+    }
+}

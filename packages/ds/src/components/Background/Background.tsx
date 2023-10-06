@@ -1,4 +1,4 @@
-import { styled } from '@committed/ss/jsx'
+import { styled } from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
 import React from 'react'
 import {

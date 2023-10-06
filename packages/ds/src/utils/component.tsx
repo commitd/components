@@ -1,4 +1,4 @@
-import { css, cx } from '@committed/ss/css'
+import { css, cx } from '@committed/ss'
 import { Slot } from '@radix-ui/react-slot'
 import { ComponentProps, ComponentType, ElementType } from 'react'
 import { forwardRefExtend } from './forwardRef'
