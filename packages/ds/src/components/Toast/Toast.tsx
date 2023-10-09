@@ -62,7 +62,7 @@ const toast = cva({
       default: {
         colorPalette: '$neutral',
       },
-      warning: {
+      warn: {
         colorPalette: '$warn',
       },
       info: {
@@ -99,7 +99,6 @@ const StyledToast: CComponent<typeof ToastPrimitive.Root, ToastVariants> =
         borderColor: 'colorPalette.border',
         color: 'colorPalette.text.low',
         backgroundColor: 'colorPalette.outline',
-        colorPalette: '$neutral',
 
         _motionReduce: { transition: 'none' },
         _motionSafe: {

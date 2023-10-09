@@ -8,9 +8,15 @@ export const ButtonExample = () => (
       <Button variant="text">text</Button>
     </Inline>
     <Inline>
-      <Button size="small">Small</Button>
-      <Button size="default">Default</Button>
-      <Button size="large">Large</Button>
+      <Button variant="solid" size="small">
+        Small
+      </Button>
+      <Button variant="solid" size="default">
+        Default
+      </Button>
+      <Button variant="solid" size="large">
+        Large
+      </Button>
     </Inline>
   </Stack>
 )

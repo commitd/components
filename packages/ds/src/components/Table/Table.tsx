@@ -1,6 +1,7 @@
 import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
 
 import { RecipeVariantRecord, SystemStyleObject } from '@committed/ss'
+import { SurfaceVariants } from '@committed/utilities'
 import { CComponent, component } from '../../utils'
 
 //------- Utility wrappers --------------//
@@ -213,7 +214,7 @@ const table = cva({
   },
 })
 
-type TableProps = RecipeVariantProps<typeof table>
+type TableProps = RecipeVariantProps<typeof table> & SurfaceVariants
 
 /**
  * Table component

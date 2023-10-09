@@ -8,7 +8,9 @@ export const BackdropExample = () => {
   useTimeout(setFalse, open ? 1000 : null)
   return (
     <>
-      <Button onClick={setTrue}>Show Backdrop</Button>
+      <Button variant="solid" onClick={setTrue}>
+        Show Backdrop
+      </Button>
       <Backdrop open={open}>
         <Spinner size="$8" variant="spin" />
       </Backdrop>

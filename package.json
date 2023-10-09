@@ -11,7 +11,7 @@
     "postinstall": "pnpm add rimraf -g",
     "codegen": "turbo run codegen",
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --concurrency 12",
     "debug": "turbo run debug",
     "lint": "turbo run lint",
     "format": "prettier --write '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'"

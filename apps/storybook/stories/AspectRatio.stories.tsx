@@ -1,32 +1,18 @@
 import {
   AspectRatio,
   Box,
-  // Card,
-  // CardBody,
-  // CardHeading,
-  // CardSubheading,
-  // Image,
+  Card,
+  CardContent,
+  CardHeading,
+  CardSubheading,
+  Image,
   Inline,
-  // Label,
-  // Slider,
+  Label,
+  Slider,
   Stack,
 } from '@committed/ds'
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-
-const Card = ({ children, ...props }: any) => <div {...props}>{children}</div>
-const CardBody = ({ children, ...props }: any) => (
-  <div {...props}>{children}</div>
-)
-const CardHeading = ({ children, ...props }: any) => (
-  <div {...props}>{children}</div>
-)
-const CardSubheading = ({ children, ...props }: any) => (
-  <div {...props}>{children}</div>
-)
-const Image = ({ children, ...props }: any) => <img {...props}>{children}</img>
-const Label = ({ children, ...props }: any) => <div {...props}>{children}</div>
-const Slider = ({ children, ...props }: any) => <div {...props}>{children}</div>
 
 const meta: Meta<typeof AspectRatio> = {
   title: 'Components/AspectRatio',
@@ -40,7 +26,7 @@ export const Default: Story = {
     <Card css={{ width: '50%' }}>
       <CardHeading>Photo by Damian Markutt</CardHeading>
       <CardSubheading>@wildandfree_photography</CardSubheading>
-      <CardBody>
+      <CardContent>
         {/* ratio={ 9 / 16} */}
         <AspectRatio ratio={ratio} {...args}>
           <Image
@@ -48,7 +34,7 @@ export const Default: Story = {
             alt="Photo by Damian Markutt @wildandfree_photography"
           />
         </AspectRatio>
-      </CardBody>
+      </CardContent>
     </Card>
   ),
 }
@@ -75,17 +61,18 @@ export const Dynamic: Story = {
             </Label>
           </Stack>
         </Box>
-        <Card css={{ width: '50%' }}>
+        <Card css={{ width: '50%', height: '50%', overflow: 'hidden' }}>
           <CardHeading>Photo by Damian Markutt</CardHeading>
           <CardSubheading>@wildandfree_photography</CardSubheading>
-          <CardBody>
+          <CardContent>
             <AspectRatio ratio={numerator[0] / denominator[0]}>
               <Image
+                css={{ objectFit: 'cover', width: '100%', height: '100%' }}
                 src="https://images.unsplash.com/photo-1572302895496-a09d147fa902?w=300&dpr=2&q=80"
                 alt="Photo by Damian Markutt @wildandfree_photography"
               />
             </AspectRatio>
-          </CardBody>
+          </CardContent>
         </Card>
       </Inline>
     )

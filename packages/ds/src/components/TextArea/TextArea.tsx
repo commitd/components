@@ -1,3 +1,4 @@
+'use client'
 import { RecipeVariantProps, cva, cx, styled } from '@committed/ss'
 import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import { Prettify } from '../../utils'

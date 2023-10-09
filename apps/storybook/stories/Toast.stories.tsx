@@ -40,7 +40,7 @@ export default {
   excludeStories: ['ToastProvider', 'ToastViewport'],
   argTypes: {
     severity: {
-      options: ['error', 'warning', 'info', 'success', 'ghost', 'default'],
+      options: ['error', 'warn', 'info', 'success', 'default'],
       description: 'Set the severity of the alert',
     },
   },
@@ -167,7 +167,7 @@ export const UseToastSeverity: StoryFn = () => {
         onClick={() => {
           addToast({
             title: 'Warning Toast',
-            severity: 'warning',
+            severity: 'warn',
             description: 'This is toast description',
             close: true,
           })
@@ -281,7 +281,7 @@ export const UseToastWithKey: StoryFn = () => {
         onClick={() => {
           addToast({
             title: 'Toast id B',
-            severity: 'warning',
+            severity: 'warn',
             description: `this is toast number ${toastNumber++}`,
             id: 'B',
           })

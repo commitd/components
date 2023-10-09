@@ -5,6 +5,7 @@ import { CComponent, component, forwardRefExtend } from '../../utils'
 import { Box } from '../Box'
 import { Button } from '../Button'
 import { Heading } from '../Heading'
+import { Inline } from '../Inline'
 import { Link } from '../Link'
 
 /**
@@ -59,7 +60,7 @@ export const AppBarHeading = forwardRef<
 ))
 AppBarHeading.displayName = 'AppBarHeading'
 
-export const AppBarActions = component('div', 'c-appbar-actions', css({}))
+export const AppBarActions = component(Inline, 'c-appbar-actions')
 AppBarActions.displayName = 'AppBarActions'
 
 const APP_BAR_BUTTON_CLASS_NAME = 'c-app-bar-button'

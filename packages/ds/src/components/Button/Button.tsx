@@ -157,7 +157,7 @@ const button = cva({
   },
   ...buttonVariants,
   defaultVariants: {
-    variant: 'outline',
+    variant: 'solid',
     destructive: false,
     size: 'default',
   },

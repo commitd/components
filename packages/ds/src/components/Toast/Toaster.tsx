@@ -11,15 +11,19 @@ import {
   useMemo,
   useReducer,
 } from 'react'
+import { Prettify } from '../../utils'
 import { Toast } from './Toast'
 
 type ToastProps = ComponentProps<typeof Toast>
-export type ToastData = Partial<Omit<ToastProps, 'duration' | 'title'>> & {
-  id?: string
-  duration?: ToastProps['duration'] | null
-  title: ToastProps['title']
-  onClose?: () => void
-} & (
+export type ToastData = Prettify<
+  Partial<Omit<ToastProps, 'duration' | 'title' | 'color'>> & {
+    id?: string
+    duration?: ToastProps['duration'] | null
+    title: ToastProps['title']
+    onClose?: () => void
+  }
+> &
+  (
     | {
         actions: ReactNode
         altText: string

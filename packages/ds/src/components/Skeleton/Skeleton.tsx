@@ -32,12 +32,15 @@ const skeleton = cva({
       },
       text: {
         height: '$4',
+        width: '100%',
       },
       title: {
         height: '$5',
+        width: '100%',
       },
       heading: {
         height: '$7',
+        width: '100%',
       },
       button: {
         borderRadius: '$default',
@@ -53,7 +56,7 @@ const skeleton = cva({
     animation: {
       ripple: {
         _after: {
-          animation: `ripple 2s ease-in-out infinite`,
+          animation: `ripple 3s ease-in-out infinite`,
           backgroundImage: `linear-gradient(
             to right,
             token(colors.$neutral.4) 4%,
@@ -117,7 +120,7 @@ const skeleton = cva({
 
 type SkeletonVariants = RecipeVariantProps<typeof skeleton>
 
-export const Skeleton: CComponent<'div', SkeletonVariants> = component(
-  styled(DEFAULT_TAG, skeleton),
-  'c-skeleton',
+export const Skeleton: CComponent<'div', SkeletonVariants> = styled(
+  component(DEFAULT_TAG, 'c-skeleton'),
+  skeleton,
 )

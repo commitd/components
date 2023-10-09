@@ -74,6 +74,9 @@ importers:
       '@committed/utilities':
         specifier: workspace:*
         version: link:../../presets/utilities
+      '@faker-js/faker':
+        specifier: ^8.0.2
+        version: 8.0.2
       '@mdi/js':
         specifier: ^7.2.96
         version: 7.2.96

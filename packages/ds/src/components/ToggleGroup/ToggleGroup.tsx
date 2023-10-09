@@ -9,7 +9,7 @@ import {
   styled,
 } from '@committed/ss'
 import { Item, Root } from '@radix-ui/react-toggle-group'
-import { CComponent, component } from '../../utils'
+import { CComponent, ColorPaletteProps, component } from '../../utils'
 import {
   buttonBaseStyles,
   buttonInteractionStyles,
@@ -171,7 +171,7 @@ const toggleGroup: RecipeRuntimeFn<typeof variants> = cva({
   },
 })
 
-type Variants = RecipeVariantProps<typeof toggleGroup>
+type Variants = RecipeVariantProps<typeof toggleGroup> & ColorPaletteProps
 
 /**
  * Toggle Group Component

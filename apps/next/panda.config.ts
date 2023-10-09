@@ -1,7 +1,11 @@
 import { componentsConfig } from '@committed/ds'
 
 export default componentsConfig({
-  include: ['../../preset/src/**/*.ts*', './app/**/*.{js,jsx,ts,tsx}'],
+  include: [
+    '../../preset/src/**/*.ts*',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
   exclude: [],
   hooks: {
     'config:resolved': (conf) => {
