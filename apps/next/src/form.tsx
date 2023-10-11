@@ -6,6 +6,7 @@ import {
   FormControl,
   FormControlHelp,
   Input,
+  useToast,
 } from '@committed/ds'
 import { withFormData } from './parts/withForm'
 
@@ -80,8 +81,14 @@ export const FormExample = () => {
     }
   }
 
+  const { addToast } = useToast()
+
   return (
-    <Form onSubmit={withFormData(alert)}>
+    <Form
+      onSubmit={withFormData((data) =>
+        addToast({ title: 'Submitted', description: data }),
+      )}
+    >
       <FormControl>
         <Input
           name="email"

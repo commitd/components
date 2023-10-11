@@ -1,7 +1,7 @@
 import { Alert, AlertContent, AlertTitle, Stack } from '@committed/ds'
 
 export const AlertExample = () => (
-  <Stack space="small">
+  <Stack spacing="small">
     <Alert severity="ghost">
       <AlertTitle>Ghost</AlertTitle>
       <AlertContent>

@@ -1,8 +1,9 @@
 'use client'
 import { Root } from '@radix-ui/react-label'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import React, { ComponentProps } from 'react'
 
 import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
+import { forwardRefExtend } from '../../utils'
 import { usePossibleFormControlState } from '../FormControl/FormControlContext'
 import { Text } from '../Text'
 import { text } from '../Text/Text'
@@ -65,7 +66,7 @@ export const LabelOptional: React.FC<LabelOptionalProps> = ({
   </>
 )
 
-export const Label = forwardRef<ElementRef<typeof StyledLabel>, LabelProps>(
+export const Label = forwardRefExtend<typeof Text, LabelProps>(
   ({ children, ...props }, forwardedRef) => {
     const context = usePossibleFormControlState()
     const contextProps: { id?: string; disabled?: boolean } = {}

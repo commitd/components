@@ -1,29 +1,33 @@
 import { Box } from '@committed/ds'
-import { SystemStyleObject } from '@committed/ss'
-import React from 'react'
+import { SystemStyleObject, cva, styled } from '@committed/ss'
+import { CSSProperties } from 'react'
 import { randomColor } from './randomColor'
 
-type BoxProps = React.ComponentProps<typeof Box>
-type ExampleComponentProps = Omit<BoxProps, 'css'> & {
-  width?: SystemStyleObject['width']
-  height?: SystemStyleObject['height']
-}
-
-export const ExampleComponent: React.FC<ExampleComponentProps> = ({
-  height = '100px',
-  width = '100%',
-  ...props
-}) => (
-  <Box
-    css={{
+const StyledBox = styled(
+  Box,
+  cva({
+    base: {
+      minWidth: '$5',
+      minHeight: '$5',
       p: '$2',
-      border: '1px solid token(colors.$neutral.3)',
-    }}
-    style={{
-      width,
-      height,
-      backgroundColor: randomColor(),
-    }}
+      border: '2px solid token(colors.$neutral.5)',
+    },
+  }),
+)
+
+export const ExampleComponent = ({
+  style,
+  ...props
+}: {
+  style?: CSSProperties
+  css?: SystemStyleObject
+  children?: React.ReactNode
+}) => (
+  <StyledBox
     {...props}
+    style={{
+      backgroundColor: randomColor(),
+      ...style,
+    }}
   />
 )

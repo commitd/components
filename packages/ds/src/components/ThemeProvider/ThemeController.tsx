@@ -38,6 +38,8 @@ export const ThemeContext = createContext<{
   toggle: () => undefined,
 })
 
+const isBrowser = () => typeof window !== 'undefined'
+
 export const ThemeController: React.FC<ThemeControllerProps> = ({
   light = 'light',
   dark = 'dark',
@@ -70,7 +72,9 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
   )
 
   const setMode = (mode: ThemeChoice) => {
-    window?.localStorage.setItem('themeChoice', mode)
+    if (isBrowser()) {
+      window?.localStorage.setItem('themeChoice', mode)
+    }
     setThemeValues(mode)
   }
 
@@ -82,17 +86,19 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
     }
   }
 
-  window
-    ?.matchMedia?.('(prefers-color-scheme: dark)')
-    .addEventListener('change', (e) => {
-      setThemeValues(e.matches ? 'dark' : 'light')
-    })
+  if (isBrowser()) {
+    window
+      ?.matchMedia?.('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => {
+        setThemeValues(e.matches ? 'dark' : 'light')
+      })
 
-  window
-    ?.matchMedia?.('(prefers-color-scheme: light)')
-    .addEventListener('change', (e) => {
-      setThemeValues(e.matches ? 'light' : 'dark')
-    })
+    window
+      ?.matchMedia?.('(prefers-color-scheme: light)')
+      .addEventListener('change', (e) => {
+        setThemeValues(e.matches ? 'light' : 'dark')
+      })
+  }
 
   // paints the app before it renders elements
   useLayoutEffect(() => {

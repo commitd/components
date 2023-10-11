@@ -226,14 +226,14 @@ type SliderProps = ColorPaletteProps &
     /** additional css styles */
     css?: SystemStyleObject
   }
-type SliderRef = ElementRef<typeof StyledSlider>
+type SliderRef = ElementRef<typeof Root>
 
 /**
  * Sliders can be used for selection from a (numeric) range of values.
  *
  * Based on [Radix Slider](https://radix-ui.com/primitives/docs/components/slider).
  */
-export const Slider = forwardRefExtend<typeof StyledSlider, SliderProps>(
+export const Slider = forwardRefExtend<typeof Root, SliderProps>(
   (
     {
       min = 0,

@@ -1,12 +1,12 @@
 'use client'
 
 import { Inline } from '@committed/ds'
-import { GridBox } from './parts/GridBox'
+import { ExampleComponent } from './parts/ExampleComponent'
 
 export const InlineExample = () => (
   <Inline>
-    <GridBox />
-    <GridBox />
-    <GridBox />
+    <ExampleComponent />
+    <ExampleComponent />
+    <ExampleComponent />
   </Inline>
 )

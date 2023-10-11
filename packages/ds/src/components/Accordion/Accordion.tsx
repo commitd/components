@@ -82,7 +82,7 @@ export const AccordionContent = component(
   'c-accordion-content',
   css({
     '--transformValue':
-      'calc(var(--radix-accordion-content-height)+token(sizes.$6))',
+      'calc(var(--radix-accordion-content-height) + token(sizes.$6))',
     padding: '$4',
     color: '$text',
     '&[data-state="open"]': {

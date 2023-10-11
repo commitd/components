@@ -1,7 +1,7 @@
 import { css } from '@committed/ss'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { component } from '../../utils'
-import { Link, LinkProps } from '../Link'
+import { component, forwardRefDefine } from '../../utils'
+import { Link } from '../Link'
 const BREADCRUMB_TAG = 'nav'
 const BREADCRUMB_LIST_TAG = 'ol'
 const CRUMB_TAG = 'li'
@@ -55,23 +55,26 @@ export const Breadcrumbs = forwardRef<
 })
 Breadcrumbs.displayName = 'Breadcrumbs'
 
-export type CrumbProps = LinkProps & {
+export type CrumbProps = ComponentProps<typeof Link> & {
   isCurrentPage?: boolean
 }
 
-export const Crumb = ({
-  isCurrentPage = false,
-  children,
-  ...props
-}: CrumbProps) => {
-  const variant = isCurrentPage ? 'clear' : 'hovered'
-  const current = isCurrentPage ? 'page' : undefined
-  return (
-    <StyledCrumb>
-      <Link variant={variant} aria-current={current} {...props}>
-        {children}
-      </Link>
-    </StyledCrumb>
-  )
-}
+export const Crumb = forwardRefDefine<typeof Link, CrumbProps>(
+  ({ isCurrentPage = false, children, ...props }, forwardedRef) => {
+    const variant = isCurrentPage ? 'clear' : 'hovered'
+    const current = isCurrentPage ? 'page' : undefined
+    return (
+      <StyledCrumb>
+        <Link
+          variant={variant}
+          aria-current={current}
+          {...props}
+          ref={forwardedRef}
+        >
+          {children}
+        </Link>
+      </StyledCrumb>
+    )
+  },
+)
 Crumb.displayName = 'Crumb'
