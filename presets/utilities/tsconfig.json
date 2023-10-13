@@ -1,5 +1,5 @@
 {
-  "extends": "@committed/tsconfig/react-library.json",
+  "extends": "@committed/ds-tsconfig/react-library.json",
   "include": ["."],
   "exclude": ["node_modules"]
 }

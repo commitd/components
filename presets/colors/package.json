@@ -15,7 +15,7 @@
     "@pandacss/dev": "^0.15.4",
     "@pandacss/types": "^0.15.4",
     "@committed/eslint-config": "workspace:*",
-    "@committed/tsconfig": "workspace:*"
+    "@committed/ds-tsconfig": "workspace:*"
   },
   "dependencies": {
     "@radix-ui/colors": "^2.1.0"

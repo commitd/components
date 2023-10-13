@@ -14,12 +14,17 @@
     "debug": "turbo run debug",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "format": "prettier --write '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'"
+    "format": "prettier --write '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
+    "format:check": "prettier -c '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
+    "ci": "turbo run format:check build lint test",
+    "ci:publish": "pnpm publish -r",
+    "ci:version": "pnpm changeset version"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
+    "@committed/ds-tsconfig": "workspace:*",
     "@committed/eslint-config": "workspace:*",
-    "@committed/tsconfig": "workspace:*",
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.51.0",
     "eslint-plugin-turbo": "^1.10.7",

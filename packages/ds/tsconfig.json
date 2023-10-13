@@ -1,5 +1,5 @@
 {
-  "extends": "@committed/tsconfig/react-library.json",
+  "extends": "@committed/ds-tsconfig/react-library.json",
   "include": ["**/*.ts", "**/*.tsx", "panda.config.ts", "../ss/index.mjs"],
   "exclude": ["dist", "build", "node_modules"]
 }

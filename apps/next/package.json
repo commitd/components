@@ -1,5 +1,5 @@
 {
-  "name": "next",
+  "name": "@committed/ds-next",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@committed/eslint-config": "workspace:*",
-    "@committed/tsconfig": "workspace:*",
+    "@committed/ds-tsconfig": "workspace:*",
     "@pandacss/dev": "^0.15.4",
     "@pandacss/types": "^0.15.4",
     "@types/node": "^17.0.12",

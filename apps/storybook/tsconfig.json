@@ -1,5 +1,5 @@
 {
-  "extends": "@committed/tsconfig/storybook.json",
+  "extends": "@committed/ds-tsconfig/storybook.json",
   "include": ["**/*.ts", "**/*.tsx", "panda.config.ts"],
   "exclude": ["node_modules"]
 }

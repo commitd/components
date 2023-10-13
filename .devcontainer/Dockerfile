@@ -11,12 +11,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 # RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
 
 # [Optional] Uncomment if you want to install more global node packages
-RUN su node -c "npm install -g rimraf pnpm turbo ts-node"
+RUN su node -c "npm install -g rimraf pnpm turbo"
 RUN echo "alias pm=pnpm" >> /home/node/.bashrc
-RUN echo "alias npm=pnpm" >> /home/node/.bashrc
 RUN echo "alias px='pnpm dlx'" >> /home/node/.bashrc
-RUN echo "alias npx='pnpm dlx'" >> /home/node/.bashrc
 RUN echo "alias pm=pnpm" >> /home/node/.zshrc
-RUN echo "alias npm=pnpm" >> /home/node/.zshrc
 RUN echo "alias px='pnpm dlx'" >> /home/node/.zshrc
-RUN echo "alias npx='pnpm dlx'" >> /home/node/.zshrc
