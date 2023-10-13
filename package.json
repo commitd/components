@@ -14,9 +14,11 @@
     "dev": "turbo run dev --concurrency 12",
     "debug": "turbo run debug",
     "lint": "turbo run lint",
+    "test": "turbo run test",
     "format": "prettier --write '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@committed/eslint-config": "workspace:*",
     "@committed/tsconfig": "workspace:*",
     "@turbo/gen": "^1.9.7",

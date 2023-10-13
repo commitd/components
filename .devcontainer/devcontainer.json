@@ -61,7 +61,7 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
 
-  "postCreateCommand": "alias pm=pnpm ; alias px='pnpm dlx' ; pnpm setup ; pnpm add -g turbo",
+  "postCreateCommand": "pnpm setup ; pnpm dlx playwright install --with-deps  ",
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "node",

@@ -1,12 +1,13 @@
 {
   "name": "storybook",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "prepare": "pnpm codegen",
     "codegen": "panda codegen",
-    "test": "test-storybook",
+    "test": "pnpm dlx concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'pnpm dlx http-server storybook-static --port 6006 --silent' 'pnpm dlx wait-on tcp:6006 && pnpm test-storybook'",
+    "test:live": "test-storybook",
     "dev": "rimraf .next && storybook dev -p 6006",
     "build": "storybook build",
     "serve": "serve storybook-static",
