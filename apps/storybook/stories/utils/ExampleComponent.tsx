@@ -1,5 +1,5 @@
 import { Box } from '@committed/ds'
-import { SystemStyleObject } from '@committed/ss'
+import { SystemStyleObject } from '@committed/ds-ss'
 import React from 'react'
 import { randomColor } from './randomColor'
 

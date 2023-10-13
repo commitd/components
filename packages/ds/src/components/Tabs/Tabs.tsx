@@ -5,7 +5,7 @@ import {
   css,
   cva,
   styled,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
 import { CComponent, component } from '../../utils'
 import {

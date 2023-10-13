@@ -16,7 +16,7 @@
   "keywords": [],
   "dependencies": {
     "@committed/ds": "workspace:*",
-    "@committed/ss": "workspace:*",
+    "@committed/ds-ss": "workspace:*",
     "@committed/hooks": "^0.10.4",
     "@faker-js/faker": "^8.0.2",
     "@fontsource/dosis": "^5.0.3",

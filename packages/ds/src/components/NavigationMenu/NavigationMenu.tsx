@@ -1,5 +1,5 @@
 'use client'
-import { SystemStyleObject, css, cva, cx, styled } from '@committed/ss'
+import { SystemStyleObject, css, cva, cx, styled } from '@committed/ds-ss'
 import {
   Content,
   Indicator,

@@ -1,13 +1,13 @@
 ---
 '@committed/eslint-config': minor
-'@committed/utilities': minor
+'@committed/ds-utilities': minor
 '@committed/tsconfig': minor
 'storybook': minor
-'@committed/colors': minor
-'@committed/tokens': minor
+'@committed/ds-colors': minor
+'@committed/ds-tokens': minor
 'example': minor
 '@committed/ds': minor
-'@committed/ss': minor
+'@committed/ds-ss': minor
 'next': minor
 ---
 

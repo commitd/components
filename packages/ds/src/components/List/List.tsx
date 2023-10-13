@@ -1,5 +1,5 @@
-import { css, cva, cx, styled } from '@committed/ss'
-import { SurfaceVariants } from '@committed/utilities'
+import { css, cva, cx, styled } from '@committed/ds-ss'
+import { SurfaceVariants } from '@committed/ds-utilities'
 import { ComponentProps, ElementRef, FC, ForwardedRef, forwardRef } from 'react'
 import { component } from '../../utils'
 import {

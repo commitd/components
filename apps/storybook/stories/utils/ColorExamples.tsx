@@ -1,9 +1,9 @@
+import { Button, Stack } from '@committed/ds'
 import {
   neutralColors,
   primaryColors,
   semanticColors,
-} from '@committed/colors/src/preset'
-import { Button, Stack } from '@committed/ds'
+} from '@committed/ds-colors/src/preset'
 import { StoryObj } from '@storybook/react'
 import { ComponentProps } from 'react'
 import { Variants } from '.'

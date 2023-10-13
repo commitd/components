@@ -1,4 +1,4 @@
-import { RecipeVariantProps, cva, cx, styled } from '@committed/ss'
+import { RecipeVariantProps, cva, cx, styled } from '@committed/ds-ss'
 import { ComponentProps, FC, PropsWithChildren } from 'react'
 import { CComponent, ConditionalWrapper, component } from '../../utils'
 import { Heading } from '../Heading'

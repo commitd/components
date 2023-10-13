@@ -1,9 +1,13 @@
-import { Color, Prefix, SemanticColor } from '@committed/colors'
-import { SystemProperties, SystemStyleObject } from '@committed/ss'
+import { Color, Prefix, SemanticColor } from '@committed/ds-colors'
+import { SystemProperties, SystemStyleObject } from '@committed/ds-ss'
 import { ComponentProps, ElementType, ReactNode } from 'react'
 import { ForwardRef } from './forwardRef'
+export type { Color, Prefix, SemanticColor } from '@committed/ds-colors'
+export type { Surface, SurfaceVariants } from '@committed/ds-utilities'
 
-export type EmptyObject = Record<string, never>
+// ts recommends using Record<string, never> but this causes error
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type EmptyObject = {}
 
 /////////////////////
 // Props types
@@ -33,8 +37,7 @@ export type CComponentProps = Prettify<ChildProps & CssProps & ClassNameProps>
 export type PolyCComponentProps = Prettify<CComponentProps & AsChildProps>
 
 // recommends Record<string, never> instead but this doesn't work
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type CComponent<T extends ElementType, P = {}> = ForwardRef<
+export type CComponent<T extends ElementType, P = EmptyObject> = ForwardRef<
   T,
   Assign<ComponentProps<T>, P & CComponentProps>
 >
@@ -51,8 +54,7 @@ export type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 export type Prettify<T> = {
   [K in keyof T]: T[K]
-  // eslint-disable-next-line @typescript-eslint/ban-types
-} & {}
+} & EmptyObject
 
 export type Assign<T, U> = Omit<T, keyof U> & U
 

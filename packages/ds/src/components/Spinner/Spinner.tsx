@@ -1,4 +1,4 @@
-import { RecipeVariantProps, cva, styled } from '@committed/ss'
+import { RecipeVariantProps, cva, styled } from '@committed/ds-ss'
 import { CComponent } from '../../utils'
 import { Logo } from '../Logo'
 

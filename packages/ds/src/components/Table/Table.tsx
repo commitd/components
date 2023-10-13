@@ -1,7 +1,7 @@
-import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
+import { RecipeVariantProps, css, cva, styled } from '@committed/ds-ss'
 
-import { RecipeVariantRecord, SystemStyleObject } from '@committed/ss'
-import { SurfaceVariants } from '@committed/utilities'
+import { RecipeVariantRecord, SystemStyleObject } from '@committed/ds-ss'
+import { SurfaceVariants } from '@committed/ds-utilities'
 import { CComponent, component } from '../../utils'
 
 //------- Utility wrappers --------------//

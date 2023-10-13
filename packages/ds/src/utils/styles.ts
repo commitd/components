@@ -1,4 +1,4 @@
-import { RecipeVariantProps, cva } from '@committed/ss'
+import { RecipeVariantProps, cva } from '@committed/ds-ss'
 
 /* spacing variants for use in layout components */
 export const spacing = cva({

@@ -1,4 +1,4 @@
-import { cx, styled } from '@committed/ss'
+import { cx, styled } from '@committed/ds-ss'
 import { ComponentProps } from 'react'
 import {
   Assign,

@@ -14,7 +14,7 @@ import {
   useTheme,
   useThemeController,
 } from '@committed/ds'
-import { css, token } from '@committed/ss'
+import { css, token } from '@committed/ds-ss'
 import type { Meta, StoryFn, StoryObj } from '@storybook/react'
 
 export default {

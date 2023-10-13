@@ -1,4 +1,4 @@
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import { ComponentProps } from 'react'
 import { CComponent, Prettify, component, forwardRefExtend } from '../../utils'
 import { Svg } from '../Svg'

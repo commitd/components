@@ -5,8 +5,8 @@ import {
   css,
   cva,
   styled,
-} from '@committed/ss'
-import { SurfaceVariants } from '@committed/utilities'
+} from '@committed/ds-ss'
+import { SurfaceVariants } from '@committed/ds-utilities'
 import { Close, Content, Portal, Root } from '@radix-ui/react-dialog'
 import { ComponentProps } from 'react'
 import { ConditionalWrapper, component, forwardRefDefine } from '../../utils'

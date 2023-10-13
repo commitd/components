@@ -1,4 +1,4 @@
-import { css, styled } from '@committed/ss'
+import { css, styled } from '@committed/ds-ss'
 
 import {
   CComponentProps,

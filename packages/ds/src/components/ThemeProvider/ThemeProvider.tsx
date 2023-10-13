@@ -1,6 +1,6 @@
 'use client'
 
-import { cx } from '@committed/ss'
+import { cx } from '@committed/ds-ss'
 import { FC, useContext, useEffect, useRef } from 'react'
 import {
   ThemeChoice,

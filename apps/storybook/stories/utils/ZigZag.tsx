@@ -1,5 +1,5 @@
 import { Box } from '@committed/ds'
-import { css, cx } from '@committed/ss'
+import { css, cx } from '@committed/ds-ss'
 import { ComponentProps, FC } from 'react'
 
 export const zigzag = css({

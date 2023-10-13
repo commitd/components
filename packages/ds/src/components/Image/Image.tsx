@@ -1,4 +1,4 @@
-import { SystemStyleObject, cva, styled } from '@committed/ss'
+import { SystemStyleObject, cva, styled } from '@committed/ds-ss'
 import { CComponent, component } from '../../utils'
 
 /**

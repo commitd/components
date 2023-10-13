@@ -1,5 +1,5 @@
 import { Button, Inline, Stack, semanticColors } from '@committed/ds'
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import { expect, jest } from '@storybook/jest'
 import { Meta, StoryObj } from '@storybook/react'
 import { userEvent, waitFor, within } from '@storybook/testing-library'

@@ -1,5 +1,5 @@
-import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
-import { Surface } from '@committed/utilities'
+import { RecipeVariantProps, css, cva, styled } from '@committed/ds-ss'
+import { Surface } from '@committed/ds-utilities'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 import {
   CComponent,

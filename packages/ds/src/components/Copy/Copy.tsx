@@ -1,5 +1,5 @@
+import { SystemStyleObject } from '@committed/ds-ss'
 import { useBoolean, useTimeout } from '@committed/hooks'
-import { SystemStyleObject } from '@committed/ss'
 import React, { ComponentProps, FC } from 'react'
 import { handleErrors } from '../../utils/handleErrors'
 import { Box } from '../Box'

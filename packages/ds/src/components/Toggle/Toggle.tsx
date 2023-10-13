@@ -1,5 +1,5 @@
 'use client'
-import { RecipeVariantProps, cva, styled } from '@committed/ss'
+import { RecipeVariantProps, cva, styled } from '@committed/ds-ss'
 import { Root } from '@radix-ui/react-toggle'
 import { CComponent, component } from '../../utils'
 

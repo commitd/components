@@ -62,24 +62,15 @@ importers:
 
   apps/next:
     dependencies:
-      '@committed/colors':
-        specifier: workspace:*
-        version: link:../../presets/colors
       '@committed/ds':
         specifier: workspace:*
         version: link:../../packages/ds
+      '@committed/ds-ss':
+        specifier: workspace:*
+        version: link:../../packages/ss
       '@committed/hooks':
         specifier: ^0.10.4
         version: 0.10.4(react@18.2.0)
-      '@committed/ss':
-        specifier: workspace:*
-        version: link:../../packages/ss
-      '@committed/tokens':
-        specifier: workspace:*
-        version: link:../../presets/tokens
-      '@committed/utilities':
-        specifier: workspace:*
-        version: link:../../presets/utilities
       '@faker-js/faker':
         specifier: ^8.0.2
         version: 8.0.2
@@ -129,12 +120,12 @@ importers:
       '@committed/ds':
         specifier: workspace:*
         version: link:../../packages/ds
+      '@committed/ds-ss':
+        specifier: workspace:*
+        version: link:../../packages/ss
       '@committed/hooks':
         specifier: ^0.10.4
         version: 0.10.4(react@18.2.0)
-      '@committed/ss':
-        specifier: workspace:*
-        version: link:../../packages/ss
       '@faker-js/faker':
         specifier: ^8.0.2
         version: 8.0.2
@@ -235,18 +226,18 @@ importers:
 
   packages/ds:
     dependencies:
-      '@committed/colors':
+      '@committed/ds-colors':
         specifier: workspace:*
         version: link:../../presets/colors
+      '@committed/ds-tokens':
+        specifier: workspace:*
+        version: link:../../presets/tokens
+      '@committed/ds-utilities':
+        specifier: workspace:*
+        version: link:../../presets/utilities
       '@committed/hooks':
         specifier: ^0.10.4
         version: 0.10.4(react@18.2.0)
-      '@committed/tokens':
-        specifier: workspace:*
-        version: link:../../presets/tokens
-      '@committed/utilities':
-        specifier: workspace:*
-        version: link:../../presets/utilities
       '@fontsource/dosis':
         specifier: ^5.0.3
         version: 5.0.3
@@ -338,12 +329,12 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
+      '@committed/ds-ss':
+        specifier: workspace:*
+        version: link:../ss
       '@committed/eslint-config':
         specifier: workspace:*
         version: link:../../support/eslint-config
-      '@committed/ss':
-        specifier: workspace:*
-        version: link:../ss
       '@committed/tsconfig':
         specifier: workspace:*
         version: link:../../support/tsconfig

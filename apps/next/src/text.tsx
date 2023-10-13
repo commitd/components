@@ -1,4 +1,4 @@
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import { Column, Row } from '../../../packages/ds/src/components'
 import { Text } from '../../../packages/ds/src/components/Text'
 

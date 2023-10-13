@@ -6,7 +6,7 @@ import {
   cva,
   cx,
   styled,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import { Root, Thumb } from '@radix-ui/react-switch'
 import { ColorPaletteProps, component, forwardRefExtend } from '../../utils'
 

@@ -4,7 +4,7 @@ import {
   cva,
   cx,
   styled,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import {
   ColorPaletteProps,
   PolyCComponent,

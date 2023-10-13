@@ -1,4 +1,4 @@
-# Committed Components
+# Committed Design System
 
 [![Committed Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcommitted.io%2Fbadge)](https://committed.io)
 ![Build Status](https://github.com/commitd/components/workflows/build/badge.svg?branch=main)

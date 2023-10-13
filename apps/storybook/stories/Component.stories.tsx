@@ -1,5 +1,5 @@
 import { component } from '@committed/ds'
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import React from 'react'
 

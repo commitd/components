@@ -1,6 +1,6 @@
 'use client'
 
-import { css, cx } from '@committed/ss'
+import { css, cx } from '@committed/ds-ss'
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import {
   CComponent,

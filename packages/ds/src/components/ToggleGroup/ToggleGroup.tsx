@@ -7,7 +7,7 @@ import {
   css,
   cva,
   styled,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import { Item, Root } from '@radix-ui/react-toggle-group'
 import { CComponent, ColorPaletteProps, component } from '../../utils'
 import {

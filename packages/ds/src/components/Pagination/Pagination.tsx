@@ -1,4 +1,4 @@
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import React, {
   CSSProperties,
   ComponentProps,

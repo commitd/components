@@ -1,5 +1,5 @@
 'use client'
-import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ss'
+import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ds-ss'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
 import React, { ComponentProps, ElementRef, ReactNode, forwardRef } from 'react'
 import { ConditionalWrapper, component, forwardRefExtend } from '../../utils'
@@ -156,7 +156,7 @@ type RadioGroupProps = ComponentProps<typeof StyledRoot> &
 export const RadioGroup = forwardRef<
   ElementRef<typeof StyledRoot>,
   RadioGroupProps
->(({ className, ...props }, forwardedRef) => {
+>(({ className, children, ...props }, forwardedRef) => {
   const [id, { required }, remainingProps] = useFormControl(props)
   return (
     <ConditionalWrapper
@@ -170,7 +170,9 @@ export const RadioGroup = forwardRef<
         required={required}
         {...remainingProps}
         ref={forwardedRef}
-      />
+      >
+        {children}
+      </StyledRoot>
     </ConditionalWrapper>
   )
 })

@@ -1,4 +1,4 @@
-import { styled } from '@committed/ss'
+import { styled } from '@committed/ds-ss'
 import { ElementType } from 'react'
 import {
   CComponentProps,

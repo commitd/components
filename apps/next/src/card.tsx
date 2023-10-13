@@ -11,7 +11,7 @@ import {
   Svg,
   Text,
 } from '@committed/ds'
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import { mdiComment, mdiOpenInNew, mdiPencil, mdiThumbUp } from '@mdi/js'
 
 export const CardExample = () => (

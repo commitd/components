@@ -2,7 +2,7 @@
 import { Root } from '@radix-ui/react-label'
 import React, { ComponentProps } from 'react'
 
-import { RecipeVariantProps, css, cva, styled } from '@committed/ss'
+import { RecipeVariantProps, css, cva, styled } from '@committed/ds-ss'
 import { forwardRefExtend } from '../../utils'
 import { usePossibleFormControlState } from '../FormControl/FormControlContext'
 import { Text } from '../Text'

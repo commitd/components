@@ -1,14 +1,13 @@
 {
   "version": "0.0.0-development",
-  "name": "@committed/components",
-  "description": "Committed Component",
+  "name": "@committed/ds",
+  "description": "Committed Design System",
   "author": "Committed",
   "license": "MIT",
   "repository": "git://github.com/commitd/components",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "pnpm add rimraf -g",
     "codegen": "turbo run codegen",
     "build": "turbo run build",
     "dev": "turbo run dev --concurrency 12",
@@ -29,11 +28,5 @@
     "turbo": "latest",
     "typescript": "^5.1.6"
   },
-  "packageManager": "pnpm@7.15.0",
-  "lint-staged": {
-    "*.{ts,tsx,md,json,mdx}": "prettier --write",
-    "*.{ts,tsx}": [
-      "eslint --cache --fix"
-    ]
-  }
+  "packageManager": "pnpm@7.15.0"
 }

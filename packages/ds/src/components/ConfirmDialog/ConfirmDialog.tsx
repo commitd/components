@@ -1,6 +1,6 @@
 'use client'
-import { SystemStyleObject, css, cx } from '@committed/ss'
-import { Surface } from '@committed/utilities'
+import { SystemStyleObject, css, cx } from '@committed/ds-ss'
+import { Surface } from '@committed/ds-utilities'
 import {
   Action,
   Cancel,

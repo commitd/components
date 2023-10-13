@@ -4,8 +4,8 @@ const nextConfig = {
   // experimental: { esmExternals: "loose" },
   transpilePackages: [
     '@committed/ds',
-    '@committed/tokens',
-    '@committed/colors',
+    '@committed/ds-tokens',
+    '@committed/ds-colors',
   ],
 }
 // eslint-disable-next-line no-undef

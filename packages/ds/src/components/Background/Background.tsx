@@ -1,5 +1,5 @@
-import { styled } from '@committed/ss'
-import { SurfaceVariants } from '@committed/utilities'
+import { styled } from '@committed/ds-ss'
+import { SurfaceVariants } from '@committed/ds-utilities'
 import React from 'react'
 import {
   BackgroundProps,

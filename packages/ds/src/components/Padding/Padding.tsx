@@ -1,4 +1,4 @@
-import { SystemProperties, styled } from '@committed/ss'
+import { SystemProperties, styled } from '@committed/ds-ss'
 import React from 'react'
 import { CComponent, component, forwardRefExtend } from '../../utils'
 

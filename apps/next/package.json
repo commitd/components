@@ -11,12 +11,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@committed/colors": "workspace:*",
     "@committed/ds": "workspace:*",
+    "@committed/ds-ss": "workspace:*",
     "@committed/hooks": "^0.10.4",
-    "@committed/ss": "workspace:*",
-    "@committed/tokens": "workspace:*",
-    "@committed/utilities": "workspace:*",
     "@faker-js/faker": "^8.0.2",
     "@mdi/js": "^7.2.96",
     "next": "^13.4.1",

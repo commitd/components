@@ -2,12 +2,12 @@
 
 import {
   Background,
+  SurfaceVariants,
   Svg,
   ToggleGroup,
   ToggleGroupItem,
   Tooltip,
 } from '@committed/ds'
-import { SurfaceVariants } from '@committed/utilities'
 import { mdiNote, mdiNoteOutline } from '@mdi/js'
 import { createContext, useContext, useMemo, useState } from 'react'
 

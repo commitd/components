@@ -1,5 +1,5 @@
 import { Box, Column, Flex, Row } from '@committed/ds'
-import { css, token } from '@committed/ss'
+import { css, token } from '@committed/ds-ss'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { CSSProperties, ComponentProps } from 'react'
 

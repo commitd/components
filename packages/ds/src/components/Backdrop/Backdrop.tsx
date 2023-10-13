@@ -1,10 +1,10 @@
 'use client'
 
-import { css, cx, SystemStyleObject } from '@committed/ss'
+import { css, cx, SystemStyleObject } from '@committed/ds-ss'
 import { Content, Overlay, Portal, Root } from '@radix-ui/react-dialog'
 import React, { ComponentProps, FC } from 'react'
 
-import { Surface } from '@committed/utilities'
+import { Surface } from '@committed/ds-utilities'
 import { component, ConditionalWrapper } from '../../utils'
 import { overlayAnimationStyles } from '../Overlay/Overlay'
 

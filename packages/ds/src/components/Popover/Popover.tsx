@@ -1,6 +1,6 @@
 'use client'
-import { css, cx, styled } from '@committed/ss'
-import { SurfaceVariants } from '@committed/utilities'
+import { css, cx, styled } from '@committed/ds-ss'
+import { SurfaceVariants } from '@committed/ds-utilities'
 import {
   Anchor,
   Arrow,

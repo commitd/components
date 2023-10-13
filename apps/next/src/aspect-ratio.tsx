@@ -1,5 +1,5 @@
 import { Box, Image } from '@committed/ds'
-import { AspectRatio } from '@committed/ss'
+import { AspectRatio } from '@committed/ds-ss'
 
 export const AspectRatioExample = () => (
   <Box css={{ height: '300px', width: '200px', overflow: 'hidden' }}>

@@ -1,5 +1,5 @@
 {
-  "name": "@committed/tokens",
+  "name": "@committed/ds-tokens",
   "version": "0.0.0",
   "type": "module",
   "main": "src/index.ts",

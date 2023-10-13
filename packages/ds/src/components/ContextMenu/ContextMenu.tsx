@@ -1,6 +1,6 @@
 'use client'
-import { SystemStyleObject, css, cx, styled } from '@committed/ss'
-import { SurfaceVariants } from '@committed/utilities'
+import { SystemStyleObject, css, cx, styled } from '@committed/ds-ss'
+import { SurfaceVariants } from '@committed/ds-utilities'
 import {
   CheckboxItem,
   Content,

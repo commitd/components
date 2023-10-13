@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react'
 
-import { css, cva, RecipeVariantProps, styled } from '@committed/ss'
+import { css, cva, RecipeVariantProps, styled } from '@committed/ds-ss'
 import { component, forwardRefExtend } from '../../utils'
 import { Text } from '../Text'
 import {

@@ -6,7 +6,7 @@ import {
   cx,
   isCssProperty,
   styled,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import React from 'react'
 import {
   CComponent,
@@ -15,28 +15,9 @@ import {
   forwardRefExtend,
 } from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
-import { Label, LabelOptional } from '../Label'
+import { InputLabel } from './InputLabel'
 
 const DEFAULT_TAG = 'input'
-
-type InputLabelProps = {
-  id: string
-  label?: string
-  required?: boolean
-  children?: React.ReactNode
-}
-
-const InputLabel = ({ id, label, required, children }: InputLabelProps) => (
-  // htmlFor required here for auto linking as not a radix primitive
-  <Label id={`label-${id}`} variant="wrapping" htmlFor={id}>
-    <span>
-      {label}
-      {required === false && <LabelOptional />}
-    </span>
-    {children}
-  </Label>
-)
-InputLabel.displayName = 'InputLabel'
 
 export const hover = {
   boxShadow: 'inset 0px 0px 0px 1px var(--active)',

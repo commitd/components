@@ -1,4 +1,4 @@
-import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ss'
+import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ds-ss'
 import { ComponentProps } from 'react'
 import {
   CComponent,

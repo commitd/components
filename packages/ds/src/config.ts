@@ -1,13 +1,13 @@
-import { presetColors } from '@committed/colors'
-import { presetTokens } from '@committed/tokens'
-import { presetUtilities } from '@committed/utilities'
+import { presetColors } from '@committed/ds-colors'
+import { presetTokens } from '@committed/ds-tokens'
+import { presetUtilities } from '@committed/ds-utilities'
 import { Config as PandaConfig, Preset, defineConfig } from '@pandacss/dev'
 import { Prettify } from './utils'
-export * from '@committed/colors'
-export * from '@committed/tokens'
-export * from '@committed/utilities'
+export * from '@committed/ds-colors'
+export * from '@committed/ds-tokens'
+export * from '@committed/ds-utilities'
 
-export const PACKAGE_NAME = '@committed/ss'
+export const PACKAGE_NAME = '@committed/ds-ss'
 export type ComponentsConfig = Prettify<
   NonNullable<Parameters<typeof presetColors>[0]> & {
     packageName?: string
@@ -23,7 +23,7 @@ export function committedIncludes(): string[] {
 }
 
 export function committedExcludes(): string[] {
-  return ['../@committed/ss/**/*', '../../packages/ss/**/*']
+  return ['../@committed/ds-ss/**/*', '../../packages/ss/**/*']
 }
 
 export function committedImportMap(packageName = PACKAGE_NAME) {
@@ -46,7 +46,7 @@ export function componentsConfig(
     presets: [...componentsPresets(componentsConfig), ...presets],
     preflight: true,
     emitPackage: false,
-    outdir: '../node_modules/@committed/ss',
+    outdir: '../node_modules/@committed/ds-ss',
     include: [...committedIncludes(), ...include],
     exclude: [...committedExcludes(), ...exclude],
     // importMap: committedImportMap(packageName),

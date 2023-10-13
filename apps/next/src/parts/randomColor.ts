@@ -1,4 +1,4 @@
-import { token, Token } from '@committed/ss'
+import { token, Token } from '@committed/ds-ss'
 
 const keys = ['primary', 'secondary', 'info', 'success', 'error', 'warning']
 type Depth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9

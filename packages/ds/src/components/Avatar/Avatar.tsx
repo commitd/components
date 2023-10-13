@@ -5,7 +5,7 @@ import {
   SystemStyleObject,
   cva,
   styled,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import React from 'react'
 import { PickProps, Prettify, forwardRefExtend } from '../../utils'

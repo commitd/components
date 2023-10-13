@@ -1,4 +1,4 @@
-import { SystemStyleObject, css } from '@committed/ss'
+import { SystemStyleObject, css } from '@committed/ds-ss'
 import { Meta, StoryObj } from '@storybook/react'
 import { Column, Row } from '../../../packages/ds/src/components'
 import {

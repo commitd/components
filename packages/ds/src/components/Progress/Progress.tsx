@@ -1,5 +1,5 @@
 'use client'
-import { css, cva, styled } from '@committed/ss'
+import { css, cva, styled } from '@committed/ds-ss'
 import { Indicator, Root } from '@radix-ui/react-progress'
 import { ColorPaletteProps, component, forwardRefExtend } from '../../utils'
 

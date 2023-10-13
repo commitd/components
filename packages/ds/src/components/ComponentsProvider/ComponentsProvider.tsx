@@ -1,4 +1,5 @@
-import { cva, styled } from '@committed/ss'
+'use client'
+import { cva, styled } from '@committed/ds-ss'
 import React, { FC, PropsWithChildren } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import {

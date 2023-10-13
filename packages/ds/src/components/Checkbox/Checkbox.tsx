@@ -1,5 +1,5 @@
 'use client'
-import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ss'
+import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ds-ss'
 import { Indicator, Root } from '@radix-ui/react-checkbox'
 import { ComponentProps, ElementRef, forwardRef } from 'react'
 import { ConditionalWrapper, Prettify, component } from '../../utils'

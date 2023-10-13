@@ -1,4 +1,4 @@
-import { RecipeVariantProps, cva, styled } from '@committed/ss'
+import { RecipeVariantProps, cva, styled } from '@committed/ds-ss'
 import { PolyCComponentProps, component, forwardRefExtend } from '../../utils'
 
 const DEFAULT_TAG = 'a' as const

@@ -19,7 +19,7 @@ import {
   ToastViewport,
   useToast,
 } from '@committed/ds'
-import { css } from '@committed/ss'
+import { css } from '@committed/ds-ss'
 import { action } from '@storybook/addon-actions'
 import { expect } from '@storybook/jest'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'

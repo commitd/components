@@ -4,7 +4,7 @@ import {
   RecipeVariantProps,
   styled,
   SystemProperties,
-} from '@committed/ss'
+} from '@committed/ds-ss'
 import {
   BoxVariants,
   component,

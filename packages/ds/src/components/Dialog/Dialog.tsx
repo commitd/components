@@ -1,6 +1,6 @@
 'use client'
-import { SystemStyleObject, css, cva, cx, styled } from '@committed/ss'
-import { Surface } from '@committed/utilities'
+import { SystemStyleObject, css, cva, cx, styled } from '@committed/ds-ss'
+import { Surface } from '@committed/ds-utilities'
 import {
   Close,
   Content,
