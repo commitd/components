@@ -118,7 +118,8 @@ export const DrawerContent = forwardRefDefine<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <>
         <StyledOverlay css={overlayCss} />

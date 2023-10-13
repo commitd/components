@@ -131,7 +131,8 @@ export const MenuContent = forwardRef<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <StyledContent
         surface={surface}
@@ -195,14 +196,14 @@ export const MenuButton = forwardRef<
 ))
 MenuButton.displayName = 'MenuButton'
 
-const StyledCheckboxIndicator = forwardRef<
-  ElementRef<typeof StyledItemIndicator>,
-  ComponentProps<typeof StyledItemIndicator>
->((props, forwardedRef) => (
-  <StyledItemIndicator {...props} ref={forwardedRef}>
-    <StyledCheckIndicator />
-  </StyledItemIndicator>
-))
+const StyledCheckboxIndicator = forwardRefExtend<typeof StyledItemIndicator>(
+  (props, forwardedRef) => (
+    <StyledItemIndicator {...props} ref={forwardedRef}>
+      <StyledCheckIndicator />
+    </StyledItemIndicator>
+  ),
+)
+StyledCheckIndicator.displayName = 'StyledCheckIndicator'
 
 type MenuCheckboxItemProps = ComponentProps<typeof StyledCheckboxItem>
 
@@ -275,7 +276,8 @@ export const MenuSubContent = forwardRefExtend<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <StyledSubContent surface={surface} {...props} ref={forwardedRef}>
         {children}

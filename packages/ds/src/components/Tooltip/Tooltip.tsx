@@ -88,7 +88,8 @@ export const Tooltip: FC<TooltipProps> = ({
     <Trigger asChild>{children}</Trigger>
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <StyledContent
         side={side}

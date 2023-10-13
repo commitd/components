@@ -2,6 +2,9 @@ import { Color, Prefix, SemanticColor } from '@committed/colors'
 import { SystemProperties, SystemStyleObject } from '@committed/ss'
 import { ComponentProps, ElementType, ReactNode } from 'react'
 import { ForwardRef } from './forwardRef'
+
+export type EmptyObject = Record<string, never>
+
 /////////////////////
 // Props types
 
@@ -29,12 +32,14 @@ export type ColorPaletteProps<T extends Color | SemanticColor = SemanticColor> =
 export type CComponentProps = Prettify<ChildProps & CssProps & ClassNameProps>
 export type PolyCComponentProps = Prettify<CComponentProps & AsChildProps>
 
+// recommends Record<string, never> instead but this doesn't work
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type CComponent<T extends ElementType, P = {}> = ForwardRef<
   T,
   Assign<ComponentProps<T>, P & CComponentProps>
 >
 
-export type PolyCComponent<T extends ElementType, P = {}> = ForwardRef<
+export type PolyCComponent<T extends ElementType, P = EmptyObject> = ForwardRef<
   T,
   Assign<ComponentProps<T>, P & PolyCComponentProps>
 >

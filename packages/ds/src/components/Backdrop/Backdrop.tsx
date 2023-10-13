@@ -86,7 +86,8 @@ export const Backdrop: FC<BackdropProps> = ({
     <StyledRoot css={css.raw(rootCss)} {...props}>
       <ConditionalWrapper
         condition={portalled}
-        wrapper={(child) => <Portal container={container}>{child}</Portal>}
+        props={{ container }}
+        wrapper={Portal}
       >
         <div className={cx('c-backdrop', className)}>
           <StyledOverlay className={css({ surface: overlay }, overlayCss)} />

@@ -1,6 +1,6 @@
 import { css, cva, cx, styled } from '@committed/ss'
 import { SurfaceVariants } from '@committed/utilities'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
+import { ComponentProps, ElementRef, forwardRef } from 'react'
 import { CComponent, component, forwardRefExtend } from '../../utils'
 import { Box } from '../Box'
 import { Button } from '../Button'
@@ -65,19 +65,21 @@ AppBarActions.displayName = 'AppBarActions'
 
 const APP_BAR_BUTTON_CLASS_NAME = 'c-app-bar-button'
 
-export const AppBarButton = forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithRef<typeof Button>
->(({ children, className, variant = 'text', ...props }, forwardedRef) => (
-  <Button
-    className={cx(APP_BAR_BUTTON_CLASS_NAME, className)}
-    variant={variant}
-    {...props}
-    ref={forwardedRef}
-  >
-    {children}
-  </Button>
-))
+export const AppBarButton = forwardRefExtend<typeof Button>(
+  (
+    { children, className = '', variant = 'text' as const, ...props },
+    forwardedRef,
+  ) => (
+    <Button
+      className={cx(APP_BAR_BUTTON_CLASS_NAME, className)}
+      variant={variant}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+    </Button>
+  ),
+)
 AppBarButton.displayName = 'AppBarButton'
 
 const AppBarMenuContent = component(
@@ -102,7 +104,12 @@ const AppBarMenuContent = component(
 )
 export const AppBarMenu = forwardRefExtend<typeof Box>(
   ({ children, ...props }, forwardedRef) => (
-    <Box css={{ position: 'relative' }} flexGrow={1} {...props}>
+    <Box
+      css={{ position: 'relative' }}
+      flexGrow={1}
+      {...props}
+      ref={forwardedRef}
+    >
       <AppBarMenuContent>{children}</AppBarMenuContent>
     </Box>
   ),

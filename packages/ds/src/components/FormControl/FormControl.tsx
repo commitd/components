@@ -2,8 +2,6 @@
 
 import React, {
   ComponentProps,
-  ElementRef,
-  forwardRef,
   useEffect,
   useMemo,
   useRef,
@@ -11,7 +9,7 @@ import React, {
 } from 'react'
 
 import { css, cva, RecipeVariantProps, styled } from '@committed/ss'
-import { component } from '../../utils'
+import { component, forwardRefExtend } from '../../utils'
 import { Text } from '../Text'
 import {
   DEFAULT_FORM_STATE,
@@ -38,18 +36,17 @@ type FormControlProps = {
   children: React.ReactNode
 }
 
-export const FormControl = forwardRef<
-  ElementRef<typeof Root>,
-  FormControlProps
->(({ children }, forwardedRef) => {
-  const value = useState(DEFAULT_FORM_STATE)
-
-  return (
-    <FormControlContext.Provider value={value}>
-      <Root ref={forwardedRef}>{children}</Root>
-    </FormControlContext.Provider>
-  )
-})
+export const FormControl = forwardRefExtend<typeof Root, FormControlProps>(
+  ({ children }, forwardedRef) => {
+    const value = useState(DEFAULT_FORM_STATE)
+    return (
+      <FormControlContext.Provider value={value}>
+        <Root ref={forwardedRef}>{children}</Root>
+      </FormControlContext.Provider>
+    )
+  },
+)
+FormControl.displayName = 'FormControl'
 
 const formControlText = cva({
   variants: {

@@ -71,21 +71,6 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
     [choice, dark, light],
   )
 
-  const setMode = (mode: ThemeChoice) => {
-    if (isBrowser()) {
-      window?.localStorage.setItem('themeChoice', mode)
-    }
-    setThemeValues(mode)
-  }
-
-  const toggleThemeChoice = () => {
-    if (themeChoice === 'light') {
-      setMode('dark')
-    } else {
-      setMode('light')
-    }
-  }
-
   if (isBrowser()) {
     window
       ?.matchMedia?.('(prefers-color-scheme: dark)')
@@ -118,14 +103,25 @@ export const ThemeController: React.FC<ThemeControllerProps> = ({
     }
   }, [setThemeValues])
 
-  const value = useMemo(
-    () => ({
+  const value = useMemo(() => {
+    const setMode = (mode: ThemeChoice) => {
+      if (isBrowser()) {
+        window?.localStorage.setItem('themeChoice', mode)
+      }
+      setThemeValues(mode)
+    }
+    return {
       choice: themeChoice,
       theme: theme,
-      toggle: toggleThemeChoice,
-    }),
-    [themeChoice, theme, toggleThemeChoice],
-  )
+      toggle: () => {
+        if (themeChoice === 'light') {
+          setMode('dark')
+        } else {
+          setMode('light')
+        }
+      },
+    }
+  }, [themeChoice, theme, setThemeValues])
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }

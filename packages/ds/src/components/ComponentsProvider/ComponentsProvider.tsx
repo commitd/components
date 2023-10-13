@@ -1,5 +1,5 @@
 import { cva, styled } from '@committed/ss'
-import React, { FC, PropsWithChildren, useCallback } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import { ConditionalWrapper, component } from '../../utils'
 import {
   ThemeProvider,
@@ -64,6 +64,29 @@ const isolate = cva({
 const Isolate = styled(component('div', 'c-isolate'), isolate)
 Isolate.displayName = 'Isolate'
 
+const Toaster = ({
+  label,
+  duration,
+  swipeDirection,
+  swipeThreshold,
+  children,
+  ...toasterProps
+}: ToastProviderPropsWithoutChildren &
+  ToasterProviderPropsWithoutChildren & {
+    children?: React.ReactNode
+  }) => (
+  <ToastProvider
+    label={label}
+    duration={duration}
+    swipeDirection={swipeDirection}
+    swipeThreshold={swipeThreshold}
+  >
+    <ToasterProvider duration={duration} {...toasterProps}>
+      {children}
+    </ToasterProvider>
+  </ToastProvider>
+)
+
 /**
  * The `ComponentsProvider` should wrap you application.
  *
@@ -83,50 +106,25 @@ export const ComponentsProvider: FC<
   isolated = true,
   children,
 }) => {
-  const toastWrapper = useCallback(
-    (wrappedChildren: React.ReactNode) => {
-      const {
-        label,
-        duration,
-        swipeDirection,
-        swipeThreshold,
-        ...toasterProps
-      } = toast as ToastProviderPropsWithoutChildren &
-        ToasterProviderPropsWithoutChildren
-      return (
-        <ToastProvider
-          label={label}
-          duration={duration}
-          swipeDirection={swipeDirection}
-          swipeThreshold={swipeThreshold}
-        >
-          <ToasterProvider duration={duration} {...toasterProps}>
-            {wrappedChildren}
-          </ToasterProvider>
-        </ToastProvider>
-      )
-    },
-    [toast],
-  )
-
-  const tooltipWrapper = useCallback(
-    (wrappedChildren: React.ReactNode) => (
-      <TooltipProvider {...tooltip}>{wrappedChildren}</TooltipProvider>
-    ),
-    [tooltip],
-  )
-
-  const themeWrapper = useCallback(
-    (wrappedChildren: React.ReactNode) => (
-      <ThemeProvider {...theme}>{wrappedChildren}</ThemeProvider>
-    ),
-    [theme],
-  )
-
   return (
-    <ConditionalWrapper condition={toast} wrapper={toastWrapper}>
-      <ConditionalWrapper condition={tooltip} wrapper={tooltipWrapper}>
-        <ConditionalWrapper condition={theme} wrapper={themeWrapper}>
+    <ConditionalWrapper
+      condition={toast}
+      props={
+        toast as ToastProviderPropsWithoutChildren &
+          ToasterProviderPropsWithoutChildren
+      }
+      wrapper={Toaster}
+    >
+      <ConditionalWrapper
+        condition={tooltip}
+        props={tooltip as TooltipProviderPropsWithoutChildren}
+        wrapper={TooltipProvider}
+      >
+        <ConditionalWrapper
+          condition={theme}
+          props={theme as ThemeProviderPropsWithoutChildren}
+          wrapper={ThemeProvider}
+        >
           <>
             <Isolate isolated={isolated}>{children}</Isolate>
             {viewport && <ToastViewport {...viewport} />}

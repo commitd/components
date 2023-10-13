@@ -1,8 +1,8 @@
 'use client'
 import { RecipeVariantProps, css, cva, cx, styled } from '@committed/ss'
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
-import React, { ComponentProps, ElementRef, forwardRef } from 'react'
-import { ConditionalWrapper, component } from '../../utils'
+import React, { ComponentProps, ElementRef, ReactNode, forwardRef } from 'react'
+import { ConditionalWrapper, component, forwardRefExtend } from '../../utils'
 import { checkStyleVariants, checkStylesBase } from '../Checkbox/Checkbox'
 import {
   useFormControl,
@@ -27,7 +27,7 @@ const item = cva({
   },
 })
 
-const StyledItem = styled(Item, item)
+const StyledItem = styled(component(Item, 'c-radio'), item)
 
 const StyledIndicator = component(
   Indicator,
@@ -40,12 +40,26 @@ const StyledIndicator = component(
   }),
 )
 
-type RadioProps = ComponentProps<typeof StyledItem> & {
+type RadioProps = RecipeVariantProps<typeof item> & {
   /** Add a label */
   label?: string
 }
 
-export const Radio = forwardRef<ElementRef<typeof StyledItem>, RadioProps>(
+type RadioItemLabelProps = {
+  disabled?: boolean
+  label?: ReactNode
+  children?: ReactNode
+}
+
+const RadioItemLabel = ({ disabled, label, children }: RadioItemLabelProps) => (
+  <Label disabled={disabled} variant="wrapping">
+    {children}
+    {label}
+  </Label>
+)
+RadioItemLabel.displayName = 'RadioItemLabel'
+
+export const Radio = forwardRefExtend<typeof Item, RadioProps>(
   ({ disabled: disabledProp, label, children, ...props }, forwardedRef) => {
     const { state, disabled } = useFormControlState() ?? DEFAULT_FORM_STATE
 
@@ -55,12 +69,11 @@ export const Radio = forwardRef<ElementRef<typeof StyledItem>, RadioProps>(
           label ??
           (React.Children.count(children) === 1 && typeof children === 'string')
         }
-        wrapper={(child) => (
-          <Label disabled={disabled || disabledProp} variant="wrapping">
-            {child}
-            {label ?? children}
-          </Label>
-        )}
+        props={{
+          label: label ?? children,
+          disabled: disabled || disabledProp,
+        }}
+        wrapper={RadioItemLabel}
       >
         <StyledItem
           state={state}
@@ -77,6 +90,28 @@ export const Radio = forwardRef<ElementRef<typeof StyledItem>, RadioProps>(
   },
 )
 Radio.displayName = 'Radio'
+
+type RadioGroupLabelProps = {
+  id: string
+  label?: string
+  required?: boolean
+  children: React.ReactNode
+}
+
+const RadioGroupLabel = ({
+  id,
+  label,
+  required,
+  children,
+}: RadioGroupLabelProps) => (
+  <Label id={`label-${id}`} variant="wrapping">
+    <span>
+      {label} {required === false && <LabelOptional />}
+    </span>
+    {children}
+  </Label>
+)
+RadioGroupLabel.displayName = 'RadioGroupLabel'
 
 export const StyledRoot = component(
   Root,
@@ -121,19 +156,13 @@ type RadioGroupProps = ComponentProps<typeof StyledRoot> &
 export const RadioGroup = forwardRef<
   ElementRef<typeof StyledRoot>,
   RadioGroupProps
->(({ label, className, ...props }, forwardedRef) => {
+>(({ className, ...props }, forwardedRef) => {
   const [id, { required }, remainingProps] = useFormControl(props)
   return (
     <ConditionalWrapper
-      condition={label}
-      wrapper={(children) => (
-        <Label id={`label-${id}`} variant="wrapping">
-          <span>
-            {label} {required === false && <LabelOptional />}
-          </span>
-          {children}
-        </Label>
-      )}
+      condition={props.label}
+      props={{ ...props, id }}
+      wrapper={RadioGroupLabel}
     >
       <StyledRoot
         id={id}

@@ -119,7 +119,8 @@ export const ConfirmDialogContent = forwardRef<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <>
         <StyledOverlay className={css({ surface: overlay }, overlayCss)} />

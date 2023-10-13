@@ -9,12 +9,7 @@ const DEFAULT_TAG = 'a' as const
  * Used inside `Link` but can be used separately to create custom links.
  */
 export function isExternalUrl(url: string | undefined): boolean {
-  return !!(
-    url &&
-    /^((https?:|s?ftp:|file:\/|chrome:)?\/\/|mailto:|tel:)/.test(
-      url.toLowerCase(),
-    )
-  )
+  return !!(url && url.indexOf('://') > 0)
 }
 
 /**

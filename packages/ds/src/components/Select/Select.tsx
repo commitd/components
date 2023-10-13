@@ -17,7 +17,7 @@ import {
   Value,
   Viewport,
 } from '@radix-ui/react-select'
-import { ComponentProps, ElementRef, forwardRef } from 'react'
+import React, { ComponentProps, ElementRef, forwardRef } from 'react'
 import {
   CComponentProps,
   ConditionalWrapper,
@@ -180,7 +180,8 @@ export const SelectContent = forwardRefExtend<
 >(({ container, portalled = true, children, ...props }, forwardedRef) => (
   <ConditionalWrapper
     condition={portalled}
-    wrapper={(child) => <Portal container={container}>{child}</Portal>}
+    props={{ container }}
+    wrapper={Portal}
   >
     <StyledContent {...props} ref={forwardedRef}>
       {children}
@@ -188,6 +189,27 @@ export const SelectContent = forwardRefExtend<
   </ConditionalWrapper>
 ))
 SelectContent.displayName = 'SelectContent'
+
+type SelectLabelProps = {
+  label?: string
+  required?: boolean
+  children?: React.ReactNode
+}
+
+const InternalSelectLabel = ({
+  label,
+  required,
+  children,
+}: SelectLabelProps) => (
+  <Label variant="wrapping">
+    <span>
+      {label}
+      {required === false && <LabelOptional />}
+    </span>
+    {children}
+  </Label>
+)
+InternalSelectLabel.displayName = 'InternalSelectLabel'
 
 type SelectProps = UseFormControlProps & {
   /** may not currently be used */
@@ -229,15 +251,8 @@ export const Select = forwardRefExtend<typeof StyledRoot, SelectProps>(
     return (
       <ConditionalWrapper
         condition={label}
-        wrapper={(child) => (
-          <Label variant="wrapping">
-            <span>
-              {label}
-              {required === false && <LabelOptional />}
-            </span>
-            {child}
-          </Label>
-        )}
+        props={{ label, required }}
+        wrapper={InternalSelectLabel}
       >
         <StyledRoot {...remainingProps}>
           <StyledTrigger

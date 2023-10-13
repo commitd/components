@@ -121,7 +121,8 @@ export const ContextMenuContent = forwardRef<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <StyledContent surface={surface} {...props} ref={forwardedRef}>
         {children}
@@ -177,7 +178,8 @@ export const ContextMenuSubContent = forwardRef<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <StyledSubContent surface={surface} {...props} ref={forwardedRef}>
         {children}

@@ -3,9 +3,6 @@ import { CComponent, component } from '../../utils'
 
 const DEFAULT_TAG = 'div'
 
-const BASE_COLOR = '$neutral.5'
-const HIGHLIGHT_COLOR = ''
-
 /**
  * StyledSkeleton base component
  */

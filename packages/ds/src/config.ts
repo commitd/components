@@ -7,7 +7,7 @@ export * from '@committed/colors'
 export * from '@committed/tokens'
 export * from '@committed/utilities'
 
-export const PACKAGE_NAME = '@committed/s'
+export const PACKAGE_NAME = '@committed/ss'
 export type ComponentsConfig = Prettify<
   NonNullable<Parameters<typeof presetColors>[0]> & {
     packageName?: string
@@ -37,7 +37,10 @@ export function committedImportMap(packageName = PACKAGE_NAME) {
 
 export function componentsConfig(
   { presets = [], include = [], exclude = [], ...pandaConfig }: PandaConfig,
-  { packageName = PACKAGE_NAME, ...componentsConfig }: ComponentsConfig = {},
+  {
+    packageName: _packageName = PACKAGE_NAME,
+    ...componentsConfig
+  }: ComponentsConfig = {},
 ): PandaConfig {
   return defineConfig({
     presets: [...componentsPresets(componentsConfig), ...presets],
@@ -46,7 +49,7 @@ export function componentsConfig(
     outdir: '../node_modules/@committed/ss',
     include: [...committedIncludes(), ...include],
     exclude: [...committedExcludes(), ...exclude],
-    // importMap: committedImportMap(),
+    // importMap: committedImportMap(packageName),
     jsxFramework: 'react',
     ...pandaConfig,
   })

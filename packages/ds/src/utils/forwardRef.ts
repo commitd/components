@@ -7,14 +7,14 @@ import {
   RefAttributes,
   forwardRef,
 } from 'react'
-import { Assign } from './types'
+import { Assign, EmptyObject } from './types'
 
-export type ForwardRef<TType extends ElementType, TProps = {}> = {
+export type ForwardRef<TType extends ElementType, TProps = EmptyObject> = {
   (props: TProps & RefAttributes<ElementRef<TType>>): ReactElement | null
   displayName?: string
 }
 
-type DefineForwardRef = <TType extends ElementType, TProps = {}>(
+type DefineForwardRef = <TType extends ElementType, TProps = EmptyObject>(
   render: (props: TProps, ref: Ref<ElementRef<TType>>) => ReactElement | null,
 ) => ForwardRef<TType, TProps>
 
@@ -30,7 +30,7 @@ type OmitForwardRef = <
 
 type ExtendForwardRef = <
   TType extends ElementType,
-  TProps = {},
+  TProps = EmptyObject,
   TOmit extends keyof ComponentProps<TType> = never,
 >(
   render: (

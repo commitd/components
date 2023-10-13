@@ -1,5 +1,6 @@
 import { definePreset } from '@pandacss/dev'
 import type { Preset, PropertyTransform, PropertyValues } from '@pandacss/types'
+import { ThemeFn } from '@pandacss/types/dist/utility'
 
 export type Surface = 'clear' | 'frost' | 'glass' | 'neutral' | 'solid'
 export type SurfaceVariants = { surface?: Surface }
@@ -11,36 +12,37 @@ export const surfaces: Surface[] = [
   'solid',
 ]
 
-const sizeValues: PropertyValues = (theme) => ({
-  auto: 'auto',
-  ...theme('sizes'),
-  '1/2': '50%',
-  '1/3': '33.333333%',
-  '2/3': '66.666667%',
-  '1/4': '25%',
-  '2/4': '50%',
-  '3/4': '75%',
-  '1/5': '20%',
-  '2/5': '40%',
-  '3/5': '60%',
-  '4/5': '80%',
-  '1/6': '16.666667%',
-  '2/6': '33.333333%',
-  '3/6': '50%',
-  '4/6': '66.666667%',
-  '5/6': '83.333333%',
-  '1/12': '8.333333%',
-  '2/12': '16.666667%',
-  '3/12': '25%',
-  '4/12': '33.333333%',
-  '5/12': '41.666667%',
-  '6/12': '50%',
-  '7/12': '58.333333%',
-  '8/12': '66.666667%',
-  '9/12': '75%',
-  '10/12': '83.333333%',
-  '11/12': '91.666667%',
-})
+const sizeValues: PropertyValues = (theme) =>
+  ({
+    auto: 'auto',
+    ...theme('sizes'),
+    '1/2': '50%',
+    '1/3': '33.333333%',
+    '2/3': '66.666667%',
+    '1/4': '25%',
+    '2/4': '50%',
+    '3/4': '75%',
+    '1/5': '20%',
+    '2/5': '40%',
+    '3/5': '60%',
+    '4/5': '80%',
+    '1/6': '16.666667%',
+    '2/6': '33.333333%',
+    '3/6': '50%',
+    '4/6': '66.666667%',
+    '5/6': '83.333333%',
+    '1/12': '8.333333%',
+    '2/12': '16.666667%',
+    '3/12': '25%',
+    '4/12': '33.333333%',
+    '5/12': '41.666667%',
+    '6/12': '50%',
+    '7/12': '58.333333%',
+    '8/12': '66.666667%',
+    '9/12': '75%',
+    '10/12': '83.333333%',
+    '11/12': '91.666667%',
+  }) as ReturnType<ThemeFn>
 
 export function preset(): Preset {
   return definePreset({
@@ -50,11 +52,12 @@ export function preset(): Preset {
           className: 'size',
           values: sizeValues,
           shorthand: 's',
+          /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
           transform(value: any) {
             return {
-              width: value,
-              height: value,
-            }
+              width: value as string,
+              height: value as string,
+            } as ReturnType<PropertyTransform>
           },
         },
         surface: {
@@ -65,7 +68,7 @@ export function preset(): Preset {
             value: Surface,
             { token }: Parameters<PropertyTransform>[1],
           ) {
-            const css = {
+            const css: ReturnType<PropertyTransform> = {
               backgroundColor: token(`colors.$surface.${value}`),
               backdropFilter:
                 value === 'glass' ? 'saturate(80%) blur(5px)' : 'unset',

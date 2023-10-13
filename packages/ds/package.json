@@ -13,7 +13,7 @@
     "prepare": "pnpm codegen",
     "codegen": "panda codegen",
     "build": "pnpm clean && panda cssgen && tsup src/index.ts --format=esm,cjs --dts",
-    "lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint \"src/**/*.ts*\"",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {

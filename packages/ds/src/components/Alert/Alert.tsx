@@ -59,6 +59,15 @@ export const AlertTitle: FC<
 )
 AlertTitle.displayName = 'AlertTitle'
 
+const AlertContentWrapper = ({
+  children,
+  ...props
+}: ComponentProps<typeof Text>) => (
+  <Text size="$-1" {...props}>
+    {children}
+  </Text>
+)
+
 export const AlertContent: FC<
   PropsWithChildren<ComponentProps<typeof Text>>
 > = ({ children = '', className, ...props }) => {
@@ -66,11 +75,8 @@ export const AlertContent: FC<
     <div className={cx('c-alert-content', className)}>
       <ConditionalWrapper
         condition={typeof children === 'string'}
-        wrapper={(content) => (
-          <Text size="$-1" {...props}>
-            {content}
-          </Text>
-        )}
+        props={props}
+        wrapper={AlertContentWrapper}
       >
         {children ?? ''}
       </ConditionalWrapper>

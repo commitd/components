@@ -2,7 +2,7 @@
 
 import { useBoolean, useKeyboard } from '@committed/hooks'
 import { Root } from '@radix-ui/react-visually-hidden'
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { forwardRefExtend } from '../../utils'
 
 /**
  * Hidden component
@@ -13,24 +13,24 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
  *
  * Has additional development mode function to show the hidden element when `alt` is pressed.
  */
-export const Hidden = forwardRef<
-  ElementRef<typeof Root>,
-  ComponentPropsWithoutRef<typeof Root>
->(({ children, ...props }, forwardedRef) => {
-  const [forceShow, { setTrue, setFalse }] = useBoolean(false)
-  useKeyboard('', setFalse, { event: 'keyup', development: true })
-  useKeyboard('alt', setTrue, {
-    event: 'keydown',
-    ignoreRepeat: true,
-    development: true,
-  })
+export const Hidden = forwardRefExtend<typeof Root>(
+  ({ children, ...props }, forwardedRef) => {
+    const [forceShow, { setTrue, setFalse }] = useBoolean(false)
+    useKeyboard('', setFalse, { event: 'keyup', development: true })
+    useKeyboard('alt', setTrue, {
+      event: 'keydown',
+      ignoreRepeat: true,
+      development: true,
+    })
 
-  if (forceShow) {
-    return <span>{children}</span>
-  }
-  return (
-    <Root {...props} ref={forwardedRef}>
-      {children}
-    </Root>
-  )
-})
+    if (forceShow) {
+      return <span>{children}</span>
+    }
+    return (
+      <Root {...props} ref={forwardedRef}>
+        {children}
+      </Root>
+    )
+  },
+)
+Hidden.displayName = 'Hidden'

@@ -4,14 +4,39 @@ import {
   SystemStyleObject,
   cva,
   cx,
+  isCssProperty,
   styled,
 } from '@committed/ss'
 import React from 'react'
-import { ConditionalWrapper, forwardRefExtend } from '../../utils'
+import {
+  CComponent,
+  ConditionalWrapper,
+  component,
+  forwardRefExtend,
+} from '../../utils'
 import { UseFormControlProps, useFormControl } from '../FormControl'
 import { Label, LabelOptional } from '../Label'
 
 const DEFAULT_TAG = 'input'
+
+type InputLabelProps = {
+  id: string
+  label?: string
+  required?: boolean
+  children?: React.ReactNode
+}
+
+const InputLabel = ({ id, label, required, children }: InputLabelProps) => (
+  // htmlFor required here for auto linking as not a radix primitive
+  <Label id={`label-${id}`} variant="wrapping" htmlFor={id}>
+    <span>
+      {label}
+      {required === false && <LabelOptional />}
+    </span>
+    {children}
+  </Label>
+)
+InputLabel.displayName = 'InputLabel'
 
 export const hover = {
   boxShadow: 'inset 0px 0px 0px 1px var(--active)',
@@ -192,13 +217,12 @@ export const inputStyles = {
 } as const
 
 const input = cva(inputStyles)
-
-const StyledInput = styled(DEFAULT_TAG, input)
-
 type InputVariants = RecipeVariantProps<typeof input>
 
-// Required due to ts error forcing the enterKeyHint props. Likely can be removed in later version.
-//type StyledInputProps = Omit<ComponentProps<typeof StyledInput>, 'enterKeyHint'>
+const StyledInput = styled(component(DEFAULT_TAG, 'c-input'), input, {
+  shouldForwardProp: (prop, variantKeys) =>
+    prop == 'size' || (!variantKeys.includes(prop) && !isCssProperty(prop)),
+}) as CComponent<typeof DEFAULT_TAG, InputVariants>
 
 type InputProps = UseFormControlProps &
   Omit<InputVariants, 'state'> & {
@@ -227,25 +251,20 @@ export const Input = forwardRefExtend<typeof DEFAULT_TAG, InputProps>(
     return (
       <ConditionalWrapper
         condition={label}
-        wrapper={(children) => (
-          // htmlFor required here for auto linking as not a radix primitive
-          <Label id={`label-${id}`} variant="wrapping" htmlFor={id}>
-            <span>
-              {label}
-              {required === false && <LabelOptional />}
-            </span>
-            {children}
-          </Label>
-        )}
+        props={{
+          id,
+          label,
+          required,
+        }}
+        wrapper={InputLabel}
       >
         <StyledInput
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onValueChange && onValueChange(e.target.value)
+            onValueChange?.(e.target.value)
           }
           {...remainingProps}
           id={id}
           className={cx('c-input', className)}
-          // @ts-ignore overriden size prop
           size={size}
           state={state}
           disabled={disabled}

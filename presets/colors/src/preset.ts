@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { definePreset } from '@pandacss/dev'
 import type { Preset, SemanticTokens } from '@pandacss/types'
 import * as colors from '@radix-ui/colors'
@@ -181,7 +184,7 @@ const neutralColorsTokens = neutralColors.reduce((colors, color) => {
   return colors
 }, {} as any)
 
-function createColorTokens(config: Required<Config>) {
+function createColorTokens(config: Required<Config>): SemanticTokens['colors'] {
   return {
     ...primaryColorTokens,
     ...neutralColorsTokens,

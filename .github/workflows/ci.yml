@@ -24,14 +24,18 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install Dependencies
-        run: |
-          npm install
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
       - name: Run build
         run: |
-          npm run build
+          pnpm run build
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -47,7 +51,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: |
@@ -75,7 +79,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: |
@@ -97,7 +101,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
       - name: Download build artifacts
         uses: actions/download-artifact@v3
@@ -121,7 +125,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: |
@@ -140,7 +144,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: |
@@ -168,7 +172,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
+          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: |

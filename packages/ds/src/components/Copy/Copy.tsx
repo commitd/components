@@ -1,21 +1,12 @@
 import { useBoolean, useTimeout } from '@committed/hooks'
-import { SystemStyleObject, styled } from '@committed/ss'
+import { SystemStyleObject } from '@committed/ss'
 import React, { ComponentProps, FC } from 'react'
+import { handleErrors } from '../../utils/handleErrors'
 import { Box } from '../Box'
-//import { Tooltip } from '../Tooltip'
+import { Tooltip } from '../Tooltip'
 
-const Tooltip = styled('div', {
-  base: {},
-}) as React.FC<{
-  open?: boolean
-  multiline?: boolean
-  onOpenChange?: any
-  content?: string
-  children?: React.ReactNode
-}>
-
-const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text)
+const copyToClipboard = async (text: string) => {
+  await navigator.clipboard.writeText(text)
 }
 export type CopyProps = Omit<ComponentProps<typeof Tooltip>, 'children'> & {
   content: React.ReactNode
@@ -59,13 +50,13 @@ export const Copy: FC<CopyProps> = ({
     >
       <Box
         css={css}
-        onClick={(e) => {
+        onClick={handleErrors(async (e) => {
           e.stopPropagation()
           e.nativeEvent.stopImmediatePropagation()
-          copyToClipboard(copy || `${content}`)
+          await copyToClipboard(copy ?? `${content}`)
           setCopied()
           setOpen()
-        }}
+        })}
       >
         {children}
       </Box>

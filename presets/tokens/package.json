@@ -7,7 +7,7 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint \"src/**/*.ts*\"",
     "build": "tsup src/index.ts --format=esm,cjs --dts",
     "debug": "panda debug -c debug/panda.config.ts"
   },

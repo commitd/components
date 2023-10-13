@@ -1,6 +1,11 @@
 import { cx, styled } from '@committed/ss'
 import { ComponentProps } from 'react'
-import { CComponent, component, forwardRefExtend } from '../../utils'
+import {
+  Assign,
+  CComponentProps,
+  component,
+  forwardRefDefine,
+} from '../../utils'
 
 export const SVG_CLASS = 'c-svg'
 
@@ -15,25 +20,35 @@ const StyledSvg = styled(component('svg', SVG_CLASS), {
   },
 })
 
-type SvgProps = {
-  /** Add a title to the svg */
-  title?: string
-  /** Add the given svg path  */
-  path?: string
-  /** Set the size of the svg  */
-  size?: ComponentProps<typeof StyledSvg>['size']
-  /** Set the color of the svg used for fill and stroke */
-  color?: ComponentProps<typeof StyledSvg>['color']
-  /** set the fill color */
-  fill?: ComponentProps<typeof StyledSvg>['fill']
-  /** set the stroke color */
-  stroke?: ComponentProps<typeof StyledSvg>['stroke']
+type StyledSvgProps = {
+  [K in keyof (
+    | React.SVGProps<SVGSVGElement>
+    | ComponentProps<typeof StyledSvg>
+  )]: ComponentProps<typeof StyledSvg>[K]
 }
+
+type SvgProps = Assign<
+  StyledSvgProps,
+  CComponentProps & {
+    /** Add a title to the svg */
+    title?: string
+    /** Add the given svg path  */
+    path?: string
+    /** Set the size of the svg  */
+    size?: ComponentProps<typeof StyledSvg>['size']
+    /** Set the color of the svg used for fill and stroke */
+    //  color?: ComponentProps<typeof StyledSvg>['color']
+    // /** set the fill color */
+    // fill?: ComponentProps<typeof StyledSvg>['fill']
+    // /** set the stroke color */
+    // stroke?: ComponentProps<typeof StyledSvg>['stroke']
+  }
+>
 
 /**
  * Svg is the base component for wrapping svg icon paths.
  */
-export const Svg = forwardRefExtend<typeof StyledSvg, SvgProps>(
+export const Svg = forwardRefDefine<'svg', SvgProps>(
   (
     {
       title,
@@ -62,4 +77,4 @@ export const Svg = forwardRefExtend<typeof StyledSvg, SvgProps>(
       {children}
     </StyledSvg>
   ),
-) as CComponent<'svg', SvgProps>
+)

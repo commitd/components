@@ -32,7 +32,6 @@ const NAVIGATION_ITEM_CLASS = 'c-navigation-item'
 const NAVIGATION_CONTENT_CLASS = 'c-navigation-content'
 const NAVIGATION_CONTENT_LIST_CLASS = 'c-navigation-content-list'
 const NAVIGATION_CONTENT_LIST_ITEM_CLASS = 'c-navigation-content-list-item'
-const NAVIGATION_CONTENT_LIST_LINK_CLASS = 'c-navigation-content-list-link'
 const NAVIGATION_VIEWPORT_POSITION_CLASS = 'c-navigation-viewport-position'
 const NAVIGATION_INDICATOR_CLASS = 'c-navigation-indicator'
 
@@ -318,8 +317,8 @@ const StyledLink = component(
 )
 
 const ContentListItem = forwardRefExtend<typeof StyledLink>(
-  ({ children, ...props }, forwardedRef) => (
-    <ListItem>
+  ({ children, className, ...props }, forwardedRef) => (
+    <ListItem className={cx(NAVIGATION_CONTENT_LIST_ITEM_CLASS, className)}>
       <StyledLink {...props} ref={forwardedRef}>
         {children}
       </StyledLink>

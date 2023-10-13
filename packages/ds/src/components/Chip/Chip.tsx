@@ -165,7 +165,7 @@ export const Chip: CComponent<typeof DEFAULT_TAG, Props> = forwardRefExtend<
           onClick: onClick,
         }
       }
-    }, [onClick, closable])
+    }, [onClick, closable, interactive])
 
     return (
       <Styled

@@ -77,7 +77,8 @@ export const HoverCardContent = forwardRefExtend<
   ) => (
     <ConditionalWrapper
       condition={portalled}
-      wrapper={(child) => <Portal container={container}>{child}</Portal>}
+      props={{ container }}
+      wrapper={Portal}
     >
       <StyledContent surface={surface} {...props} ref={forwardedRef}>
         <StyledArrow fill={surface} offset={-1} />

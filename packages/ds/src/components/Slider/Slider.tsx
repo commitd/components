@@ -17,12 +17,12 @@ import React, {
   ComponentProps,
   ElementRef,
   ReactNode,
-  useCallback,
   useMemo,
   useRef,
 } from 'react'
 import {
   CComponent,
+  CComponentProps,
   ColorPaletteProps,
   ConditionalWrapper,
   component,
@@ -84,7 +84,7 @@ const SliderRange = component(
 )
 SliderRange.displayName = 'SliderRange'
 
-const StyledThumb = styled(
+const StyledThumb: CComponent<typeof Thumb, SurfaceVariants> = styled(
   component(
     Thumb,
     SLIDER_THUMB_CLASS,
@@ -151,13 +151,12 @@ const slider = cva({
 })
 
 export const StyledSlider = styled(Root, slider)
-
-type SliderThumbProps = {
-  showLabel?: boolean
+interface SliderThumbProps extends SurfaceVariants, CComponentProps {
+  showLabel: boolean
   value: number | string
   labelSide: LabelSide
   portalled: boolean
-} & SurfaceVariants
+}
 
 const StyledPopoverContent = styled(Content, tooltipContentCva)
 const StyledPopoverArrow = component(Arrow, tooltipArrowStyles)
@@ -172,41 +171,52 @@ type ThumbPopoverContentProps = {
 const ThumbPopoverContent = forwardRefExtend<
   typeof StyledPopoverContent,
   ThumbPopoverContentProps
->(({ portalled = true, container, children, ...props }, forwardedRef) => {
-  const wrapper = useCallback(
-    (child: ReactNode) => <Portal container={container}>{child}</Portal>,
-    [container],
-  )
-  return (
-    <ConditionalWrapper condition={portalled} wrapper={wrapper}>
-      <StyledPopoverContent {...props} ref={forwardedRef}>
-        <StyledPopoverArrow offset={-1} />
-        {children}
-      </StyledPopoverContent>
-    </ConditionalWrapper>
-  )
-})
+>(({ portalled = true, container, children, ...props }, forwardedRef) => (
+  <ConditionalWrapper
+    condition={portalled}
+    props={{ container }}
+    wrapper={Portal}
+  >
+    <StyledPopoverContent {...props} ref={forwardedRef}>
+      <StyledPopoverArrow offset={-1} />
+      {children}
+    </StyledPopoverContent>
+  </ConditionalWrapper>
+))
 ThumbPopoverContent.displayName = 'ThumbPopoverContent'
 
-export const SliderThumb: CComponent<typeof Thumb, SliderThumbProps> = ({
+export const SliderThumb: React.FC<SliderThumbProps> = ({
   value,
   showLabel,
   labelSide,
   portalled = true,
   ...props
-}) => {
-  return (
-    <Popover open={showLabel}>
-      <PopoverAnchor>
-        <StyledThumb {...props} />
-      </PopoverAnchor>
-      <ThumbPopoverContent side={labelSide} portalled={portalled}>
-        {value}
-      </ThumbPopoverContent>
-    </Popover>
-  )
-}
+}) => (
+  <Popover open={showLabel}>
+    <PopoverAnchor>
+      <StyledThumb {...props} />
+    </PopoverAnchor>
+    <ThumbPopoverContent side={labelSide} portalled={portalled}>
+      {value}
+    </ThumbPopoverContent>
+  </Popover>
+)
+
 SliderThumb.displayName = 'SliderThumb'
+
+type SliderLabelProps = {
+  id: string
+  label?: string
+  children?: ReactNode
+}
+
+const SliderLabel = ({ id, label, children }: SliderLabelProps) => (
+  <Label id={`label-${id}`} variant="wrapping">
+    {label}
+    {children}
+  </Label>
+)
+SliderLabel.displayName = 'SliderLabel'
 
 type SliderVariants = RecipeVariantProps<typeof slider>
 type SliderProps = ColorPaletteProps &
@@ -285,18 +295,12 @@ export const Slider = forwardRefExtend<typeof Root, SliderProps>(
       return isHovered //hover.reduce((acc, cur) => acc || cur, false)
     }, [isHovered, labelStyle])
 
-    const withLabel = useCallback(
-      (children: ReactNode) => (
-        <Label id={`label-${id}`} variant="wrapping">
-          {label}
-          {children}
-        </Label>
-      ),
-      [label, id],
-    )
-
     return (
-      <ConditionalWrapper condition={label} wrapper={withLabel}>
+      <ConditionalWrapper
+        condition={label}
+        props={{ id, label }}
+        wrapper={SliderLabel}
+      >
         <StyledSlider
           {...remainingProps}
           id={id}

@@ -188,6 +188,26 @@ type CheckboxProps = Prettify<
         | ((checked: boolean) => void)
     }
 >
+
+type CheckboxLabelProps = {
+  id: string
+  label?: string
+  required?: boolean
+  children?: React.ReactNode
+}
+
+const CheckboxLabel = ({
+  id,
+  label,
+  required,
+  children,
+}: CheckboxLabelProps) => (
+  <Label id={`label-${id}`} variant="inline">
+    {children}
+    {label}
+    {required === false && <LabelOptional />}
+  </Label>
+)
 /**
  * Checkboxes can be used as toggle actions or as part of input forms.
  * Use when single select/deselect option, use radio when one option of more then two choices; [further info](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/).
@@ -205,13 +225,11 @@ export const Checkbox = forwardRef<
   return (
     <ConditionalWrapper
       condition={label}
-      wrapper={(children) => (
-        <Label id={`label-${id}`} variant="inline">
-          {children}
-          {label}
-          {required === false && <LabelOptional />}
-        </Label>
-      )}
+      props={{
+        id: `label-${id}`,
+        label,
+      }}
+      wrapper={CheckboxLabel}
     >
       <StyledRoot
         id={id}
