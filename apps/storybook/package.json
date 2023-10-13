@@ -1,9 +1,9 @@
 {
-  "name": "storybook",
+  "name": "ds-storybook",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
+    "postinstall": "pnpm dlx playwright@1.38.1 install --with-deps chromium",
     "prepare": "pnpm codegen",
     "codegen": "panda codegen",
     "test": "pnpm dlx concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'pnpm dlx http-server storybook-static --port 6006 --silent' 'pnpm dlx wait-on tcp:6006 && pnpm test-storybook'",
@@ -11,9 +11,9 @@
     "dev": "rimraf .next && storybook dev -p 6006",
     "build": "storybook build",
     "serve": "serve storybook-static",
-    "debug": "panda debug -c ./panda.config.ts"
+    "debug": "panda debug -c ./panda.config.ts",
+    "deploy-storybook": "storybook-to-ghpages"
   },
-  "keywords": [],
   "dependencies": {
     "@committed/ds": "workspace:*",
     "@committed/ds-ss": "workspace:*",

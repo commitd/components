@@ -2,6 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
+    "//#format:check": {
+      "outputs": [],
+      "outputMode": "new-only"
+    },
     "debug": {
       "dependsOn": ["build"]
     },
@@ -19,7 +23,7 @@
     },
     "test": {
       "outputs": ["coverage/**"],
-      "dependsOn": []
+      "dependsOn": ["build"]
     },
     "lint": {},
     "dev": {
