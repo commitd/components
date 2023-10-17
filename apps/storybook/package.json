@@ -1,6 +1,6 @@
 {
   "name": "@committed/ds-storybook",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "postinstall": "pnpm dlx playwright@1.38.1 install --with-deps chromium",
