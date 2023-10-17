@@ -52,8 +52,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish Storybook
-        if: github.ref == 'refs/heads/beta'
-        run: pnpm -f storybook run deploy-storybook -- --ci
-        env:
-          GH_TOKEN: commitd-bot:${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
