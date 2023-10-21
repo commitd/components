@@ -1,6 +1,5 @@
+import { Column, Heading, Subheading } from '@committed/ds'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
-import { Column, Heading } from '../../../packages/ds/src/components'
-import { Subheading } from '../../../packages/ds/src/components/Subheading'
 
 export default {
   title: 'Components/Subheading',
