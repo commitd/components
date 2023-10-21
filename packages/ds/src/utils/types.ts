@@ -72,46 +72,69 @@ export type PickProps<
 ////////////////////
 // Box props
 
-export type BackgroundProps = Pick<
-  SystemProperties,
-  'bg' | 'background' | 'bgColor' | 'backgroundColor' | 'bgGradient' | 'surface'
+export type BackgroundProps = Prettify<
+  Partial<
+    Pick<
+      SystemProperties,
+      | 'bg'
+      | 'background'
+      | 'bgColor'
+      | 'backgroundColor'
+      | 'bgGradient'
+      | 'surface'
+    >
+  >
 >
 
-export type SizeProps = Pick<
-  SystemProperties,
-  | 'size'
-  | 'w'
-  | 'width'
-  | 'minWidth'
-  | 'maxWidth'
-  | 'minW'
-  | 'maxW'
-  | 'h'
-  | 'height'
-  | 'minHeight'
-  | 'maxHeight'
-  | 'minH'
-  | 'maxH'
+export type SizeProps = Prettify<
+  Partial<
+    Pick<
+      SystemProperties,
+      | 'size'
+      | 'w'
+      | 'width'
+      | 'minWidth'
+      | 'maxWidth'
+      | 'minW'
+      | 'maxW'
+      | 'h'
+      | 'height'
+      | 'minHeight'
+      | 'maxHeight'
+      | 'minH'
+      | 'maxH'
+    >
+  >
 >
 
-export type FlexProps = Pick<
-  SystemProperties,
-  | 'display'
-  | 'flex'
-  | 'flexDirection'
-  | 'flexWrap'
-  | 'flexFlow'
-  | 'justifyContent'
-  | 'alignItems'
-  | 'alignContent'
-  | 'gap'
-  | 'rowGap'
-  | 'columnGap'
+export type FlexProps = Prettify<
+  Partial<
+    Pick<
+      SystemProperties,
+      | 'display'
+      | 'flex'
+      | 'flexDirection'
+      | 'flexWrap'
+      | 'flexFlow'
+      | 'justifyContent'
+      | 'alignItems'
+      | 'alignContent'
+      | 'gap'
+      | 'rowGap'
+      | 'columnGap'
+    >
+  >
 >
 
-export type FlexItemProps = Pick<
-  SystemProperties,
-  'flex' | 'order' | 'flexGrow' | 'flexShrink' | 'flexBasis' | 'alignSelf'
+export type FlexItemProps = Prettify<
+  Partial<
+    Pick<
+      SystemProperties,
+      'flex' | 'order' | 'flexGrow' | 'flexShrink' | 'flexBasis' | 'alignSelf'
+    >
+  >
 >
 
-export type HideProps = Pick<SystemProperties, 'hideFrom' | 'hideBelow'>
+export type HideProps = Prettify<
+  Partial<Pick<SystemProperties, 'hideFrom' | 'hideBelow'>>
+>
