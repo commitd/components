@@ -13,10 +13,11 @@
     "debug": "panda debug -c debug/panda.config.ts"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.15.4",
-    "@pandacss/types": "^0.15.4",
     "@committed/eslint-config": "workspace:*",
     "@committed/ds-tsconfig": "workspace:*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@pandacss/dev": "^0.16.0",
+    "@pandacss/types": "^0.16.0"
+  }
 }

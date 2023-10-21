@@ -32,8 +32,8 @@
   "devDependencies": {
     "@committed/ds-tsconfig": "workspace:*",
     "@committed/eslint-config": "workspace:*",
-    "@pandacss/dev": "^0.15.4",
-    "@pandacss/types": "^0.15.4",
+    "@pandacss/dev": "^0.16.0",
+    "@pandacss/types": "^0.16.0",
     "@storybook/addon-actions": "^7.4.5",
     "@storybook/addon-essentials": "^7.4.5",
     "@storybook/addon-interactions": "^7.4.5",

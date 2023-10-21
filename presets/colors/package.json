@@ -19,6 +19,8 @@
     "@committed/ds-tsconfig": "workspace:*"
   },
   "dependencies": {
+    "@pandacss/dev": "^0.16.0",
+    "@pandacss/types": "^0.16.0",
     "@radix-ui/colors": "^2.1.0"
   }
 }
