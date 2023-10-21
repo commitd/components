@@ -1,5 +1,3 @@
-'use client'
-
 import { Svg, ToggleGroup, ToggleGroupItem } from '@committed/ds'
 import {
   mdiFormatAlignCenter,

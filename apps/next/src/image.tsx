@@ -1,5 +1,3 @@
-'use client'
-
 import { Image } from '@committed/ds'
 
 export const ImageExample = () => (

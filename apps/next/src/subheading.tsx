@@ -1,5 +1,4 @@
-import { Column, Heading } from '../../../packages/ds/src/components'
-import { Subheading } from '../../../packages/ds/src/components/Subheading'
+import { Column, Heading, Subheading } from '@committed/ds'
 
 export const SubheadingExample = () => (
   <Column>
