@@ -10,14 +10,20 @@ import {
 import { Preview } from '@storybook/react'
 import React from 'react'
 import '../stories/panda.css'
-import { DocsContainer } from './committed/DocsContainer'
 import { committedDark, committedLight } from './committed/theme'
-import { WithTheme } from './committed/withTheme'
+import { withTheme } from './committed/withTheme'
 
-const decorators = [WithTheme]
+const decorators = [
+  withTheme({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
+  }),
+]
+
 const docs = {
-  container: DocsContainer,
-  theme: committedDark,
   page: () => (
     <>
       <Title />
