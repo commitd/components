@@ -13,7 +13,9 @@
     "studio": "panda studio",
     "prepare": "pnpm codegen",
     "codegen": "panda codegen",
-    "build": "pnpm clean && panda cssgen && tsup src/index.ts --format=esm,cjs --dts",
+    "build:ts": "tsup src/index.ts --format cjs,esm --dts --external @committed/ds-ss",
+    "build:css": "panda ship --outfile dist/panda.buildinfo.json",
+    "build": "pnpm clean && pnpm build:ts && pnpm build:css",
     "lint": "eslint \"src/**/*.ts*\"",
     "generate:component": "turbo gen react-component"
   },

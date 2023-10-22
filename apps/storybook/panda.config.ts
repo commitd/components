@@ -2,8 +2,7 @@ import { componentsConfig } from '@committed/ds'
 
 export default componentsConfig(
   {
-    include: ['../../preset/src/**/*.ts*', './stories/**/*.{js,jsx,ts,tsx}'],
-    exclude: [],
+    include: ['./stories/**/*.{js,jsx,ts,tsx}'],
     hooks: {
       'config:resolved': (conf) => {
         console.log('🐼 config:resolve')

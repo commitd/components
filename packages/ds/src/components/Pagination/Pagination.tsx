@@ -1,3 +1,4 @@
+'use client'
 import { css } from '@committed/ds-ss'
 import React, {
   CSSProperties,
