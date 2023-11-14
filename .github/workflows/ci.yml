@@ -14,7 +14,7 @@ concurrency:
 
 env:
   CI: true
-  NODE_VERSION: 16
+  NODE_VERSION: 20
   PNPM_CACHE_FOLDER: .pnpm-store
 
 jobs:

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "pnpm codegen",
     "codegen": "panda codegen ",
     "dev": "rimraf .next && next dev -p 3001",
     "build": "next build",

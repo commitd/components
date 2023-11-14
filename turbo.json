@@ -25,7 +25,9 @@
       "outputs": ["coverage/**"],
       "dependsOn": ["build"]
     },
-    "lint": {},
+    "lint": {
+      "dependsOn": ["build"]
+    },
     "dev": {
       "dependsOn": ["codegen"],
       "cache": false,

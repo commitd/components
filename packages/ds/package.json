@@ -26,7 +26,6 @@
     "clean": "rimraf dist",
     "debug": "panda debug",
     "studio": "panda studio",
-    "prepare": "pnpm codegen",
     "codegen": "panda codegen",
     "dev": "tsc --watch",
     "build:ts": "tsc",

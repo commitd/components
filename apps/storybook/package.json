@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "postinstall": "pnpm dlx playwright@1.38.1 install --with-deps chromium",
-    "prepare": "pnpm codegen",
     "codegen": "panda codegen",
     "test": "pnpm dlx concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'pnpm dlx http-server storybook-static --port 6006 --silent' 'pnpm dlx wait-on tcp:6006 && pnpm test-storybook'",
     "test:live": "test-storybook",
