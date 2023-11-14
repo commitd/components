@@ -1,5 +1,11 @@
 # @committed/ds-tsconfig
 
+## 0.2.0
+
+### Minor Changes
+
+- [#326](https://github.com/commitd/components/pull/326) [`ea74fcb`](https://github.com/commitd/components/commit/ea74fcbaaf556e024e23ace4e5e82a33033a0792) Thanks [@stuarthendren](https://github.com/stuarthendren)! - Updating the build to use only modules
+
 ## 0.1.0
 
 ### Minor Changes

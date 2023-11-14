@@ -41,6 +41,10 @@ jobs:
       - name: Run build
         run: |
           pnpm run ci
+      - name: Config npm
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: create and publish versions
         uses: changesets/action@v1
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta'
@@ -51,4 +55,3 @@ jobs:
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

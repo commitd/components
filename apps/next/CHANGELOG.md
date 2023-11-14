@@ -1,5 +1,17 @@
 # @committed/ds-next
 
+## 0.2.0
+
+### Minor Changes
+
+- [#326](https://github.com/commitd/components/pull/326) [`ea74fcb`](https://github.com/commitd/components/commit/ea74fcbaaf556e024e23ace4e5e82a33033a0792) Thanks [@stuarthendren](https://github.com/stuarthendren)! - Updating the build to use only modules
+
+### Patch Changes
+
+- Updated dependencies [[`ea74fcb`](https://github.com/commitd/components/commit/ea74fcbaaf556e024e23ace4e5e82a33033a0792)]:
+  - @committed/ds@1.0.0
+  - @committed/ds-ss@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
