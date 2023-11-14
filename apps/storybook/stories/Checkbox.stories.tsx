@@ -1,5 +1,4 @@
-import { Flex, Form, FormButton } from '@committed/ds/src/components'
-import { Checkbox, CheckedState } from '@committed/ds/src/components/Checkbox'
+import { Checkbox, CheckedState, Flex, Form, FormButton } from '@committed/ds'
 import { action } from '@storybook/addon-actions'
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'

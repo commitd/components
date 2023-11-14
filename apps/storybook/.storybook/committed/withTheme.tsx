@@ -1,6 +1,9 @@
 import { ComponentsProvider } from '@committed/ds'
+import { DecoratorHelpers } from '@storybook/addon-themes'
 import React from 'react'
-import { useDarkMode } from 'storybook-dark-mode'
+
+const { initializeThemeState, pluckThemeFromContext, useThemeParameters } =
+  DecoratorHelpers
 
 import '@fontsource/dosis'
 import '@fontsource/inter'
@@ -10,15 +13,18 @@ import '@fontsource/inter'
  *
  * @param {*} Story storybook component to wrap
  */
-export const WithTheme = (Story) => {
-  // Clean the theme first
-  document.body.classList.remove('dark')
-  document.body.classList.remove('light')
+export const withTheme = ({ themes, defaultTheme }) => {
+  initializeThemeState(Object.keys(themes), defaultTheme)
+  return (Story, context) => {
+    const selectedTheme = pluckThemeFromContext(context)
+    const { themeOverride } = useThemeParameters()
 
-  const choice = useDarkMode() ? 'dark' : 'light'
-  return (
-    <ComponentsProvider theme={{ choice }}>
-      <Story />
-    </ComponentsProvider>
-  )
+    const selected = themeOverride || selectedTheme || defaultTheme
+
+    return (
+      <ComponentsProvider theme={{ choice: selected }}>
+        <Story />
+      </ComponentsProvider>
+    )
+  }
 }

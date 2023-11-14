@@ -1,24 +1,34 @@
 {
   "name": "@committed/ds-colors",
   "version": "0.1.0",
-  "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
   "sideEffects": false,
   "license": "MIT",
-  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "lint": "eslint \"src/**/*.ts*\"",
-    "build": "tsup src/index.ts --format=esm,cjs --dts",
+    "build": "tsup src/index.ts --format=esm --dts",
     "debug": "panda debug -c debug/panda.config.ts"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.15.4",
-    "@pandacss/types": "^0.15.4",
     "@committed/eslint-config": "workspace:*",
     "@committed/ds-tsconfig": "workspace:*"
   },
   "dependencies": {
+    "@pandacss/dev": "^0.18.2",
+    "@pandacss/types": "^0.18.2",
     "@radix-ui/colors": "^2.1.0"
   }
 }

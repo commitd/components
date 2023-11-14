@@ -1,15 +1,16 @@
-import { SystemStyleObject, css } from '@committed/ds-ss'
-import { Meta, StoryObj } from '@storybook/react'
-import { Column, Row } from '../../../packages/ds/src/components'
 import {
   Caption,
+  Column,
   Monospace,
   Paragraph,
+  Row,
   Span,
   Strike,
   Text,
-} from '../../../packages/ds/src/components/Text'
-import { component } from '../../../packages/ds/src/utils'
+  component,
+} from '@committed/ds'
+import { SystemStyleObject, css } from '@committed/ds-ss'
+import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Text> = {
   title: 'Components/Text',

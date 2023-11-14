@@ -1,5 +1,3 @@
-'use client'
-
 import { Check, IconButton, Inline } from '@committed/ds'
 
 export const IconButtonExample = () => (

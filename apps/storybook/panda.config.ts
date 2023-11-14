@@ -1,9 +1,8 @@
-import { componentsConfig } from '@committed/ds'
+import { componentsConfig } from '@committed/ds/config'
 
 export default componentsConfig(
   {
-    include: ['../../preset/src/**/*.ts*', './stories/**/*.{js,jsx,ts,tsx}'],
-    exclude: [],
+    include: ['./stories/**/*.{js,jsx,ts,tsx}'],
     hooks: {
       'config:resolved': (conf) => {
         console.log('🐼 config:resolve')

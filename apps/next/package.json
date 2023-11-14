@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "pnpm codegen",
     "codegen": "panda codegen ",
     "dev": "rimraf .next && next dev -p 3001",
     "build": "next build",
@@ -16,15 +15,15 @@
     "@committed/hooks": "^0.10.4",
     "@faker-js/faker": "^8.0.2",
     "@mdi/js": "^7.2.96",
-    "next": "^13.4.1",
+    "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@committed/eslint-config": "workspace:*",
     "@committed/ds-tsconfig": "workspace:*",
-    "@pandacss/dev": "^0.15.4",
-    "@pandacss/types": "^0.15.4",
+    "@committed/eslint-config": "workspace:*",
+    "@pandacss/dev": "^0.18.2",
+    "@pandacss/types": "^0.18.2",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",

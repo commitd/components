@@ -1,4 +1,4 @@
-import { Box, Svg } from '@committed/ds/src/components'
+import { Box, Svg } from '@committed/ds'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {

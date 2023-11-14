@@ -1,5 +1,3 @@
-'use client'
-
 import { Button, Dialog, DialogContent, DialogTrigger } from '@committed/ds'
 
 export const DialogExample = () => (

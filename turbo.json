@@ -10,7 +10,7 @@
       "dependsOn": ["build"]
     },
     "codegen": {
-      "dependsOn": ["^codegen"]
+      "dependsOn": ["^codegen", "^build"]
     },
     "build": {
       "dependsOn": ["codegen", "^build"],
@@ -25,7 +25,9 @@
       "outputs": ["coverage/**"],
       "dependsOn": ["build"]
     },
-    "lint": {},
+    "lint": {
+      "dependsOn": ["build"]
+    },
     "dev": {
       "dependsOn": ["codegen"],
       "cache": false,

@@ -10,7 +10,7 @@ import {
 import React from 'react'
 import {
   CComponent,
-  ConditionalWrapper,
+  SafeConditional,
   component,
   forwardRefExtend,
 } from '../../utils'
@@ -230,14 +230,9 @@ export const Input = forwardRefExtend<typeof DEFAULT_TAG, InputProps>(
     const [id, { state, disabled, required }, remainingProps] =
       useFormControl(props)
     return (
-      <ConditionalWrapper
+      <SafeConditional
         condition={label}
-        props={{
-          id,
-          label,
-          required,
-        }}
-        wrapper={InputLabel}
+        wrapper={<InputLabel id={id} label={label} required={required} />}
       >
         <StyledInput
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -252,7 +247,7 @@ export const Input = forwardRefExtend<typeof DEFAULT_TAG, InputProps>(
           required={required}
           ref={forwardedRef}
         />
-      </ConditionalWrapper>
+      </SafeConditional>
     )
   },
 )

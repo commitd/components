@@ -1,5 +1,4 @@
 'use client'
-
 import { Pagination } from '@committed/ds'
 
 export const PaginationExample = () => (

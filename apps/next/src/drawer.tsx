@@ -1,5 +1,3 @@
-'use client'
-
 import { Button, Drawer, DrawerContent, DrawerTrigger } from '@committed/ds'
 
 export const DrawerExample = () => (

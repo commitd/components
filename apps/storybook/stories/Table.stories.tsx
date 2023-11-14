@@ -1,6 +1,8 @@
-import { Avatar, Box, Chip, Link } from '@committed/ds'
-import { css } from '@committed/ds-ss'
 import {
+  Avatar,
+  Box,
+  Chip,
+  Link,
   Table,
   TableBody,
   TableCaption,
@@ -8,7 +10,8 @@ import {
   TableFoot,
   TableHead,
   TableRow,
-} from '@committed/ds/src/components/Table'
+} from '@committed/ds'
+import { css } from '@committed/ds-ss'
 import { faker } from '@faker-js/faker'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import React from 'react'

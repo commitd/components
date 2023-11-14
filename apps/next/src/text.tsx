@@ -1,6 +1,5 @@
+import { Column, Row, Text } from '@committed/ds'
 import { css } from '@committed/ds-ss'
-import { Column, Row } from '../../../packages/ds/src/components'
-import { Text } from '../../../packages/ds/src/components/Text'
 
 export const TextExample = () => (
   <Column>

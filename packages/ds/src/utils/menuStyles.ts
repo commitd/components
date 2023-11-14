@@ -1,6 +1,4 @@
 import { RecipeVariantProps, css, cva } from '@committed/ds-ss'
-import { Check, ChevronRight } from '../components/Icons'
-import { component } from './component'
 
 export const itemCva = cva({
   base: {
@@ -116,10 +114,4 @@ export const triggerItemStyles = css({
   },
 })
 
-const indicatorStyles = css({ size: '$4' })
-
-export const StyledSubTriggerIndicator = component(
-  ChevronRight,
-  indicatorStyles,
-)
-export const StyledCheckIndicator = component(Check, indicatorStyles)
+export const indicatorStyles = css({ size: '$4' })
