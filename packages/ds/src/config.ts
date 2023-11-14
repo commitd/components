@@ -48,19 +48,16 @@ export function committedImportMap(packageName = PACKAGE_NAME) {
 
 export function componentsConfig(
   { presets = [], include = [], exclude = [], ...pandaConfig }: PandaConfig,
-  {
-    packageName: _packageName = PACKAGE_NAME,
-    ...componentsConfig
-  }: ComponentsConfig = {},
+  { packageName = PACKAGE_NAME, ...componentsConfig }: ComponentsConfig = {},
 ): PandaConfig {
   return defineConfig({
     presets: [...componentsPresets(componentsConfig), ...presets],
     preflight: true,
     emitPackage: false,
-    outdir: '../node_modules/@committed/ds-ss',
+    outdir: './node_modules/@committed/ds-ss',
     include: [...committedIncludes(), ...include],
     exclude: [...committedExcludes(), ...exclude],
-    // importMap: committedImportMap(packageName),
+    importMap: committedImportMap(packageName),
     jsxFramework: 'react',
     ...pandaConfig,
   })

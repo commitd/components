@@ -1,15 +1,25 @@
 {
   "name": "@committed/ds-utilities",
   "version": "0.1.0",
-  "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
   "sideEffects": false,
   "license": "MIT",
-  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "lint": "eslint \"src/**/*.ts*\"",
-    "build": "tsup src/index.ts --format=esm,cjs --dts",
+    "build": "tsup src/index.ts --format=esm --dts",
     "debug": "panda debug -c debug/panda.config.ts"
   },
   "devDependencies": {
@@ -17,7 +27,7 @@
     "@committed/ds-tsconfig": "workspace:*"
   },
   "dependencies": {
-    "@pandacss/dev": "^0.16.0",
-    "@pandacss/types": "^0.16.0"
+    "@pandacss/dev": "^0.18.2",
+    "@pandacss/types": "^0.18.2"
   }
 }

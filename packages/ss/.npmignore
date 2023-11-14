@@ -1,0 +1,3 @@
+# Needed to override .gitignore and publish the generated code
+# The generated code is required for first time use to compile before re-generation.
+debug

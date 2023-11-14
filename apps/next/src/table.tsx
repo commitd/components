@@ -1,5 +1,4 @@
-import { Avatar, Chip, Link } from '@committed/ds'
-import { Table } from '@committed/ds/src/components/Table'
+import { Avatar, Chip, Link, Table } from '@committed/ds'
 import { faker } from '@faker-js/faker'
 import React from 'react'
 

@@ -24,14 +24,13 @@ import {
   ConditionalWrapper,
   ForwardRef,
   ItemVariants,
-  StyledCheckIndicator,
-  StyledSubTriggerIndicator,
   baseItemStyles,
   checkboxItemStyles,
   component,
   contentStyles,
   forwardRefDefine,
   forwardRefExtend,
+  indicatorStyles,
   itemCva,
   itemIndicatorStyles,
   itemShortcutStyles,
@@ -40,8 +39,14 @@ import {
   triggerItemStyles,
 } from '../../utils'
 import { Button } from '../Button'
-import { ChevronDown } from '../Icons'
+import { Check, ChevronDown, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper/Paper'
+
+export const StyledSubTriggerIndicator = component(
+  ChevronRight,
+  indicatorStyles,
+)
+export const StyledCheckIndicator = component(Check, indicatorStyles)
 
 const MENU_CLASS = 'c-menu'
 const MENU_ITEM_CLASS = 'c-meu-item'

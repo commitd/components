@@ -23,12 +23,11 @@ import {
   CComponent,
   ConditionalWrapper,
   ItemVariants,
-  StyledCheckIndicator,
-  StyledSubTriggerIndicator,
   baseItemStyles,
   checkboxItemStyles,
   component,
   contentStyles,
+  indicatorStyles,
   itemCva,
   itemIndicatorStyles,
   itemShortcutStyles,
@@ -36,7 +35,14 @@ import {
   separatorCva,
   triggerItemStyles,
 } from '../../utils'
+import { Check, ChevronRight } from '../Icons'
 import { paperStyles } from '../Paper/Paper'
+
+export const StyledSubTriggerIndicator = component(
+  ChevronRight,
+  indicatorStyles,
+)
+export const StyledCheckIndicator = component(Check, indicatorStyles)
 
 const CONTEXT_MENU = 'c-context'
 const CONTEXT_MENU_ITEM = `${CONTEXT_MENU}-item`

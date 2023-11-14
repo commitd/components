@@ -1,5 +1,9 @@
 {
   "extends": "@committed/ds-tsconfig/react-library.json",
-  "include": ["**/*.ts", "**/*.tsx", "panda.config.ts", "../ss/index.mjs"],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["src", "panda.config.ts"],
+  "exclude": ["node_modules", "panda.config.ts"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  }
 }

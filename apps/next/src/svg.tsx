@@ -1,4 +1,4 @@
-import { Svg } from '@committed/ds/src/components'
+import { Svg } from '@committed/ds'
 
 export const SvgExample = () => (
   <Svg>

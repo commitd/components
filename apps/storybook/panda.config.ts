@@ -1,4 +1,4 @@
-import { componentsConfig } from '@committed/ds'
+import { componentsConfig } from '@committed/ds/config'
 
 export default componentsConfig(
   {

@@ -1,5 +1,4 @@
-import { Column, Inline, Monospace, Stack, Text } from '@committed/ds'
-import { Divider } from '@committed/ds/src/components/Divider'
+import { Column, Divider, Inline, Monospace, Stack, Text } from '@committed/ds'
 import { expect } from '@storybook/jest'
 import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import { within } from '@storybook/testing-library'

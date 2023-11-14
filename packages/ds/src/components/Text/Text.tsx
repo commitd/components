@@ -113,10 +113,11 @@ const inlineCss = css({ display: 'inline' })
  *
  * A set of pre-configured components are also supplied for common use cases. These all use the same underlying Text component.
  */
-export const Text: PolyCComponent<'span', TextVariants> = component(
-  styled('span', text),
-  TEXT_CLASS,
+export const Text: PolyCComponent<'span', TextVariants> = styled(
+  component('span', TEXT_CLASS),
+  text,
 )
+
 Text.displayName = 'Text'
 
 const paragraphCss = css({ display: 'block', mb: '$3' })

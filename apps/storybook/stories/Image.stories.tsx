@@ -1,4 +1,4 @@
-import { Image } from '@committed/ds/src/components/Image'
+import { Image } from '@committed/ds'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Image> = {
