@@ -1,5 +1,12 @@
 # @committed/ds-next
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`2b55598`](https://github.com/commitd/components/commit/2b5559815ba96ab6e3e25e5418ecd639f7fb485e)]:
+  - @committed/ds@1.0.1
+
 ## 0.2.0
 
 ### Minor Changes

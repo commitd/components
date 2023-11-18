@@ -1,5 +1,11 @@
 # @committed/ds
 
+## 1.0.1
+
+### Patch Changes
+
+- [#328](https://github.com/commitd/components/pull/328) [`2b55598`](https://github.com/commitd/components/commit/2b5559815ba96ab6e3e25e5418ecd639f7fb485e) Thanks [@stuarthendren](https://github.com/stuarthendren)! - Fix to ThemeProvider logic and Badge typeing
+
 ## 1.0.0
 
 ### Minor Changes
