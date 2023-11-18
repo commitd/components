@@ -72,11 +72,13 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
     )
   } else {
     const prevTheme = prevThemeRef.current
-    if (prevTheme) {
-      document.body.classList.remove(prevTheme)
-    }
-    if (theme) {
-      document.body.classList.add(theme)
+    if (prevTheme !== theme) {
+      if (prevTheme) {
+        document.body.classList.remove(prevTheme)
+      }
+      if (theme) {
+        document.body.classList.add(theme)
+      }
     }
     return <>{children}</>
   }
