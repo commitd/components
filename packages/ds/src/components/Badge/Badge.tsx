@@ -1,6 +1,6 @@
 import { RecipeVariantProps, cva, styled } from '@committed/ds-ss'
 import React, { ComponentProps } from 'react'
-import { Assign, Prettify, forwardRefDefine } from '../../utils'
+import { Prettify, forwardRefDefine } from '../../utils'
 
 const DEFAULT_TAG = 'span'
 
@@ -88,14 +88,15 @@ const badge = cva({
 
 const StyledBadge = styled(DEFAULT_TAG, badge)
 
-type BadgeVariants = Omit<RecipeVariantProps<typeof badge>, 'status'>
+type BadgeVariants = RecipeVariantProps<typeof badge>
 type BadgeProps = Prettify<
-  Assign<
-    ComponentProps<typeof DEFAULT_TAG>,
+  Omit<
     BadgeVariants & {
+      children: React.ReactNode
       content: React.ReactNode
       max?: number
-    }
+    },
+    'status'
   >
 >
 

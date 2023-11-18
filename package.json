@@ -16,11 +16,12 @@
     "test": "turbo run test",
     "format": "prettier --write '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
     "format:check": "prettier -c '**/{*.js,*.ts,*.tsx,*.json,*.md,*.mdx}'",
+    "changeset": "changeset",
     "ci:1": "turbo run format:check build",
     "ci:2": "turbo run lint test",
     "ci": "pnpm run ci:1 && pnpm install && pnpm ci:2",
     "ci:publish": "pnpm run ci:packages && pnpm run ci:storybook",
-    "ci:packages": "pnpm  --filter=\"./presets/**\" --filter=\"./packages/**\" publish -r --publish-branch beta --access public --no-git-checks",
+    "ci:packages": "pnpm  --filter=\"./presets/**\" --filter=\"./packages/**\" publish -r --publish-branch beta --access public",
     "ci:storybook": "pnpm --filter @committed/ds-storybook run deploy-storybook --ci",
     "ci:version": "pnpm changeset version"
   },
