@@ -1,0 +1,2 @@
+import{_ as c}from"./extends-98964cd2.js";import{r as t}from"./index-76fb7be0.js";import{$ as n,a as $}from"./index-45a327ec.js";import{$ as p}from"./index-77dbc890.js";const i=t.forwardRef((e,a)=>{const{pressed:r,defaultPressed:o=!1,onPressedChange:f,...d}=e,[s=!1,b]=n({prop:r,onChange:f,defaultProp:o});return t.createElement(p.button,c({type:"button","aria-pressed":s,"data-state":s?"on":"off","data-disabled":e.disabled?"":void 0},d,{ref:a,onClick:$(e.onClick,()=>{e.disabled||b(!s)})}))}),P=i;export{P as $,i as a};
+//# sourceMappingURL=index-8f6bbdf6.js.map

@@ -1,0 +1,2 @@
+import{c as e,a as o}from"./component-92c13614.js";import"./index-76fb7be0.js";const t="div",a=e({appearance:"none",boxSizing:"border-box",font:"inherit",lineHeight:"none",outline:"none",textAlign:"inherit",verticalAlign:"middle",WebkitTapHighlightColor:"rgba(0, 0, 0, 0)",borderRadius:"$default",color:"$text"}),n=e({surface:"solid"}),r=e({boxShadow:"$1"}),p=o(t,"c-paper",a,n,r);export{p as P,n as a,a as p};
+//# sourceMappingURL=Paper-e773ea24.js.map

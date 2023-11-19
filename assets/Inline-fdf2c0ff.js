@@ -1,0 +1,2 @@
+import{b as n,s as e,a as t}from"./component-92c13614.js";import{B as s,s as a}from"./Box-f074bc4b.js";const i=n({base:{display:"flex",flexDirection:"row"},variants:{align:{left:{justifyContent:"flex-start"},center:{justifyContent:"center"},right:{justifyContent:"flex-end"}},wrap:{true:{flexWrap:"wrap"}}}}),o=e(e(s,a),i),r=t(o,"c-inline");r.displayName="Inline";export{r as I};
+//# sourceMappingURL=Inline-fdf2c0ff.js.map

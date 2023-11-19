@@ -1,0 +1,2 @@
+import{b as t,s as o,a as e,c as s}from"./component-92c13614.js";import{B as n}from"./Box-f074bc4b.js";const c=t({base:{display:"flex"},variants:{gap:{true:{gap:"$3"}},spaced:{true:{justifyContent:"space-between"}},wrap:{true:{flexWrap:"wrap"}},centered:{true:{justifyContent:"center",alignItems:"center"}}}}),a=o(n,c),r=e(a,"c-flex");r.displayName="Flex";const l=e(a,"c-row",s({flexDirection:"row"}));l.displayName="Row";const p=e(a,"c-column",s({flexDirection:"column"}));p.displayName="Column";export{p as C,r as F,l as R};
+//# sourceMappingURL=Flex-1cfc0a73.js.map

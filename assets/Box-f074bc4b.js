@@ -1,0 +1,2 @@
+import{b as a,a as s,s as i}from"./component-92c13614.js";import"./index-76fb7be0.js";const r=a({variants:{spacing:{small:{gap:"$2"},default:{gap:"$3"},large:{gap:"$6"},responsive:{gap:{base:"$2",md:"$3",lg:"$6"}}}},defaultVariants:{spacing:"default"}}),t=a({base:{boxSizing:"border-box"},variants:{variant:{grow:{flex:1},high:{height:"100%"},wide:{width:"100%"},max:{height:"100%",width:"100%"},fullscreen:{width:"100%",height:"100vh"}}}}),e=s("div","c-box"),o=i(e,t);o.displayName="Box";export{o as B,r as s};
+//# sourceMappingURL=Box-f074bc4b.js.map
