@@ -76,9 +76,9 @@ const ControlledThemeProvider: FC<ThemeProviderProps> = ({
       if (prevTheme) {
         document.body.classList.remove(prevTheme)
       }
-      if (theme) {
-        document.body.classList.add(theme)
-      }
+    }
+    if (theme) {
+      document.body.classList.add(theme)
     }
     return <>{children}</>
   }
